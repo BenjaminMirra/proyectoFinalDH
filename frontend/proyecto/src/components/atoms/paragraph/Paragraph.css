@@ -1,0 +1,18 @@
+.paragraph {
+    font-family: Poppins;
+}
+.paragraph-size-sm{
+    font-size:12px;
+}
+
+.paragraph-size-md{
+    font-size:14px;
+}
+
+.paragraph-colors-primary {
+    color: #263238;
+}
+
+.paragraph-colors-secondary {
+    color: #607D8B;
+}

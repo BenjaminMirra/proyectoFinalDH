@@ -4,6 +4,8 @@ import { Picture } from '../../atoms/Picture/Picture'
 import { Icon } from '../../atoms/Icon/Icon'
 import {Heading} from '../../atoms/Heading/Heading'
 import { Avatar } from '../../atoms/Avatar/Avatar'
+import { Paragraph } from '../../atoms/paragraph/Paragraph'
+import { Span } from '../../atoms/Span/Span'
 import classNames from 'classnames'
 import './MobileHeader.css'
 export const MobileHeader = ({firstname,lastname}) => {
@@ -34,7 +36,7 @@ export const MobileHeader = ({firstname,lastname}) => {
               </div>
 
               <div className="nav-content-user">
-                <p style={{fontSize:'12px'}} >¿ Deseas <span style={{color:'blue'}} >cerrar sesión </span>?</p>
+                <Paragraph size= 'sm' >  ¿ Deseas <Span>cerrar sesión</Span> ? </Paragraph>
                 <hr style={{width:'90%'}}/>
             </div>)
             </>):

@@ -1,0 +1,22 @@
+.span-colors-blue {
+    color: blue;
+}
+
+.span-colors-grey {
+    color: #263238;
+}
+.span-colors-white {
+    color: white;
+}
+
+.span {
+    font-family: Poppins;
+    
+}
+.span-size-sm{
+    font-size:12px;
+}
+
+.span-size-md{
+    font-size:14px;
+}
