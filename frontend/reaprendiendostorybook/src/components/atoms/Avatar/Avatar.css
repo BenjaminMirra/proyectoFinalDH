@@ -1,0 +1,19 @@
+.avatar{
+    width: 37px;
+    height: 37px;
+    border-radius: 50%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1px;
+}
+.avatar h2{
+    padding: 5px;
+}
+.background-primary{
+    background: #383B58;
+}
+.background-secondary{
+    background-color: #1DBEB4;
+}

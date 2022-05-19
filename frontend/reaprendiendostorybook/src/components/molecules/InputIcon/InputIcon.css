@@ -1,0 +1,21 @@
+.input-icon{
+    border-radius: 5px;
+    background-color:#fff ;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+    font-size: 12px;
+    width: auto;
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+.input-icon input{
+    width: 100%;
+    margin-left: 29px;
+    border-top-left-radius:10px none ;
+
+}
+.input-icon img{
+    position: absolute;
+    height: 50%;
+    margin-left:11px ;
+}

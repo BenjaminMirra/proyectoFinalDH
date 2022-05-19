@@ -1,0 +1,32 @@
+
+.heading{
+    color:#FFFFFF ;
+    line-height: 23.44px;
+    letter-spacing: 0.4px;
+}
+.base{
+    color:#FFFFFF ;
+}
+.color-primary{
+    color: #383B58;;
+}
+.color-secondary{
+    color:#1DBEB4;
+}
+
+.size-xs{
+    font-size:14px;
+    
+}
+.size-sm{
+    font-size:16px;
+    
+}
+.size-md{
+    font-size: 20px;
+    
+}
+.size-lg{
+    font-size: 24px;
+    
+}

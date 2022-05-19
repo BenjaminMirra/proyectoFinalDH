@@ -1,0 +1,40 @@
+.button{
+    height: 40px;
+    font-size: 16px;
+    color:#fff;
+    border:none;
+    background: none;
+    padding-top:12px;
+    padding-bottom:5px ;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+}
+.variant-primary{
+    background-color:#1DBEB4 ;
+    color:white;
+}
+
+.variant-secondary{
+    color:#1DBEB4 ;
+    border: 1px solid #1DBEB4;
+    
+}
+
+.button-size-base{
+    width: 164px;
+}
+.button-size-xs{
+    width: 206px;
+}
+.button-size-sm{
+    width: 296px;
+}
+.button-size-md{
+    width:346px;
+}
+.button-size-lg{
+    width:362px;
+}
+

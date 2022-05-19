@@ -1,0 +1,23 @@
+.header-desktop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    
+}
+.logo{
+    display: flex;
+    margin-left: 40px;
+    
+}
+.logo h2{
+    margin-top: 20px;
+    margin-left: 12px;
+}
+.botones-header{
+    display: flex;
+    margin-right: 40px;
+}
+.botones-header button{
+    margin-left: 10px;
+}
