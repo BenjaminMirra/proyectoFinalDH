@@ -36,7 +36,7 @@ export const MobileHeader = ({firstname,lastname}) => {
               <div className="nav-content-user">
                 <p style={{fontSize:'12px'}} >¿ Deseas <span style={{color:'blue'}} >cerrar sesión </span>?</p>
                 <hr style={{width:'90%'}}/>
-            </div>)
+            </div>
             </>):
             <>
             {/* ------------------------------ Unlogged user ----------------------------- */}
