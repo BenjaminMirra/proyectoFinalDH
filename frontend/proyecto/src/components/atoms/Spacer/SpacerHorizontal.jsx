@@ -8,6 +8,6 @@ export const SpacerHorizontal = ({height}) => {
 }
 
 SpacerHorizontal.propTypes = {
-    height:PropTypes.oneOf(['xs','sm','md'])
+    height:PropTypes.oneOf(['xxs','xs','sm','md','lg'])
 }
 

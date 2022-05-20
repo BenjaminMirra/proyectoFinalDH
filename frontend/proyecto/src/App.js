@@ -1,13 +1,14 @@
 import './App.css';
-import { Login } from './components/organisms/Login/Login';
-import { Register } from './components/organisms/Register/Register';
+
+import { Register } from './components/organisms/Register/RegisterForm';
+import { Header} from './components/organisms/Header/Header';
+import Login from './components/pages/Login';
 
 
 function App() {
   return (
     <div>
-      {/* <Login></Login> */}
-      <Register></Register>
+      <Login/>
     </div>
   );
 }

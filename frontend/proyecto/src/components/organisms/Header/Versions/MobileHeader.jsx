@@ -1,14 +1,14 @@
 import React,{useState} from 'react'
 import PropTypes from 'prop-types'
-import { Picture } from '../../atoms/Picture/Picture'
-import { Icon } from '../../atoms/Icon/Icon'
-import {Heading} from '../../atoms/Heading/Heading'
-import { Avatar } from '../../atoms/Avatar/Avatar'
-import { Paragraph } from '../../atoms/paragraph/Paragraph'
-import { Span } from '../../atoms/Span/Span'
+import { Picture } from '../../../atoms/Picture/Picture'
+import { Heading } from '../../../atoms/Heading/Heading'
+import { Avatar } from '../../../atoms/Avatar/Avatar'
+import { Icon } from '../../../atoms/Icon/Icon'
+import { Paragraph } from '../../../atoms/paragraph/Paragraph'
+import { Span } from '../../../atoms/Span/Span'
 import classNames from 'classnames'
 import './MobileHeader.css'
-export const MobileHeader = ({firstname,lastname}) => {
+export const MobileHeader = ({firstname,lastname,handleUserInfo}) => {
   const [isOn,setIsOn]=useState(false)
     const toggleIsOn=()=>setIsOn(!isOn)
     
@@ -36,7 +36,7 @@ export const MobileHeader = ({firstname,lastname}) => {
               </div>
 
               <div className="nav-content-user">
-                <Paragraph size= 'sm' >  ¿ Deseas <Span>cerrar sesión</Span> ? </Paragraph>
+                <Paragraph size= 'sm' >  ¿ Deseas <Span onClick={handleUserInfo}>cerrar sesión</Span> ? </Paragraph>
                 <hr style={{width:'90%'}}/>
             </div>
             </>):

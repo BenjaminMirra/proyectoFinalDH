@@ -2,9 +2,9 @@ import React from 'react'
 import { InputLabel } from '../../molecules/InputLabel/InputLabel'
 import { Heading } from '../../atoms/Heading/Heading'
 import { Button } from '../../atoms/Button/Button'
-import './Login.css'
+import './LoginForm.css'
 
-export const Login = () => {
+export const LoginForm = () => {
 
 
     return (

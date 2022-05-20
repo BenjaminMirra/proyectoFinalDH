@@ -1,12 +1,12 @@
 import React from "react";
-import { FooterMobile } from "./FooterMobile";
+import { FooterDesktopTablet } from "./FooterDesktopTablet";
 export default {
-  title: "Organisms/Footer/FooterMobile",
-  component: FooterMobile,
+  title: "Organisms/Footer/FooterVersions/FooterDesktop",
+  component: FooterDesktopTablet,
 };
 
 //👇 We create a “template” of how args map to rendering
-const Template = (args) => <FooterMobile {...args} />;
+const Template = (args) => <FooterDesktopTablet {...args} />;
 
 // 👇 Each story then reuses that template
 export const Footer = Template.bind({});

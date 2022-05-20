@@ -1,7 +1,7 @@
 import React from "react";
 import { TabletHeader } from "./TabletHeader";
 export default {
-  title: "Organisms/Header/TabletHeader",
+  title: "Organisms/Header/HeaderVersions/TabletHeader",
   component: TabletHeader,
 };
 

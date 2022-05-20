@@ -1,7 +1,7 @@
 import React from "react";
 import {MobileHeader} from "./MobileHeader";
 export default {
-  title: "Organisms/Header/MobileHeader",
+  title: "Organisms/Header/HeaderVersions/MobileHeader",
   component: MobileHeader,
 };
 

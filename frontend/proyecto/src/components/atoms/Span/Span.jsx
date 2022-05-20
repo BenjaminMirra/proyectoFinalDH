@@ -3,7 +3,7 @@ import PropTypes  from 'prop-types';
 import classNames from 'classnames';
 import './Span.css'
 
-export const Span = ({variant, children, size}) => {
+export const Span = ({variant, children, size,onClick}) => {
 
   const SpanClassNames = classNames('span',{
     [`span-colors-${variant}`]:variant,
@@ -12,7 +12,7 @@ export const Span = ({variant, children, size}) => {
 })
 return (
     <>
-  <span  className={SpanClassNames} >{children}</span>
+  <span onClick={onClick} className={SpanClassNames} >{children}</span>
   </>
 )
 }
@@ -21,6 +21,7 @@ Span.propTypes = {
     text: PropTypes.string.isRequired,
     size:PropTypes.oneOf(['sm','md']),
     variant: PropTypes.oneOf(['blue', 'grey', 'white']),
+    onClick:PropTypes.func
     
 };
 
@@ -28,4 +29,5 @@ Span.defaultProps={
     variant: 'blue',
     size:'md',
     text: 'String',
+    onClick:()=>{}
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Heading} from '../../atoms/Heading/Heading'
-import {Icon} from '../../atoms/Icon/Icon'
+import {Heading} from '../../../atoms/Heading/Heading'
+import {Icon} from '../../../atoms/Icon/Icon'
 import './FooterDesktopTablet.css'
 export const FooterDesktopTablet = ({}) => {
     return (
