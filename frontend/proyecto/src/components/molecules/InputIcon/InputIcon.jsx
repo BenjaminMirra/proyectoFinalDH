@@ -10,11 +10,14 @@ export const InputIcon = ({input,icon,variant,onClick}) => {
         [`type-${variant}`]:variant,
     })
     return (
+        <>
+        {console.log(input)}
         <div className={InputIconClassNames} style={{width:getSize(input.size,icon.width)}}>
             <Input size={input.size} variant={input.variant} placeholder={input.placeholder}></Input>
             <Icon onClick={onClick} icon={icon.icon} width={icon.width}/>
             
         </div>
+        </>
     )
 }
 InputIcon.propTypes={

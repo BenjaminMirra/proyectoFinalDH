@@ -11,7 +11,7 @@ const ImageWidth = {
     // lg: "25px",
 };
 const ImageHeight = {
-    xs: "52px",
+    xs: '52px',
 //   sm: "18px",
 //   md: "22px",
 //   lg: "25px",
