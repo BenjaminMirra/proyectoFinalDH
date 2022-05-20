@@ -4,7 +4,7 @@ import Label from '../../atoms/Label/Label'
 import { Input } from '../../atoms/Input/Input'
 import classNames from 'classnames'
 import './InputLabel.css'
-export const InputLabel = ({input,label,isInline}) => {
+export const InputLabel = ({size, placeholder, type,label,isInline}) => {
     const InputLabelClassNames=classNames('input-label',{
         'isInline':isInline,
     })
@@ -12,7 +12,7 @@ export const InputLabel = ({input,label,isInline}) => {
         <>
         <div className={InputLabelClassNames}>
             <Label label= {label} />
-            <Input size={input.size} type= {input.type} placeholder= {input.placeholder}/>
+            <Input size={size} type= {type} placeholder= {placeholder}/>
         </div>
         
     </>

@@ -1,12 +1,13 @@
-
 import './App.css';
-import { Button } from './components/Button/Button';
+import { Login } from './components/organisms/Login/Login';
+import { Register } from './components/organisms/Register/Register';
 
 
 function App() {
   return (
     <div>
-        <Button size='lg' label='Button 1'/>
+      <Login></Login>
+      <Register></Register>
     </div>
   );
 }
