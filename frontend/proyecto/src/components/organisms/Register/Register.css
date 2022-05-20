@@ -1,0 +1,90 @@
+.register {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.register h2 {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+}
+
+.register .name-surname {
+    display: flex;
+    width: 448;
+    flex-direction: row;
+}
+.register .surname{
+    margin-left: 11px;
+}
+.register button {
+    margin-top: 45px;
+    margin-bottom: 15px;
+}
+
+.register p {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 14px;
+    text-align: center;
+    font-weight: bold;
+    color: #383B58;
+    ;
+}
+
+.register p a {
+    color: #1DBEB4;
+    text-decoration: none;
+}
+
+@media (max-width:1366px) {
+    .register .name-surname {
+        display: flex;
+        width: 346px;
+        flex-direction: column;
+        margin-right: 12px;
+    }
+
+    .register .name input{
+        width: 346px;
+        
+    }
+
+    .register .surname input{
+        width: 346px;
+        margin-left: 0px;
+    }
+    .register .surname {
+        
+        margin-left: 0px;
+    }
+
+}
+@media (max-width:768px) {
+    .register .name-surname {
+        display: flex;
+        width: 300px;
+        flex-direction: column;
+        margin-right: 17px;
+    }
+
+    .register .name input{
+        width: 300px;
+        
+    }
+    .register .surname {
+        margin-left: 0px;
+    }
+    .register .surname input{
+        width: 300px;
+        
+    }
+
+}

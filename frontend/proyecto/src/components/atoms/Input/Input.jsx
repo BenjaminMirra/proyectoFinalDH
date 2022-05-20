@@ -17,7 +17,7 @@ export const  Input = ({type,placeholder,variant,size}) => {
 Input.propTypes = {
     type:PropTypes.oneOf(['text','password','email']),
     variant:PropTypes.oneOf(['primary','secondary','base']),
-    size:PropTypes.oneOf(['base','xs','sm','md','lg','xl']),
+    size:PropTypes.oneOf(['base','xs','sm','md','lg','xl','2xl']),
     placeholder:PropTypes.string
 
 }
