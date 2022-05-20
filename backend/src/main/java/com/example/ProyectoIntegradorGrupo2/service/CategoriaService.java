@@ -24,16 +24,21 @@ public class CategoriaService implements ICategoriaService{
     @Autowired
     ObjectMapper mapper;
 
+    //Método compartido entre la función aqgregarCategoría y editarCategoria
+    //Guarda una categoria en la base de datos y retorna una categoriaDTO
     private CategoriaDTO cargarCategoria(CategoriaDTO categoriaDTO){
         Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
         Categoria categoriaGuardadaEnDB = categoriaRepository.save(categoria);
         return mapper.convertValue(categoriaGuardadaEnDB, CategoriaDTO.class);
     }
+
+    //Guarda una categoria en la base de datos y retorna una categoriaDTO
     @Override
     public CategoriaDTO agregarCategoria(CategoriaDTO categoriaDTO) {
         return cargarCategoria(categoriaDTO);
     }
 
+    //Busca las categorias en la base de datos y retorna una coleccion de categoriasDTO
     @Override
     public Set<CategoriaDTO> listarTodas() {
         List<Categoria> categoriasList = categoriaRepository.findAll();
@@ -48,6 +53,9 @@ public class CategoriaService implements ICategoriaService{
         return categoriaDTOSet;
     }
 
+
+    //Busca una categoria a editar por su id. Si no existe devuelve exceptcion
+    // y si existe guarda la categoria con los cambios
     @Override
     public CategoriaDTO editar(CategoriaDTO categoriaDTO) throws ResourceNotFoundException {
         Optional<Categoria> c = categoriaRepository.findById(categoriaDTO.getId());
@@ -59,6 +67,7 @@ public class CategoriaService implements ICategoriaService{
         return cargarCategoria(categoriaDTO);
     }
 
+    //Elimina una categoria de la base de datos
     @Override
     public void eliminar(Long id) throws ResourceNotFoundException {
         Optional<Categoria> c = categoriaRepository.findById(id);
