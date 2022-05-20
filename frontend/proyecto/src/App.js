@@ -6,7 +6,7 @@ import { Register } from './components/organisms/Register/Register';
 function App() {
   return (
     <div>
-      <Login></Login>
+      {/* <Login></Login> */}
       <Register></Register>
     </div>
   );
