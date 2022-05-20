@@ -1,7 +1,7 @@
 import React from "react";
 import { DesktopHeader } from "./DesktopHeader";
 export default {
-  title: "Organisms/DesktopHeader",
+  title: "Organisms/Header/DesktopHeader",
   component: DesktopHeader,
 };
 

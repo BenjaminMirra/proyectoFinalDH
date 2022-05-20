@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {Heading} from '../../../atoms/Heading/Heading'
+import {Heading} from '../../atoms/Heading/Heading'
 import './FooterMobile.css'
 export const FooterMobile = ({}) => {
   return (

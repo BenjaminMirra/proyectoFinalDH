@@ -7,15 +7,26 @@
     position: relative;
     display: flex;
     align-items: center;
+    max-width: 500px;
+    
 }
-.input-icon input{
+.input-icon  input{
     width: 100%;
     margin-left: 29px;
     border-top-left-radius:10px none ;
 
 }
-.input-icon img{
-    position: absolute;
-    height: 50%;
-    margin-left:11px ;
+
+.type-left img{
+position: absolute;
+    left: 11px;
+    top:6px;
+    bottom: 8px;
 }
+.type-right img{
+    position: absolute;
+    right: 11px;
+    top:6px;
+    bottom: 8px;
+}
+

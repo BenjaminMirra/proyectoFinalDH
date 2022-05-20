@@ -1,7 +1,7 @@
 import React,{useState} from 'react'
 import PropTypes from 'prop-types'
 import './Dropdown.css'
-import { Icon } from '../../../atoms/Icon/Icon'
+import { Icon } from '../../atoms/Icon/Icon'
 export const Dropdown = ({options}) => {
     const [isActive,setIsActive]=useState(false)
     const handleActive=()=>setIsActive(!isActive)
