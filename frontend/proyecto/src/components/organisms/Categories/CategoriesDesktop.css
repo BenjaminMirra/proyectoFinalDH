@@ -1,0 +1,30 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: border-box;
+    text-decoration: none;
+  }
+
+
+.categories {
+    background-color: #FFFF;
+    padding-top: 15px;
+    margin: 10px;
+}
+
+.categories h2 {
+    padding-left: 55px;
+}
+
+.categories ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin-top:20px;
+}
+
+.categories li {
+    margin-right: 10px;
+}
