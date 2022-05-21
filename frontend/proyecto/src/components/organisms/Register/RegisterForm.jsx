@@ -58,11 +58,11 @@ export const RegisterForm = () => {
                 <InputLabel label={"Confirmar Contraseña"} size={medidas.inputSize} type={"text"} placeholder={""} isError={true}></InputLabel>
             </div>
             <div className='boton-register'>
-                <Button size={medidas.buttonWidth} variant={false} label='Crear cuenta' ></Button>
+                <Button size={medidas.buttonWidth} variant={true} label='Crear cuenta' ></Button>
 
                 <p>
                     ¿Ya tienes cuenta?
-                    <a href="null"> Crear Cuenta</a >
+                    <a href="null"> Iniciar Sesión</a >
                 </p>
             </div>
 
