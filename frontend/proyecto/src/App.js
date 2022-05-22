@@ -1,11 +1,10 @@
 import './App.css';
-import { CategoriesDesktop } from "./components/organisms/Categories/CategoriesDesktop"
-
+import { Products } from "./components/organisms/Products/Products"
 
 function App() {
   return (
     <div>
-     <CategoriesDesktop/>
+     <Products/>
     </div>
   );
 }
