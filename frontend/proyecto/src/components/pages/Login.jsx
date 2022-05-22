@@ -8,6 +8,7 @@ const Login = ({}) => {
     <>
         <Header firstname={undefined} lastname={undefined}/>
         <RegisterForm/>
+        <br /><br /><br />
         <Footer/>
     </>
   )
