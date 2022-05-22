@@ -8,6 +8,7 @@ import categories_data from "./categories_data.json";
 export const CategoriesDesktop = ({}) => {
   return (
     <section className="categories">
+      <div className="category-container">
       <Heading type="lg" title="h2" variant="primary">
         Buscar por tipo de alojamiento
       </Heading>
@@ -25,6 +26,7 @@ export const CategoriesDesktop = ({}) => {
             {/* </Link> */}
           </div>
         ))}
+      </div>
       </div>
     </section>
   );
