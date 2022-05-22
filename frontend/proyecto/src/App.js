@@ -1,14 +1,16 @@
 import './App.css';
 
-import { Register } from './components/organisms/Register/RegisterForm';
-import { Header} from './components/organisms/Header/Header';
-import Login from './components/pages/Login';
-
+//import Login from './components/pages/Login';
+//import { InputIcon } from './components/molecules/InputIcon/InputIcon';
+import { DropPlaces } from './components/molecules/DropPlaces/DropPlaces';
 
 function App() {
   return (
     <div>
-      <Login/>
+      {/* <Login></Login> */}
+      <DropPlaces select = {{size:"20px", placeholder:"¿A dónde vamos?"}} icon = {{width:"lg" , icon:"location"}}/>
+      {/*<InputIcon input ={{size:"base" , variant:"secondary" , placeholder:"hola"}}
+        icon={{width:"sm" , icon:"user"}}/>*/}
     </div>
   );
 }
