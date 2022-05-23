@@ -48,7 +48,42 @@
 }
 
 
-.card-product-text p {
+/* .card-product-text p {
   margin-top: 60px;
   margin-bottom: 20px;
+} */
+
+.product-location {
+  display: flex;
+  flex-direction: row;
+  align-items:center;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+
+.product-location p {
+  align-self: center;
+}
+
+.product-location div {
+  align-self:center;
+}
+
+.product-description {
+  margin-top: 45px;
+}
+
+.product-description button {
+  padding-top: 6px;
+}
+
+.read-more-link{
+  color: blueviolet;
+  text-decoration: underline;
+  letter-spacing: 1px;
+  cursor: pointer;
+}
+.extra-content{
+  color: cornflowerblue;
+  font-weight: 500;
 }
