@@ -1,12 +1,12 @@
 .span-colors-blue {
-    color: blue;
+    color: var(--color-primary);
 }
 
 .span-colors-grey {
-    color: #263238;
+    color: var(--color-tertiary);
 }
 .span-colors-white {
-    color: white;
+    color: var(--color-based);
 }
 
 .span {

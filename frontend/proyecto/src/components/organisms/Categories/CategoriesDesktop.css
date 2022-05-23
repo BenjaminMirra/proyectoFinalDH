@@ -3,11 +3,11 @@
     margin: 0px;
     box-sizing: border-box;
     text-decoration: none;
-  }
+}
 
 
 .categories {
-    background-color: #FFFF;
+    background-color: var(--color-base);
     padding-top: 15px;
     margin: 10px;
 }

@@ -1,6 +1,6 @@
 .footer-mobile{
     width: 100%;
-    background-color: #1DBEB4;
+    background-color: var(--color-primary);
     height: 58px;
     display: flex;
     align-items: center;

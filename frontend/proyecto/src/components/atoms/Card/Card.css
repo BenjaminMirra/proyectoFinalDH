@@ -8,11 +8,11 @@
     border-radius: 10px;
 }
 .background-base{
-    background-color: #FFFFFF;
+    background-color: var(--color-base);
 }
 .background-primary{
-    background-color: #1DBEB4;
+    background-color: var(--color-primary);
 }
 .background-secondary{
-    background-color: #545776;
+    background-color: var(--color-secondary);
 }
