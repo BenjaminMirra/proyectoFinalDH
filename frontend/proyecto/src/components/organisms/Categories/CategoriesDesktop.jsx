@@ -7,29 +7,17 @@ import categories_data from "./categories_data.json";
 
 export const CategoriesDesktop = ({}) => {
   return (
-    <section className="categories">
-      <div className="category-container">
-     <div> <Heading type="lg" title="h2" variant="primary">
-        Buscar por tipo de alojamiento
-      </Heading>
+    <div className="categories-container">
+      <div className="categories-content">
+      <div className="category-title">
+      <Heading title="h2" type="lg" variant="primary" > Busca por tipo de alojamiento</Heading>
       </div>
-      <div className="category-cards-container">
-        {categories_data.map((category, idx) => (
-          <div> 
-            
-            <CardCategory
-              titulo={category.titulo}
-              url={category.URL_imagen}
-              descripcion={category.descripcion}
-              key={idx} > 
-              {/* link={} */}
-            
-              </CardCategory>
-
-          </div>
-        ))}
+        <div className="cards-container">
+          {categories_data.map((card,index)=>{
+            return <CardCategory id={index} titulo={card.titulo} url={card.URL_imagen} descripcion={card.descripcion} />
+          })}
       </div>
-      </div>
-    </section>
+    </div>
+    </div>
   );
 };

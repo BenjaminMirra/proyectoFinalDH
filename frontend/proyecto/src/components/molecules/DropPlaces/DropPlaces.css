@@ -1,6 +1,6 @@
-.input-icon{
+.select-icon{
     border-radius: 5px;
-    background-color:var(--color-base) ;
+    background-color:#fff ;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
     font-size: 12px;
     width: auto;
@@ -10,11 +10,21 @@
     max-width: 500px;
     
 }
-.input-icon  input{
-    width: 100%;
-    margin-left: 29px;
+
+.select{
+    height: 38px;
+    margin-left: 0px;
     border-top-left-radius:10px none ;
+    padding-left: 45px;
+    width: 100%;
+    border-radius: 5px;
+    background-color:#fff ;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
+    font-size: 12px;
+    border: none;
+    outline: none;
 }
+
 
 .type-left img{
 position: absolute;

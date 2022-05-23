@@ -1,17 +1,17 @@
 
 .heading{
-    color:#FFFFFF ;
+    color: var(--color-tertiary) ;
     line-height: 23.44px;
     letter-spacing: 0.4px;
 }
 .base{
-    color:#FFFFFF ;
+    color: var(--color-base);
 }
 .color-primary{
-    color: #383B58;
+    color: var(--color-primary);
 }
 .color-secondary{
-    color:#1DBEB4;
+    color:var(--color-secondary);
 }
 
 .color-tertiary{

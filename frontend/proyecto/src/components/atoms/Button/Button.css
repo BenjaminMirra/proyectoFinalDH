@@ -1,25 +1,25 @@
 .button{
     height: 40px;
     font-size: 16px;
-    color:#fff;
+    color:var(--color-base);
     border:none;
     background: none;
     padding-top:12px;
-    padding-bottom:5px ;
+    padding-bottom:12px ;
     cursor: pointer;
     font-weight: bold;
     border-radius: 5px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
 }
 .variant-primary{
-    background-color:#1DBEB4 ;
+    background-color:var(--color-primary) ;
     color:white;
 }
 
 .variant-secondary{
-    color:#1DBEB4 ;
-    border: 1px solid #1DBEB4;
-    
+    color:var(--color-base) ;
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-primary);
 }
 
 .button-size-base{
