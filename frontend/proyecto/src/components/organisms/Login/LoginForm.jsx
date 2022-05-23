@@ -19,11 +19,11 @@ export const LoginForm = () => {
                 <InputLabel label={"Confirmar Contraseña"} size={"2xl"} type={"text"} placeholder={""} isError={false}></InputLabel>
             </div>
             <div className='boton-login'>
-                <Button size='xs' variant={false} label='Crear cuenta' ></Button>
+                <Button size='xs' variant={true} label='Crear cuenta' ></Button>
 
                 <p>
                     ¿Aún no tienes cuenta?
-                    <a href="null"> Registrate</a >
+                    <a href="null">Registrate</a >
                 </p>
             </div>
             
