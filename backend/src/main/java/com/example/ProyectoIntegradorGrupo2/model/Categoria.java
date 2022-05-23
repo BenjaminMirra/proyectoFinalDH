@@ -19,7 +19,7 @@ public class Categoria {
     private Long id;
     private String titulo;
     private String descripcion;
-    private String URL_imagen;
+    private String url_imagen;
 
     public Categoria() {
     }
@@ -28,6 +28,6 @@ public class Categoria {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.URL_imagen = URL_imagen;
+        this.url_imagen = URL_imagen;
     }
 }

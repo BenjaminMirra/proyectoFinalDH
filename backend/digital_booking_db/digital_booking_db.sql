@@ -50,7 +50,7 @@ CREATE TABLE `categorias` (
   `id` int NOT NULL AUTO_INCREMENT,
   `titulo` varchar(45) DEFAULT NULL,
   `descripcion` varchar(255) DEFAULT NULL,
-  `URL_imagen` text,
+  `url_imagen` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
