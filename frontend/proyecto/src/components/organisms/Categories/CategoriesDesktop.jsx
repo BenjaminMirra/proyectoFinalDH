@@ -3,12 +3,11 @@ import "./CategoriesDesktop.css";
 import { Heading } from "../../atoms/Heading/Heading";
 import { CardCategory } from "../../molecules/CardCategory/CardCategory";
 import categories_data from "./categories_data.json";
-// import { Link } from 'react-router-dom';
 
 export const CategoriesDesktop = ({}) => {
   return (
     <div className="categories-container">
-      <div className="categories-content">
+      <section className="categories-content">
       <div className="category-title">
       <Heading title="h2" type="lg" variant="primary" > Busca por tipo de alojamiento</Heading>
       </div>
@@ -17,7 +16,7 @@ export const CategoriesDesktop = ({}) => {
             return <CardCategory id={index} titulo={card.titulo} url={card.URL_imagen} descripcion={card.descripcion} />
           })}
       </div>
-    </div>
+    </section>
     </div>
   );
 };
