@@ -6,9 +6,9 @@ import { LoginForm } from "./components/organisms/Login/LoginForm"
 function App() {
   return (
     <div>
-     {/* <CategoriesDesktop/> */}
-     {/* <Products/> */}
-     <LoginForm/>
+     {/* <CategoriesDesktop/>  */}
+     <Products/>
+ 
     </div>
   );
 }

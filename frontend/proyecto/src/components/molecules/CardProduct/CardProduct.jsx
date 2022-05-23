@@ -46,6 +46,16 @@ export const CardProduct = ({
         <Heading type="md" title="h3" variant="primary">
           {titulo}
         </Heading>
+        <div className="product-rating">
+          <div className="product-rating-score">
+            <Paragraph size="xs" variant="secondary">
+              8.8
+            </Paragraph>
+          </div>
+          <div className="product-rating-score-text">
+            <Paragraph>Muy Bueno</Paragraph>
+          </div>
+        </div>
         <div className="product-location">
           <Icon icon="location" width="xs" onClick={() => {}}></Icon>
           <Paragraph size="md" variant="secondary">
@@ -55,16 +65,19 @@ export const CardProduct = ({
             </Span>
           </Paragraph>
         </div>
+        <div className="icons">
+          <Icon icon="wifi" width="sm" onClick={() => {}}></Icon>
+          <Icon icon="swim" width="md" onClick={() => {}}></Icon>
+        </div>
         {/* <a className="read-more-link" onClick={()=>{setReadMore(!readMore)}}><h2>{linkName}</h2></a>
       {readMore && extraContent} */}
         <div className="product-description">
           <Paragraph size="md" variant="secondary">
-            {descripcion} 
+            {descripcion}
             <Span size="md" variant="aqua">
-              ver más
+              Más...
             </Span>
           </Paragraph>
-
           {/* <Button size="sm" label="ver detalle" variant="primary" onClick={() => { setReadMore(!readMore) }}></Button> */}
           <Button
             size="sm"
