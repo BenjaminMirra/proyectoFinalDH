@@ -27,12 +27,12 @@ export const CardProduct = ({
       <div className="card-product-img">
         <img src={url} alt={titulo} />
         <div className="fav">
-          <Icon icon="favorite" width="md" onClick={() => {}}></Icon>
+          <Icon icon="favorite" width="md" height="sm" onClick={() => {}}></Icon>
         </div>
       </div>
       <div className="card-product-text">
         <div className="cat-cat">
-          <Heading type="xs" title="h4" variant="terciary">
+          <Heading type="xs" title="h4" variant="tertiary">
             {category.toUpperCase()}
           </Heading>
           <div className="product-cat-cat">

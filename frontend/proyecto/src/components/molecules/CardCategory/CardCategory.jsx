@@ -3,9 +3,10 @@ import { Heading } from "../../atoms/Heading/Heading";
 import { Paragraph } from "../../atoms/paragraph/Paragraph";
 import "./CardCategory.css";
 
-export const CardCategory = ({ titulo, descripcion, url}) => {
+export const CardCategory = ({ titulo, descripcion, url, link, idx}) => {
   return (
     <div className="card-category">
+            {/* <Link to={link}> */}
       <img src={url} alt={titulo} />
       <div className="card-category-text">
         <Heading type="md" title="h3" variant="primary">
@@ -15,6 +16,7 @@ export const CardCategory = ({ titulo, descripcion, url}) => {
           {descripcion} {titulo}
         </Paragraph>
       </div>
+        {/* </Link> */}
     </div>
   );
 };

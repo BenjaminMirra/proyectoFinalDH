@@ -61,3 +61,10 @@ CloseBlack.args = {
   icon: "closeBlack",
   width: "xs",
 };
+
+export const Favorite = Template.bind({});
+Favorite.args = {
+  icon: "favorite",
+  width: "md",
+  height: "sm",
+};

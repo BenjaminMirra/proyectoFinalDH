@@ -6,7 +6,7 @@ import { LoginForm } from "./components/organisms/Login/LoginForm"
 function App() {
   return (
     <div>
-     {/* <CategoriesDesktop/>  */}
+     <CategoriesDesktop/> 
      <Products/>
  
     </div>

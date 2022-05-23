@@ -9,21 +9,23 @@ export const CategoriesDesktop = ({}) => {
   return (
     <section className="categories">
       <div className="category-container">
-      <Heading type="lg" title="h2" variant="primary">
+     <div> <Heading type="lg" title="h2" variant="primary">
         Buscar por tipo de alojamiento
       </Heading>
+      </div>
       <div className="category-cards-container">
         {categories_data.map((category, idx) => (
-          <div key={idx}>
-            {/* <a href="#">  */}
-            {/* <Link to="#"> */}
+          <div> 
+            
             <CardCategory
               titulo={category.titulo}
               url={category.URL_imagen}
               descripcion={category.descripcion}
-            />
-            {/* </a> */}
-            {/* </Link> */}
+              key={idx} > 
+              {/* link={} */}
+            
+              </CardCategory>
+
           </div>
         ))}
       </div>
