@@ -6,11 +6,21 @@ import {Login} from './components/pages/Login';
 //import { CategoriesDesktop } from './components/organisms/Categories/CategoriesDesktop';
 
 //import { InputIcon } from "./components/molecules/InputIcon/InputIcon";
+import {DropPlaces} from './components/molecules/DropPlaces/DropPlaces';
 
 function App() {
   return (
     <div>
-        <Login/>
+      <DropPlaces placeholder="¿A dónde vamos?" icon={{icon:"location", width:"lg"}}/>
+      {/* <InputIcon
+        input={{
+          input: { size: "base", palceholder: "Esto es un input con un icon" },
+          icon: { icon: "location", width: "md" },
+        }}
+      />
+      <InputIcon input={{size:'base',variant:'primary',palceholder:'Esto es un input con icon'}} icon={{icon:'location',width:'xs',onClick:()=>{}}}/> */}
+      {/*<Login />*/}
+
     </div>
   );
 }

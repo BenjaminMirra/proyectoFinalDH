@@ -10,7 +10,7 @@ export const  Input = ({type,placeholder,variant,size}) => {
     })
 
     return (
-        <input className={InputClassNames} type={type} placeholder={placeholder} />
+        <input className={InputClassNames} type={type} placeholder={placeholder} size={size} />
     )
 }
 
