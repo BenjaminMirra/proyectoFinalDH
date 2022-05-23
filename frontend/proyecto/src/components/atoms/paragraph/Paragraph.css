@@ -10,9 +10,9 @@
 }
 
 .paragraph-colors-primary {
-    color: #263238;
+    color: var(--color-secondary);
 }
 
 .paragraph-colors-secondary {
-    color: #607D8B;
+    color: var(--color-tertiary);
 }

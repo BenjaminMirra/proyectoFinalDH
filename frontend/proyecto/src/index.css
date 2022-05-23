@@ -10,5 +10,12 @@ code {
   font-family:'Poppins', sans-serif,monospace;
 }
 :root{
-  --color-primary:
+  --color-primary: #FBC02D;
+  --color-secondary: #263238;
+  --color-tertiary: #607D8B;
+
+  --color-base: #ffffff;
+  --color-muted: black;
+  
+
 }

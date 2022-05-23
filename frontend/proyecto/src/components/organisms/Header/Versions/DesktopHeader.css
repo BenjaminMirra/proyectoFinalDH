@@ -1,6 +1,6 @@
 .header-desktop{
     width: 100%;
-    background-color: #fff;
+    background-color: var(--color-base);
     height: 100px;
     display: flex;
     align-items: center;

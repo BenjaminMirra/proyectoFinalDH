@@ -5,11 +5,11 @@
 }
 .dropdown .dropdown-btn{
     padding:10px;
-    background-color: #fff;
+    background-color: var(--color-base);
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1pX solid blue;
+    border: 1pX solid var(--color-primary);
 }
 .dropdown .dropdown-content{
     position: absolute;
@@ -17,8 +17,8 @@
     left:0;
     /* padding:15px; */
     width: 95%;
-    background-color: #fff;
-     border: 1pX solid green;
+    background-color: var(--color-base);
+    border: 1pX solid var(--color-secondary);
     
 }
 
@@ -26,8 +26,8 @@
     padding: 10px;
     cursor: pointer;
     transition: all .2s;
-    border: 1pX solid gray;
+    border: 1pX solid var(--color-tertiary);
 }
 .dropdown-item:hover{
-    background-color: #f4f4f4;
+    background-color: var(--color-base);
 }
