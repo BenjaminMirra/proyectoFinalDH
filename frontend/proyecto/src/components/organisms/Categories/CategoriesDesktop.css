@@ -1,7 +1,9 @@
+
 .categories {
   background-color: #ffff;
-  padding: 15px;
-  margin: 10px;
+  padding: 20px 0px 0px 0px;
+  width: 88%;
+  margin: 0 auto;
 }
 
 .category-cards-container {

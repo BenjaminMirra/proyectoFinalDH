@@ -16,11 +16,11 @@
     display: grid; 
     grid-template-columns: 1fr 1fr; 
     grid-template-rows: 1fr 1fr; 
-    gap: 14px 14px; 
+    gap: 16px 16px; 
     justify-items: center;
 }
 
 .product-container {
-    width: 90%;
+    width: 89%;
     margin: 0px auto;
 }
