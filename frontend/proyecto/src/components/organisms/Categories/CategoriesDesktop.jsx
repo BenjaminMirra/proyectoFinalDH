@@ -13,7 +13,7 @@ export const CategoriesDesktop = ({}) => {
       </div>
         <div className="cards-container">
           {categories_data.map((card,index)=>{
-            return <CardCategory id={index} titulo={card.titulo} url={card.URL_imagen} descripcion={card.descripcion} />
+            return <CardCategory key={index} titulo={card.titulo} url={card.URL_imagen} descripcion={card.descripcion} />
           })}
       </div>
     </section>

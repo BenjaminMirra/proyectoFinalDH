@@ -7,12 +7,14 @@ import { CardProduct } from "../../molecules/CardProduct/CardProduct";
 
 export const Products = ({}) => {
   return (
-    <section className="products">
-    <div className="product-container">
+    <div className="products-container">
+    <section className="products-content">
+   
+    <div className="product-title">
       <Heading type="lg" title="h2" variant="primary">
         Recomendaciones
       </Heading>
-      
+      </div>
       <div className="product-cards-container">
      
       {products_data.map((product, idx) => (
@@ -32,7 +34,8 @@ export const Products = ({}) => {
        
         ))}
    </div>
-      </div>
+
     </section>
+    </div>
   );
 };

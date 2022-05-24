@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./CardProduct.css";
 import { Heading } from "../../atoms/Heading/Heading";
 import { Paragraph } from "../../atoms/paragraph/Paragraph";
@@ -13,19 +13,10 @@ export const CardProduct = ({
   location,
   category,
 }) => {
-  // const [readMore, setReadMore] = useState(false);
-  // const extraContent = <div>
-  //   <p className="extra-content">
-  //     {/* <Paragraph size="md" variant="secondary"> */}
-  //     {descripcion}
-  //     {/* </Paragraph> */}
-  //   </p>
-  // </div>
-  // const linkName = readMore ? '' : 'Read More';
   return (
     <div className="card-product">
       <div className="card-product-img">
-        <img src={url} alt={titulo} />
+        <img className="product-img" src={url} alt={titulo} />
         <div className="fav">
           <Icon icon="favorite" width="md" height="sm" onClick={() => {}}></Icon>
         </div>
@@ -48,19 +39,19 @@ export const CardProduct = ({
         </Heading>
         <div className="product-rating">
           <div className="product-rating-score">
-            <Paragraph size="xs" variant="secondary">
-              8.8
+            <Paragraph size="lg" variant="secondary">
+              8
             </Paragraph>
           </div>
           <div className="product-rating-score-text">
-            <Paragraph>Muy Bueno</Paragraph>
+            <Paragraph size="md" variant="secondary">Muy Bueno</Paragraph>
           </div>
         </div>
         <div className="product-location">
           <Icon icon="location" width="xs" onClick={() => {}}></Icon>
           <Paragraph size="md" variant="secondary">
             {location}
-            <Span size="md" variant="aqua">
+            <Span size="md" variant="yellow">
               MOSTRAR EN EL MAPA
             </Span>
           </Paragraph>
@@ -69,19 +60,16 @@ export const CardProduct = ({
           <Icon icon="wifi" width="sm" onClick={() => {}}></Icon>
           <Icon icon="swim" width="md" onClick={() => {}}></Icon>
         </div>
-        {/* <a className="read-more-link" onClick={()=>{setReadMore(!readMore)}}><h2>{linkName}</h2></a>
-      {readMore && extraContent} */}
         <div className="product-description">
           <Paragraph size="md" variant="secondary">
             {descripcion}
-            <Span size="md" variant="aqua">
+            <Span size="md" variant="yellow">
               Más...
             </Span>
           </Paragraph>
-          {/* <Button size="sm" label="ver detalle" variant="primary" onClick={() => { setReadMore(!readMore) }}></Button> */}
           <Button
             size="sm"
-            label="ver detalle"
+            label="Ver Detalle"
             variant="primary"
             onClick={() => {}}
           ></Button>

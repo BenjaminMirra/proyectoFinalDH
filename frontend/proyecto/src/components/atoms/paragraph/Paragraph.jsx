@@ -18,8 +18,8 @@ return (
 
 Paragraph.propTypes = {
     text: PropTypes.string.isRequired,
-    size:PropTypes.oneOf(['sm','md']),
-    variant: PropTypes.oneOf(['primary', 'secondary']),
+    size:PropTypes.oneOf(['sm','md','lg']),
+    variant: PropTypes.oneOf(['primary', 'secondary', 'terciary']),
     
 };
 

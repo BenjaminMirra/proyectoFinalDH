@@ -46,11 +46,20 @@
 
 @media (max-width: 414px) {
 
+  .categories-container {
+    margin-left: 25px;
+  }
   .card-category {
     width: 392px;
     height: 276px;
   }
 }
 
+@media (max-width: 380px) {
+
+  .categories-container {
+    margin-left: 54px;
+  }
+}
 
 
