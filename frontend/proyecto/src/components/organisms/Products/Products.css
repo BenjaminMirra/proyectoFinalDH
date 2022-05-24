@@ -29,7 +29,7 @@
 }
 
 
-@media (max-width: 1366px) {
+@media (max-width: 1365px) {
   
     .product-cards-container{
       grid-template-columns: 1fr; 
@@ -38,7 +38,7 @@
    
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
   
     .products-container {
       padding-bottom: 20px;

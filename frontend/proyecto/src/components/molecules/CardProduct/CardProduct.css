@@ -113,7 +113,7 @@
   padding: 0px 3px;
 }
 
-@media (max-width: 1366px) {
+@media (max-width: 1365px) {
   .card-product {
     width: 710px;
     height: 279px;
@@ -150,7 +150,7 @@
    }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .card-product {
     width: 392px;
     height: 580px;

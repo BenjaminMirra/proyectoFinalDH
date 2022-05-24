@@ -34,7 +34,7 @@ export const CardProduct = ({
             <Icon icon="star" width="xs" onClick={() => {}}></Icon>
           </div>
         </div>
-        <Heading type="md" title="h3" variant="primary">
+        <Heading type="md" title="h3" variant="secondary">
           {titulo}
         </Heading>
         <div className="product-rating">

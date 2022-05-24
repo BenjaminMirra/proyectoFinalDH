@@ -1,5 +1,4 @@
 
-
 .card-category {
   width: 310px;
   height: 246.67px;
@@ -24,15 +23,14 @@
 }
 
 
-@media (max-width:1366px) {
+@media (max-width:1365px) {
   .card-category{
     width: 347px;
     height: 244px;
   }
   
-  
 }
-@media (max-width:768px) {
+@media (max-width:767px) {
   .card-category{
     width: 392px;
     height: 276px;
