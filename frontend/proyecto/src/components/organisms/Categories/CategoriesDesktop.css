@@ -46,20 +46,24 @@
 
 @media (max-width: 414px) {
 
-  .categories-container {
-    margin-left: 25px;
-  }
   .card-category {
-    width: 392px;
-    height: 276px;
+    width: 365px;
+    height: 257px;
   }
+
+  .category-title {
+    margin-left: 32px;}
 }
 
 @media (max-width: 380px) {
+  .category-title h2 {
+    font-size: 23px;
+  }
 
-  .categories-container {
-    margin-left: 54px;
+  .category-title {
+    margin-left: 40px;
   }
 }
+
 
 

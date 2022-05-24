@@ -7,18 +7,17 @@ import Login from './components/pages/Login';
 
 function App() {
   return (
-    <div>
-     <CategoriesDesktop/> 
-     <Products/>
-    </div>
-  //   <BrowserRouter>
-  //   <Routes>
-  //     <Route path="/" element={<Home />}></Route>
-  //     <Route path="/login" element={<Login />} />
-  //     {/* <Route path="/register" element={<Guauguau />} /> */}
-  //     {/* </Route> */}
-  //   </Routes>
-  // </BrowserRouter>
+    // <div>
+    //  <CategoriesDesktop/> 
+    //  <Products/>
+    // </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />}/>
+      <Route path="/login" element={<Login />} />
+      {/* <Route path="/register" element={} /> */}
+    </Routes>
+  </BrowserRouter>
   );
 }
 

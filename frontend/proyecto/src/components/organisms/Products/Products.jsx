@@ -19,7 +19,6 @@ export const Products = ({}) => {
      
       {products_data.map((product, idx) => (
           <div key={idx}>
-            {/* <a href="#">  */}
             {/* <Link to="#"> */}
             <CardProduct
               titulo={product.Title}
@@ -27,8 +26,7 @@ export const Products = ({}) => {
               descripcion={product.Description}
               location={product.Location}
               category={product.Category}
-            />
-            {/* </a> */}
+             />
             {/* </Link> */}
           </div>
        

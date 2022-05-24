@@ -17,7 +17,7 @@ export const CardCategory = ({ titulo, descripcion, url, id, toShow }) => {
         <Heading type="md" title="h3" variant="primary">
           {titulo}
         </Heading>
-        <Paragraph size="md" variant="secondary">
+        <Paragraph size="md" variant="tertiary">
           {descripcion} {titulo}
         </Paragraph>
       </div>
