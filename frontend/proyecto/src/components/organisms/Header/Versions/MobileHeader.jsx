@@ -45,13 +45,13 @@ export const MobileHeader = ({firstname,lastname,handleUserInfo}) => {
             <div className="nav-header">
                 <Icon icon='close' width='lg' onClick={toggleIsOn}/>
                 <div id='menu-title' >
-                  <Heading title='h2' type='md'>MENÚ</Heading>
+                  <Heading title='h2' variant='base' type='md'>MENÚ</Heading>
                 </div>
             </div>
             <div className="nav-content">
-              <Heading title='h3' variant='primary' type='sm'> <a href="#">Crear cuenta</a> </Heading>
+              <Heading title='h3' variant='secondary' type='sm'> <a href="#">Crear cuenta</a> </Heading>
                 <hr style={{width:'90%'}}/>
-                <Heading title='h3' variant='primary' type='sm'> <a href="#">Iniciar sesión</a> </Heading>
+                <Heading title='h3' variant='secondary' type='sm'> <a href="#">Iniciar sesión</a> </Heading>
             </div></>}
             
 

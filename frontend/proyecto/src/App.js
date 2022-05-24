@@ -2,7 +2,9 @@ import './App.css';
 
 //import { Register } from './components/organisms/Register/RegisterForm';
 //import { Header} from './components/organisms/Header/Header';
-import {Login} from './components/pages/Login';
+import {SignUp} from './components/pages/SignUp';
+import {LoginForm} from './components/organisms/Login/LoginForm'
+
 //import { CategoriesDesktop } from './components/organisms/Categories/CategoriesDesktop';
 
 //import { InputIcon } from "./components/molecules/InputIcon/InputIcon";
@@ -10,7 +12,7 @@ import {Login} from './components/pages/Login';
 function App() {
   return (
     <div>
-        <Login/>
+      <LoginForm />
     </div>
   );
 }

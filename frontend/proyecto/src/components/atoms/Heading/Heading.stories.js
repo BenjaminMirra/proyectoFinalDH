@@ -19,15 +19,11 @@ Default.args = {
 };
 export const Primary = Template.bind({});
 Primary.args = {
-  width: 100,
-  height: "139",
-  borderRadius: false,
-  backgroundColor: "primary",
+  ...Default.args,
+  variant: "secondary",
 };
 export const Secondary = Template.bind({});
 Secondary.args = {
-  width: 100,
-  height: "139",
-  borderRadius: false,
-  backgroundColor: "secondary",
+  ...Default.args,
+  variant: "base",
 };

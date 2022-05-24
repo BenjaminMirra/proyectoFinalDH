@@ -4,7 +4,7 @@ import Label from '../../atoms/Label/Label'
 import { Input } from '../../atoms/Input/Input'
 import classNames from 'classnames'
 import './InputLabel.css'
-export const InputLabel = ({size,placeholder,type,label,isInline}) => {
+export const InputLabel = ({size,placeholder,type,label,isInline,isError,name,onChange,value}) => {
     const InputLabelClassNames=classNames('input-label',{
         'isInline':isInline,
     })
@@ -12,7 +12,7 @@ export const InputLabel = ({size,placeholder,type,label,isInline}) => {
         <>
         <div className={InputLabelClassNames}>
             <Label label= {label} />
-            <Input size={size} type= {type} placeholder= {placeholder}/>
+            <Input name={name} onChange={onChange} value={value} isError={isError} size={size} type= {type} placeholder= {placeholder}/>
         </div>
         
     </>
@@ -24,6 +24,7 @@ InputLabel.propTypes = {
 }
 InputLabel.defaultProps={
     isInline:false,
+    isError:false,
 }
 
 

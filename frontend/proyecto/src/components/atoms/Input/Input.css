@@ -40,3 +40,8 @@
 .input-size-2xl{
     width: 448px;
 }
+
+.is-error{
+    background-color:#FFE1E1 ;
+    border: 1px solid  #FF0000;
+}

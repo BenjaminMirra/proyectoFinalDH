@@ -5,7 +5,7 @@ import './Button.css'
 
 
     
-export const Button = ({size,label,onClick,variant}) => {
+export const Button = ({size,label,onClick,variant,type}) => {
     const ButtonClassNames=classNames('button',{
         'variant-primary':variant,
         'variant-secondary':!variant,
@@ -13,7 +13,7 @@ export const Button = ({size,label,onClick,variant}) => {
     })
   return (
       <>
-      <button onClick={onClick} className={ButtonClassNames} >{label}</button>
+      <button type={type} onClick={onClick} className={ButtonClassNames} >{label}</button>
     </>
   )
 }
@@ -23,12 +23,14 @@ Button.propTypes = {
     size:PropTypes.oneOf(['base','xs','sm','md','lg','xl']),
     label:PropTypes.node,
     onClick:PropTypes.func,
+    type:PropTypes.oneOf(['button','submit'])
 }
 Button.defaultProps={
     size:'md',
     label:'Button',
     variant:true,
-    onClick:()=>{}
+    onClick:()=>{},
+    type:'button'
 }
 
 
