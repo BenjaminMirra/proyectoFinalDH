@@ -26,7 +26,7 @@ export const DesktopHeader = ({firstname,lastname,handleUserInfo}) => {
             </div>
             </>:<>
                 <div className='botones-header'>
-                <Button size='xs' variant={false} label='Crear cuenta' ></Button>
+                <Button size='xs' variant={false} label='Crear cuenta'></Button>
                 <Button size='xs' variant={false} label='Iniciar sesión' ></Button>
             </div>
             </>}

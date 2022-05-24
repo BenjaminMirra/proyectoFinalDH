@@ -1,27 +1,20 @@
 import './App.css';
-
-//import { Register } from './components/organisms/Register/RegisterForm';
-//import { Header} from './components/organisms/Header/Header';
-import {Login} from './components/pages/Login';
-//import { CategoriesDesktop } from './components/organisms/Categories/CategoriesDesktop';
-
-//import { InputIcon } from "./components/molecules/InputIcon/InputIcon";
-import {DropPlaces} from './components/molecules/DropPlaces/DropPlaces';
+import { Products } from "./components/organisms/Products/Products"
+import { CategoriesDesktop } from "./components/organisms/Categories/CategoriesDesktop"
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Home } from "./components/pages/Home";
+import { Login } from './components/pages/Login';
+// import { RegisterForm } from './components/pages/Register';
 
 function App() {
   return (
-    <div>
-      <DropPlaces placeholder="¿A dónde vamos?" icon={{icon:"location", width:"lg"}}/>
-      {/* <InputIcon
-        input={{
-          input: { size: "base", palceholder: "Esto es un input con un icon" },
-          icon: { icon: "location", width: "md" },
-        }}
-      />
-      <InputIcon input={{size:'base',variant:'primary',palceholder:'Esto es un input con icon'}} icon={{icon:'location',width:'xs',onClick:()=>{}}}/> */}
-      {/*<Login />*/}
-
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />}/>
+      <Route path="/login" element={<Login />} />
+      {/* <Route path="/register" element={<Register/>} /> */}
+    </Routes>
+  </BrowserRouter>
   );
 }
 
