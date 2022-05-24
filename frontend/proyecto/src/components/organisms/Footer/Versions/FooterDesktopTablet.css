@@ -2,8 +2,7 @@
     width: 100%;
     background-color: var(--color-primary);
     height: 58px;
-    display: flex;
-    
+    align-self: flex-end;
 }
 .footer-desktop-tablet-content{
     width: 90%;

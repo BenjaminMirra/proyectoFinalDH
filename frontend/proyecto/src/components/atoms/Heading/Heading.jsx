@@ -5,7 +5,7 @@ import "./Heading.css"
 export const Heading=({children,title,type,variant})=>
 
 {
-    const HeadingClassNames=classNames('heading',
+    const HeadingClassNames=classNames('heading', 
     {
         [`size-${type}`]:type,
         [`color-${variant}`]:variant
