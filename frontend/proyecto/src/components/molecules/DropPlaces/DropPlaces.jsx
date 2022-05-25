@@ -5,8 +5,6 @@ import './DropPlaces.css'
 
 export const DropPlaces = ({ placeholder, icon }) => {
 
-
-
     const lugares = [
         {
             info: {

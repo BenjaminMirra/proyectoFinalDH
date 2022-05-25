@@ -1,5 +1,4 @@
 import React,{useState} from 'react'
-import PropTypes from 'prop-types'
 import './Dropdown.css'
 import { Icon } from '../../atoms/Icon/Icon'
 export const Dropdown = ({options}) => {
@@ -18,5 +17,4 @@ export const Dropdown = ({options}) => {
   )
 }
 
-Dropdown.propTypes = {}
 
