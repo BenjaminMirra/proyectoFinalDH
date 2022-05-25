@@ -17,19 +17,19 @@ public class CategoriaController {
     @Autowired
     private ICategoriaService categoriaService;
 
-    @PostMapping
+    @PostMapping("/agregar")
     public ResponseEntity<?> agregarCategoria(@RequestBody CategoriaDTO categoriaDTO){
-        categoriaService.agregarCategoria(categoriaDTO);
+        CategoriaDTO categoriaAgregada = categoriaService.agregarCategoria(categoriaDTO);
 
-        return ResponseEntity.ok(HttpStatus.OK);
+        return ResponseEntity.ok(categoriaAgregada.getId());
     }
 
-    @GetMapping
+    @GetMapping("/todas")
     public ResponseEntity<Collection<CategoriaDTO>> listarCategorias(){
         return ResponseEntity.ok(categoriaService.listarTodas());
     }
 
-    @PutMapping
+    @PutMapping("/editar")
     public ResponseEntity<?> editarCategoria(@RequestBody CategoriaDTO categoriaDTO) throws ResourceNotFoundException {
         categoriaService.editar(categoriaDTO);
 
@@ -41,5 +41,12 @@ public class CategoriaController {
         categoriaService.eliminar(id);
 
         return ResponseEntity.ok(HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerCategoriaPorId(@PathVariable Long id) throws ResourceNotFoundException {
+
+
+        return ResponseEntity.ok(categoriaService.obtenerCategoriaPorId(id));
     }
 }
