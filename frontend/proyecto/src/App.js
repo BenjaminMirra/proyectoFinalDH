@@ -1,19 +1,21 @@
-import './App.css';
 
-//import { Register } from './components/organisms/Register/RegisterForm';
-//import { Header} from './components/organisms/Header/Header';
-import {SignUp} from './components/pages/SignUp';
-import {LoginForm} from './components/organisms/Login/LoginForm'
-
-//import { CategoriesDesktop } from './components/organisms/Categories/CategoriesDesktop';
-
-//import { InputIcon } from "./components/molecules/InputIcon/InputIcon";
+//import { Products } from "./components/organisms/Products/Products"
+//import { CategoriesDesktop } from "./components/organisms/Categories/CategoriesDesktop"
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import { Home } from "./components/pages/Home";
+import { Login } from './components/pages/Login';
+// import { RegisterForm } from './components/pages/Register';
 
 function App() {
   return (
-    <div>
-      <LoginForm />
-    </div>
+    <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<Home />}/>
+      <Route path="/login" element={<Login />} />
+      <Route path="/sign-up" element={<Register/>} />
+    </Routes>
+  </BrowserRouter>
+
   );
 }
 

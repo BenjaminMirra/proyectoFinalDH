@@ -11,7 +11,11 @@ export const  Input = ({type,placeholder,variant,size,isError,value,onChange,nam
     })
 
     return (
+<<<<<<< HEAD
         <input name={name} id={name} value={value} onChange={onChange} className={InputClassNames} type={type} placeholder={placeholder} />
+=======
+        <input className={InputClassNames} type={type} placeholder={placeholder} size={size} />
+>>>>>>> 73003869dbdc050acddc0a6cede84eb71a7f20a1
     )
 }
 

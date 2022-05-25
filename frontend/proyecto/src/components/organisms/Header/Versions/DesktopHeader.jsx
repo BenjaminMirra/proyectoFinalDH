@@ -18,7 +18,7 @@ export const DesktopHeader = ({firstname,lastname,handleUserInfo}) => {
                 <Heading title='h2' type='md' variant='primary' >Sentite como en tu hogar</Heading>
             </div>
             
-                 {firstname!==undefined && lastname!==undefined?<>
+                {firstname!==undefined && lastname!==undefined?<>
                 <div className='tablet-user-info'>
                 <Avatar firstname={firstname} lastname={lastname} variant='secondary' />
                 <Heading title='h3' type='sm' variant='secondary'><span style={{color:'#383B58'}}>Hola, </span> <br /> {`${firstname.charAt(0).toUpperCase()+firstname.slice(1)} ${lastname.charAt(0).toUpperCase()+lastname.slice(1)}`}</Heading>
@@ -26,7 +26,7 @@ export const DesktopHeader = ({firstname,lastname,handleUserInfo}) => {
             </div>
             </>:<>
                 <div className='botones-header'>
-                <Button size='xs' variant={false} label='Crear cuenta' ></Button>
+                <Button size='xs' variant={false} label='Crear cuenta'></Button>
                 <Button size='xs' variant={false} label='Iniciar sesión' ></Button>
             </div>
             </>}

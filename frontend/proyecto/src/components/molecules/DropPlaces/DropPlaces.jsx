@@ -1,39 +1,98 @@
-import React from 'react';
-import Select from 'react-select';
-//import Select from '../../atoms/Select/Select';
-import PropTypes from 'prop-types'
+import { React, useState } from 'react';
 import { Icon } from '../../atoms/Icon/Icon'
-import { getSize } from './helpers'
-import classNames from 'classnames'
 import './DropPlaces.css'
 
-const lugares = [
-    {label: "Buenos Aires", value: "Buenos Aires"},
-    {label: "Salta", value: "Salta"},
-    {label: "Tucumán", value: "Tucumán"},
-    {label: "Mendoza", value: "Mendoza"},
-]
 
-export const DropPlaces = ({select,icon,variant,onClick}) => {
-    const DropPlacesClassNames=classNames('select-icon',{
-        [`type-${variant}`]:variant,
-    })
-    return(
-        <div className={DropPlacesClassNames} style={{width:getSize(select.size,icon.width)}}>
-            <Select className="select" inputValue={select.placeholder}
-            options = {lugares}
-            />
-            <Icon className="select-icon" onClick={onClick} icon={icon.icon} width={icon.width}/>
+export const DropPlaces = ({ placeholder, icon }) => {
+
+
+
+    const lugares = [
+        {
+            info: {
+                ciudad: "San Carlos de Bariloche",
+                pais: "Argentina",
+                icon: "location"
+            }
+            , value: "Buenos Aires"
+        },
+        {
+
+            info: {
+                ciudad: "Buenos Aires",
+                pais: "Argentina",
+                icon: "location"
+            }
+            , value: "Buenos Aires"
+        },
+        {
+            info: {
+                ciudad: "Mendoza",
+                pais: "Argentina",
+                icon: "location"
+            }
+            , value: "Buenos Aires"
+        },
+        {
+            info: {
+                ciudad: "Córdoba",
+                pais: "Argentina",
+                icon: "location"
+            }
+            , value: "Buenos Aires"
+        }
+    ]
+
+    const [lugarFiltrado, setLugarFiltrado] = useState([]);
+
+    const handleFilter = (event) => {
+        const letraBuscada = event.target.value;
+        const nuevoFiltro = lugares.filter((lugar) => {
+            return lugar.info.ciudad.toLowerCase().includes(letraBuscada.toLowerCase())
+        });
+
+        if (letraBuscada === "") {
+            setLugarFiltrado([])
+        } else {
+            setLugarFiltrado(nuevoFiltro);
+        }
+    }
+
+    const inputLugar = document.getElementById("inputLugar");
+    
+    const handlePlace = (lugar)=>{
+        setLugarFiltrado([]);
+        return inputLugar.value = lugar;
+    }
+
+    return (
+        <div className="search">
+           {console.log(inputLugar)}
+            <div className="searchInputIcon">
+                <Icon className="icon" icon={icon.icon} width={icon.width} />
+                <input type="text" id="inputLugar" placeholder={placeholder} onChange={handleFilter}></input>
+            </div>
+            {lugarFiltrado.length !== 0 && (
+                <div className="searchResult">
+                    {lugarFiltrado.map((lugar, key) => {
+                        return (
+                            <>
+                            <div key={key++} className="lugar" onClick={()=>handlePlace(lugar.info.ciudad + ", " + lugar.info.pais)}>
+                                <div className="lugarIcon">
+                                    <Icon className="" icon={lugar.info.icon} width="lg" />
+                                </div>
+                                <div className="ciudad-pais">
+                                    <p className="ciudad">{lugar.info.ciudad}</p>
+                                    <p className="pais">{lugar.info.pais}</p>
+                                </div>
+                                
+                            </div>
+                            <div className="linea"></div>
+                            </>
+                        );
+                    })}
+                </div>
+            )}
         </div>
     )
-}
-
-DropPlaces.propTypes={
-    variant:PropTypes.oneOf(['left','right']),
-    placeholder:PropTypes.string
-    
-}
-DropPlaces.defaultProps={
-    onClick:()=>{},
-    variant:'left',
 }

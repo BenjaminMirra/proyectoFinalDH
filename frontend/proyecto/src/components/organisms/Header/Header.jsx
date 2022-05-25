@@ -7,8 +7,6 @@ export const Header = ({firstname,lastname}) => {
     const [userInfo,setUserInfo]=useState({firstname:firstname,lastname:lastname})
     const resetUserInfo=()=>setUserInfo({});
         
-    
-    
     const [headerDisplayed,setHeaderDisplayed]=useState(<><DesktopHeader firstname={firstname} lastname={lastname}/></>)
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
     useEffect(() => {
