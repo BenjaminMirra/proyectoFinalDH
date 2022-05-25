@@ -124,10 +124,7 @@
     margin-left: 21px;
   }
 
-  .cards-container {
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 18px;
-  }
+
 
   .card-product-img {
     width: 344px;
