@@ -104,6 +104,13 @@ export const RegisterForm = () => {
                     handleErrorsFalse(repassword)
                 },1000)
         }
+        if(formValues[password].length<6){
+            result=false
+            handleErrorsTrue(password)
+                setTimeout(function(){
+                    handleErrorsFalse(password)
+                },1000)
+        }
         if(formValues[password]!==formValues[repassword]){
             result=false
             handleErrorsTrue(repassword)

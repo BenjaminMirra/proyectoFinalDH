@@ -99,6 +99,13 @@ let userData={}
                     handleErrorsFalse(email)
                 },1300)
     }
+        if(formValues[password].length<6){
+            result=false
+            handleErrorsTrue(password)
+                setTimeout(function(){
+                    handleErrorsFalse(password)
+                },1000)
+        }
         return result;
     }
     

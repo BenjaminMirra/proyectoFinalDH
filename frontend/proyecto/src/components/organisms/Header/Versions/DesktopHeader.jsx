@@ -13,7 +13,7 @@ export const DesktopHeader = ({firstname,lastname,handleUserInfo}) => {
     return (
         <header className='header-desktop'>
             <div className='header-desktop-content'>
-                <Link to={'/'} >
+                <Link style={{color:'inherit',textDecoration:'none'}} to={'/'} >
             <div className='logo'>
                 <Picture height='xs' image='logo'/>
                 <Heading title='h2' type='md' variant='primary' >Sentite como en tu hogar</Heading>

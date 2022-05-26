@@ -45,7 +45,9 @@ div .primerCalendario{
 .rs-picker-has-value .rs-btn .rs-picker-toggle-value, .rs-picker-has-value .rs-picker-toggle .rs-picker-toggle-value{
     color: black;
 }
-
+div[role=combobox] input:visited{
+    border: none;
+    }
 @media (max-width:1365px) {
     .rs-picker-toggle {
         /* width: 254px; */
