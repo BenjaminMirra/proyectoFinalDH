@@ -1,0 +1,19 @@
+<<<<<<< HEAD
+=======
+
+
+.login-page{
+    display: flex;
+    flex-direction: column;
+    
+    height: 100vh;
+}
+
+
+.calendarPage{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+>>>>>>> db4ffbb348e214cf024aa9531b6638a2aa0ec1de

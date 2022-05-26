@@ -53,6 +53,22 @@ public class CategoriaService implements ICategoriaService{
         return categoriaDTOSet;
     }
 
+    //Busca una categoria por su id en la base de datos y retorna una categoriasDTO
+    @Override
+    public CategoriaDTO obtenerCategoriaPorId(Long id) throws ResourceNotFoundException{
+        Optional<Categoria> categoriaPorId = categoriaRepository.findById(id);
+
+        CategoriaDTO categoriaDTOPorId = null;
+
+        if (categoriaPorId.isEmpty()){
+            throw new ResourceNotFoundException("No se pudo encontrar la categoria con el id indicado");
+        }
+
+        if (categoriaPorId.isPresent()) {
+            categoriaDTOPorId= mapper.convertValue(categoriaPorId, CategoriaDTO.class);
+        }
+        return categoriaDTOPorId;
+    }
 
     //Busca una categoria a editar por su id. Si no existe devuelve exceptcion
     // y si existe guarda la categoria con los cambios
@@ -61,7 +77,7 @@ public class CategoriaService implements ICategoriaService{
         Optional<Categoria> c = categoriaRepository.findById(categoriaDTO.getId());
 
         if (c.isEmpty()){
-            throw new ResourceNotFoundException("No se pudo encontrar la caegoria para editar");
+            throw new ResourceNotFoundException("No se pudo encontrar la categoria para editar");
         }
 
         return cargarCategoria(categoriaDTO);
@@ -73,7 +89,7 @@ public class CategoriaService implements ICategoriaService{
         Optional<Categoria> c = categoriaRepository.findById(id);
 
         if (c.isEmpty()){
-            throw new ResourceNotFoundException("No se pudo encontrar la caegoria a eliminar");
+            throw new ResourceNotFoundException("No se pudo encontrar la categoria a eliminar");
         }
 
         categoriaRepository.deleteById(id);

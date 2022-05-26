@@ -1,18 +1,102 @@
 {
-	"id": "b02d845d-117f-4a79-a052-ab2097927ef2",
+	"id": "87322550-b645-4caa-a256-bde0d0704eb5",
 	"name": "ProyectoIntegradorGrupo2",
-	"timestamp": "2022-05-23T13:33:10.073Z",
+	"timestamp": "2022-05-25T21:42:05.656Z",
 	"collection_id": "18041092-804f0994-fcec-47e9-a93a-a6cb8f7d89b0",
-	"folder_id": "18041092-68cbc64d-95b1-4dc9-9bcf-7f0870ea729c",
+	"folder_id": 0,
 	"environment_id": "0",
-	"totalPass": 59,
+	"totalPass": 92,
 	"totalFail": 0,
 	"results": [
 		{
+			"id": "531c14dd-16d0-4a59-8ac5-b5833f80cedf",
+			"name": "Agregar categoria",
+			"url": "http://localhost:8080/categorias/agregar",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Setear el ID de la categoria posteada": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID de la categoria posteada": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Setear el ID de la categoria posteada": true
+				}
+			]
+		},
+		{
+			"id": "1b3fbddb-8210-482f-9431-7819ed756eb6",
+			"name": "Agregar categoria script tests",
+			"url": "http://localhost:8080/categorias/agregar",
+			"time": 17,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Testear que el tipo de respuesta sea un string": true,
+				"La respuesta es un status OK": true,
+				"Setear el ID de la categoria posteada": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Testear que el tipo de respuesta sea un string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Setear el ID de la categoria posteada": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Testear que el tipo de respuesta sea un string": true,
+					"La respuesta es un status OK": true,
+					"Setear el ID de la categoria posteada": true
+				}
+			]
+		},
+		{
 			"id": "7783d1e4-fbcb-46d3-8774-612606a1602b",
 			"name": "Peticion Get todas",
-			"url": "http://localhost:8080/categorias",
-			"time": 15,
+			"url": "http://localhost:8080/categorias/todas",
+			"time": 10,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -20,7 +104,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				15
+				10
 			],
 			"allTests": [
 				{}
@@ -29,8 +113,8 @@
 		{
 			"id": "c2e9b74e-5de7-4eb3-ae78-9e11bb7b7b77",
 			"name": "Peticion Get todas script tests",
-			"url": "http://localhost:8080/categorias",
-			"time": 14,
+			"url": "http://localhost:8080/categorias/todas",
+			"time": 8,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -47,12 +131,10 @@
 				"Validar categoria Hostels": true,
 				"Validar categoria Departamentos": true,
 				"Validar categoria Bed & Breakfast": true,
-				"El titulo es uno de los asignados para categorizar": true,
-				"La descripcion es un string": true,
+				"Validar atributo titulo como una de las cuatro categorias solicitadas": true,
 				"La url de la imagen es un string": true,
-				"El id está presente y es un numero": true,
-				"Se espera que la respuesta sea un array": true,
-				"Se espera que los elementos dentro de la respuesta sean objetos": true
+				"Se espera que los elementos dentro de la respuesta sean objetos": true,
+				"Se espera que la respuesta sea un array": true
 			},
 			"testPassFailCounts": {
 				"Status code is 200": {
@@ -99,11 +181,7 @@
 					"pass": 1,
 					"fail": 0
 				},
-				"El titulo es uno de los asignados para categorizar": {
-					"pass": 1,
-					"fail": 0
-				},
-				"La descripcion es un string": {
+				"Validar atributo titulo como una de las cuatro categorias solicitadas": {
 					"pass": 1,
 					"fail": 0
 				},
@@ -111,21 +189,17 @@
 					"pass": 1,
 					"fail": 0
 				},
-				"El id está presente y es un numero": {
+				"Se espera que los elementos dentro de la respuesta sean objetos": {
 					"pass": 1,
 					"fail": 0
 				},
 				"Se espera que la respuesta sea un array": {
 					"pass": 1,
 					"fail": 0
-				},
-				"Se espera que los elementos dentro de la respuesta sean objetos": {
-					"pass": 1,
-					"fail": 0
 				}
 			},
 			"times": [
-				14
+				8
 			],
 			"allTests": [
 				{
@@ -140,38 +214,18 @@
 					"Validar categoria Hostels": true,
 					"Validar categoria Departamentos": true,
 					"Validar categoria Bed & Breakfast": true,
-					"El titulo es uno de los asignados para categorizar": true,
-					"La descripcion es un string": true,
+					"Validar atributo titulo como una de las cuatro categorias solicitadas": true,
 					"La url de la imagen es un string": true,
-					"El id está presente y es un numero": true,
-					"Se espera que la respuesta sea un array": true,
-					"Se espera que los elementos dentro de la respuesta sean objetos": true
+					"Se espera que los elementos dentro de la respuesta sean objetos": true,
+					"Se espera que la respuesta sea un array": true
 				}
 			]
 		},
 		{
-			"id": "531c14dd-16d0-4a59-8ac5-b5833f80cedf",
-			"name": "Agregar categoria",
-			"url": "http://localhost:8080/categorias",
-			"time": 24,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {},
-			"testPassFailCounts": {},
-			"times": [
-				24
-			],
-			"allTests": [
-				{}
-			]
-		},
-		{
-			"id": "1b3fbddb-8210-482f-9431-7819ed756eb6",
-			"name": "Agregar categoria script tests",
-			"url": "http://localhost:8080/categorias",
-			"time": 16,
+			"id": "2cbb8b5a-8f01-452c-a232-c2a728705930",
+			"name": "Obtener categoria por id",
+			"url": "http://localhost:8080/categorias/7",
+			"time": 12,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -180,8 +234,13 @@
 				"Status code is 200": true,
 				"Content-Type header está presente": true,
 				"Content-Type header es application/json": true,
-				"Testear que el tipo de respuesta sea un string": true,
-				"La respuesta es un status OK": true
+				"El id está presente y es un numero": true,
+				"El ID es el mismo que el obtenido al hacer el post de la categoria previamente": true,
+				"La url de la imagen es un string": true,
+				"El titulo es uno de los asignados para categorizar": true,
+				"El titulo es el mismo que el enviado al hacer el post de la categoria previamente": true,
+				"La descripcion es un string": true,
+				"La descripción es el mismo que el enviado al hacer el post de la categoria previamente": true
 			},
 			"testPassFailCounts": {
 				"Status code is 200": {
@@ -196,33 +255,109 @@
 					"pass": 1,
 					"fail": 0
 				},
-				"Testear que el tipo de respuesta sea un string": {
+				"El id está presente y es un numero": {
 					"pass": 1,
 					"fail": 0
 				},
-				"La respuesta es un status OK": {
+				"El ID es el mismo que el obtenido al hacer el post de la categoria previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La url de la imagen es un string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El titulo es uno de los asignados para categorizar": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El titulo es el mismo que el enviado al hacer el post de la categoria previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La descripcion es un string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La descripción es el mismo que el enviado al hacer el post de la categoria previamente": {
 					"pass": 1,
 					"fail": 0
 				}
 			},
 			"times": [
-				16
+				12
 			],
 			"allTests": [
 				{
 					"Status code is 200": true,
 					"Content-Type header está presente": true,
 					"Content-Type header es application/json": true,
-					"Testear que el tipo de respuesta sea un string": true,
-					"La respuesta es un status OK": true
+					"El id está presente y es un numero": true,
+					"El ID es el mismo que el obtenido al hacer el post de la categoria previamente": true,
+					"La url de la imagen es un string": true,
+					"El titulo es uno de los asignados para categorizar": true,
+					"El titulo es el mismo que el enviado al hacer el post de la categoria previamente": true,
+					"La descripcion es un string": true,
+					"La descripción es el mismo que el enviado al hacer el post de la categoria previamente": true
+				}
+			]
+		},
+		{
+			"id": "a38f5a3c-61bd-4dd7-9c77-6f35f3c21b4d",
+			"name": "Obtener categoria por id exception",
+			"url": "http://localhost:8080/categorias/1500",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
 				}
 			]
 		},
 		{
 			"id": "423882b1-b5cb-4675-a477-ad4cf4e3b527",
 			"name": "Modificar categoria",
-			"url": "http://localhost:8080/categorias",
-			"time": 31,
+			"url": "http://localhost:8080/categorias/editar",
+			"time": 20,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -230,7 +365,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				31
+				20
 			],
 			"allTests": [
 				{}
@@ -239,8 +374,8 @@
 		{
 			"id": "3ae4d017-1e9d-46fa-9872-ba8f4d5381d3",
 			"name": "Modificar categoria script tests",
-			"url": "http://localhost:8080/categorias",
-			"time": 15,
+			"url": "http://localhost:8080/categorias/editar",
+			"time": 19,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -275,7 +410,7 @@
 				}
 			},
 			"times": [
-				15
+				19
 			],
 			"allTests": [
 				{
@@ -290,8 +425,8 @@
 		{
 			"id": "1be73a9c-453c-4514-afb6-d18c5ac4e1bb",
 			"name": "Modificar categoria exception",
-			"url": "http://localhost:8080/categorias",
-			"time": 18,
+			"url": "http://localhost:8080/categorias/editar",
+			"time": 14,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -299,7 +434,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				18
+				14
 			],
 			"allTests": [
 				{}
@@ -308,8 +443,8 @@
 		{
 			"id": "ec6996b7-e043-476a-8356-49b0c13f2baa",
 			"name": "Modificar categoria exception script tests",
-			"url": "http://localhost:8080/categorias",
-			"time": 10,
+			"url": "http://localhost:8080/categorias/editar",
+			"time": 11,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -349,7 +484,7 @@
 				}
 			},
 			"times": [
-				10
+				11
 			],
 			"allTests": [
 				{
@@ -365,8 +500,8 @@
 		{
 			"id": "5b1dfc55-d5cc-428e-b0e1-7323232960d2",
 			"name": "Eliminar categoria",
-			"url": "http://localhost:8080/categorias/5",
-			"time": 22,
+			"url": "http://localhost:8080/categorias/7",
+			"time": 15,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -374,7 +509,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				22
+				15
 			],
 			"allTests": [
 				{}
@@ -384,7 +519,7 @@
 			"id": "679450f6-ff47-4b7a-93d9-6e9891577afd",
 			"name": "Eliminar categoria script tests",
 			"url": "http://localhost:8080/categorias/6",
-			"time": 13,
+			"time": 15,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
@@ -419,7 +554,7 @@
 				}
 			},
 			"times": [
-				13
+				15
 			],
 			"allTests": [
 				{
@@ -434,8 +569,8 @@
 		{
 			"id": "250b2afc-c4f5-488a-97ad-8d27433913ab",
 			"name": "Eliminar categoria exception",
-			"url": "http://localhost:8080/categorias/150",
-			"time": 7,
+			"url": "http://localhost:8080/categorias/1500",
+			"time": 11,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -443,7 +578,7 @@
 			"tests": {},
 			"testPassFailCounts": {},
 			"times": [
-				7
+				11
 			],
 			"allTests": [
 				{}
@@ -452,7 +587,7 @@
 		{
 			"id": "81ce6ef1-d7e3-4704-b0bd-96d54ea3f53e",
 			"name": "Eliminar categoria exception script tests",
-			"url": "http://localhost:8080/categorias/150",
+			"url": "http://localhost:8080/categorias/1500",
 			"time": 7,
 			"responseCode": {
 				"code": 404,
@@ -508,9 +643,17 @@
 		}
 	],
 	"count": 1,
-	"totalTime": 192,
+	"totalTime": 185,
 	"collection": {
 		"requests": [
+			{
+				"id": "531c14dd-16d0-4a59-8ac5-b5833f80cedf",
+				"method": "POST"
+			},
+			{
+				"id": "1b3fbddb-8210-482f-9431-7819ed756eb6",
+				"method": "POST"
+			},
 			{
 				"id": "7783d1e4-fbcb-46d3-8774-612606a1602b",
 				"method": "GET"
@@ -520,12 +663,12 @@
 				"method": "GET"
 			},
 			{
-				"id": "531c14dd-16d0-4a59-8ac5-b5833f80cedf",
-				"method": "POST"
+				"id": "2cbb8b5a-8f01-452c-a232-c2a728705930",
+				"method": "GET"
 			},
 			{
-				"id": "1b3fbddb-8210-482f-9431-7819ed756eb6",
-				"method": "POST"
+				"id": "a38f5a3c-61bd-4dd7-9c77-6f35f3c21b4d",
+				"method": "GET"
 			},
 			{
 				"id": "423882b1-b5cb-4675-a477-ad4cf4e3b527",

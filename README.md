@@ -10,6 +10,7 @@
 * [Sprint-4](#sprint-4)
 
 
+
 ## Sprint-1
 
 
@@ -62,12 +63,13 @@ $ yarn storybook
 ```
 
 ## Tecnologías
-En este sprint usamos:
-* Java
-* MySQL
-* Postman
-* React
-* Storybook
+En este sprint usamos: <br>
+
+<img src="https://cdn-icons-png.flaticon.com/512/226/226777.png" width="25" height="25" align="center"> Java &nbsp; &nbsp; &nbsp;
+<img src="https://cdn-icons-png.flaticon.com/512/919/919836.png" width="25" height="25" align="center"> MySQL  &nbsp; &nbsp; &nbsp;
+<img src="/backend/testing/Imagenes-Rm/logoPostman.jpg" width="25" height="25" align="center"> Postman &nbsp; &nbsp; &nbsp;
+<img src="https://cdn-icons-png.flaticon.com/512/753/753244.png" width="25" height="25" align="center"> React &nbsp; &nbsp; &nbsp;
+<img src="/backend/testing/Imagenes-Rm/logo-storybook.png" width="25" height="25" align="center"> Storybook
 
 ---
 ---
