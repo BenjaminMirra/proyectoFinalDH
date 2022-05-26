@@ -43,5 +43,5 @@
 
 .is-error{
     background-color:#FFE1E1 ;
-    border: 1px solid  #FF0000;
+    border: 1px solid  var(--color-error);
 }

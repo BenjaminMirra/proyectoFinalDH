@@ -6,9 +6,13 @@ import { Avatar } from '../../../atoms/Avatar/Avatar'
 import { Icon } from '../../../atoms/Icon/Icon'
 import { Paragraph } from '../../../atoms/paragraph/Paragraph'
 import { Span } from '../../../atoms/Span/Span'
+import { Link } from "react-router-dom";
 import classNames from 'classnames'
 import './MobileHeader.css'
 export const MobileHeader = ({firstname,lastname,handleUserInfo}) => {
+
+  
+
   const [isOn,setIsOn]=useState(false)
     const toggleIsOn=()=>setIsOn(!isOn)
     
@@ -17,10 +21,13 @@ export const MobileHeader = ({firstname,lastname,handleUserInfo}) => {
         'active':isOn
     })
   return (<>
-    <header id='mobile-header'>
+    <header className='mobile-header'>
       <div className='header-container'>
-          <Picture width='xs' height='xs' image='logo'/>
+        <Link to={'/'} >
+          <Picture height='xs' image='logo'/>
+          </Link>
           <Icon icon='menu' width='lg' onClick={toggleIsOn}/>
+          
         </div>
         <nav className={MobileHeaderClassNames}>
 
@@ -28,10 +35,11 @@ export const MobileHeader = ({firstname,lastname,handleUserInfo}) => {
           {firstname!==undefined && lastname!==undefined?(<>
            { /* -------------------------------- User nav -------------------------------- */}
             <div className="nav-header">
+              {console.log(firstname + " "+ lastname)}
                 <Icon id='close' icon='close' width='lg' onClick={toggleIsOn}/>
                 <div className='user-content'>
                 <Avatar firstname={firstname} lastname={lastname} variant='secondary'/>
-                <Heading title='h3' type='sm' variant='primary' > <span style={{color:'white'}} >Hola,</span> <br/> {`${firstname.charAt(0).toUpperCase()+firstname.slice(1)} ${lastname.charAt(0).toUpperCase()+lastname.slice(1)}`} </Heading>
+                <Heading title='h3' type='sm' variant='secondary' > <span style={{color:'white'}} >Hola,</span> <br/> {`${firstname.charAt(0).toUpperCase()+firstname.slice(1)} ${lastname.charAt(0).toUpperCase()+lastname.slice(1)}`} </Heading>
                 </div>
               </div>
 
@@ -49,9 +57,15 @@ export const MobileHeader = ({firstname,lastname,handleUserInfo}) => {
                 </div>
             </div>
             <div className="nav-content">
-              <Heading title='h3' variant='secondary' type='sm'> <a href="#">Crear cuenta</a> </Heading>
-                <hr style={{width:'90%'}}/>
-                <Heading title='h3' variant='secondary' type='sm'> <a href="#">Iniciar sesión</a> </Heading>
+              {window.location.href!=='http://localhost:3000/sign-up'&& <Link to={'/sign-up'}><Heading title='h3' variant='secondary' type='sm'>Crear cuenta</Heading></Link>}
+              {window.location.href!=='http://localhost:3000/sign-up' && window.location.href!=='http://localhost:3000/login' && <hr style={{width:'90%'}}/>}
+              {window.location.href!=='http://localhost:3000/login' &&
+              <Link to={'/login'}>
+                  <Heading title='h3' variant='secondary' type='sm'> Iniciar sesión</Heading>
+                </Link> }
+                
+
+                
             </div></>}
             
 

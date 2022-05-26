@@ -12,7 +12,7 @@
   flex-direction: column;
   width: 90%;
   margin: auto;
-  margin-top: auto;
+  margin-top: 10px;
 }
 
 .card-category img {
@@ -30,7 +30,7 @@
   }
   
 }
-@media (max-width:767px) {
+@media (max-width:768px) {
   .card-category{
     width: 392px;
     height: 276px;

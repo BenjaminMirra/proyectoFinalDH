@@ -67,10 +67,10 @@ export const DropPlaces = ({ placeholder, icon }) => {
 
     return (
         <div className="search">
-           {console.log(inputLugar)}
+           
             <div className="searchInputIcon">
-                <Icon className="icon" icon={icon.icon} width={icon.width} />
-                <input type="text" id="inputLugar" placeholder={placeholder} onChange={handleFilter}></input>
+                <Icon className="icon" icon={icon} width={icon.width} />
+                <input autoComplete='off' type="text" id="inputLugar" placeholder={placeholder} onChange={handleFilter}></input>
             </div>
             {lugarFiltrado.length !== 0 && (
                 <div className="searchResult">

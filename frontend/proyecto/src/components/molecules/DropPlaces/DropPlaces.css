@@ -1,12 +1,14 @@
 .searchInputIcon {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 448px;
+   
+    width: 100%;
     height: 40px;
     padding-left: 10px;
     box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.15);
     border-radius: 5px;
+    background-color: white;
+     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .search input {
@@ -16,7 +18,7 @@
     border-top-right-radius: 0px;
     border-bottom-right-radius: 0px;
     font-size: 14px;
-    width: 422px;
+    width: 100%;
     height: 20px;
     margin-left: 10px;
 
@@ -29,12 +31,12 @@
 
 .searchResult {
     margin-top: 5px;
-    width: 448px;
-    height: 100%;
+    width: 100%;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.34) 0px 5px 15px;
     overflow: hidden;
     overflow-y: auto;
+    z-index: 10;
 }
 
 .searchResult::-webkit-scrollbar {
@@ -82,6 +84,7 @@ p.pais{
 div .lugar{
     margin-top: 9px;
     margin-bottom: 13px;
+    cursor: pointer;
 }
 
 div.linea{
@@ -89,5 +92,11 @@ div.linea{
     margin-left: 25px;
     height: 0px;
     width: 398px;
-    border: 1px solid #1DBEB4
+    border: 1px solid var(--color-primary)
+}
+.ciudad-pais{
+    display: flex;
+    flex-direction: column;
+    justify-content: baseline;
+    align-items: baseline;
 }

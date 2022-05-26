@@ -38,13 +38,8 @@ export const KeysIconsList=Object.keys(IconsList)
 const IconWidth={
     xs:'14px',
     sm:'18px',
-    md:'21px',
+    md:'22px',
     lg:'25px'
 }
-
-const IconHeight={
-    sm:'19px',
-}
 export const getIcon = (icon) => IconsList[icon];
-export const getWidth = (width) => IconWidth[width];
-export const getHeight = (height) => IconHeight[height]
+export const getWidth = (size) => IconWidth[size];

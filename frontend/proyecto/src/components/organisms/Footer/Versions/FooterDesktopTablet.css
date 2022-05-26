@@ -1,16 +1,23 @@
 .footer-desktop-tablet{
-    margin-top: 20px;
+    
+    /* margin-top: 20px; */
     width: 100%;
     background-color: var(--color-primary);
     height: 58px;
     align-self: flex-end;
+    /* position: absolute; */
+    /* bottom: 0; */
+    /* position: sticky; */
 }
 .footer-desktop-tablet-content{
+    
+    height: 100%;
     width: 90%;
     margin: auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    height: 58px;
 
 }
 .footer-desktop-tablet-icons{

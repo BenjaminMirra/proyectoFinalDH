@@ -9,18 +9,13 @@
     font-size:14px;
 }
 
-.paragraph-size-lg{
-    font-size:20px;
-}
-
 .paragraph-colors-primary {
-    color: var(--color-primary);
-}
-
-.paragraph-colors-secondary {
     color: var(--color-secondary);
 }
 
-.paragraph-colors-tertiary {
+.paragraph-colors-secondary {
     color: var(--color-tertiary);
+}
+.paragraph-colors-error{
+    color: var(--color-error) ;
 }

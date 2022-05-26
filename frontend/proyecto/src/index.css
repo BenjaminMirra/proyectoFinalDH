@@ -4,6 +4,7 @@ body {
   margin: 0;
   font-family:'Poppins', sans-serif;
   box-sizing: border-box;
+  overflow-x:hidden;
 }
 
 code {
@@ -13,9 +14,13 @@ code {
   --color-primary: #FBC02D;
   --color-secondary: #263238;
   --color-tertiary: #607D8B;
-
-  --color-base: #ffff;
+  --color-base: #ffffff;
   --color-muted: black;
-  
-
+  --color-error:#FF0000;
+}
+.contenedor-pagina{
+    display: flex;
+    flex-direction: column;
+    
+    height: 100vh;
 }

@@ -15,7 +15,7 @@ export const Footer = ({}) => {
     }, [windowWidth]);
 
     useEffect(() => {
-        if(windowWidth < 768){
+        if(windowWidth <= 768){
             setFooterDisplayed(<><FooterMobile /></>)
         }
         else{

@@ -2,7 +2,9 @@ import React,{useState,useEffect} from 'react'
 import { InputLabel } from '../../molecules/InputLabel/InputLabel'
 import { Heading } from '../../atoms/Heading/Heading'
 import { Button } from '../../atoms/Button/Button'
+import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
+import { Outlet, Link } from "react-router-dom";
 import './RegisterForm.css'
 
 export const RegisterForm = () => {
@@ -17,10 +19,10 @@ export const RegisterForm = () => {
     }, [windowWidth]);
 
     useEffect(() => {
-        if(windowWidth < 768){
+        if(windowWidth <= 768){
             setMedidas({inputSize:'sm',inputSpacerHeight:'xs',buttonWidth:'sm',titleSpacerHeight:'xxs'})
         }
-        else if(windowWidth<1366){
+        else if(windowWidth<=1366){
             setMedidas({inputSize:'md',inputSpacerHeight:'md',buttonWidth:'md',titleSpacerHeight:'lg'})
         }
         else if(windowWidth>=1366){
@@ -44,17 +46,24 @@ export const RegisterForm = () => {
         return setErrors((prevValue)=>({...prevValue,[id]:true}))
     }
     const handleErrorsFalse=(id)=>setErrors({...errors,[id]:false})
-
-
+    let userData={}
+    useEffect(()=>{
+        userData={
+            firstname:formValues.firstname,
+            lastname:formValues.lastname,
+        }
+    },[formValues])
 
     const handleSubmit=(e)=>{
         
         e.preventDefault()
-        
-        firstValidation('firstname','lastname','email','password','repassword')&& console.log('Bien !!')
-        
+        console.log(JSON.stringify(userData) );
+        if(firstValidation('firstname','lastname','email','password','repassword')){
+            localStorage.setItem("userData",JSON.stringify(userData))
+            window.location.href='http://localhost:3000/'
+        }
     }
-   
+    
 
     function firstValidation(firstname,lastname,email,password,repassword){
         
@@ -111,7 +120,7 @@ export const RegisterForm = () => {
         handleErrorsTrue(email)
                 setTimeout(function(){
                     handleErrorsFalse(email)
-                },1000)
+                },1300)
     }
         return result;
     }
@@ -141,35 +150,40 @@ export const RegisterForm = () => {
             </div>
             <SpacerHorizontal height={medidas.titleSpacerHeight}/>
             <form >
-                
-            </form>
-            <div className="name-surname">
-                <div className="name">
+                <div className="name-surname">
+                <div className="name register-input ">
                     <InputLabel value={formValues.firstname}  id='firstname' name='firstname' onChange={handleChange()} label={"Nombre"} size={"base"} type={"text"} placeholder={"Ingrese su nombre"} isError={errors.firstname} ></InputLabel>
+                        {errors.firstname&&<Paragraph variant='error' size='sm' > Un nombre válido es requerido</Paragraph>}
                 </div>
                 <SpacerHorizontal height={medidas.inputSpacerHeight} />
-                <div className="surname">
+                <div className="surname register-input ">
                     <InputLabel value={formValues.lastname} id='lastname' name='lastname' onChange={handleChange()} label={"Apellido"} size={"base"} type={"text"} placeholder={"Ingrese su apellido"} isError={errors.lastname} ></InputLabel>
+                    {errors.lastname&&<Paragraph variant='error' size='sm' > Un apellido válido es requerido</Paragraph>}
                 </div>
             </div>
             <SpacerHorizontal height={medidas.inputSpacerHeight} />
-            <div>
+            <div className='register-input'>
                 <InputLabel value={formValues.email} id='email' name='email' onChange={handleChange()} label={"Correo electrónico"} size={medidas.inputSize} type={"email"} placeholder={"Ingrese su email"} isError={errors.email} ></InputLabel>
+                {errors.email&&<Paragraph variant='error' size='sm' > Un email válido es requerido</Paragraph>}
             </div>
             <SpacerHorizontal height={medidas.inputSpacerHeight} />
-            <div>
-                <InputLabel value={formValues.password} id='password' name='password' onChange={handleChange()} label={"Contraseña"} size={medidas.inputSize} type={"text"} placeholder={"Ingrese su contraseña"} isError={errors.password} ></InputLabel>
+            <div className='register-input' >
+                <InputLabel value={formValues.password} id='password' name='password' onChange={handleChange()} label={"Contraseña"} size={medidas.inputSize} type={"password"} placeholder={"Ingrese su contraseña"} isError={errors.password} ></InputLabel>
+                {errors.password&&<Paragraph variant='error' size='sm' > Una contraseña válida es requerido</Paragraph>}
             </div>
             <SpacerHorizontal height={medidas.inputSpacerHeight} />
-            <div>
-                <InputLabel  value={formValues.repassword} id='repassword' name='repassword' onChange={handleChange()} label={"Confirmar Contraseña"} size={medidas.inputSize} type={"text"} placeholder={"Reingrese su contraseña"} isError={errors.repassword}></InputLabel>
+            <div className='register-input' >
+                <InputLabel  value={formValues.repassword} id='repassword' name='repassword' onChange={handleChange()} label={"Confirmar Contraseña"} size={medidas.inputSize} type={"password"} placeholder={"Reingrese su contraseña"} isError={errors.repassword}></InputLabel>
+                {errors.repassword&&<Paragraph variant='error' size='sm' > Las contraseñas no coinciden</Paragraph>}
             </div>
-            <div className='boton-register'>
+            
                 <Button onClick={handleSubmit} size={medidas.buttonWidth} type='submit' variant={true} label='Crear cuenta' ></Button>
-            </div>
-                <p>
+            
+                
+            </form>
+            <p>
                     ¿Ya tienes cuenta?
-                    <a href="null"> Iniciar Sesión</a >
+                    <Link to="/login"> Iniciar Sesión</Link >
                 </p>
             
 

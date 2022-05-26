@@ -20,7 +20,7 @@ return (
 Span.propTypes = {
     text: PropTypes.string.isRequired,
     size:PropTypes.oneOf(['sm','md']),
-    variant: PropTypes.oneOf(['blue', 'grey', 'white', 'yellow']),
+    variant: PropTypes.oneOf(['blue', 'grey', 'white']),
     onClick:PropTypes.func
     
 };

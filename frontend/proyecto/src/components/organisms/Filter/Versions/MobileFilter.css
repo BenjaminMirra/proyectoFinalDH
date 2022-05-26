@@ -1,0 +1,23 @@
+.mobile-filter-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 263px;
+    
+    border: 1px solid var(--color-tertiary);
+    background-color:var(--color-tertiary) ;
+    width: 100%;
+    
+}
+.mobile-filter-container-content{
+    width: 97%;
+    margin: auto;
+    margin-top: 28px;
+    height: 263px;
+}
+.mobile-filter-container-content button{
+    width: 100%;
+}
+
+

@@ -1,0 +1,27 @@
+.tablet-filter-container{
+    border: 1px solid var(--color-secondary);
+    background-color: var(--color-tertiary);
+    height: 139px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+.tablet-filter-container-content{
+    width: 94%;
+    height: 139px;
+    margin: auto;
+    margin-top:20px ;
+    max-width: 720px;
+}
+.tablet-filters-button{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    
+}
+.tablet-filters-button .search{
+    width: 38%;
+}
+div[role=combobox]{
+    width: 100%;
+}

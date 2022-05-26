@@ -14,10 +14,6 @@
     color:var(--color-secondary);
 }
 
-.color-tertiary{
-    color: #9B9DAC;
-}
-
 .size-xs{
     font-size:14px;
     
@@ -33,4 +29,9 @@
 .size-lg{
     font-size: 24px;
     
+}
+.size-xl{
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 31.16px;
 }

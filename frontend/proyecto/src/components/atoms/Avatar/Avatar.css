@@ -10,6 +10,7 @@
 }
 .avatar h2{
     padding: 5px;
+    color: var(--color-base);
 }
 .background-primary{
     background: var(--color-primary);

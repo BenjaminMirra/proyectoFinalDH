@@ -1,5 +1,5 @@
 .footer-mobile{
-    margin-top: 20px;
+    margin-top: 25px;
     width: 100%;
     background-color: var(--color-primary);
     height: 58px;
@@ -8,8 +8,10 @@
     
 }
 .footer-mobile-content{
+    height: 58px;
     width: 90%;
     margin: auto;
     display: flex;
+    align-items: center;
     justify-content: baseline;
 }

@@ -5,7 +5,7 @@ import "./Heading.css"
 export const Heading=({children,title,type,variant})=>
 
 {
-    const HeadingClassNames=classNames('heading', 
+    const HeadingClassNames=classNames('heading',
     {
         [`size-${type}`]:type,
         [`color-${variant}`]:variant
@@ -18,9 +18,9 @@ export const Heading=({children,title,type,variant})=>
 
 Heading.propTypes={
     children: PropTypes.node.isRequired,
-    title:PropTypes.oneOf(["h1","h2","h3","h4"]),
-    type:PropTypes.oneOf(['xs',"lg","sm","md"]),
-    variant:PropTypes.oneOf(['base',"primary","secondary", "tertiary"])
+    title:PropTypes.oneOf(["h1","h2","h3",'h4']),
+    type:PropTypes.oneOf(['xs',"lg","sm","md",'xl']),
+    variant:PropTypes.oneOf(['base',"primary","secondary"])
 }
 
 Heading.defaultProps={

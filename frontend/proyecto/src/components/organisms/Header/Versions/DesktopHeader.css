@@ -5,13 +5,17 @@
     display: flex;
     align-items: center;
     
+    
 }
 .header-desktop-content{
+    height: 100px;
     width: 90%;
+    max-width: 1366px;
     margin: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* min-width: 1340px; */
 }
 .logo{
     display: flex;
