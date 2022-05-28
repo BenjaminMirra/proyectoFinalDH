@@ -1,8 +1,8 @@
-
 .heading{
     color: var(--color-tertiary) ;
     line-height: 23.44px;
     letter-spacing: 0.4px;
+    
 }
 .color-base{
     color: var(--color-base);

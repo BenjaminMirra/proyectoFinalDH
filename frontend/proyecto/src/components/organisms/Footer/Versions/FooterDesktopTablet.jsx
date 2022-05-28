@@ -9,10 +9,10 @@ export const FooterDesktopTablet = ({}) => {
             <div className='footer-desktop-tablet-content'>
                 <Heading type='xs' title='h3' variant='base' >® 2022 Digital Booking</Heading>
                 <div className='footer-desktop-tablet-icons' >
-                    <Icon icon='facebook'/>
-                    <Icon icon='linkedin'/>
-                    <Icon icon='twitter'/>
-                    <Icon icon='instagram'/>
+                    <Icon icon='wfacebook'/>
+                    <Icon icon='wlinkedin'/>
+                    <Icon icon='wtwitter'/>
+                    <Icon icon='winstagram'/>
                 </div>
             </div>
         </footer>

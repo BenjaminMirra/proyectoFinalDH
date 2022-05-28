@@ -28,6 +28,6 @@ code {
 .wrapper{
   display: flex;
     flex-direction: column;
-    
+    font-family:'Poppins', sans-serif;
     height: 100vh;
 }
