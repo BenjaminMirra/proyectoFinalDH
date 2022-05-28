@@ -44,7 +44,7 @@ export const MobileHeader = ({firstname,lastname,handleUserInfo}) => {
               </div>
 
               <div className="nav-content-user">
-                <Paragraph size= 'sm' >  ¿ Deseas <Span onClick={handleUserInfo}>cerrar sesión</Span> ? </Paragraph>
+                <Paragraph size= 'md' >  ¿ Deseas <Span size='md' variant='primary' onClick={handleUserInfo}>cerrar sesión</Span> ? </Paragraph>
                 <hr style={{width:'90%'}}/>
             </div>
             </>):

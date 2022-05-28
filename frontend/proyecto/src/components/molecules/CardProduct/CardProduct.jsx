@@ -5,6 +5,7 @@ import { Paragraph } from "../../atoms/paragraph/Paragraph";
 import { Button } from "../../atoms/Button/Button";
 import { Icon } from "../../atoms/Icon/Icon";
 import { Span } from "../../atoms/Span/Span";
+import { Link } from "react-router-dom";
 
 export const CardProduct = ({
   url,
@@ -63,9 +64,12 @@ export const CardProduct = ({
         <div className="product-description">
           <Paragraph size="md" variant="secondary">
             {descripcion}
-            <Span size="md" variant="yellow">
-              Más...
+            <Link style={{textDecoration:'none'}} to={'/'}>
+              <Span size="md" variant="primary">
+                Más...
             </Span>
+            </Link>
+            
           </Paragraph>
           <Button
             size="sm"
