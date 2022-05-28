@@ -14,7 +14,7 @@ import twitter from "../../utils/icons/twitter.svg";
 import linkedin from "../../utils/icons/linkedin.svg";
 import favorite from "../../utils/icons/favorite.svg";
 import closeBlack from "../../utils/icons/closeBlack.svg";
-
+import visibility from '../../utils/icons/visibility.svg'
 
 const IconsList = {
   user: user,
@@ -33,6 +33,7 @@ const IconsList = {
   facebook: facebook,
   instagram: instagram,
   closeBlack: closeBlack,
+  visibility:visibility,
 };
 export const KeysIconsList=Object.keys(IconsList)
 const IconWidth={

@@ -12,20 +12,12 @@ const Template = (args) => <InputIcon {...args} />;
 // 👇 Each story then reuses that template
 export const Primary = Template.bind({});
 Primary.args = {
-  input: {
+  
     size: "base",
     placeholder: "This is a Label with an Icon",
     variant: "base",
-  },
-  icon: {
     icon: "location",
-    size: "xs",
-  },
-  variant: "left",
-};
-export const Secondary = Template.bind({});
-Secondary.args = {
-  ...Primary.args,
-  variant: "right",
-};
+    variant: "left",
+}
+
 

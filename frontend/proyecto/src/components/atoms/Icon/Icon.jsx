@@ -13,7 +13,7 @@ export const Icon = ({icon,width,onClick}) => {
 }
 
 Icon.propTypes = {
-    icon:PropTypes.oneOf(['user','calendar','search','location','disabled','wifi','swim','star','menu','close','twitter','facebook','linkedin','favorite','instagram','closeBlack']),
+    icon:PropTypes.oneOf(['user','calendar','search','location','disabled','wifi','swim','star','menu','close','twitter','facebook','linkedin','favorite','instagram','closeBlack','visibility']),
     width:PropTypes.oneOf(['xs','sm','md','lg'])
 }
 Icon.defaultProps={

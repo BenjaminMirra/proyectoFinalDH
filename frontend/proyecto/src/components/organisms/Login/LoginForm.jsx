@@ -10,7 +10,7 @@ import './LoginForm.css'
 
 export const LoginForm = () => {
     
-     const [medidas,setMedidas]=useState({inputSize:'base',inputSpacerHeight:'xs',buttonWidth:'xs',titleSpacerHeight:'xs'})
+    const [medidas,setMedidas]=useState({inputSize:'base',inputSpacerHeight:'xs',buttonWidth:'xs',titleSpacerHeight:'xs'})
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
     useEffect(() => {
     function handleResize() {
@@ -80,14 +80,14 @@ let userData={}
             handleErrorsTrue(email)
                 setTimeout(function(){
                     handleErrorsFalse(email)
-                },1000)
+                },3500)
         }
         if(!checkLength(formValues[password])){
             result=false
             handleErrorsTrue(password)
                 setTimeout(function(){
                     handleErrorsFalse(password)
-                },1000)
+                },3500)
         }
         
         if(!formValues[email].toLowerCase().match(
@@ -97,14 +97,14 @@ let userData={}
         handleErrorsTrue(email)
                 setTimeout(function(){
                     handleErrorsFalse(email)
-                },1300)
+                },3500)
     }
         if(formValues[password].length<6){
             result=false
             handleErrorsTrue(password)
                 setTimeout(function(){
                     handleErrorsFalse(password)
-                },1000)
+                },3500)
         }
         return result;
     }
@@ -126,6 +126,8 @@ let userData={}
         // console.log(result);
         return result
     }
+   const [inputType,setInputType]=useState({input:'password',icon:'disabled'})
+    const toggleInputType=()=>setInputType(inputType.input==='password'?{input:'text',icon:'visibility'}:{input:'password',icon:'disabled'})
     return (<>
         <div className="login">
             <div>
@@ -137,9 +139,9 @@ let userData={}
                 <InputLabel value={formValues.email} id='email' name='email' onChange={handleChange()} label={"Email"} size={medidas.inputSize} type={"text"} placeholder={"Ingrese su email"} isError={errors.email} ></InputLabel>
                 {errors.email&&<Paragraph variant='error' size='sm' > Un email válido es requerido</Paragraph>}
             </div>
-            <SpacerHorizontal height={medidas.inputSpacerHeight} />
+            {!errors.email&&<SpacerHorizontal height={medidas.inputSpacerHeight} />}
             <div className='login-input'>
-                <InputLabel  value={formValues.password} id='password' name='password' onChange={handleChange()} label={"Contraseña"} size={medidas.inputSize} type={"password"} placeholder={"Ingrese su contraseña"} isError={errors.password}></InputLabel>
+                <InputLabel onClick={toggleInputType} icon={inputType.icon} variant='right' iconWidth={'lg'} value={formValues.password} id='password' name='password' onChange={handleChange()} label={"Contraseña"} size={medidas.inputSize} type={inputType.input} placeholder={"Ingrese su contraseña"} isError={errors.password}></InputLabel>
                 {errors.password&&<Paragraph variant='error' size='sm' >La contraseña es requerida</Paragraph>}
             </div>
             <div className='boton-register'>

@@ -1,7 +1,4 @@
 
-*{
-    box-sizing: border-box;
-}
 .mobile-header{
     /* border: 1px solid blue; */
     background-color:var(--color-base) ;
@@ -11,7 +8,7 @@
     flex-direction: column;
     justify-content: center;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.14), 0px 4px 5px rgba(0, 0, 0, 0.12), 0px 1px 10px rgba(0, 0, 0, 0.2);
-    
+    /* position: absolute; */
     top: 0;
     z-index: 10000000;
     position: sticky;
@@ -81,7 +78,7 @@ a {
 
 .nav-header .user-content {
     margin-top: auto;
-
+    
     height: 100%;
     display: flex;
     /* border: 1px solid red; */

@@ -5,16 +5,18 @@ import { Icon } from '../../atoms/Icon/Icon'
 import { getSize } from './helpers'
 import classNames from 'classnames'
 import './InputIcon.css'
-export const InputIcon = ({input,icon,variant,onClick}) => {
+export const InputIcon = ({variant,width,size,placeholder,type,isInline,isError,name,onChange,value,icon,onClick,iconWidth}) => {
     const InputIconClassNames=classNames('input-icon',{
         [`type-${variant}`]:variant,
+        [`inputIcon-size-${size}`]:size
     })
+    
     return (
         <>
-        {console.log(input)}
-        <div className={InputIconClassNames} style={{width:getSize(input.size,icon.width)}}>
-            <Input size={input.size} variant={input.variant} placeholder={input.placeholder}></Input>
-            <Icon onClick={onClick} icon={icon.icon} width={icon.width}/>
+       
+        <div className={InputIconClassNames} >
+            <Input  name={name} onChange={onChange} value={value} isError={isError} type= {type} placeholder= {placeholder}/>
+            <Icon onClick={onClick} icon={icon} width={iconWidth}/>
             
         </div>
         </>
@@ -26,5 +28,5 @@ InputIcon.propTypes={
 }
 InputIcon.defaultProps={
     onClick:()=>{},
-    variant:'left',
+    variant:'right',
 }
