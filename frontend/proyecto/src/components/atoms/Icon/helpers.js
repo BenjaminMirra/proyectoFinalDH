@@ -19,6 +19,7 @@ import wfacebook from "../../utils/icons/wfacebook.svg";
 import winstagram from "../../utils/icons/winstagram.svg";
 import wtwitter from "../../utils/icons/wtwitter.svg";
 import wlinkedin from "../../utils/icons/wlinkedin.svg";
+import locationEmpty from "../../utils/icons/locationEmpty.svg";
 
 const IconsList = {
   user: user,
@@ -37,12 +38,13 @@ const IconsList = {
   facebook: facebook,
   instagram: instagram,
   closeBlack: closeBlack,
-  visibility:visibility,
-  wfacebook:wfacebook,
-  winstagram:winstagram ,
-  wtwitter:wtwitter   ,
-  wlinkedin:wlinkedin ,
-} ;
+  visibility: visibility,
+  wfacebook: wfacebook,
+  winstagram: winstagram,
+  wtwitter: wtwitter,
+  wlinkedin: wlinkedin,
+  locationEmpty:locationEmpty,
+}; ;
 export const KeysIconsList=Object.keys(IconsList)
 const IconWidth={
     xs:'14px',

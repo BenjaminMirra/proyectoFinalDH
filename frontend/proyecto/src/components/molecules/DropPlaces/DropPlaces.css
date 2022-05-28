@@ -89,9 +89,10 @@ div .lugar{
 
 div.linea{
     display: flex;
-    margin-left: 25px;
+    
     height: 0px;
-    width: 398px;
+    width: 90%;
+    margin: auto;
     border: 1px solid var(--color-primary)
 }
 .ciudad-pais{
