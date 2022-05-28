@@ -21,7 +21,7 @@ export const TabletHeader = ({firstname,lastname,handleUserInfo}) => {
 
             {firstname!==undefined && lastname!==undefined?<>
                 <div className='tablet-user-info'>
-                <Avatar firstname={firstname} lastname={lastname} variant='secondary' />
+                <Avatar firstname={firstname} lastname={lastname} variant='primary' />
                 <Heading title='h3' type='sm' variant='primary'><span style={{color:'#383B58'}}>Hola, </span> <br /> {`${firstname.charAt(0).toUpperCase()+firstname.slice(1)} ${lastname.charAt(0).toUpperCase()+lastname.slice(1)}`}</Heading>
                 <Icon onClick={handleUserInfo} icon='closeBlack' width='xs'/>
             </div>
