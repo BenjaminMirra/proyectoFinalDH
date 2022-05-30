@@ -35,7 +35,7 @@ CREATE TABLE `categoria_sequence` (
 
 LOCK TABLES `categoria_sequence` WRITE;
 /*!40000 ALTER TABLE `categoria_sequence` DISABLE KEYS */;
-INSERT INTO `categoria_sequence` VALUES (1);
+INSERT INTO `categoria_sequence` VALUES (5);
 /*!40000 ALTER TABLE `categoria_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -48,9 +48,9 @@ DROP TABLE IF EXISTS `categorias`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `categorias` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `titulo` varchar(45) DEFAULT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
-  `url_imagen` text,
+  `titulo` varchar(45) NOT NULL,
+  `descripcion` varchar(255) NOT NULL,
+  `url_imagen` text NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
