@@ -1,5 +1,6 @@
 package com.example.ProyectoIntegradorGrupo2.service;
 
+import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.Categoria;
 import com.example.ProyectoIntegradorGrupo2.model.dto.CategoriaDTO;
@@ -9,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
 @Service
 @Transactional
@@ -34,24 +32,32 @@ public class CategoriaService implements ICategoriaService{
 
     //Guarda una categoria en la base de datos y retorna una categoriaDTO
     @Override
-    public CategoriaDTO agregarCategoria(CategoriaDTO categoriaDTO) {
+    public CategoriaDTO agregarCategoria(CategoriaDTO categoriaDTO) throws BadRequestException {
+        if (categoriaDTO.getTitulo() ==null || categoriaDTO.getDescripcion()==null || categoriaDTO.getUrl_imagen()==null || categoriaDTO.getTitulo().equals("") || categoriaDTO.getDescripcion().equals("") || categoriaDTO.getUrl_imagen().equals("")){
+            throw new BadRequestException("No se puede agregar una categoria con campos nulos o vacíos");
+        }
         return cargarCategoria(categoriaDTO);
     }
 
+
     //Busca las categorias en la base de datos y retorna una coleccion de categoriasDTO
     @Override
-    public Set<CategoriaDTO> listarTodas() {
+    public List<CategoriaDTO> listarTodas() {
         List<Categoria> categoriasList = categoriaRepository.findAll();
 
-        Set<CategoriaDTO> categoriaDTOSet = new HashSet<>();
+        List<CategoriaDTO> categoriaDTOList = new ArrayList<CategoriaDTO>();
 
         for (Categoria c:categoriasList) {
-            categoriaDTOSet.add(mapper.convertValue(c, CategoriaDTO.class));
+            categoriaDTOList.add(mapper.convertValue(c, CategoriaDTO.class));
 
         }
 
-        return categoriaDTOSet;
+        categoriaDTOList.sort(Comparator.comparing(CategoriaDTO::getId));
+
+        return categoriaDTOList;
     }
+
+
 
     //Busca una categoria por su id en la base de datos y retorna una categoriasDTO
     @Override
@@ -94,4 +100,6 @@ public class CategoriaService implements ICategoriaService{
 
         categoriaRepository.deleteById(id);
     }
+
+
 }

@@ -4,6 +4,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Getter
 @Setter
@@ -14,11 +15,15 @@ import javax.persistence.*;
 @Table(name = "categorias")
 public class Categoria {
     @Id
-    @SequenceGenerator(name = "categoria_sequence", sequenceName = "categoria_sequence", allocationSize = 1)
+    @NotNull
+    @SequenceGenerator(name = "categoria_sequence", sequenceName = "categoria_sequence", allocationSize = 1, initialValue=5)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categoria_sequence")
     private Long id;
+    @NotNull
     private String titulo;
+    @NotNull
     private String descripcion;
+    @NotNull
     private String url_imagen;
 
     public Categoria() {
@@ -29,5 +34,11 @@ public class Categoria {
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.url_imagen = URL_imagen;
+    }
+
+    public Categoria(String titulo, String descripcion, String url_imagen) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.url_imagen = url_imagen;
     }
 }
