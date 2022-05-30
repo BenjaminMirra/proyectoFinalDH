@@ -3,7 +3,9 @@ import React, { useState, useEffect } from 'react'
 import 'rsuite/dist/rsuite.min.css';
 import './CalendarDrop.css'
 import { CustomProvider } from 'rsuite';
+import { Icon } from '../../atoms/Icon/Icon'
 import esAR from 'rsuite/locales/es_AR';
+import format from 'date-fns/format';
 
 
 
@@ -38,7 +40,9 @@ export const CalendarDrop = () => {
                 saturday: 'S',
                 ok: 'Aplicar',
                 today: 'Today',
-            }} />)
+            }} renderValue={(value) => {
+                return format(value[0],"dd") + " de " + format(value[0],'MMM').toLowerCase() + ". - " + format(value[1],"dd") + " de " + format(value[1],'MMM').toLowerCase() + "."
+            }}/>)
         }
         else if (windowWidth > 768 && windowWidth < 1366) {
             serCalendarDisplayed(<>
@@ -52,11 +56,13 @@ export const CalendarDrop = () => {
                     saturday: 'S',
                     ok: 'Aplicar',
                     today: 'Today',
-                }} />
+                }} renderValue={(value) => {
+                    return format(value[0],"dd") + " de " + format(value[0],'MMM').toLowerCase() + ". - " + format(value[1],"dd") + " de " + format(value[1],'MMM').toLowerCase() + "."
+                }}/>
             </>)
         } else if (windowWidth => 1366) {
             serCalendarDisplayed(<>
-                <DateRangePicker className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"d MMMM yyyy"} locale={{
+                <DateRangePicker className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"dd MMMM y"} locale={{
                     sunday: 'D',
                     monday: 'L',
                     tuesday: 'M',
@@ -66,19 +72,24 @@ export const CalendarDrop = () => {
                     saturday: 'S',
                     ok: 'Aplicar',
                     today: 'Today',
-                }} />
+                }}
+                    renderValue={(value) => {
+                        return format(value[0],"dd") + " de " + format(value[0],'MMM').toLowerCase() + ". - " + format(value[1],"dd") + " de " + format(value[1],'MMM').toLowerCase() + "."
+                    }}
+                />
             </>)
         }
 
     }, [windowWidth, userInfo]);
 
-return (
+    return (
 
-    <>
-        <CustomProvider locale={esAR}>
-            {calendarDisplayed}
-        </CustomProvider>
-    </>
-    
-)
+        <div className="calendarioDiv">
+            <CustomProvider locale={esAR}>
+                <Icon className="iconoDiv" icon="calendar" width="lg" />
+                {calendarDisplayed}
+            </CustomProvider>
+        </div>
+
+    )
 }

@@ -10,7 +10,7 @@ export const DropPlaces = ({ placeholder, icon }) => {
             info: {
                 ciudad: "San Carlos de Bariloche",
                 pais: "Argentina",
-                icon: "locationEmpty"
+                icon: "location"
             }
             , value: "Buenos Aires"
         },
@@ -19,7 +19,7 @@ export const DropPlaces = ({ placeholder, icon }) => {
             info: {
                 ciudad: "Buenos Aires",
                 pais: "Argentina",
-                icon: "locationEmpty"
+                icon: "location"
             }
             , value: "Buenos Aires"
         },
@@ -27,7 +27,7 @@ export const DropPlaces = ({ placeholder, icon }) => {
             info: {
                 ciudad: "Mendoza",
                 pais: "Argentina",
-                icon: "locationEmpty"
+                icon: "location"
             }
             , value: "Buenos Aires"
         },
@@ -35,7 +35,7 @@ export const DropPlaces = ({ placeholder, icon }) => {
             info: {
                 ciudad: "Córdoba",
                 pais: "Argentina",
-                icon: "locationEmpty"
+                icon: "location"
             }
             , value: "Buenos Aires"
         }
