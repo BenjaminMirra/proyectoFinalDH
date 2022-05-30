@@ -20,6 +20,7 @@ import winstagram from "../../utils/icons/winstagram.svg";
 import wtwitter from "../../utils/icons/wtwitter.svg";
 import wlinkedin from "../../utils/icons/wlinkedin.svg";
 import locationEmpty from "../../utils/icons/locationEmpty.svg";
+import arrowLeft from '../../utils/icons/arrowLeft.svg'
 
 const IconsList = {
   user: user,
@@ -44,7 +45,9 @@ const IconsList = {
   wtwitter: wtwitter,
   wlinkedin: wlinkedin,
   locationEmpty:locationEmpty,
-}; ;
+  arrowLeft:arrowLeft,
+}; 
+
 export const KeysIconsList=Object.keys(IconsList)
 const IconWidth={
     xs:'14px',

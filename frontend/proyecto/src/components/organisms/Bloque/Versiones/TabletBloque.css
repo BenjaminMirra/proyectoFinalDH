@@ -1,0 +1,120 @@
+.tablet-bloque-container {
+    width: 100%;
+    height: 115px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.tablet-bloque-container-first {
+    width: 100%;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    height: 60.06px;
+    background-color: var(--color-secondary);
+}
+
+.tablet-bloque-container-first-first {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left:30px;
+}
+
+.tablet-bloque-container-first-first .paragraph {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    color: #F3F1ED;
+}
+
+.tablet-bloque-container-first-second {
+    padding-right: 33px;
+}
+
+.tablet-bloque-container-second {
+    height: 55.05px;
+    width: 100%;
+    background-color: #DFE4EA;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tablet-bloque-container-second .rating {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.tablet-rating-score-second {
+    background-color: var(--color-primary);
+    border-radius: 8px;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    margin-right: 31px;
+}
+
+.tablet-rating-score-first {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: right;
+    align-items: flex-end;
+    margin-right: 8px;
+}
+
+.tablet-rating-score-text {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.tablet-rating-score-text p {
+    font-weight: 700;
+}
+
+.tablet-rating-score p {
+    color: var(--color-base);
+}
+
+.tablet-rating-score-star {
+    display: flex;
+    flex-direction: row;
+}
+
+.tablet-bloque-container-second .tablet-product-icon-ubication {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.tablet-bloque-container-second .tablet-product-icon-ubication .tablet-product-icon {
+    margin-left: 30px;
+    margin-right: 6px;
+}
+
+.tablet-bloque-container-second .tablet-product-icon-ubication .tablet-product-ubication {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    text-align: left;
+}
+
+.tablet-rating-score-star{
+    display: flex;
+}
