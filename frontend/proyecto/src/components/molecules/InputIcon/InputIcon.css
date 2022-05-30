@@ -10,23 +10,52 @@
     max-width: 500px;
     
 }
+.inputIcon-size-base{
+    width: 213.7px;
+}
+.inputIcon-size-xs{
+    width: 254px;
+}
+.inputIcon-size-sm{
+    width:300px;
+}
+.inputIcon-size-md{
+    width:346px;
+}
+.inputIcon-size-lg{
+    width:393px;
+}
+.inputIcon-size-xl{
+    width:422px;
+}
+.inputIcon-size-2xl{
+    width: 448px;
+}
+
+
+
 .input-icon  input{
     width: 100%;
-    margin-left: 29px;
     border-top-left-radius:10px none ;
 }
 
-.type-left img{
+.type-left div{
     position: absolute;
     left: 11px;
     top:6px;
     bottom: 8px;
 }
-.type-right img{
+.type-left input{
+    padding-left: 35px;
+}
+.type-right div{
     position: absolute;
     right: 11px;
     top:6px;
     bottom: 8px;
+    
 }
 
-
+.type-right input{
+    padding-left: 10px;
+}

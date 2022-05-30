@@ -40,9 +40,23 @@ export const CalendarDrop = () => {
                 today: 'Today',
             }} />)
         }
-        else if (windowWidth > 768) {
+        else if (windowWidth > 768 && windowWidth < 1366) {
             serCalendarDisplayed(<>
                 <DateRangePicker placement='auto' className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"d MMMM yyyy"} locale={{
+                    sunday: 'D',
+                    monday: 'L',
+                    tuesday: 'M',
+                    wednesday: 'X',
+                    thursday: 'J',
+                    friday: 'V',
+                    saturday: 'S',
+                    ok: 'Aplicar',
+                    today: 'Today',
+                }} />
+            </>)
+        } else if (windowWidth => 1366) {
+            serCalendarDisplayed(<>
+                <DateRangePicker className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"d MMMM yyyy"} locale={{
                     sunday: 'D',
                     monday: 'L',
                     tuesday: 'M',
@@ -58,14 +72,13 @@ export const CalendarDrop = () => {
 
     }, [windowWidth, userInfo]);
 
-    return (
+return (
 
-
-
-        <>
-            <CustomProvider locale={esAR}>
-                {calendarDisplayed}
-            </CustomProvider>
-        </>
-    )
+    <>
+        <CustomProvider locale={esAR}>
+            {calendarDisplayed}
+        </CustomProvider>
+    </>
+    
+)
 }

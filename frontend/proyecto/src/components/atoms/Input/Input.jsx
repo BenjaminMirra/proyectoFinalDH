@@ -11,7 +11,7 @@ export const  Input = ({type,placeholder,variant,size,isError,value,onChange,nam
     })
 
     return (
-        <input name={name} id={name} value={value} onChange={onChange} className={InputClassNames} type={type} placeholder={placeholder} />
+        <input autoComplete='off' name={name} id={name} value={value} onChange={onChange} className={InputClassNames} type={type} placeholder={placeholder} />
     )
 }
 

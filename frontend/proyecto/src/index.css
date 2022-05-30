@@ -14,6 +14,7 @@ code {
   --color-primary: #FBC02D;
   --color-secondary: #263238;
   --color-tertiary: #607D8B;
+  --color-fourth:#FFFBE2;
   --color-base: #ffffff;
   --color-muted: black;
   --color-error:#FF0000;
@@ -22,5 +23,11 @@ code {
     display: flex;
     flex-direction: column;
     
+    height: 100vh;
+}
+.wrapper{
+  display: flex;
+    flex-direction: column;
+    font-family:'Poppins', sans-serif;
     height: 100vh;
 }

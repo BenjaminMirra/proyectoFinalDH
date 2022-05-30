@@ -22,12 +22,12 @@ export const DesktopHeader = ({firstname,lastname,handleUserInfo}) => {
             
                  {firstname!==undefined && lastname!==undefined?<>
                 <div className='tablet-user-info'>
-                <Avatar firstname={firstname} lastname={lastname} variant='secondary' />
+                <Avatar firstname={firstname} lastname={lastname} variant='primary' />
                 <Heading title='h3' type='sm' variant='primary'><span style={{color:'#383B58'}}>Hola, </span> <br /> {`${firstname.charAt(0).toUpperCase()+firstname.slice(1)} ${lastname.charAt(0).toUpperCase()+lastname.slice(1)}`}</Heading>
                 <Icon onClick={handleUserInfo} icon='closeBlack' width='xs'/>
             </div>
             </>:<>
-                <div className='botones-header'>
+                <div className='desktop-botones-header'>
                 <Link to={'/sign-up'} >
                  {window.location.href!=='http://localhost:3000/sign-up'&&<Button size='xs' variant={false} label='Crear cuenta' ></Button>}
                 </Link>

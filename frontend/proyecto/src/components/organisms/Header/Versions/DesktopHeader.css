@@ -1,16 +1,22 @@
 .header-desktop{
     width: 100%;
+    margin: auto;
     background-color: var(--color-base);
     height: 100px;
     display: flex;
     align-items: center;
+    z-index: 10000;
+    top:0;
+    position: sticky;
+    margin-top: 0;
+    margin-bottom: 0;
     
     
 }
 .header-desktop-content{
     height: 100px;
-    width: 90%;
-    max-width: 1366px;
+    width: 97%;
+    /* max-width: 1366px; */
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -19,16 +25,20 @@
 }
 .logo{
     display: flex;
-    margin-left: 40px;
+    /* margin-left: 40px; */
+    align-items: center;
     
 }
 .logo h2{
-    margin-top: 20px;
+    /* margin-top: 20px; */
     margin-left: 12px;
 }
-.botones-header{
+.desktop-botones-header{
     display: flex;
-    margin-right: 40px;
+    /* margin-right: 40px; */
+}
+.desktop-botones-header button{
+    margin-left: 10px;
 }
 .botones-header button{
     margin-left: 10px;

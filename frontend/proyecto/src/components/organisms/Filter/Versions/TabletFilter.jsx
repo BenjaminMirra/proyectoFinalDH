@@ -15,7 +15,7 @@ export const TabletFilter = () => {
             <SpacerHorizontal height='sm' />
             <div className='tablet-filters-button'>
                 <DropPlaces placeholder='¿A donde vamos?' icon='location'/>
-                <div style={{width:'35%'}}>
+                <div className='tablet-calendar-input'>
                 <CalendarDrop/>
                 </div>
                 <Button size='base' label='Buscar'></Button>

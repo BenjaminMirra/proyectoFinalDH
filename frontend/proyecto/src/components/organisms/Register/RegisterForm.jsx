@@ -57,7 +57,7 @@ export const RegisterForm = () => {
     const handleSubmit=(e)=>{
         
         e.preventDefault()
-        console.log(JSON.stringify(userData) );
+        
         if(firstValidation('firstname','lastname','email','password','repassword')){
             localStorage.setItem("userData",JSON.stringify(userData))
             window.location.href='http://localhost:3000/'
@@ -66,50 +66,55 @@ export const RegisterForm = () => {
     
 
     function firstValidation(firstname,lastname,email,password,repassword){
-        
+        const localEmail=formValues[email]||'';
         let result=true;
-
+        
         if(!checkLength(formValues[firstname])){
             result=false
             handleErrorsTrue(firstname)
                 setTimeout(function(){
                     handleErrorsFalse(firstname)
-                },1000)
+                },3500)
         }
         if(!checkLength(formValues[lastname])){
             result=false
             handleErrorsTrue(lastname)
                 setTimeout(function(){
                     handleErrorsFalse(lastname)
-                },1000)
+                },3500)
         }
-        if(!checkLength(formValues[email])){
-            result=false
-            handleErrorsTrue(email)
-                setTimeout(function(){
-                    handleErrorsFalse(email)
-                },1000)
-        }
+        
+        
         if(!checkLength(formValues[password])){
             result=false
             handleErrorsTrue(password)
                 setTimeout(function(){
                     handleErrorsFalse(password)
-                },1000)
+                },3500)
         }
         if(!checkLength(formValues[repassword])){
             result=false
             handleErrorsTrue(repassword)
                 setTimeout(function(){
                     handleErrorsFalse(repassword)
-                },1000)
+                },3500)
         }
+        if(!localEmail.toLowerCase().match(
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+            )){
+                
+        result=false
+        handleErrorsTrue(email)
+                setTimeout(function(){
+                    handleErrorsFalse(email)
+                },3500)
+    }
         if(formValues[password].length<6){
             result=false
             handleErrorsTrue(password)
                 setTimeout(function(){
                     handleErrorsFalse(password)
-                },1000)
+                },3500)
         }
         if(formValues[password]!==formValues[repassword]){
             result=false
@@ -118,17 +123,9 @@ export const RegisterForm = () => {
                 setTimeout(function(){
                     handleErrorsFalse(repassword)
                     handleErrorsFalse(password)
-                },1000)
+                },3500)
         }
-        if(!formValues[email].toLowerCase().match(
-            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-            )){
-        result=false
-        handleErrorsTrue(email)
-                setTimeout(function(){
-                    handleErrorsFalse(email)
-                },1300)
-    }
+        
         return result;
     }
     
@@ -149,6 +146,8 @@ export const RegisterForm = () => {
         // console.log(result);
         return result
     }
+    const [inputType,setInputType]=useState({input:'password',icon:'disabled'})
+    const toggleInputType=()=>setInputType(inputType.input==='password'?{input:'text',icon:'visibility'}:{input:'password',icon:'disabled'})
     return (
         <div className="register">
             
@@ -162,25 +161,27 @@ export const RegisterForm = () => {
                     <InputLabel value={formValues.firstname}  id='firstname' name='firstname' onChange={handleChange()} label={"Nombre"} size={"base"} type={"text"} placeholder={"Ingrese su nombre"} isError={errors.firstname} ></InputLabel>
                         {errors.firstname&&<Paragraph variant='error' size='sm' > Un nombre válido es requerido</Paragraph>}
                 </div>
-                <SpacerHorizontal height={medidas.inputSpacerHeight} />
+                {!errors.firstname&&<SpacerHorizontal height={medidas.inputSpacerHeight} />}
                 <div className="surname register-input ">
                     <InputLabel value={formValues.lastname} id='lastname' name='lastname' onChange={handleChange()} label={"Apellido"} size={"base"} type={"text"} placeholder={"Ingrese su apellido"} isError={errors.lastname} ></InputLabel>
                     {errors.lastname&&<Paragraph variant='error' size='sm' > Un apellido válido es requerido</Paragraph>}
                 </div>
             </div>
-            <SpacerHorizontal height={medidas.inputSpacerHeight} />
+               {!errors.lastname&&<SpacerHorizontal height={medidas.inputSpacerHeight} />} 
             <div className='register-input'>
                 <InputLabel value={formValues.email} id='email' name='email' onChange={handleChange()} label={"Correo electrónico"} size={medidas.inputSize} type={"email"} placeholder={"Ingrese su email"} isError={errors.email} ></InputLabel>
                 {errors.email&&<Paragraph variant='error' size='sm' > Un email válido es requerido</Paragraph>}
             </div>
-            <SpacerHorizontal height={medidas.inputSpacerHeight} />
+            {!errors.email&&<SpacerHorizontal height={medidas.inputSpacerHeight} />}
+            
             <div className='register-input' >
-                <InputLabel value={formValues.password} id='password' name='password' onChange={handleChange()} label={"Contraseña"} size={medidas.inputSize} type={"password"} placeholder={"Ingrese su contraseña"} isError={errors.password} ></InputLabel>
+                <InputLabel onClick={toggleInputType} icon={inputType.icon} variant='right' iconWidth={'lg'} value={formValues.password} id='password' name='password' onChange={handleChange()} label={"Contraseña"} size={medidas.inputSize} type={inputType.input} placeholder={"Ingrese su contraseña"} isError={errors.password} ></InputLabel>
                 {errors.password&&<Paragraph variant='error' size='sm' > Una contraseña válida es requerido</Paragraph>}
             </div>
-            <SpacerHorizontal height={medidas.inputSpacerHeight} />
+            {!errors.password&&<SpacerHorizontal height={medidas.inputSpacerHeight} />}
+            
             <div className='register-input' >
-                <InputLabel  value={formValues.repassword} id='repassword' name='repassword' onChange={handleChange()} label={"Confirmar Contraseña"} size={medidas.inputSize} type={"password"} placeholder={"Reingrese su contraseña"} isError={errors.repassword}></InputLabel>
+                <InputLabel   value={formValues.repassword} id='repassword' name='repassword' onChange={handleChange()} label={"Confirmar Contraseña"} size={medidas.inputSize} type={inputType.input} placeholder={"Reingrese su contraseña"} isError={errors.repassword}></InputLabel>
                 {errors.repassword&&<Paragraph variant='error' size='sm' > Las contraseñas no coinciden</Paragraph>}
             </div>
             

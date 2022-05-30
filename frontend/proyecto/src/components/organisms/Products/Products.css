@@ -15,7 +15,8 @@
 }
 
 .products-content {
-
+  width: 97%;
+  margin: auto;
  padding-top: 19px;
 }
 
@@ -29,7 +30,7 @@
 }
 
 
-@media (max-width: 1365px) {
+@media (max-width: 910px) {
   
     .product-cards-container{
       grid-template-columns: 1fr; 

@@ -6,8 +6,9 @@ import './SignUp.css'
 export const SignUp = () => {
   return (
     <>
+    <Header firstname={undefined} lastname={undefined}/>
         <div className='contenedor-pagina'>
-        <Header firstname={undefined} lastname={undefined}/>
+        
         <RegisterForm/>
         <Footer/>
         </div>
