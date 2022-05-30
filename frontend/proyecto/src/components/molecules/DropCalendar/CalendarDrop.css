@@ -6,11 +6,15 @@
     align-items: center;
 }
 
-.rs-picker{
+.rs-picker {
     width: 100%;
 }
 
-.rs-picker-toggle-clean{
+.rs-picker-toggle-active {
+    box-shadow: 0px 0px 0px 0px;
+}
+
+.rs-picker-toggle-clean {
     margin-top: 2px;
 }
 
@@ -25,7 +29,7 @@ div .rs-picker-toggle {
     border-radius: 50%;
 }
 
-.primerCalendario:focus{
+.primerCalendario:focus {
     outline: 0;
 }
 
@@ -69,6 +73,10 @@ div .primerCalendario {
     background-color: var(--color-primary);
     width: 206px;
     height: 40px;
+}
+
+.rs-btn-primary:hover{
+    background-color: none;
 }
 
 .rs-calendar-table-cell-content:hover {
