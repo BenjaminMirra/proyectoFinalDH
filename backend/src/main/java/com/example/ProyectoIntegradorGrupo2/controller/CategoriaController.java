@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
 
-//@CrossOrigin("*")
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin("*")
+//@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/categorias")
 public class CategoriaController {
