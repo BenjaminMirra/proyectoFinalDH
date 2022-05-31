@@ -26,6 +26,7 @@ public class Producto {
     private Long id;
     @NotNull
     private String titulo;
+    private String descripcion;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "politica_id", nullable = false)

@@ -16,6 +16,8 @@ public class ProductoDTO {
     @NotNull
     private String titulo;
 
+    private String descripcion;
+
     private PoliticaDTO politicaDTO;
 
     private CategoriaDTO categoriaDTO;
