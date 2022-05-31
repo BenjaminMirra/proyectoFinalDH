@@ -19,10 +19,10 @@ export const Bloque = () => {
         if(windowWidth < 768){
             setBloqueDisplayed(<MobileBloque/>)
         }
-        else if(windowWidth<1365){
+        else if(windowWidth<=1365){
             setBloqueDisplayed(<TabletBloque/>)
         }
-        else if(windowWidth>1366){
+        else if(windowWidth>1365){
             setBloqueDisplayed(<DesktopBloque/>)
         }
         

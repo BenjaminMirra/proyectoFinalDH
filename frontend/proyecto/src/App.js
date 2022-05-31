@@ -4,18 +4,20 @@ import { Home } from "./components/pages/Home";
 import { Login } from './components/pages/Login';
 import { SignUp } from "./components/pages/SignUp";
 //import { Bloque } from './components/organisms/Bloque/Bloque'
+import { BloqueCalendar } from './components/organisms/BloqueCalendar/BloqueCalendar'
 
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <BloqueCalendar/>
+      {/* <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign-up" element={<SignUp />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter> */}
     </>
   );
 }
