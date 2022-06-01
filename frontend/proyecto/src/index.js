@@ -2,12 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-
-
+import {Producto} from './components/Producto'
+import { MobileCarousel } from './components/molecules/Carousel/Versions/MobileCarousel';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      <App/>
+    <App />
   </React.StrictMode>
 );
 

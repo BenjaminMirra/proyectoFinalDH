@@ -1,0 +1,21 @@
+.productServices{
+    width: 100%;
+}
+.productServices-container{
+    width: 95%;
+    margin: auto;
+}
+.productServices-services{
+    
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+.service-description{
+    display: flex;
+    width: 50%;
+    margin-bottom:20px ;
+}
+.service-description img{
+    margin-right: 10px;
+}

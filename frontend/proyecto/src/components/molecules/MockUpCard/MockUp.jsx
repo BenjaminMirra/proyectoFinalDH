@@ -1,0 +1,13 @@
+import React from 'react'
+import './MockUp.css'
+export const MockUp = ({}) => {
+  return (
+    <div className="card is-loading">
+    <div className="image"></div>
+    <div className="content">
+      <h2></h2>
+      <p></p>
+    </div>
+  </div>
+  )
+}
