@@ -21,6 +21,7 @@ import wtwitter from "../../utils/icons/wtwitter.svg";
 import wlinkedin from "../../utils/icons/wlinkedin.svg";
 import locationEmpty from "../../utils/icons/locationEmpty.svg";
 import back from "../../utils/icons/back.svg";
+import backBlack from "../../utils/icons/backBlack.svg";
 import emptyStar from "../../utils/icons/emptyStar.svg";
 import emptyHeart from "../../utils/icons/emptyHeart.svg";
 import share from "../../utils/icons/share.svg";
@@ -63,6 +64,7 @@ const IconsList = {
   wlinkedin: wlinkedin,
   locationEmpty: locationEmpty,
   back: back,
+  backBlack: backBlack,
   emptyStar: emptyStar,
   emptyHeart: emptyHeart,
   share: share,

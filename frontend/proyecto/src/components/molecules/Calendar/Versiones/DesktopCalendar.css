@@ -1,0 +1,90 @@
+.rs-picker{
+    width: 0px;
+    height: 0px;
+    margin-bottom: 275px;
+    margin-left: 45px;
+}
+.rs-anim-fade{
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 2px;
+    box-shadow: 2px 3px 2px 2px;
+}
+
+.rs-calendar-header-forward{
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+}
+
+.rs-calendar-header-backward{
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+}
+
+
+.rs-btn-primary{
+    background-color: var(--color-primary) !important;
+}
+
+.desktop-calendar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    height: 400px;
+    background-color: var(--color-tertiary);
+}
+
+.desktop-calendario{
+    background-color: white;
+}
+
+.desktop-calendar-heading{
+    display: flex;
+    text-align: left;
+    margin-bottom: 20px;
+    margin-left: 20px;
+}
+
+.desktop-calendar-reserva{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.desktop-calendar-reserva .desktop-reserva{
+    display: flex;
+    flex-direction: column;
+    height: 125px;
+    background-color: white;
+    border-radius: 8px;
+    width: 400px;
+    right: 50px;
+    box-shadow: 2px 4px 2px 2px;
+    margin-right: 45px;
+}
+
+.desktop-reserva .desktop-reserva-heading{
+    display: flex;
+    text-align: left;
+    margin-left: 25px;
+    margin-right: 20px;
+    margin-bottom: 15px;
+    margin-top:10px
+}
+
+.desktop-reserva .desktop-reserva-button button{
+    width: 90%;
+}
+
+.rs-picker-toolbar{
+    display: none;
+}
