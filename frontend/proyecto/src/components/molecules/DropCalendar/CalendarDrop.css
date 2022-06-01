@@ -6,6 +6,24 @@
     align-items: center;
 }
 
+.rs-calendar-header-forward{
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+}
+
+.rs-calendar-header-backward{
+    background-color: var(--color-primary);
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+} 
+
+.rs-calendar-header-backward::before{
+    background-color: var(--color-primary);
+}
+
 .rs-picker {
     width: 100%;
 }
@@ -136,4 +154,8 @@ div[role=combobox] input:visited {
     div[role=combobox] {
         width: 100%;
     }
+}
+
+.rs-btn-primary{
+    background-color: var(--color-primary) !important;
 }

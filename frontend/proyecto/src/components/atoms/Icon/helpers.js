@@ -21,6 +21,7 @@ import wtwitter from "../../utils/icons/wtwitter.svg";
 import wlinkedin from "../../utils/icons/wlinkedin.svg";
 import locationEmpty from "../../utils/icons/locationEmpty.svg";
 import back from "../../utils/icons/back.svg";
+import backBlack from "../../utils/icons/backBlack.svg";
 import emptyStar from "../../utils/icons/emptyStar.svg";
 import emptyHeart from "../../utils/icons/emptyHeart.svg";
 import share from "../../utils/icons/share.svg";
@@ -34,6 +35,8 @@ import airConditioner from "../../utils/icons/airConditioner.svg";
 import noSmoking from "../../utils/icons/noSmoking.svg";
 import noParty from "../../utils/icons/noParty.svg";
 import smoke from "../../utils/icons/smoke.svg";
+import forward from '../../utils/icons/forward.svg'
+import forwardBlack from '../../utils/icons/forwardBlack.svg'
 
 const IconsList = {
   user: user,
@@ -59,6 +62,7 @@ const IconsList = {
   wlinkedin: wlinkedin,
   locationEmpty: locationEmpty,
   back: back,
+  backBlack: backBlack,
   emptyStar: emptyStar,
   emptyHeart: emptyHeart,
   share: share,
@@ -72,6 +76,8 @@ const IconsList = {
   noSmoking: noSmoking,
   noParty: noParty,
   television: television,
+  forward: forward,
+  forwardBlack: forwardBlack,
 }; ;
 export const KeysIconsList=Object.keys(IconsList)
 const IconWidth={
