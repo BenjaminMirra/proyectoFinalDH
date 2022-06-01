@@ -100,3 +100,5 @@ En este sprint usamos:
 En este sprint usamos:
 
 
+# Equipo 2 - Camada 5
+Integrantes del proyecto: Ana Laura Fidalgo, Martin Frei, Florencia Fernandez, Benjamin Mirra, Ayelen Garcia y Rodrigo Cabrera
