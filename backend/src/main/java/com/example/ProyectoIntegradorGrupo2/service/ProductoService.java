@@ -46,7 +46,7 @@ public class ProductoService implements IProductoService {
 
     @Override
     public ProductoDTO agregarProducto(ProductoDTO productoDTO) throws BadRequestException {
-        Producto producto = mapper.convertValue(productoDTO, Producto.class);
+        /*Producto producto = mapper.convertValue(productoDTO, Producto.class);
 
         Ciudad ciudad = mapper.convertValue(productoDTO.getCiudadDTO(), Ciudad.class);
         Politica politica = mapper.convertValue(productoDTO.getPoliticaDTO(), Politica.class);
@@ -95,7 +95,8 @@ public class ProductoService implements IProductoService {
 
         Producto productoGuardado = productoRepository.save(productoDesdeDB.get());
         ProductoDTO productoDTOGuardado = mapper.convertValue(productoGuardado, ProductoDTO.class);
-        return productoDTOGuardado;
+        return productoDTOGuardado;*/
+        return null;
     }
 
     @Override

@@ -7,7 +7,9 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -33,7 +35,7 @@ public class Ciudad {
 
     @OneToMany(mappedBy = "ciudad", fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
-    private Set<Producto> productoSet = new HashSet<>();
+    private List<Producto> productoSet = new ArrayList<>();
 
     public Ciudad() {
     }
@@ -51,7 +53,7 @@ public class Ciudad {
         this.pais = pais;
     }
 
-    public Ciudad(Long id, String nombre, String provincia, String pais, Set<Producto> productoSet) {
+    public Ciudad(Long id, String nombre, String provincia, String pais, List<Producto> productoSet) {
         this.id = id;
         this.nombre = nombre;
         this.provincia = provincia;

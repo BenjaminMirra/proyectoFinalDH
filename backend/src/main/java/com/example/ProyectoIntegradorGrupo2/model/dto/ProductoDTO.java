@@ -9,6 +9,8 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -19,24 +21,32 @@ import java.util.Set;
 
 public class ProductoDTO {
 
-    @NotNull
+
     private Long id;
-    @NotNull
+
     private String titulo;
+
+    private String titulo_descripcion;
 
     private String descripcion;
 
-    private PoliticaDTO politicaDTO;
+
+    private int rating;
+
+
+    private List<PoliticaDTO> politicaListDTO = new ArrayList<>(); //precargar
+
+
 
     private CategoriaDTO categoriaDTO;
+    //private Long idCategoria;
+    private CiudadDTO ciudadDTO;//precargar
 
-    private CiudadDTO ciudadDTO;
+    private List<ReservaDTO> reservaDTOList = new ArrayList<>();
 
-    private List<ReservaDTO> reservaDTOList;
+    private List<ImagenDTO> imagenDTOList = new ArrayList<>();
 
-    private List<ImagenDTO> imagenDTOList;
-
-    private List<CaracteristicasDTO> caracteristicasDTOList;
+    private List<CaracteristicasDTO> caracteristicasDTOList = new ArrayList<>();//precargar
 
     public ProductoDTO() {
     }

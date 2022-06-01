@@ -6,7 +6,9 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -18,7 +20,7 @@ import java.util.Set;
 @Table(name = "categorias")
 public class Categoria {
     @Id
-    @NotNull
+
     @SequenceGenerator(name = "categoria_sequence", sequenceName = "categoria_sequence", allocationSize = 1, initialValue=5)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categoria_sequence")
     private Long id;
@@ -27,11 +29,12 @@ public class Categoria {
 
     private String descripcion;
     @NotNull
+    @Column(length = 500)
     private String url_imagen;
 
     @OneToMany(mappedBy = "categoria", fetch = FetchType.LAZY) //orphanRemoval = true
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
-    private Set<Producto> productoSet = new HashSet<>();
+    private List<Producto> productoSet = new ArrayList<>();
 
     public Categoria() {
     }
@@ -49,7 +52,7 @@ public class Categoria {
         this.url_imagen = url_imagen;
     }
 
-    public Categoria(Long id, String titulo, String descripcion, String url_imagen, Set<Producto> productoSet) {
+    public Categoria(Long id, String titulo, String descripcion, String url_imagen, List<Producto> productoSet) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;

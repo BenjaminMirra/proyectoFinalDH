@@ -7,7 +7,10 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.*;
 
 @Getter
@@ -26,12 +29,19 @@ public class Producto {
     private Long id;
     @NotNull
     private String titulo;
+
+    private String titulo_descripcion;
+    @Column(length = 500)
     private String descripcion;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "politica_id", nullable = false)
-    @JsonIgnore
-    private Politica politica;
+    //@Size(min=1,max = 10)
+    //@Min(value= 1) @Max(value=10)
+
+    private int rating;
+
+    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
+    private List<Politica> politicaList = new ArrayList<>();
 
     @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
@@ -60,26 +70,5 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(Long id, String titulo, String descripcion, Politica politica, List<Reserva> reservaSet, Categoria categoria, Ciudad ciudad, List<Imagen> imagenesList, List<Caracteristicas> caracteristicasList) {
-        this.id = id;
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.politica = politica;
-        this.reservaSet = reservaSet;
-        this.categoria = categoria;
-        this.ciudad = ciudad;
-        this.imagenesList = imagenesList;
-        this.caracteristicasList = caracteristicasList;
-    }
 
-    public Producto(String titulo, String descripcion, Politica politica, List<Reserva> reservaSet, Categoria categoria, Ciudad ciudad, List<Imagen> imagenesList, List<Caracteristicas> caracteristicasList) {
-        this.titulo = titulo;
-        this.descripcion = descripcion;
-        this.politica = politica;
-        this.reservaSet = reservaSet;
-        this.categoria = categoria;
-        this.ciudad = ciudad;
-        this.imagenesList = imagenesList;
-        this.caracteristicasList = caracteristicasList;
-    }
 }
