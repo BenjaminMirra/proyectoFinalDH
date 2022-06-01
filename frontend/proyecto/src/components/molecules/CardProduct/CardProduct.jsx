@@ -63,7 +63,7 @@ export const CardProduct = ({
           </Paragraph>
         </div>
         <div className="icons">
-          <Icon icon="wifi" width="sm" onClick={() => {}}></Icon>
+          <Icon icon="bWifi" width="sm" onClick={() => {}}></Icon>
           <Icon icon="swim" width="md" onClick={() => {}}></Icon>
         </div>
         <div className="product-description">
