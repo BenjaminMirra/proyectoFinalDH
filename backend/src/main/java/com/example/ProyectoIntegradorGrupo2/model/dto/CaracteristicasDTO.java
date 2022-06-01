@@ -2,9 +2,16 @@ package com.example.ProyectoIntegradorGrupo2.model.dto;
 
 import com.example.ProyectoIntegradorGrupo2.model.Producto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+
+@Getter
+@Setter
+@ToString
 
 public class CaracteristicasDTO {
 
@@ -15,7 +22,7 @@ public class CaracteristicasDTO {
 
     private String nombre_icono;
 
-    private ProductoDTO productoDTO;
+    //private ProductoDTO productoDTO;
 
     public CaracteristicasDTO() {
     }

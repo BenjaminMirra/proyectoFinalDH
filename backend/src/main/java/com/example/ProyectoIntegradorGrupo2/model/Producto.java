@@ -35,7 +35,7 @@ public class Producto {
 
     @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
-    private Set<Reserva> reservaSet = new HashSet<>();//hacer otra tabla
+    private List<Reserva> reservaSet = new ArrayList<>();//hacer otra tabla
 
 
 
@@ -51,18 +51,19 @@ public class Producto {
 
     @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
-    private Set<Imagen> imagenesList = new HashSet<>();
+    private List<Imagen> imagenesList = new ArrayList<>();
 
     @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY)
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
-    private Set<Caracteristicas> caracteristicasList = new HashSet<>();
+    private List<Caracteristicas> caracteristicasList = new ArrayList<>();
 
     public Producto() {
     }
 
-    public Producto(Long id, String titulo, Politica politica, Set<Reserva> reservaSet, Categoria categoria, Ciudad ciudad, Set<Imagen> imagenesList, Set<Caracteristicas> caracteristicasList) {
+    public Producto(Long id, String titulo, String descripcion, Politica politica, List<Reserva> reservaSet, Categoria categoria, Ciudad ciudad, List<Imagen> imagenesList, List<Caracteristicas> caracteristicasList) {
         this.id = id;
         this.titulo = titulo;
+        this.descripcion = descripcion;
         this.politica = politica;
         this.reservaSet = reservaSet;
         this.categoria = categoria;
@@ -71,8 +72,9 @@ public class Producto {
         this.caracteristicasList = caracteristicasList;
     }
 
-    public Producto(String titulo, Politica politica, Set<Reserva> reservaSet, Categoria categoria, Ciudad ciudad, Set<Imagen> imagenesList, Set<Caracteristicas> caracteristicasList) {
+    public Producto(String titulo, String descripcion, Politica politica, List<Reserva> reservaSet, Categoria categoria, Ciudad ciudad, List<Imagen> imagenesList, List<Caracteristicas> caracteristicasList) {
         this.titulo = titulo;
+        this.descripcion = descripcion;
         this.politica = politica;
         this.reservaSet = reservaSet;
         this.categoria = categoria;

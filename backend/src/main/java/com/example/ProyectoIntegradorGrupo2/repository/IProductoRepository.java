@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @Repository
 public interface IProductoRepository extends JpaRepository<Producto, Long> {
-    @Query(
+   /* @Query(
             "SELECT p.titulo, p.descripcion, " +
                     "cat.titulo, c.nombre, c.provincia, c.pais, " +
                     "pol.cancelacion_descripcion, pol.norma_descripcion, pol.seguridad_descripcion " +
@@ -21,5 +21,5 @@ public interface IProductoRepository extends JpaRepository<Producto, Long> {
                     "inner join Politica pol" +
                     "on pol.id = p.politica_id" +
                     "WHERE cat.titulo = ?1 ")
-    Optional<Producto> findProductByCategoryName(String titulo);
+    Optional<Producto> findProductByCategoryName(String titulo);*/
 }
