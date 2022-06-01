@@ -35,8 +35,10 @@ import airConditioner from "../../utils/icons/airConditioner.svg";
 import noSmoking from "../../utils/icons/noSmoking.svg";
 import noParty from "../../utils/icons/noParty.svg";
 import smoke from "../../utils/icons/smoke.svg";
-import forward from '../../utils/icons/forward.svg'
-import forwardBlack from '../../utils/icons/forwardBlack.svg'
+import bWifi from "../../utils/icons/bWifi.svg";
+import bEmptyHeart from "../../utils/icons/bEmptyHeart.svg";
+import bShare from "../../utils/icons/bShare.svg";
+import bFavorite from "../../utils/icons/bFavorite.png";
 
 const IconsList = {
   user: user,
@@ -76,8 +78,10 @@ const IconsList = {
   noSmoking: noSmoking,
   noParty: noParty,
   television: television,
-  forward: forward,
-  forwardBlack: forwardBlack,
+  bWifi: bWifi,
+  bEmptyHeart: bEmptyHeart,
+  bShare: bShare,
+  bFavorite:bFavorite,
 }; ;
 export const KeysIconsList=Object.keys(IconsList)
 const IconWidth={

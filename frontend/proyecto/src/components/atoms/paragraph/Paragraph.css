@@ -8,6 +8,9 @@
 .paragraph-size-md{
     font-size:14px;
 }
+.paragraph-size-lg{
+    font-size: 20px;
+}
 .paragraph-colors-base{
     color: var(--color-base);
 }

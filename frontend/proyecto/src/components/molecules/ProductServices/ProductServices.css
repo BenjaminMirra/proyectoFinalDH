@@ -2,7 +2,7 @@
     width: 100%;
 }
 .productServices-container{
-    width: 95%;
+    width: 97%;
     margin: auto;
 }
 .productServices-services{
@@ -18,4 +18,14 @@
 }
 .service-description img{
     margin-right: 10px;
+}
+.productServices hr{
+    color: var(--color-primary);
+    border: .01px solid var(--color-primary);
+    
+}
+@media (max-width:768px) {
+    .productServices-container{
+        width: 95%;
+    }
 }

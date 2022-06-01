@@ -1,8 +1,9 @@
 .productDescription{
     width: 100%;
+    margin-top: 50px;
 }
 .productDescription-container{
-    width: 95%;
+    width: 97%;
     margin: auto;
 }
 .productDescription-container h2{
@@ -11,4 +12,18 @@
 }
 .productDescription-container p{
     margin-bottom: 20px;
+}
+
+@media (max-width:1000px) {
+    .productDescription{
+        margin-top: 10px;
+    }
+    .productDescription-container{
+        width: 97%;
+    }
+}
+@media (max-width:768px) {
+    .productDescription-container{
+        width: 95%;
+    }
 }
