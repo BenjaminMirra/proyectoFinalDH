@@ -20,7 +20,7 @@ Heading.propTypes={
     children: PropTypes.node.isRequired,
     title:PropTypes.oneOf(["h1","h2","h3",'h4']),
     type:PropTypes.oneOf(['xs',"lg","sm","md",'xl']),
-    variant:PropTypes.oneOf(['base',"primary","secondary"])
+    variant:PropTypes.oneOf(['base',"primary","secondary",'tertiary'])
 }
 
 Heading.defaultProps={

@@ -4,7 +4,7 @@ import { Heading } from '../../atoms/Heading/Heading'
 import { Button } from '../../atoms/Button/Button'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link,useNavigate } from "react-router-dom";
 
 import './LoginForm.css'
 
@@ -57,7 +57,7 @@ let userData={}
         }
     },[formValues])
 
-
+    const navigate=useNavigate()
     const handleSubmit=(e)=>{
     
         
@@ -65,7 +65,8 @@ let userData={}
         
         if(firstValidation('email','password')){
             localStorage.setItem("userData",JSON.stringify(userData))
-            window.location.href='http://localhost:3000/'
+            // window.location.href='http://localhost:3000/'
+            navigate('/')
         }
         
     }

@@ -13,15 +13,20 @@ export const CardProduct = ({
   descripcion,
   location,
   category,
+  id
 }) => {
   return (
     <div className="card-product">
+      
       <div className="card-product-img">
+        <Link to={`/products/${id}`}>
         <img className="product-img" src={url} alt={titulo} />
         <div className="fav">
           <Icon icon="favorite" width="md" height="sm" onClick={() => {}}></Icon>
         </div>
+        </Link>
       </div>
+      
       <div className="card-product-text">
         <div className="cat-cat">
           <Heading type="xs" title="h4" variant="tertiary">
@@ -40,7 +45,7 @@ export const CardProduct = ({
         </Heading>
         <div className="product-rating">
           <div className="product-rating-score">
-            <Paragraph size="lg" variant="secondary">
+            <Paragraph size="md" variant="secondary">
               8
             </Paragraph>
           </div>
@@ -52,7 +57,7 @@ export const CardProduct = ({
           <Icon icon="location" width="xs" onClick={() => {}}></Icon>
           <Paragraph size="md" variant="secondary">
             {location}
-            <Span size="md" variant="yellow">
+            <Span size="md" variant="primary">
               MOSTRAR EN EL MAPA
             </Span>
           </Paragraph>
@@ -64,19 +69,22 @@ export const CardProduct = ({
         <div className="product-description">
           <Paragraph size="md" variant="secondary">
             {descripcion}
-            <Link style={{textDecoration:'none'}} to={'/'}>
+            <Link style={{textDecoration:'none'}} to={`products/${id}`}>
+              
               <Span size="md" variant="primary">
                 Más...
             </Span>
             </Link>
             
           </Paragraph>
+          <Link style={{width:'100%'}} to={`products/${id}`}>
           <Button
             size="sm"
             label="Ver Detalle"
-            variant="primary"
+            variant={true}
             onClick={() => {}}
           ></Button>
+          </Link>
         </div>
       </div>
     </div>

@@ -13,6 +13,9 @@
 .color-secondary{
     color:var(--color-secondary);
 }
+.color-tertiary{
+    color:var(--color-tertiary);
+}
 
 .size-xs{
     font-size:14px;

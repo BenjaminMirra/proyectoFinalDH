@@ -20,7 +20,20 @@ import winstagram from "../../utils/icons/winstagram.svg";
 import wtwitter from "../../utils/icons/wtwitter.svg";
 import wlinkedin from "../../utils/icons/wlinkedin.svg";
 import locationEmpty from "../../utils/icons/locationEmpty.svg";
-import arrowLeft from '../../utils/icons/arrowLeft.svg'
+import back from "../../utils/icons/back.svg";
+import emptyStar from "../../utils/icons/emptyStar.svg";
+import emptyHeart from "../../utils/icons/emptyHeart.svg";
+import share from "../../utils/icons/share.svg";
+import pets from "../../utils/icons/pets.svg";
+import parking from "../../utils/icons/parking.svg";
+import television from "../../utils/icons/television.svg";
+import kitchen from "../../utils/icons/kitchen.svg";
+import clock from "../../utils/icons/clock.svg";
+import card from "../../utils/icons/card.svg";
+import airConditioner from "../../utils/icons/airConditioner.svg";
+import noSmoking from "../../utils/icons/noSmoking.svg";
+import noParty from "../../utils/icons/noParty.svg";
+import smoke from "../../utils/icons/smoke.svg";
 
 const IconsList = {
   user: user,
@@ -44,10 +57,22 @@ const IconsList = {
   winstagram: winstagram,
   wtwitter: wtwitter,
   wlinkedin: wlinkedin,
-  locationEmpty:locationEmpty,
-  arrowLeft:arrowLeft,
-}; 
-
+  locationEmpty: locationEmpty,
+  back: back,
+  emptyStar: emptyStar,
+  emptyHeart: emptyHeart,
+  share: share,
+  pets: pets,
+  parking: parking,
+  kitchen: kitchen,
+  clock: clock,
+  smoke: smoke,
+  card: card,
+  airConditioner: airConditioner,
+  noSmoking: noSmoking,
+  noParty: noParty,
+  television: television,
+}; ;
 export const KeysIconsList=Object.keys(IconsList)
 const IconWidth={
     xs:'14px',

@@ -35,7 +35,7 @@ export const MobileHeader = ({firstname,lastname,handleUserInfo}) => {
           {firstname!==undefined && lastname!==undefined?(<>
            { /* -------------------------------- User nav -------------------------------- */}
             <div className="nav-header">
-              {console.log(firstname + " "+ lastname)}
+              
                 <Icon id='close' icon='close' width='lg' onClick={toggleIsOn}/>
                 <div className='user-content'>
                 <Avatar firstname={firstname} lastname={lastname} variant='secondary'/>

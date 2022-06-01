@@ -13,6 +13,7 @@
     z-index: 10000000;
     position: sticky;
     width:100%;
+    font-family: 'Poppins';
     
 }
 .header-container{
@@ -20,7 +21,7 @@
     height: 93px;
     margin-left: 0;
     margin-right: 0;
-    width: 80%;
+    width: 95%;
     margin: auto;
     display: flex;
     justify-content: space-between;

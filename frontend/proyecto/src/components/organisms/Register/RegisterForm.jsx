@@ -4,7 +4,7 @@ import { Heading } from '../../atoms/Heading/Heading'
 import { Button } from '../../atoms/Button/Button'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
-import { Outlet, Link } from "react-router-dom";
+import { Outlet, Link,useNavigate } from "react-router-dom";
 import './RegisterForm.css'
 
 export const RegisterForm = () => {
@@ -54,13 +54,15 @@ export const RegisterForm = () => {
         }
     },[formValues])
 
+    const navigate=useNavigate()
     const handleSubmit=(e)=>{
         
         e.preventDefault()
         
         if(firstValidation('firstname','lastname','email','password','repassword')){
             localStorage.setItem("userData",JSON.stringify(userData))
-            window.location.href='http://localhost:3000/'
+            // window.location.href='http://localhost:3000/'
+            navigate('/')
         }
     }
     

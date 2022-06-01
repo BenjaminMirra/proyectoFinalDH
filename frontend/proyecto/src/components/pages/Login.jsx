@@ -6,10 +6,18 @@ import './Login.css'
 export const Login = () => {
   return (
     <>
-        <div className='contenedor-pagina'>
-        <Header firstname={undefined} lastname={undefined}/>
+        <div className='wrapper'>
+            <Header firstname={undefined} lastname={undefined}/>
+        <div className='contenedor-pagina' >
+            
+        
         <LoginForm/>
+        
+        
+        
         <Footer/>
+        </div>
+        
         </div>
     </>
   )
