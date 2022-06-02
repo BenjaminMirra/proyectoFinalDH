@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class DataLoader /*implements ApplicationRunner*/ {
 
-   /* @Autowired
+    /*@Autowired
     private ICategoriaRepository categoriaRepository;
 
     @Autowired

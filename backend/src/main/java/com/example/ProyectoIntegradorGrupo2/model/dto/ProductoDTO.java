@@ -31,7 +31,13 @@ public class ProductoDTO {
     private String descripcion;
 
 
-    private int rating;
+    private int puntaje;
+
+    private String direccion;
+
+    private double latitud;
+
+    private double longitud;
 
 
     private List<PoliticaDTO> politicaListDTO = new ArrayList<>(); //precargar

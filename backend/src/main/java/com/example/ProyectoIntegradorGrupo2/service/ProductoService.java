@@ -215,8 +215,8 @@ public class ProductoService implements IProductoService {
 
     }
 
-    /*@Override
-    public List<ProductoDTO> buscarProductoPorCategoria(String titulo) throws ResourceNotFoundException {
+    @Override
+    public List<ProductoDTO> buscarProductosPorCategoria(String titulo) throws ResourceNotFoundException {
         return null;
-    }*/
+    }
 }

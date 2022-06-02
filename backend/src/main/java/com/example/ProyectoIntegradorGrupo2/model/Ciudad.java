@@ -23,7 +23,7 @@ public class Ciudad {
 
     @Id
     @NotNull
-    @SequenceGenerator(name = "ciudad_sequence", sequenceName = "ciudad_sequence", allocationSize = 1, initialValue=5)
+    @SequenceGenerator(name = "ciudad_sequence", sequenceName = "ciudad_sequence", allocationSize = 1, initialValue=5) //
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ciudad_sequence")
     private Long id;
     @NotNull
