@@ -13,6 +13,6 @@ public interface IProductoService {
     List<ProductoDTO> listarTodos();
     ProductoDTO editar(ProductoDTO productoDTO)throws ResourceNotFoundException;
     void eliminar(Long id)throws ResourceNotFoundException;
-    List<ProductoDTO> buscarProductosPorCategoria(String titulo) throws ResourceNotFoundException;
+    List<ProductoDTO> buscarProductosPorCategoria(Long id) throws ResourceNotFoundException;
 
 }
