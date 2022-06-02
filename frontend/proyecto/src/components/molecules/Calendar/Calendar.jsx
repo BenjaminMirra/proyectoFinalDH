@@ -17,11 +17,11 @@ export const Calendar = () => {
     }, [windowWidth]);
 
     useEffect(() => {
-        if(windowWidth < 768){
-            setCalendarDisplayed(<DesktopCalendar/>)
+        if(windowWidth <= 768){
+            setCalendarDisplayed(<MobileCalendar/>)
         }
-        else if(windowWidth<=1365){
-            setCalendarDisplayed(<DesktopCalendar/>)
+        else if(windowWidth<1366){
+            setCalendarDisplayed(<TabletCalendar/>)
         }
         else if(windowWidth>=1366){
             setCalendarDisplayed(<DesktopCalendar/>)

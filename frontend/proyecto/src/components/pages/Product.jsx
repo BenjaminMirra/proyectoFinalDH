@@ -6,6 +6,8 @@ import { Footer } from '../organisms/Footer/Footer'
 import { Carousel } from '../molecules/Carousel/Carousel'
 import { ProductDescription } from '../molecules/ProductDescription/ProductDescription'
 import { ProductServices } from '../molecules/ProductServices/ProductServices'
+import { Calendar } from '../molecules/Calendar/Calendar'
+
 export const Product = () => {
   return (
      <div className='wrapper'>
@@ -17,6 +19,7 @@ export const Product = () => {
             <Carousel/>
             <ProductDescription/>
             <ProductServices/>
+            <Calendar/>
 
             <Footer/>
           </div>

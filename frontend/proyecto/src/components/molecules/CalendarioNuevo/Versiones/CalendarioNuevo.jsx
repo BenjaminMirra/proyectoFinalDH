@@ -2,16 +2,19 @@ import React, { useState, useEffect } from 'react';
 import './CalendarioNuevo.css';
 import { Icon } from '../../../atoms/Icon/Icon'
 
-import { buildCalendar } from './build';
+import { buildCalendar, buildCalendarSecond } from './build';
 import dayStyles, { beforeToday } from './styles';
 
-
 export const CalendarioNuevo = ({value, onChange}) => {
+    const [calendarios, setMeses] = useState([]);
     const [calendar, setCalendar] = useState([]);
+    const [calendarSecond, setCalendarSecond] = useState([]);
 
+    const meses = ["Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
 
     useEffect(() => {
         setCalendar(buildCalendar(value));
+        setCalendarSecond(buildCalendarSecond(value))
     }, [value]);
 
     function currMonthName() {
@@ -76,11 +79,11 @@ export const CalendarioNuevo = ({value, onChange}) => {
                                 ))
                             }
                         </div>
-                        {calendar.map((week) => (
+                        {calendarSecond.map((week) => (
                             <div>
                                 {week.map((day) => (
                                     <div className='calendarioPrimero-day' onClick={() => !beforeToday(day) && onChange(day)}>
-                                        <div className={dayStyles(day, value)}>
+                                        <div className={dayStyles(day, value)} onClick>
                                             {day.format("D").toString()}
                                         </div>
                                     </div>

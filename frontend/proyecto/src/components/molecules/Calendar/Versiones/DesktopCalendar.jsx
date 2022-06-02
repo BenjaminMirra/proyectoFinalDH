@@ -12,10 +12,14 @@ import './DesktopCalendar.css';
 import { Calendario } from '../../CalendarioNuevo/Calendario';
 
 
+
+
 export const DesktopCalendar = () => {
 
+    const { beforeToday } = DateRangePicker;
+
     return (
-        <div className="desktop-calendar">
+        <div className="desktop-calendarPadre">
             <div className='desktop-calendar-heading'>
                 <Heading title="h1" type="lg" variant="primary">
                     Fechas Disponibles
@@ -23,9 +27,9 @@ export const DesktopCalendar = () => {
             </div>
             <div className='desktop-calendar-reserva'>
                 <div className='desktop-calendario'>
-                    <Calendario/>
-                    {/* <CustomProvider locale={esAR}>
-                        <DateRangePicker open={true} size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"dd MMMM y"} locale={{
+                    {/* <Calendario/> */}
+                    <CustomProvider locale={esAR}>
+                        <DateRangePicker placement='autoVertical' open="true" disabledDate={beforeToday()} className="desktopCalendar" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"dd MMMM y"} locale={{
                             sunday: 'D',
                             monday: 'L',
                             tuesday: 'M',
@@ -35,13 +39,14 @@ export const DesktopCalendar = () => {
                             saturday: 'S',
                             ok: 'Aplicar',
                             today: 'Today',
-                        }} renderValue={(value) => {
-                            return format(value[0], "dd") + " de " + format(value[0], 'MMM').toLowerCase() + ". - " + format(value[1], "dd") + " de " + format(value[1], 'MMM').toLowerCase() + "."
                         }}
+                            renderValue={(value) => {
+                                return format(value[0], "dd") + " de " + format(value[0], 'MMM').toLowerCase() + ". - " + format(value[1], "dd") + " de " + format(value[1], 'MMM').toLowerCase() + "."
+                            }}
                         />
-                    </CustomProvider> */}
+                    </CustomProvider>
                 </div>
-                <div className='desktop-reserva'>
+                <div className="desktop-reserva">
                     <div className='desktop-reserva-heading'>
                         <Heading title="h4" type="sm" variant="primary">
                             Agregá tus fechas de viaje para obtener precios exactos
@@ -53,6 +58,6 @@ export const DesktopCalendar = () => {
                 </div>
 
             </div>
-        </div>
+        </div >
     )
 }
