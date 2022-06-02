@@ -27,7 +27,7 @@ public class ProductoController {
         return ResponseEntity.ok(productoAgregado.getId());
     }
 
-    @Operation(summary = "Obtener una producto por su id")
+    @Operation(summary = "Obtener un producto por su id")
     @GetMapping("/{id}")
     public ResponseEntity<?> obtenerProductoPorId(@PathVariable Long id) throws ResourceNotFoundException {
 
@@ -35,10 +35,25 @@ public class ProductoController {
         return ResponseEntity.ok(productoService.obtenerProductoPorId(id));
     }
 
+    @Operation(summary = "Eliminar un producto por su id")
+    @DeleteMapping ("eliminar/{id}")
+    public ResponseEntity<?> eliminarProductoPorId(@PathVariable Long id) throws ResourceNotFoundException {
+
+      productoService.eliminar(id);
+      return ResponseEntity.ok().body("DELETED");
+    }
+
     @Operation(summary = "Listar los productos según su categoría")
     @GetMapping("/porCategoria/{id}")
     public  ResponseEntity<?> listarProductosPorIdCategoria(@PathVariable Long id) throws ResourceNotFoundException {
 
         return ResponseEntity.ok(productoService.buscarProductosPorCategoria(id));
+    }
+
+    @Operation(summary = "Listar los productos según su ciudad")
+    @GetMapping("/porCiudad/{id}")
+    public  ResponseEntity<?> listarProductosPorIdCiudad(@PathVariable Long id) throws ResourceNotFoundException {
+
+        return ResponseEntity.ok(productoService.buscarProductosPorCiudad(id));
     }
 }

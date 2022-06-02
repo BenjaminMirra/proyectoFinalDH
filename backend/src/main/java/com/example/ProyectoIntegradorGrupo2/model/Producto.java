@@ -45,11 +45,11 @@ public class Producto {
 
     private int puntaje;
 
-    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
     private List<Politica> politicaList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
     private List<Reserva> reservaSet = new ArrayList<>();//hacer otra tabla
 
@@ -65,11 +65,11 @@ public class Producto {
     @JsonIgnore
     private Ciudad ciudad;
 
-    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
     private List<Imagen> imagenesList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
     private List<Caracteristicas> caracteristicasList = new ArrayList<>();
 
