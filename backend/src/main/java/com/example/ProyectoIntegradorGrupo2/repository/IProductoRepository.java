@@ -10,11 +10,13 @@ import java.util.Optional;
 
 @Repository
 public interface IProductoRepository extends JpaRepository<Producto, Long> {
-   @Query(
-            "SELECT p, " +
+   @Query( "SELECT p FROM Producto p WHERE p.categoria.id = ?1 ")
+   List<Optional<Producto>> listarProductosByCategoryId(Long id);
+
+       /* "SELECT p " +
                     "FROM Producto p " +
                     "inner join Categoria cat " +
-                    "on cat.id = p.categoria.id" +
-                    "WHERE cat.titulo = ?1 ")
-   List<Optional<Producto>> listarProductosByCategoryName(String titulo);
+                    "on cat.id = p.categoria.id " +
+                    "WHERE cat.titulo = ?1 ")*/
+
 }

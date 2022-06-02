@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -216,7 +218,52 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public List<ProductoDTO> buscarProductosPorCategoria(String titulo) throws ResourceNotFoundException {
-        return null;
+    public List<ProductoDTO> buscarProductosPorCategoria(Long id) throws ResourceNotFoundException {
+        List<Optional<Producto>> productosList = productoRepository.listarProductosByCategoryId(id);
+        ProductoDTO productoDTO = null;
+        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        for (Optional<Producto> producto: productosList
+             ) {
+            productoDTO = mapper.convertValue(producto.get(),ProductoDTO.class);
+
+            productoDTO.setCategoria_id(producto.get().getCategoria().getId());
+            productoDTO.setCiudad_id(producto.get().getCiudad().getId());
+
+            List<Optional<Imagen>> optionalImagenesList = imagenRepository.findImagesByProductId(id);
+            for (Optional<Imagen> i:optionalImagenesList) {
+                ImagenDTO imagenDTO = mapper.convertValue(i.get(),ImagenDTO.class);
+                productoDTO.getImagenDTOList().add(imagenDTO);
+            }
+
+            List<Optional<Reserva>> optionalReservaList = reservaRepository.findReservasByProductoId(id);
+            for (Optional<Reserva> r:optionalReservaList) {
+                ReservaDTO reservaDTO = mapper.convertValue(r.get(),ReservaDTO.class);
+                productoDTO.getReservaDTOList().add(reservaDTO);
+
+            }
+
+            List<Optional<Caracteristicas>> optionalCaracteristicasList = caracteristicasRepository.findCaracteristicasByProductoId(id);
+            for (Optional<Caracteristicas> c:optionalCaracteristicasList) {
+                CaracteristicasDTO caracteristicasDTO = mapper.convertValue(c.get(), CaracteristicasDTO.class);
+                productoDTO.getCaracteristicasDTOList().add(caracteristicasDTO);
+
+            }
+
+            List<Optional<Politica>> optionalPoliticaList = politicaRepository.findPoliticasByProductId(id);
+            for (Optional<Politica> pol:optionalPoliticaList) {
+                PoliticaDTO politicaDTO = mapper.convertValue(pol.get(), PoliticaDTO.class);
+                politicaDTO.setTipo_politica_id(pol.get().getTipoDePoliticas().getId());
+                productoDTO.getPoliticaListDTO().add(politicaDTO);
+
+            }
+
+
+            productoDTOList.add(productoDTO);
+
+        }
+
+
+        productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+        return productoDTOList ;
     }
 }

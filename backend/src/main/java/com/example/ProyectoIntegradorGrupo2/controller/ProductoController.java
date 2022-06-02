@@ -19,7 +19,7 @@ public class ProductoController {
     @Autowired
     private IProductoService productoService;
 
-    @Operation(summary = "Agregar una categoría")
+    @Operation(summary = "Agregar un producto")
     @PostMapping("/agregar")
     public ResponseEntity<?> agregarProducto(@RequestBody ProductoDTO productoDTO) throws BadRequestException {
         ProductoDTO productoAgregado = productoService.agregarProducto(productoDTO);
@@ -27,11 +27,18 @@ public class ProductoController {
         return ResponseEntity.ok(productoAgregado.getId());
     }
 
-    @Operation(summary = "Obtener una categoría por su id")
+    @Operation(summary = "Obtener una producto por su id")
     @GetMapping("/{id}")
     public ResponseEntity<?> obtenerProductoPorId(@PathVariable Long id) throws ResourceNotFoundException {
 
 
         return ResponseEntity.ok(productoService.obtenerProductoPorId(id));
+    }
+
+    @Operation(summary = "Listar los productos según su categoría")
+    @GetMapping("/porCategoria/{id}")
+    public  ResponseEntity<?> listarProductosPorIdCategoria(@PathVariable Long id) throws ResourceNotFoundException {
+
+        return ResponseEntity.ok(productoService.buscarProductosPorCategoria(id));
     }
 }
