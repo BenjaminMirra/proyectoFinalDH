@@ -26,10 +26,10 @@ public class PoliticaDTO {
 
 
 
-    private ProductoDTO productoDTO;
+    //private ProductoDTO productoDTO;
 
 
-    private TipoDePoliticasDTO tipoDePoliticasDTO;
+    private Long tipo_politica_id;
 
     public PoliticaDTO() {
     }

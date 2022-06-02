@@ -3,10 +3,7 @@ package com.example.ProyectoIntegradorGrupo2.service;
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.*;
-import com.example.ProyectoIntegradorGrupo2.model.dto.CaracteristicasDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ImagenDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ReservaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.*;
 import com.example.ProyectoIntegradorGrupo2.repository.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,10 +39,68 @@ public class ProductoService implements IProductoService {
     private IPoliticaRepository politicaRepository;
 
     @Autowired
+    private ITipoDePoliticasRepository tipoDePoliticasRepository;
+
+    @Autowired
     ObjectMapper mapper;
 
     @Override
     public ProductoDTO agregarProducto(ProductoDTO productoDTO) throws BadRequestException {
+        Producto producto = mapper.convertValue(productoDTO, Producto.class);
+        producto.setTitulo(productoDTO.getTitulo());
+        producto.setTitulo_descripcion(productoDTO.getTitulo_descripcion());
+        producto.setDescripcion(productoDTO.getDescripcion());
+        producto.setRating(productoDTO.getRating());
+
+        Optional<Categoria> categoriaDesdeDB = categoriaRepository.findById(productoDTO.getCategoria_id());
+        producto.setCategoria(categoriaDesdeDB.get());
+
+        Optional<Ciudad> ciudadDesdeDB = ciudadRepository.findById(productoDTO.getCiudad_id());
+        producto.setCiudad(ciudadDesdeDB.get());
+
+        Producto pConId = productoRepository.save(producto);
+        Optional<Producto> productoDesdeDB = productoRepository.findById(pConId.getId());
+
+
+        List<CaracteristicasDTO> caracteristicasDTOList = productoDTO.getCaracteristicasDTOList();
+
+        for (CaracteristicasDTO caracteristicasDTO:caracteristicasDTOList) {
+            Caracteristicas caracteristica = mapper.convertValue(caracteristicasDTO, Caracteristicas.class);
+            caracteristica.setProducto(productoDesdeDB.get());
+            caracteristicasRepository.save(caracteristica);
+            productoDesdeDB.get().getCaracteristicasList().add(caracteristica);
+        }
+
+        List<ReservaDTO> reservaDTOList = productoDTO.getReservaDTOList();
+
+        for (ReservaDTO r:reservaDTOList) {
+            Reserva reserva = mapper.convertValue(r, Reserva.class);
+            reserva.setProducto(productoDesdeDB.get());
+            reservaRepository.save(reserva);
+            productoDesdeDB.get().getReservaSet().add(reserva);
+        }
+
+        List<ImagenDTO> imagenDTOList = productoDTO.getImagenDTOList();
+
+        for (ImagenDTO i:imagenDTOList) {
+            Imagen imagen = mapper.convertValue(i, Imagen.class);
+            imagen.setProducto(productoDesdeDB.get());
+            imagenRepository.save(imagen);
+            productoDesdeDB.get().getImagenesList().add(imagen);
+        }
+
+        List<PoliticaDTO> politicaDTOList = productoDTO.getPoliticaListDTO();
+
+        for (PoliticaDTO p:politicaDTOList) {
+            Politica politica = mapper.convertValue(p, Politica.class);
+            politica.setProducto(productoDesdeDB.get());
+            Optional<TipoDePoliticas> tipoDePoliticas = tipoDePoliticasRepository.findById(p.getTipo_politica_id());
+            politica.setTipoDePoliticas(tipoDePoliticas.get());
+            politicaRepository.save(politica);
+            tipoDePoliticas.get().getPoliticaList().add(politica);
+            productoDesdeDB.get().getPoliticaList().add(politica);
+        }
+
         /*Producto producto = mapper.convertValue(productoDTO, Producto.class);
 
         Ciudad ciudad = mapper.convertValue(productoDTO.getCiudadDTO(), Ciudad.class);
@@ -96,7 +151,8 @@ public class ProductoService implements IProductoService {
         Producto productoGuardado = productoRepository.save(productoDesdeDB.get());
         ProductoDTO productoDTOGuardado = mapper.convertValue(productoGuardado, ProductoDTO.class);
         return productoDTOGuardado;*/
-        return null;
+        productoDTO.setId(productoDesdeDB.get().getId());
+        return productoDTO;
     }
 
     @Override

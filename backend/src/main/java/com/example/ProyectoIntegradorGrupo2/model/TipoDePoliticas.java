@@ -40,6 +40,10 @@ public class TipoDePoliticas {
         this.politicaList = politicaList;
     }
 
+    public TipoDePoliticas(String nombre_tipo_politica) {
+        this.nombre_tipo_politica = nombre_tipo_politica;
+    }
+
     public TipoDePoliticas(String nombre_tipo_politica, List<Politica> politicaList) {
         this.nombre_tipo_politica = nombre_tipo_politica;
         this.politicaList = politicaList;

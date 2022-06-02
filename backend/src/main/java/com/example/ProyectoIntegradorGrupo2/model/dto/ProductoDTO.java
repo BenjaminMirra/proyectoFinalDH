@@ -38,15 +38,15 @@ public class ProductoDTO {
 
 
 
-    private CategoriaDTO categoriaDTO;
+    private Long categoria_id;
     //private Long idCategoria;
-    private CiudadDTO ciudadDTO;//precargar
+    private Long ciudad_id;//precargar
 
     private List<ReservaDTO> reservaDTOList = new ArrayList<>();
 
     private List<ImagenDTO> imagenDTOList = new ArrayList<>();
 
-    private List<CaracteristicasDTO> caracteristicasDTOList = new ArrayList<>();//precargar
+    private List<CaracteristicasDTO> caracteristicasDTOList = new ArrayList<>();
 
     public ProductoDTO() {
     }
