@@ -57,7 +57,7 @@
 }
 
 @media (min-width: 1366px) {
-    .rs-anim-fade {
+    .animation-desktop-CalendarProduct{
         width: 56%;
         display: flex;
         justify-content: center;
@@ -65,7 +65,7 @@
         text-align: center;
         
     }
-    .rs-calendar-table-cell-day{
+    .animation-desktop-font{
         font-size: 20px;
     }
 }

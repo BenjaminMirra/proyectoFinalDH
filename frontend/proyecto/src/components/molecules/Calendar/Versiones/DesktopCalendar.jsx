@@ -15,6 +15,15 @@ import { Calendario } from '../../CalendarioNuevo/Calendario';
 
 
 export const DesktopCalendar = () => {
+    ;
+
+    setTimeout(() => {
+        const animation = document.getElementsByClassName("rs-anim-fade")[0];
+        const animationFont = document.getElementsByClassName("rs-calendar-table-cell-day")[0];
+        animationFont.classList.add("animation-desktop-font")
+        animation.classList.add("animation-desktop-CalendarProduct");
+    }, 500)
+
 
     const { beforeToday } = DateRangePicker;
 

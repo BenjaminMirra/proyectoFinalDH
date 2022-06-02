@@ -18,6 +18,14 @@ export const TabletCalendar = () => {
 
     const { beforeToday } = DateRangePicker;
 
+    setTimeout(() => {
+        const animation = document.getElementsByClassName("rs-anim-fade")[0];
+        const animationFont = document.getElementsByClassName("rs-calendar-table-cell-day")[0];
+        animationFont.classList.add("animation-tablet-font")
+        animation.classList.add("animation-tablet-CalendarProduct");
+    }, 500)
+
+
     return (
         <div className="tablet-calendarPadre">
             <div className='tablet-calendar-heading'>

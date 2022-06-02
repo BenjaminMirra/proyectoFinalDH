@@ -4,11 +4,11 @@ import {GoogleMap,useLoadScript,Marker,useGoogleMap} from '@react-google-maps/ap
 import credentials from '../../../credentials'
 import './Map.css'
 import { Heading } from '../../atoms/Heading/Heading'
- export const Map = ({lat,lng,location}) => {
-     const {isLoaded}=useLoadScript({googleMapsApiKey:credentials.mapsKey})
+export const Map = ({lat,lng,location}) => {
+    const {isLoaded}=useLoadScript({googleMapsApiKey:credentials.mapsKey})
 
-     if(!isLoaded)return <div>Loading...</div>;
-     return <LoadedMap lat={lat} lng={lng} location={location}/>
+    if(!isLoaded)return <div>Loading...</div>;
+    return <LoadedMap lat={lat} lng={lng} location={location}/>
 
 }
 function LoadedMap({lat,lng,location}){
@@ -20,7 +20,7 @@ function LoadedMap({lat,lng,location}){
     const MockUp={lat:-37.335028,lng:-59.136085,location:'Buenos Aires, Argentina'}
     useEffect(() => {
         setTimeout(()=> setRandom('2'),1)
-       
+    
     
     }, []);
     const center={lat:MockUp.lat,lng:MockUp.lng}
@@ -50,7 +50,7 @@ function LoadedMap({lat,lng,location}){
         mapContainerClassName='map-container' options={createMapOptions} >
         <Marker position={myLatLng} key={random} />
 
-       </GoogleMap>
-       </div>
+    </GoogleMap>
+    </div>
         </div>)
 }

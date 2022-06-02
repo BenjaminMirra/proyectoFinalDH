@@ -42,11 +42,11 @@
 }
 
 @media (max-width: 768px) {
-    .rs-anim-fade {
+    .animation-mobile-CalendarProduct {
         width: 79%;
         
     }
-    .rs-calendar-table-cell-day{
+    .animation-mobile-font{
         font-size: 15px;
     }
 }
