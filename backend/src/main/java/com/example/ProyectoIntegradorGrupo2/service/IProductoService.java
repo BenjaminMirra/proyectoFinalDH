@@ -4,6 +4,7 @@ import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.dto.CategoriaDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
+import com.example.ProyectoIntegradorGrupo2.utils.InfoProductos;
 
 import java.util.List;
 
@@ -14,5 +15,6 @@ public interface IProductoService {
     ProductoDTO editar(ProductoDTO productoDTO)throws ResourceNotFoundException;
     void eliminar(Long id)throws ResourceNotFoundException;
     List<ProductoDTO> buscarProductosPorCategoria(Long id) throws ResourceNotFoundException;
+    InfoProductos buscarProductosPorCiudad(Long id) throws ResourceNotFoundException;
 
 }

@@ -19,4 +19,6 @@ public interface IProductoRepository extends JpaRepository<Producto, Long> {
                     "on cat.id = p.categoria.id " +
                     "WHERE cat.titulo = ?1 ")*/
 
+   @Query( "SELECT p FROM Producto p WHERE p.ciudad.id = ?1 ")
+   List<Optional<Producto>> listarProductosByCiudadId(Long id);
 }
