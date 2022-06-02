@@ -294,7 +294,10 @@ DROP TABLE IF EXISTS `productos`;
 CREATE TABLE `productos` (
   `id` bigint NOT NULL,
   `descripcion` varchar(500) DEFAULT NULL,
-  `rating` int,
+  `direccion` varchar(255) DEFAULT NULL,
+  `latitud` double NOT NULL,
+  `longitud` double NOT NULL,
+  `puntaje` int NOT NULL,
   `titulo` varchar(255) DEFAULT NULL,
   `titulo_descripcion` varchar(255) DEFAULT NULL,
   `categoria_id` bigint NOT NULL,
@@ -420,4 +423,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-02 11:49:57
+-- Dump completed on 2022-06-02 16:18:43
