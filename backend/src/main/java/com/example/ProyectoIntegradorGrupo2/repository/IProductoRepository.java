@@ -11,7 +11,7 @@ import java.util.Optional;
 @Repository
 public interface IProductoRepository extends JpaRepository<Producto, Long> {
    @Query(
-            "SELECT p, " +
+            "SELECT p " +
                     "FROM Producto p " +
                     "inner join Categoria cat " +
                     "on cat.id = p.categoria.id" +
