@@ -11,6 +11,9 @@ import format from 'date-fns/format';
 
 export const CalendarDrop = () => {
 
+    const {beforeToday } = DateRangePicker;
+    
+
     const [userInfo, setUserInfo] = useState({})
     const resetUserInfo = () => setUserInfo({});
 
@@ -30,7 +33,7 @@ export const CalendarDrop = () => {
 
     useEffect(() => {
         if (windowWidth <= 768) {
-            serCalendarDisplayed(<DateRangePicker className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={true} format={"d MMMM yyyy"} locale={{
+            serCalendarDisplayed(<DateRangePicker disabledDate={beforeToday()}  className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={true} format={"d MMMM yyyy"} locale={{
                 sunday: 'D',
                 monday: 'L',
                 tuesday: 'M',
@@ -46,7 +49,7 @@ export const CalendarDrop = () => {
         }
         else if (windowWidth > 768 && windowWidth < 1366) {
             serCalendarDisplayed(<>
-                <DateRangePicker placement='auto' className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"d MMMM yyyy"} locale={{
+                <DateRangePicker disabledDate={beforeToday()}  placement='auto' className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"d MMMM yyyy"} locale={{
                     sunday: 'D',
                     monday: 'L',
                     tuesday: 'M',
@@ -62,7 +65,7 @@ export const CalendarDrop = () => {
             </>)
         } else if (windowWidth => 1366) {
             serCalendarDisplayed(<>
-                <DateRangePicker className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"dd MMMM y"} locale={{
+                <DateRangePicker disabledDate={beforeToday()}  className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"dd MMMM y"} locale={{
                     sunday: 'D',
                     monday: 'L',
                     tuesday: 'M',
