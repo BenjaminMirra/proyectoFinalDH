@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -172,7 +169,7 @@ public class ProductoService implements IProductoService {
 
         }
 
-        productoDTOList.sort(Comparator.comparing(ProductoDTO::getDescripcion));
+        Collections.shuffle(productoDTOList);
 
         return productoDTOList;
 
