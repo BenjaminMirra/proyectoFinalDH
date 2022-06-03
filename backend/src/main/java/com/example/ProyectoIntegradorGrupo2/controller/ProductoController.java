@@ -44,7 +44,7 @@ public class ProductoController {
       productoService.eliminar(id);
       return ResponseEntity.ok().body("DELETED");
     }
-    @Operation(summary = "Obtener una lista de todas las categorias")
+    @Operation(summary = "Obtener una lista de todos los productos")
     @GetMapping("/todos")
     public ResponseEntity<?> listarProductos(){
         return ResponseEntity.ok(productoService.listarTodos());
