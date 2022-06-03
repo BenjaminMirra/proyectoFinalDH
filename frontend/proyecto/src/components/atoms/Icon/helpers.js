@@ -40,6 +40,7 @@ import bEmptyHeart from "../../utils/icons/bEmptyHeart.svg";
 import bShare from "../../utils/icons/bShare.svg";
 import bFavorite from "../../utils/icons/bFavorite.png";
 import forward from '../../utils/icons/forward.svg'
+import rightArrow from "../../utils/icons/rightArrow.svg";
 
 const IconsList = {
   user: user,
@@ -82,8 +83,9 @@ const IconsList = {
   bWifi: bWifi,
   bEmptyHeart: bEmptyHeart,
   bShare: bShare,
-  bFavorite:bFavorite,
-  forward:forward
+  bFavorite: bFavorite,
+  forward: forward,
+  rightArrow: rightArrow,
 }; ;
 export const KeysIconsList=Object.keys(IconsList)
 const IconWidth={
