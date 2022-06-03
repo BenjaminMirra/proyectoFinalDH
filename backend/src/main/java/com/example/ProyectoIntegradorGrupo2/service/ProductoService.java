@@ -5,16 +5,12 @@ import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException
 import com.example.ProyectoIntegradorGrupo2.model.*;
 import com.example.ProyectoIntegradorGrupo2.model.dto.*;
 import com.example.ProyectoIntegradorGrupo2.repository.*;
-import com.example.ProyectoIntegradorGrupo2.utils.InfoProductos;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -47,13 +43,9 @@ public class ProductoService implements IProductoService {
     @Autowired
     ObjectMapper mapper;
 
-    @Override
-    public ProductoDTO agregarProducto(ProductoDTO productoDTO) throws BadRequestException {
+    private ProductoDTO cargarProductoYRetornarDTO(ProductoDTO productoDTO){
         Producto producto = mapper.convertValue(productoDTO, Producto.class);
-        /*producto.setTitulo(productoDTO.getTitulo());
-        producto.setTitulo_descripcion(productoDTO.getTitulo_descripcion());
-        producto.setDescripcion(productoDTO.getDescripcion());
-        producto.setRating(productoDTO.getRating());*/
+
 
         Optional<Categoria> categoriaDesdeDB = categoriaRepository.findById(productoDTO.getCategoria_id());
         producto.setCategoria(categoriaDesdeDB.get());
@@ -108,19 +100,11 @@ public class ProductoService implements IProductoService {
         return productoDTO;
     }
 
-    @Override
-    public ProductoDTO obtenerProductoPorId(Long id) throws ResourceNotFoundException {
-        Optional<Producto> producto = productoRepository.findById(id);
-        ProductoDTO productoDTO = null;
+    private ProductoDTO obteberProductoDTOConTodosLosAtributos(Producto producto, Long id){
+        ProductoDTO productoDTO = mapper.convertValue(producto, ProductoDTO.class);
 
-        if (producto.isEmpty())
-            throw new ResourceNotFoundException("No se ha encontrado el producto con el id");
-
-        if (producto.isPresent())
-            productoDTO = mapper.convertValue(producto.get(), ProductoDTO.class);
-
-        productoDTO.setCategoria_id(producto.get().getCategoria().getId());
-        productoDTO.setCiudad_id(producto.get().getCiudad().getId());
+        productoDTO.setCategoria_id(producto.getCategoria().getId());
+        productoDTO.setCiudad_id(producto.getCiudad().getId());
 
         List<Optional<Imagen>> optionalImagenesList = imagenRepository.findImagesByProductId(id);
         for (Optional<Imagen> i : optionalImagenesList) {
@@ -154,13 +138,52 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public List<ProductoDTO> listarTodos() {
-        return null;
+    public ProductoDTO agregarProducto(ProductoDTO productoDTO) throws BadRequestException {
+       if (productoDTO.getCategoria_id() ==null || productoDTO.getCiudad_id()==null)
+           throw new BadRequestException("No se puede guardar un producto sin asignarle una ciudad y/o categoria");
+
+       return cargarProductoYRetornarDTO(productoDTO);
     }
 
     @Override
-    public ProductoDTO editar(ProductoDTO productoDTO) throws ResourceNotFoundException {
-        return null;
+    public ProductoDTO obtenerProductoPorId(Long id) throws ResourceNotFoundException {
+        Optional<Producto> producto = productoRepository.findById(id);
+
+        if (producto.isEmpty())
+            throw new ResourceNotFoundException("No se ha encontrado el producto con el id");
+
+        return obteberProductoDTOConTodosLosAtributos(producto.get(),id);
+    }
+
+    @Override
+    public List<ProductoDTO> listarTodos(){
+        List<Producto> productosList = productoRepository.findAll();
+
+
+        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        for (Producto producto : productosList
+        ) {
+            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto, producto.getId());
+
+            productoDTOList.add(productoDTO);
+
+        }
+
+        Collections.shuffle(productoDTOList);
+
+        return productoDTOList;
+
+    }
+
+    @Override
+    public ProductoDTO editar(ProductoDTO productoDTO) throws ResourceNotFoundException ,BadRequestException {
+        Optional<Producto> producto = productoRepository.findById(productoDTO.getId());
+        if (productoDTO.getCiudad_id()==null || productoDTO.getCategoria_id()==null)
+            throw new BadRequestException("El producto debe tener asignada una ciudad y una categoria");
+        if (producto.isEmpty())
+            throw new ResourceNotFoundException("No se ha encontrado el producto con ese id" + productoDTO.getId());
+
+        return cargarProductoYRetornarDTO(productoDTO);
     }
 
     @Override
@@ -176,102 +199,43 @@ public class ProductoService implements IProductoService {
     @Override
     public List<ProductoDTO> buscarProductosPorCategoria(Long id) throws ResourceNotFoundException {
         List<Optional<Producto>> productosList = productoRepository.listarProductosByCategoryId(id);
-        ProductoDTO productoDTO = null;
+        if (productosList.isEmpty())
+            throw new ResourceNotFoundException("No se encontraron productos con ésa categoria");
+
+
         List<ProductoDTO> productoDTOList = new ArrayList<>();
         for (Optional<Producto> producto : productosList
         ) {
-            productoDTO = mapper.convertValue(producto.get(), ProductoDTO.class);
-
-            productoDTO.setCategoria_id(producto.get().getCategoria().getId());
-            productoDTO.setCiudad_id(producto.get().getCiudad().getId());
-
-            List<Optional<Imagen>> optionalImagenesList = imagenRepository.findImagesByProductId(id);
-            for (Optional<Imagen> i : optionalImagenesList) {
-                ImagenDTO imagenDTO = mapper.convertValue(i.get(), ImagenDTO.class);
-                productoDTO.getImagenDTOList().add(imagenDTO);
-            }
-
-            List<Optional<Reserva>> optionalReservaList = reservaRepository.findReservasByProductoId(id);
-            for (Optional<Reserva> r : optionalReservaList) {
-                ReservaDTO reservaDTO = mapper.convertValue(r.get(), ReservaDTO.class);
-                productoDTO.getReservaDTOList().add(reservaDTO);
-
-            }
-
-            List<Optional<Caracteristicas>> optionalCaracteristicasList = caracteristicasRepository.findCaracteristicasByProductoId(id);
-            for (Optional<Caracteristicas> c : optionalCaracteristicasList) {
-                CaracteristicasDTO caracteristicasDTO = mapper.convertValue(c.get(), CaracteristicasDTO.class);
-                productoDTO.getCaracteristicasDTOList().add(caracteristicasDTO);
-
-            }
-
-            List<Optional<Politica>> optionalPoliticaList = politicaRepository.findPoliticasByProductId(id);
-            for (Optional<Politica> pol : optionalPoliticaList) {
-                PoliticaDTO politicaDTO = mapper.convertValue(pol.get(), PoliticaDTO.class);
-                politicaDTO.setTipo_politica_id(pol.get().getTipoDePoliticas().getId());
-                productoDTO.getPoliticaListDTO().add(politicaDTO);
-
-            }
-
+            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
 
             productoDTOList.add(productoDTO);
 
         }
 
-
         productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+
         return productoDTOList;
     }
 
 
     @Override
-    public InfoProductos buscarProductosPorCiudad(Long id) throws ResourceNotFoundException {
+    public List<ProductoDTO> buscarProductosPorCiudad(Long id) throws ResourceNotFoundException {
 
         List<Optional<Producto>> productosList = productoRepository.listarProductosByCiudadId(id);
-        ProductoDTO productoDTO = null;
+        if (productosList.isEmpty())
+            throw new ResourceNotFoundException("No se encontraron productos de ésa ciudad");
         List<ProductoDTO> productoDTOList = new ArrayList<>();
         for (Optional<Producto> producto : productosList
         ) {
-            productoDTO = mapper.convertValue(producto.get(), ProductoDTO.class);
 
-            productoDTO.setCategoria_id(producto.get().getCategoria().getId());
-            productoDTO.setCiudad_id(producto.get().getCiudad().getId());
-
-            List<Optional<Imagen>> optionalImagenesList = imagenRepository.findImagesByProductId(id);
-            for (Optional<Imagen> i : optionalImagenesList) {
-                ImagenDTO imagenDTO = mapper.convertValue(i.get(), ImagenDTO.class);
-                productoDTO.getImagenDTOList().add(imagenDTO);
-            }
-
-            List<Optional<Reserva>> optionalReservaList = reservaRepository.findReservasByProductoId(id);
-            for (Optional<Reserva> r : optionalReservaList) {
-                ReservaDTO reservaDTO = mapper.convertValue(r.get(), ReservaDTO.class);
-                productoDTO.getReservaDTOList().add(reservaDTO);
-
-            }
-
-            List<Optional<Caracteristicas>> optionalCaracteristicasList = caracteristicasRepository.findCaracteristicasByProductoId(id);
-            for (Optional<Caracteristicas> c : optionalCaracteristicasList) {
-                CaracteristicasDTO caracteristicasDTO = mapper.convertValue(c.get(), CaracteristicasDTO.class);
-                productoDTO.getCaracteristicasDTOList().add(caracteristicasDTO);
-
-            }
-
-            List<Optional<Politica>> optionalPoliticaList = politicaRepository.findPoliticasByProductId(id);
-            for (Optional<Politica> pol : optionalPoliticaList) {
-                PoliticaDTO politicaDTO = mapper.convertValue(pol.get(), PoliticaDTO.class);
-                politicaDTO.setTipo_politica_id(pol.get().getTipoDePoliticas().getId());
-                productoDTO.getPoliticaListDTO().add(politicaDTO);
-
-            }
-
+            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
 
             productoDTOList.add(productoDTO);
         }
 
         productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
-        InfoProductos infoProductos = new InfoProductos(productoDTOList.size(),productoDTOList);
-        return infoProductos;
+
+        return productoDTOList;
     }
 
 }
