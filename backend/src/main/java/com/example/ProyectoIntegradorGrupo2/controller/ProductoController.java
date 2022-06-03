@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
+
 @CrossOrigin("*")
 //@CrossOrigin(origins = "http://localhost:8080")
 @RestController
@@ -41,6 +43,11 @@ public class ProductoController {
 
       productoService.eliminar(id);
       return ResponseEntity.ok().body("DELETED");
+    }
+    @Operation(summary = "Obtener una lista de todas las categorias")
+    @GetMapping("/todos")
+    public ResponseEntity<?> listarProductos(){
+        return ResponseEntity.ok(productoService.listarTodos());
     }
 
     @Operation(summary = "Listar los productos según su categoría")
