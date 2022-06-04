@@ -40,8 +40,30 @@ import bEmptyHeart from "../../utils/icons/bEmptyHeart.svg";
 import bShare from "../../utils/icons/bShare.svg";
 import bFavorite from "../../utils/icons/bFavorite.png";
 import forward from '../../utils/icons/forward.svg'
+import pool from '../../utils/icons/pool.svg'
+import jardin from '../../utils/icons/jardin.svg'
+import bar from '../../utils/icons/bar.svg'
+import spa from '../../utils/icons/spa.svg'
+import gym from '../../utils/icons/gym.svg'
+import lift from '../../utils/icons/lift.svg'
+import reception from '../../utils/icons/reception.svg'
+import cajaFuerte from '../../utils/icons/cajaFuerte.svg'
+import bano from '../../utils/icons/bano.svg'
+import limpieza from '../../utils/icons/limpieza.svg'
+import calefaccion from '../../utils/icons/calefaccion.svg'
 
 const IconsList = {
+  calefaccion : calefaccion,
+  limpieza : limpieza,
+  bano : bano,
+  cajaFuerte : cajaFuerte,
+  reception : reception,
+  lift : lift,
+  gym : gym,
+  spa : spa,
+  bar: bar,
+  pool: pool,
+  jardin: jardin,
   user: user,
   calendar: calendar,
   search: search,
