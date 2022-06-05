@@ -166,3 +166,9 @@ button[disabled]{
   background-color: #cccccc;
   color: #666666;
 }
+
+@media (max-width: 768px) {
+    .animation-mobile-DropCalendar {
+        width: 79%;
+    }
+}

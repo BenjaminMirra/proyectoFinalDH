@@ -34,10 +34,11 @@ export const TabletCalendar = () => {
                 </Heading>
             </div>
             <div className='tablet-calendar-reserva'>
-                <div className='tablet-calendario'>
+                <div  className='tablet-calendario'>
                     {/* <Calendario/> */}
                     <CustomProvider locale={esAR}>
                         <DateRangePicker placement='autoVertical' open="true" disabledDate={beforeToday()} className="tabletCalendar" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"dd MMMM y"} locale={{
+
                             sunday: 'D',
                             monday: 'L',
                             tuesday: 'M',
