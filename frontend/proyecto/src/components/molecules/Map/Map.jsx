@@ -23,7 +23,7 @@ function LoadedMap({lat,lng,location}){
     
     
     }, []);
-    const center={lat:lat,lng:lat}
+    const center={lat:lat,lng:lng}
     const myLatLng = { lat:lat,lng:lng }
     
     var createMapOptions={
@@ -45,7 +45,7 @@ function LoadedMap({lat,lng,location}){
             <hr />
             <div className='map-loaded-container'>
                 <Heading title='h4' variant='secondary' type='sm' >{location}</Heading>
-            <GoogleMap zoom={15}
+            <GoogleMap zoom={17}
         center={center}
         mapContainerClassName='map-container' options={createMapOptions} >
         <Marker position={myLatLng} key={random} />

@@ -32,7 +32,7 @@ export function MobileCarousel(props) {
           if (props.images) {
             setLoad(false)
           }
-          },1500)
+          },2000)
     }, [props.images]);
   return (<>
   {load?<MockUp width='100%' height='380px'/>:<div className="mobileCarousel">

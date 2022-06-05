@@ -25,7 +25,7 @@ export const Product = () => {
     window.scrollTo(0, 0);
     axios.get(`http://localhost:8080/productos/${id}`).then(data=>
     {
-      setCategoria(data.data.categoria_id==2?'Hoteles':'Otro')
+      setCategoria(data.data.categoria_id==1?'Hoteles':data.data.categoria_id==2?'Hosteles':data.data.categoria_id==3?'Departamentos':'Bed & Breakfast')
       setProductData(data.data)})
   }, [id]);
 

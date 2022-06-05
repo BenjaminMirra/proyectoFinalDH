@@ -17,7 +17,7 @@ export const ProductInfo = (props) => {
                         return [...prevValue,element.descripcion]
                     });
                 }
-                else if (element.tipo_politica_id==3) {
+                else if (element.tipo_politica_id===2) {
                     setHealthAndSafety((prevValue)=>{
                         return [...prevValue,element.descripcion]
                     });
@@ -59,7 +59,7 @@ export const ProductInfo = (props) => {
                 <SpacerHorizontal height='md' />
                  <Heading type='md' variant='secondary' >Política de cancelación</Heading>
                  <SpacerHorizontal height='sm' />
-                 {cancelationPolicy.length>0&&cancelationPolicy.map(item=><><Paragraph>{item}</Paragraph><SpacerHorizontal height='xs' /></>)}
+                 {cancelationPolicy.length>0&&cancelationPolicy.map(item=><><Paragraph >{item}</Paragraph ><SpacerHorizontal height='xs' /></>)}
             </div>
         </div>
     </div>
