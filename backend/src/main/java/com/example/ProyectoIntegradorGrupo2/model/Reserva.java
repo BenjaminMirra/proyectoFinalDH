@@ -7,6 +7,7 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter
@@ -24,9 +25,11 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reserva_sequence")
     private Long id;
     @NotNull
-    private Date fechaInicioReserva;
+    @Column(columnDefinition = "DATE")
+    private LocalDate fechaInicioReserva;
     @NotNull
-    private Date fechaFinReserva;
+    @Column(columnDefinition = "DATE")
+    private LocalDate fechaFinReserva;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "producto_id", nullable = false)
@@ -36,14 +39,14 @@ public class Reserva {
     public Reserva() {
     }
 
-    public Reserva(Long id, Date fechaInicioReserva, Date fechaFinReserva, Producto producto) {
+    public Reserva(Long id, LocalDate fechaInicioReserva, LocalDate fechaFinReserva, Producto producto) {
         this.id = id;
         this.fechaInicioReserva = fechaInicioReserva;
         this.fechaFinReserva = fechaFinReserva;
         this.producto = producto;
     }
 
-    public Reserva(Date fechaInicioReserva, Date fechaFinReserva, Producto producto) {
+    public Reserva(LocalDate fechaInicioReserva, LocalDate fechaFinReserva, Producto producto) {
         this.fechaInicioReserva = fechaInicioReserva;
         this.fechaFinReserva = fechaFinReserva;
         this.producto = producto;

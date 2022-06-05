@@ -8,7 +8,8 @@ import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
+import java.time.LocalDate;
+
 
 @Getter
 @Setter
@@ -18,9 +19,9 @@ public class ReservaDTO {
 
     private Long id;
     @NotNull
-    private Date fechaInicioReserva;
+    private LocalDate fechaInicioReserva;
     @NotNull
-    private Date fechaFinReserva;
+    private LocalDate fechaFinReserva;
 
     //private ProductoDTO productoDTO;
 

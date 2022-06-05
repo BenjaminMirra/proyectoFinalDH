@@ -23,7 +23,7 @@ public class Producto {
 
     @Id
     @NotNull
-    @SequenceGenerator(name = "producto_sequence", sequenceName = "producto_sequence", allocationSize = 1)
+    @SequenceGenerator(name = "producto_sequence", sequenceName = "producto_sequence", allocationSize = 1, initialValue=9) // //initialValue=33
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "producto_sequence")
     private Long id;
     @NotNull
@@ -31,7 +31,7 @@ public class Producto {
     private String titulo;
 
     private String titulo_descripcion;
-    @Column(length = 500)
+    @Column(length = 5000)
     private String descripcion;
 
     private String direccion;

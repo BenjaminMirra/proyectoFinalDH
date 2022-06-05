@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.Collection;
 
 @CrossOrigin("*")
@@ -31,7 +32,7 @@ public class ProductoController {
 
     @Operation(summary = "Obtener un producto por su id")
     @GetMapping("/{id}")
-    public ResponseEntity<?> obtenerProductoPorId(@PathVariable Long id) throws ResourceNotFoundException {
+    public ResponseEntity<?> obtenerProductoPorId(@PathVariable Long id) throws ResourceNotFoundException{
 
 
         return ResponseEntity.ok(productoService.obtenerProductoPorId(id));
