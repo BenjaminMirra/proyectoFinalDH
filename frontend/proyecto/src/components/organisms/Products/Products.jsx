@@ -4,8 +4,12 @@ import products_data from "./products_data.json";
 import { Heading } from "../../atoms/Heading/Heading";
 import { CardProduct } from "../../molecules/CardProduct/CardProduct";
 import { Link } from 'react-router-dom';
+import axios from 'axios'
 import { MockUp } from "../../molecules/MockUpCard/MockUp";
-export const Products = ({}) => {
+export const Products = ({data}) => {
+
+
+
   const [mockUp,setMockUp]=useState(true)
   useEffect(() => {
     setTimeout(()=>setMockUp(false),2000)
@@ -22,24 +26,30 @@ export const Products = ({}) => {
 
       {mockUp?
       <div className="product-cards-container">
-        <MockUp/><MockUp/><MockUp/><MockUp/><MockUp/><MockUp/>
+        <MockUp noContent={true}/><MockUp noContent={true}/><MockUp noContent={true}/><MockUp noContent={true}/><MockUp noContent={true}/><MockUp noContent={true}/>
       </div>: <div className="product-cards-container">
      
-      {products_data.map((product, idx) => (
+      {data.map((product, idx) => {
+        
+        let descriptionPreview=product.descripcion.slice(0,130)
+        
+        return(
           <div key={idx}>
             
             <CardProduct
-              titulo={product.Title}
-              url={product.Crimg}
-              descripcion={product.Description}
-              location={product.Location}
-              category={product.Category}
-              id={idx}
+              titulo={product.titulo}
+              url={product.imagenDTOList[0].url_img_producto}
+              descripcion={descriptionPreview}
+              location={'Buenos Aires'}
+              category={'Hoteles'}
+              id={product.id}
              />
             
           </div>
+        )
+          
        
-        ))}
+      })}
    </div>}
 
      

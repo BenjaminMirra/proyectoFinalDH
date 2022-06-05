@@ -19,7 +19,20 @@
     position: relative;
     overflow-x: hidden;
 }
-.mobileCarousel-container p{
+.mobileCarousel-container .counter-carousel{
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+}
+.mobileCarousel-container .counter-carousel{
+    width: 60px;
+    background-color: var(--color-secondary);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    opacity: 0.6;
     position: absolute;
     bottom: 15px;
     right: 15px;

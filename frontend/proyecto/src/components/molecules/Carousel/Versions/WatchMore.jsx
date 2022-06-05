@@ -1,24 +1,42 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react'
 import { map } from 'rsuite/esm/utils/ReactChildren';
 import { Paragraph } from '../../../atoms/paragraph/Paragraph';
 import classNames from 'classnames';
 import './WatchMore.css'
 import { Icon } from '../../../atoms/Icon/Icon';
 export const WatchMore = ({images,setShow,show}) => {
-    const imagesArray=images;
+    useEffect(() => {
+        if (images!=undefined) {
+            setMainImage(images[0])
+        }
+        
+        
+    }, [images]);
     const WatchMoreClassNames=(idx)=>classNames('caja', 'caja-otras',{
-        'selected':mainImage==imagesArray[idx]
+        'selected':mainImage==images[idx]
     })
-    const [mainImage,setMainImage]=useState(imagesArray[0])
-    const handleMainImage=(key)=>setMainImage(imagesArray[key])
+    console.log(images[0]);
+    const [mainImage,setMainImage]=useState()
+    const handleMainImage=(key)=>setMainImage(images[key])
     const handleNextImage=()=>{
         let imagePosition=0;
-        console.log(imagesArray.indexOf(mainImage));
-        if(imagesArray.indexOf(mainImage)+1<imagesArray.length){
-            imagePosition=imagesArray.indexOf(mainImage)+1
+        console.log(images.indexOf(mainImage));
+        if(images.indexOf(mainImage)+1<images.length){
+            imagePosition=images.indexOf(mainImage)+1
         }
-        setMainImage(imagesArray[imagePosition])}
-    
+        setMainImage(images[imagePosition])}
+        const handleBackImage=()=>{
+        let imagePosition=0
+        if(images.indexOf(mainImage)===0){
+            imagePosition=images.length-1
+        }
+        else{
+            imagePosition=images.indexOf(mainImage)-1
+        }
+        
+            
+        
+        setMainImage(images[imagePosition])}
   return (<>
     {/* <section> */}
          {show&&<div className='watch-more-general'>
@@ -30,11 +48,13 @@ export const WatchMore = ({images,setShow,show}) => {
         <div className='watch-more-container'>
         <div className="caja caja-1">
              <img src={mainImage} alt="" />
-                <span className='close-watch-more'><Icon onClick={()=>setShow(false)} icon='close' width='lg' /></span> 
+                <span className='close-watch-more'><Icon onClick={()=>setShow(false)} icon='closeBlack' width='lg' /></span> 
                 <span className='next-watch-more' > <Icon onClick={handleNextImage} icon='rightArrow' width='md' /> </span>
+                <span className='back-watch-more' > <Icon onClick={handleBackImage} icon='back' width='lg' /> </span>
+                <div className="contador"><span className='counter-background'><Paragraph variant='base' size='lg'>{images.indexOf(mainImage)+1}/{images.length}</Paragraph></span></div>
               </div>
-         <div className="contador"><Paragraph variant='secondary' size='lg'>{imagesArray.indexOf(mainImage)+1}/{imagesArray.length}</Paragraph></div>
-            {imagesArray.map((image,idx)=><div className={WatchMoreClassNames(idx)} onClick={()=>handleMainImage(idx)} > <img src={image} alt="" /> </div>)}
+         
+            {images.map((image,idx)=><div className={WatchMoreClassNames(idx)} onClick={()=>handleMainImage(idx)} > <img src={image} alt="" /> </div>)}
                 
                
                 {/* <div className="caja caja-otras" onClick={()=>handleMainImage(0)} > <img src={imagesArray[0].toString()} alt="" /> </div>

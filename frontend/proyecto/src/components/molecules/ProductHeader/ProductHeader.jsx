@@ -7,8 +7,11 @@ import product2 from '../../utils/images/productImg2.png'
 import product3 from '../../utils/images/productImg3.png'
 import product4 from '../../utils/images/productImg4.png'
 import product5 from '../../utils/images/productImg5.png'
+
 import './ProductHeader.css'
 export const ProductHeader = ({category,title}) => {
+    
+   
     const MockData={
         product:{
             category:'Hotel',

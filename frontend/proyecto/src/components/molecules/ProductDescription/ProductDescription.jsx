@@ -2,7 +2,7 @@ import React from 'react'
 import { Heading } from '../../atoms/Heading/Heading'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import './ProductDescription.css'
-export const ProductDescription = ({description}) => {
+export const ProductDescription = ({description,subtitle}) => {
     const MockUp={
         description:{
             title:'Alójate en el corazón de Buenos Aires',
@@ -12,8 +12,8 @@ export const ProductDescription = ({description}) => {
   return (
         <div className='productDescription'>
             <div className='productDescription-container'>
-                <Heading title='h2' variant='primary' type='lg'>{MockUp.description.title}</Heading> 
-                {MockUp.description.content.map((content)=><Paragraph>{content}</Paragraph>)}
+                <Heading title='h2' variant='primary' type='lg'>{subtitle}</Heading> 
+                <Paragraph>{description}</Paragraph>
             </div>
         </div>
   )

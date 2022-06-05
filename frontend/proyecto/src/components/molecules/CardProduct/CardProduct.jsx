@@ -19,7 +19,7 @@ export const CardProduct = ({
     <div className="card-product">
       
       <div className="card-product-img">
-        <Link to={`/products/${id}`}>
+        <Link to={`/productos/${id}`}>
         <img className="product-img" src={url} alt={titulo} />
         <div className="fav">
           <Icon icon="favorite" width="md" height="sm" onClick={() => {}}></Icon>
@@ -69,7 +69,7 @@ export const CardProduct = ({
         <div className="product-description">
           <Paragraph size="md" variant="secondary">
             {descripcion}
-            <Link style={{textDecoration:'none'}} to={`products/${id}`}>
+            <Link style={{textDecoration:'none'}} to={`productos/${id}`}>
               
               <Span size="md" variant="primary">
                 Más...
@@ -77,7 +77,7 @@ export const CardProduct = ({
             </Link>
             
           </Paragraph>
-          <Link style={{width:'100%'}} to={`products/${id}`}>
+          <Link style={{width:'100%'}} to={`productos/${id}`}>
           <Button
             size="sm"
             label="Ver Detalle"

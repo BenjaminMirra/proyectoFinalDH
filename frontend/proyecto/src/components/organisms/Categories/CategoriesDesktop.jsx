@@ -12,7 +12,7 @@ export const CategoriesDesktop = ({}) => {
   useEffect(() => {
     
     axios.get('http://localhost:8080/categorias/todas').then(res=>{
-  console.log(res.data);
+  
   setCategoriesData(res.data)
   setMockUpDinamic(false)
   
@@ -26,7 +26,7 @@ export const CategoriesDesktop = ({}) => {
       <Heading title="h2" type="lg" variant="primary" > Busca por tipo de alojamiento</Heading>
       </div>
         {mockUpFixed || mockUpDinamic ?<div className="cards-container">
-          <MockUp/><MockUp/><MockUp/><MockUp/>
+          <MockUp noContent={true}/><MockUp noContent={true}/><MockUp noContent={true}/><MockUp noContent={true}/>
       </div>:<div className="cards-container">
           {CategoriesData.map((card,index)=>{
             return <CardCategory key={index} titulo={card.titulo} url={card.url_imagen} descripcion={`800 ${card.titulo}`} />

@@ -26,3 +26,10 @@
 .map-loaded hr{
     border: 1px solid var(--color-primary);
 }
+
+
+@media (max-width:768px) {
+    .map-loaded-container{
+        width: 95%;
+    }
+}

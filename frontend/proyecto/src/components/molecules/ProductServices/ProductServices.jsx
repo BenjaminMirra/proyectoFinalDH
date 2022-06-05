@@ -11,13 +11,15 @@ export const ProductServices = ({services}) => {
     }
   return (
     <div className='productServices'>
+        {console.log(services)}
         <div className='productServices-container'>
         <Heading title='h2' variant='primary'  >¿Qué ofrece este lugar?</Heading>
         </div>
         <hr/>
         <div className="productServices-container">
             <div className='productServices-services'>
-            {MockUp.services.services.map((service)=><div className='service-description'><Icon width='sm' icon={service} /><Paragraph>{service}</Paragraph></div>)}
+
+            {services&&services.map((service)=><div className='service-description'><Icon width='sm' icon={'wifi'} /><Paragraph>{service.titulo}</Paragraph></div>)}
         </div>
         
         
