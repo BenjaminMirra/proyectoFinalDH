@@ -1,7 +1,7 @@
 .map-loaded{
     width: 100%;
     height: 600px;
-    
+    margin-top: 50px;
 }
 .map-loaded-container{
     width: 97%;
@@ -12,7 +12,7 @@
     
 }
 .map-loaded-container h3{
-    margin-top:30px ;
+    /* margin-top:30px ; */
 }
 .map-loaded-container h4{
     margin-bottom: 20px;

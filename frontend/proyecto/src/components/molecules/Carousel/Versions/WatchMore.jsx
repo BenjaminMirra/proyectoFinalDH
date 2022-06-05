@@ -15,12 +15,12 @@ export const WatchMore = ({images,setShow,show}) => {
     const WatchMoreClassNames=(idx)=>classNames('caja', 'caja-otras',{
         'selected':mainImage==images[idx]
     })
-    console.log(images[0]);
+    
     const [mainImage,setMainImage]=useState()
     const handleMainImage=(key)=>setMainImage(images[key])
     const handleNextImage=()=>{
         let imagePosition=0;
-        console.log(images.indexOf(mainImage));
+        
         if(images.indexOf(mainImage)+1<images.length){
             imagePosition=images.indexOf(mainImage)+1
         }
