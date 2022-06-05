@@ -38,7 +38,7 @@ export const DesktopCalendar = () => {
                 <div className='desktop-calendario'>
                     {/* <Calendario/> */}
                     <CustomProvider locale={esAR}>
-                        <DateRangePicker placement='autoVertical' open="true" disabledDate={beforeToday()} className="desktopCalendar" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"dd MMMM y"} locale={{
+                        <DateRangePicker menu placement='autoVertical' open="true" disabledDate={beforeToday()} className="desktopCalendar" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"dd MMMM y"} locale={{
                             sunday: 'D',
                             monday: 'L',
                             tuesday: 'M',
