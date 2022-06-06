@@ -5,7 +5,7 @@ import './Icon.css'
 export const Icon = ({ icon, width, onClick }) => {
 
     return (
-        <div onClick={onClick} className='icon' style={{ display: 'flex' }} >
+        <div onClick={onClick} className='i-icon' style={{ display: 'flex' }} >
             <img className='background' src={getIcon(icon)} style={{ width: getWidth(width), height: getWidth(width) }} alt={icon} />
         </div>
 
