@@ -47,8 +47,6 @@ export const Products = ({ data }) => {
 
                 </div>
               )
-
-
             })}
           </div>}
 
