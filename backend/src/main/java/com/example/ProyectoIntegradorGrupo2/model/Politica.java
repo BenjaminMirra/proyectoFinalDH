@@ -1,5 +1,6 @@
 package com.example.ProyectoIntegradorGrupo2.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,31 +25,22 @@ public class Politica {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "politica_sequence")
     private Long id;
 
-    private String norma_descripcion;
+    @Column(length = 500)
+    private String descripcion;
 
-    private String seguridad_descripcion;
 
-    private String cancelacion_descripcion;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "producto_id", nullable = false)
+    @JsonIgnore
+    private Producto producto;
 
-    @OneToMany(mappedBy = "politica", fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
-    private Set<Producto> productoSet;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "tipo_politica_id", nullable = false)
+    @JsonIgnore
+    private TipoDePoliticas tipoDePoliticas;
 
     public Politica() {
     }
 
-    public Politica(Long id, String norma_descripcion, String seguridad_descripcion, String cancelacion_descripcion, Set<Producto> productoSet) {
-        this.id = id;
-        this.norma_descripcion = norma_descripcion;
-        this.seguridad_descripcion = seguridad_descripcion;
-        this.cancelacion_descripcion = cancelacion_descripcion;
-        this.productoSet = productoSet;
-    }
 
-    public Politica(String norma_descripcion, String seguridad_descripcion, String cancelacion_descripcion, Set<Producto> productoSet) {
-        this.norma_descripcion = norma_descripcion;
-        this.seguridad_descripcion = seguridad_descripcion;
-        this.cancelacion_descripcion = cancelacion_descripcion;
-        this.productoSet = productoSet;
-    }
 }

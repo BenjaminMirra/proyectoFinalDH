@@ -23,6 +23,7 @@ public class Imagen {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "imagenes_sequence")
     private Long id;
     @NotNull
+    @Column(length = 500)
     private String url_img_producto;
     @NotNull
     private String titulo_img_producto;
