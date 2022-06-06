@@ -13,18 +13,28 @@ export const ProductInfo = (props) => {
         if (info!==undefined) {
             info.forEach(element => {
                 if (element.tipo_politica_id==1) {
+                   
                     setRules((prevValue)=>{
-                        return [...prevValue,element.descripcion]
+                        if (prevValue.indexOf(element.descripcion)===-1) {
+                            return [...prevValue,element.descripcion]
+                        }
+                        return prevValue
                     });
                 }
                 else if (element.tipo_politica_id===2) {
                     setHealthAndSafety((prevValue)=>{
-                        return [...prevValue,element.descripcion]
+                        if (prevValue.indexOf(element.descripcion)===-1) {
+                            return [...prevValue,element.descripcion]
+                        }
+                        return prevValue
                     });
                 }
                 else{
                     setCancelationPolicy((prevValue)=>{
-                        return [...prevValue,element.descripcion]
+                        if (prevValue.indexOf(element.descripcion)===-1) {
+                            return [...prevValue,element.descripcion]
+                        }
+                        return prevValue
                     });
                 }
                 
