@@ -10,17 +10,21 @@ export const ProductServices = ({services}) => {
             services:['kitchen','airConditioner','parking','wifi','television','pets']
         }
     }
-    const [serviceList,setServiceList]=useState('')
+    const [serviceList,setServiceList]=useState([])
     useEffect(() => {
         if (services) {
+            setServiceList([])
             services.forEach(element => {
-                setServiceList((prevValue)=>[...prevValue,{icon:element.nombre_icono.toLowerCase(),service:element.titulo}])
+                setServiceList((prevValue)=>{         
+                        
+                        return [...prevValue,{icon:element.nombre_icono.toLowerCase(),service:element.titulo}]
+                    })
             });
         }
     }, [services]);
   return (
     <div className='productServices'>
-      
+      {console.log(serviceList)}
         <div className='productServices-container'>
         <Heading title='h2' type='lg' variant='primary'  >¿Qué ofrece este lugar?</Heading>
         </div>
