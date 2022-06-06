@@ -91,6 +91,7 @@ const IconsList = {
   smoke: smoke,
   card: card,
   airconditioner: airconditioner,
+  airConditioner: airconditioner,
   noSmoking: noSmoking,
   noParty: noParty,
   television: television,
