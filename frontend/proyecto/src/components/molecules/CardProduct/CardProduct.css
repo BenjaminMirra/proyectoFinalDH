@@ -130,6 +130,10 @@
   margin-top: 8px;
 }
 
+.icons icon{
+  color: var(--color-primary)
+}
+
 @media (max-width: 1365px) {
   .card-product {
     /* width: 710px; */

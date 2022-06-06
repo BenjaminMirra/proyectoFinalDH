@@ -31,7 +31,7 @@ import television from "../../utils/icons/television.svg";
 import kitchen from "../../utils/icons/kitchen.svg";
 import clock from "../../utils/icons/clock.svg";
 import card from "../../utils/icons/card.svg";
-import airConditioner from "../../utils/icons/airConditioner.svg";
+import airconditioner from "../../utils/icons/airconditioner.svg";
 import noSmoking from "../../utils/icons/noSmoking.svg";
 import noParty from "../../utils/icons/noParty.svg";
 import smoke from "../../utils/icons/smoke.svg";
@@ -41,6 +41,19 @@ import bShare from "../../utils/icons/bShare.svg";
 import bFavorite from "../../utils/icons/bFavorite.png";
 import forward from '../../utils/icons/forward.svg'
 import rightArrow from "../../utils/icons/rightArrow.svg";
+import { getDaysInMonth } from 'rsuite/esm/utils/dateUtils';
+import pool from '../../utils/icons/pool.svg';
+import jardin from '../../utils/icons/jardin.svg';
+import bar from '../../utils/icons/bar.svg';
+import spa from '../../utils/icons/spa.svg';
+import gym from '../../utils/icons/gym.svg';
+import lift from '../../utils/icons/lift.svg';
+import reception from '../../utils/icons/reception.svg';
+import calefaccion from '../../utils/icons/calefaccion.svg';
+import cajaFuerte from '../../utils/icons/cajaFuerte.svg';
+import bano from '../../utils/icons/bano.svg';
+import limpieza from '../../utils/icons/limpieza.svg';
+import security from '../../utils/icons/security.svg';
 
 const IconsList = {
   user: user,
@@ -72,11 +85,11 @@ const IconsList = {
   share: share,
   pets: pets,
   parking: parking,
-  cocina: kitchen,
+  kitchen: kitchen,
   clock: clock,
   smoke: smoke,
   card: card,
-  'aire_acondicionado': airConditioner,
+  airconditioner: airconditioner,
   noSmoking: noSmoking,
   noParty: noParty,
   television: television,
@@ -86,6 +99,18 @@ const IconsList = {
   bFavorite: bFavorite,
   forward: forward,
   rightArrow: rightArrow,
+  pool: pool,
+  jardin: jardin,
+  bar: bar,
+  spa: spa,
+  gimnasio: gym,
+  lift: lift,
+  reception: reception,
+  calefaccion: calefaccion,
+  cajaFuerte: cajaFuerte,
+  bano: bano,
+  limpieza: limpieza,
+  seguridad: security
 }; ;
 export const KeysIconsList=Object.keys(IconsList)
 const IconWidth={

@@ -31,14 +31,6 @@ export const Product = () => {
     })
   }, [id]);
 
-  const [ciudadData, setCiudadData] = useState({})
-
-  useEffect(() => {
-    axios.get(`http://localhost:8080/ciudades/todas`).then(data => {
-      setProductData(data.data)
-    })
-  }, []);
-
 
   return (
     <div className='wrapper'>
