@@ -8,6 +8,8 @@ import product5 from '../../../utils/images/productImg5.jpg'
 import { Icon } from "../../../atoms/Icon/Icon";
 import { Paragraph } from "../../../atoms/paragraph/Paragraph";
 import './MobileCarousel.css'
+import {FacebookShareButton,TwitterShareButton, WhatsappIcon, WhatsappShareButton,LinkedinIcon,LinkedinShareButton, TwitterIcon} from 'react-share'
+import { FacebookIcon } from 'react-share'
 import { MockUp } from "../../MockUpCard/MockUp";
 export function MobileCarousel(props) {
    const images=props.images
@@ -24,9 +26,27 @@ export function MobileCarousel(props) {
     lazyLoad:'ondemand',
     
   };
+  const Share=()=>{
+      return( <div className='mobile-share-icons'>
+        <FacebookShareButton style={{display:'block'}} url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search' quote='Mira este producto!!!' hashtag='#booking'>
+            <FacebookIcon  size={30} logoFillIcon='white' round={true} ></FacebookIcon>
+        </FacebookShareButton>
+        <WhatsappShareButton style={{display:'block'}} className='icono'  url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search' >
+            <WhatsappIcon   size={30} logoFillIcon='white' round={true}  >
+            </WhatsappIcon>
+        </WhatsappShareButton>
+        <TwitterShareButton style={{display:'block'}} className='icono' url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search'>
+            <TwitterIcon  size={30} logoFillIcon='white' round={true}></TwitterIcon>
+        </TwitterShareButton>
+        <LinkedinShareButton style={{display:'block'}} className='icono' url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search'>
+            <LinkedinIcon  size={30} logoFillIcon='white' round={true}></LinkedinIcon>
+        </LinkedinShareButton>
+    </div>)
+    }
   const [favorite,setFavorite]=useState('emptyHeart')
   const toggleFavorite=()=>setFavorite(favorite==='emptyHeart'?'favorite':'emptyHeart')
   const [load,setLoad]=useState(true)
+  const [share,setShare]=useState(false)
     useEffect(() => {
         setTimeout(()=>{
           if (props.images) {
@@ -37,6 +57,7 @@ export function MobileCarousel(props) {
   return (<>
   {load?<MockUp width='100%' height='380px'/>:<div className="mobileCarousel">
            <div className="mobileCarousel-container">
+             {share&&<Share/>}
             <Slider {...settings}>
                  {images.map((image,id)=><div className="mobileCarousel-container" key={id}>
                      <img style={{width:'100%',height:'380px'}} src={image} alt="" />
@@ -46,7 +67,7 @@ export function MobileCarousel(props) {
                      </div>)}
              </Slider>
              <div className="carousel-icons" >
-                 <Icon width="md" icon="share" />
+                 <Icon width="md" icon="share" onClick={()=>setShare(!share)} />
                  <Icon width="md" icon={favorite} onClick={toggleFavorite}/>
              </div>
             </div>

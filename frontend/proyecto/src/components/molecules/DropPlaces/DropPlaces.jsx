@@ -1,52 +1,29 @@
-import { React, useState } from 'react';
+import { React, useState,useEffect } from 'react';
 import { Icon } from '../../atoms/Icon/Icon'
+import axios from 'axios'
 import './DropPlaces.css'
 
 
-export const DropPlaces = ({ placeholder, icon }) => {
+export const DropPlaces = ({lugarInput, setLugarInput,placeholder, icon }) => {
 
-    const lugares = [
-        {
-            info: {
-                ciudad: "San Carlos de Bariloche",
-                pais: "Argentina",
-                icon: "locationEmpty"
-            }
-            , value: "Buenos Aires"
-        },
-        {
-
-            info: {
-                ciudad: "Buenos Aires",
-                pais: "Argentina",
-                icon: "locationEmpty"
-            }
-            , value: "Buenos Aires"
-        },
-        {
-            info: {
-                ciudad: "Mendoza",
-                pais: "Argentina",
-                icon: "locationEmpty"
-            }
-            , value: "Buenos Aires"
-        },
-        {
-            info: {
-                ciudad: "Córdoba",
-                pais: "Argentina",
-                icon: "locationEmpty"
-            }
-            , value: "Buenos Aires"
-        }
-    ]
+    const [lugares,setLugares]=useState([])
+    useEffect(() => {
+        axios.get('http://localhost:8080/ciudades/todas').then(data=>setLugares(data.data))    
+    }, []);
 
     const [lugarFiltrado, setLugarFiltrado] = useState([]);
-
+   
+    useEffect(() => {
+        if (lugarInput) {
+            console.log(lugarInput);
+        }
+        
+    }, [lugarInput]);
     const handleFilter = (event) => {
         const letraBuscada = event.target.value;
+        setLugarInput(event.target.value.toLowerCase())
         const nuevoFiltro = lugares.filter((lugar) => {
-            return lugar.info.ciudad.toLowerCase().includes(letraBuscada.toLowerCase())
+            return lugar.nombre.toLowerCase().includes(letraBuscada.toLowerCase())
         });
 
         if (letraBuscada === "") {
@@ -58,8 +35,9 @@ export const DropPlaces = ({ placeholder, icon }) => {
 
     const inputLugar = document.getElementById("inputLugar");
     
-    const handlePlace = (lugar)=>{
+    const handlePlace = (lugar,ciudad)=>{
         setLugarFiltrado([]);
+        setLugarInput(ciudad)
         return inputLugar.value = lugar;
     }
 
@@ -75,13 +53,13 @@ export const DropPlaces = ({ placeholder, icon }) => {
                     {lugarFiltrado.map((lugar, key) => {
                         return (
                             <>
-                            <div key={key++} className="lugar" onClick={()=>handlePlace(lugar.info.ciudad + ", " + lugar.info.pais)}>
+                            <div key={key++} className="lugar" onClick={()=>handlePlace(lugar.nombre + ", " + lugar.pais,lugar.nombre)}>
                                 <div className="lugarIcon">
-                                    <Icon className="" icon={lugar.info.icon} width="lg" />
+                                    <Icon className="" icon="locationEmpty" width="lg" />
                                 </div>
                                 <div className="ciudad-pais">
-                                    <p className="ciudad">{lugar.info.ciudad}</p>
-                                    <p className="pais">{lugar.info.pais}</p>
+                                    <p className="ciudad">{lugar.nombre}</p>
+                                    <p className="pais">{lugar.pais}</p>
                                 </div>
                                 
                             </div>

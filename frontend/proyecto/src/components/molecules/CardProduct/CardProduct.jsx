@@ -30,7 +30,7 @@ export const CardProduct = ({
       <div className="card-product-text">
         <div className="cat-cat">
           <Heading type="xs" title="h4" variant="tertiary">
-            {category.toUpperCase()}
+            {category}
           </Heading>
           <div className="product-cat-cat">
             <Icon icon="star" width="xs" onClick={() => {}}></Icon>
