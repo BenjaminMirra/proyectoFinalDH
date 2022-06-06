@@ -70,4 +70,11 @@ public class ProductoController {
 
         return ResponseEntity.ok(productoService.buscarProductosPorCiudad(id));
     }
+
+    @Operation(summary = "Modificar un producto")
+    @PutMapping("/editar")
+    public ResponseEntity<?> editarProducto(@RequestBody ProductoDTO productoDTO) throws ResourceNotFoundException, BadRequestException {
+        productoService.editar(productoDTO);
+        return ResponseEntity.ok().body("UPDATED");
+    }
 }
