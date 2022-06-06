@@ -46,7 +46,7 @@
     gap: 15px;
     position: relative;
 }
-.share-icons{
+.desktop-share-icons{
     position: absolute;
     left: 0px;
     top: 5px;
@@ -72,11 +72,11 @@
     
     background-color: var(--color-secondary);
     padding: 5px 10px;
-    opacity: .7;
+    opacity: .85;
     border-radius: 5px;
 }
 .watch-more:hover{
-    opacity: .9;
+    opacity: 1;
 }
 .watch-more::after{
     display:block;

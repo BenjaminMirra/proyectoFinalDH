@@ -30,7 +30,7 @@ export function DesktopCarousel(props){
           },1500)
     }, [props.images]);
     const Share=()=>{
-      return( <div className='share-icons'>
+      return( <div className='desktop-share-icons'>
         <FacebookShareButton style={{display:'block'}} url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search' quote='Mira este producto!!!' hashtag='#booking'>
             <FacebookIcon  size={30} logoFillIcon='white' round={true} ></FacebookIcon>
         </FacebookShareButton>

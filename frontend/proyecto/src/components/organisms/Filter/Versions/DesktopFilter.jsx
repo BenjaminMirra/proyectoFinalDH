@@ -10,12 +10,25 @@ export const DesktopFilter = (props) => {
   
   const handleSubmit=(e)=>{
     e.preventDefault()
-    if (props.lugarInput.length>0) {
+    if (props) {  
+      console.log(props.lugarInput);
       let ciudadId=undefined;
       if (props.lugarInput=='San Carlos de Bariloche') {
         ciudadId=1
-      }
+        props.setLugarInput('')
         axios.get(`http://localhost:8080/productos/porCiudad/${ciudadId}`).then(data=>props.setFilterProducts(data.data))
+      }
+      else if(props.lugarInput=='Buenos Aires'){
+        ciudadId=2;
+        props.setLugarInput('')
+        axios.get(`http://localhost:8080/productos/porCiudad/${ciudadId}`).then(data=>props.setFilterProducts(data.data))
+      }
+      else{
+        console.log('entro');
+        props.setLugarInput('')
+        props.setFilterProducts([])
+      }
+        
     }
   }
   
