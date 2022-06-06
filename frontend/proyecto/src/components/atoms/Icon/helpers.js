@@ -50,10 +50,11 @@ import gym from '../../utils/icons/gym.svg';
 import lift from '../../utils/icons/lift.svg';
 import reception from '../../utils/icons/reception.svg';
 import calefaccion from '../../utils/icons/calefaccion.svg';
-import cajaFuerte from '../../utils/icons/cajaFuerte.svg';
+import cajafuerte from '../../utils/icons/cajafuerte.svg';
 import bano from '../../utils/icons/bano.svg';
 import limpieza from '../../utils/icons/limpieza.svg';
 import security from '../../utils/icons/security.svg';
+import cocina from '../../utils/icons/cocina.svg';
 
 const IconsList = {
   user: user,
@@ -107,10 +108,12 @@ const IconsList = {
   lift: lift,
   reception: reception,
   calefaccion: calefaccion,
-  cajaFuerte: cajaFuerte,
+  cajaFuerte : cajafuerte,
+  cajafuerte: cajafuerte,
   bano: bano,
   limpieza: limpieza,
-  seguridad: security
+  seguridad: security,
+  cocina: cocina
 }; ;
 export const KeysIconsList=Object.keys(IconsList)
 const IconWidth={
