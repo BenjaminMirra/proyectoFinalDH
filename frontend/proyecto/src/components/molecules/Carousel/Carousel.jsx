@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect,useContext} from 'react'
 import product1 from '../../utils/images/productImg1.png'
 import product2 from '../../utils/images/productImg2.jpg'
 import product3 from '../../utils/images/productImg3.jpg'
@@ -7,9 +7,37 @@ import product5 from '../../utils/images/productImg5.png'
 import { MobileCarousel } from './Versions/MobileCarousel'
 import { TabletCarousel } from './Versions/TabletCarousel'
 import { DesktopCarousel } from './Versions/DesktopCarousel'
-export const Carousel = () => {
-    const [carouselDisplayed,setCarouselDisplayed]=useState(<><DesktopCarousel /></>)
+export const Carousel = (props) => {
+    const [images,setImages]=useState([])
+      const imagesTesteo=['https://picsum.photos/200/300','https://picsum.photos/200/300','https://picsum.photos/200/300','https://picsum.photos/200/300',];
+    useEffect(() => {
+        // console.log(props.product)
+        const {product}=props;
+        if (product.imagenDTOList!==undefined) {
+            product.imagenDTOList.forEach(element => {
+                setImages((prevValue)=>{
+                    if (prevValue.indexOf(element.url_img_producto)==-1) {
+                        return [...prevValue,element.url_img_producto]
+                    }
+                    else{
+                        return prevValue
+                    }
+                    });
+                
+            });
+        }
+        ;
+    }, [props.product]);
+    
+    
+    
+        
+    
+    
+    
+    const [carouselDisplayed,setCarouselDisplayed]=useState(<></>)
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
+    // {console.log(images)}
     useEffect(() => {
     function handleResize() {
         setWindowWidth(window.innerWidth);
@@ -20,13 +48,14 @@ export const Carousel = () => {
 
     useEffect(() => {
         if(windowWidth <= 768){
-            setCarouselDisplayed(<MobileCarousel  />)
+            setCarouselDisplayed(<MobileCarousel images={images?images:imagesTesteo}   />)
         }
         else if(windowWidth<=1000){
-            setCarouselDisplayed(<TabletCarousel  />)
+            setCarouselDisplayed(<TabletCarousel images={images?images:imagesTesteo}  />)
         }
         else if(windowWidth>=1001){
-            setCarouselDisplayed(<DesktopCarousel  />)
+            setCarouselDisplayed(<DesktopCarousel hola='hola' images={images?images:imagesTesteo}  />)
+            
         }
         
         
@@ -35,7 +64,7 @@ export const Carousel = () => {
         
         
         
-    },[windowWidth]);
+    },[windowWidth,images]);
 
   return (
     <>{carouselDisplayed}</>

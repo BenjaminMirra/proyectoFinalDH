@@ -7,8 +7,11 @@ import product2 from '../../utils/images/productImg2.png'
 import product3 from '../../utils/images/productImg3.png'
 import product4 from '../../utils/images/productImg4.png'
 import product5 from '../../utils/images/productImg5.png'
+
 import './ProductHeader.css'
 export const ProductHeader = ({category,title}) => {
+    
+   
     const MockData={
         product:{
             category:'Hotel',
@@ -34,7 +37,7 @@ export const ProductHeader = ({category,title}) => {
     <div className='product-header'>
         <div className='product-header-container'>
         <div className='product-title'>
-        <Heading title='h4' variant='base' type='xs' >{category}</Heading>
+        <Heading title='h4' variant='primary' type='xs' >{category}</Heading>
         <Heading title='h2' variant='base' type='lg' >{title}</Heading>
         </div>
             <Link to={'/'}>

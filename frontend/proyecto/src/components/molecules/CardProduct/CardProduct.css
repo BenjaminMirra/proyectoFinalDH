@@ -16,12 +16,20 @@
 
 .card-product-text {
   margin: 10px 10px 5px 10px;
-  
+  height: 95%;
+  /* margin:auto; */
+  align-self: flex-end;
   /* width: 324px; */
   
   position: relative;
 }
-
+.card-product-text button{
+  position: absolute;
+  bottom: 5px;
+}
+.card-product-text h3{
+  max-width: 60%;
+}
 .card-product-img {
   width: 100%;
   height: 100%;
@@ -52,6 +60,7 @@
 
 .cat-cat h4 {
   font-weight: 400;
+  
 }
 
 
@@ -76,6 +85,7 @@
 
 .product-description {
   margin-top: 36px;
+  margin-bottom: 20px;
 }
 
 .product-description button {
@@ -165,6 +175,9 @@
     max-width: 450px ;
     height: auto;
     flex-direction: column;
+  }
+  .card-product-text button{
+    position: inherit;
   }
 
   .card-product-text{

@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+/*import React,{useState} from "react"
 import Slider from "react-slick";
 import product1 from './utils/images/productImg1.png'
 import product2 from './utils/images/productImg2.png'
@@ -45,3 +45,4 @@ export function Producto() {
     
   );
 }
+*/

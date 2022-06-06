@@ -3,7 +3,7 @@ import PropTypes  from 'prop-types';
 import classNames from 'classnames';
 import './Paragraph.css'
 
-export const Paragraph = ({size, children, variant}) => {
+export const Paragraph = ({size, children, variant,onClick}) => {
 
   const ParagraphClassNames = classNames('paragraph',{
     [`paragraph-colors-${variant}`]:variant,
@@ -11,7 +11,7 @@ export const Paragraph = ({size, children, variant}) => {
 })
 return (
     <>
-  <p  className={ParagraphClassNames} >{children}</p>
+  <p onClick={onClick} className={ParagraphClassNames} >{children}</p>
   </>
 )
 }
@@ -27,4 +27,5 @@ Paragraph.defaultProps={
     size:'md',
     text: 'String',
     variant: 'primary',
+    onClick:()=>{}
 }

@@ -7,13 +7,15 @@ import { Icon } from '../../atoms/Icon/Icon'
 import esAR from 'rsuite/locales/es_AR';
 import format from 'date-fns/format';
 
+
+
 export const CalendarDrop = () => {
-    setTimeout(() => {
-        const animation = document.getElementsByClassName("rs-anim-fade")[0];
-        animation.classList.add("animation-mobile-DropCalendar");
-    }, 50)
 
     const {beforeToday } = DateRangePicker;
+    
+
+    const [userInfo, setUserInfo] = useState({})
+    const resetUserInfo = () => setUserInfo({});
 
     const [calendarDisplayed, serCalendarDisplayed] = useState(
         <>
@@ -80,7 +82,8 @@ export const CalendarDrop = () => {
                 />
             </>)
         }
-    }, windowWidth);
+
+    }, [windowWidth, userInfo]);
 
     return (
 

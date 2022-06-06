@@ -1,6 +1,8 @@
 package com.example.ProyectoIntegradorGrupo2.model.dto;
 
 import com.example.ProyectoIntegradorGrupo2.model.Producto;
+import com.example.ProyectoIntegradorGrupo2.model.TipoDePoliticas;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,13 +18,18 @@ import java.util.Set;
 
 public class PoliticaDTO {
 
+
     private Long id;
 
-    private String norma_descripcion;//hacer tabla politicas
 
-    private String seguridad_descripcion;
+    private String descripcion;
 
-    private String cancelacion_descripcion;
+
+
+    //private ProductoDTO productoDTO;
+
+
+    private Long tipo_politica_id;
 
     public PoliticaDTO() {
     }

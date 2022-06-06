@@ -1,8 +1,15 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
+import { map } from 'rsuite/esm/utils/ReactChildren'
 import { Heading } from '../../atoms/Heading/Heading'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import './ProductDescription.css'
-export const ProductDescription = ({description}) => {
+export const ProductDescription = ({description,subtitle}) => {
+    const [productDescription,setProductDescription]=useState('')
+    useEffect(() => {
+        if (description) {
+            setProductDescription(description.split(/\r?\n/))
+        }
+    }, [description]);
     const MockUp={
         description:{
             title:'Alójate en el corazón de Buenos Aires',
@@ -11,9 +18,10 @@ export const ProductDescription = ({description}) => {
     }
   return (
         <div className='productDescription'>
+            
             <div className='productDescription-container'>
-                <Heading title='h2' variant='primary' type='lg'>{MockUp.description.title}</Heading> 
-                {MockUp.description.content.map((content)=><Paragraph>{content}</Paragraph>)}
+                <Heading title='h2' variant='primary' type='lg'>{subtitle}</Heading> 
+                {productDescription&&productDescription.map(item=><Paragraph>{item}</Paragraph>)}
             </div>
         </div>
   )
