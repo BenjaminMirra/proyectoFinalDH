@@ -187,6 +187,25 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
+    public List<ProductoDTO> listarTodosOrdenados() {
+        List<Producto> productosList = productoRepository.findAll();
+
+
+        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        for (Producto producto : productosList
+        ) {
+            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto, producto.getId());
+
+            productoDTOList.add(productoDTO);
+
+        }
+
+        productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+
+        return productoDTOList;
+    }
+
+    @Override
     public ProductoDTO editar(ProductoDTO productoDTO) throws ResourceNotFoundException ,BadRequestException {
         Optional<Producto> producto = productoRepository.findById(productoDTO.getId());
         if (productoDTO.getCiudad_id()==null || productoDTO.getCategoria_id()==null)

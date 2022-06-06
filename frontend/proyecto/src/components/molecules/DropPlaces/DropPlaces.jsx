@@ -1,9 +1,9 @@
-import { React, useState } from 'react';
+import { React, useState,useEffect } from 'react';
 import { Icon } from '../../atoms/Icon/Icon'
 import './DropPlaces.css'
 
 
-export const DropPlaces = ({ placeholder, icon }) => {
+export const DropPlaces = ({lugarInput, setLugarInput,placeholder, icon }) => {
 
     const lugares = [
         {
@@ -42,9 +42,16 @@ export const DropPlaces = ({ placeholder, icon }) => {
     ]
 
     const [lugarFiltrado, setLugarFiltrado] = useState([]);
-
+   
+    useEffect(() => {
+        if (lugarInput) {
+            console.log(lugarInput);
+        }
+        
+    }, [lugarInput]);
     const handleFilter = (event) => {
         const letraBuscada = event.target.value;
+        setLugarInput(event.target.value.toLowerCase())
         const nuevoFiltro = lugares.filter((lugar) => {
             return lugar.info.ciudad.toLowerCase().includes(letraBuscada.toLowerCase())
         });
@@ -58,8 +65,9 @@ export const DropPlaces = ({ placeholder, icon }) => {
 
     const inputLugar = document.getElementById("inputLugar");
     
-    const handlePlace = (lugar)=>{
+    const handlePlace = (lugar,ciudad)=>{
         setLugarFiltrado([]);
+        setLugarInput(ciudad)
         return inputLugar.value = lugar;
     }
 
@@ -75,7 +83,7 @@ export const DropPlaces = ({ placeholder, icon }) => {
                     {lugarFiltrado.map((lugar, key) => {
                         return (
                             <>
-                            <div key={key++} className="lugar" onClick={()=>handlePlace(lugar.info.ciudad + ", " + lugar.info.pais)}>
+                            <div key={key++} className="lugar" onClick={()=>handlePlace(lugar.info.ciudad + ", " + lugar.info.pais,lugar.info.ciudad)}>
                                 <div className="lugarIcon">
                                     <Icon className="" icon={lugar.info.icon} width="lg" />
                                 </div>

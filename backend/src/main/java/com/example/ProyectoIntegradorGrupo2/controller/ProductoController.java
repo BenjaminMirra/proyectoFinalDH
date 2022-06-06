@@ -51,6 +51,12 @@ public class ProductoController {
         return ResponseEntity.ok(productoService.listarTodos());
     }
 
+    @Operation(summary = "Obtener una lista de todos los productos ordenados")
+    @GetMapping("/todos/ordenados")
+    public ResponseEntity<?> listarProductosOrdenados(){
+        return ResponseEntity.ok(productoService.listarTodosOrdenados());
+    }
+
     @Operation(summary = "Listar los productos según su categoría")
     @GetMapping("/porCategoria/{id}")
     public  ResponseEntity<?> listarProductosPorIdCategoria(@PathVariable Long id) throws ResourceNotFoundException {
