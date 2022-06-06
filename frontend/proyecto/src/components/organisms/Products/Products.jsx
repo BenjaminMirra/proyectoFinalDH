@@ -17,18 +17,19 @@ export const Products = ({ data }) => {
   return (
     <div className="products-container">
       <section className="products-content">
-
         <div className="product-title">
           <Heading type="lg" title="h2" variant="primary">
             Recomendaciones
           </Heading>
         </div>
+        
 
         {mockUp ?
           <div className="product-cards-container">
+            
             <MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} />
           </div> : <div className="product-cards-container">
-
+            
             {data.map((product, idx) => {
 
               let descriptionPreview = product.descripcion.slice(0, 130)

@@ -61,7 +61,7 @@ export const ProductInfo = (props) => {
                
                  <Heading type='md' variant='secondary' >Salud y Seguridad</Heading>
                  <SpacerHorizontal height='sm' />
-                 {healthAndSafety.length>0&&healthAndSafety.map(item=><><Paragraph>{item}</Paragraph><SpacerHorizontal height='xs' /></>)}
+                 {healthAndSafety.length>0&&healthAndSafety.map(item=><div style={{maxWidth:'70%'}}><Paragraph>{item}</Paragraph><SpacerHorizontal height='xs' /></div>)}
             </div>
             <div className='politica-cancelacion-container' >
                 

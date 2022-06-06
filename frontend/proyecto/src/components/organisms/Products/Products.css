@@ -14,6 +14,7 @@
     background-color:#EBEBEE;
 }
 
+
 .products-content {
   width: 97%;
   margin: auto;
@@ -48,5 +49,15 @@
       grid-template-columns: 1fr; 
       grid-template-rows: 1fr 1fr; 
     }
+    .product-title{
+      width: 448px;
+      margin: auto;
+    }
    
+  }
+  @media (max-width: 465px){
+    .product-title{
+      width: 363px;
+      margin: auto;
+    }
   }
