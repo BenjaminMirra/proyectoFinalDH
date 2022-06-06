@@ -9,6 +9,7 @@ export const CategoriesDesktop = ({setFilterProducts}) => {
   const [categoriesData,setCategoriesData]=useState({})
   const [mockUpFixed,setMockUpFixed]=useState(true)
   const [mockUpDinamic,setMockUpDinamic]=useState(true)
+  const [prevId,setPrevId]=useState()
   useEffect(() => {
     
     axios.get('http://localhost:8080/categorias/todas').then(res=>{
@@ -21,7 +22,16 @@ export const CategoriesDesktop = ({setFilterProducts}) => {
   }, []);
 
   const handleCategoryProducts=(id)=>{
-    axios.get(`http://localhost:8080/productos/porCategoria/${id}`).then(data=>setFilterProducts(data.data))
+    if (id===prevId) {
+      axios.get('http://localhost:8080/categorias/todas').then(res=>setCategoriesData(res.data))
+      return setPrevId(undefined)
+    }
+    
+    else{
+       axios.get(`http://localhost:8080/productos/porCategoria/${id}`).then(data=>setFilterProducts(data.data))
+      return setPrevId(id)
+    }
+   
   }
   return (
     <div className="categories-container">
