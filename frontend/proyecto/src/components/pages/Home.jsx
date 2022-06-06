@@ -12,10 +12,12 @@ import axios from 'axios'
 
 export const Home = () => {
 
-    const [productsData,setProductsData]=useState()
+    const [productsData,setProductsData]=useState([])
+    const [filterProducts,setFilterProducts]=useState([])
     useEffect(() => {
-       axios.get('http://localhost:8080/productos/todos').then(data=>setProductsData(data.data))    
+        axios.get('http://localhost:8080/productos/todos').then(data=>setProductsData(data.data))    
     }, []);
+    
     
     
     return (
@@ -25,9 +27,9 @@ export const Home = () => {
         <div className='contenedor-pagina' >
             
         
-        <Filter/>
+        <Filter setFilterProducts={setFilterProducts} />
         <CategoriesDesktop></CategoriesDesktop>
-        <Products data={productsData}></Products>
+        <Products data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></Products>
         
         
         <Footer/>

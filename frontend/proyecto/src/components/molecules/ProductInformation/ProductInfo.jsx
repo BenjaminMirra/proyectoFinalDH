@@ -5,7 +5,7 @@ import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
 import './ProductInfo.css'
 export const ProductInfo = (props) => {
 
-    const [rules,setRules]=useState(['check out a las 11'])
+    const [rules,setRules]=useState([])
     const [healthAndSafety,setHealthAndSafety]=useState([])
     const [cancelationPolicy,setCancelationPolicy]=useState([])
     useEffect(() => {
@@ -13,18 +13,28 @@ export const ProductInfo = (props) => {
         if (info!==undefined) {
             info.forEach(element => {
                 if (element.tipo_politica_id==1) {
+                   
                     setRules((prevValue)=>{
-                        return [...prevValue,element.descripcion]
+                        if (prevValue.indexOf(element.descripcion)===-1) {
+                            return [...prevValue,element.descripcion]
+                        }
+                        return prevValue
                     });
                 }
                 else if (element.tipo_politica_id===2) {
                     setHealthAndSafety((prevValue)=>{
-                        return [...prevValue,element.descripcion]
+                        if (prevValue.indexOf(element.descripcion)===-1) {
+                            return [...prevValue,element.descripcion]
+                        }
+                        return prevValue
                     });
                 }
                 else{
                     setCancelationPolicy((prevValue)=>{
-                        return [...prevValue,element.descripcion]
+                        if (prevValue.indexOf(element.descripcion)===-1) {
+                            return [...prevValue,element.descripcion]
+                        }
+                        return prevValue
                     });
                 }
                 
@@ -36,8 +46,6 @@ export const ProductInfo = (props) => {
 
   return (
     <div className='product-info' >
-        {props.info&&console.log(props.info)}
-        {props.info&&console.log(`rules: ${rules}; healthAndSafety: ${healthAndSafety} ; cancelationPolicy: ${cancelationPolicy} `)}
         <div className='product-info-container' >
             <Heading type='lg' variant='primary' >Qué tenés que saber</Heading>
            

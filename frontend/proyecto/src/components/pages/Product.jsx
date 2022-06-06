@@ -9,7 +9,7 @@ import { ProductDescription } from '../molecules/ProductDescription/ProductDescr
 import { ProductServices } from '../molecules/ProductServices/ProductServices'
 import { Calendar } from '../molecules/Calendar/Calendar'
 import { Map } from '../molecules/Map/Map'
-import { ProductInfo } from '../molecules/ProductInfo/ProductInfo';
+import { ProductInfo } from '../molecules/ProductInformation/ProductInfo';
 import axios from 'axios';
 import './Product.css'
 

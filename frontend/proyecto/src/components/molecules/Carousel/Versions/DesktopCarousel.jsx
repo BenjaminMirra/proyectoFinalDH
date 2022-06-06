@@ -4,6 +4,8 @@ import product2 from '../../../utils/images/productImg2.jpg'
 import product3 from '../../../utils/images/productImg3.jpg'
 import product4 from '../../../utils/images/productImg4.jpg'
 import product5 from '../../../utils/images/productImg5.jpg'
+import {FacebookShareButton,TwitterShareButton, WhatsappIcon, WhatsappShareButton,LinkedinIcon,LinkedinShareButton, TwitterIcon} from 'react-share'
+import { FacebookIcon } from 'react-share'
 import {WatchMore} from './WatchMore'
 import { Icon } from "../../../atoms/Icon/Icon";
 import { Paragraph } from "../../../atoms/paragraph/Paragraph";
@@ -19,6 +21,7 @@ export function DesktopCarousel(props){
     const toggleFavorite=()=>setFavorite((prevValue)=>prevValue==='bEmptyHeart'?'bFavorite':'bEmptyHeart')
     const [show,setShow]=useState(false)
     const [load,setLoad]=useState(true)
+    const [share,setShare]=useState(false)
     useEffect(() => {
         setTimeout(()=>{
           if (props.images) {
@@ -26,6 +29,23 @@ export function DesktopCarousel(props){
           }
           },1500)
     }, [props.images]);
+    const Share=()=>{
+      return( <div className='share-icons'>
+        <FacebookShareButton style={{display:'block'}} url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search' quote='Mira este producto!!!' hashtag='#booking'>
+            <FacebookIcon  size={30} logoFillIcon='white' round={true} ></FacebookIcon>
+        </FacebookShareButton>
+        <WhatsappShareButton style={{display:'block'}} className='icono'  url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search' >
+            <WhatsappIcon   size={30} logoFillIcon='white' round={true}  >
+            </WhatsappIcon>
+        </WhatsappShareButton>
+        <TwitterShareButton style={{display:'block'}} className='icono' url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search'>
+            <TwitterIcon  size={30} logoFillIcon='white' round={true}></TwitterIcon>
+        </TwitterShareButton>
+        <LinkedinShareButton style={{display:'block'}} className='icono' url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search'>
+            <LinkedinIcon  size={30} logoFillIcon='white' round={true}></LinkedinIcon>
+        </LinkedinShareButton>
+    </div>)
+    }
     const DesktopCarouselMockUp=()=>{
       return(<>
          <div className='desktop-icons-mockUp'>
@@ -56,11 +76,12 @@ export function DesktopCarousel(props){
       <WatchMore images={images} setShow={setShow} show={show}/>
         <div className='desktop-icons'>
             <div className='desktop-icons-container'>
-                <Icon width='lg' icon='bShare' />
+                <Icon width='lg' icon='bShare' onClick={()=>setShare(!share)}/>
                 <Icon width='lg' icon={favorite} onClick={toggleFavorite} />
             </div>
         </div>
         <div className='desktopCarousel-container' >
+            {share&&<Share/>}
             {images.map((image,id)=><div className={`desktopCarousel-image desktopCarousel-image-${id+1} `}> <img src={image} alt="" /> </div>)}
             <div className="watch-more">
             <Paragraph onClick={()=>setShow(true)} variant='base' size='lg' >Ver más</Paragraph>
