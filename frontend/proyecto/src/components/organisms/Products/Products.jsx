@@ -40,8 +40,8 @@ export const Products = ({ data }) => {
                     titulo={product.titulo}
                     url={product.imagenDTOList[0].url_img_producto}
                     descripcion={descriptionPreview}
-                    location={'Buenos Aires'}
-                    category={'Hoteles'}
+                    location={product.ciudad_id==1?'San Carlos de Bariloche':product.ciudad_id==2?'Buenos Aires':product.ciudad_id==3?'Mendoza':'Córdoba'}
+                    category={product.categoria_id==1?'Hoteles':product.categoria_id==2?'Hosteles':product.categoria_id==3?'Departamentos':'Bed & Breakfast'}
                     id={product.id}
                   />
 
