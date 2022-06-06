@@ -46,6 +46,12 @@
     gap: 15px;
     position: relative;
 }
+.desktop-share-icons{
+    position: absolute;
+    left: 0px;
+    top: 5px;
+    z-index: 5;
+}
 .desktopCarousel-container-mockUp{
     width: 97%;
     margin: auto;
@@ -66,11 +72,11 @@
     
     background-color: var(--color-secondary);
     padding: 5px 10px;
-    opacity: .7;
+    opacity: .85;
     border-radius: 5px;
 }
 .watch-more:hover{
-    opacity: .9;
+    opacity: 1;
 }
 .watch-more::after{
     display:block;

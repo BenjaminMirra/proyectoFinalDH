@@ -6,6 +6,7 @@ import './ProductDescription.css'
 export const ProductDescription = ({description,subtitle}) => {
     const [productDescription,setProductDescription]=useState('')
     useEffect(() => {
+        setProductDescription([])
         if (description) {
             setProductDescription(description.split(/\r?\n/))
         }

@@ -6,7 +6,15 @@
 .mobileCarousel-container{
     width: 100%;
     margin: auto;
+    position: relative;
 }
+.mobile-share-icons{
+    position: absolute;
+    top: 48px;
+    left: 6px;
+    z-index: 5;
+}
+
 .carousel-icons{
     position: absolute;
     top: 13px;
@@ -36,4 +44,5 @@
     position: absolute;
     bottom: 15px;
     right: 15px;
+
 }

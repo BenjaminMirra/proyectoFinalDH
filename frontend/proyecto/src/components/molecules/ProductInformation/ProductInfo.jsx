@@ -5,7 +5,7 @@ import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
 import './ProductInfo.css'
 export const ProductInfo = (props) => {
 
-    const [rules,setRules]=useState(['check out a las 11'])
+    const [rules,setRules]=useState([])
     const [healthAndSafety,setHealthAndSafety]=useState([])
     const [cancelationPolicy,setCancelationPolicy]=useState([])
     useEffect(() => {
