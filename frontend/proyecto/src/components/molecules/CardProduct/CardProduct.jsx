@@ -14,8 +14,22 @@ export const CardProduct = ({
   location,
   category,
   id,
-  rating
+  rating,
+  services
 }) => {
+
+  const [serviceList,setServiceList]=useState([])
+    useEffect(() => {
+        if (services) {
+            setServiceList([])
+            services.forEach(element => {
+                setServiceList((prevValue)=>{         
+                        
+                        return [...prevValue,{icon:element.nombre_icono.toLowerCase(),service:element.titulo}]
+                    })
+            });
+        }
+    }, [services]);
 
   const [stars,setStars]=useState('')
     useEffect(() => {
@@ -72,8 +86,8 @@ export const CardProduct = ({
           </Paragraph>
         </div>
         <div className="icons">
-          <Icon icon="bWifi" width="sm" onClick={() => {}}></Icon>
-          <Icon icon="swim" width="md" onClick={() => {}}></Icon>
+          {serviceList&&serviceList.map((service)=><Icon width='sm' icon={service.icon} />)}
+          
         </div>
         <div className="product-description">
           <Paragraph size="md" variant="secondary">

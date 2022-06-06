@@ -44,6 +44,7 @@ export const Products = ({ data }) => {
                     category={product.categoria_id==1?'Hoteles':product.categoria_id==2?'Hosteles':product.categoria_id==3?'Departamentos':'Bed & Breakfast'}
                     id={product.id}
                     rating={product.puntaje}
+                    services={product.caracteristicasDTOList}
                   />
 
                 </div>
