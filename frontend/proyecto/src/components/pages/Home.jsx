@@ -15,8 +15,11 @@ export const Home = () => {
     const [productsData,setProductsData]=useState([])
     const [filterProducts,setFilterProducts]=useState([])
     useEffect(() => {
-        axios.get('http://localhost:8080/productos/todos').then(data=>setProductsData(data.data))    
-    }, []);
+        
+            axios.get('http://localhost:8080/productos/todos').then(data=>setProductsData(data.data)) 
+        
+           
+    }, [filterProducts]);
     
     
     
@@ -28,7 +31,7 @@ export const Home = () => {
             
         
         <Filter setFilterProducts={setFilterProducts} />
-        <CategoriesDesktop></CategoriesDesktop>
+        <CategoriesDesktop setFilterProducts={setFilterProducts} ></CategoriesDesktop>
         <Products data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></Products>
         
         

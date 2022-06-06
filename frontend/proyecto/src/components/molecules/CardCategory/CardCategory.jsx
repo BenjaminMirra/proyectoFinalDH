@@ -2,6 +2,7 @@ import React from "react";
 import { Heading } from "../../atoms/Heading/Heading";
 import { Paragraph } from "../../atoms/paragraph/Paragraph";
 import classNames from "classnames";
+import {Link} from 'react-router-dom'
 import PropTypes from "prop-types";
 import "./CardCategory.css";
 
@@ -10,6 +11,7 @@ export const CardCategory = ({ titulo, descripcion, url, id, toShow }) => {
     "to-show": toShow,
   });
   return (
+    
     <div className={CardCategoryClassnames}>
       <img src={url} alt={titulo}></img>
 
@@ -22,6 +24,8 @@ export const CardCategory = ({ titulo, descripcion, url, id, toShow }) => {
         </Paragraph>
       </div>
     </div>
+    
+    
   );
 };
 CardCategory.propTypes = {

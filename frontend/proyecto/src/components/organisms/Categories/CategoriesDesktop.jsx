@@ -5,8 +5,8 @@ import { CardCategory } from "../../molecules/CardCategory/CardCategory";
 // import categories_data from "./categories_data.json";
 import { MockUp } from "../../molecules/MockUpCard/MockUp";
 import axios from 'axios'
-export const CategoriesDesktop = ({}) => {
-  const [CategoriesData,setCategoriesData]=useState({})
+export const CategoriesDesktop = ({setFilterProducts}) => {
+  const [categoriesData,setCategoriesData]=useState({})
   const [mockUpFixed,setMockUpFixed]=useState(true)
   const [mockUpDinamic,setMockUpDinamic]=useState(true)
   useEffect(() => {
@@ -19,6 +19,10 @@ export const CategoriesDesktop = ({}) => {
 })
     setTimeout(()=>setMockUpFixed(false),1500)
   }, []);
+
+  const handleCategoryProducts=(id)=>{
+    axios.get(`http://localhost:8080/productos/porCategoria/${id}`).then(data=>setFilterProducts(data.data))
+  }
   return (
     <div className="categories-container">
       <section className="categories-content">
@@ -28,8 +32,8 @@ export const CategoriesDesktop = ({}) => {
         {mockUpFixed || mockUpDinamic ?<div className="cards-container">
           <MockUp noContent={true}/><MockUp noContent={true}/><MockUp noContent={true}/><MockUp noContent={true}/>
       </div>:<div className="cards-container">
-          {CategoriesData.map((card,index)=>{
-            return <CardCategory key={index} titulo={card.titulo} url={card.url_imagen} descripcion={`800 ${card.titulo}`} />
+          {categoriesData.map((card,index)=>{
+            return <div onClick={()=>handleCategoryProducts(card.id)}><CardCategory id={card.id} titulo={card.titulo} url={card.url_imagen} descripcion={`800 ${card.titulo}`} /></div>
           })}
       </div>}
         
