@@ -8,7 +8,10 @@
 .product-info-container{
     width: 97%;
     margin: auto;
+    display: flex;
+    justify-content: space-between;
 }
 .normas-container{
-    margin-top: 30px;
+    /* margin-top: 30px; */
+    width: 30%;
 }

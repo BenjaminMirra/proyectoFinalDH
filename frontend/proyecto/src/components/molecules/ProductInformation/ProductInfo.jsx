@@ -58,13 +58,13 @@ export const ProductInfo = (props) => {
              {rules.length>0&&rules.map(item=><><Paragraph>{item}</Paragraph><SpacerHorizontal height='xs' /></>)}
             </div>
             <div className='salud-seguridad-container' >
-                <SpacerHorizontal height='md' />
+               
                  <Heading type='md' variant='secondary' >Salud y Seguridad</Heading>
                  <SpacerHorizontal height='sm' />
                  {healthAndSafety.length>0&&healthAndSafety.map(item=><><Paragraph>{item}</Paragraph><SpacerHorizontal height='xs' /></>)}
             </div>
             <div className='politica-cancelacion-container' >
-                <SpacerHorizontal height='md' />
+                
                  <Heading type='md' variant='secondary' >Política de cancelación</Heading>
                  <SpacerHorizontal height='sm' />
                  {cancelationPolicy.length>0&&cancelationPolicy.map(item=><><Paragraph >{item}</Paragraph ><SpacerHorizontal height='xs' /></>)}
