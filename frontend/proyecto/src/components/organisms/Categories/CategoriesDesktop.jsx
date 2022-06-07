@@ -74,13 +74,13 @@ export const CategoriesDesktop = ({products,setFilterProducts}) => {
       <div className="category-title">
       <Heading title="h2" type="lg" variant="primary" > Busca por tipo de alojamiento</Heading>
       </div>
-        {totalPerCategory.hoteles!==0&&console.log(totalPerCategory)}
+          
         {mockUpFixed || mockUpDinamic ?<div className="cards-container">
           <MockUp noContent={true}/><MockUp noContent={true}/><MockUp noContent={true}/><MockUp noContent={true}/>
       </div>:<div className="cards-container">
           {categoriesData.map((card,index)=>{
             // console.log(card.titulo.toLowerCase());
-            console.log(totalPerCategory[card.titulo.toLowerCase()]);
+            
             return <div onClick={()=>handleCategoryProducts(card.id)}><CardCategory id={card.id} titulo={card.titulo} url={card.url_imagen} descripcion={`${totalPerCategory[card.titulo.toLowerCase()]} ${card.titulo}`} /></div>
           })}
       </div>}
