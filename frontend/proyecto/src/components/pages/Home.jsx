@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import products_data from '../organisms/Products/products_data.json'
 import './Home.css'
 import axios from 'axios'
+import { urlAPI } from '../../global.js';
 
 export const Home = () => {
 
@@ -16,7 +17,7 @@ export const Home = () => {
     const [filterProducts,setFilterProducts]=useState([])
     useEffect(() => {
         
-            axios.get('http://localhost:8080/productos/todos').then(data=>setProductsData(data.data)) 
+            axios.get(`${urlAPI}productos/todos`).then(data=>setProductsData(data.data)) 
         
            
     }, [filterProducts]);

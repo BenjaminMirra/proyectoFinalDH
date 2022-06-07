@@ -76,5 +76,115 @@ public class Producto {
     public Producto() {
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getTitulo_descripcion() {
+        return titulo_descripcion;
+    }
+
+    public void setTitulo_descripcion(String titulo_descripcion) {
+        this.titulo_descripcion = titulo_descripcion;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public double getLatitud() {
+        return latitud;
+    }
+
+    public void setLatitud(double latitud) {
+        this.latitud = latitud;
+    }
+
+    public double getLongitud() {
+        return longitud;
+    }
+
+    public void setLongitud(double longitud) {
+        this.longitud = longitud;
+    }
+
+    public int getPuntaje() {
+        return puntaje;
+    }
+
+    public void setPuntaje(int puntaje) {
+        this.puntaje = puntaje;
+    }
+
+    public List<Politica> getPoliticaList() {
+        return politicaList;
+    }
+
+    public void setPoliticaList(List<Politica> politicaList) {
+        this.politicaList = politicaList;
+    }
+
+    public List<Reserva> getReservaSet() {
+        return reservaSet;
+    }
+
+    public void setReservaSet(List<Reserva> reservaSet) {
+        this.reservaSet = reservaSet;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
+    public Ciudad getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(Ciudad ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public List<Imagen> getImagenesList() {
+        return imagenesList;
+    }
+
+    public void setImagenesList(List<Imagen> imagenesList) {
+        this.imagenesList = imagenesList;
+    }
+
+    public List<Caracteristicas> getCaracteristicasList() {
+        return caracteristicasList;
+    }
+
+    public void setCaracteristicasList(List<Caracteristicas> caracteristicasList) {
+        this.caracteristicasList = caracteristicasList;
+    }
 }

@@ -48,4 +48,36 @@ public class Caracteristicas {
         this.nombre_icono = nombre_icono;
         this.producto = producto;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getNombre_icono() {
+        return nombre_icono;
+    }
+
+    public void setNombre_icono(String nombre_icono) {
+        this.nombre_icono = nombre_icono;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 }

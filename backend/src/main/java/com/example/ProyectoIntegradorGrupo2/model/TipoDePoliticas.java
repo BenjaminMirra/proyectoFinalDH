@@ -48,4 +48,28 @@ public class TipoDePoliticas {
         this.nombre_tipo_politica = nombre_tipo_politica;
         this.politicaList = politicaList;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre_tipo_politica() {
+        return nombre_tipo_politica;
+    }
+
+    public void setNombre_tipo_politica(String nombre_tipo_politica) {
+        this.nombre_tipo_politica = nombre_tipo_politica;
+    }
+
+    public List<Politica> getPoliticaList() {
+        return politicaList;
+    }
+
+    public void setPoliticaList(List<Politica> politicaList) {
+        this.politicaList = politicaList;
+    }
 }

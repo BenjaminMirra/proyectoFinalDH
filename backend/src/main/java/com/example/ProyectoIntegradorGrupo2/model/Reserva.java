@@ -51,4 +51,36 @@ public class Reserva {
         this.fechaFinReserva = fechaFinReserva;
         this.producto = producto;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public LocalDate getFechaInicioReserva() {
+        return fechaInicioReserva;
+    }
+
+    public void setFechaInicioReserva(LocalDate fechaInicioReserva) {
+        this.fechaInicioReserva = fechaInicioReserva;
+    }
+
+    public LocalDate getFechaFinReserva() {
+        return fechaFinReserva;
+    }
+
+    public void setFechaFinReserva(LocalDate fechaFinReserva) {
+        this.fechaFinReserva = fechaFinReserva;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 }

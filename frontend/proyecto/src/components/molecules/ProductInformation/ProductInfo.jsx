@@ -3,6 +3,8 @@ import { Heading } from '../../atoms/Heading/Heading'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
 import './ProductInfo.css'
+
+
 export const ProductInfo = (props) => {
 
     const [rules,setRules]=useState([])
