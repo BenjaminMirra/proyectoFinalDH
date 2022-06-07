@@ -54,4 +54,36 @@ public class Imagen {
         this.url_img_producto = url_img_producto;
         this.titulo_img_producto = titulo_img_producto;
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getUrl_img_producto() {
+        return url_img_producto;
+    }
+
+    public void setUrl_img_producto(String url_img_producto) {
+        this.url_img_producto = url_img_producto;
+    }
+
+    public String getTitulo_img_producto() {
+        return titulo_img_producto;
+    }
+
+    public void setTitulo_img_producto(String titulo_img_producto) {
+        this.titulo_img_producto = titulo_img_producto;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
 }

@@ -10,6 +10,7 @@ import { MapHome } from '../molecules/Map/MapHome/MapHome'
 import products_data from '../organisms/Products/products_data.json'
 import './Home.css'
 import axios from 'axios'
+import { urlAPI } from '../../global.js';
 
 export const Home = () => {
 
@@ -19,7 +20,7 @@ export const Home = () => {
     const [showMap,setShowMap]=useState(false)
     useEffect(() => {
         
-            axios.get('http://localhost:8080/productos/todos').then(data=>setProductsData(data.data)) 
+            axios.get(`${urlAPI}productos/todos`).then(data=>setProductsData(data.data)) 
         
            
     }, [filterProducts]);

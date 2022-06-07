@@ -4,6 +4,8 @@ import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
 import { Icon } from '../../atoms/Icon/Icon'
 import './ProductInfo.css'
+
+
 export const ProductInfo = (props) => {
 
     const [rules,setRules]=useState([])

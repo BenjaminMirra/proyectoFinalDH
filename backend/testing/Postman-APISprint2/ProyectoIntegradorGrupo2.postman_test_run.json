@@ -1,0 +1,2795 @@
+{
+	"id": "c2d2d9f0-6f4b-4803-8ef2-e7b82f15f4f2",
+	"name": "ProyectoIntegradorGrupo2",
+	"timestamp": "2022-06-07T17:43:47.590Z",
+	"collection_id": "18041092-804f0994-fcec-47e9-a93a-a6cb8f7d89b0",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 2451,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "531c14dd-16d0-4a59-8ac5-b5833f80cedf",
+			"name": "Agregar categoria",
+			"url": "http://localhost:8080/categorias/agregar",
+			"time": 322,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Setear el ID de la categoria posteada": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID de la categoria posteada": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				322
+			],
+			"allTests": [
+				{
+					"Setear el ID de la categoria posteada": true
+				}
+			]
+		},
+		{
+			"id": "1b3fbddb-8210-482f-9431-7819ed756eb6",
+			"name": "Agregar categoria script tests",
+			"url": "http://localhost:8080/categorias/agregar",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Testear que el tipo de respuesta sea un number": true,
+				"La respuesta es un status OK": true,
+				"Setear el ID de la categoria posteada": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Testear que el tipo de respuesta sea un number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Setear el ID de la categoria posteada": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				20
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Testear que el tipo de respuesta sea un number": true,
+					"La respuesta es un status OK": true,
+					"Setear el ID de la categoria posteada": true
+				}
+			]
+		},
+		{
+			"id": "85e4bf5f-f0f7-4521-b27e-b3362fd56a98",
+			"name": "Agregar categoria exception script tests",
+			"url": "http://localhost:8080/categorias/agregar",
+			"time": 11,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Bad Request": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Bad Request": true
+				}
+			]
+		},
+		{
+			"id": "7783d1e4-fbcb-46d3-8774-612606a1602b",
+			"name": "Peticion Get todas",
+			"url": "http://localhost:8080/categorias/todas",
+			"time": 372,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				372
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c2e9b74e-5de7-4eb3-ae78-9e11bb7b7b77",
+			"name": "Peticion Get todas script tests",
+			"url": "http://localhost:8080/categorias/todas",
+			"time": 207,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validar atributo id": true,
+				"Validar atributo titulo": true,
+				"Validar atributo descripcion": true,
+				"Validar atributo url_imagen": true,
+				"Validar categoria Hoteles": true,
+				"Validar categoria Hostels": true,
+				"Validar categoria Departamentos": true,
+				"Validar categoria Bed & Breakfast": true,
+				"Validar atributo titulo como una de las cuatro categorias solicitadas": true,
+				"La url de la imagen es un string": true,
+				"Se espera que los elementos dentro de la respuesta sean objetos": true,
+				"Se espera que la respuesta sea un array": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo titulo": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo descripcion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo url_imagen": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar categoria Hoteles": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar categoria Hostels": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar categoria Departamentos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar categoria Bed & Breakfast": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo titulo como una de las cuatro categorias solicitadas": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La url de la imagen es un string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que los elementos dentro de la respuesta sean objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que la respuesta sea un array": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				207
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validar atributo id": true,
+					"Validar atributo titulo": true,
+					"Validar atributo descripcion": true,
+					"Validar atributo url_imagen": true,
+					"Validar categoria Hoteles": true,
+					"Validar categoria Hostels": true,
+					"Validar categoria Departamentos": true,
+					"Validar categoria Bed & Breakfast": true,
+					"Validar atributo titulo como una de las cuatro categorias solicitadas": true,
+					"La url de la imagen es un string": true,
+					"Se espera que los elementos dentro de la respuesta sean objetos": true,
+					"Se espera que la respuesta sea un array": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "2cbb8b5a-8f01-452c-a232-c2a728705930",
+			"name": "Obtener categoria por id",
+			"url": "http://localhost:8080/categorias/6",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"El id está presente y es un numero": true,
+				"El ID es el mismo que el obtenido al hacer el post de la categoria previamente": true,
+				"La url de la imagen es un string": true,
+				"El titulo es uno de los asignados para categorizar": true,
+				"El titulo es el mismo que el enviado al hacer el post de la categoria previamente": true,
+				"La descripcion es un string": true,
+				"La descripción es el mismo que el enviado al hacer el post de la categoria previamente": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id está presente y es un numero": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID es el mismo que el obtenido al hacer el post de la categoria previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La url de la imagen es un string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El titulo es uno de los asignados para categorizar": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El titulo es el mismo que el enviado al hacer el post de la categoria previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La descripcion es un string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La descripción es el mismo que el enviado al hacer el post de la categoria previamente": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"El id está presente y es un numero": true,
+					"El ID es el mismo que el obtenido al hacer el post de la categoria previamente": true,
+					"La url de la imagen es un string": true,
+					"El titulo es uno de los asignados para categorizar": true,
+					"El titulo es el mismo que el enviado al hacer el post de la categoria previamente": true,
+					"La descripcion es un string": true,
+					"La descripción es el mismo que el enviado al hacer el post de la categoria previamente": true
+				}
+			]
+		},
+		{
+			"id": "a38f5a3c-61bd-4dd7-9c77-6f35f3c21b4d",
+			"name": "Obtener categoria por id exception",
+			"url": "http://localhost:8080/categorias/1500",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "423882b1-b5cb-4675-a477-ad4cf4e3b527",
+			"name": "Modificar categoria",
+			"url": "http://localhost:8080/categorias/editar",
+			"time": 30,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				30
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "3ae4d017-1e9d-46fa-9872-ba8f4d5381d3",
+			"name": "Modificar categoria script tests",
+			"url": "http://localhost:8080/categorias/editar",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue actualizada la categoria": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue actualizada la categoria": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				16
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue actualizada la categoria": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "1be73a9c-453c-4514-afb6-d18c5ac4e1bb",
+			"name": "Modificar categoria exception",
+			"url": "http://localhost:8080/categorias/editar",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ec6996b7-e043-476a-8356-49b0c13f2baa",
+			"name": "Modificar categoria exception script tests",
+			"url": "http://localhost:8080/categorias/editar",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "5b1dfc55-d5cc-428e-b0e1-7323232960d2",
+			"name": "Eliminar categoria",
+			"url": "http://localhost:8080/categorias/6",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				18
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "679450f6-ff47-4b7a-93d9-6e9891577afd",
+			"name": "Eliminar categoria script tests",
+			"url": "http://localhost:8080/categorias/5",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"El código de status es 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue borrada la categoria": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue borrada la categoria": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"El código de status es 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue borrada la categoria": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "250b2afc-c4f5-488a-97ad-8d27433913ab",
+			"name": "Eliminar categoria exception",
+			"url": "http://localhost:8080/categorias/1500",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "81ce6ef1-d7e3-4704-b0bd-96d54ea3f53e",
+			"name": "Eliminar categoria exception script tests",
+			"url": "http://localhost:8080/categorias/1500",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "94843d0b-c44d-4c2a-8009-40d201c2e296",
+			"name": "Agregar producto",
+			"url": "http://localhost:8080/productos/agregar",
+			"time": 285,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Setear el ID del producto posteado": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID del producto posteado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				285
+			],
+			"allTests": [
+				{
+					"Setear el ID del producto posteado": true
+				}
+			]
+		},
+		{
+			"id": "3a02cc26-1f19-4587-8ebb-70a8d5cbb95f",
+			"name": "Agregar producto script tests",
+			"url": "http://localhost:8080/productos/agregar",
+			"time": 142,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Testear que el tipo de respuesta sea un number": true,
+				"La respuesta es un status OK": true,
+				"Setear el ID del producto posteado": true,
+				"Validate schema": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Testear que el tipo de respuesta sea un number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Setear el ID del producto posteado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate schema": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				142
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Testear que el tipo de respuesta sea un number": true,
+					"La respuesta es un status OK": true,
+					"Setear el ID del producto posteado": true,
+					"Validate schema": true
+				}
+			]
+		},
+		{
+			"id": "3bd86b31-49e8-4dff-b9b7-9117fc82f992",
+			"name": "Agregar producto exception script tests",
+			"url": "http://localhost:8080/productos/agregar",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Bad Request": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Bad Request": true
+				}
+			]
+		},
+		{
+			"id": "bc507268-e95a-4365-a5cc-9200214651b4",
+			"name": "Peticion Get todos",
+			"url": "http://localhost:8080/productos/todos",
+			"time": 608,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				608
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "7630cf98-a45b-4598-b16f-e5fe05c804b6",
+			"name": "Peticion Get todos script tests",
+			"url": "http://localhost:8080/productos/todos",
+			"time": 369,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"La respuesta es un status OK": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validar atributo id": true,
+				"Validar atributo titulo": true,
+				"Validar atributo descripcion": true,
+				"Validar atributo titulo_descripcion": true,
+				"Validar atributo puntaje": true,
+				"Validar atributo direccion": true,
+				"Validar atributo latitud": true,
+				"Validar atributo longitud": true,
+				"Validar atributo politicaListDTO": true,
+				"Validar atributo categoria_id": true,
+				"Validar atributo ciudad_id": true,
+				"Validar atributo reservaDTOList": true,
+				"Validar atributo imagenDTOList": true,
+				"Validar atributo url_img_producto": true,
+				"Validar atributo titulo_img_producto": true,
+				"Validar atributo caracteristicasDTOList": true,
+				"Validar atributo nombre_icono": true,
+				"Validar atributo titulo como string": true,
+				"Validar atributo categoria_id como una de las cuatro categorias solicitadas": true,
+				"Validar atributo politicaListDTO como lista vacía": true,
+				"Validar atributo reservaDTOList como lista vacía": true,
+				"Validar atributo imagenDTOList como lista no vacia": true,
+				"Validar atributo caracteristicasDTOList como lista no vacia": true,
+				"Se espera que los elementos dentro de la respuesta sean objetos": true,
+				"Se espera que la respuesta sea un array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo titulo": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo descripcion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo titulo_descripcion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo puntaje": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo direccion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo latitud": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo longitud": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo politicaListDTO": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo categoria_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo ciudad_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo reservaDTOList": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo imagenDTOList": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo url_img_producto": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo titulo_img_producto": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo caracteristicasDTOList": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo nombre_icono": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo titulo como string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo categoria_id como una de las cuatro categorias solicitadas": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo politicaListDTO como lista vacía": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo reservaDTOList como lista vacía": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo imagenDTOList como lista no vacia": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo caracteristicasDTOList como lista no vacia": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que los elementos dentro de la respuesta sean objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que la respuesta sea un array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				369
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"La respuesta es un status OK": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validar atributo id": true,
+					"Validar atributo titulo": true,
+					"Validar atributo descripcion": true,
+					"Validar atributo titulo_descripcion": true,
+					"Validar atributo puntaje": true,
+					"Validar atributo direccion": true,
+					"Validar atributo latitud": true,
+					"Validar atributo longitud": true,
+					"Validar atributo politicaListDTO": true,
+					"Validar atributo categoria_id": true,
+					"Validar atributo ciudad_id": true,
+					"Validar atributo reservaDTOList": true,
+					"Validar atributo imagenDTOList": true,
+					"Validar atributo url_img_producto": true,
+					"Validar atributo titulo_img_producto": true,
+					"Validar atributo caracteristicasDTOList": true,
+					"Validar atributo nombre_icono": true,
+					"Validar atributo titulo como string": true,
+					"Validar atributo categoria_id como una de las cuatro categorias solicitadas": true,
+					"Validar atributo politicaListDTO como lista vacía": true,
+					"Validar atributo reservaDTOList como lista vacía": true,
+					"Validar atributo imagenDTOList como lista no vacia": true,
+					"Validar atributo caracteristicasDTOList como lista no vacia": true,
+					"Se espera que los elementos dentro de la respuesta sean objetos": true,
+					"Se espera que la respuesta sea un array": true
+				}
+			]
+		},
+		{
+			"id": "be37bc36-dafe-4f3c-8fda-15d9684e9c02",
+			"name": "Peticion Get todos ordenados",
+			"url": "http://localhost:8080/productos/todos/ordenados",
+			"time": 340,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				340
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a683ded2-8b07-4d67-a539-71f0e8e3f4ba",
+			"name": "Obtener producto por id",
+			"url": "http://localhost:8080/productos/33",
+			"time": 25,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"La respuesta es un status OK": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validar atributo id": true,
+				"Validar atributo titulo": true,
+				"Validar atributo descripcion": true,
+				"Validar atributo titulo_descripcion": true,
+				"Validar atributo puntaje": true,
+				"Validar atributo direccion": true,
+				"Validar atributo latitud": true,
+				"Validar atributo longitud": true,
+				"Validar atributo politicaListDTO": true,
+				"Validar atributo categoria_id": true,
+				"Validar atributo ciudad_id": true,
+				"Validar atributo reservaDTOList": true,
+				"Validar atributo imagenDTOList": true,
+				"Validar atributo url_img_producto": true,
+				"Validar atributo titulo_img_producto": true,
+				"Validar atributo caracteristicasDTOList": true,
+				"Validar atributo nombre_icono": true,
+				"Validar atributo titulo como string": true,
+				"Validar atributo categoria_id como una de las cuatro categorias solicitadas": true,
+				"El ID es el mismo que el obtenido al hacer el post del producto previamente": true,
+				"Validar atributo politicaListDTO como lista no vacía": true,
+				"Validar atributo reservaDTOList como lista vacía": true,
+				"Validar atributo imagenDTOList como lista no vacia": true,
+				"Validar atributo caracteristicasDTOList como lista no vacia": true,
+				"Se espera que el elemento de respuesta sea un objeto": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo titulo": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo descripcion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo titulo_descripcion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo puntaje": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo direccion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo latitud": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo longitud": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo politicaListDTO": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo categoria_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo ciudad_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo reservaDTOList": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo imagenDTOList": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo url_img_producto": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo titulo_img_producto": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo caracteristicasDTOList": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo nombre_icono": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo titulo como string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo categoria_id como una de las cuatro categorias solicitadas": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID es el mismo que el obtenido al hacer el post del producto previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo politicaListDTO como lista no vacía": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo reservaDTOList como lista vacía": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo imagenDTOList como lista no vacia": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo caracteristicasDTOList como lista no vacia": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que el elemento de respuesta sea un objeto": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"La respuesta es un status OK": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validar atributo id": true,
+					"Validar atributo titulo": true,
+					"Validar atributo descripcion": true,
+					"Validar atributo titulo_descripcion": true,
+					"Validar atributo puntaje": true,
+					"Validar atributo direccion": true,
+					"Validar atributo latitud": true,
+					"Validar atributo longitud": true,
+					"Validar atributo politicaListDTO": true,
+					"Validar atributo categoria_id": true,
+					"Validar atributo ciudad_id": true,
+					"Validar atributo reservaDTOList": true,
+					"Validar atributo imagenDTOList": true,
+					"Validar atributo url_img_producto": true,
+					"Validar atributo titulo_img_producto": true,
+					"Validar atributo caracteristicasDTOList": true,
+					"Validar atributo nombre_icono": true,
+					"Validar atributo titulo como string": true,
+					"Validar atributo categoria_id como una de las cuatro categorias solicitadas": true,
+					"El ID es el mismo que el obtenido al hacer el post del producto previamente": true,
+					"Validar atributo politicaListDTO como lista no vacía": true,
+					"Validar atributo reservaDTOList como lista vacía": true,
+					"Validar atributo imagenDTOList como lista no vacia": true,
+					"Validar atributo caracteristicasDTOList como lista no vacia": true,
+					"Se espera que el elemento de respuesta sea un objeto": true
+				}
+			]
+		},
+		{
+			"id": "6032d632-844e-4264-b6bf-7925006808d7",
+			"name": "Obtener producto por id exception",
+			"url": "http://localhost:8080/productos/1500",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "38d69332-0b6c-49a4-b361-808ebfc2e7da",
+			"name": "Peticion Get productos por Ciudad",
+			"url": "http://localhost:8080/productos/porCiudad/1",
+			"time": 71,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"La respuesta es un status OK": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"El ID de la ciudad en cada producto es el mismo que el solicitado en la petición": true,
+				"Se espera que la respuesta sea un array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID de la ciudad en cada producto es el mismo que el solicitado en la petición": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que la respuesta sea un array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				71
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"La respuesta es un status OK": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"El ID de la ciudad en cada producto es el mismo que el solicitado en la petición": true,
+					"Se espera que la respuesta sea un array": true
+				}
+			]
+		},
+		{
+			"id": "2dc849f7-a35b-4632-b855-ea7838770d00",
+			"name": "Peticion Get productos por Ciudad exception",
+			"url": "http://localhost:8080/productos/porCiudad/1500",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "0c877107-5d71-459b-9874-8f7c330f1a52",
+			"name": "Peticion Get productos por Categoria",
+			"url": "http://localhost:8080/productos/porCategoria/1",
+			"time": 65,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"La respuesta es un status OK": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"El ID de la ciudad en cada producto es el mismo que el solicitado en la petición": true,
+				"Se espera que la respuesta sea un array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID de la ciudad en cada producto es el mismo que el solicitado en la petición": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que la respuesta sea un array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				65
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"La respuesta es un status OK": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"El ID de la ciudad en cada producto es el mismo que el solicitado en la petición": true,
+					"Se espera que la respuesta sea un array": true
+				}
+			]
+		},
+		{
+			"id": "6382263e-2c74-47ab-aeb3-ef63f15b6cfe",
+			"name": "Peticion Get productos por Categoria exception",
+			"url": "http://localhost:8080/productos/porCategoria/1500",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "2d36761f-a23e-4c87-9509-1c4763312fa9",
+			"name": "Modificar producto",
+			"url": "http://localhost:8080/productos/editar",
+			"time": 125,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				125
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d8e6ef4a-ee75-4edc-af69-dbc7e5bdbda0",
+			"name": "Modificar producto script tests",
+			"url": "http://localhost:8080/productos/editar",
+			"time": 106,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue actualizado el producto": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue actualizado el producto": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				106
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue actualizado el producto": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "13fcb305-1be6-4a33-a486-8b4b4aed985b",
+			"name": "Modificar producto exception",
+			"url": "http://localhost:8080/productos/editar",
+			"time": 10,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"La respuesta es un status Bad Request": true,
+				"Body de respuesta es un texto con la descripcion del error": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"La respuesta es un status Bad Request": true,
+					"Body de respuesta es un texto con la descripcion del error": true
+				}
+			]
+		},
+		{
+			"id": "fb4a0b4f-9c94-4696-beb9-45b93f6a3b39",
+			"name": "Modificar producto exception script tests",
+			"url": "http://localhost:8080/productos/editar",
+			"time": 12,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "c991524c-49e9-4cbb-8922-3de85ce24143",
+			"name": "Eliminar producto",
+			"url": "http://localhost:8080/productos/eliminar/33",
+			"time": 36,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				36
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8c951880-3137-4f89-9ad8-08987547e46b",
+			"name": "Eliminar producto script tests",
+			"url": "http://localhost:8080/productos/eliminar/34",
+			"time": 31,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"El código de status es 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue borrado el producto": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue borrado el producto": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"El código de status es 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue borrado el producto": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "44343d7e-fb95-4c1c-945d-f2f11eca3570",
+			"name": "Eliminar producto exception",
+			"url": "http://localhost:8080/productos/eliminar/1500",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8cdb0e3f-aafe-40c6-87a6-e4193d5d64b1",
+			"name": "Eliminar producto exception script tests",
+			"url": "http://localhost:8080/productos/eliminar/1500",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "5bd22f32-adfe-4375-86aa-abcf9a886c37",
+			"name": "Agregar ciudad",
+			"url": "http://localhost:8080/ciudades/agregar",
+			"time": 26,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Setear el ID de la ciudad posteada": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID de la ciudad posteada": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				26
+			],
+			"allTests": [
+				{
+					"Setear el ID de la ciudad posteada": true
+				}
+			]
+		},
+		{
+			"id": "0bd8a9b7-1961-463c-ba55-2f9e2c6ffd62",
+			"name": "Agregar ciudad script tests",
+			"url": "http://localhost:8080/ciudades/agregar",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Testear que el tipo de respuesta sea un el id (tipo number)": true,
+				"La respuesta es un status OK": true,
+				"Setear el ID de la ciudad posteada": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Testear que el tipo de respuesta sea un el id (tipo number)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Setear el ID de la ciudad posteada": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Testear que el tipo de respuesta sea un el id (tipo number)": true,
+					"La respuesta es un status OK": true,
+					"Setear el ID de la ciudad posteada": true
+				}
+			]
+		},
+		{
+			"id": "271cb9ee-ed1f-4ee3-8b25-76ab408ee54d",
+			"name": "Agregar ciudad exception script tests",
+			"url": "http://localhost:8080/ciudades/agregar",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Bad Request": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Bad Request": true
+				}
+			]
+		},
+		{
+			"id": "78ace8f0-1667-42c1-a8a7-ba16c8ef469f",
+			"name": "Obtener todas las ciudades",
+			"url": "http://localhost:8080/ciudades/todas",
+			"time": 137,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				137
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a6580da9-17f6-4309-8514-a1b3c60ee8cb",
+			"name": "Obtener todas  las ciudades script tests",
+			"url": "http://localhost:8080/ciudades/todas",
+			"time": 118,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validar atributo id": true,
+				"Validar atributo nombre": true,
+				"Validar atributo provincia": true,
+				"Validar atributo pais": true,
+				"Se espera que los elementos dentro de la respuesta sean objetos": true,
+				"Se espera que la respuesta sea un array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo nombre": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo provincia": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo pais": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que los elementos dentro de la respuesta sean objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que la respuesta sea un array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				118
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validar atributo id": true,
+					"Validar atributo nombre": true,
+					"Validar atributo provincia": true,
+					"Validar atributo pais": true,
+					"Se espera que los elementos dentro de la respuesta sean objetos": true,
+					"Se espera que la respuesta sea un array": true
+				}
+			]
+		},
+		{
+			"id": "c639e943-5412-400b-aefc-5528171cd0de",
+			"name": "Obtener ciudad por id",
+			"url": "http://localhost:8080/ciudades/6",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validar atributo id": true,
+				"Validar atributo nombre": true,
+				"Validar atributo provincia": true,
+				"Validar atributo pais": true,
+				"El id está presente y es un numero": true,
+				"El ID es el mismo que el obtenido al hacer el post de la ciudad previamente": true,
+				"El nombre es un string": true,
+				"El nombre de la ciudad es el mismo que el enviado al hacer el post de la ciudad previamente": true,
+				"La provincia es un string": true,
+				"La provincia es la misma que la enviada al hacer el post de la ciudad previamente": true,
+				"El pais es un string": true,
+				"El pais es el mismo que el enviado al hacer el post de la ciudad previamente": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo nombre": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo provincia": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo pais": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id está presente y es un numero": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID es el mismo que el obtenido al hacer el post de la ciudad previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El nombre es un string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El nombre de la ciudad es el mismo que el enviado al hacer el post de la ciudad previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La provincia es un string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La provincia es la misma que la enviada al hacer el post de la ciudad previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El pais es un string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El pais es el mismo que el enviado al hacer el post de la ciudad previamente": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validar atributo id": true,
+					"Validar atributo nombre": true,
+					"Validar atributo provincia": true,
+					"Validar atributo pais": true,
+					"El id está presente y es un numero": true,
+					"El ID es el mismo que el obtenido al hacer el post de la ciudad previamente": true,
+					"El nombre es un string": true,
+					"El nombre de la ciudad es el mismo que el enviado al hacer el post de la ciudad previamente": true,
+					"La provincia es un string": true,
+					"La provincia es la misma que la enviada al hacer el post de la ciudad previamente": true,
+					"El pais es un string": true,
+					"El pais es el mismo que el enviado al hacer el post de la ciudad previamente": true
+				}
+			]
+		},
+		{
+			"id": "2aaee10d-e480-42d2-8e10-9839715f1c72",
+			"name": "Obtener ciudad por id exception",
+			"url": "http://localhost:8080/ciudades/1500",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "c13a9539-734d-4900-83e0-c55053f4b075",
+			"name": "Modificar ciudad",
+			"url": "http://localhost:8080/ciudades/editar",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				14
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "c2b5866c-3752-493b-a2a8-5945dd1c714d",
+			"name": "Modificar ciudad script tests",
+			"url": "http://localhost:8080/ciudades/editar",
+			"time": 14,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue actualizada la ciudad": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue actualizada la ciudad": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue actualizada la ciudad": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "4ac9a9b9-812e-4e89-893d-fa80d1e91f1a",
+			"name": "Modificar ciudad exception",
+			"url": "http://localhost:8080/ciudades/editar",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "8d37604a-cd72-4886-a2fc-8dd98ffa8dff",
+			"name": "Modificar ciudad exception script tests",
+			"url": "http://localhost:8080/ciudades/editar",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "397bcb67-b12d-4fbe-afb5-7102984be665",
+			"name": "Eliminar ciudad",
+			"url": "http://localhost:8080/ciudades/eliminar/6",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				12
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "9a6e7a63-12be-416d-bca5-8007561a8760",
+			"name": "Eliminar ciudad script tests",
+			"url": "http://localhost:8080/ciudades/eliminar/5",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"El código de status es 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue borrada la ciudad": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue borrada la ciudad": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"El código de status es 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue borrada la ciudad": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "1ed545e0-bf3c-4b01-b4ef-28b038fb6dd7",
+			"name": "Eliminar ciudad exception",
+			"url": "http://localhost:8080/ciudades/eliminar/1500",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "6667c213-b6a3-45d9-87a9-2ded03cc2619",
+			"name": "Eliminar ciudad exception script tests",
+			"url": "http://localhost:8080/ciudades/eliminar/6",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 3731,
+	"collection": {
+		"requests": [
+			{
+				"id": "531c14dd-16d0-4a59-8ac5-b5833f80cedf",
+				"method": "POST"
+			},
+			{
+				"id": "1b3fbddb-8210-482f-9431-7819ed756eb6",
+				"method": "POST"
+			},
+			{
+				"id": "85e4bf5f-f0f7-4521-b27e-b3362fd56a98",
+				"method": "POST"
+			},
+			{
+				"id": "7783d1e4-fbcb-46d3-8774-612606a1602b",
+				"method": "GET"
+			},
+			{
+				"id": "c2e9b74e-5de7-4eb3-ae78-9e11bb7b7b77",
+				"method": "GET"
+			},
+			{
+				"id": "2cbb8b5a-8f01-452c-a232-c2a728705930",
+				"method": "GET"
+			},
+			{
+				"id": "a38f5a3c-61bd-4dd7-9c77-6f35f3c21b4d",
+				"method": "GET"
+			},
+			{
+				"id": "423882b1-b5cb-4675-a477-ad4cf4e3b527",
+				"method": "PUT"
+			},
+			{
+				"id": "3ae4d017-1e9d-46fa-9872-ba8f4d5381d3",
+				"method": "PUT"
+			},
+			{
+				"id": "1be73a9c-453c-4514-afb6-d18c5ac4e1bb",
+				"method": "PUT"
+			},
+			{
+				"id": "ec6996b7-e043-476a-8356-49b0c13f2baa",
+				"method": "PUT"
+			},
+			{
+				"id": "5b1dfc55-d5cc-428e-b0e1-7323232960d2",
+				"method": "DELETE"
+			},
+			{
+				"id": "679450f6-ff47-4b7a-93d9-6e9891577afd",
+				"method": "DELETE"
+			},
+			{
+				"id": "250b2afc-c4f5-488a-97ad-8d27433913ab",
+				"method": "DELETE"
+			},
+			{
+				"id": "81ce6ef1-d7e3-4704-b0bd-96d54ea3f53e",
+				"method": "DELETE"
+			},
+			{
+				"id": "94843d0b-c44d-4c2a-8009-40d201c2e296",
+				"method": "POST"
+			},
+			{
+				"id": "3a02cc26-1f19-4587-8ebb-70a8d5cbb95f",
+				"method": "POST"
+			},
+			{
+				"id": "3bd86b31-49e8-4dff-b9b7-9117fc82f992",
+				"method": "POST"
+			},
+			{
+				"id": "bc507268-e95a-4365-a5cc-9200214651b4",
+				"method": "GET"
+			},
+			{
+				"id": "7630cf98-a45b-4598-b16f-e5fe05c804b6",
+				"method": "GET"
+			},
+			{
+				"id": "be37bc36-dafe-4f3c-8fda-15d9684e9c02",
+				"method": "GET"
+			},
+			{
+				"id": "a683ded2-8b07-4d67-a539-71f0e8e3f4ba",
+				"method": "GET"
+			},
+			{
+				"id": "6032d632-844e-4264-b6bf-7925006808d7",
+				"method": "GET"
+			},
+			{
+				"id": "38d69332-0b6c-49a4-b361-808ebfc2e7da",
+				"method": "GET"
+			},
+			{
+				"id": "2dc849f7-a35b-4632-b855-ea7838770d00",
+				"method": "GET"
+			},
+			{
+				"id": "0c877107-5d71-459b-9874-8f7c330f1a52",
+				"method": "GET"
+			},
+			{
+				"id": "6382263e-2c74-47ab-aeb3-ef63f15b6cfe",
+				"method": "GET"
+			},
+			{
+				"id": "2d36761f-a23e-4c87-9509-1c4763312fa9",
+				"method": "PUT"
+			},
+			{
+				"id": "d8e6ef4a-ee75-4edc-af69-dbc7e5bdbda0",
+				"method": "PUT"
+			},
+			{
+				"id": "13fcb305-1be6-4a33-a486-8b4b4aed985b",
+				"method": "PUT"
+			},
+			{
+				"id": "fb4a0b4f-9c94-4696-beb9-45b93f6a3b39",
+				"method": "PUT"
+			},
+			{
+				"id": "c991524c-49e9-4cbb-8922-3de85ce24143",
+				"method": "DELETE"
+			},
+			{
+				"id": "8c951880-3137-4f89-9ad8-08987547e46b",
+				"method": "DELETE"
+			},
+			{
+				"id": "44343d7e-fb95-4c1c-945d-f2f11eca3570",
+				"method": "DELETE"
+			},
+			{
+				"id": "8cdb0e3f-aafe-40c6-87a6-e4193d5d64b1",
+				"method": "DELETE"
+			},
+			{
+				"id": "5bd22f32-adfe-4375-86aa-abcf9a886c37",
+				"method": "POST"
+			},
+			{
+				"id": "0bd8a9b7-1961-463c-ba55-2f9e2c6ffd62",
+				"method": "POST"
+			},
+			{
+				"id": "271cb9ee-ed1f-4ee3-8b25-76ab408ee54d",
+				"method": "POST"
+			},
+			{
+				"id": "78ace8f0-1667-42c1-a8a7-ba16c8ef469f",
+				"method": "GET"
+			},
+			{
+				"id": "a6580da9-17f6-4309-8514-a1b3c60ee8cb",
+				"method": "GET"
+			},
+			{
+				"id": "c639e943-5412-400b-aefc-5528171cd0de",
+				"method": "GET"
+			},
+			{
+				"id": "2aaee10d-e480-42d2-8e10-9839715f1c72",
+				"method": "GET"
+			},
+			{
+				"id": "c13a9539-734d-4900-83e0-c55053f4b075",
+				"method": "PUT"
+			},
+			{
+				"id": "c2b5866c-3752-493b-a2a8-5945dd1c714d",
+				"method": "PUT"
+			},
+			{
+				"id": "4ac9a9b9-812e-4e89-893d-fa80d1e91f1a",
+				"method": "PUT"
+			},
+			{
+				"id": "8d37604a-cd72-4886-a2fc-8dd98ffa8dff",
+				"method": "PUT"
+			},
+			{
+				"id": "397bcb67-b12d-4fbe-afb5-7102984be665",
+				"method": "DELETE"
+			},
+			{
+				"id": "9a6e7a63-12be-416d-bca5-8007561a8760",
+				"method": "DELETE"
+			},
+			{
+				"id": "1ed545e0-bf3c-4b01-b4ef-28b038fb6dd7",
+				"method": "DELETE"
+			},
+			{
+				"id": "6667c213-b6a3-45d9-87a9-2ded03cc2619",
+				"method": "DELETE"
+			}
+		]
+	}
+}

@@ -6,6 +6,9 @@ import { CardCategory } from "../../molecules/CardCategory/CardCategory";
 import { MockUp } from "../../molecules/MockUpCard/MockUp";
 import axios from 'axios'
 import { Link, useNavigate } from "react-router-dom";
+import { urlAPI } from '../../../global.js';
+
+
 export const CategoriesDesktop = ({products,setFilterProducts}) => {
   const [categoriesData,setCategoriesData]=useState({})
   const [mockUpFixed,setMockUpFixed]=useState(true)
@@ -46,7 +49,7 @@ export const CategoriesDesktop = ({products,setFilterProducts}) => {
       });
     }
 
-    axios.get('http://localhost:8080/categorias/todas').then(res=>{
+    axios.get(`${urlAPI}categorias/todas`).then(res=>{
   
   setCategoriesData(res.data)
   setMockUpDinamic(false)

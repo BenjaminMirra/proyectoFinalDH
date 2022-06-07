@@ -42,5 +42,35 @@ public class Politica {
     public Politica() {
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public Producto getProducto() {
+        return producto;
+    }
+
+    public void setProducto(Producto producto) {
+        this.producto = producto;
+    }
+
+    public TipoDePoliticas getTipoDePoliticas() {
+        return tipoDePoliticas;
+    }
+
+    public void setTipoDePoliticas(TipoDePoliticas tipoDePoliticas) {
+        this.tipoDePoliticas = tipoDePoliticas;
+    }
 }
