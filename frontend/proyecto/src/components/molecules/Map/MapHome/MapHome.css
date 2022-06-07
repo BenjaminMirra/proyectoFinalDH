@@ -53,14 +53,14 @@
     padding: 5px;
     /* border-radius: 8px; */
     opacity: 1;
-    
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 7px 29px 0px;
 }
 .mapHome-close-watch-more img{
 object-fit: scale-down;
 }
 
-.mapHome-close-watch-more:active{
-    filter:brightness(0.5)
+.mapHome-close-watch-more:hover{
+    filter:brightness(0.7)
 }
 
 @media (max-width:635px) {

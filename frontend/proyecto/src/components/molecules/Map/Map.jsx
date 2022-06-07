@@ -4,6 +4,7 @@ import {GoogleMap,useLoadScript,Marker,useGoogleMap} from '@react-google-maps/ap
 import credentials from '../../../credentials'
 import './Map.css'
 import { Heading } from '../../atoms/Heading/Heading'
+import { Icon } from '../../atoms/Icon/Icon'
 export const Map = ({lat,lng,location,noTitle}) => {
     const {isLoaded}=useLoadScript({googleMapsApiKey:credentials.mapsKey})
 
@@ -46,7 +47,7 @@ function LoadedMap({lat,lng,location,noTitle}){
             
             
             <div className='map-loaded-container'>
-                {location&&<Heading title='h4' variant='secondary' type='sm' >{location}</Heading>}
+                {location&&<div className='map-icon-location'> <Icon icon='location' width='md' /> <Heading title='h4' variant='secondary' type='sm' >{location}</Heading></div>}
             <GoogleMap zoom={17}
         center={center}
         mapContainerClassName='map-container' options={createMapOptions} >

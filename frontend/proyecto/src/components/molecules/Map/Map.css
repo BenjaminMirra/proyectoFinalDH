@@ -27,6 +27,13 @@
 .map-loaded hr{
     border: 1px solid var(--color-primary);
 }
+.map-icon-location{
+    display: flex;
+    
+}
+.map-icon-location img{
+    margin-right: 5px;
+}
 
 
 @media (max-width:768px) {

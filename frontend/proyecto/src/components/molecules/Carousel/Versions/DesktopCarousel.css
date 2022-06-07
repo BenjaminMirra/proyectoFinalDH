@@ -89,6 +89,7 @@
 
 .desktopCarousel-image{
     border-radius:10px ;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 4px;
 }
 .desktopCarousel-image-mockUp{
     border-radius:10px ;
