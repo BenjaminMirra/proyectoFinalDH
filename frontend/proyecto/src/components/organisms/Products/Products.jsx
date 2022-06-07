@@ -6,10 +6,10 @@ import { CardProduct } from "../../molecules/CardProduct/CardProduct";
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { MockUp } from "../../molecules/MockUpCard/MockUp";
-export const Products = ({ data }) => {
+export const Products = ({ data,setMapHomeData ,setShowMap}) => {
 
 
-
+  
   const [mockUp, setMockUp] = useState(true)
   const [mockUpDinamic,setMockUpDinamic]=useState(true)
   useEffect(() => {
@@ -45,6 +45,7 @@ export const Products = ({ data }) => {
                 <div key={idx}>
 
                   <CardProduct
+                    setMapHomeData={setMapHomeData}
                     titulo={product.titulo}
                     url={product.imagenDTOList[0].url_img_producto}
                     descripcion={descriptionPreview}
@@ -53,6 +54,9 @@ export const Products = ({ data }) => {
                     id={product.id}
                     rating={product.puntaje}
                     services={product.caracteristicasDTOList}
+                    lat={product.latitud}
+                    lng={product.longitud}
+                    setShowMap={setShowMap}
                   />
 
                 </div>

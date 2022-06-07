@@ -4,14 +4,14 @@ import {GoogleMap,useLoadScript,Marker,useGoogleMap} from '@react-google-maps/ap
 import credentials from '../../../credentials'
 import './Map.css'
 import { Heading } from '../../atoms/Heading/Heading'
-export const Map = ({lat,lng,location}) => {
+export const Map = ({lat,lng,location,noTitle}) => {
     const {isLoaded}=useLoadScript({googleMapsApiKey:credentials.mapsKey})
 
     if(!isLoaded)return <div>Loading...</div>;
-    return <LoadedMap lat={lat} lng={lng} location={location}/>
+    return <LoadedMap lat={lat} lng={lng} location={location} noTitle={noTitle}/>
 
 }
-function LoadedMap({lat,lng,location}){
+function LoadedMap({lat,lng,location,noTitle}){
     
     
     
@@ -39,12 +39,14 @@ function LoadedMap({lat,lng,location}){
     
     return (
         <div className='map-loaded'>
-            <div className='map-loaded-container'>
+            {!noTitle&&
+            <><div className='map-loaded-container'>
             <Heading title='h3' variant='primary' type='lg' >¿Dónde vas a estar?</Heading>
-            </div>
-            <hr />
+            </div><hr /></>}
+            
+            
             <div className='map-loaded-container'>
-                <Heading title='h4' variant='secondary' type='sm' >{location}</Heading>
+                {location&&<Heading title='h4' variant='secondary' type='sm' >{location}</Heading>}
             <GoogleMap zoom={17}
         center={center}
         mapContainerClassName='map-container' options={createMapOptions} >

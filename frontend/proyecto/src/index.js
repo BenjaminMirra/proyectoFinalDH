@@ -7,14 +7,12 @@ import product3 from "./components/utils/images/productImg3.png";
 import product4 from "./components/utils/images/productImg4.png";
 import product5 from "./components/utils/images/productImg5.png";
 import App from './App';
-import {Producto} from './components/Producto'
-import { MobileCarousel } from './components/molecules/Carousel/Versions/MobileCarousel';
-
+import { MapHome } from './components/molecules/Map/MapHome/MapHome';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App/>
-      </React.StrictMode>
+    <App />
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

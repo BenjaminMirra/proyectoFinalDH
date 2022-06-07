@@ -15,9 +15,13 @@ export const CardProduct = ({
   category,
   id,
   rating,
-  services
+  services,
+  setMapHomeData,
+  lat,
+  lng,
+  setShowMap
 }) => {
-
+  
   const [serviceList,setServiceList]=useState([])
     useEffect(() => {
         if (services) {
@@ -37,6 +41,10 @@ export const CardProduct = ({
           setStars(rating/2)
         }
     }, [rating]);
+    const handleHomeMap=(latitud,longitud)=>{  
+      setMapHomeData({lat:latitud,lng:longitud})
+      return setShowMap(true)
+    }
   return (
     <div className="card-product">
       
@@ -80,7 +88,7 @@ export const CardProduct = ({
           <Icon icon="location" width="xs" onClick={() => {}}></Icon>
           <Paragraph size="md" variant="secondary">
             {location}
-            <Span size="md" variant="primary">
+            <Span onClick={()=>handleHomeMap(lat,lng)} size="md" variant="primary">
               MOSTRAR EN EL MAPA
             </Span>
           </Paragraph>
