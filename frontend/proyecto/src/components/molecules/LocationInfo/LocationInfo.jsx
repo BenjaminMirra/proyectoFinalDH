@@ -20,7 +20,7 @@ export const LocationInfo = ({location,rating}) => {
         <div className='location-info-rating'>
            {rating<2?<div className='rating-stars'><Paragraph>Malo</Paragraph> <div className='stars-container'><Icon icon='star'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/></div> </div>
             :rating<=4? <div className='rating-stars'><Paragraph>Regular</Paragraph> <div className='stars-container'> <Icon icon='star'/><Icon icon='star'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/> </div></div>
-            :rating<=6?<div className='rating-stars'><Paragraph>Bueno</Paragraph> <div className='stars-container' > <Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/> </div></div>
+            :rating<=7?<div className='rating-stars'><Paragraph>Bueno</Paragraph> <div className='stars-container' > <Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/> </div></div>
             :rating<=8?<div className='rating-stars'><Paragraph>Muy Bueno</Paragraph> <div className='stars-container' > <Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='emptyStar'/></div> </div>
             :rating<=9?<div className='rating-stars'><Paragraph>Muy Bueno</Paragraph> <div className='stars-container' > <Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/></div> </div>
             :<div className='rating-stars'><Paragraph>Excelente</Paragraph> <div className='stars-container' > <Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/></div> </div> }

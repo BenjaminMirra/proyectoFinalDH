@@ -13,6 +13,8 @@ export const Products = ({ data }) => {
   const [mockUp, setMockUp] = useState(true)
   const [mockUpDinamic,setMockUpDinamic]=useState(true)
   useEffect(() => {
+    
+    
     setTimeout(() => {
       setMockUp(false)}, 2000)
       if (data) {
