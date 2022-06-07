@@ -3,7 +3,7 @@ import calendar from "../../utils/icons/calendar.svg";
 import search from "../../utils/icons/search.svg";
 import location from "../../utils/icons/location.svg";
 import disabled from "../../utils/icons/disabled.svg";
-import wifi from "../../utils/icons/wifi.svg";
+import wifi from "../../utils/icons/wifi.png";
 import swim from "../../utils/icons/swim.svg";
 import star from "../../utils/icons/star.svg";
 import menu from "../../utils/icons/menu.svg";
@@ -53,7 +53,7 @@ import calefaccion from '../../utils/icons/calefaccion.svg';
 import cajafuerte from '../../utils/icons/cajafuerte.svg';
 import bano from '../../utils/icons/bano.svg';
 import limpieza from '../../utils/icons/limpieza.svg';
-import security from '../../utils/icons/security.svg';
+import security from '../../utils/icons/security.png';
 import cocina from '../../utils/icons/cocina.svg';
 
 const IconsList = {
