@@ -55,6 +55,9 @@ import bano from '../../utils/icons/bano.svg';
 import limpieza from '../../utils/icons/limpieza.svg';
 import security from '../../utils/icons/security.png';
 import cocina from '../../utils/icons/cocina.svg';
+import rules from '../../utils/icons/rules.png';
+import cancelationpolicy from "../../utils/icons/cancelationpolicy.png";
+
 
 const IconsList = {
   user: user,
@@ -109,12 +112,14 @@ const IconsList = {
   lift: lift,
   reception: reception,
   calefaccion: calefaccion,
-  cajaFuerte : cajafuerte,
+  cajaFuerte: cajafuerte,
   cajafuerte: cajafuerte,
   bano: bano,
   limpieza: limpieza,
   seguridad: security,
-  cocina: cocina
+  cocina: cocina,
+  rules: rules,
+  cancelationpolicy: cancelationpolicy,
 }; ;
 export const KeysIconsList=Object.keys(IconsList)
 const IconWidth={
