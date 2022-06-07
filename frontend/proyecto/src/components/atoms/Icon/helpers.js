@@ -46,7 +46,7 @@ import pool from '../../utils/icons/pool.svg';
 import jardin from '../../utils/icons/jardin.svg';
 import bar from '../../utils/icons/bar.svg';
 import spa from '../../utils/icons/spa.svg';
-import gym from '../../utils/icons/gym.svg';
+import gym from '../../utils/icons/gym.png';
 import lift from '../../utils/icons/lift.svg';
 import reception from '../../utils/icons/reception.svg';
 import calefaccion from '../../utils/icons/calefaccion.svg';
@@ -105,7 +105,7 @@ const IconsList = {
   jardin: jardin,
   bar: bar,
   spa: spa,
-  gimnasio: gym,
+  gym: gym,
   lift: lift,
   reception: reception,
   calefaccion: calefaccion,
