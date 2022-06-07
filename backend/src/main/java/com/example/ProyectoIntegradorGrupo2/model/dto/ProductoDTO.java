@@ -54,6 +54,10 @@ public class ProductoDTO {
 
     private List<CaracteristicasDTO> caracteristicasDTOList = new ArrayList<>();
 
+    private List<ReaccionDTO> reaccionDTOList = new ArrayList<>();
+
+    private List<PuntuacionDTO> puntuacionDTOList = new ArrayList<>();
+
     public ProductoDTO() {
     }
 
