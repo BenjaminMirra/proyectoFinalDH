@@ -11,24 +11,32 @@ export const Products = ({ data }) => {
 
 
   const [mockUp, setMockUp] = useState(true)
+  const [mockUpDinamic,setMockUpDinamic]=useState(true)
   useEffect(() => {
-    setTimeout(() => setMockUp(false), 2000)
-  }, []);
+    
+    
+    setTimeout(() => {
+      setMockUp(false)}, 2000)
+      if (data) {
+        setMockUpDinamic(false)
+      }
+    }, [data]);
   return (
     <div className="products-container">
       <section className="products-content">
-
         <div className="product-title">
           <Heading type="lg" title="h2" variant="primary">
             Recomendaciones
           </Heading>
         </div>
+        
 
-        {mockUp ?
+        {mockUp || mockUpDinamic ?
           <div className="product-cards-container">
+            
             <MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} />
           </div> : <div className="product-cards-container">
-
+            
             {data.map((product, idx) => {
 
               let descriptionPreview = product.descripcion.slice(0, 130)
@@ -43,6 +51,8 @@ export const Products = ({ data }) => {
                     location={product.ciudad_id==1?'San Carlos de Bariloche':product.ciudad_id==2?'Buenos Aires':product.ciudad_id==3?'Mendoza':'Córdoba'}
                     category={product.categoria_id==1?'Hoteles':product.categoria_id==2?'Hosteles':product.categoria_id==3?'Departamentos':'Bed & Breakfast'}
                     id={product.id}
+                    rating={product.puntaje}
+                    services={product.caracteristicasDTOList}
                   />
 
                 </div>

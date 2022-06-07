@@ -18,6 +18,9 @@
     .productDescription{
         margin-top: 10px;
     }
+    .productDescription-container h2{
+        line-height: 30px;
+    }
     .productDescription-container{
         width: 97%;
     }

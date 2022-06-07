@@ -1,6 +1,8 @@
 import { React, useState,useEffect } from 'react';
 import { Icon } from '../../atoms/Icon/Icon'
 import axios from 'axios'
+import { urlAPI } from '../../../global.js';
+
 import './DropPlaces.css'
 
 
@@ -8,7 +10,7 @@ export const DropPlaces = ({lugarInput, setLugarInput,placeholder, icon }) => {
 
     const [lugares,setLugares]=useState([])
     useEffect(() => {
-        axios.get('http://localhost:8080/ciudades/todas').then(data=>setLugares(data.data))    
+        axios.get(`${urlAPI}ciudades/todas`).then(data=>setLugares(data.data))    
     }, []);
 
     const [lugarFiltrado, setLugarFiltrado] = useState([]);

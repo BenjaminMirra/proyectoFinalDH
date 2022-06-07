@@ -3,7 +3,7 @@ import calendar from "../../utils/icons/calendar.svg";
 import search from "../../utils/icons/search.svg";
 import location from "../../utils/icons/location.svg";
 import disabled from "../../utils/icons/disabled.svg";
-import wifi from "../../utils/icons/wifi.svg";
+import wifi from "../../utils/icons/wifi.png";
 import swim from "../../utils/icons/swim.svg";
 import star from "../../utils/icons/star.svg";
 import menu from "../../utils/icons/menu.svg";
@@ -31,7 +31,7 @@ import television from "../../utils/icons/television.svg";
 import kitchen from "../../utils/icons/kitchen.svg";
 import clock from "../../utils/icons/clock.svg";
 import card from "../../utils/icons/card.svg";
-import airConditioner from "../../utils/icons/airConditioner.svg";
+import airconditioner from "../../utils/icons/airconditioner.svg";
 import noSmoking from "../../utils/icons/noSmoking.svg";
 import noParty from "../../utils/icons/noParty.svg";
 import smoke from "../../utils/icons/smoke.svg";
@@ -41,6 +41,23 @@ import bShare from "../../utils/icons/bShare.svg";
 import bFavorite from "../../utils/icons/bFavorite.png";
 import forward from '../../utils/icons/forward.svg'
 import rightArrow from "../../utils/icons/rightArrow.svg";
+import { getDaysInMonth } from 'rsuite/esm/utils/dateUtils';
+import pool from '../../utils/icons/pool.svg';
+import jardin from '../../utils/icons/jardin.svg';
+import bar from '../../utils/icons/bar.svg';
+import spa from '../../utils/icons/spa.svg';
+import gym from '../../utils/icons/gym.png';
+import lift from '../../utils/icons/lift.svg';
+import reception from '../../utils/icons/reception.svg';
+import calefaccion from '../../utils/icons/calefaccion.svg';
+import cajafuerte from '../../utils/icons/cajafuerte.svg';
+import bano from '../../utils/icons/bano.svg';
+import limpieza from '../../utils/icons/limpieza.svg';
+import security from '../../utils/icons/security.png';
+import cocina from '../../utils/icons/cocina.svg';
+import rules from '../../utils/icons/rules.png';
+import cancelationpolicy from "../../utils/icons/cancelationpolicy.png";
+
 
 const IconsList = {
   user: user,
@@ -72,11 +89,12 @@ const IconsList = {
   share: share,
   pets: pets,
   parking: parking,
-  cocina: kitchen,
+  kitchen: kitchen,
   clock: clock,
   smoke: smoke,
   card: card,
-  'aire_acondicionado': airConditioner,
+  airconditioner: airconditioner,
+  airConditioner: airconditioner,
   noSmoking: noSmoking,
   noParty: noParty,
   television: television,
@@ -86,6 +104,22 @@ const IconsList = {
   bFavorite: bFavorite,
   forward: forward,
   rightArrow: rightArrow,
+  pool: pool,
+  jardin: jardin,
+  bar: bar,
+  spa: spa,
+  gym: gym,
+  lift: lift,
+  reception: reception,
+  calefaccion: calefaccion,
+  cajaFuerte: cajafuerte,
+  cajafuerte: cajafuerte,
+  bano: bano,
+  limpieza: limpieza,
+  seguridad: security,
+  cocina: cocina,
+  rules: rules,
+  cancelationpolicy: cancelationpolicy,
 }; ;
 export const KeysIconsList=Object.keys(IconsList)
 const IconWidth={
