@@ -11,6 +11,11 @@ import { urlAPI } from '../../../../global.js';
 
 export const MobileFilter = ( props ) => {
 
+    const scroll = () => {
+    
+        window.scrollTo(0,1505)
+      };
+
     const handleSubmit = (e) => {
         e.preventDefault()
         if (props) {
@@ -19,21 +24,25 @@ export const MobileFilter = ( props ) => {
                 ciudadId = 1
                 props.setLugarInput('')
                 axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
+                scroll()
             }
             else if (props.lugarInput == 'Buenos Aires') {
                 ciudadId = 2;
                 props.setLugarInput('')
                 axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
+                scroll()
             }
             else if (props.lugarInput == 'Mendoza') {
                 ciudadId = 3;
                 props.setLugarInput('')
                 axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
+                scroll()
             }
             else if (props.lugarInput == 'Córdoba') {
                 ciudadId = 4;
                 props.setLugarInput('')
                 axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
+                scroll()
             }
             else {
                 props.setLugarInput('')
