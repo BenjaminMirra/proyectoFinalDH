@@ -73,6 +73,14 @@ public class Producto {
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
     private List<Caracteristicas> caracteristicasList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY, orphanRemoval = true)
+    @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
+    private List<Puntuacion> puntuacionList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY, orphanRemoval = true)
+    @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
+    private List<Reaccion> reaccionList = new ArrayList<>();
+
     public Producto() {
     }
 

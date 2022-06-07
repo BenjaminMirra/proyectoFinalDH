@@ -36,21 +36,14 @@ public class Reserva {
     @JsonIgnore
     private Producto producto;
 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "usuario_id", nullable = false)
+    @JsonIgnore
+    private Usuario usuario;
+
     public Reserva() {
     }
 
-    public Reserva(Long id, LocalDate fechaInicioReserva, LocalDate fechaFinReserva, Producto producto) {
-        this.id = id;
-        this.fechaInicioReserva = fechaInicioReserva;
-        this.fechaFinReserva = fechaFinReserva;
-        this.producto = producto;
-    }
-
-    public Reserva(LocalDate fechaInicioReserva, LocalDate fechaFinReserva, Producto producto) {
-        this.fechaInicioReserva = fechaInicioReserva;
-        this.fechaFinReserva = fechaFinReserva;
-        this.producto = producto;
-    }
 
     public Long getId() {
         return id;
@@ -82,5 +75,20 @@ public class Reserva {
 
     public void setProducto(Producto producto) {
         this.producto = producto;
+    }
+
+    public Reserva(Long id, LocalDate fechaInicioReserva, LocalDate fechaFinReserva, Producto producto, Usuario usuario) {
+        this.id = id;
+        this.fechaInicioReserva = fechaInicioReserva;
+        this.fechaFinReserva = fechaFinReserva;
+        this.producto = producto;
+        this.usuario = usuario;
+    }
+
+    public Reserva(LocalDate fechaInicioReserva, LocalDate fechaFinReserva, Producto producto, Usuario usuario) {
+        this.fechaInicioReserva = fechaInicioReserva;
+        this.fechaFinReserva = fechaFinReserva;
+        this.producto = producto;
+        this.usuario = usuario;
     }
 }
