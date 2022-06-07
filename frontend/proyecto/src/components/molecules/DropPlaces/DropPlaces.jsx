@@ -15,12 +15,6 @@ export const DropPlaces = ({lugarInput, setLugarInput,placeholder, icon }) => {
 
     const [lugarFiltrado, setLugarFiltrado] = useState([]);
    
-    useEffect(() => {
-        if (lugarInput) {
-            console.log(lugarInput);
-        }
-        
-    }, [lugarInput]);
     const handleFilter = (event) => {
         const letraBuscada = event.target.value;
         setLugarInput(event.target.value.toLowerCase())

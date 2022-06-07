@@ -13,7 +13,6 @@ export const TabletFilter = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     if (props) {
-      console.log(props.lugarInput);
       let ciudadId = undefined;
       if (props.lugarInput == 'San Carlos de Bariloche') {
         ciudadId = 1
@@ -36,7 +35,6 @@ export const TabletFilter = (props) => {
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
       }
       else {
-        console.log('entro');
         props.setLugarInput('')
         props.setFilterProducts([])
       }
