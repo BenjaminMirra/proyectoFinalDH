@@ -11,9 +11,14 @@ export const Products = ({ data }) => {
 
 
   const [mockUp, setMockUp] = useState(true)
+  const [mockUpDinamic,setMockUpDinamic]=useState(true)
   useEffect(() => {
-    setTimeout(() => setMockUp(false), 2000)
-  }, []);
+    setTimeout(() => {
+      setMockUp(false)}, 2000)
+      if (data) {
+        setMockUpDinamic(false)
+      }
+    }, [data]);
   return (
     <div className="products-container">
       <section className="products-content">
@@ -24,7 +29,7 @@ export const Products = ({ data }) => {
         </div>
         
 
-        {mockUp ?
+        {mockUp || mockUpDinamic ?
           <div className="product-cards-container">
             
             <MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} />

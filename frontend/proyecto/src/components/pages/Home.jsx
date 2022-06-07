@@ -31,7 +31,7 @@ export const Home = () => {
             
         
         <Filter setFilterProducts={setFilterProducts} />
-        <CategoriesDesktop setFilterProducts={setFilterProducts} ></CategoriesDesktop>
+        <CategoriesDesktop products={productsData} setFilterProducts={setFilterProducts} ></CategoriesDesktop>
         <Products data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></Products>
         
         
