@@ -21,21 +21,15 @@ export const Filter = ({setFilterProducts}) => {
     }, [windowWidth]);
 
     useEffect(() => {
-        if(windowWidth < 768){
+        if(windowWidth <= 768){
             setFilterDisplayed(<MobileFilter setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput} />)
         }
         else if(windowWidth<1365){
             setFilterDisplayed(<TabletFilter setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput} />)
         }
-        else if(windowWidth>1366){
+        else if(windowWidth=>1366){
             setFilterDisplayed(<DesktopFilter setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput}   />)
         }
-        
-        
-        
-        
-        
-        
         
     },[windowWidth,lugarInput]);
 
