@@ -12,7 +12,6 @@
 
 .card-product span {
   margin-left: 3px;
-  cursor: pointer;
 }
 
 .card-product-text {
@@ -245,11 +244,19 @@
   }
 
   .card-product-text{
-    padding: 0px 0px 15px 0px;
+    padding: 0px 0px 0px 0px;
   }
   .product-rating{
     top: 0px;
     right: 7px;
   }
 }
-
+@media (max-width: 370px) {
+  .card-product {
+    width: 300px;
+    
+  }
+  .product-title{
+    width: 300px;
+  }
+}

@@ -93,3 +93,9 @@
   }
   
 }
+@media (max-width: 370px) {
+  .card-category {
+    width: 300px;
+    
+  }
+}

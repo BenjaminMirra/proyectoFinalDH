@@ -16,27 +16,27 @@ export const DesktopFilter = (props) => {
       let ciudadId = undefined;
       if (props.lugarInput == 'San Carlos de Bariloche') {
         ciudadId = 1
-        props.setLugarInput('')
+        
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
       }
       else if (props.lugarInput == 'Buenos Aires') {
         ciudadId = 2;
-        props.setLugarInput('')
+        
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
       }
       else if (props.lugarInput == 'Mendoza') {
         ciudadId = 3;
-        props.setLugarInput('')
+        
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
       }
       else if (props.lugarInput == 'Córdoba') {
         ciudadId = 4;
-        props.setLugarInput('')
+        
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
       }
       else {
         console.log('entro');
-        props.setLugarInput('')
+        
         props.setFilterProducts([])
       }
 
