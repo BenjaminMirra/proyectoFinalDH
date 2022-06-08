@@ -40,7 +40,7 @@ export const ReactCalendar = () => {
         let dateEnd = new Date(endDate);
         
     }, [startDate, endDate])
-    const holidays=[new Date(2022,5,10)]
+    const holidays=[new Date(2022,5,18),new Date(2022,5,19),new Date(2022,5,20),new Date(2022,5,21),new Date(2022,5,22),new Date(2022,6,1),new Date(2022,6,2),new Date(2022,6,3),new Date(2022,6,4),new Date(2022,6,26),new Date(2022,6,27),new Date(2022,6,28),new Date(2022,6,29)]
   return (
     <div className="calendarReserve">
            
