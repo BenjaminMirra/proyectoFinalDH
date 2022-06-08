@@ -22,7 +22,7 @@ export const Products = ({ data,setMapHomeData ,setShowMap}) => {
       }
     }, [data]);
   return (
-    <div className="products-container" id="productsContainer">
+    <div className="products-container">
       <section className="products-content">
         <div className="product-title">
           <Heading type="lg" title="h2" variant="primary">

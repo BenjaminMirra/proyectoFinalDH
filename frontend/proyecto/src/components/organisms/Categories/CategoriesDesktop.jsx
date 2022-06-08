@@ -84,7 +84,7 @@ export const CategoriesDesktop = ({products,setFilterProducts}) => {
           {categoriesData.map((card,index)=>{
             // console.log(card.titulo.toLowerCase());
             
-            return <div onClick={()=>handleCategoryProducts(card.id)} id="scrollFilter"><CardCategory id={card.id} titulo={card.titulo} url={card.url_imagen} descripcion={`${totalPerCategory[card.titulo.toLowerCase()]} ${card.titulo}`} /></div>
+            return <div onClick={()=>handleCategoryProducts(card.id)}><CardCategory id={card.id} titulo={card.titulo} url={card.url_imagen} descripcion={`${totalPerCategory[card.titulo.toLowerCase()]} ${card.titulo}`} /></div>
           })}
       </div>}
         
