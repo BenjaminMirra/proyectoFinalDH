@@ -28,7 +28,7 @@
 
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
-import './ReactCalendar.css';
+import './ReactCalendarMirra.css';
 import format from 'date-fns/format';
 import { Icon } from '../../atoms/Icon/Icon';
 import "react-datepicker/dist/react-datepicker.css";
@@ -39,7 +39,7 @@ registerLocale('es', es)
 // CSS Modules, react-datepicker-cssmodules.css
 // import 'react-datepicker/dist/react-datepicker-cssmodules.css';
 
-export const ReactCalendar = () => {
+export const ReactCalendarMirra = () => {
 
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);

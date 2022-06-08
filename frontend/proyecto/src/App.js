@@ -4,7 +4,7 @@
  import { Login } from './components/pages/Login';
  import { SignUp } from "./components/pages/SignUp";
  import {Product} from './components/pages/Product';
- import {ReactCalendar} from './components/molecules/ReactCalendar/ReactCalendar'
+ import {ReactCalendar} from './components/molecules/ReactCalendar/ReactCalendarMirra'
 
 function App() {
   const text ="Este sencillo hotel se encuentra en una calle residencial arbolada, a 4 minutos a pie de la Catedral de La Plata, a 5 de los jardines de Plaza Moreno y a 2 km de la estación de tren La Plata. \nLas habitaciones, sencillas y con capacidad para 3 personas, cuentan con muebles de madera, Wi‑Fi gratis, televisión por cable y aire acondicionado. \nEl hotel ofrece desayuno gratuito y dispone de un salón en el vestíbulo y una cafetería informal.";

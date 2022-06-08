@@ -32,7 +32,7 @@ export const Calendar = () => {
     return (
         // 
         <>
-            {calendarDisplayed}
+            <DesktopCalendar/>
         </>
     )
 }
