@@ -12,18 +12,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@Getter
+/*@Getter
 @Setter
 
-@NoArgsConstructor
+@NoArgsConstructor*/
 public class TipoReaccionDTO {
 
-
+/*
     private Long id;
 
     private String nombreTipoReaccion;
 
 
-    private List<ReaccionDTO> reaccionDTOList = new ArrayList<>();
+    private List<ReaccionDTO> reaccionDTOList = new ArrayList<>();*/
 
 }

@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
+/*@Getter
 @Setter
 @ToString
 @AllArgsConstructor
@@ -16,10 +16,10 @@ import java.util.List;
 
 
 @Entity
-@Table(name = "tipo_de_reaccion")
+@Table(name = "tipo_de_reaccion")*/
 public class TipoReaccion {
 
-    @Id
+    /*@Id
     @NotNull
     @SequenceGenerator(name = "tr_sequence", sequenceName = "tr_sequence", allocationSize = 1) // //initialValue=33
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tr_sequence")
@@ -34,5 +34,5 @@ public class TipoReaccion {
     public TipoReaccion(String nombreTipoReaccion, List<Reaccion> reaccionList) {
         this.nombreTipoReaccion = nombreTipoReaccion;
         this.reaccionList = reaccionList;
-    }
+    }*/
 }

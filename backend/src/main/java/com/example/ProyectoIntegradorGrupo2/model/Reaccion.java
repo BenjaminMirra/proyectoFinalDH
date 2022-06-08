@@ -34,15 +34,17 @@ public class Reaccion {
     @JsonIgnore
     private Usuario usuario;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private boolean favorito;
+
+   /* @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "tipo_reaccion_id", nullable = false)
     @JsonIgnore
-    private TipoReaccion tipoReaccion;
+    private TipoReaccion tipoReaccion;*/
 
 
-    public Reaccion(Producto producto, Usuario usuario, TipoReaccion tipoReaccion) {
+    /*public Reaccion(Producto producto, Usuario usuario, TipoReaccion tipoReaccion) {
         this.producto = producto;
         this.usuario = usuario;
         this.tipoReaccion = tipoReaccion;
-    }
+    }*/
 }
