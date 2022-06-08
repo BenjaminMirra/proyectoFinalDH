@@ -21,5 +21,7 @@ public class ReaccionDTO {
 
     private Long id;
 
-    private Long tipo_reaccion_id;
+    private boolean favorito;
+
+    /*private Long tipo_reaccion_id;*/
 }
