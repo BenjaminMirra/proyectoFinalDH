@@ -11,7 +11,7 @@ export const DesktopFilter = (props) => {
 
   const scroll = () => {
     
-    window.scrollTo(0,485)
+    window.scrollTo({top:485,behavior: 'smooth'})
   };
 
   const handleSubmit = (e) => {

@@ -68,8 +68,8 @@ object-fit: scale-down;
         width: 400px;
     }
 }
-@media (max-width:436px) {
+@media (max-width:465px) {
     .mapHome-container{
-        width: 300px;
+        width: 365px;
     }
 }
