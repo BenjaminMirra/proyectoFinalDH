@@ -7,7 +7,7 @@ import { Footer } from '../organisms/Footer/Footer'
 import { Carousel } from '../molecules/Carousel/Carousel'
 import { ProductDescription } from '../molecules/ProductDescription/ProductDescription'
 import { ProductServices } from '../molecules/ProductServices/ProductServices'
-import { Calendar } from '../molecules/Calendar/Calendar'
+import { ReactCalendar } from '../molecules/Calendar/MuiCalendar/ReactCalendar'
 import { Map } from '../molecules/Map/Map'
 import { ProductInfo } from '../molecules/ProductInformation/ProductInfo';
 import axios from 'axios';
@@ -43,7 +43,7 @@ export const Product = () => {
         <Carousel product={productData} />
         <ProductDescription subtitle={productData.titulo_descripcion} description={productData.descripcion} />
         <ProductServices services={productData.caracteristicasDTOList} />
-        <Calendar />
+        <ReactCalendar />
         <Map lat={productData.latitud} lng={productData.longitud} location={productData.direccion} />
         <ProductInfo info={productData.politicaListDTO} />
 

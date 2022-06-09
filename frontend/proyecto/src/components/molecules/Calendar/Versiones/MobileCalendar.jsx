@@ -14,12 +14,6 @@ export const MobileCalendar = () => {
 
     const {beforeToday } = DateRangePicker;
 
-    setTimeout(() => {
-        const animation = document.getElementsByClassName("rs-anim-fade")[0];
-        const animationFont = document.getElementsByClassName("rs-calendar-table-cell-day")[0];
-        animationFont.classList.add("animation-mobile-font")
-        animation.classList.add("animation-mobile-CalendarProduct");
-    }, 500)
 
 
     return(
