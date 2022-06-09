@@ -17,7 +17,7 @@ export const Calendar = () => {
     }, [windowWidth]);
 
     useEffect(() => {
-        if(windowWidth <= 768){
+        if(windowWidth <= 767){
             setCalendarDisplayed(<MobileCalendar/>)
         }
         else if(windowWidth<1366){

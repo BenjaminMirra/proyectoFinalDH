@@ -126,7 +126,7 @@
 .react-datepicker__day--disabled .react-datepicker__day--excluded{
     background-color: white;
 }
-@media (min-width: 760px) and (max-width: 1366px) {
+@media (min-width: 768px) and (max-width: 1366px) {
     .tablet-calendarReserve div.react-datepicker__day:not(.react-datepicker__day--disabled, .react-datepicker__day--excluded) {
         border-radius: 50% !important;
     }
@@ -268,21 +268,22 @@
 }
 .tablet-calendarReserve .react-datepicker {
     margin-top: 40px;
-    width: 52vw;
+    width: 90%;
+    margin: auto;
     height: 360px;
     margin: 0;
-    margin-left: 2%;
+    margin-left: 5%;
 }
 .tablet-calendarReserve{
     margin-top: 40px;
-    display: flex;
+    /* display: flex; */
     justify-content: space-between;
     align-items: center;
 }
 .tablet-start-booking-container{
     
-    background-color: white;
-    width: 30%;
+    width: 75%;
+    margin: auto;
     padding: 8px 15px;
     border-radius: 10px;
     height: 150px;
@@ -295,6 +296,28 @@
     width: 100%;
     margin-top: 30px;
 }
+.tablet-start-booking-container h4{
+    margin-bottom: 10px;
+    /* white-space: nowrap; */
+}
 .tablet-start-booking{
-    margin-right: 2%;    
+    margin-right: 2%;
+    
+    
+}
+.tablet-calendarReservetablet-container{
+    height:620px;
+    background-color: var(--color-secondary);
+}
+.tablet-calendarReserve .react-datepicker{
+    margin-top: 40px;
+}
+.tablet-calendarReserve-title{
+    width: 97%;
+    margin: auto;
+    
+    
+}
+.tablet-calendarReserve-title h3{
+    padding-top: 30px;
 }
