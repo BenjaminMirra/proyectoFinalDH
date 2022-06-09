@@ -38,4 +38,7 @@
     .productServices{
         margin-top: 30px;
     }
+    .service-description{
+        width: 50%;
+    }
 }
