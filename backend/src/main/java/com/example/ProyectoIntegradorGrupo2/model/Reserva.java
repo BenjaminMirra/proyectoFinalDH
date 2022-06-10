@@ -1,6 +1,7 @@
 package com.example.ProyectoIntegradorGrupo2.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -14,7 +15,7 @@ import java.util.Date;
 @Setter
 @ToString
 
-
+@AllArgsConstructor
 @Entity
 @Table(name = "reservas")
 public class Reserva {
@@ -85,15 +86,12 @@ public class Reserva {
         this.producto = producto;
     }
 
-    public Reserva(Long id, LocalDate fechaInicioReserva, LocalDate fechaFinReserva, Producto producto, Usuario usuario) {
-        this.id = id;
-        this.fechaInicioReserva = fechaInicioReserva;
-        this.fechaFinReserva = fechaFinReserva;
-        this.producto = producto;
-        this.usuario = usuario;
-    }
 
-    public Reserva(LocalDate fechaInicioReserva, LocalDate fechaFinReserva, Producto producto, Usuario usuario) {
+
+    public Reserva(LocalDate fechaEnLaQueSeHaceLaReserva, String mensajeUsuario, boolean vacunadoCovid, LocalDate fechaInicioReserva, LocalDate fechaFinReserva, Producto producto, Usuario usuario) {
+        this.fechaEnLaQueSeHaceLaReserva = fechaEnLaQueSeHaceLaReserva;
+        this.mensajeUsuario = mensajeUsuario;
+        this.vacunadoCovid = vacunadoCovid;
         this.fechaInicioReserva = fechaInicioReserva;
         this.fechaFinReserva = fechaFinReserva;
         this.producto = producto;

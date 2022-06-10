@@ -45,6 +45,13 @@ public class ProductoService implements IProductoService {
     private ITipoDePoliticasRepository tipoDePoliticasRepository;
 
     @Autowired
+    private IPuntuacionRepository puntuacionRepository;
+
+    @Autowired
+    private IReaccionRepository reaccionRepository;
+
+
+    @Autowired
     ObjectMapper mapper;
 
     private ProductoDTO cargarProductoYRetornarDTO(ProductoDTO productoDTO){
@@ -70,14 +77,14 @@ public class ProductoService implements IProductoService {
             productoDesdeDB.get().getCaracteristicasList().add(caracteristica);
         }
 
-        List<ReservaDTO> reservaDTOList = productoDTO.getReservaDTOList();
+        /*List<ReservaDTO> reservaDTOList = productoDTO.getReservaDTOList();
 
         for (ReservaDTO r : reservaDTOList) {
             Reserva reserva = mapper.convertValue(r, Reserva.class);
             reserva.setProducto(productoDesdeDB.get());
             reservaRepository.save(reserva);
             productoDesdeDB.get().getReservaSet().add(reserva);
-        }
+        }*/
 
         List<ImagenDTO> imagenDTOList = productoDTO.getImagenDTOList();
 
@@ -207,13 +214,46 @@ public class ProductoService implements IProductoService {
 
     @Override
     public ProductoDTO editar(ProductoDTO productoDTO) throws ResourceNotFoundException ,BadRequestException {
+
         Optional<Producto> producto = productoRepository.findById(productoDTO.getId());
+
         if (productoDTO.getCiudad_id()==null || productoDTO.getCategoria_id()==null)
             throw new BadRequestException("El producto debe tener asignada una ciudad y una categoria");
+
         if (producto.isEmpty())
             throw new ResourceNotFoundException("No se ha encontrado el producto con ese id" + productoDTO.getId());
 
-        return cargarProductoYRetornarDTO(productoDTO);
+        ProductoDTO productoDTOConId = cargarProductoYRetornarDTO(productoDTO);
+
+        List<ReservaDTO> reservaDTOList = productoDTO.getReservaDTOList();
+
+        for (ReservaDTO r : reservaDTOList) {
+            Reserva reserva = mapper.convertValue(r, Reserva.class);
+            reserva.setProducto(producto.get());
+            reservaRepository.save(reserva);
+            producto.get().getReservaSet().add(reserva);
+        }
+
+        List<PuntuacionDTO> puntuacionDTOList = productoDTO.getPuntuacionDTOList();
+
+        for (PuntuacionDTO punt:puntuacionDTOList) {
+            Puntuacion puntuacion =mapper.convertValue(punt, Puntuacion.class);
+            puntuacion.setProducto(producto.get());
+            puntuacionRepository.save(puntuacion);
+            producto.get().getPuntuacionList().add(puntuacion);
+        }
+
+        List<ReaccionDTO> reaccionDTOList = productoDTO.getReaccionDTOList();
+
+        for (ReaccionDTO reaccionDTO: reaccionDTOList) {
+            Reaccion reaccion = mapper.convertValue(reaccionDTO, Reaccion.class);
+            reaccion.setProducto(producto.get());
+            reaccionRepository.save(reaccion);
+            producto.get().getReaccionList().add(reaccion);
+        }
+
+
+        return productoDTOConId;
     }
 
     @Override
@@ -256,6 +296,26 @@ public class ProductoService implements IProductoService {
             throw new ResourceNotFoundException("No se encontraron productos de ésa ciudad");
         List<ProductoDTO> productoDTOList = new ArrayList<>();
         for (Optional<Producto> producto : productosList
+        ) {
+
+            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
+
+            productoDTOList.add(productoDTO);
+        }
+
+        productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+
+        return productoDTOList;
+    }
+
+    @Override
+    public List<ProductoDTO> buscarProductosPorDisponibilidad(DisponibilidadDTO disponibilidadDTO) throws ResourceNotFoundException {
+        List<Optional<Producto>> productosDisponiblesDB = productoRepository.listarProductosByDisponibilidad(disponibilidadDTO.getFechaInicioReserva(), disponibilidadDTO.getFechaFinReserva());
+        if (productosDisponiblesDB.isEmpty())
+            throw new ResourceNotFoundException("No se encontraron productos de ésa ciudad");
+
+        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        for (Optional<Producto> producto : productosDisponiblesDB
         ) {
 
             ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());

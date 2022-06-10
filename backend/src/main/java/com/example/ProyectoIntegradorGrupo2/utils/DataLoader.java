@@ -1,8 +1,6 @@
 package com.example.ProyectoIntegradorGrupo2.utils;
 
-import com.example.ProyectoIntegradorGrupo2.model.Categoria;
-import com.example.ProyectoIntegradorGrupo2.model.Ciudad;
-import com.example.ProyectoIntegradorGrupo2.model.TipoDePoliticas;
+import com.example.ProyectoIntegradorGrupo2.model.*;
 import com.example.ProyectoIntegradorGrupo2.repository.ICategoriaRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.ICiudadRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.ITipoDePoliticasRepository;
@@ -11,10 +9,12 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-@Component
-public class DataLoader /*implements ApplicationRunner*/ {
+import java.time.LocalDate;
 
-    /*@Autowired
+@Component
+public class DataLoader implements ApplicationRunner {
+
+    @Autowired
     private ICategoriaRepository categoriaRepository;
 
     @Autowired
@@ -54,5 +54,11 @@ public class DataLoader /*implements ApplicationRunner*/ {
         tipoDePoliticasRepository.save(tipoDePoliticas2);
 
 
-    }*/
+       /* Producto producto = new Producto("Hotel Bariloche", "Bienvenido", "El mejor hotel", "calle imaginaria 123", 8.5,8.5,categoria, ciudad);
+        Role role = new Role("usuarioRole");
+        Usuario usuario = new Usuario("n","a","a@mail.com","1234", role);
+        Reserva reserva = new Reserva(LocalDate.of(2022, 6, 10),"mensaje nuevo", true,LocalDate.of(2022,6,10), LocalDate.of(2022,6,15),producto,usuario);
+        Reserva reserva2 = new Reserva(LocalDate.of(2022, 6, 16),"mensaje nuevo", true,LocalDate.of(2022,6,20), LocalDate.of(2022,6,15),producto,usuario);
+        Reserva reserva3 = new Reserva(LocalDate.of(2022, 6, 25),"mensaje nuevo", true,LocalDate.of(2022,6,30), LocalDate.of(2022,6,15),producto,usuario);*/
+    }
 }

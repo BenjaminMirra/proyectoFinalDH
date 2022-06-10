@@ -29,6 +29,10 @@ public class Usuario {
     private String email;
     private String password;
 
+    @OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY)
+    @JoinColumn(name="role_id", referencedColumnName = "id")
+    private Role role;
+
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
     private List<Reaccion> reaccionList = new ArrayList<>();
@@ -49,5 +53,13 @@ public class Usuario {
         this.reaccionList = reaccionList;
         this.puntuacionList = puntuacionList;
         this.reservaList = reservaList;
+    }
+
+    public Usuario(String nombre, String apellido, String email, String password, Role role) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.password = password;
+        this.role = role;
     }
 }

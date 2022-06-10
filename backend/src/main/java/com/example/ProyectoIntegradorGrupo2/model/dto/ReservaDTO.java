@@ -23,6 +23,12 @@ public class ReservaDTO {
     @NotNull
     private LocalDate fechaFinReserva;
 
+    private LocalDate fechaEnLaQueSeHaceLaReserva;
+
+    private String mensajeUsuario;
+
+    private boolean vacunadoCovid;
+
     //private ProductoDTO productoDTO;
 
     public ReservaDTO() {

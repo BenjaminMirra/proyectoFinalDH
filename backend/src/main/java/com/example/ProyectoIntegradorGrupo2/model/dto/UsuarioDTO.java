@@ -25,6 +25,7 @@ public class UsuarioDTO {
     private String apellido;
     private String email;
     private String password;
+    private RoleDTO roleDTO;
 
 
     private List<ReaccionDTO> reaccionDTOList = new ArrayList<>();

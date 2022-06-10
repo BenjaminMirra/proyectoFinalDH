@@ -3,6 +3,7 @@ package com.example.ProyectoIntegradorGrupo2.controller;
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.dto.CategoriaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.DisponibilidadDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
 import com.example.ProyectoIntegradorGrupo2.service.IProductoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.text.ParseException;
 import java.util.Collection;
+import java.util.List;
 
 /*@CrossOrigin("*")*/
 //@CrossOrigin(origins = "http://localhost:8080")
@@ -69,6 +71,14 @@ public class ProductoController {
     public  ResponseEntity<?> listarProductosPorIdCiudad(@PathVariable Long id) throws ResourceNotFoundException {
 
         return ResponseEntity.ok(productoService.buscarProductosPorCiudad(id));
+    }
+
+    @Operation(summary = "Listar los productos según su disponibilidad")
+    @GetMapping("/disponibles")
+    public  ResponseEntity<?> listarProductosPorDisponibilidad(@RequestBody DisponibilidadDTO disponibilidadDTO) throws ResourceNotFoundException {
+        List<ProductoDTO> productosDTO = productoService.buscarProductosPorDisponibilidad(disponibilidadDTO);
+
+        return ResponseEntity.ok(productosDTO);
     }
 
     @Operation(summary = "Modificar un producto")
