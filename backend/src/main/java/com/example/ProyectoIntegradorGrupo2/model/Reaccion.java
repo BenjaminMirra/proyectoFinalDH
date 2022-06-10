@@ -34,6 +34,7 @@ public class Reaccion {
     @JsonIgnore
     private Usuario usuario;
 
+    @Column(columnDefinition = "TINYINT")
     private boolean favorito;
 
    /* @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)

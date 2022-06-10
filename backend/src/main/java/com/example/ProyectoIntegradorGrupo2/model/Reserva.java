@@ -32,6 +32,7 @@ public class Reserva {
     @Column(length = 3000)
     private String mensajeUsuario;
 
+    @Column(columnDefinition = "TINYINT")
     private boolean vacunadoCovid;
     @NotNull
     @Column(columnDefinition = "DATE")
