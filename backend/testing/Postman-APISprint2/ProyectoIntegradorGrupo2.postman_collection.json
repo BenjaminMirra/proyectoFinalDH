@@ -446,6 +446,40 @@
 									"response": []
 								},
 								{
+									"name": "Obtener categoria por id aws",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://test7772-env.eba-ydkkptym.us-east-1.elasticbeanstalk.com/categorias/1",
+											"protocol": "http",
+											"host": [
+												"test7772-env",
+												"eba-ydkkptym",
+												"us-east-1",
+												"elasticbeanstalk",
+												"com"
+											],
+											"path": [
+												"categorias",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "Obtener categoria por id exception",
 									"event": [
 										{
@@ -1783,6 +1817,41 @@
 									"response": []
 								},
 								{
+									"name": "Peticion Get productos por Ciudad aws",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://test7772-env.eba-ydkkptym.us-east-1.elasticbeanstalk.com/productos/porCiudad/2",
+											"protocol": "http",
+											"host": [
+												"test7772-env",
+												"eba-ydkkptym",
+												"us-east-1",
+												"elasticbeanstalk",
+												"com"
+											],
+											"path": [
+												"productos",
+												"porCiudad",
+												"2"
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "Peticion Get productos por Ciudad exception",
 									"event": [
 										{
@@ -2743,6 +2812,40 @@
 									"response": []
 								},
 								{
+									"name": "Obtener ciudad por id aws",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://test7772-env.eba-ydkkptym.us-east-1.elasticbeanstalk.com/ciudades/1",
+											"protocol": "http",
+											"host": [
+												"test7772-env",
+												"eba-ydkkptym",
+												"us-east-1",
+												"elasticbeanstalk",
+												"com"
+											],
+											"path": [
+												"ciudades",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
 									"name": "Obtener ciudad por id exception",
 									"event": [
 										{
@@ -3130,6 +3233,153 @@
 					]
 				}
 			]
+		},
+		{
+			"name": "Post productos",
+			"item": [
+				{
+					"name": "Post producto 001",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"titulo\": \"Hotel Panamericano Bariloche\",\r\n  \"titulo_descripcion\": \"Alojate al lado del majestuoso lago Nahuel Huapi\",\r\n  \"descripcion\": \"Ofrece habitaciones con vistas al lago y a las montañas. Las habitaciones y las suites ocupan un edificio amplio y elegante y ofrecen vistas al lago o a la ciudad. Además, el hotel cuenta con una amplia variedad de actividades de ocio para toda la familia.\\nEl restaurante La Cave sirve fondues de queso a pedido. El piano bar del vestíbulo propone cócteles, bebidas, carnes ahumadas de la Patagonia y una amplia selección de vinos de la bodega Zuccardi.\\nEl personal del hotel organiza una amplia variedad de actividades de ocio en plena naturaleza, como ciclismo de montaña, equitación, pesca con mosca y paseos en kayak.\",\r\n \r\n  \"direccion\": \"Av. San Martín, 536\",\r\n  \"latitud\": -41.133473922619125,\r\n  \"longitud\": -71.3167240322848,\r\n  \"politicaListDTO\": [\r\n    { \"descripcion\": \"No fumar\", \"tipo_politica_id\": 1 },\r\n    { \"descripcion\": \"Se permiten mascotas hasta 7 Kg\", \"tipo_politica_id\": 1 },\r\n    { \"descripcion\": \"Check-in: 13:00 horas\", \"tipo_politica_id\": 1 },\r\n    { \"descripcion\": \"Check-out: 10:00 horas\", \"tipo_politica_id\": 1 },\r\n    {\r\n      \"descripcion\": \"Detector de Monóxido de Carbono\",\r\n      \"tipo_politica_id\": 2\r\n    },\r\n    { \"descripcion\": \"Detector de humo\", \"tipo_politica_id\": 2 },\r\n    {\r\n      \"descripcion\": \"Se requiere utilizar barbijo en ascensores y areas comunes\",\r\n      \"tipo_politica_id\": 2\r\n    },\r\n    {\r\n      \"descripcion\": \"Pago del costo de una noche por cancelar\",\r\n      \"tipo_politica_id\": 3\r\n    }\r\n  ],\r\n  \"categoria_id\": 1,\r\n  \"ciudad_id\": 1,\r\n \r\n  \"imagenDTOList\": [\r\n    {\r\n      \"url_img_producto\": \"{{IMGEJEMPLO_BUCKET}}\",\r\n      \"titulo_img_producto\": \"Vista de camas y lago Nahuel Huapi desde habitación\"\r\n    },\r\n    {\r\n      \"url_img_producto\": \"{{IMGEJEMPLO_BUCKET}}\",\r\n      \"titulo_img_producto\": \"Piscina del hotel\"\r\n    },\r\n    {\r\n      \"url_img_producto\": \"{{IMGEJEMPLO_BUCKET}}\",\r\n      \"titulo_img_producto\": \"Living con hogar en espacio común del hotel\"\r\n    },\r\n    {\r\n      \"url_img_producto\": \"{{IMGEJEMPLO_BUCKET}}\",\r\n      \"titulo_img_producto\": \"Desayuno completo\"\r\n    },\r\n    {\r\n      \"url_img_producto\": \"{{IMGEJEMPLO_BUCKET}}\",\r\n      \"titulo_img_producto\": \"Vista del lago Nahuel Huapi desde la habitación\"\r\n    }\r\n  ],\r\n  \"caracteristicasDTOList\": [\r\n    { \"titulo\": \"Aire Acondicionado\", \"nombre_icono\": \"airConditioner\" },\r\n    { \"titulo\": \"Piscina\", \"nombre_icono\": \"swim\" },\r\n    { \"titulo\": \"Wifi\", \"nombre_icono\": \"wifi\" },\r\n    { \"titulo\": \"Gimnasio\", \"nombre_icono\": \"gym\" },\r\n    { \"titulo\": \"Caja Fuerte\", \"nombre_icono\": \"cajaFuerte\" },\r\n    { \"titulo\": \"Recepción 24 Horas\", \"nombre_icono\": \"reception\" }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_PRODUCTOS}}/agregar",
+							"host": [
+								"{{URL_PRODUCTOS}}"
+							],
+							"path": [
+								"agregar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener producto por id",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_PRODUCTOS}}/1",
+							"host": [
+								"{{URL_PRODUCTOS}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener productos disponibles",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fechaInicioReserva\": \"2022-06-10\",\r\n    \"fechaFinReserva\": \"2022-06-14\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL_PRODUCTOS}}/disponibles",
+							"host": [
+								"{{URL_PRODUCTOS}}"
+							],
+							"path": [
+								"disponibles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/usuarios/agregar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuarios",
+								"agregar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post reserva",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"fechaInicioReserva\": \"2022-06-15\",\r\n  \"fechaFinReserva\": \"2022-06-30\",\r\n  \"fechaEnLaQueSeHaceLaReserva\": \"2022-06-10\",\r\n   \"mensajeUsuario\": \"1234h\",\r\n   \"vacunadoCovid\": true,\r\n   \"usuario_id\": 1,\r\n   \"producto_id\": 1\r\n \r\n  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/reservas/agregar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reservas",
+								"agregar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	],
 	"event": [
@@ -3155,7 +3405,7 @@
 	"variable": [
 		{
 			"key": "IDPOST_CATEGORIA",
-			"value": 13
+			"value": 6
 		},
 		{
 			"key": "IDFOREXCEPTION",
@@ -3164,7 +3414,7 @@
 		},
 		{
 			"key": "IDPOST2_CATEGORIA",
-			"value": 15,
+			"value": 5,
 			"type": "string"
 		},
 		{
@@ -3199,12 +3449,12 @@
 		},
 		{
 			"key": "IMGEJEMPLO_BUCKET",
-			"value": "https://t-cf.bstatic.com/xdata/images/hotel/max1024x768/166442884.jpg?k=f038e53f71b03089fec79040cc5504bbc2ddf1d5769325d855baf665fc8fa67e&o=&hp=1",
+			"value": "https://img-g2.s3.amazonaws.com/productos/001-001.jpg",
 			"type": "string"
 		},
 		{
 			"key": "IDPOST2_PRODUCTO",
-			"value": 35,
+			"value": 34,
 			"type": "string"
 		},
 		{
@@ -3219,12 +3469,12 @@
 		},
 		{
 			"key": "IDPOST_CIUDAD",
-			"value": "5",
+			"value": 6,
 			"type": "string"
 		},
 		{
 			"key": "IDPOST2_CIUDAD",
-			"value": "6",
+			"value": 5,
 			"type": "string"
 		},
 		{

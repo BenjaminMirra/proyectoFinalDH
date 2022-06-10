@@ -2,13 +2,19 @@ package com.example.ProyectoIntegradorGrupo2.service;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
+import com.example.ProyectoIntegradorGrupo2.model.Producto;
+import com.example.ProyectoIntegradorGrupo2.model.Reserva;
+import com.example.ProyectoIntegradorGrupo2.model.Usuario;
 import com.example.ProyectoIntegradorGrupo2.model.dto.ReservaDTO;
+import com.example.ProyectoIntegradorGrupo2.repository.IProductoRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.IReservaRepository;
+import com.example.ProyectoIntegradorGrupo2.repository.IUsuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservaService implements IReservaService{
@@ -17,11 +23,30 @@ public class ReservaService implements IReservaService{
     private IReservaRepository reservaRepository;
 
     @Autowired
+    private IProductoRepository productoRepository;
+
+    @Autowired
+    private IUsuarioRepository usuarioRepository;
+
+    @Autowired
     ObjectMapper mapper;
 
     @Override
     public ReservaDTO agregarReserva(ReservaDTO reservaDTO) throws BadRequestException {
-        return null;
+        Reserva reserva = mapper.convertValue(reservaDTO, Reserva.class);
+        //reservaDTO.setFechaEnLaQueSeHaceLaReserva(new Date());
+        Optional<Producto> productoDesdeDB = productoRepository.findById(reservaDTO.getProducto_id());
+        reserva.setProducto(productoDesdeDB.get());
+
+        Optional<Usuario> usuarioDesdeDB = usuarioRepository.findById(reservaDTO.getUsuario_id());
+        reserva.setUsuario(usuarioDesdeDB.get());
+
+        Reserva reservaGuardada = reservaRepository.save(reserva);
+
+        reservaDTO.setId(reservaGuardada.getId());
+
+
+        return reservaDTO;
     }
 
     @Override
