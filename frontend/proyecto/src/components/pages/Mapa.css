@@ -1,0 +1,18 @@
+.full-map-loaded{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-self: center;
+    
+    
+}
+.full-map-container{
+    width: 100%;
+    height: 85vh;
+    margin-top: auto;
+    border-radius:8px ;
+    
+}
+.full-map-loaded-container{
+    width: 100%;
+}

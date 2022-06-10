@@ -1,3 +1,25 @@
 footer{
     margin-top: 45px;
 }
+.contenedor-pagina{
+    position: relative;
+}
+.show-mapa{
+    position: absolute;
+    
+    bottom: 40px;
+    left: 45%;
+    right: 50%;
+    /* margin: auto; */
+    width: 160px;
+    background-color: var(--color-secondary);
+    height: 50px;
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 15px;
+    padding: 5px;
+    cursor: pointer;
+    z-index: 5;
+}
