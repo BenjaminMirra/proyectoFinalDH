@@ -24,6 +24,14 @@ public class Reserva {
     @SequenceGenerator(name = "reserva_sequence", sequenceName = "reserva_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reserva_sequence")
     private Long id;
+
+    @Column(columnDefinition = "TIMESTAMP")
+    private LocalDate fechaEnLaQueSeHaceLaReserva;
+
+    @Column(length = 3000)
+    private String mensajeUsuario;
+
+    private boolean vacunadoCovid;
     @NotNull
     @Column(columnDefinition = "DATE")
     private LocalDate fechaInicioReserva;
