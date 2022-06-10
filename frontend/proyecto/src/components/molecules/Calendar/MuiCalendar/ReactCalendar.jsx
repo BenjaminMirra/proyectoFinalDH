@@ -1,12 +1,12 @@
 import React,{useState,useEffect} from 'react'
-import { DesktopCalendar } from './Versiones/DesktopCalendar'
-import { TabletCalendar } from './Versiones/TabletCalendar'
-import { MobileCalendar } from './Versiones/MobileCalendar'
+import { DesktopReactCalendar } from './Versiones/DesktopReactCalendar'
+import { TabletReactCalendar } from './Versiones/TabletReactCalendar'
+import { MobileReactCalendar } from './Versiones/MobileReactCalendar'
 
 
-export const Calendar = () => {
+export const ReactCalendar = () => {
     
-    const [calendarDisplayed,setCalendarDisplayed]=useState(<DesktopCalendar/>)
+    const [calendarDisplayed,setCalendarDisplayed]=useState(<DesktopReactCalendar/>)
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
     useEffect(() => {
     function handleResize() {
@@ -17,14 +17,14 @@ export const Calendar = () => {
     }, [windowWidth]);
 
     useEffect(() => {
-        if(windowWidth <= 767){
-            setCalendarDisplayed(<MobileCalendar/>)
+        if(windowWidth <= 768){
+            setCalendarDisplayed(<MobileReactCalendar/>)
         }
         else if(windowWidth<1366){
-            setCalendarDisplayed(<TabletCalendar/>)
+            setCalendarDisplayed(<TabletReactCalendar/>)
         }
         else if(windowWidth>=1366){
-            setCalendarDisplayed(<DesktopCalendar/>)
+            setCalendarDisplayed(<DesktopReactCalendar/>)
 
         }
         
@@ -32,7 +32,7 @@ export const Calendar = () => {
     return (
         // 
         <>
-            <DesktopCalendar/>
+            {calendarDisplayed}
         </>
     )
 }

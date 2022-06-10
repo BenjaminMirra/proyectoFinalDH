@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.text.ParseException;
 import java.util.Collection;
 
-@CrossOrigin("*")
+/*@CrossOrigin("*")*/
 //@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/productos")

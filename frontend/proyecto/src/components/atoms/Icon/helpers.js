@@ -57,6 +57,8 @@ import security from "../../utils/icons/security.png";
 import cocina from "../../utils/icons/cocina.svg";
 import rules from "../../utils/icons/rules.png";
 import cancelationpolicy from "../../utils/icons/cancelationpolicy.png";
+import mapa from "../../utils/icons/mapa.png";
+import home from "../../utils/icons/home.png";
 
 const IconsList = {
   user: user,
@@ -119,6 +121,8 @@ const IconsList = {
   cocina: cocina,
   rules: rules,
   cancelationpolicy: cancelationpolicy,
+  mapa:mapa,
+  home:home,
 };
 export const KeysIconsList = Object.keys(IconsList);
 const IconWidth = {

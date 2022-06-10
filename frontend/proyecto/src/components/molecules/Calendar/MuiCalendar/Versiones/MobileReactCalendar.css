@@ -1,0 +1,47 @@
+.mobile-calendarReserve{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+}
+
+.mobile-calendarReact-padre{
+    width: 100%;
+}
+
+.mobile-calendarReact{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 80%;
+    height: 320px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+}
+
+.mobile-start-booking{
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    margin-right: 0%;
+    padding-left: 4%;
+    padding-right: 4%;
+    margin-bottom: 10px;
+}
+
+
+.mobile-nextButton{
+    visibility: visible !important;
+}
+
+.start-booking-container button{
+    margin-top: 0px;
+}
+.mobile-calendar-heading{
+    margin-bottom: 15px;
+    margin-top: 10px;
+}

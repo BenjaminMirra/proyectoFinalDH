@@ -12,7 +12,7 @@ export const TabletFilter = (props) => {
 
   const scroll = () => {
     
-    window.scrollTo(0,580)
+    window.scrollTo({top:580,behavior: 'smooth'})
   };
 
   const handleSubmit = (e) => {

@@ -57,6 +57,7 @@
 .product-cat-cat {
   display: flex;
   margin-left: 5px;
+  margin-bottom: 3px;
 }
 
 .cat-cat h4 {
