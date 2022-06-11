@@ -5,7 +5,8 @@ import { Icon } from '../../atoms/Icon/Icon'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
 import './ReserveDetail.css'
-export const ReserveDetail = () => {
+export const ReserveDetail = ({product,category,location}) => {
+
   return (
     <div className='reserveDetail'>
         <SpacerHorizontal height={'md'} />
@@ -14,31 +15,42 @@ export const ReserveDetail = () => {
         </div>
         <SpacerHorizontal height={'md'} />
         <div className='reserveDetail-image-product'>
-            <img src='' alt="" />
+            <img style={{width:'100%',height:'100%'}} src={product.imagenDTOList?product.imagenDTOList[0].url_img_producto:''} alt="" />
         </div>
         <SpacerHorizontal height={'md'} />
         <div className='reserveDetail-container' >
             <div className='reserveDetail-product-info'>
-                <Paragraph size={'md'} >HOTEL</Paragraph>
-                <SpacerHorizontal height={'xxxs'} />
-                <Heading title={'h4'} variant='primary' type={'md'} >Hermitage Hotel</Heading>
-                <SpacerHorizontal height={'xxxs'} />
+                <Paragraph size={'md'} >{category}</Paragraph>
+                <SpacerHorizontal height={'xxs'} />
+                <Heading title={'h4'} variant='primary' type={'md'} >{product.titulo}</Heading>
+                
                 <div className='reserveDetail-stars'>   
                     <Icon icon={'star'} /><Icon icon={'star'} /><Icon icon={'star'} /><Icon icon={'star'} /><Icon icon={'star'} />
                 </div>
-                <SpacerHorizontal height={'xxs'} />
+                <SpacerHorizontal height={'xs'} />
                 <div className='reserveDetail-location'>
                     <Icon icon='location' width={'sm'} />
-                    <Paragraph>  Av. Colon 1643, Buenos Aires, Ciudad Autonoma de Buenos Aires, Argentina </Paragraph>
+                    <Paragraph> {location} </Paragraph>
                 </div>
                 
                 <hr />
-                <SpacerHorizontal height={'md'} />
-                <Paragraph>Check In <span>_</span>/ <span>_</span>/ <span>_</span> </Paragraph>
+                
+                <div className='check-date' >
+                     <Paragraph>Check In  </Paragraph>
+                <div>
+                    <span>11</span> / <span>06</span> / <span>2022</span>
+                </div>
+                </div>
+                   
                 <hr />
-                <Paragraph>Check Out <span>_</span>/ <span>_</span>/ <span>_</span> </Paragraph>
+                <div className='check-date' >
+                     <Paragraph>Check Out  </Paragraph>
+                <div>
+                   <span>20</span> / <span>06</span> / <span>2022</span>
+                </div>
+                </div>
                 <hr />
-                <div style={{height:'17px'}}></div>
+                <div style={{height:'27px'}}></div>
                 <SpacerHorizontal height={'lg'} />
                 <Button label='Confirmar reserva' variant={true} ></Button>
                  <SpacerHorizontal height={'md'} />

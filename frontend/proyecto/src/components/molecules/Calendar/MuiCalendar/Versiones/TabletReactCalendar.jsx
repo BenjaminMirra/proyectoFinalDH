@@ -6,7 +6,7 @@ import { registerLocale, setDefaultLocale } from "react-datepicker";
 import es from 'date-fns/locale/es';
 import { Button } from '../../../../atoms/Button/Button';
 import { Heading } from '../../../../atoms/Heading/Heading';
-
+import { Link } from 'react-router-dom';
 import './TabletReactCalendar.css'
 export const TabletReactCalendar = () => {
     registerLocale('es', es)
@@ -110,7 +110,10 @@ export const TabletReactCalendar = () => {
             <div className='tablet-start-booking' >
                 <div className='tablet-start-booking-container' >
                         <Heading title='h4' variant='primary' type='sm' >Agrega tus fechas de viaje para obtener precios exactos </Heading>
+                        <Link style={{width:'100%'}} to={'reserva'}>
                         <Button label='Iniciar reserva' > </Button>
+                        </Link>
+                        
                 </div>
             </div>
             </div>

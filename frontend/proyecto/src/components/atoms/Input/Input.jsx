@@ -7,7 +7,8 @@ export const  Input = ({type,placeholder,variant,size,isError,value,onChange,nam
     const InputClassNames=classNames('input',{
         [`type-${variant}`] :variant,
         [`input-size-${size}`]:size,
-        'is-error':isError
+        'is-error':isError,
+        'disabled':disabled
     })
 
     return (<>

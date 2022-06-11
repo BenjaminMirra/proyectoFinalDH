@@ -7,6 +7,7 @@ import es from 'date-fns/locale/es';
 import { Button } from '../../../../atoms/Button/Button';
 import { Heading } from '../../../../atoms/Heading/Heading';
 import './MobileReactCalendar.css'
+import { Link } from 'react-router-dom';
 export const MobileReactCalendar = () => {
     registerLocale('es', es)
     const [dateRange, setDateRange] = useState([null, null]);
@@ -123,7 +124,8 @@ export const MobileReactCalendar = () => {
                 <div className='start-booking' >
                     <div className='start-booking-container' >
                         <Heading title='h4' variant='primary' type='sm' >Agrega tus fechas de viaje para obtener precios exactos </Heading>
-                        <Button label='Iniciar reserva' > </Button>
+                        <Link to={'reserva'} ><Button label='Iniciar reserva' > </Button></Link>
+                        
                     </div>
                 </div>
             </div>
