@@ -23,7 +23,7 @@ public class ReservaDTO {
     @NotNull
     private LocalDate fechaFinReserva;
 
-    private LocalDate fechaEnLaQueSeHaceLaReserva;
+    //private LocalDate fechaEnLaQueSeHaceLaReserva;
 
     private String mensajeUsuario;
 

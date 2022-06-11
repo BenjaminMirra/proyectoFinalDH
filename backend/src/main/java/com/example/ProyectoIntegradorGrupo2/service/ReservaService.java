@@ -13,6 +13,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,6 +38,13 @@ public class ReservaService implements IReservaService{
     public ReservaDTO agregarReserva(ReservaDTO reservaDTO) throws BadRequestException {
         Reserva reserva = mapper.convertValue(reservaDTO, Reserva.class);
         //reservaDTO.setFechaEnLaQueSeHaceLaReserva(new Date());
+        LocalDate hoy = LocalDate.now();
+        LocalTime ahora = LocalTime.now();
+
+        LocalDateTime fecha = LocalDateTime.of(hoy, ahora);
+        reserva.setFechaEnLaQueSeHaceLaReserva(fecha);
+
+
         Optional<Producto> productoDesdeDB = productoRepository.findById(reservaDTO.getProducto_id());
         reserva.setProducto(productoDesdeDB.get());
 
