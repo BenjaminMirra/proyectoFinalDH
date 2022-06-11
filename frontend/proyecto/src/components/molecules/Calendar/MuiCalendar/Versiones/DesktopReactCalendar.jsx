@@ -8,6 +8,7 @@ import { Button } from '../../../../atoms/Button/Button';
 import { Heading } from '../../../../atoms/Heading/Heading';
 import './DesktopReactCalendar.css'
 import '../ReactCalendar.css'
+import { Link } from 'react-router-dom';
 export const DesktopReactCalendar = () => {
     registerLocale('es', es)
     const [dateRange, setDateRange] = useState([null, null]);
@@ -112,7 +113,10 @@ export const DesktopReactCalendar = () => {
             <div className='start-booking' >
                 <div className='start-booking-container' >
                         <h4>Agrega tus fechas de viaje para obtener precios exactos </h4>
+                        <Link to={'reserva'}>
                         <Button label='Iniciar reserva' > </Button>
+                        </Link>
+                        
                 </div>
             </div>
             </div>

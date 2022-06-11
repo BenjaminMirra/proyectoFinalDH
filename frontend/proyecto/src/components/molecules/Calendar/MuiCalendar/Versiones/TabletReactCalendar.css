@@ -321,3 +321,8 @@
 .tablet-calendarReserve-title h3{
     padding-top: 30px;
 }
+.react-datepicker__navigation-icon--next::before,.react-datepicker__navigation-icon--previous::before {
+    /* transform: rotate(45deg); */
+    left: -7px;
+    top: 10px;
+}

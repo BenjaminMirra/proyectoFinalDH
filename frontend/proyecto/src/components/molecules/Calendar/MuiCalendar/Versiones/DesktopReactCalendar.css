@@ -299,6 +299,15 @@
     width: 90%;
     margin: auto;
 }
+.start-booking-container a{
+    width: 90%;
+    /* margin-top: 40px; */
+    position: absolute;
+    bottom: 15px;
+}
+.start-booking-container a button{
+    width: 100%;
+}
 .start-booking-container h4{
     
     color: var(--color-primary);
@@ -307,12 +316,7 @@
     margin-top: 10px;
     
 }
-.start-booking-container button{
-    width: 90%;
-    /* margin-top: 40px; */
-    position: absolute;
-    bottom: 15px;
-}
+
 
 .start-booking{
     margin-right: 2%;
@@ -336,7 +340,10 @@
 
 @media (max-width:768px) {
     .start-booking-container{
-        background-color: var(--color-secondary);}
+        background-color: var(--color-secondary);
+        position: relative;
+    }
+        
     .start-booking-container h4{
         margin-bottom: 10px;
     }
@@ -350,4 +357,19 @@
         box-shadow: 0px 0px 0px;
         margin-bottom: 5px;
     }
+}
+.react-datepicker__day--in-range.react-datepicker__day--disabled{
+    background-color: transparent !important;
+    color: gray !important;
+}
+.react-datepicker__day--in-range.react-datepicker__day--disabled:hover{
+    background-color: none !important;
+}
+ .react-datepicker__day--in-range.react-datepicker__day--disabled:after{
+    background-color: none !important;
+}
+.react-datepicker__navigation-icon--next::before {
+    transform: rotate(45deg);
+    left: -7px;
+    top: 10px;
 }
