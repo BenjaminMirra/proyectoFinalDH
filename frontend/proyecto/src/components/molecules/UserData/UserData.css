@@ -24,3 +24,10 @@ border-radius: 8px
 .userData-content input{
     width: 100%;
 }
+
+@media (max-width:768px) {
+    .userData-content{
+        display: flex;
+        flex-direction: column;
+    }
+}

@@ -4,15 +4,17 @@ import { Heading } from '../../atoms/Heading/Heading'
 import { Icon } from '../../atoms/Icon/Icon'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
-import './ReserveDetail.css'
-export const ReserveDetail = ({product,category,location}) => {
+import './TabletReserveDetail.css'
+export const TabletReserveDetail = ({product,category,location}) => {
 
   return (
     <div className='reserveDetail'>
         <SpacerHorizontal height={'md'} />
-        <div className='reserveDetail-container' >
+        <div className='tablet-reserveDetail-container' >
             <Heading title='h3' variant={'primary'} type='lg' >Detalle de la reserva</Heading>
         </div>
+        <SpacerHorizontal height={'xs'} />
+        <div className='tablet-reserveDetail-general-container'>
         <SpacerHorizontal height={'md'} />
         <div className='reserveDetail-image-product'>
             <img style={{width:'100%',height:'100%'}} src={product.imagenDTOList?product.imagenDTOList[0].url_img_producto:''} alt="" />
@@ -21,7 +23,7 @@ export const ReserveDetail = ({product,category,location}) => {
         <div className='reserveDetail-container' >
             <div className='reserveDetail-product-info'>
                 <Paragraph size={'md'} >{category}</Paragraph>
-                <SpacerHorizontal height={'xxs'} />
+                {/* <SpacerHorizontal height={'xxs'} /> */}
                 <Heading title={'h4'} variant='primary' type={'md'} >{product.titulo}</Heading>
                 
                 <div className='reserveDetail-stars'>   
@@ -29,7 +31,7 @@ export const ReserveDetail = ({product,category,location}) => {
                 </div>
                 <SpacerHorizontal height={'xs'} />
                 <div className='reserveDetail-location'>
-                    <Icon icon='location' width={'sm'} />
+                    <Icon icon='location' width={'xs'} />
                     <Paragraph> {location} </Paragraph>
                 </div>
                 
@@ -50,12 +52,16 @@ export const ReserveDetail = ({product,category,location}) => {
                 </div>
                 </div>
                 <hr />
-                <div style={{height:'27px'}}></div>
-                <SpacerHorizontal height={'lg'} />
+               
+                
                 <Button label='Confirmar reserva' variant={true} ></Button>
-                 <SpacerHorizontal height={'md'} />
+                 
             </div>
+            
+            </div>
+            
         </div>
+        <SpacerHorizontal height={'md'} />
     </div>
   )
 }

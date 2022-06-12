@@ -1,0 +1,20 @@
+.tablet-reserveDetail-general-container{
+    width: 95%;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.tablet-reserveDetail-container{
+    width: 95%;
+    margin: auto;
+}
+.reserveDetail-product-info{
+    margin-left: 15px;
+}
+.tablet-reserveDetail-general-container .reserveDetail-image-product{
+    background-color: white;
+}
+.tablet-reserveDetail-general-container .reserveDetail-image-product img{
+    border-radius: 10px;
+}

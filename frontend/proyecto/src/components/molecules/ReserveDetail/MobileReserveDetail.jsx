@@ -5,7 +5,7 @@ import { Icon } from '../../atoms/Icon/Icon'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
 import './ReserveDetail.css'
-export const ReserveDetail = ({product,category,location}) => {
+export const MobileReserveDetail = ({product,category,location}) => {
 
   return (
     <div className='reserveDetail'>
@@ -17,7 +17,7 @@ export const ReserveDetail = ({product,category,location}) => {
         <div className='reserveDetail-image-product'>
             <img style={{width:'100%',height:'100%'}} src={product.imagenDTOList?product.imagenDTOList[0].url_img_producto:''} alt="" />
         </div>
-        <SpacerHorizontal height={'md'} />
+        <SpacerHorizontal height={'sm'} />
         <div className='reserveDetail-container' >
             <div className='reserveDetail-product-info'>
                 <Paragraph size={'md'} >{category}</Paragraph>
@@ -50,10 +50,9 @@ export const ReserveDetail = ({product,category,location}) => {
                 </div>
                 </div>
                 <hr />
-                <div style={{height:'27px'}}></div>
-                <SpacerHorizontal height={'lg'} />
+                
                 <Button label='Confirmar reserva' variant={true} ></Button>
-                 <SpacerHorizontal height={'md'} />
+                 <SpacerHorizontal height={'sm'} />
             </div>
         </div>
     </div>

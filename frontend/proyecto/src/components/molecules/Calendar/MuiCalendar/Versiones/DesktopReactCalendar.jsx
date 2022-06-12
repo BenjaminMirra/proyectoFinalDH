@@ -9,41 +9,53 @@ import { Heading } from '../../../../atoms/Heading/Heading';
 import './DesktopReactCalendar.css'
 import '../ReactCalendar.css'
 import { Link } from 'react-router-dom';
-export const DesktopReactCalendar = () => {
+export const DesktopReactCalendar = (props) => {
     registerLocale('es', es)
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
     const [arrayDaysReserve, setArrayDaysReserve] = useState([]);
+    const [reservedDatesArray,setReservedDatesArray]=useState([])
     const onChange = (dates) => {
-            console.log(dates);
+        
             setDateRange(dates);
         
     }
+    useEffect(() => {
+        
+        if (props.reservedDates) {
+            props.reservedDates.forEach(element => {
+            createReservedDaysArray(element.fechaInicio,element.fechaFin)
+        });
+        }
+        
+        
+    }, [props.reservedDates]);
+    function createReservedDaysArray(startDate,endDate){
+        let aux=[]
+        let loop= new Date(startDate)
+        let end=new Date(endDate)
+        while(loop <= end){
+            aux.push(loop)         
+            var newDate = loop.setDate(loop.getDate() + 1);
+            loop = new Date(newDate);
+}
+    
+    return setReservedDatesArray(prevDates=>[...prevDates.concat(aux)])
+    }
+    
     function editNamesDaysWeek() {
         const namesDaysWeek = document.querySelectorAll(".react-datepicker__day-name");
         namesDaysWeek.forEach(name => {
             name.innerHTML = name.textContent.substring(0, 1).toUpperCase();
         })
     }
-    function createArrayDaysReserve(arrayReserves) {
-        let aux = [];
-        arrayReserves.forEach(reserve => {
-            let start = new Date(reserve.dateIn.split("-")[0], reserve.dateIn.split("-")[1] - 1, reserve.dateIn.split("-")[2]);
-            let end = new Date(reserve.dateOut.split("-")[0], reserve.dateOut.split("-")[1] - 1, reserve.dateOut.split("-")[2]);
-            for (let i = start; i <= end; i.setDate(i.getDate() + 1)) {
-                aux.push(new Date(i));
-            }
-        })
-        setArrayDaysReserve(aux);
-    }
+    
      useEffect(() => {
         editNamesDaysWeek();
         let dateStart = new Date(startDate);
         let dateEnd = new Date(endDate);
         
     }, [startDate, endDate])
-    const holidays=[new Date(2022,5,10),new Date(2022,5,11),new Date(2022,5,12),new Date(2022,5,13),new Date(2022,5,24),new Date(2022,5,25),new Date(2022,5,26),,new Date(2022,6,14),new Date(2022,6,15),new Date(2022,6,16),new Date(2022,6,17),,new Date(2022,7,4),new Date(2022,7,5),new Date(2022,7,6)]
-    console.log(dateRange,startDate,endDate,arrayDaysReserve);
     return (
     <div className="desktop-calendarReserve">
         
@@ -54,7 +66,7 @@ export const DesktopReactCalendar = () => {
             <DatePicker
                 inline
                 locale="es"
-                excludeDates={holidays}
+                excludeDates={reservedDatesArray}
                 minDate={new Date()}
                 dateFormat="dd MMM."
                 renderCustomHeader={({

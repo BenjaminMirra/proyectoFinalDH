@@ -8,7 +8,7 @@ import moment from 'moment'
 export const ReactCalendar = (props) => {
     console.log(props)
     const [reservedDatesL,setReservedDatesL]=useState([])
-    const [calendarDisplayed,setCalendarDisplayed]=useState(<DesktopReactCalendar/>)
+    const [calendarDisplayed,setCalendarDisplayed]=useState(<DesktopReactCalendar reservedDates={reservedDatesL}/>)
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
     useEffect(() => {
         setReservedDatesL([])
@@ -28,13 +28,13 @@ export const ReactCalendar = (props) => {
 
     useEffect(() => {
         if(windowWidth <= 768){
-            setCalendarDisplayed(<MobileReactCalendar/>)
+            setCalendarDisplayed(<MobileReactCalendar reservedDates={reservedDatesL} />)
         }
         else if(windowWidth<1366){
             setCalendarDisplayed(<TabletReactCalendar reservedDates={reservedDatesL} />)
         }
         else if(windowWidth>=1366){
-            setCalendarDisplayed(<DesktopReactCalendar/>)
+            setCalendarDisplayed(<DesktopReactCalendar reservedDates={reservedDatesL}/>)
 
         }
         

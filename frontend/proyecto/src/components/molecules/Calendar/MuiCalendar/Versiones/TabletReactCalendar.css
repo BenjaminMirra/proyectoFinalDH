@@ -6,11 +6,12 @@
     background-color: white;
 }
 .tablet-calendarReserve .react-datepicker__month-container:nth-child(2){
-    margin-left: 70px;
+    margin-left: 30px;
     margin-top: 30px;
 }
 .tablet-calendarReserve .react-datepicker__month-container:nth-child(3){
      margin-top: 30px;
+     margin-right: 30px;
 }
 .react-datepicker__day--disabled {
     cursor: default;
@@ -325,4 +326,11 @@
     /* transform: rotate(45deg); */
     left: -7px;
     top: 10px;
+    background-color: transparent;
+    box-shadow: none;
+}
+.tablet-calendarReserve .react-datepicker__navigation--next,.tablet-calendarReserve .react-datepicker__navigation--previous{
+    border-radius: 0px !important;
+    box-shadow: none !important;
+    background-color: none !important;
 }

@@ -20,3 +20,8 @@ border-radius: 5px;
 .checkIn-info img{
     margin-right: 8px;
 }
+@media (max-width:768px) {
+        .checkIn-content{
+            width: 90%;
+        }
+}
