@@ -2,12 +2,22 @@ import React,{useState,useEffect} from 'react'
 import { DesktopReactCalendar } from './Versiones/DesktopReactCalendar'
 import { TabletReactCalendar } from './Versiones/TabletReactCalendar'
 import { MobileReactCalendar } from './Versiones/MobileReactCalendar'
+import moment from 'moment'
 
 
-export const ReactCalendar = () => {
-    
+export const ReactCalendar = (props) => {
+    console.log(props)
+    const [reservedDatesL,setReservedDatesL]=useState([])
     const [calendarDisplayed,setCalendarDisplayed]=useState(<DesktopReactCalendar/>)
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
+    useEffect(() => {
+        setReservedDatesL([])
+        if(props.reservedDates){
+            props.reservedDates.forEach(element => {
+                setReservedDatesL(prevDates=>[...prevDates,{fechaInicio: parseDates(element.fechaInicioReserva) ,fechaFin: parseDates(element.fechaFinReserva) }])
+            });
+        }
+    }, [props.reservedDates]);
     useEffect(() => {
     function handleResize() {
         setWindowWidth(window.innerWidth);
@@ -21,14 +31,43 @@ export const ReactCalendar = () => {
             setCalendarDisplayed(<MobileReactCalendar/>)
         }
         else if(windowWidth<1366){
-            setCalendarDisplayed(<TabletReactCalendar/>)
+            setCalendarDisplayed(<TabletReactCalendar reservedDates={reservedDatesL} />)
         }
         else if(windowWidth>=1366){
             setCalendarDisplayed(<DesktopReactCalendar/>)
 
         }
         
-    },[windowWidth]);
+    },[windowWidth,reservedDatesL]);
+    function parseDates(date){
+        let newDate;
+        let month;
+        let day;
+        let year;
+        newDate=date.split(/[.\-=/_]/)
+        if (newDate[1][0]==='0') {
+            month=newDate[1][1]
+        }
+        else{
+            month=newDate[1]
+        }
+        if (newDate[2][0]==='0' && newDate[2][1]==='1' ) {
+            day=newDate[2][1]
+        }
+        else if(newDate[2][0]==='0'){
+            day=newDate[2][1]-1
+        }
+        else{
+            day=newDate[2]-1
+        }
+        
+        newDate=newDate[0]+","+month+","+day
+        // console.log(newDate);
+        return newDate
+    }
+    console.log(reservedDatesL);
+    
+    // console.log(reservedDatesL[0]&&Date.parse(reservedDatesL[0].fechaInicio).toString('yyyy/mm/dd'));
     return (
         // 
         <>

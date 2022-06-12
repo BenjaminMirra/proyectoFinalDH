@@ -37,13 +37,13 @@ export const Product = () => {
     <div className='wrapper'>
       <Header />
       <div className='contenedor-pagina' >
-
+        
         <ProductHeader category={categoria} title={productData.titulo} />
         <LocationInfo location={locationData} rating={productData.puntaje} />
         <Carousel product={productData} />
         <ProductDescription subtitle={productData.titulo_descripcion} description={productData.descripcion} />
         <ProductServices services={productData.caracteristicasDTOList} />
-        <ReactCalendar />
+        <ReactCalendar reservedDates={productData.reservaDTOList} />
         <Map lat={productData.latitud} lng={productData.longitud} location={productData.direccion} />
         <ProductInfo info={productData.politicaListDTO} />
 
