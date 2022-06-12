@@ -69,7 +69,6 @@ export const CategoriesDesktop = ({products,setFilterProducts}) => {
        axios.get(`${urlAPI}productos/porCategoria/${id}`).then(data=>setFilterProducts(data.data))
       return setPrevId(id)
     }
-   
   }
   return (
     <div className="categories-container">
