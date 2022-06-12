@@ -1,3 +1,4 @@
+/*
 package com.example.ProyectoIntegradorGrupo2.utils;
 
 import com.example.ProyectoIntegradorGrupo2.model.*;
@@ -54,11 +55,14 @@ public class DataLoader implements ApplicationRunner {
         tipoDePoliticasRepository.save(tipoDePoliticas2);
 
 
-       /* Producto producto = new Producto("Hotel Bariloche", "Bienvenido", "El mejor hotel", "calle imaginaria 123", 8.5,8.5,categoria, ciudad);
+       */
+/* Producto producto = new Producto("Hotel Bariloche", "Bienvenido", "El mejor hotel", "calle imaginaria 123", 8.5,8.5,categoria, ciudad);
         Role role = new Role("usuarioRole");
         Usuario usuario = new Usuario("n","a","a@mail.com","1234", role);
         Reserva reserva = new Reserva(LocalDate.of(2022, 6, 10),"mensaje nuevo", true,LocalDate.of(2022,6,10), LocalDate.of(2022,6,15),producto,usuario);
         Reserva reserva2 = new Reserva(LocalDate.of(2022, 6, 16),"mensaje nuevo", true,LocalDate.of(2022,6,20), LocalDate.of(2022,6,15),producto,usuario);
-        Reserva reserva3 = new Reserva(LocalDate.of(2022, 6, 25),"mensaje nuevo", true,LocalDate.of(2022,6,30), LocalDate.of(2022,6,15),producto,usuario);*/
+        Reserva reserva3 = new Reserva(LocalDate.of(2022, 6, 25),"mensaje nuevo", true,LocalDate.of(2022,6,30), LocalDate.of(2022,6,15),producto,usuario);*//*
+
     }
 }
+*/
