@@ -11,6 +11,8 @@ import products_data from '../organisms/Products/products_data.json'
 import './Home.css'
 import axios from 'axios'
 import { urlAPI } from '../../global.js';
+import { Paragraph } from '../atoms/paragraph/Paragraph'
+import { Icon } from '../atoms/Icon/Icon'
 
 export const Home = () => {
 
@@ -37,7 +39,12 @@ export const Home = () => {
         <Filter setFilterProducts={setFilterProducts} />
         <CategoriesDesktop products={productsData} setFilterProducts={setFilterProducts} ></CategoriesDesktop>
         <Products setShowMap={setShowMap} setMapHomeData={setMapHomeData} data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></Products>
-        
+        <Link to={'/mapa'}>
+        <div className='show-mapa'>
+            <Paragraph variant='base' >Mostrar Mapa</Paragraph>
+            <Icon icon='mapa' />
+        </div>
+        </Link>
         
         <Footer/>
         </div>

@@ -36,7 +36,7 @@ export const ProductHeader = ({category,title}) => {
   return (
     <div className='product-header'>
         <div className='product-header-container'>
-        <div className='product-title'>
+        <div className='product-header-title'>
         <Heading title='h4' variant='primary' type='xs' >{category}</Heading>
         <Heading title='h2' variant='base' type='lg' >{title}</Heading>
         </div>
