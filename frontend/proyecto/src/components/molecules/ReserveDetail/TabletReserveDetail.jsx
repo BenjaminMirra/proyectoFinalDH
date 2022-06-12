@@ -15,11 +15,11 @@ export const TabletReserveDetail = ({product,category,location}) => {
         </div>
         <SpacerHorizontal height={'xs'} />
         <div className='tablet-reserveDetail-general-container'>
-        <SpacerHorizontal height={'md'} />
+        {/* <SpacerHorizontal height={'md'} /> */}
         <div className='reserveDetail-image-product'>
             <img style={{width:'100%',height:'100%'}} src={product.imagenDTOList?product.imagenDTOList[0].url_img_producto:''} alt="" />
         </div>
-        <SpacerHorizontal height={'md'} />
+       
         <div className='reserveDetail-container' >
             <div className='reserveDetail-product-info'>
                 <Paragraph size={'md'} >{category}</Paragraph>
