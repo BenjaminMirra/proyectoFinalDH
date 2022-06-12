@@ -23,7 +23,7 @@ public class Reserva {
 
     @Id
     @NotNull
-    @SequenceGenerator(name = "reserva_sequence", sequenceName = "reserva_sequence", allocationSize = 1)
+    @SequenceGenerator(name = "reserva_sequence", sequenceName = "reserva_sequence", allocationSize = 1, initialValue = 4)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reserva_sequence")
     private Long id;
 
