@@ -3,10 +3,14 @@ package com.example.ProyectoIntegradorGrupo2.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Getter
@@ -18,7 +22,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
-public class Usuario {
+public class Usuario implements UserDetails {
 
     @Id
     @NotNull
@@ -30,6 +34,9 @@ public class Usuario {
     private String email;
     private String password;
     private String ciudad;
+
+    @Column(columnDefinition = "TINYINT")
+    private boolean activo;
 
     /*@OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY)
     @JoinColumn(name="role_id", referencedColumnName = "id")
@@ -53,4 +60,36 @@ public class Usuario {
     private List<Reserva> reservaList = new ArrayList<>();
 
 
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        List<GrantedAuthority> listRole = new ArrayList<GrantedAuthority>();
+
+        listRole.add(new SimpleGrantedAuthority(role.getNombre()));
+        return listRole;
+    }
+
+    @Override
+    public String getUsername() {
+        return null;
+    }
+
+    @Override
+    public boolean isAccountNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return false;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return false;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return false;
+    }
 }

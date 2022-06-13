@@ -52,15 +52,19 @@ public class UsuarioController {
 
         Authentication authentication = authenticationManager.authenticate(authenticationToken);
 
-        User user = (User) authentication.getPrincipal();*/
+        */
+
         Usuario usuarioEncontrado = usuarioService.getUsuario(usuarioAgregado.getId());
         List<String> usuarioRoles = new ArrayList<>();
         usuarioRoles.add(usuarioAgregado.getNombre_rol());
+
+
         Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());
         String token_de_acceso = JWT.create()
-                .withSubject(usuarioEncontrado.getEmail())
+                .withSubject(usuarioEncontrado.getEmail()) //usuarioEncontrado.getEmail()
                 .withExpiresAt(new Date(System.currentTimeMillis() + 60 * 60 * 1000))
                 .withIssuer(uri.toString())
+                .withClaim("roles", usuarioEncontrado.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
                 .sign(algorithm);
                 /*.withClaim("roles", usuarioRoles.stream().map(Role::getNombre).collect(Collectors.toList()))*/
 
