@@ -52,7 +52,17 @@ public interface IProductoRepository extends JpaRepository<Producto, Long> {
    /*@Query( "SELECT DISTINCT p FROM Producto p LEFT JOIN Reserva r ON p.id = r.producto.id WHERE (r.fechaInicioReserva NOT BETWEEN ?1 AND ?2) AND (r.fechaFinReserva NOT BETWEEN ?1 AND ?2) OR r.producto.id IS NULL")
    List<Optional<Producto>> listarProductosByDisponibilidad(LocalDate fechaInicio, LocalDate fechaFin);*/
 
-   @Query( "SELECT p FROM Producto p INNER JOIN Reserva r ON p.id = r.producto.id WHERE (r.fechaInicioReserva NOT BETWEEN ?1 AND ?2) AND (r.fechaFinReserva NOT BETWEEN ?1 AND ?2) AND p.ciudad.id = ?3")
+   /*@Query( "SELECT p FROM Producto p INNER JOIN Reserva r ON p.id = r.producto.id WHERE (r.fechaInicioReserva NOT BETWEEN ?1 AND ?2) AND (r.fechaFinReserva NOT BETWEEN ?1 AND ?2) AND p.ciudad.id = ?3")*/
+   @Query( "select p\n" +
+           "from Producto p\n" +
+           "where p.ciudad.id = ?3 and not exists (\n" +
+           "    select r\n" +
+           "    from Reserva r\n" +
+           "    where r.producto.id = p.id\n" +
+           "   AND ( (?1 BETWEEN r.fechaInicioReserva AND r.fechaFinReserva) OR \n" +
+           "    (?2 BETWEEN r.fechaInicioReserva AND r.fechaFinReserva) OR \n" +
+           "((r.fechaInicioReserva BETWEEN ?1 AND ?2) OR (r.fechaFinReserva BETWEEN ?1 AND ?2)))\n" +
+           ")")
    List<Optional<Producto>> listarProductosDisponiblesByCiudadYFecha(LocalDate fechaInicio, LocalDate fechaFin, Long id_ciudad);
 
    /*
