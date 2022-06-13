@@ -312,7 +312,7 @@ public class ProductoService implements IProductoService {
     public List<ProductoDTO> buscarProductosPorDisponibilidad(DisponibilidadDTO disponibilidadDTO) throws ResourceNotFoundException {
         List<Optional<Producto>> productosDisponiblesDB = productoRepository.listarProductosByDisponibilidad(disponibilidadDTO.getFechaInicioReserva(), disponibilidadDTO.getFechaFinReserva());
         if (productosDisponiblesDB.isEmpty())
-            throw new ResourceNotFoundException("No se encontraron productos de ésa ciudad");
+            throw new ResourceNotFoundException("No se encontraron productos disponibles en ése rango de fechas");
 
         List<ProductoDTO> productoDTOList = new ArrayList<>();
         for (Optional<Producto> producto : productosDisponiblesDB

@@ -10,6 +10,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.Date;
 
 @Getter
@@ -29,6 +30,9 @@ public class Reserva {
 
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime fechaEnLaQueSeHaceLaReserva;
+
+    @Column(columnDefinition = "TIME")
+    private LocalTime horaEstimadaDeLlegada;
 
     @Column(length = 3000)
     private String mensajeUsuario;
@@ -56,8 +60,9 @@ public class Reserva {
     }
 
 
-    public Reserva(LocalDateTime fechaEnLaQueSeHaceLaReserva, String mensajeUsuario, boolean vacunadoCovid, LocalDate fechaInicioReserva, LocalDate fechaFinReserva, Producto producto, Usuario usuario) {
+    public Reserva(LocalDateTime fechaEnLaQueSeHaceLaReserva, LocalTime horaEstimadaDeLlegada, String mensajeUsuario, boolean vacunadoCovid, LocalDate fechaInicioReserva, LocalDate fechaFinReserva, Producto producto, Usuario usuario) {
         this.fechaEnLaQueSeHaceLaReserva = fechaEnLaQueSeHaceLaReserva;
+        this.horaEstimadaDeLlegada = horaEstimadaDeLlegada;
         this.mensajeUsuario = mensajeUsuario;
         this.vacunadoCovid = vacunadoCovid;
         this.fechaInicioReserva = fechaInicioReserva;

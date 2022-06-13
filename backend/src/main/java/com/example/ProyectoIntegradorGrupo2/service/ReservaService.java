@@ -39,6 +39,10 @@ public class ReservaService implements IReservaService{
     @Override
     public ReservaDTO agregarReserva(ReservaDTO reservaDTO) throws BadRequestException {
         Reserva reserva = mapper.convertValue(reservaDTO, Reserva.class);
+       List<Optional<Reserva>> reservaList = reservaRepository.listarReservasGuardadas(reservaDTO.getProducto_id(),reservaDTO.getFechaInicioReserva(),reservaDTO.getFechaFinReserva());
+       if (!reservaList.isEmpty()){
+           throw new BadRequestException("El producto ya tiene reservas para ese rango de fechas");
+       }
         //reservaDTO.setFechaEnLaQueSeHaceLaReserva(new Date());
         LocalDate hoy = LocalDate.now();
         LocalTime ahora = LocalTime.now();

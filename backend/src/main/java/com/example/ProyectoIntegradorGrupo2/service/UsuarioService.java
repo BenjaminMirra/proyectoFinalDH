@@ -96,6 +96,11 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
     }
 
     @Override
+    public Usuario getUsuario(Long id) throws ResourceNotFoundException{
+        return usuarioRepository.findById(id).get();
+    }
+
+    @Override
     public List<UsuarioDTO> listarTodos() {
         return null;
     }

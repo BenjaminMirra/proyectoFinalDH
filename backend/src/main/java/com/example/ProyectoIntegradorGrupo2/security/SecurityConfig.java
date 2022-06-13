@@ -35,14 +35,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
         customAuthenticationFilter.setFilterProcessesUrl("/usuarios/login");
-        //CustomAuthenticationFilter customAuthenticationFilter1 = new CustomAuthenticationFilter(authenticationManagerBean());
-        //customAuthenticationFilter1.setFilterProcessesUrl("usuarios/agregar");
+        /*CustomAuthenticationFilter customAuthenticationFilter1 = new CustomAuthenticationFilter(authenticationManagerBean());
+        customAuthenticationFilter1.setFilterProcessesUrl("usuarios/agregar");*/
 
         http.csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(POST, "/reservas/agregar").hasRole("USER");
         http.authorizeRequests().anyRequest().permitAll();
-        //http.addFilter(customAuthenticationFilter1);
+        /*http.addFilter(customAuthenticationFilter1);*/
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
 

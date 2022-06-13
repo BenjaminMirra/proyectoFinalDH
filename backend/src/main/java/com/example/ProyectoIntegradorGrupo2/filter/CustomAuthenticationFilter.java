@@ -50,19 +50,20 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         String token_de_acceso = JWT.create()
                 .withSubject(user.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 60 * 60 * 1000))
+                .withIssuer(request.getRequestURL().toString())
                 .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
                 .sign(algorithm);
 
-        String token_de_recuperacion = JWT.create()
+        /*String token_de_recuperacion = JWT.create()
                 .withSubject(user.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 1440 * 60 * 1000))
                 .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
-                .sign(algorithm);
+                .sign(algorithm);*/
         /*response.setHeader("token_de_acceso", token_de_acceso);
         response.setHeader("token_de_recuperacion", token_de_recuperacion);*/
         Map<String, String> tokens = new HashMap<>();
         tokens.put("token_de_acceso", token_de_acceso);
-        tokens.put("token_de_recuperacion", token_de_recuperacion);
+        /*tokens.put("token_de_recuperacion", token_de_recuperacion);*/
         response.setContentType(APPLICATION_JSON_VALUE);
         new ObjectMapper().writeValue(response.getOutputStream(), tokens);
     }

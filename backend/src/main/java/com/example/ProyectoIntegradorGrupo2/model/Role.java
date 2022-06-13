@@ -3,11 +3,15 @@ package com.example.ProyectoIntegradorGrupo2.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+
+import static java.util.Arrays.stream;
 
 @Getter
 @Setter
@@ -39,4 +43,6 @@ public class Role {
     public Role(String nombre) {
         this.nombre = nombre;
     }
+
+
 }
