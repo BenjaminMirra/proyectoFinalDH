@@ -25,6 +25,9 @@ public class UsuarioDTO {
     private String apellido;
     private String email;
     private String password;
-    private RoleDTO roleDTO;
+    private String ciudad;
+    private String nombre_rol;
+
+    /*private RoleDTO roleDTO;*/
 
 }

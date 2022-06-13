@@ -3,6 +3,7 @@ package com.example.ProyectoIntegradorGrupo2.utils;
 import com.example.ProyectoIntegradorGrupo2.model.*;
 import com.example.ProyectoIntegradorGrupo2.repository.ICategoriaRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.ICiudadRepository;
+import com.example.ProyectoIntegradorGrupo2.repository.IRoleRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.ITipoDePoliticasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
@@ -12,9 +13,9 @@ import org.springframework.stereotype.Component;
 import java.time.LocalDate;
 
 @Component
-public class DataLoader implements ApplicationRunner {
+public class DataLoader /*implements ApplicationRunner*/ {
 
-    @Autowired
+   /* @Autowired
     private ICategoriaRepository categoriaRepository;
 
     @Autowired
@@ -22,6 +23,9 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     private ITipoDePoliticasRepository tipoDePoliticasRepository;
+
+    @Autowired
+    private IRoleRepository roleRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -53,12 +57,10 @@ public class DataLoader implements ApplicationRunner {
         tipoDePoliticasRepository.save(tipoDePoliticas1);
         tipoDePoliticasRepository.save(tipoDePoliticas2);
 
+        Role role = new Role("ROLE_USER");
+        roleRepository.save(role);
 
-       /* Producto producto = new Producto("Hotel Bariloche", "Bienvenido", "El mejor hotel", "calle imaginaria 123", 8.5,8.5,categoria, ciudad);
-        Role role = new Role("usuarioRole");
-        Usuario usuario = new Usuario("n","a","a@mail.com","1234", role);
-        Reserva reserva = new Reserva(LocalDate.of(2022, 6, 10),"mensaje nuevo", true,LocalDate.of(2022,6,10), LocalDate.of(2022,6,15),producto,usuario);
-        Reserva reserva2 = new Reserva(LocalDate.of(2022, 6, 16),"mensaje nuevo", true,LocalDate.of(2022,6,20), LocalDate.of(2022,6,15),producto,usuario);
-        Reserva reserva3 = new Reserva(LocalDate.of(2022, 6, 25),"mensaje nuevo", true,LocalDate.of(2022,6,30), LocalDate.of(2022,6,15),producto,usuario);*/
-    }
+
+
+    }*/
 }

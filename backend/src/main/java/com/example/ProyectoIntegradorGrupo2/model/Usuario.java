@@ -1,5 +1,6 @@
 package com.example.ProyectoIntegradorGrupo2.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
@@ -28,9 +29,15 @@ public class Usuario {
     private String apellido;
     private String email;
     private String password;
+    private String ciudad;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY)
+    /*@OneToOne(cascade = CascadeType.ALL,fetch= FetchType.LAZY)
     @JoinColumn(name="role_id", referencedColumnName = "id")
+    private Role role;*/
+
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "role_id", nullable = false)
+    @JsonIgnore
     private Role role;
 
     @OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, orphanRemoval = true)
@@ -45,21 +52,5 @@ public class Usuario {
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
     private List<Reserva> reservaList = new ArrayList<>();
 
-    public Usuario(String nombre, String apellido, String email, String password, List<Reaccion> reaccionList, List<Puntuacion> puntuacionList, List<Reserva> reservaList) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.password = password;
-        this.reaccionList = reaccionList;
-        this.puntuacionList = puntuacionList;
-        this.reservaList = reservaList;
-    }
 
-    public Usuario(String nombre, String apellido, String email, String password, Role role) {
-        this.nombre = nombre;
-        this.apellido = apellido;
-        this.email = email;
-        this.password = password;
-        this.role = role;
-    }
 }

@@ -6,6 +6,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -15,7 +17,7 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+/*@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})*/
 @Table(name = "roles")
 public class Role {
 
@@ -26,10 +28,15 @@ public class Role {
     private Long id;
     private String nombre;
 
-    @JsonIgnore
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY) //orphanRemoval = true
+    @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
+    private List<Usuario> usuarioList = new ArrayList<>();
+
+    /*@JsonIgnore
     @OneToOne(mappedBy = "role",  cascade = CascadeType.ALL)
-    private Usuario usuario;
+    private Usuario usuario;*/
 
-
-
+    public Role(String nombre) {
+        this.nombre = nombre;
+    }
 }

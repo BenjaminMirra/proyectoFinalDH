@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
 @RequestMapping("/usuarios")
@@ -23,7 +26,8 @@ public class UsuarioController {
     @PostMapping("/agregar")
     public ResponseEntity<?> agregarUsuario(@RequestBody UsuarioDTO usuarioDTO) throws BadRequestException {
         UsuarioDTO usuarioAgregado = usuarioService.agregarUsuario(usuarioDTO);
-
-        return ResponseEntity.ok(usuarioAgregado.getId());
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/usuarios/agregar").toUriString());
+        return ResponseEntity.created(uri).body(usuarioAgregado.getId());
+        /*return ResponseEntity.ok(usuarioAgregado.getId());*/
     }
 }

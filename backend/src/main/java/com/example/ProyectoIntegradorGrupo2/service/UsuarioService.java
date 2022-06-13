@@ -11,13 +11,23 @@ import com.example.ProyectoIntegradorGrupo2.repository.IRoleRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.IUsuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsuarioService implements IUsuarioService{
+@Transactional
+public class UsuarioService implements IUsuarioService, UserDetailsService {
 
     @Autowired
     private IUsuarioRepository usuarioRepository;
@@ -26,17 +36,42 @@ public class UsuarioService implements IUsuarioService{
     private IRoleRepository roleRepository;
 
     @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
     ObjectMapper mapper;
 
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        Optional<Usuario> usuario = usuarioRepository.findUserByEmail(email);
+        if (usuario.isEmpty()){
+            throw new UsernameNotFoundException("No se ha encontrado al usuario con ése email");
+        }
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(usuario.get().getRole().getNombre()));
+        return new org.springframework.security.core.userdetails.User(usuario.get().getEmail(),usuario.get().getPassword(),authorities);
+    }
 
     @Override
     public UsuarioDTO agregarUsuario(UsuarioDTO usuarioDTO) throws BadRequestException {
 
-        if (usuarioDTO.getRoleDTO() == null){
+        if (usuarioDTO.getNombre_rol() == null){
             throw new BadRequestException("No se puede guardar un usuario sin asignarle un rol");
         }
+        Optional<Role> roleDesdeDB = roleRepository.findRoleByName(usuarioDTO.getNombre_rol());
 
-        RoleDTO roleUsuario = usuarioDTO.getRoleDTO();
+        Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
+        usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
+        usuario.setRole(roleDesdeDB.get());
+
+        Usuario usuarioGuardado = usuarioRepository.save(usuario);
+
+        Optional<Usuario> usuarioDesdeDB = usuarioRepository.findById(usuarioGuardado.getId());
+        roleDesdeDB.get().getUsuarioList().add(usuarioDesdeDB.get());
+
+        UsuarioDTO usuarioDTOGuardado = mapper.convertValue(usuarioDesdeDB, UsuarioDTO.class);
+
+        /*RoleDTO roleUsuario = usuarioDTO.getRoleDTO();
         Role roleGuardado = roleRepository.save(mapper.convertValue(roleUsuario, Role.class));
         Optional<Role> roleDesdeDB = roleRepository.findById(roleGuardado.getId());
 
@@ -48,7 +83,7 @@ public class UsuarioService implements IUsuarioService{
         Optional<Usuario> usuarioDesdeDB = usuarioRepository.findById(usuarioGuardado.getId());
         roleDesdeDB.get().setUsuario(usuarioDesdeDB.get());
 
-        UsuarioDTO usuarioDTOGuardado = mapper.convertValue(usuarioDesdeDB, UsuarioDTO.class);
+        UsuarioDTO usuarioDTOGuardado = mapper.convertValue(usuarioDesdeDB, UsuarioDTO.class);*/
 
 
 
@@ -74,4 +109,6 @@ public class UsuarioService implements IUsuarioService{
     public void eliminar(Long id) throws ResourceNotFoundException {
 
     }
+
+
 }
