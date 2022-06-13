@@ -31,7 +31,7 @@ export const ReserveDesktop = ({productData,categoria,locationData}) => {
                 <ReserveDetail location={locationData?locationData:'cargando'} category={categoria?categoria:'cargando'} product={productData?productData:[]} image={productData?productData.imagenDTOList?productData.imagenDTOList[0].url_img_producto:[]:[]} />
             </div>
             <div className='reserve-content-calendar' >
-                <ReserveCalendar/>
+                <ReserveCalendar reservedDates={productData.reservaDTOList} />
             </div>
             <div className='reserve-content-checkInReserve' >
                 <CheckInReserve/>

@@ -21,7 +21,7 @@ export const MainReserve = () => {
   }, [id]);
   
 
-  const [reserveDisplayed,setReserveDisplayed]=useState(<><ReserveDesktop productData={productData} categoria={categoria} locationData={locationData} /></>)
+    const [reserveDisplayed,setReserveDisplayed]=useState(<><ReserveDesktop productData={productData} categoria={categoria} locationData={locationData} /></>)
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
     useEffect(() => {
     function handleResize() {

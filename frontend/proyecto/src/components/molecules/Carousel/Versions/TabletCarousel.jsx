@@ -39,7 +39,6 @@ export function TabletCarousel(props) {
     slidesToScroll: 1,
     autoplay:true,
     autoplaySpeed:3500,
-    lazyLoad:'ondemand',
     slideCount:true,
     
   };
@@ -74,7 +73,7 @@ export function TabletCarousel(props) {
              </Slider>
              </div>
              <div className="tablet-carousel-icons" >
-                 <Icon width="lg" icon="share" onClick={()=>setShare(true)} />
+                 <Icon width="lg" icon="share" onClick={()=>setShare(!share)} />
                  <Icon width="lg" icon={favorite} onClick={toggleFavorite}/>
              </div>
             </div>}
