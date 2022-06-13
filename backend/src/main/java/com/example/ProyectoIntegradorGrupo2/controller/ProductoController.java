@@ -3,6 +3,7 @@ package com.example.ProyectoIntegradorGrupo2.controller;
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.dto.CategoriaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.CiudadYFechaReservaDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.DisponibilidadDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
 import com.example.ProyectoIntegradorGrupo2.service.IProductoService;
@@ -73,10 +74,18 @@ public class ProductoController {
         return ResponseEntity.ok(productoService.buscarProductosPorCiudad(id));
     }
 
-    @Operation(summary = "Listar los productos según su disponibilidad")
-    @GetMapping("/disponibles")
+    @Operation(summary = "Listar los productos según su disponibilidad por fecha")
+    @GetMapping("/disponibles/porFecha")
     public  ResponseEntity<?> listarProductosPorDisponibilidad(@RequestBody DisponibilidadDTO disponibilidadDTO) throws ResourceNotFoundException {
         List<ProductoDTO> productosDTO = productoService.buscarProductosPorDisponibilidad(disponibilidadDTO);
+
+        return ResponseEntity.ok(productosDTO);
+    }
+
+    @Operation(summary = "Listar los productos según su disponibilidad por ciudad y fecha")
+    @GetMapping("/disponibles/porCiudadYFecha")
+    public  ResponseEntity<?> listarProductosPorDisponibilidadByCiudadYFecha(@RequestBody CiudadYFechaReservaDTO ciudadYFechaReservaDTO) throws ResourceNotFoundException {
+        List<ProductoDTO> productosDTO = productoService.buscarProductosPorCiudadYRangoFecha(ciudadYFechaReservaDTO);
 
         return ResponseEntity.ok(productosDTO);
     }

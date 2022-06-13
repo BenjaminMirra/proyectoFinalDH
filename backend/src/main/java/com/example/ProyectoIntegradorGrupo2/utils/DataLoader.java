@@ -15,7 +15,7 @@ import java.time.LocalDate;
 @Component
 public class DataLoader /*implements ApplicationRunner*/ {
 
-   /* @Autowired
+    /*@Autowired
     private ICategoriaRepository categoriaRepository;
 
     @Autowired

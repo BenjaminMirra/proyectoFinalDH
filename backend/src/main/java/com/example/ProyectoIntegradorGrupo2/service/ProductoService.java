@@ -328,4 +328,25 @@ public class ProductoService implements IProductoService {
         return productoDTOList;
     }
 
+    @Override
+    public List<ProductoDTO> buscarProductosPorCiudadYRangoFecha(CiudadYFechaReservaDTO ciudadYFechaReservaDTO) throws ResourceNotFoundException {
+        List<Optional<Producto>> productosDisponiblesEnCiudadYFechaIndicada = productoRepository.listarProductosDisponiblesByCiudadYFecha(ciudadYFechaReservaDTO.getFechaInicioReserva(),ciudadYFechaReservaDTO.getFechaFinReserva(),ciudadYFechaReservaDTO.getId_ciudad());
+
+        if (productosDisponiblesEnCiudadYFechaIndicada.isEmpty())
+            throw new ResourceNotFoundException("No se encontraron productos disponibles en ése rango de fechas");
+
+        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        for (Optional<Producto> producto : productosDisponiblesEnCiudadYFechaIndicada
+        ) {
+
+            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
+
+            productoDTOList.add(productoDTO);
+        }
+
+        productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+
+        return productoDTOList;
+    }
+
 }

@@ -2,6 +2,7 @@ package com.example.ProyectoIntegradorGrupo2.service;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
+import com.example.ProyectoIntegradorGrupo2.model.dto.CiudadYFechaReservaDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.DisponibilidadDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
 
@@ -18,5 +19,6 @@ public interface IProductoService {
     List<ProductoDTO> buscarProductosPorCategoria(Long id) throws ResourceNotFoundException;
     List<ProductoDTO> buscarProductosPorCiudad(Long id) throws ResourceNotFoundException;
     List<ProductoDTO> buscarProductosPorDisponibilidad(DisponibilidadDTO disponibilidadDTO) throws ResourceNotFoundException;
+    List<ProductoDTO> buscarProductosPorCiudadYRangoFecha(CiudadYFechaReservaDTO ciudadYFechaReservaDTO)throws ResourceNotFoundException;
 
 }
