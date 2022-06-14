@@ -5,10 +5,8 @@ import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException
 import com.example.ProyectoIntegradorGrupo2.model.Producto;
 import com.example.ProyectoIntegradorGrupo2.model.Reserva;
 import com.example.ProyectoIntegradorGrupo2.model.Usuario;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ReservaDTO;
-import com.example.ProyectoIntegradorGrupo2.repository.IProductoRepository;
-import com.example.ProyectoIntegradorGrupo2.repository.IReservaRepository;
-import com.example.ProyectoIntegradorGrupo2.repository.IUsuarioRepository;
+import com.example.ProyectoIntegradorGrupo2.model.dto.*;
+import com.example.ProyectoIntegradorGrupo2.repository.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +15,8 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 
@@ -32,6 +32,8 @@ public class ReservaService implements IReservaService{
 
     @Autowired
     private IUsuarioRepository usuarioRepository;
+
+
 
     @Autowired
     ObjectMapper mapper;
@@ -56,6 +58,14 @@ public class ReservaService implements IReservaService{
 
         Optional<Usuario> usuarioDesdeDB = usuarioRepository.findById(reservaDTO.getUsuario_id());
         reserva.setUsuario(usuarioDesdeDB.get());
+        /*Cliente clienteAGuardar = (Cliente) usuarioDesdeDB.get();*/
+        /*Cliente cliente = (Cliente) usuarioDesdeDB.get();
+        clienteRepository.save(cliente);
+
+        reserva.setCliente(cliente);*/
+
+
+
 
         Reserva reservaGuardada = reservaRepository.save(reserva);
 
@@ -67,21 +77,80 @@ public class ReservaService implements IReservaService{
 
     @Override
     public ReservaDTO obtenerReservaPorId(Long id) throws ResourceNotFoundException {
-        return null;
+        Optional<Reserva> reservaDesdeDB = reservaRepository.findById(id);
+        if (reservaDesdeDB.isEmpty()){
+            throw new ResourceNotFoundException("No se ha encontrado la reserva con ese id");
+        }
+
+        ReservaDTO reservaDTO = mapper.convertValue(reservaDesdeDB, ReservaDTO.class);
+        return reservaDTO;
     }
 
     @Override
-    public List<ReservaDTO> listarTodas() {
-        return null;
+    public List<ReservaListarTodasDTO> listarTodas() {
+        List<Reserva> reservasList = reservaRepository.findAll();
+
+        List<ReservaListarTodasDTO> reservaDTOList = new ArrayList<>();
+        for (Reserva r:reservasList) {
+            ReservaListarTodasDTO reservaDTO = mapper.convertValue(r,ReservaListarTodasDTO.class);
+            reservaDTO.setProducto_id(r.getProducto().getId());
+            reservaDTOList.add(reservaDTO);
+
+        }
+
+        reservaDTOList.sort(Comparator.comparing(ReservaListarTodasDTO::getId));
+        return reservaDTOList;
     }
 
     @Override
-    public ReservaDTO editar(ReservaDTO reservaDTO) throws ResourceNotFoundException, BadRequestException {
-        return null;
+    public ReservaActualizarDTO editar(ReservaActualizarDTO reservaActualizarDTO) throws ResourceNotFoundException, BadRequestException{
+        if (reservaActualizarDTO.getId() == null || reservaActualizarDTO.getProducto_id() ==null){
+            throw new BadRequestException("Para actualizar la reserva se debe conocer el id");
+        }
+        Optional<Reserva> reserva = reservaRepository.findById(reservaActualizarDTO.getId());
+        if (reserva.isEmpty()){
+            throw new ResourceNotFoundException("No se ha encontrado la reserva con ése id para actualizar");
+        }
+
+        List<Optional<Reserva>> reservaList = reservaRepository.listarReservasGuardadas(reservaActualizarDTO.getProducto_id(),reservaActualizarDTO.getFechaInicioReserva(),reservaActualizarDTO.getFechaFinReserva());
+        if (!reservaList.isEmpty()){
+            throw new BadRequestException("El producto ya tiene reservas para ese rango de fechas");
+        }
+
+        reserva.get().setFechaInicioReserva(reservaActualizarDTO.getFechaInicioReserva());
+        reserva.get().setFechaFinReserva(reservaActualizarDTO.getFechaFinReserva());
+        Reserva reservaActualizada = reservaRepository.save(reserva.get());
+
+        ReservaActualizarDTO reservaActualizarDTODesdeDB = mapper.convertValue(reservaActualizada, ReservaActualizarDTO.class);
+        return reservaActualizarDTODesdeDB;
     }
 
     @Override
     public void eliminar(Long id) throws ResourceNotFoundException {
+        Optional<Reserva> reserva = reservaRepository.findById(id);
+        if (reserva.isEmpty()){
+            throw new ResourceNotFoundException("No se ha encontrado la reserva a elimnar");
+        }
+        reservaRepository.deleteById(id);
+    }
 
+    @Override
+    public List<ReservaPorIdProductoDTO> buscarReservasPorProductoId(Long id) throws ResourceNotFoundException {
+        List<Optional<Reserva>> reservaList = reservaRepository.findReservasByProductoId(id);
+        if (reservaList.isEmpty()){
+            throw new ResourceNotFoundException("No se encontraron reservas para el producto indicado");
+        }
+
+        List<ReservaPorIdProductoDTO> reservaPorIdProductoDTOList = new ArrayList<>();
+        for (Optional<Reserva> r:reservaList) {
+
+            ReservaPorIdProductoDTO reservaPorIdProductoDTO = new ReservaPorIdProductoDTO(r.get().getId(), r.get().getFechaInicioReserva(),r.get().getFechaFinReserva());
+            reservaPorIdProductoDTOList.add(reservaPorIdProductoDTO);
+
+
+        }
+
+        reservaPorIdProductoDTOList.sort(Comparator.comparing(ReservaPorIdProductoDTO::getId));
+        return reservaPorIdProductoDTOList;
     }
 }

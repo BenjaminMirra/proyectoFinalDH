@@ -1,5 +1,6 @@
 package com.example.ProyectoIntegradorGrupo2.model;
 
+import com.example.ProyectoIntegradorGrupo2.model.dto.Cliente;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
@@ -33,6 +34,7 @@ public class Reaccion {
     @JoinColumn(name = "usuario_id", nullable = false)
     @JsonIgnore
     private Usuario usuario;
+    /*private Cliente cliente;*/
 
     @Column(columnDefinition = "TINYINT")
     private boolean favorito;
