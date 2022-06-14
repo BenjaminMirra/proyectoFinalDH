@@ -45,3 +45,8 @@
     margin-bottom: 15px;
     margin-top: 10px;
 }
+  .reserveCalendar-container .react-datepicker__day-name,
+.reserveCalendar-container .react-datepicker__day,
+.reserveCalendar-container .react-datepicker__time-name {
+    border-radius: 10px;
+}

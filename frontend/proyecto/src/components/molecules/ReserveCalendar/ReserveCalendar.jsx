@@ -8,6 +8,7 @@ import { registerLocale, setDefaultLocale } from "react-datepicker";
 import es from 'date-fns/locale/es';
 import './ReserveCalendar.css'
 export const ReserveCalendar = (props) => {
+    
     const [reservedDatesL,setReservedDatesL]=useState([])
     useEffect(() => {
         setReservedDatesL([])
@@ -43,7 +44,7 @@ export const ReserveCalendar = (props) => {
         // console.log(newDate);
         return newDate
     }
-  const TabletAndDesktopCalendar=(props)=>{
+    const TabletAndDesktopCalendar=(props)=>{
     registerLocale('es', es)
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
@@ -90,8 +91,31 @@ export const ReserveCalendar = (props) => {
         let dateEnd = new Date(endDate);
         
     }, [startDate, endDate])
+    
+    useEffect(() => {
+        let startDate=formatDate(dateRange[0]);
+        let endDate=formatDate(dateRange[1]);
+        props.setReservedDays({startDate:{year:startDate.slice(0,4),month:startDate.slice(5,7),day:startDate.slice(8,10)},endDate:{year:endDate.slice(0,4),month:endDate.slice(5,7),day:endDate.slice(8,10)}})
+    
+    },[dateRange])
+
+    function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+ 
     return(
       <>
+      {console.log('render tablet')}
         <DatePicker
                 inline
                 locale="es"
@@ -145,6 +169,9 @@ export const ReserveCalendar = (props) => {
                     </div>
                 )}
                 
+                startDate={startDate}
+                endDate={endDate}
+                selected={startDate}
                 selectsRange={true}
                 onChange={onChange}
                 monthsShown={2}
@@ -153,15 +180,54 @@ export const ReserveCalendar = (props) => {
       )
   }
   const MobileCalendar=(props)=>{
+     registerLocale('es', es)
+    const [dateRange, setDateRange] = useState([null, null]);
+    const [startDate, endDate] = dateRange;
+    const [arrayDaysReserve, setArrayDaysReserve] = useState([]);
+    const [reservedDatesArray,setReservedDatesArray]=useState([])
     const onChange = (dates) => {
         
             setDateRange(dates);
         
     }
-        const [dateRange, setDateRange] = useState([null, null]);
-        const [startDate, endDate] = dateRange;
-        const [reservedDatesArray,setReservedDatesArray]=useState([])
+    useEffect(() => {
+        
+        if (props.reservedDates) {
+            props.reservedDates.forEach(element => {
+            createReservedDaysArray(element.fechaInicio,element.fechaFin)
+        });
+        }
+        
+        
+    }, [props.reservedDates]);
+    function createReservedDaysArray(startDate,endDate){
+        let aux=[]
+        let loop= new Date(startDate)
+        let end=new Date(endDate)
+        while(loop <= end){
+            aux.push(loop)         
+            var newDate = loop.setDate(loop.getDate() + 1);
+            loop = new Date(newDate);
+}
+    
+    return setReservedDatesArray(prevDates=>[...prevDates.concat(aux)])
+    }
+    
+    function editNamesDaysWeek() {
+        const namesDaysWeek = document.querySelectorAll(".react-datepicker__day-name");
+        namesDaysWeek.forEach(name => {
+            name.innerHTML = name.textContent.substring(0, 1).toUpperCase();
+        })
+    }
+    
+     useEffect(() => {
+        editNamesDaysWeek();
+        let dateStart = new Date(startDate);
+        let dateEnd = new Date(endDate);
+        
+    }, [startDate, endDate])
     return(<>
+    
             <DatePicker
                 inline
                 locale="es"
@@ -221,7 +287,7 @@ export const ReserveCalendar = (props) => {
             />
     </>)
   }
-    const [calendarDisplayed,setCalendarDisplayed]=useState(<><TabletAndDesktopCalendar reservedDates={reservedDatesL} /></>)
+    const [calendarDisplayed,setCalendarDisplayed]=useState(<><TabletAndDesktopCalendar setReservedDays={props.setReservedDays} reservedDates={reservedDatesL} /></>)
     
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
     useEffect(() => {
@@ -235,11 +301,11 @@ export const ReserveCalendar = (props) => {
     useEffect(() => {
         if(windowWidth <= 768){
             
-            setCalendarDisplayed(<><MobileCalendar  /></>)
+            setCalendarDisplayed(prevCalendar=>prevCalendar==<><MobileCalendar setReservedDays={props.setReservedDays} reservedDates={reservedDatesL} /></>?prevCalendar:<><MobileCalendar reservedDates={reservedDatesL} /></>)
         }
-        else{ setCalendarDisplayed(<><TabletAndDesktopCalendar reservedDates={reservedDatesL}   /></>)}
+        else{ setCalendarDisplayed(prevCalendar=>prevCalendar==<><TabletAndDesktopCalendar setReservedDays={props.setReservedDays} reservedDates={reservedDatesL}/></>?prevCalendar:<><TabletAndDesktopCalendar setReservedDays={props.setReservedDays} reservedDates={reservedDatesL}   /></>)}
         
-    },[windowWidth,reservedDatesL]);
+    },[windowWidth,reservedDatesL,props.setReservedDays]);
   return (
     <div className='reserveCalendar' >
         <Heading title='h2' variant={'primary'} type='lg' >Seleccioná tu fecha de reserva</Heading>

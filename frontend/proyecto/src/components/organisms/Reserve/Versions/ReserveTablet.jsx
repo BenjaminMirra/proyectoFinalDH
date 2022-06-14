@@ -28,7 +28,7 @@ export const ReserveTablet = ({productData,categoria,locationData}) => {
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='tablet-reserve-content-calendar' >
-                <ReserveCalendar/>
+                <ReserveCalendar reservedDates={productData.reservaDTOList} />
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='tablet-reserve-content-checkInReserve' >

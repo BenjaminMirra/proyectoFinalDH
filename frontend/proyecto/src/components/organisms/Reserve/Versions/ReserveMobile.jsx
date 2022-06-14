@@ -31,11 +31,11 @@ export const ReserveMobile = ({productData,categoria,locationData}) => {
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='reserve-content-calendar' >
-                <ReserveCalendar/>
+                <ReserveCalendar reservedDates={productData.reservaDTOList}/>
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='reserve-content-checkInReserve' >
-                <CheckInReserve/>
+                <CheckInReserve />
             </div>
             {/* <SpacerHorizontal height={'2md'} /> */}
             <div className='reserve-content-reserveDetail' >

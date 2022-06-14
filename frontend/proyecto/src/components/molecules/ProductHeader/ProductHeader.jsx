@@ -41,7 +41,7 @@ export const ProductHeader = ({category,title}) => {
         <Heading title='h4' variant='primary' type='xs' >{category}</Heading>
         <Heading title='h2' variant='base' type='lg' >{title}</Heading>
         </div>
-        {console.log(location)}
+        
             <Link to={location==='reserva'?`/productos/${id}`:'/'}>
                 <Icon icon='back' />
             </Link>
