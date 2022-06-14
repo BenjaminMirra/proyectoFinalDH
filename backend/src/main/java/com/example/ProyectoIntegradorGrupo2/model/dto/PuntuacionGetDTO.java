@@ -8,11 +8,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 
-public class PuntuacionDTO {
-
+public class PuntuacionGetDTO {
     private Long id;
     private int puntuacion;
-    private Long producto_id;
-    private Long usuario_id;
-
 }

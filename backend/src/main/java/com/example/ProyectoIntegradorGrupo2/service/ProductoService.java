@@ -123,8 +123,6 @@ public class ProductoService implements IProductoService {
             productoDTO.getImagenDTOList().add(imagenDTO);
         }
 
-
-
         List<Optional<Caracteristicas>> optionalCaracteristicasList = caracteristicasRepository.findCaracteristicasByProductoId(id);
         for (Optional<Caracteristicas> c : optionalCaracteristicasList) {
             CaracteristicasDTO caracteristicasDTO = mapper.convertValue(c.get(), CaracteristicasDTO.class);
@@ -132,7 +130,16 @@ public class ProductoService implements IProductoService {
 
         }
 
+        List<Optional<Puntuacion>> optionalPuntuacionesList = puntuacionRepository.findPuntuacionesByProductoId(id);
+        for (Optional<Puntuacion> p : optionalPuntuacionesList) {
+            Usuario usuario = p.get().getUsuario();
+            Producto prod = p.get().getProducto();
+            PuntuacionDTO puntuacionDTO = mapper.convertValue(p.get(), PuntuacionDTO.class);
+            puntuacionDTO.setUsuario_id(usuario.getId());
+            puntuacionDTO.setProducto_id(prod.getId());
+            productoDTO.getPuntuacionDTOList().add(puntuacionDTO);
 
+        }
 
         return productoDTO;
     }

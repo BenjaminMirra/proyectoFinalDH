@@ -20,10 +20,10 @@ import javax.validation.constraints.Size;
 public class Puntuacion {
     @Id
     @NotNull
-    @SequenceGenerator(name = "puntuacion_sequence", sequenceName = "puntuacion_sequence", allocationSize = 1) // //initialValue=33
+    @SequenceGenerator(name = "puntuacion_sequence", sequenceName = "puntuacion_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "puntuacion_sequence")
     private Long id;
-    @Size(min=1,max = 5)
+    @Size(min=1, max=5)
     private int puntuacion;
 
 
