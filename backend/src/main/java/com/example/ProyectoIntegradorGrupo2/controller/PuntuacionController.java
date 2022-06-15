@@ -2,8 +2,6 @@ package com.example.ProyectoIntegradorGrupo2.controller;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
-import com.example.ProyectoIntegradorGrupo2.model.dto.CiudadYFechaReservaDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.PuntuacionDTO;
 import com.example.ProyectoIntegradorGrupo2.service.IPuntuacionService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
-import java.util.List;
 
 @RestController
 @RequestMapping("/puntuaciones")

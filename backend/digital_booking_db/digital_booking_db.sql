@@ -340,7 +340,7 @@ CREATE TABLE `puntuacion_sequence` (
 
 LOCK TABLES `puntuacion_sequence` WRITE;
 /*!40000 ALTER TABLE `puntuacion_sequence` DISABLE KEYS */;
-INSERT INTO `puntuacion_sequence` VALUES (13);
+INSERT INTO `puntuacion_sequence` VALUES (7);
 /*!40000 ALTER TABLE `puntuacion_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,7 +370,7 @@ CREATE TABLE `puntuaciones` (
 
 LOCK TABLES `puntuaciones` WRITE;
 /*!40000 ALTER TABLE `puntuaciones` DISABLE KEYS */;
-INSERT INTO `puntuaciones` VALUES (1,7,1,1),(2,9,1,2),(3,5,1,3),(4,9,9,1),(5,10,9,2),(6,8,9,3),(7,8,17,1),(8,7,17,2),(9,8,17,3),(10,8,25,1),(11,6,25,2),(12,7,25,3);
+INSERT INTO `puntuaciones` VALUES (1,3,1,1),(2,4,1,2),(3,5,1,3),(4,4,2,3),(5,3,2,2),(6,5,2,1);
 /*!40000 ALTER TABLE `puntuaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,7 +392,7 @@ CREATE TABLE `reaccion_sequence` (
 
 LOCK TABLES `reaccion_sequence` WRITE;
 /*!40000 ALTER TABLE `reaccion_sequence` DISABLE KEYS */;
-INSERT INTO `reaccion_sequence` VALUES (1);
+INSERT INTO `reaccion_sequence` VALUES (5);
 /*!40000 ALTER TABLE `reaccion_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -422,6 +422,7 @@ CREATE TABLE `reacciones` (
 
 LOCK TABLES `reacciones` WRITE;
 /*!40000 ALTER TABLE `reacciones` DISABLE KEYS */;
+INSERT INTO `reacciones` VALUES (1,1,1,1),(2,1,2,1),(3,1,5,2),(4,1,1,2);
 /*!40000 ALTER TABLE `reacciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -636,4 +637,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-14 18:49:27
+-- Dump completed on 2022-06-15 15:41:43

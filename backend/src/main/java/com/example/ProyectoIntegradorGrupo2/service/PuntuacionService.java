@@ -9,6 +9,7 @@ import com.example.ProyectoIntegradorGrupo2.repository.IProductoRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.IPuntuacionRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.IUsuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.aspectj.weaver.ast.And;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,6 +35,10 @@ public class PuntuacionService implements IPuntuacionService{
     @Override
     public PuntuacionDTO agregarPuntuacion(PuntuacionDTO puntuacionDTO) throws BadRequestException {
 
+        if ((puntuacionDTO.getPuntuacion() < 1 || puntuacionDTO.getPuntuacion() > 5) && (puntuacionDTO.getPuntuacion() == (int)puntuacionDTO.getPuntuacion()))  throw new BadRequestException("La puntuación debe ser un numero entero del 1 al 5");
+
+/*        if (!(puntuacionRepository.findPuntuacionByProductoIdAndUsuarioId(puntuacionDTO.getProducto_id(), puntuacionDTO.getUsuario_id()).isEmpty())) throw new BadRequestException("El usuario ya ha agregado una puntuación para este producto");*/
+
         Puntuacion puntuacion = mapper.convertValue(puntuacionDTO, Puntuacion.class);
 
         Optional<Producto> productoDesdeDB = productoRepository.findById(puntuacionDTO.getProducto_id());
@@ -57,7 +62,7 @@ public class PuntuacionService implements IPuntuacionService{
         if (puntuacionPorId.isEmpty()) {
             throw new ResourceNotFoundException("No se pudo encontrar la puntuacion con el ID indicado");
         }
-        if (puntuacionPorId.isPresent()) {
+        if (!puntuacionPorId.isPresent()) {
             puntuacionDTOPorId = mapper.convertValue(puntuacionPorId, PuntuacionDTO.class);
             puntuacionDTOPorId.setProducto_id(puntuacionPorId.get().getProducto().getId());
             puntuacionDTOPorId.setUsuario_id(puntuacionPorId.get().getUsuario().getId());
