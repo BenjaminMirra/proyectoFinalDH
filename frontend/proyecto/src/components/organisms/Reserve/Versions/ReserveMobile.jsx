@@ -14,7 +14,7 @@ import axios from 'axios'
 import './ReserveDesktop.css'
 import './ReserveMobile.css'
 import { SpacerHorizontal } from '../../../atoms/Spacer/SpacerHorizontal'
-export const ReserveMobile = ({productData,categoria,locationData}) => {
+export const ReserveMobile = ({productData,categoria,locationData,reservedDays,setReservedDays}) => {
     
   return (
 
@@ -31,7 +31,7 @@ export const ReserveMobile = ({productData,categoria,locationData}) => {
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='reserve-content-calendar' >
-                <ReserveCalendar reservedDates={productData.reservaDTOList}/>
+                <ReserveCalendar setReservedDays={setReservedDays} reservedDates={productData.reservaDTOList}/>
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='reserve-content-checkInReserve' >
@@ -39,7 +39,7 @@ export const ReserveMobile = ({productData,categoria,locationData}) => {
             </div>
             {/* <SpacerHorizontal height={'2md'} /> */}
             <div className='reserve-content-reserveDetail' >
-                <MobileReserveDetail location={locationData?locationData:'cargando'} category={categoria?categoria:'cargando'} product={productData?productData:[]} image={productData?productData.imagenDTOList?productData.imagenDTOList[0].url_img_producto:[]:[]} />
+                <MobileReserveDetail reservedDays={reservedDays} location={locationData?locationData:'cargando'} category={categoria?categoria:'cargando'} product={productData?productData:[]} image={productData?productData.imagenDTOList?productData.imagenDTOList[0].url_img_producto:[]:[]} />
             </div>
             <SpacerHorizontal height={'2md'} />
         </div>

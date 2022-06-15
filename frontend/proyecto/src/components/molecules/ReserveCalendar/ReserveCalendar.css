@@ -75,6 +75,9 @@ border-radius: 5px;
 .reserveCalendar-container .react-datepicker__month-container{
         margin-left: 10px;
     }
+    .reserveCalendar-container .react-datepicker__month-container:nth-child(3) {
+        display: none;
+    }
 }
 .react-datepicker__day--keyboard-selected, .react-datepicker__month-text--keyboard-selected, .react-datepicker__quarter-text--keyboard-selected, .react-datepicker__year-text--keyboard-selected{
     border-radius: 10% !important;

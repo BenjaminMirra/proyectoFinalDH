@@ -11,7 +11,7 @@ import { TabletReserveDetail } from '../../../molecules/ReserveDetail/TabletRese
 import './ReserveTablet.css'
 import { SpacerHorizontal } from '../../../atoms/Spacer/SpacerHorizontal'
 
-export const ReserveTablet = ({productData,categoria,locationData}) => {
+export const ReserveTablet = ({productData,categoria,locationData,reservedDays,setReservedDays}) => {
     
   return (
 
@@ -28,7 +28,7 @@ export const ReserveTablet = ({productData,categoria,locationData}) => {
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='tablet-reserve-content-calendar' >
-                <ReserveCalendar reservedDates={productData.reservaDTOList} />
+                <ReserveCalendar setReservedDays={setReservedDays} reservedDates={productData.reservaDTOList} />
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='tablet-reserve-content-checkInReserve' >
@@ -36,7 +36,7 @@ export const ReserveTablet = ({productData,categoria,locationData}) => {
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='tablet-reserve-content-reserveDetail' >
-                <TabletReserveDetail location={locationData?locationData:'cargando'} category={categoria?categoria:'cargando'} product={productData?productData:[]} image={productData?productData.imagenDTOList?productData.imagenDTOList[0].url_img_producto:[]:[]} />
+                <TabletReserveDetail reservedDays={reservedDays} location={locationData?locationData:'cargando'} category={categoria?categoria:'cargando'} product={productData?productData:[]} image={productData?productData.imagenDTOList?productData.imagenDTOList[0].url_img_producto:[]:[]} />
             </div>
             <SpacerHorizontal height={'2md'} />
             

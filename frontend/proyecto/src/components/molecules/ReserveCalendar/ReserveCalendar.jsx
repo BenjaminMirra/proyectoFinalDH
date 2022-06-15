@@ -11,7 +11,7 @@ export const ReserveCalendar = (props) => {
     
     const [reservedDatesL,setReservedDatesL]=useState([])
     useEffect(() => {
-        setReservedDatesL([])
+        // setReservedDatesL([])
         if(props.reservedDates){
             props.reservedDates.forEach(element => {
                 setReservedDatesL(prevDates=>[...prevDates,{fechaInicio: parseDates(element.fechaInicioReserva) ,fechaFin: parseDates(element.fechaFinReserva) }])
@@ -46,7 +46,7 @@ export const ReserveCalendar = (props) => {
     }
     const TabletAndDesktopCalendar=(props)=>{
     registerLocale('es', es)
-    const [dateRange, setDateRange] = useState([null, null]);
+    const [dateRange, setDateRange] = useState([null,null]);
     const [startDate, endDate] = dateRange;
     const [arrayDaysReserve, setArrayDaysReserve] = useState([]);
     const [reservedDatesArray,setReservedDatesArray]=useState([])
@@ -78,25 +78,23 @@ export const ReserveCalendar = (props) => {
     return setReservedDatesArray(prevDates=>[...prevDates.concat(aux)])
     }
     
-    function editNamesDaysWeek() {
-        const namesDaysWeek = document.querySelectorAll(".react-datepicker__day-name");
-        namesDaysWeek.forEach(name => {
-            name.innerHTML = name.textContent.substring(0, 1).toUpperCase();
-        })
-    }
+    // function editNamesDaysWeek() {
+    //     const namesDaysWeek = document.querySelectorAll(".react-datepicker__day-name");
+    //     namesDaysWeek.forEach(name => {
+    //         name.innerHTML = name.textContent.substring(0, 1).toUpperCase();
+    //     })
+    // }
     
-     useEffect(() => {
-        editNamesDaysWeek();
-        let dateStart = new Date(startDate);
-        let dateEnd = new Date(endDate);
-        
-    }, [startDate, endDate])
+    
     
     useEffect(() => {
-        let startDate=formatDate(dateRange[0]);
+        if(dateRange[0]!==null){
+            let startDate=formatDate(dateRange[0]);
         let endDate=formatDate(dateRange[1]);
         props.setReservedDays({startDate:{year:startDate.slice(0,4),month:startDate.slice(5,7),day:startDate.slice(8,10)},endDate:{year:endDate.slice(0,4),month:endDate.slice(5,7),day:endDate.slice(8,10)}})
     
+        }
+        
     },[dateRange])
 
     function formatDate(date) {
@@ -115,7 +113,7 @@ export const ReserveCalendar = (props) => {
  
     return(
       <>
-      {console.log('render tablet')}
+     
         <DatePicker
                 inline
                 locale="es"
@@ -220,12 +218,7 @@ export const ReserveCalendar = (props) => {
         })
     }
     
-     useEffect(() => {
-        editNamesDaysWeek();
-        let dateStart = new Date(startDate);
-        let dateEnd = new Date(endDate);
-        
-    }, [startDate, endDate])
+    
     return(<>
     
             <DatePicker
@@ -284,6 +277,7 @@ export const ReserveCalendar = (props) => {
                 selectsRange={true}
                 onChange={onChange}
                 monthsShown={1}
+                
             />
     </>)
   }
@@ -305,9 +299,10 @@ export const ReserveCalendar = (props) => {
         }
         else{ setCalendarDisplayed(prevCalendar=>prevCalendar==<><TabletAndDesktopCalendar setReservedDays={props.setReservedDays} reservedDates={reservedDatesL}/></>?prevCalendar:<><TabletAndDesktopCalendar setReservedDays={props.setReservedDays} reservedDates={reservedDatesL}   /></>)}
         
-    },[windowWidth,reservedDatesL,props.setReservedDays]);
+    },[windowWidth,reservedDatesL]);
   return (
     <div className='reserveCalendar' >
+            
         <Heading title='h2' variant={'primary'} type='lg' >Seleccioná tu fecha de reserva</Heading>
         <SpacerHorizontal height={'md'} />
         <div className='reserveCalendar-container'>

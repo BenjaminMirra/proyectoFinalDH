@@ -9,7 +9,7 @@ import { Heading } from '../../../../atoms/Heading/Heading';
 import { Link } from 'react-router-dom';
 import './TabletReactCalendar.css'
 export const TabletReactCalendar = (props) => {
-    console.log(props)
+    
     registerLocale('es', es)
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
@@ -65,7 +65,7 @@ export const TabletReactCalendar = (props) => {
                <div className='tablet-calendarReserve-title' >
                <Heading title='h3' type='lg' variant='primary' >Fechas disponibles</Heading>
                </div>
-               {console.log(reservedDatesArray)}
+               
             <DatePicker
                 inline
                 locale="es"

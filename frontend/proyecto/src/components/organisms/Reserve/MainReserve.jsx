@@ -19,7 +19,7 @@ export const MainReserve = () => {
             setProductData(data.data)
             setLocationData(data.data.ciudad_id==1?'San Carlos de Bariloche, Río Negro, Argentina':data.data.ciudad_id==2?'Buenos Aires, Ciudad Autónoma de Buenos Aires, Argentina':data.data.ciudad_id==3?'Mendoza, Mendoza, Argentina':'Córdoba, Córdoba, Argentina')
         })
-  }, [id]);
+  }, []);
   
 
     const [reserveDisplayed,setReserveDisplayed]=useState(<><ReserveDesktop reservedDays={reservedDays} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} /></>)
@@ -44,7 +44,7 @@ export const MainReserve = () => {
 
         }
         
-    },[windowWidth,productData,reservedDays]);
+    },[windowWidth,reservedDays,productData]);
   return (
     <>
     

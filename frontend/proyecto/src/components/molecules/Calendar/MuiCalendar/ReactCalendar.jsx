@@ -6,7 +6,7 @@ import moment from 'moment'
 
 
 export const ReactCalendar = (props) => {
-    console.log(props)
+    
     const [reservedDatesL,setReservedDatesL]=useState([])
     const [calendarDisplayed,setCalendarDisplayed]=useState(<DesktopReactCalendar reservedDates={reservedDatesL}/>)
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
@@ -65,7 +65,7 @@ export const ReactCalendar = (props) => {
         // console.log(newDate);
         return newDate
     }
-    console.log(reservedDatesL);
+    
     
     // console.log(reservedDatesL[0]&&Date.parse(reservedDatesL[0].fechaInicio).toString('yyyy/mm/dd'));
     return (

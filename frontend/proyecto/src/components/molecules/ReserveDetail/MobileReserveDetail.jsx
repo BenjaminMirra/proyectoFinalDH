@@ -5,7 +5,7 @@ import { Icon } from '../../atoms/Icon/Icon'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
 import './ReserveDetail.css'
-export const MobileReserveDetail = ({product,category,location}) => {
+export const MobileReserveDetail = ({product,category,location,reservedDays}) => {
 
   return (
     <div className='reserveDetail'>
@@ -38,7 +38,7 @@ export const MobileReserveDetail = ({product,category,location}) => {
                 <div className='check-date' >
                      <Paragraph>Check In  </Paragraph>
                 <div>
-                    <span>11</span> / <span>06</span> / <span>2022</span>
+                    <span>{reservedDays.startDate.year!=='1969'?reservedDays.startDate.day: <span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.startDate.year!=='1969'?reservedDays.startDate.month:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.startDate.year!=='1969'?reservedDays.startDate.year:<span className='date-skeleton'>nad</span>}</span>
                 </div>
                 </div>
                    
@@ -46,7 +46,7 @@ export const MobileReserveDetail = ({product,category,location}) => {
                 <div className='check-date' >
                      <Paragraph>Check Out  </Paragraph>
                 <div>
-                   <span>20</span> / <span>06</span> / <span>2022</span>
+                    <span>{reservedDays.endDate.year!=='1969'?reservedDays.endDate.day:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.endDate.year!=='1969'?reservedDays.endDate.month:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.endDate.year!=='1969'?reservedDays.endDate.year:<span className='date-skeleton'>nad</span>}</span>  
                 </div>
                 </div>
                 <hr />
