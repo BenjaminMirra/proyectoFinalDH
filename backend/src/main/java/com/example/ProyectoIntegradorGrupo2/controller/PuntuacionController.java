@@ -2,7 +2,6 @@ package com.example.ProyectoIntegradorGrupo2.controller;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
-import com.example.ProyectoIntegradorGrupo2.model.dto.CiudadDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.PuntuacionDTO;
 import com.example.ProyectoIntegradorGrupo2.service.IPuntuacionService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -19,7 +18,7 @@ public class PuntuacionController {
     @Autowired
     private IPuntuacionService puntuacionService;
 
-    @Operation(summary = "Agregar una puntuacion")
+    @Operation(summary = "Agregar una puntuación")
     @PostMapping("/agregar")
     public ResponseEntity<?> agregarPuntuacion(@RequestBody PuntuacionDTO puntuacionDTO) throws BadRequestException {
 
@@ -51,7 +50,7 @@ public class PuntuacionController {
         return ResponseEntity.ok(puntuacionService.listarTodas());
     }
 
-    @Operation(summary = "Modificar una puntuacion")
+    @Operation(summary = "Modificar una puntuación")
     @PutMapping("/editar")
     public ResponseEntity<?> editarPuntuacion(@RequestBody PuntuacionDTO puntuacionDTO) throws ResourceNotFoundException, BadRequestException {
         puntuacionService.editar(puntuacionDTO);

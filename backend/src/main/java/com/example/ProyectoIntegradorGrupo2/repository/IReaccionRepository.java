@@ -1,6 +1,7 @@
 package com.example.ProyectoIntegradorGrupo2.repository;
 
 import com.example.ProyectoIntegradorGrupo2.model.Producto;
+import com.example.ProyectoIntegradorGrupo2.model.Puntuacion;
 import com.example.ProyectoIntegradorGrupo2.model.Reaccion;
 import com.example.ProyectoIntegradorGrupo2.model.Reserva;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,5 +14,6 @@ import java.util.Optional;
 
 @Repository
 public interface IReaccionRepository extends JpaRepository<Reaccion, Long> {
-
+    @Query("SELECT r FROM Reaccion r WHERE r.usuario.id =?1")
+    List<Optional<Reaccion>> findReaccionesByUsuarioId(Long id);
 }

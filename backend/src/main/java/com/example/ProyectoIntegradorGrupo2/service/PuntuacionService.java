@@ -3,8 +3,6 @@ package com.example.ProyectoIntegradorGrupo2.service;
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.*;
-import com.example.ProyectoIntegradorGrupo2.model.dto.CiudadDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.PuntuacionDTO;
 import com.example.ProyectoIntegradorGrupo2.repository.IProductoRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.IPuntuacionRepository;
@@ -14,9 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
 import java.util.*;
 
 @Service

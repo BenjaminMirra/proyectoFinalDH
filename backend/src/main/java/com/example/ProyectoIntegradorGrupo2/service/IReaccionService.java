@@ -8,5 +8,10 @@ import java.util.List;
 
 public interface IReaccionService {
 
+    ReaccionDTO agregarReaccion(ReaccionDTO reaccionDTO) throws BadRequestException;
+    ReaccionDTO obtenerReaccionPorId(Long id) throws ResourceNotFoundException;
+    List<ReaccionDTO> listarTodas();
+    ReaccionDTO editar(ReaccionDTO reaccionDTO)throws ResourceNotFoundException,BadRequestException;
+    void eliminar(Long id)throws ResourceNotFoundException;
 
 }
