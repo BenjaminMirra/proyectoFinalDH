@@ -7,9 +7,14 @@ import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { Outlet, Link,useNavigate } from "react-router-dom";
 
 import './LoginForm.css'
+import { Picture } from '../../atoms/Picture/Picture'
 
-export const LoginForm = () => {
+export const LoginForm = ({failReserve,setFailReserve}) => {
+       
+        console.log(failReserve);
     
+    
+      
     const [medidas,setMedidas]=useState({inputSize:'base',inputSpacerHeight:'xs',buttonWidth:'xs',titleSpacerHeight:'xs'})
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
     useEffect(() => {
@@ -58,18 +63,26 @@ let userData={}
     },[formValues])
 
     const navigate=useNavigate()
+    
     const handleSubmit=(e)=>{
     
         
         e.preventDefault()
-        
-        if(firstValidation('email','password')){
+        if(failReserve&&firstValidation('email','password')){
+            localStorage.setItem("userData",JSON.stringify(userData))
+            setFailReserve(false)
+            navigate(-1)
+        }
+        else if(firstValidation('email','password')){
+            
             localStorage.setItem("userData",JSON.stringify(userData))
             // window.location.href='http://localhost:3000/'
             navigate('/')
+            
+        }
         }
         
-    }
+    
 
      function firstValidation(email,password){
         
@@ -131,6 +144,12 @@ let userData={}
     const toggleInputType=()=>setInputType(inputType.input==='password'?{input:'text',icon:'visibility'}:{input:'password',icon:'disabled'})
     return (<>
         <div className="login">
+            {failReserve&&<div className='warning-message' >
+                <Picture image={'warning'} width='xxs' />
+                <Paragraph size={'md'} variant={'error'}>Para realizar una reserva necesitas estar logueado</Paragraph>
+                <SpacerHorizontal height={'md'} />
+            </div>}
+            
             <div>
                 <Heading title='h2' type='lg' variant='primary' >Iniciar Sesión</Heading>
             </div>

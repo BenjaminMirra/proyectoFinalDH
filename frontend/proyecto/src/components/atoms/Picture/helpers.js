@@ -1,10 +1,13 @@
 import logo from '../../utils/images/logo.svg'
-
-
-const ImagesList={
-    'logo':logo,
-}
+import successbooking from '../../utils/images/successbooking.jpg'
+import warning from "../../utils/images/warning.svg";
+const ImagesList = {
+  logo: logo,
+  successbooking: successbooking,
+  warning: warning,
+};
 const ImageWidth = {
+    xxs:'30px',
     xs: "71px",
     // sm: "18px",
     // md: "22px",

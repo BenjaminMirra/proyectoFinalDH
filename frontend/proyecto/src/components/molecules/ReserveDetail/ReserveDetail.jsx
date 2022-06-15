@@ -1,12 +1,25 @@
 import React from 'react'
+import { Link,useNavigate } from 'react-router-dom'
 import { Button } from '../../atoms/Button/Button'
 import { Heading } from '../../atoms/Heading/Heading'
 import { Icon } from '../../atoms/Icon/Icon'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
 import './ReserveDetail.css'
-export const ReserveDetail = ({product,category,location,reservedDays}) => {
-
+export const ReserveDetail = ({product,category,location,reservedDays,setFailReserve}) => {
+    const navigate=useNavigate()
+    const handleSubmit=()=>{
+        console.log(reservedDays.startDate.year);
+        
+        if (reservedDays.endDate.year=='1969'|| !reservedDays.endDate.year) {
+            setFailReserve(true)
+            navigate('/login')
+        }
+        else{
+             console.log(reservedDays.startDate.year);
+            navigate('/reserva-exitosa')
+        }
+    }
   return (
     <div className='reserveDetail'>
         <SpacerHorizontal height={'md'} />
@@ -38,7 +51,7 @@ export const ReserveDetail = ({product,category,location,reservedDays}) => {
                 <div className='check-date' >
                      <Paragraph>Check In  </Paragraph>
                 <div>
-                    <span>{reservedDays.startDate.year!=='1969'?reservedDays.startDate.day: <span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.startDate.year!=='1969'?reservedDays.startDate.month:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.startDate.year!=='1969'?reservedDays.startDate.year:<span className='date-skeleton'>nad</span>}</span>
+                    <span>{reservedDays.startDate.year!=='1969'&&reservedDays.startDate.year?reservedDays.startDate.day: <span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.startDate.year!=='1969'&&reservedDays.startDate.year?reservedDays.startDate.month:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.startDate.year!=='1969'&&reservedDays.startDate.year?reservedDays.startDate.year:<span className='date-skeleton'>nad</span>}</span>
                 </div>
                 </div>
                    
@@ -46,12 +59,13 @@ export const ReserveDetail = ({product,category,location,reservedDays}) => {
                 <div className='check-date' >
                      <Paragraph>Check Out  </Paragraph>
                 <div>
-                   <span>{reservedDays.endDate.year!=='1969'?reservedDays.endDate.day:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.endDate.year!=='1969'?reservedDays.endDate.month:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.endDate.year!=='1969'?reservedDays.endDate.year:<span className='date-skeleton'>nad</span>}</span>          </div>
+                   <span>{reservedDays.endDate.year!=='1969'&&reservedDays.endDate.year?reservedDays.endDate.day:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.endDate.year!=='1969'&&reservedDays.endDate.year?reservedDays.endDate.month:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.endDate.year!=='1969'&&reservedDays.endDate.year?reservedDays.endDate.year:<span className='date-skeleton'>nad</span>}</span>          </div>
                 </div>
                 <hr />
                 <div style={{height:'27px'}}></div>
                 <SpacerHorizontal height={'lg'} />
-                <Button label='Confirmar reserva' variant={true} ></Button>
+               <Button onClick={handleSubmit} label='Confirmar reserva' variant={true} ></Button>
+                
                  <SpacerHorizontal height={'md'} />
             </div>
         </div>

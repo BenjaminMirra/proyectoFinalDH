@@ -12,7 +12,7 @@ import {urlAPI} from '../../../../global'
 import axios from 'axios'
 import './ReserveDesktop.css'
 
-export const ReserveDesktop = ({productData,categoria,locationData,reservedDays,setReservedDays}) => {
+export const ReserveDesktop = ({productData,categoria,locationData,reservedDays,setReservedDays,setFailReserve}) => {
     
   return (
 
@@ -28,7 +28,7 @@ export const ReserveDesktop = ({productData,categoria,locationData,reservedDays,
             </div>
             
             <div className='reserve-content-reserveDetail' >
-                <ReserveDetail reservedDays={reservedDays} location={locationData?locationData:'cargando'} category={categoria?categoria:'cargando'} product={productData?productData:[]} image={productData?productData.imagenDTOList?productData.imagenDTOList[0].url_img_producto:[]:[]} />
+                <ReserveDetail setFailReserve={setFailReserve} reservedDays={reservedDays} location={locationData?locationData:'cargando'} category={categoria?categoria:'cargando'} product={productData?productData:[]} image={productData?productData.imagenDTOList?productData.imagenDTOList[0].url_img_producto:[]:[]} />
             </div>
             <div className='reserve-content-calendar' >
                 <ReserveCalendar setReservedDays={setReservedDays} reservedDates={productData.reservaDTOList} />

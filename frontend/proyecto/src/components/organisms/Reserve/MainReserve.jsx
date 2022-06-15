@@ -6,19 +6,22 @@ import { useParams } from 'react-router-dom'
 import axios from 'axios'
 import { urlAPI } from '../../../global'
 
-export const MainReserve = () => {
+export const MainReserve = ({setFailReserve}) => {
     const {id}=useParams()
     const [productData,setProductData]=useState([])
     const [categoria, setCategoria] = useState('cargando');
     const [locationData, setLocationData] = useState();
     const [reservedDays, setReservedDays] = useState({startDate: {day:'',month:'',year:''}, endDate: {day:'',month:'',year:''}});
      useEffect(() => {
+            
+            
             window.scrollTo(0, 0);
             axios.get(`${urlAPI}productos/${id}`).then(data => {
             setCategoria(data.data.categoria_id == 1 ? 'Hoteles' : data.data.categoria_id == 2 ? 'Hosteles' : data.data.categoria_id == 3 ? 'Departamentos' : 'Bed & Breakfast')
             setProductData(data.data)
             setLocationData(data.data.ciudad_id==1?'San Carlos de Bariloche, Río Negro, Argentina':data.data.ciudad_id==2?'Buenos Aires, Ciudad Autónoma de Buenos Aires, Argentina':data.data.ciudad_id==3?'Mendoza, Mendoza, Argentina':'Córdoba, Córdoba, Argentina')
         })
+
   }, []);
   
 
@@ -34,13 +37,13 @@ export const MainReserve = () => {
 
     useEffect(() => {
         if(windowWidth < 768){
-            setReserveDisplayed(<><ReserveMobile reservedDays={reservedDays} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} /></>)
+            setReserveDisplayed(<><ReserveMobile  setFailReserve={setFailReserve} reservedDays={reservedDays} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} /></>)
         }
         else if(windowWidth<=1365){
-            setReserveDisplayed(<ReserveTablet reservedDays={reservedDays} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} />)
+            setReserveDisplayed(<ReserveTablet setFailReserve={setFailReserve} reservedDays={reservedDays} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} />)
         }
         else if(windowWidth>=1366){
-            setReserveDisplayed(<ReserveDesktop reservedDays={reservedDays} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} />)
+            setReserveDisplayed(<ReserveDesktop setFailReserve={setFailReserve} reservedDays={reservedDays} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} />)
 
         }
         
