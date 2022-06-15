@@ -61,6 +61,7 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
         Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         usuario.setRole(roleDesdeDB.get());
+        usuario.setActivo(true);
 
         Usuario usuarioGuardado = usuarioRepository.save(usuario);
 

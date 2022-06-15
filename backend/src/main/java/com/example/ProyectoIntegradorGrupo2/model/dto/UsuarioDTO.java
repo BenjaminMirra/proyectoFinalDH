@@ -26,7 +26,6 @@ public class UsuarioDTO {
     private String email;
     private String password;
     private String ciudad;
-    private boolean activo;
     private String nombre_rol;
 
     /*private RoleDTO roleDTO;*/
