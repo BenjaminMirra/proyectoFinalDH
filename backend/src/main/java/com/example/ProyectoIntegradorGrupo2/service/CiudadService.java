@@ -3,7 +3,7 @@ package com.example.ProyectoIntegradorGrupo2.service;
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.Ciudad;
-import com.example.ProyectoIntegradorGrupo2.model.dto.CiudadDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.ciudadDTO.CiudadDTO;
 import com.example.ProyectoIntegradorGrupo2.repository.ICiudadRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

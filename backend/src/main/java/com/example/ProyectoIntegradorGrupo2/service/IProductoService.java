@@ -2,9 +2,10 @@ package com.example.ProyectoIntegradorGrupo2.service;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.CiudadYFechaReservaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.DisponibilidadDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.ProductoDTO;
 
-import java.text.ParseException;
 import java.util.List;
 
 public interface IProductoService {
@@ -16,5 +17,8 @@ public interface IProductoService {
     void eliminar(Long id)throws ResourceNotFoundException;
     List<ProductoDTO> buscarProductosPorCategoria(Long id) throws ResourceNotFoundException;
     List<ProductoDTO> buscarProductosPorCiudad(Long id) throws ResourceNotFoundException;
+    List<ProductoDTO> buscarProductosPorDisponibilidad(DisponibilidadDTO disponibilidadDTO) throws ResourceNotFoundException;
+    List<ProductoDTO> buscarProductosPorCiudadYRangoFecha(CiudadYFechaReservaDTO ciudadYFechaReservaDTO)throws ResourceNotFoundException;
+    List<ProductoDTO> listarProductosFavoritosByUsuarioId(Long id) throws ResourceNotFoundException;
 
 }

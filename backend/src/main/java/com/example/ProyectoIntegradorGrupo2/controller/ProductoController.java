@@ -2,16 +2,16 @@ package com.example.ProyectoIntegradorGrupo2.controller;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
-import com.example.ProyectoIntegradorGrupo2.model.dto.CategoriaDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.CiudadYFechaReservaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.DisponibilidadDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.ProductoDTO;
 import com.example.ProyectoIntegradorGrupo2.service.IProductoService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
-import java.util.Collection;
+import java.util.List;
 
 /*@CrossOrigin("*")*/
 //@CrossOrigin(origins = "http://localhost:8080")
@@ -71,10 +71,38 @@ public class ProductoController {
         return ResponseEntity.ok(productoService.buscarProductosPorCiudad(id));
     }
 
+    @Operation(summary = "Listar los productos según su disponibilidad por fecha")
+    @GetMapping("/disponibles/porFecha")
+    public  ResponseEntity<?> listarProductosPorDisponibilidad(@RequestBody DisponibilidadDTO disponibilidadDTO) throws ResourceNotFoundException {
+        List<ProductoDTO> productosDTO = productoService.buscarProductosPorDisponibilidad(disponibilidadDTO);
+
+        return ResponseEntity.ok(productosDTO);
+    }
+
+    @Operation(summary = "Listar los productos según su disponibilidad por ciudad y fecha")
+    @GetMapping("/disponibles/porCiudadYFecha")
+    public  ResponseEntity<?> listarProductosPorDisponibilidadByCiudadYFecha(@RequestBody CiudadYFechaReservaDTO ciudadYFechaReservaDTO) throws ResourceNotFoundException {
+        List<ProductoDTO> productosDTO = productoService.buscarProductosPorCiudadYRangoFecha(ciudadYFechaReservaDTO);
+
+        return ResponseEntity.ok(productosDTO);
+    }
+
     @Operation(summary = "Modificar un producto")
     @PutMapping("/editar")
     public ResponseEntity<?> editarProducto(@RequestBody ProductoDTO productoDTO) throws ResourceNotFoundException, BadRequestException {
         productoService.editar(productoDTO);
         return ResponseEntity.ok().body("UPDATED");
     }
+
+
+    @Operation(summary = "Listar los productos favoritos de un usuario")
+    @GetMapping("/favoritosPorIdUsuario/{id}")
+    public  ResponseEntity<?> listarProductosFavoritosbyUsuarioId(@PathVariable Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(productoService.listarProductosFavoritosByUsuarioId(id));
+
+    }
+
+
+
+
 }

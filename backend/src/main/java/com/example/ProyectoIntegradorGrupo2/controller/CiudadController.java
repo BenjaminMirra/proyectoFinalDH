@@ -2,7 +2,7 @@ package com.example.ProyectoIntegradorGrupo2.controller;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
-import com.example.ProyectoIntegradorGrupo2.model.dto.CiudadDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.ciudadDTO.CiudadDTO;
 import com.example.ProyectoIntegradorGrupo2.service.ICiudadService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;

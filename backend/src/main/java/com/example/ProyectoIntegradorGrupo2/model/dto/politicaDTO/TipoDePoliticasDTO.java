@@ -1,13 +1,10 @@
-package com.example.ProyectoIntegradorGrupo2.model.dto;
+package com.example.ProyectoIntegradorGrupo2.model.dto.politicaDTO;
 
-import com.example.ProyectoIntegradorGrupo2.model.Politica;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.example.ProyectoIntegradorGrupo2.model.dto.politicaDTO.PoliticaDTO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 

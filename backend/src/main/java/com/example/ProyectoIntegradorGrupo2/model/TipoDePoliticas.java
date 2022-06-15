@@ -21,7 +21,7 @@ public class TipoDePoliticas {
 
     @Id
     @NotNull
-    @SequenceGenerator(name = "tp_sequence", sequenceName = "tp_sequence", allocationSize = 1, initialValue=4) // initialValue=4
+    @SequenceGenerator(name = "tp_sequence", sequenceName = "tp_sequence", allocationSize = 1) // initialValue=4
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tp_sequence")
     private Long id;
     @NotNull

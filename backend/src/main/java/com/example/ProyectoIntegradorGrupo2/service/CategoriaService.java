@@ -3,7 +3,7 @@ package com.example.ProyectoIntegradorGrupo2.service;
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.Categoria;
-import com.example.ProyectoIntegradorGrupo2.model.dto.CategoriaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.categoriaDTO.CategoriaDTO;
 import com.example.ProyectoIntegradorGrupo2.repository.ICategoriaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
