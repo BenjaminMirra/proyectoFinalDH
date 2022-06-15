@@ -14,5 +14,5 @@ public interface IPuntuacionService {
     List<PuntuacionDTO> listarTodas();
     PuntuacionDTO editar(PuntuacionDTO puntuacionDTO)throws ResourceNotFoundException,BadRequestException;
     void eliminar(Long id)throws ResourceNotFoundException;
-
+    List<PuntuacionDTO> findPuntuacionesByProductoId (Long id) throws ResourceNotFoundException;
 }

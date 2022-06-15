@@ -57,4 +57,11 @@ public class ReaccionController {
         return ResponseEntity.ok().body("UPDATED");
     }
 
+    @Operation(summary = "Listar todas las reacciones de un usuario")
+    @GetMapping("/porUsuario/{id}")
+    public  ResponseEntity<?> listarReaccionesPorIdUsuario(@PathVariable Long id) throws ResourceNotFoundException {
+
+        return ResponseEntity.ok(reaccionService.findReaccionesByUsuarioId(id));
+    }
+
 }

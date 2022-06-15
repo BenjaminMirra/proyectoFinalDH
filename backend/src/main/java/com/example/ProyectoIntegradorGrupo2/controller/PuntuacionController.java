@@ -57,4 +57,11 @@ public class PuntuacionController {
         return ResponseEntity.ok().body("UPDATED");
     }
 
+    @Operation(summary = "Listar todas las puntuaciones de un producto")
+    @GetMapping("/porProducto/{id}")
+    public  ResponseEntity<?> listarPuntuacionesPorIdUsuario(@PathVariable Long id) throws ResourceNotFoundException {
+
+        return ResponseEntity.ok(puntuacionService.findPuntuacionesByProductoId(id));
+    }
+
 }

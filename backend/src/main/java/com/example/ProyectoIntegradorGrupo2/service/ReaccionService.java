@@ -5,6 +5,7 @@ import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException
 import com.example.ProyectoIntegradorGrupo2.model.Producto;
 import com.example.ProyectoIntegradorGrupo2.model.Reaccion;
 import com.example.ProyectoIntegradorGrupo2.model.Usuario;
+import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.ReaccionDTO;
 import com.example.ProyectoIntegradorGrupo2.repository.IProductoRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.IReaccionRepository;
@@ -102,5 +103,21 @@ public class ReaccionService implements IReaccionService {
             throw new ResourceNotFoundException("No se pudo encontrar la reacción a eliminar");
         }
         reaccionRepository.deleteById(id);
+    }
+
+    public List<ReaccionDTO> findReaccionesByUsuarioId (Long id) throws ResourceNotFoundException {
+
+        List<Optional<Reaccion>> reaccionList =reaccionRepository.findReaccionesByUsuarioId(id);
+        if (reaccionList.isEmpty())
+            throw new ResourceNotFoundException("El usuario no tiene productos favoritos");
+        List<ReaccionDTO> reaccionDTOList = new ArrayList<>();
+        for (Optional<Reaccion> reaccion : reaccionList
+        ) {
+            ReaccionDTO reaccionDTO = mapper.convertValue(reaccion, ReaccionDTO.class);
+            reaccionDTO.setUsuario_id(reaccion.get().getUsuario().getId());
+            reaccionDTO.setProducto_id(reaccion.get().getProducto().getId());
+            reaccionDTOList.add(reaccionDTO);
+        }
+        return reaccionDTOList;
     }
 }

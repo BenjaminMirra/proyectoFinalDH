@@ -4,6 +4,7 @@ import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.*;
 import com.example.ProyectoIntegradorGrupo2.model.dto.PuntuacionDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.ReaccionDTO;
 import com.example.ProyectoIntegradorGrupo2.repository.IProductoRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.IPuntuacionRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.IUsuarioRepository;
@@ -101,6 +102,22 @@ public class PuntuacionService implements IPuntuacionService{
         }
     puntuacionRepository.deleteById(id);
 
+    }
+
+    @Override
+    public List<PuntuacionDTO> findPuntuacionesByProductoId(Long id) throws ResourceNotFoundException {
+        List<Optional<Puntuacion>> puntuacionList =puntuacionRepository.findPuntuacionesByProductoId(id);
+        if (puntuacionList.isEmpty())
+            throw new ResourceNotFoundException("El producto no ha recibido puntuaciones");
+        List<PuntuacionDTO> puntuacionDTOList = new ArrayList<>();
+        for (Optional<Puntuacion> p : puntuacionList
+        ) {
+            PuntuacionDTO puntuacionDTO = mapper.convertValue(p, PuntuacionDTO.class);
+            puntuacionDTO.setUsuario_id(p.get().getUsuario().getId());
+            puntuacionDTO.setProducto_id(p.get().getProducto().getId());
+            puntuacionDTOList.add(puntuacionDTO);
+        }
+        return puntuacionDTOList;
     }
 
 
