@@ -592,7 +592,7 @@ CREATE TABLE `usuario_sequence` (
 
 LOCK TABLES `usuario_sequence` WRITE;
 /*!40000 ALTER TABLE `usuario_sequence` DISABLE KEYS */;
-INSERT INTO `usuario_sequence` VALUES (1);
+INSERT INTO `usuario_sequence` VALUES (4);
 /*!40000 ALTER TABLE `usuario_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 

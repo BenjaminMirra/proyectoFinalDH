@@ -27,7 +27,7 @@ public class Usuario implements UserDetails {
 
     @Id
     @NotNull
-    @SequenceGenerator(name = "usuario_sequence", sequenceName = "usuario_sequence", allocationSize = 1) //  initialValue = 2
+    @SequenceGenerator(name = "usuario_sequence", sequenceName = "usuario_sequence", allocationSize = 1, initialValue = 4) //  initialValue = 4
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "usuario_sequence")
     private Long id;
     private String nombre;

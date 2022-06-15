@@ -83,6 +83,8 @@ public class ReservaService implements IReservaService{
         }
 
         ReservaDTO reservaDTO = mapper.convertValue(reservaDesdeDB, ReservaDTO.class);
+        reservaDTO.setUsuario_id(reservaDesdeDB.get().getUsuario().getId());
+        reservaDTO.setProducto_id(reservaDesdeDB.get().getProducto().getId());
         return reservaDTO;
     }
 
