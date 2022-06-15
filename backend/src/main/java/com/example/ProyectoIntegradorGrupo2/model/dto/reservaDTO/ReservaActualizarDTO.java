@@ -1,10 +1,9 @@
-package com.example.ProyectoIntegradorGrupo2.model.dto;
+package com.example.ProyectoIntegradorGrupo2.model.dto.reservaDTO;
 
 import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.time.LocalTime;
 
 
 @Getter
@@ -12,13 +11,13 @@ import java.time.LocalTime;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReservaPorIdUsuarioDTO {
+public class ReservaActualizarDTO {
 
     private Long id;
-
+    @NotNull
     private LocalDate fechaInicioReserva;
-
+    @NotNull
     private LocalDate fechaFinReserva;
-
-    private Long producto_id;
+    /*@NotNull
+    private Long producto_id;*/
 }

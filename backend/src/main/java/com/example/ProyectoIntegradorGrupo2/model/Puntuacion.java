@@ -1,6 +1,5 @@
 package com.example.ProyectoIntegradorGrupo2.model;
 
-import com.example.ProyectoIntegradorGrupo2.model.dto.Cliente;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 

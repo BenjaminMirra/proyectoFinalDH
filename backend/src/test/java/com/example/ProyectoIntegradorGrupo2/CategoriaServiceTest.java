@@ -1,7 +1,7 @@
 package com.example.ProyectoIntegradorGrupo2;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
-import com.example.ProyectoIntegradorGrupo2.model.dto.CategoriaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.categoriaDTO.CategoriaDTO;
 import com.example.ProyectoIntegradorGrupo2.service.CategoriaService;
 import org.apache.log4j.Logger;
 import org.junit.FixMethodOrder;

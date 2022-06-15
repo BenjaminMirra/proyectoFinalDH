@@ -2,11 +2,10 @@ package com.example.ProyectoIntegradorGrupo2.controller;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
-import com.example.ProyectoIntegradorGrupo2.model.dto.CategoriaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.categoriaDTO.CategoriaDTO;
 import com.example.ProyectoIntegradorGrupo2.service.ICategoriaService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

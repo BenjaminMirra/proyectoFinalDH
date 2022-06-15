@@ -1,4 +1,4 @@
-package com.example.ProyectoIntegradorGrupo2.model.dto;
+package com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO;
 
 import com.example.ProyectoIntegradorGrupo2.model.Puntuacion;
 import com.example.ProyectoIntegradorGrupo2.model.Reaccion;
@@ -26,7 +26,6 @@ public class UsuarioDTO {
     private String email;
     private String password;
     private String ciudad;
-    private boolean activo;
     private String nombre_rol;
 
     /*private RoleDTO roleDTO;*/

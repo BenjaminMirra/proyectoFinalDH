@@ -3,7 +3,10 @@ package com.example.ProyectoIntegradorGrupo2.service;
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.Usuario;
-import com.example.ProyectoIntegradorGrupo2.model.dto.*;
+import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.UsuarioDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.UsuarioEditarDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.UsuarioGETByIdOrEmailDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.UsuarioListarTodosDTO;
 
 import java.util.List;
 

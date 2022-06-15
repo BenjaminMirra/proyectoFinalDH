@@ -5,8 +5,7 @@ import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException
 import com.example.ProyectoIntegradorGrupo2.model.Producto;
 import com.example.ProyectoIntegradorGrupo2.model.Reaccion;
 import com.example.ProyectoIntegradorGrupo2.model.Usuario;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ReaccionDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.reaccionDTO.ReaccionDTO;
 import com.example.ProyectoIntegradorGrupo2.repository.IProductoRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.IReaccionRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.IUsuarioRepository;

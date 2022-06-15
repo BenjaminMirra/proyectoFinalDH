@@ -2,11 +2,9 @@ package com.example.ProyectoIntegradorGrupo2.service;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
-import com.example.ProyectoIntegradorGrupo2.model.Reaccion;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ReaccionDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.reaccionDTO.ReaccionDTO;
 
 import java.util.List;
-import java.util.Optional;
 
 public interface IReaccionService {
 

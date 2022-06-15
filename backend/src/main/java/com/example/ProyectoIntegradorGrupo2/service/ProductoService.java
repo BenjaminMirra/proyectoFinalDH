@@ -3,17 +3,21 @@ package com.example.ProyectoIntegradorGrupo2.service;
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.*;
-import com.example.ProyectoIntegradorGrupo2.model.dto.*;
+import com.example.ProyectoIntegradorGrupo2.model.dto.caracteristicaDTO.CaracteristicasDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.imagenDTO.ImagenDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.politicaDTO.PoliticaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.CiudadYFechaReservaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.DisponibilidadDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.ProductoDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.puntuacionDTO.PuntuacionDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.reaccionDTO.ReaccionDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.reservaDTO.ReservaDTO;
 import com.example.ProyectoIntegradorGrupo2.repository.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.*;
 
 @Service

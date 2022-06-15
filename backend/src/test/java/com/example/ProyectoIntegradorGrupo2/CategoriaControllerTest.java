@@ -1,6 +1,6 @@
 package com.example.ProyectoIntegradorGrupo2;
 
-import com.example.ProyectoIntegradorGrupo2.model.dto.CategoriaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.categoriaDTO.CategoriaDTO;
 import com.example.ProyectoIntegradorGrupo2.service.CategoriaService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
