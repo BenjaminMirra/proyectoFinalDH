@@ -4,9 +4,7 @@ import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.Role;
 import com.example.ProyectoIntegradorGrupo2.model.Usuario;
-import com.example.ProyectoIntegradorGrupo2.model.dto.RoleDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.UsuarioDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.UsuarioGETByIdDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.*;
 import com.example.ProyectoIntegradorGrupo2.repository.IRoleRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.IUsuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -15,15 +13,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @Service
 @Transactional
@@ -58,6 +52,10 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
         if (usuarioDTO.getNombre_rol() == null){
             throw new BadRequestException("No se puede guardar un usuario sin asignarle un rol");
         }
+        Optional<Usuario> usuarioABuscar = usuarioRepository.findUserByEmail(usuarioDTO.getEmail());
+        if (!usuarioABuscar.isEmpty()){
+            throw new BadRequestException("Se ha encontrado un usuario con el email asignado. No se puede crear un usuario con el mismo email");
+        }
         Optional<Role> roleDesdeDB = roleRepository.findRoleByName(usuarioDTO.getNombre_rol());
 
         Usuario usuario = mapper.convertValue(usuarioDTO, Usuario.class);
@@ -91,28 +89,76 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
     }
 
     @Override
-    public UsuarioGETByIdDTO obtenerUsuarioPorId(Long id) throws ResourceNotFoundException {
-        return null;
+    public UsuarioGETByIdOrEmailDTO obtenerUsuarioPorId(Long id) throws ResourceNotFoundException {
+       Optional<Usuario> usuario = usuarioRepository.findById(id);
+       if (usuario.isEmpty()){
+           throw new ResourceNotFoundException("No se ha encontrado el usuario con el id indicado");
+       }
+       UsuarioGETByIdOrEmailDTO usuarioGETByIdDTO = mapper.convertValue(usuario, UsuarioGETByIdOrEmailDTO.class);
+       usuarioGETByIdDTO.setNombre_rol(usuario.get().getRole().getNombre());
+        return usuarioGETByIdDTO;
+    }
+
+
+
+    @Override
+    public List<UsuarioListarTodosDTO> listarTodos() {
+        List<Usuario> usuarioList = usuarioRepository.findAll();
+
+        List<UsuarioListarTodosDTO> usuarioListarTodosDTOList = new ArrayList<>();
+        for (Usuario u:usuarioList) {
+            UsuarioListarTodosDTO usuarioListarTodosDTO = mapper.convertValue(u,UsuarioListarTodosDTO.class);
+            usuarioListarTodosDTOList.add(usuarioListarTodosDTO);
+        }
+        usuarioListarTodosDTOList.sort(Comparator.comparing(UsuarioListarTodosDTO::getId));
+        return usuarioListarTodosDTOList;
     }
 
     @Override
-    public Usuario getUsuario(Long id) throws ResourceNotFoundException{
-        return usuarioRepository.findById(id).get();
-    }
+    public UsuarioEditarDTO editar(UsuarioEditarDTO usuarioEditarDTO) throws ResourceNotFoundException, BadRequestException {
 
-    @Override
-    public List<UsuarioDTO> listarTodos() {
-        return null;
-    }
+        if (usuarioEditarDTO.getId() == null){
+            throw new BadRequestException("Se debe conocer el id del usuario a actualizar");
+        }
 
-    @Override
-    public UsuarioDTO editar(UsuarioDTO usuarioDTO) throws ResourceNotFoundException, BadRequestException {
-        return null;
+        Optional<Usuario> usuario = usuarioRepository.findById(usuarioEditarDTO.getId());
+        if (usuario.isEmpty()){
+            throw new ResourceNotFoundException("No se ha encontrado el usuario con el id indicado");
+        }
+        /*usuario.get().setNombre(usuarioEditarDTO.getNombre());
+        usuario.get().setApellido(usuarioEditarDTO.getApellido());
+        usuario.get().setCiudad(usuarioEditarDTO.getCiudad());*/
+        Usuario usuarioActualizar = mapper.convertValue(usuarioEditarDTO, Usuario.class);
+        Usuario usuarioActualizado = usuarioRepository.save(usuarioActualizar);
+        UsuarioEditarDTO usuarioEditarDTOActualizado = mapper.convertValue(usuarioActualizado, UsuarioEditarDTO.class);
+
+        return usuarioEditarDTOActualizado;
     }
 
     @Override
     public void eliminar(Long id) throws ResourceNotFoundException {
+        Optional<Usuario> usuario = usuarioRepository.findById(id);
+        if (usuario.isEmpty()){
+            throw new ResourceNotFoundException("No se ha encontrado el usuario con el id indicado");
+        }
+        usuarioRepository.deleteById(id);
 
+    }
+
+    @Override
+    public UsuarioGETByIdOrEmailDTO obtenerUsuarioPorEmail(String email) throws ResourceNotFoundException {
+        Optional<Usuario> usuario = usuarioRepository.findUserByEmail(email);
+        if (usuario.isEmpty()){
+            throw new ResourceNotFoundException("No se ha encontrado el usuario con el email indicado");
+        }
+        UsuarioGETByIdOrEmailDTO usuarioGETByIdDTO = mapper.convertValue(usuario, UsuarioGETByIdOrEmailDTO.class);
+        usuarioGETByIdDTO.setNombre_rol(usuario.get().getRole().getNombre());
+        return usuarioGETByIdDTO;
+    }
+
+    @Override
+    public Usuario getUsuario(Long id) {
+        return usuarioRepository.findById(id).get();
     }
 
 

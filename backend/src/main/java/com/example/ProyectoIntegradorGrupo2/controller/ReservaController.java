@@ -57,6 +57,13 @@ public class ReservaController {
         return ResponseEntity.ok(reservaService.buscarReservasPorProductoId(id));
     }
 
+    @Operation(summary = "Listar las reservas por usuario")
+    @GetMapping("/porUsuarioId/{id}")
+    public  ResponseEntity<?> listarReservasPorIdUsuario(@PathVariable Long id) throws ResourceNotFoundException {
+
+        return ResponseEntity.ok(reservaService.buscarReservasPorUsuarioId(id));
+    }
+
     @Operation(summary = "Modificar una reserva")
     @PutMapping("/editar")
     public ResponseEntity<?> editarReserva(@RequestBody ReservaActualizarDTO reservaActualizarDTO) throws ResourceNotFoundException, BadRequestException {

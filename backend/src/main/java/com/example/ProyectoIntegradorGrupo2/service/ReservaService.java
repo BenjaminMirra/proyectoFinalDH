@@ -104,7 +104,7 @@ public class ReservaService implements IReservaService{
 
     @Override
     public ReservaActualizarDTO editar(ReservaActualizarDTO reservaActualizarDTO) throws ResourceNotFoundException, BadRequestException{
-        if (reservaActualizarDTO.getId() == null || reservaActualizarDTO.getProducto_id() ==null){
+        if (reservaActualizarDTO.getId() == null /*|| reservaActualizarDTO.getProducto_id() ==null*/){
             throw new BadRequestException("Para actualizar la reserva se debe conocer el id");
         }
         Optional<Reserva> reserva = reservaRepository.findById(reservaActualizarDTO.getId());
@@ -112,7 +112,7 @@ public class ReservaService implements IReservaService{
             throw new ResourceNotFoundException("No se ha encontrado la reserva con ése id para actualizar");
         }
 
-        List<Optional<Reserva>> reservaList = reservaRepository.listarReservasGuardadas(reservaActualizarDTO.getProducto_id(),reservaActualizarDTO.getFechaInicioReserva(),reservaActualizarDTO.getFechaFinReserva());
+        List<Optional<Reserva>> reservaList = reservaRepository.listarReservasGuardadas(reserva.get().getProducto().getId(),reservaActualizarDTO.getFechaInicioReserva(),reservaActualizarDTO.getFechaFinReserva());
         if (!reservaList.isEmpty()){
             throw new BadRequestException("El producto ya tiene reservas para ese rango de fechas");
         }
@@ -152,5 +152,25 @@ public class ReservaService implements IReservaService{
 
         reservaPorIdProductoDTOList.sort(Comparator.comparing(ReservaPorIdProductoDTO::getId));
         return reservaPorIdProductoDTOList;
+    }
+
+    @Override
+    public List<ReservaPorIdUsuarioDTO> buscarReservasPorUsuarioId(Long id) throws ResourceNotFoundException {
+        List<Optional<Reserva>> reservaList = reservaRepository.findReservasByUsuarioId(id);
+        if (reservaList.isEmpty()){
+            throw new ResourceNotFoundException("No se encontraron reservas para el usuario indicado");
+        }
+
+        List<ReservaPorIdUsuarioDTO> reservaPorIdUsuarioDTOList = new ArrayList<>();
+        for (Optional<Reserva> r:reservaList) {
+
+            ReservaPorIdUsuarioDTO reservaPorIdUsuarioDTO = new ReservaPorIdUsuarioDTO(r.get().getId(), r.get().getFechaInicioReserva(),r.get().getFechaFinReserva(),r.get().getProducto().getId());
+            reservaPorIdUsuarioDTOList.add(reservaPorIdUsuarioDTO);
+
+
+        }
+
+        reservaPorIdUsuarioDTOList.sort(Comparator.comparing(ReservaPorIdUsuarioDTO::getId));
+        return reservaPorIdUsuarioDTOList;
     }
 }

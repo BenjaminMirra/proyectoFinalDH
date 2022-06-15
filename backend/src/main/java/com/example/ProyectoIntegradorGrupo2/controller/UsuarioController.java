@@ -9,6 +9,7 @@ import com.example.ProyectoIntegradorGrupo2.model.Usuario;
 import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.TokenYIdDeRegistroDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.UsuarioDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.UsuarioEditarDTO;
 import com.example.ProyectoIntegradorGrupo2.service.IUsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +20,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.User;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
@@ -72,5 +70,42 @@ public class UsuarioController {
 
         return ResponseEntity.created(uri).body(tokenYIdDeRegistroDTO);
         /*return ResponseEntity.ok(usuarioAgregado.getId());*/
+    }
+
+    @Operation(summary = "Obtener un usuario por su id")
+    @GetMapping("/{id}")
+    public ResponseEntity<?> obtenerUsuarioPorId(@PathVariable Long id) throws ResourceNotFoundException{
+
+
+        return ResponseEntity.ok(usuarioService.obtenerUsuarioPorId(id));
+    }
+
+    @Operation(summary = "Obtener una lista de todos los usuarios")
+    @GetMapping("/todos")
+    public ResponseEntity<?> listarProductos(){
+        return ResponseEntity.ok(usuarioService.listarTodos());
+    }
+
+    @Operation(summary = "Eliminar un usuario por su id")
+    @DeleteMapping ("eliminar/{id}")
+    public ResponseEntity<?> eliminarUsuarioPorId(@PathVariable Long id) throws ResourceNotFoundException {
+
+        usuarioService.eliminar(id);
+        return ResponseEntity.ok().body("DELETED");
+    }
+
+    @Operation(summary = "Modificar un usuario")
+    @PutMapping("/editar")
+    public ResponseEntity<?> editarUsuario(@RequestBody UsuarioEditarDTO usuarioEditarDTO) throws ResourceNotFoundException, BadRequestException {
+        usuarioService.editar(usuarioEditarDTO);
+        return ResponseEntity.ok().body("UPDATED");
+    }
+
+    @Operation(summary = "Obtener un usuario por su email")
+    @GetMapping("/porEmail")
+    public ResponseEntity<?> obtenerProductoPorId(@RequestBody String email) throws ResourceNotFoundException{
+
+
+        return ResponseEntity.ok(usuarioService.obtenerUsuarioPorEmail(email));
     }
 }

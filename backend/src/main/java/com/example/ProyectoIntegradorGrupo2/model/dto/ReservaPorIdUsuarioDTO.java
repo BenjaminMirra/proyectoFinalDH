@@ -4,6 +4,7 @@ import lombok.*;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 
 @Getter
@@ -11,13 +12,13 @@ import java.time.LocalDate;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReservaActualizarDTO {
+public class ReservaPorIdUsuarioDTO {
 
     private Long id;
-    @NotNull
+
     private LocalDate fechaInicioReserva;
-    @NotNull
+
     private LocalDate fechaFinReserva;
-    /*@NotNull
-    private Long producto_id;*/
+
+    private Long producto_id;
 }
