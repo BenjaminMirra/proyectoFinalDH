@@ -4,6 +4,7 @@ import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.CiudadYFechaReservaDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.DisponibilidadDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.ProductoCardDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.ProductoDTO;
 import com.example.ProyectoIntegradorGrupo2.service.IProductoService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -74,7 +75,7 @@ public class ProductoController {
     @Operation(summary = "Listar los productos según su disponibilidad por fecha")
     @GetMapping("/disponibles/porFecha")
     public  ResponseEntity<?> listarProductosPorDisponibilidad(@RequestBody DisponibilidadDTO disponibilidadDTO) throws ResourceNotFoundException {
-        List<ProductoDTO> productosDTO = productoService.buscarProductosPorDisponibilidad(disponibilidadDTO);
+        List<ProductoCardDTO> productosDTO = productoService.buscarProductosPorDisponibilidad(disponibilidadDTO);
 
         return ResponseEntity.ok(productosDTO);
     }
@@ -82,7 +83,7 @@ public class ProductoController {
     @Operation(summary = "Listar los productos según su disponibilidad por ciudad y fecha")
     @GetMapping("/disponibles/porCiudadYFecha")
     public  ResponseEntity<?> listarProductosPorDisponibilidadByCiudadYFecha(@RequestBody CiudadYFechaReservaDTO ciudadYFechaReservaDTO) throws ResourceNotFoundException {
-        List<ProductoDTO> productosDTO = productoService.buscarProductosPorCiudadYRangoFecha(ciudadYFechaReservaDTO);
+        List<ProductoCardDTO> productosDTO = productoService.buscarProductosPorCiudadYRangoFecha(ciudadYFechaReservaDTO);
 
         return ResponseEntity.ok(productosDTO);
     }

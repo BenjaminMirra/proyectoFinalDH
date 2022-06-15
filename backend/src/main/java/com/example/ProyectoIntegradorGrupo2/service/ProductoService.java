@@ -8,6 +8,7 @@ import com.example.ProyectoIntegradorGrupo2.model.dto.imagenDTO.ImagenDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.politicaDTO.PoliticaDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.CiudadYFechaReservaDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.DisponibilidadDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.ProductoCardDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.ProductoDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.puntuacionDTO.PuntuacionDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.reaccionDTO.ReaccionDTO;
@@ -118,8 +119,8 @@ public class ProductoService implements IProductoService {
         return productoDTO;
     }
 
-    private ProductoDTO obteberProductoDTOConTodosLosAtributos(Producto producto, Long id){
-        ProductoDTO productoDTO = mapper.convertValue(producto, ProductoDTO.class);
+    private ProductoCardDTO obteberProductoDTOConTodosLosAtributos(Producto producto, Long id){
+        ProductoCardDTO productoDTO = mapper.convertValue(producto, ProductoCardDTO.class);
 
         productoDTO.setCategoria_id(producto.getCategoria().getId());
         productoDTO.setCiudad_id(producto.getCiudad().getId());
@@ -166,15 +167,21 @@ public class ProductoService implements IProductoService {
         if (producto.isEmpty())
             throw new ResourceNotFoundException("No se ha encontrado el producto con el id indicado");
 
-        ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(),id);
+        ProductoCardDTO productoCardDTO = obteberProductoDTOConTodosLosAtributos(producto.get(),id);
+        ProductoDTO productoDTO = mapper.convertValue(producto, ProductoDTO.class);
+        productoDTO.setCategoria_id(producto.get().getCategoria().getId());
+        productoDTO.setCiudad_id(producto.get().getCiudad().getId());
+        productoDTO.setImagenDTOList(productoCardDTO.getImagenDTOList());
+        productoDTO.setCaracteristicasDTOList(productoCardDTO.getCaracteristicasDTOList());
 
 
-        List<Optional<Reserva>> optionalReservaList = reservaRepository.findReservasByProductoId(id);
+
+        /*List<Optional<Reserva>> optionalReservaList = reservaRepository.findReservasByProductoId(id);
         for (Optional<Reserva> r : optionalReservaList) {
             ReservaDTO reservaDTO = mapper.convertValue(r.get(), ReservaDTO.class);
             productoDTO.getReservaDTOList().add(reservaDTO);
 
-        }
+        }*/
         List<Optional<Politica>> optionalPoliticaList = politicaRepository.findPoliticasByProductId(id);
         for (Optional<Politica> pol : optionalPoliticaList) {
             PoliticaDTO politicaDTO = mapper.convertValue(pol.get(), PoliticaDTO.class);
@@ -188,14 +195,14 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public List<ProductoDTO> listarTodos(){
+    public List<ProductoCardDTO> listarTodos(){
         List<Producto> productosList = productoRepository.findAll();
 
 
-        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        List<ProductoCardDTO> productoDTOList = new ArrayList<>();
         for (Producto producto : productosList
         ) {
-            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto, producto.getId());
+            ProductoCardDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto, producto.getId());
 
             productoDTOList.add(productoDTO);
 
@@ -208,20 +215,20 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public List<ProductoDTO> listarTodosOrdenados() {
+    public List<ProductoCardDTO> listarTodosOrdenados() {
         List<Producto> productosList = productoRepository.findAll();
 
 
-        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        List<ProductoCardDTO> productoDTOList = new ArrayList<>();
         for (Producto producto : productosList
         ) {
-            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto, producto.getId());
+            ProductoCardDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto, producto.getId());
 
             productoDTOList.add(productoDTO);
 
         }
 
-        productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+        productoDTOList.sort(Comparator.comparing(ProductoCardDTO::getId));
 
         return productoDTOList;
     }
@@ -239,7 +246,7 @@ public class ProductoService implements IProductoService {
 
         ProductoDTO productoDTOConId = cargarProductoYRetornarDTO(productoDTO);
 
-        List<ReservaDTO> reservaDTOList = productoDTO.getReservaDTOList();
+        /*List<ReservaDTO> reservaDTOList = productoDTO.getReservaDTOList();
 
         for (ReservaDTO r : reservaDTOList) {
             Reserva reserva = mapper.convertValue(r, Reserva.class);
@@ -264,7 +271,7 @@ public class ProductoService implements IProductoService {
             reaccion.setProducto(producto.get());
             reaccionRepository.save(reaccion);
             producto.get().getReaccionList().add(reaccion);
-        }
+        }*/
 
 
         return productoDTOConId;
@@ -281,90 +288,90 @@ public class ProductoService implements IProductoService {
     }
 
     @Override
-    public List<ProductoDTO> buscarProductosPorCategoria(Long id) throws ResourceNotFoundException {
+    public List<ProductoCardDTO> buscarProductosPorCategoria(Long id) throws ResourceNotFoundException {
         List<Optional<Producto>> productosList = productoRepository.listarProductosByCategoryId(id);
         if (productosList.isEmpty())
             throw new ResourceNotFoundException("No se encontraron productos con ésa categoria");
 
 
-        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        List<ProductoCardDTO> productoDTOList = new ArrayList<>();
         for (Optional<Producto> producto : productosList
         ) {
-            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
+            ProductoCardDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
 
             productoDTOList.add(productoDTO);
 
         }
 
-        productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+        productoDTOList.sort(Comparator.comparing(ProductoCardDTO::getId));
 
         return productoDTOList;
     }
 
 
     @Override
-    public List<ProductoDTO> buscarProductosPorCiudad(Long id) throws ResourceNotFoundException {
+    public List<ProductoCardDTO> buscarProductosPorCiudad(Long id) throws ResourceNotFoundException {
 
         List<Optional<Producto>> productosList = productoRepository.listarProductosByCiudadId(id);
         if (productosList.isEmpty())
             throw new ResourceNotFoundException("No se encontraron productos de ésa ciudad");
-        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        List<ProductoCardDTO> productoDTOList = new ArrayList<>();
         for (Optional<Producto> producto : productosList
         ) {
 
-            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
+            ProductoCardDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
 
             productoDTOList.add(productoDTO);
         }
 
-        productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+        productoDTOList.sort(Comparator.comparing(ProductoCardDTO::getId));
 
         return productoDTOList;
     }
 
     @Override
-    public List<ProductoDTO> buscarProductosPorDisponibilidad(DisponibilidadDTO disponibilidadDTO) throws ResourceNotFoundException {
+    public List<ProductoCardDTO> buscarProductosPorDisponibilidad(DisponibilidadDTO disponibilidadDTO) throws ResourceNotFoundException {
         List<Optional<Producto>> productosDisponiblesDB = productoRepository.listarProductosByDisponibilidad(disponibilidadDTO.getFechaInicioReserva(), disponibilidadDTO.getFechaFinReserva());
         if (productosDisponiblesDB.isEmpty())
             throw new ResourceNotFoundException("No se encontraron productos disponibles en ése rango de fechas");
 
-        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        List<ProductoCardDTO> productoDTOList = new ArrayList<>();
         for (Optional<Producto> producto : productosDisponiblesDB
         ) {
 
-            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
+            ProductoCardDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
 
             productoDTOList.add(productoDTO);
         }
 
-        productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+        productoDTOList.sort(Comparator.comparing(ProductoCardDTO::getId));
 
         return productoDTOList;
     }
 
     @Override
-    public List<ProductoDTO> buscarProductosPorCiudadYRangoFecha(CiudadYFechaReservaDTO ciudadYFechaReservaDTO) throws ResourceNotFoundException {
+    public List<ProductoCardDTO> buscarProductosPorCiudadYRangoFecha(CiudadYFechaReservaDTO ciudadYFechaReservaDTO) throws ResourceNotFoundException {
         List<Optional<Producto>> productosDisponiblesEnCiudadYFechaIndicada = productoRepository.listarProductosDisponiblesByCiudadYFecha(ciudadYFechaReservaDTO.getFechaInicioReserva(),ciudadYFechaReservaDTO.getFechaFinReserva(),ciudadYFechaReservaDTO.getId_ciudad());
 
         if (productosDisponiblesEnCiudadYFechaIndicada.isEmpty())
             throw new ResourceNotFoundException("No se encontraron productos disponibles en ése rango de fechas");
 
-        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        List<ProductoCardDTO> productoDTOList = new ArrayList<>();
         for (Optional<Producto> producto : productosDisponiblesEnCiudadYFechaIndicada
         ) {
 
-            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
+            ProductoCardDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
 
             productoDTOList.add(productoDTO);
         }
 
-        productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+        productoDTOList.sort(Comparator.comparing(ProductoCardDTO::getId));
 
         return productoDTOList;
     }
 
     @Override
-    public List<ProductoDTO> listarProductosFavoritosByUsuarioId(Long id) throws ResourceNotFoundException {
+    public List<ProductoCardDTO> listarProductosFavoritosByUsuarioId(Long id) throws ResourceNotFoundException {
 
         Optional<Usuario> usuarioEncontrado = usuarioRepository.findById(id);
         if (usuarioEncontrado.isEmpty()) throw new ResourceNotFoundException("No se ha encontrado el usuario con el id indicado");
@@ -374,16 +381,16 @@ public class ProductoService implements IProductoService {
         if (productosFavoritosPorUsuario.isEmpty())
             throw new ResourceNotFoundException("El usuario no ha agregado ningún producto a sus favoritos");
 
-        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        List<ProductoCardDTO> productoDTOList = new ArrayList<>();
         for (Optional<Producto> producto :productosFavoritosPorUsuario
         ) {
 
-            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
+            ProductoCardDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
 
             productoDTOList.add(productoDTO);
         }
 
-        productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+        productoDTOList.sort(Comparator.comparing(ProductoCardDTO::getId));
 
         return productoDTOList;
     }
