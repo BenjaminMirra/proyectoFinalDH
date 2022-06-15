@@ -1,19 +1,17 @@
-package com.example.ProyectoIntegradorGrupo2.model.dto;
+package com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO;
 
-import com.example.ProyectoIntegradorGrupo2.model.*;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.example.ProyectoIntegradorGrupo2.model.dto.reservaDTO.ReservaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.caracteristicaDTO.CaracteristicasDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.imagenDTO.ImagenDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.politicaDTO.PoliticaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.puntuacionDTO.PuntuacionDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.reaccionDTO.ReaccionDTO;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Getter
 @Setter

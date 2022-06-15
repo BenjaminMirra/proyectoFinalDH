@@ -1,4 +1,4 @@
-package com.example.ProyectoIntegradorGrupo2.model.dto;
+package com.example.ProyectoIntegradorGrupo2.model.dto.reaccionDTO;
 
 import com.example.ProyectoIntegradorGrupo2.model.Reaccion;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

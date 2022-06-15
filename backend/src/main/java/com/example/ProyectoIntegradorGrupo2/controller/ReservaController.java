@@ -3,9 +3,8 @@ package com.example.ProyectoIntegradorGrupo2.controller;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ReservaActualizarDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ReservaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.reservaDTO.ReservaActualizarDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.reservaDTO.ReservaDTO;
 import com.example.ProyectoIntegradorGrupo2.service.IReservaService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;

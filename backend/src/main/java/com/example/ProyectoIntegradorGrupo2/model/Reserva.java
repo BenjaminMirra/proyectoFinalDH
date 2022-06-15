@@ -1,6 +1,5 @@
 package com.example.ProyectoIntegradorGrupo2.model;
 
-import com.example.ProyectoIntegradorGrupo2.model.dto.Cliente;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,7 +11,6 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.util.Date;
 
 @Getter
 @Setter

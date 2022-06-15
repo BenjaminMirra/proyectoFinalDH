@@ -1,4 +1,4 @@
-package com.example.ProyectoIntegradorGrupo2.model.dto;
+package com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO;
 
 import com.example.ProyectoIntegradorGrupo2.model.Puntuacion;
 import com.example.ProyectoIntegradorGrupo2.model.Reaccion;

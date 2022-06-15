@@ -5,7 +5,7 @@ import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException
 import com.example.ProyectoIntegradorGrupo2.model.Producto;
 import com.example.ProyectoIntegradorGrupo2.model.Reserva;
 import com.example.ProyectoIntegradorGrupo2.model.Usuario;
-import com.example.ProyectoIntegradorGrupo2.model.dto.*;
+import com.example.ProyectoIntegradorGrupo2.model.dto.reservaDTO.*;
 import com.example.ProyectoIntegradorGrupo2.repository.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;

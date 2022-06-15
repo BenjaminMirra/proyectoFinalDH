@@ -2,11 +2,10 @@ package com.example.ProyectoIntegradorGrupo2.service;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
-import com.example.ProyectoIntegradorGrupo2.model.dto.CiudadYFechaReservaDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.DisponibilidadDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.CiudadYFechaReservaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.DisponibilidadDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.ProductoDTO;
 
-import java.text.ParseException;
 import java.util.List;
 
 public interface IProductoService {

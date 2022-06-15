@@ -2,18 +2,15 @@ package com.example.ProyectoIntegradorGrupo2.controller;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
-import com.example.ProyectoIntegradorGrupo2.model.dto.CategoriaDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.CiudadYFechaReservaDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.DisponibilidadDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.CiudadYFechaReservaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.DisponibilidadDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.ProductoDTO;
 import com.example.ProyectoIntegradorGrupo2.service.IProductoService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.ParseException;
-import java.util.Collection;
 import java.util.List;
 
 /*@CrossOrigin("*")*/
