@@ -20,7 +20,7 @@ public class Reaccion {
 
     @Id
     @NotNull
-    @SequenceGenerator(name = "reaccion_sequence", sequenceName = "reaccion_sequence", allocationSize = 1) // //initialValue=33
+    @SequenceGenerator(name = "reaccion_sequence", sequenceName = "reaccion_sequence", allocationSize = 1, initialValue=5) // //initialValue=33
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reaccion_sequence")
     private Long id;
 
