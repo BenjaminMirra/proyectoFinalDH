@@ -50,6 +50,9 @@ public class ProductoService implements IProductoService {
     @Autowired
     private IReaccionRepository reaccionRepository;
 
+    @Autowired
+    private IUsuarioRepository usuarioRepository;
+
 
     @Autowired
     ObjectMapper mapper;
@@ -130,7 +133,7 @@ public class ProductoService implements IProductoService {
 
         }
 
-        List<Optional<Puntuacion>> optionalPuntuacionesList = puntuacionRepository.findPuntuacionesByProductoId(id);
+        /*List<Optional<Puntuacion>> optionalPuntuacionesList = puntuacionRepository.findPuntuacionesByProductoId(id);
         for (Optional<Puntuacion> p : optionalPuntuacionesList) {
             Usuario usuario = p.get().getUsuario();
             Producto prod = p.get().getProducto();
@@ -139,7 +142,7 @@ public class ProductoService implements IProductoService {
             puntuacionDTO.setProducto_id(prod.getId());
             productoDTO.getPuntuacionDTOList().add(puntuacionDTO);
 
-        }
+        }*/
 
         return productoDTO;
     }
@@ -355,5 +358,31 @@ public class ProductoService implements IProductoService {
 
         return productoDTOList;
     }
+
+    @Override
+    public List<ProductoDTO> listarProductosFavoritosByUsuarioId(Long id) throws ResourceNotFoundException {
+
+        Optional<Usuario> usuarioEncontrado = usuarioRepository.findById(id);
+        if (usuarioEncontrado.isEmpty()) throw new ResourceNotFoundException("No se ha encontrado el usuario con el id indicado");
+
+        List<Optional<Producto>> productosFavoritosPorUsuario = productoRepository.listarProductosFavoritosByUsuarioId(id);
+
+        if (productosFavoritosPorUsuario.isEmpty())
+            throw new ResourceNotFoundException("El usuario no ha agregado ningún producto a sus favoritos");
+
+        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        for (Optional<Producto> producto :productosFavoritosPorUsuario
+        ) {
+
+            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
+
+            productoDTOList.add(productoDTO);
+        }
+
+        productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+
+        return productoDTOList;
+    }
+
 
 }

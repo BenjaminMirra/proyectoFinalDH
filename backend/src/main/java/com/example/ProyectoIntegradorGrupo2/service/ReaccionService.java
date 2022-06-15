@@ -71,6 +71,7 @@ public class ReaccionService implements IReaccionService {
 
     @Override
     public List<ReaccionDTO> listarTodas() {
+
         List<Reaccion> reaccionList = reaccionRepository.findAll();
         List<ReaccionDTO> reaccionDTOList = new ArrayList<>();
         for (Reaccion r : reaccionList
@@ -87,6 +88,7 @@ public class ReaccionService implements IReaccionService {
 
     @Override
     public ReaccionDTO editar(ReaccionDTO reaccionDTO) throws ResourceNotFoundException, BadRequestException {
+
         Optional<Reaccion> reaccion = reaccionRepository.findById(reaccionDTO.getId());
         if (reaccionDTO.getUsuario_id()==null || reaccionDTO.getProducto_id()==null)
             throw new BadRequestException("La reacción debe tener asignado un producto y un usuario");
@@ -98,18 +100,26 @@ public class ReaccionService implements IReaccionService {
 
     @Override
     public void eliminar(Long id) throws ResourceNotFoundException {
+
         Optional<Reaccion> reaccion = reaccionRepository.findById(id);
         if (reaccion.isEmpty()){
             throw new ResourceNotFoundException("No se pudo encontrar la reacción a eliminar");
         }
         reaccionRepository.deleteById(id);
+
     }
 
     public List<ReaccionDTO> findReaccionesByUsuarioId (Long id) throws ResourceNotFoundException {
 
+        Optional<Usuario> usuarioEncontrado = usuarioRepository.findById(id);
+        if (usuarioEncontrado.isEmpty()) throw new ResourceNotFoundException("No se ha encontrado el usuario con el id indicado");
+        Optional<Producto> productoEncontrado = productoRepository.findById(id);
+        if (productoEncontrado.isEmpty()) throw new ResourceNotFoundException("No se ha encontrado el producto con el id indicado");
+
         List<Optional<Reaccion>> reaccionList =reaccionRepository.findReaccionesByUsuarioId(id);
         if (reaccionList.isEmpty())
             throw new ResourceNotFoundException("El usuario no tiene productos favoritos");
+
         List<ReaccionDTO> reaccionDTOList = new ArrayList<>();
         for (Optional<Reaccion> reaccion : reaccionList
         ) {
@@ -118,6 +128,8 @@ public class ReaccionService implements IReaccionService {
             reaccionDTO.setProducto_id(reaccion.get().getProducto().getId());
             reaccionDTOList.add(reaccionDTO);
         }
+
         return reaccionDTOList;
+
     }
 }

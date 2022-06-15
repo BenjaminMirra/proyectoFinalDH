@@ -20,5 +20,6 @@ public interface IProductoService {
     List<ProductoDTO> buscarProductosPorCiudad(Long id) throws ResourceNotFoundException;
     List<ProductoDTO> buscarProductosPorDisponibilidad(DisponibilidadDTO disponibilidadDTO) throws ResourceNotFoundException;
     List<ProductoDTO> buscarProductosPorCiudadYRangoFecha(CiudadYFechaReservaDTO ciudadYFechaReservaDTO)throws ResourceNotFoundException;
+    List<ProductoDTO> listarProductosFavoritosByUsuarioId(Long id) throws ResourceNotFoundException;
 
 }

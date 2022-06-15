@@ -13,6 +13,10 @@ import java.util.Optional;
 
 @Repository
 public interface IPuntuacionRepository extends JpaRepository<Puntuacion, Long> {
+
     @Query("SELECT p FROM Puntuacion p WHERE p.producto.id =?1")
     List<Optional<Puntuacion>> findPuntuacionesByProductoId(Long id);
+
+    @Query("SELECT p FROM Puntuacion p WHERE p.producto.id =?1 AND p.usuario.id = ?2")
+    Optional<Puntuacion> findPuntuacionByProductoIdAndUsuarioId(Long id_producto, Long id_usuario);
 }

@@ -96,4 +96,16 @@ public class ProductoController {
         productoService.editar(productoDTO);
         return ResponseEntity.ok().body("UPDATED");
     }
+
+
+    @Operation(summary = "Listar los productos favoritos de un usuario")
+    @GetMapping("/favoritosPorIdUsuario/{id}")
+    public  ResponseEntity<?> listarProductosFavoritosbyUsuarioId(@PathVariable Long id) throws ResourceNotFoundException {
+        return ResponseEntity.ok(productoService.listarProductosFavoritosByUsuarioId(id));
+
+    }
+
+
+
+
 }

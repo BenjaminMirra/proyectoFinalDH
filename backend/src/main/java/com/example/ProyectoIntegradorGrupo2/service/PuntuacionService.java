@@ -106,6 +106,9 @@ public class PuntuacionService implements IPuntuacionService{
 
     @Override
     public List<PuntuacionDTO> findPuntuacionesByProductoId(Long id) throws ResourceNotFoundException {
+
+        Optional<Producto> productoEncontrado = productoRepository.findById(id);
+        if (productoEncontrado.isEmpty()) throw new ResourceNotFoundException("No se ha encontrado el producto con el ID indicado");
         List<Optional<Puntuacion>> puntuacionList =puntuacionRepository.findPuntuacionesByProductoId(id);
         if (puntuacionList.isEmpty())
             throw new ResourceNotFoundException("El producto no ha recibido puntuaciones");
@@ -120,5 +123,26 @@ public class PuntuacionService implements IPuntuacionService{
         return puntuacionDTOList;
     }
 
+    @Override
+    public PuntuacionDTO findPuntuacionByProductoIdAndUsuarioId(Long id_producto, Long id_usuario) throws ResourceNotFoundException {
 
-}
+        Optional<Usuario> usuarioEncontrado = usuarioRepository.findById(id_usuario);
+        if (usuarioEncontrado.isEmpty()) throw new ResourceNotFoundException("No se ha encontrado el usuario con el ID indicado");
+
+        Optional<Producto> productoEncontrado = productoRepository.findById(id_producto);
+        if (productoEncontrado.isEmpty()) throw new ResourceNotFoundException("No se ha encontrado el producto con el ID indicado");
+
+        Optional<Puntuacion> puntuacion = puntuacionRepository.findPuntuacionByProductoIdAndUsuarioId(id_producto, id_usuario);
+        if (puntuacion.isEmpty())
+            throw new ResourceNotFoundException("El usuario no ha agregado una puntuación al producto con el ID solicitado");
+
+        PuntuacionDTO puntuacionDTO = mapper.convertValue(puntuacion, PuntuacionDTO.class);
+        puntuacionDTO.setUsuario_id(puntuacion.get().getUsuario().getId());
+        puntuacionDTO.setProducto_id(puntuacion.get().getProducto().getId());
+        return puntuacionDTO;
+        }
+
+    }
+
+
+

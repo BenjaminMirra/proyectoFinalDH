@@ -73,6 +73,8 @@ ON p.id=o.product_id
 WHERE (from_date NOT BETWEEN '2017-06-13' AND '2017-06-21')
 AND (to_date NOT BETWEEN '2017-06-13' AND '2017-06-21')
 AND p.id=$pid;*/
+    @Query("SELECT p FROM Producto p INNER JOIN Reaccion r ON p.id = r.producto.id WHERE r.usuario.id = ?1 AND r.favorito = true")
+   List<Optional<Producto>> listarProductosFavoritosByUsuarioId(Long id);
 
 
 }

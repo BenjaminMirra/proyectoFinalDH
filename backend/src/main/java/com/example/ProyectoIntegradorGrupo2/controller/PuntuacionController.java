@@ -2,6 +2,8 @@ package com.example.ProyectoIntegradorGrupo2.controller;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
+import com.example.ProyectoIntegradorGrupo2.model.dto.CiudadYFechaReservaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.ProductoDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.PuntuacionDTO;
 import com.example.ProyectoIntegradorGrupo2.service.IPuntuacionService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -10,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Collection;
+import java.util.List;
 
 @RestController
 @RequestMapping("/puntuaciones")
@@ -63,5 +66,12 @@ public class PuntuacionController {
 
         return ResponseEntity.ok(puntuacionService.findPuntuacionesByProductoId(id));
     }
+
+    @Operation(summary = "Mostrar la puntuación que un usuario le dió a un determinado producto")
+    @GetMapping("/porProducto/{id_producto}/porUsuario/{id_usuario}")
+    ResponseEntity<?> listarPuntuacionesPorIdUsuarioY(@PathVariable Long id_producto, @PathVariable Long id_usuario) throws ResourceNotFoundException {
+        return ResponseEntity.ok(puntuacionService.findPuntuacionByProductoIdAndUsuarioId(id_producto, id_usuario));
+    }
+
 
 }
