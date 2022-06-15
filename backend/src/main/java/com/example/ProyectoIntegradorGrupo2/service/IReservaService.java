@@ -13,4 +13,5 @@ public interface IReservaService {
     ReservaActualizarDTO editar(ReservaActualizarDTO reservaActualizarDTO)throws ResourceNotFoundException,BadRequestException;
     void eliminar(Long id)throws ResourceNotFoundException;
     List<ReservaPorIdProductoDTO> buscarReservasPorProductoId(Long id) throws ResourceNotFoundException;
+    List<ReservaPorIdUsuarioDTO> buscarReservasPorUsuarioId(Long id) throws ResourceNotFoundException;
 }
