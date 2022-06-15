@@ -2,9 +2,7 @@ package com.example.ProyectoIntegradorGrupo2.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -13,8 +11,8 @@ import java.util.*;
 @Getter
 @Setter
 @ToString
-/*@AllArgsConstructor
-@NoArgsConstructor*/
+@AllArgsConstructor
+@NoArgsConstructor
 
 
 @Entity
@@ -43,7 +41,7 @@ public class Producto {
     //@Size(min=1,max = 10)
     //@Min(value= 1) @Max(value=10)
 
-    private int puntaje;
+    //private int puntaje;
 
     @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY, orphanRemoval = true)
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
@@ -73,118 +71,39 @@ public class Producto {
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
     private List<Caracteristicas> caracteristicasList = new ArrayList<>();
 
-    public Producto() {
-    }
+    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY, orphanRemoval = true)
+    @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
+    private List<Puntuacion> puntuacionList = new ArrayList<>();
 
-    public Long getId() {
-        return id;
-    }
+    @OneToMany(mappedBy = "producto", fetch = FetchType.LAZY, orphanRemoval = true)
+    @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
+    private List<Reaccion> reaccionList = new ArrayList<>();
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTitulo() {
-        return titulo;
-    }
-
-    public void setTitulo(String titulo) {
+    public Producto(String titulo, String titulo_descripcion, String descripcion, String direccion, double latitud, double longitud, List<Politica> politicaList, List<Reserva> reservaSet, Categoria categoria, Ciudad ciudad, List<Imagen> imagenesList, List<Caracteristicas> caracteristicasList, List<Puntuacion> puntuacionList, List<Reaccion> reaccionList) {
         this.titulo = titulo;
-    }
-
-    public String getTitulo_descripcion() {
-        return titulo_descripcion;
-    }
-
-    public void setTitulo_descripcion(String titulo_descripcion) {
         this.titulo_descripcion = titulo_descripcion;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
-    }
-
-    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
         this.direccion = direccion;
-    }
-
-    public double getLatitud() {
-        return latitud;
-    }
-
-    public void setLatitud(double latitud) {
         this.latitud = latitud;
-    }
-
-    public double getLongitud() {
-        return longitud;
-    }
-
-    public void setLongitud(double longitud) {
         this.longitud = longitud;
-    }
-
-    public int getPuntaje() {
-        return puntaje;
-    }
-
-    public void setPuntaje(int puntaje) {
-        this.puntaje = puntaje;
-    }
-
-    public List<Politica> getPoliticaList() {
-        return politicaList;
-    }
-
-    public void setPoliticaList(List<Politica> politicaList) {
         this.politicaList = politicaList;
-    }
-
-    public List<Reserva> getReservaSet() {
-        return reservaSet;
-    }
-
-    public void setReservaSet(List<Reserva> reservaSet) {
         this.reservaSet = reservaSet;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
-    }
-
-    public Ciudad getCiudad() {
-        return ciudad;
-    }
-
-    public void setCiudad(Ciudad ciudad) {
         this.ciudad = ciudad;
-    }
-
-    public List<Imagen> getImagenesList() {
-        return imagenesList;
-    }
-
-    public void setImagenesList(List<Imagen> imagenesList) {
         this.imagenesList = imagenesList;
-    }
-
-    public List<Caracteristicas> getCaracteristicasList() {
-        return caracteristicasList;
-    }
-
-    public void setCaracteristicasList(List<Caracteristicas> caracteristicasList) {
         this.caracteristicasList = caracteristicasList;
+        this.puntuacionList = puntuacionList;
+        this.reaccionList = reaccionList;
+    }
+
+    public Producto(String titulo, String titulo_descripcion, String descripcion, String direccion, double latitud, double longitud, Categoria categoria, Ciudad ciudad) {
+        this.titulo = titulo;
+        this.titulo_descripcion = titulo_descripcion;
+        this.descripcion = descripcion;
+        this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
     }
 }

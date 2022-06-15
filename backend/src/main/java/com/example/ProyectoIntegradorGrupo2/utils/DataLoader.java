@@ -1,15 +1,16 @@
 package com.example.ProyectoIntegradorGrupo2.utils;
 
-import com.example.ProyectoIntegradorGrupo2.model.Categoria;
-import com.example.ProyectoIntegradorGrupo2.model.Ciudad;
-import com.example.ProyectoIntegradorGrupo2.model.TipoDePoliticas;
+import com.example.ProyectoIntegradorGrupo2.model.*;
 import com.example.ProyectoIntegradorGrupo2.repository.ICategoriaRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.ICiudadRepository;
+import com.example.ProyectoIntegradorGrupo2.repository.IRoleRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.ITipoDePoliticasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+
+import java.time.LocalDate;
 
 @Component
 public class DataLoader /*implements ApplicationRunner*/ {
@@ -22,6 +23,9 @@ public class DataLoader /*implements ApplicationRunner*/ {
 
     @Autowired
     private ITipoDePoliticasRepository tipoDePoliticasRepository;
+
+    @Autowired
+    private IRoleRepository roleRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -52,6 +56,10 @@ public class DataLoader /*implements ApplicationRunner*/ {
         tipoDePoliticasRepository.save(tipoDePoliticas);
         tipoDePoliticasRepository.save(tipoDePoliticas1);
         tipoDePoliticasRepository.save(tipoDePoliticas2);
+
+        Role role = new Role("ROLE_USER");
+        roleRepository.save(role);
+
 
 
     }*/

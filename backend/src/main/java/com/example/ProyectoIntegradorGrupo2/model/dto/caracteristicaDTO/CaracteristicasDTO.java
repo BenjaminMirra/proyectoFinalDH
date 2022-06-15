@@ -1,4 +1,4 @@
-package com.example.ProyectoIntegradorGrupo2.model.dto;
+package com.example.ProyectoIntegradorGrupo2.model.dto.caracteristicaDTO;
 
 import com.example.ProyectoIntegradorGrupo2.model.Producto;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -13,16 +13,17 @@ import javax.validation.constraints.NotNull;
 @Setter
 @ToString
 
-public class ImagenDTO {
+public class CaracteristicasDTO {
+
 
     private Long id;
-    @NotNull
-    private String url_img_producto;
 
-    private String titulo_img_producto;
+    private String titulo;
+
+    private String nombre_icono;
 
     //private ProductoDTO productoDTO;
 
-    public ImagenDTO() {
+    public CaracteristicasDTO() {
     }
 }

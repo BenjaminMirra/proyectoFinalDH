@@ -3,17 +3,21 @@ package com.example.ProyectoIntegradorGrupo2.service;
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.*;
-import com.example.ProyectoIntegradorGrupo2.model.dto.*;
+import com.example.ProyectoIntegradorGrupo2.model.dto.caracteristicaDTO.CaracteristicasDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.imagenDTO.ImagenDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.politicaDTO.PoliticaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.CiudadYFechaReservaDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.DisponibilidadDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.productoDTO.ProductoDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.puntuacionDTO.PuntuacionDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.reaccionDTO.ReaccionDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.reservaDTO.ReservaDTO;
 import com.example.ProyectoIntegradorGrupo2.repository.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.*;
 
 @Service
@@ -45,6 +49,16 @@ public class ProductoService implements IProductoService {
     private ITipoDePoliticasRepository tipoDePoliticasRepository;
 
     @Autowired
+    private IPuntuacionRepository puntuacionRepository;
+
+    @Autowired
+    private IReaccionRepository reaccionRepository;
+
+    @Autowired
+    private IUsuarioRepository usuarioRepository;
+
+
+    @Autowired
     ObjectMapper mapper;
 
     private ProductoDTO cargarProductoYRetornarDTO(ProductoDTO productoDTO){
@@ -70,14 +84,14 @@ public class ProductoService implements IProductoService {
             productoDesdeDB.get().getCaracteristicasList().add(caracteristica);
         }
 
-        List<ReservaDTO> reservaDTOList = productoDTO.getReservaDTOList();
+        /*List<ReservaDTO> reservaDTOList = productoDTO.getReservaDTOList();
 
         for (ReservaDTO r : reservaDTOList) {
             Reserva reserva = mapper.convertValue(r, Reserva.class);
             reserva.setProducto(productoDesdeDB.get());
             reservaRepository.save(reserva);
             productoDesdeDB.get().getReservaSet().add(reserva);
-        }
+        }*/
 
         List<ImagenDTO> imagenDTOList = productoDTO.getImagenDTOList();
 
@@ -116,8 +130,6 @@ public class ProductoService implements IProductoService {
             productoDTO.getImagenDTOList().add(imagenDTO);
         }
 
-
-
         List<Optional<Caracteristicas>> optionalCaracteristicasList = caracteristicasRepository.findCaracteristicasByProductoId(id);
         for (Optional<Caracteristicas> c : optionalCaracteristicasList) {
             CaracteristicasDTO caracteristicasDTO = mapper.convertValue(c.get(), CaracteristicasDTO.class);
@@ -125,7 +137,16 @@ public class ProductoService implements IProductoService {
 
         }
 
+        /*List<Optional<Puntuacion>> optionalPuntuacionesList = puntuacionRepository.findPuntuacionesByProductoId(id);
+        for (Optional<Puntuacion> p : optionalPuntuacionesList) {
+            Usuario usuario = p.get().getUsuario();
+            Producto prod = p.get().getProducto();
+            PuntuacionDTO puntuacionDTO = mapper.convertValue(p.get(), PuntuacionDTO.class);
+            puntuacionDTO.setUsuario_id(usuario.getId());
+            puntuacionDTO.setProducto_id(prod.getId());
+            productoDTO.getPuntuacionDTOList().add(puntuacionDTO);
 
+        }*/
 
         return productoDTO;
     }
@@ -143,7 +164,7 @@ public class ProductoService implements IProductoService {
         Optional<Producto> producto = productoRepository.findById(id);
 
         if (producto.isEmpty())
-            throw new ResourceNotFoundException("No se ha encontrado el producto con el id");
+            throw new ResourceNotFoundException("No se ha encontrado el producto con el id indicado");
 
         ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(),id);
 
@@ -207,13 +228,46 @@ public class ProductoService implements IProductoService {
 
     @Override
     public ProductoDTO editar(ProductoDTO productoDTO) throws ResourceNotFoundException ,BadRequestException {
+
         Optional<Producto> producto = productoRepository.findById(productoDTO.getId());
+
         if (productoDTO.getCiudad_id()==null || productoDTO.getCategoria_id()==null)
             throw new BadRequestException("El producto debe tener asignada una ciudad y una categoria");
+
         if (producto.isEmpty())
             throw new ResourceNotFoundException("No se ha encontrado el producto con ese id" + productoDTO.getId());
 
-        return cargarProductoYRetornarDTO(productoDTO);
+        ProductoDTO productoDTOConId = cargarProductoYRetornarDTO(productoDTO);
+
+        List<ReservaDTO> reservaDTOList = productoDTO.getReservaDTOList();
+
+        for (ReservaDTO r : reservaDTOList) {
+            Reserva reserva = mapper.convertValue(r, Reserva.class);
+            reserva.setProducto(producto.get());
+            reservaRepository.save(reserva);
+            producto.get().getReservaSet().add(reserva);
+        }
+
+        List<PuntuacionDTO> puntuacionDTOList = productoDTO.getPuntuacionDTOList();
+
+        for (PuntuacionDTO punt:puntuacionDTOList) {
+            Puntuacion puntuacion =mapper.convertValue(punt, Puntuacion.class);
+            puntuacion.setProducto(producto.get());
+            puntuacionRepository.save(puntuacion);
+            producto.get().getPuntuacionList().add(puntuacion);
+        }
+
+        List<ReaccionDTO> reaccionDTOList = productoDTO.getReaccionDTOList();
+
+        for (ReaccionDTO reaccionDTO: reaccionDTOList) {
+            Reaccion reaccion = mapper.convertValue(reaccionDTO, Reaccion.class);
+            reaccion.setProducto(producto.get());
+            reaccionRepository.save(reaccion);
+            producto.get().getReaccionList().add(reaccion);
+        }
+
+
+        return productoDTOConId;
     }
 
     @Override
@@ -267,5 +321,72 @@ public class ProductoService implements IProductoService {
 
         return productoDTOList;
     }
+
+    @Override
+    public List<ProductoDTO> buscarProductosPorDisponibilidad(DisponibilidadDTO disponibilidadDTO) throws ResourceNotFoundException {
+        List<Optional<Producto>> productosDisponiblesDB = productoRepository.listarProductosByDisponibilidad(disponibilidadDTO.getFechaInicioReserva(), disponibilidadDTO.getFechaFinReserva());
+        if (productosDisponiblesDB.isEmpty())
+            throw new ResourceNotFoundException("No se encontraron productos disponibles en ése rango de fechas");
+
+        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        for (Optional<Producto> producto : productosDisponiblesDB
+        ) {
+
+            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
+
+            productoDTOList.add(productoDTO);
+        }
+
+        productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+
+        return productoDTOList;
+    }
+
+    @Override
+    public List<ProductoDTO> buscarProductosPorCiudadYRangoFecha(CiudadYFechaReservaDTO ciudadYFechaReservaDTO) throws ResourceNotFoundException {
+        List<Optional<Producto>> productosDisponiblesEnCiudadYFechaIndicada = productoRepository.listarProductosDisponiblesByCiudadYFecha(ciudadYFechaReservaDTO.getFechaInicioReserva(),ciudadYFechaReservaDTO.getFechaFinReserva(),ciudadYFechaReservaDTO.getId_ciudad());
+
+        if (productosDisponiblesEnCiudadYFechaIndicada.isEmpty())
+            throw new ResourceNotFoundException("No se encontraron productos disponibles en ése rango de fechas");
+
+        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        for (Optional<Producto> producto : productosDisponiblesEnCiudadYFechaIndicada
+        ) {
+
+            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
+
+            productoDTOList.add(productoDTO);
+        }
+
+        productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+
+        return productoDTOList;
+    }
+
+    @Override
+    public List<ProductoDTO> listarProductosFavoritosByUsuarioId(Long id) throws ResourceNotFoundException {
+
+        Optional<Usuario> usuarioEncontrado = usuarioRepository.findById(id);
+        if (usuarioEncontrado.isEmpty()) throw new ResourceNotFoundException("No se ha encontrado el usuario con el id indicado");
+
+        List<Optional<Producto>> productosFavoritosPorUsuario = productoRepository.listarProductosFavoritosByUsuarioId(id);
+
+        if (productosFavoritosPorUsuario.isEmpty())
+            throw new ResourceNotFoundException("El usuario no ha agregado ningún producto a sus favoritos");
+
+        List<ProductoDTO> productoDTOList = new ArrayList<>();
+        for (Optional<Producto> producto :productosFavoritosPorUsuario
+        ) {
+
+            ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(), producto.get().getId());
+
+            productoDTOList.add(productoDTO);
+        }
+
+        productoDTOList.sort(Comparator.comparing(ProductoDTO::getId));
+
+        return productoDTOList;
+    }
+
 
 }
