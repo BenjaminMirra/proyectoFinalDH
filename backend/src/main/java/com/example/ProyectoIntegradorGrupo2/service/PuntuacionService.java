@@ -61,7 +61,7 @@ public class PuntuacionService implements IPuntuacionService{
         if (puntuacionPorId.isEmpty()) {
             throw new ResourceNotFoundException("No se pudo encontrar la puntuacion con el ID indicado");
         }
-        if (!puntuacionPorId.isPresent()) {
+        if (puntuacionPorId.isPresent()) {
             puntuacionDTOPorId = mapper.convertValue(puntuacionPorId, PuntuacionDTO.class);
             puntuacionDTOPorId.setProducto_id(puntuacionPorId.get().getProducto().getId());
             puntuacionDTOPorId.setUsuario_id(puntuacionPorId.get().getUsuario().getId());
