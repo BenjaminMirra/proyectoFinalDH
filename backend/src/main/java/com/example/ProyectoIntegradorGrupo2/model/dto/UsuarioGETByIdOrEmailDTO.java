@@ -10,7 +10,6 @@ import java.util.List;
 
 @Getter
 @Setter
-
 @NoArgsConstructor
 public class UsuarioGETByIdOrEmailDTO {
     private Long id;
