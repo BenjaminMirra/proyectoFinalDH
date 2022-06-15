@@ -22,6 +22,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "usuarios")
+/*@Inheritance(strategy=InheritanceType.JOINED)*/
 public class Usuario implements UserDetails {
 
     @Id
@@ -91,5 +92,20 @@ public class Usuario implements UserDetails {
     @Override
     public boolean isEnabled() {
         return false;
+    }
+
+    public Usuario(Long id) {
+        this.id = id;
+    }
+
+    public Usuario(Long id, String nombre, String apellido, String email, String password, String ciudad, boolean activo, Role role) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.password = password;
+        this.ciudad = ciudad;
+        this.activo = activo;
+        this.role = role;
     }
 }

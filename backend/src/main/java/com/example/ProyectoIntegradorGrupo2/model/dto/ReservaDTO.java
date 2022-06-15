@@ -9,6 +9,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 
 @Getter
@@ -24,6 +25,7 @@ public class ReservaDTO {
     private LocalDate fechaFinReserva;
 
     //private LocalDate fechaEnLaQueSeHaceLaReserva;
+    private LocalTime horaEstimadaDeLlegada;
 
     private String mensajeUsuario;
 

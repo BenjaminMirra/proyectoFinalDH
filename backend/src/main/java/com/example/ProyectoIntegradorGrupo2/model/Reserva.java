@@ -1,5 +1,6 @@
 package com.example.ProyectoIntegradorGrupo2.model;
 
+import com.example.ProyectoIntegradorGrupo2.model.dto.Cliente;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -28,6 +29,8 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "reserva_sequence")
     private Long id;
 
+
+
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime fechaEnLaQueSeHaceLaReserva;
 
@@ -55,9 +58,22 @@ public class Reserva {
     @JoinColumn(name = "usuario_id", nullable = false)
     @JsonIgnore
     private Usuario usuario;
+    /*private Cliente cliente;*/
+
 
     public Reserva() {
     }
+
+    /*public Reserva(LocalDateTime fechaEnLaQueSeHaceLaReserva, LocalTime horaEstimadaDeLlegada, String mensajeUsuario, boolean vacunadoCovid, LocalDate fechaInicioReserva, LocalDate fechaFinReserva, Producto producto, Cliente cliente) {
+        this.fechaEnLaQueSeHaceLaReserva = fechaEnLaQueSeHaceLaReserva;
+        this.horaEstimadaDeLlegada = horaEstimadaDeLlegada;
+        this.mensajeUsuario = mensajeUsuario;
+        this.vacunadoCovid = vacunadoCovid;
+        this.fechaInicioReserva = fechaInicioReserva;
+        this.fechaFinReserva = fechaFinReserva;
+        this.producto = producto;
+        this.cliente = cliente;
+    }*/
 
 
     public Reserva(LocalDateTime fechaEnLaQueSeHaceLaReserva, LocalTime horaEstimadaDeLlegada, String mensajeUsuario, boolean vacunadoCovid, LocalDate fechaInicioReserva, LocalDate fechaFinReserva, Producto producto, Usuario usuario) {
