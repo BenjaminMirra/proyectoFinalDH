@@ -164,7 +164,7 @@ public class ProductoService implements IProductoService {
         Optional<Producto> producto = productoRepository.findById(id);
 
         if (producto.isEmpty())
-            throw new ResourceNotFoundException("No se ha encontrado el producto con el id");
+            throw new ResourceNotFoundException("No se ha encontrado el producto con el id indicado");
 
         ProductoDTO productoDTO = obteberProductoDTOConTodosLosAtributos(producto.get(),id);
 
