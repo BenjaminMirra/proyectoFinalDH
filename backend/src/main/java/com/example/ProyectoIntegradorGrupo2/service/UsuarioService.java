@@ -4,10 +4,7 @@ import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.Role;
 import com.example.ProyectoIntegradorGrupo2.model.Usuario;
-import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.UsuarioDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.UsuarioEditarDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.UsuarioGETByIdOrEmailDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.UsuarioListarTodosDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.*;
 import com.example.ProyectoIntegradorGrupo2.repository.IRoleRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.IUsuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -150,8 +147,8 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
     }
 
     @Override
-    public UsuarioGETByIdOrEmailDTO obtenerUsuarioPorEmail(String email) throws ResourceNotFoundException {
-        Optional<Usuario> usuario = usuarioRepository.findUserByEmail(email);
+    public UsuarioGETByIdOrEmailDTO obtenerUsuarioPorEmail(UsuarioPorEmailDTO usuarioPorEmailDTO) throws ResourceNotFoundException {
+        Optional<Usuario> usuario = usuarioRepository.findUserByEmail(usuarioPorEmailDTO.getEmail());
         if (usuario.isEmpty()){
             throw new ResourceNotFoundException("No se ha encontrado el usuario con el email indicado");
         }

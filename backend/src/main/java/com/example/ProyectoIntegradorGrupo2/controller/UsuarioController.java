@@ -9,6 +9,7 @@ import com.example.ProyectoIntegradorGrupo2.model.Usuario;
 import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.TokenYIdDeRegistroDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.UsuarioDTO;
 import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.UsuarioEditarDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.UsuarioPorEmailDTO;
 import com.example.ProyectoIntegradorGrupo2.service.IUsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,10 +104,10 @@ public class UsuarioController {
 
     @Operation(summary = "Obtener un usuario por su email")
     @GetMapping("/porEmail")
-    public ResponseEntity<?> obtenerProductoPorId(@RequestBody String email) throws ResourceNotFoundException{
+    public ResponseEntity<?> obtenerProductoPorId(@RequestBody UsuarioPorEmailDTO usuarioPorEmailDTO) throws ResourceNotFoundException{
 
 
-        return ResponseEntity.ok(usuarioService.obtenerUsuarioPorEmail(email));
+        return ResponseEntity.ok(usuarioService.obtenerUsuarioPorEmail(usuarioPorEmailDTO));
     }
 
 
