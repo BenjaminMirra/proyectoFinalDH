@@ -109,6 +109,7 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
         List<UsuarioListarTodosDTO> usuarioListarTodosDTOList = new ArrayList<>();
         for (Usuario u:usuarioList) {
             UsuarioListarTodosDTO usuarioListarTodosDTO = mapper.convertValue(u,UsuarioListarTodosDTO.class);
+            usuarioListarTodosDTO.setNombre_rol(u.getRole().getNombre());
             usuarioListarTodosDTOList.add(usuarioListarTodosDTO);
         }
         usuarioListarTodosDTOList.sort(Comparator.comparing(UsuarioListarTodosDTO::getId));
