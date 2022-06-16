@@ -625,7 +625,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,1,'Fernandez','Buenos Aires','flor@mailcom','Flor','$2a$10$34H8vV2.bVOKlv/ZzYqmJOFtEdN4pq.KAa50yZYUw.l1GStxZLECC',1),(2,1,'Fidalgo','Buenos Aires','ana@mailcom','Ana','$2a$10$KeXFymqkzhtjFvc5ggtTmuZRDfDxwOKiykrXyHkax9NId3WylkGgK',1),(3,1,'Fernandez Fidalgo','Buenos Aires','lolo@mailcom','Lorenzo','$2a$10$ePEAMzQcjkDB0hGfiTP75.WqOcHu5IVRJLT0az4uI5E18OOPxgGV6',1);
+INSERT INTO `usuarios` VALUES (1,1,'Fernandez','Buenos Aires','flor@mail.com','Flor','$2a$10$34H8vV2.bVOKlv/ZzYqmJOFtEdN4pq.KAa50yZYUw.l1GStxZLECC',1),(2,1,'Fidalgo','Buenos Aires','ana@mail.com','Ana','$2a$10$KeXFymqkzhtjFvc5ggtTmuZRDfDxwOKiykrXyHkax9NId3WylkGgK',1),(3,1,'Fernandez Fidalgo','Buenos Aires','lolo@mail.com','Lorenzo','$2a$10$ePEAMzQcjkDB0hGfiTP75.WqOcHu5IVRJLT0az4uI5E18OOPxgGV6',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -638,4 +638,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-15 22:20:22
+-- Dump completed on 2022-06-16 10:59:59
