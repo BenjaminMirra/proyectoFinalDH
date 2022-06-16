@@ -18,12 +18,16 @@ export const CalendarDrop = () => {
     const [endDate, setEndtDate] = useState({})
     const [productos, setProductos] = useState({})
 
+
+
+
     useEffect(() => {
-        setTimeout(() => {
-            axios.get(`${urlAPI}productos/1`).then(data => setProductos(data.data));
-            console.log(productos)
-            console.log("hola")
-        }, 100)
+            axios.get(`${urlAPI}reservas/1`).then(data => {
+                setProductos(data.data)
+                console.log("hola")
+                console.log(productos)
+                
+            });
     }, []);
 
     const formatYmd = date => date.toISOString().slice(0, 10);
