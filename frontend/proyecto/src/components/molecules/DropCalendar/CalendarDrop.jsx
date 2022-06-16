@@ -19,14 +19,12 @@ export const CalendarDrop = () => {
     const [productos, setProductos] = useState({})
 
     useEffect(() => {
-        if(productos != null){
-        axios.get(`${urlAPI}productos/1`).then(data => setProductos(data.data));
-        console.log(productos)
-        console.log("hola")
-        }
+        setTimeout(() => {
+            axios.get(`${urlAPI}productos/1`).then(data => setProductos(data.data));
+            console.log(productos)
+            console.log("hola")
+        }, 100)
     }, []);
-
-
 
     const formatYmd = date => date.toISOString().slice(0, 10);
 
