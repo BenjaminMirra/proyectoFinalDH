@@ -9,17 +9,7 @@ export const Filter = ({setFilterProducts}) => {
     const [endDate, setEndDate] =  useState('')
     const [filterDisplayed,setFilterDisplayed]=useState(<><DesktopFilter /></>)
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
-    useEffect(() => {
-        if (lugarInput) {
-            console.log(lugarInput);
-        }
-        if(startDate){
-            console.log(startDate)
-        }
-        if(endDate){
-            console.log(endDate)
-        }
-    }, [lugarInput,startDate,endDate]);
+
 
     useEffect(() => {
     function handleResize() {
@@ -40,7 +30,7 @@ export const Filter = ({setFilterProducts}) => {
             setFilterDisplayed(<DesktopFilter setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput}   />)
         }
         
-    },[windowWidth,lugarInput]);
+    },[windowWidth,lugarInput,startDate,endDate]);
 
 
 

@@ -19,6 +19,8 @@ export const CalendarDrop = ({startDate,setStartDate,setEndDate, endDate}) => {
     const [userInfo, setUserInfo] = useState({})
     const resetUserInfo = () => setUserInfo({});
 
+
+
     const [calendarDisplayed, serCalendarDisplayed] = useState(
         <>
             <DateRangePicker className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} />
@@ -65,10 +67,8 @@ export const CalendarDrop = ({startDate,setStartDate,setEndDate, endDate}) => {
                     (value) => {
                         setStartDate(formatYmd(value[0]).toString())
                         setEndDate(formatYmd(value[1]).toString())
-                        console.log(formatYmd(value[0]) + " " + formatYmd(value[1]));
                     }
                 }
-
                     renderValue={(value) => {
                         return format(value[0], "dd") + " de " + format(value[0], 'MMM').toLowerCase() + ". - " + format(value[1], "dd") + " de " + format(value[1], 'MMM').toLowerCase() + "."
                     }} />
