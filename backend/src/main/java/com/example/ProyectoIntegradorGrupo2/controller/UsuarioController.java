@@ -103,7 +103,7 @@ public class UsuarioController {
     }
 
     @Operation(summary = "Obtener un usuario por su email")
-    @GetMapping("/porEmail")
+    @PostMapping("/porEmail")
     public ResponseEntity<?> obtenerProductoPorId(@RequestBody UsuarioPorEmailDTO usuarioPorEmailDTO) throws ResourceNotFoundException{
 
 
