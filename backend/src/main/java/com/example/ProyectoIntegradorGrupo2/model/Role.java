@@ -32,7 +32,7 @@ public class Role {
     private Long id;
     private String nombre;
 
-    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY) //orphanRemoval = true
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY, orphanRemoval = true) //orphanRemoval = true
     @JsonIgnoreProperties(value = {"hibernateLazyInitializer","handler"})
     private List<Usuario> usuarioList = new ArrayList<>();
 

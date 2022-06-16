@@ -340,7 +340,7 @@ CREATE TABLE `puntuacion_sequence` (
 
 LOCK TABLES `puntuacion_sequence` WRITE;
 /*!40000 ALTER TABLE `puntuacion_sequence` DISABLE KEYS */;
-INSERT INTO `puntuacion_sequence` VALUES (7);
+INSERT INTO `puntuacion_sequence` VALUES (10);
 /*!40000 ALTER TABLE `puntuacion_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,7 +370,7 @@ CREATE TABLE `puntuaciones` (
 
 LOCK TABLES `puntuaciones` WRITE;
 /*!40000 ALTER TABLE `puntuaciones` DISABLE KEYS */;
-INSERT INTO `puntuaciones` VALUES (1,3,1,1),(2,4,1,2),(3,5,1,3),(4,4,2,3),(5,3,2,2),(6,5,2,1);
+INSERT INTO `puntuaciones` VALUES (1,5,1,1),(2,3,9,1),(3,4,22,1),(4,5,22,2),(5,4,9,2),(6,3,1,2),(7,5,1,3),(8,3,9,3),(9,2,22,3);
 /*!40000 ALTER TABLE `puntuaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,7 +392,7 @@ CREATE TABLE `reaccion_sequence` (
 
 LOCK TABLES `reaccion_sequence` WRITE;
 /*!40000 ALTER TABLE `reaccion_sequence` DISABLE KEYS */;
-INSERT INTO `reaccion_sequence` VALUES (5);
+INSERT INTO `reaccion_sequence` VALUES (15);
 /*!40000 ALTER TABLE `reaccion_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -422,7 +422,7 @@ CREATE TABLE `reacciones` (
 
 LOCK TABLES `reacciones` WRITE;
 /*!40000 ALTER TABLE `reacciones` DISABLE KEYS */;
-INSERT INTO `reacciones` VALUES (1,1,1,1),(2,1,2,1),(3,1,5,2),(4,1,1,2);
+INSERT INTO `reacciones` VALUES (1,1,1,1),(2,1,7,1),(3,1,29,1),(4,1,19,1),(5,1,2,2),(6,1,15,2),(7,1,26,2),(8,1,12,2),(9,1,7,3),(10,1,13,3),(11,1,24,3),(12,1,32,3),(13,1,18,3),(14,1,11,3);
 /*!40000 ALTER TABLE `reacciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -444,7 +444,7 @@ CREATE TABLE `reserva_sequence` (
 
 LOCK TABLES `reserva_sequence` WRITE;
 /*!40000 ALTER TABLE `reserva_sequence` DISABLE KEYS */;
-INSERT INTO `reserva_sequence` VALUES (1);
+INSERT INTO `reserva_sequence` VALUES (10);
 /*!40000 ALTER TABLE `reserva_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -479,6 +479,7 @@ CREATE TABLE `reservas` (
 
 LOCK TABLES `reservas` WRITE;
 /*!40000 ALTER TABLE `reservas` DISABLE KEYS */;
+INSERT INTO `reservas` VALUES (1,'2022-06-16 01:10:23','2022-07-31','2022-07-25','15:00:00','Hola, me gustaría una habitación con dos camas simples por favor.',1,1,1),(2,'2022-06-16 01:12:03','2022-08-18','2022-08-10','19:30:00','Unos días antes de mi llegada va a llegar una encomienda. Les pido por favor si pueden recibirla y guardarla. Gracias!',1,3,1),(3,'2022-06-16 01:13:08','2022-08-30','2022-08-23','11:30:00','bla bla bla bla bla',1,14,1),(4,'2022-06-16 01:13:57','2022-08-22','2022-08-18','15:00:00','bla bla bla bla bla',1,5,2),(5,'2022-06-16 01:14:40','2022-07-30','2022-07-15','17:00:00','bla bla bla bla bla',1,19,2),(6,'2022-06-16 01:16:17','2022-08-10','2022-08-09','13:00:00','bla bla bla bla bla',1,30,2),(7,'2022-06-16 01:16:41','2022-08-13','2022-08-07','16:00:00','bla bla bla bla bla',1,24,3),(8,'2022-06-16 01:17:10','2022-08-12','2022-08-05','16:00:00','bla bla bla bla bla',1,27,3),(9,'2022-06-16 01:18:43','2022-07-29','2022-07-25','12:00:00','bla bla bla bla bla',1,2,3);
 /*!40000 ALTER TABLE `reservas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -624,7 +625,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,1,'Fidalgo','Buenos Aires','analaurafidalgo@gmail.com','Ana Laura','1234',1),(2,1,'Fernandez','Rosario','florf@mail.com','Florencia','1234',1),(3,1,'Di Pardo','Buenos Aires','lolo@mail.com','Lorenzo','1234',1);
+INSERT INTO `usuarios` VALUES (1,1,'Fernandez','Buenos Aires','flor@mailcom','Flor','$2a$10$34H8vV2.bVOKlv/ZzYqmJOFtEdN4pq.KAa50yZYUw.l1GStxZLECC',1),(2,1,'Fidalgo','Buenos Aires','ana@mailcom','Ana','$2a$10$KeXFymqkzhtjFvc5ggtTmuZRDfDxwOKiykrXyHkax9NId3WylkGgK',1),(3,1,'Fernandez Fidalgo','Buenos Aires','lolo@mailcom','Lorenzo','$2a$10$ePEAMzQcjkDB0hGfiTP75.WqOcHu5IVRJLT0az4uI5E18OOPxgGV6',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -637,4 +638,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-15 15:52:50
+-- Dump completed on 2022-06-15 22:20:22
