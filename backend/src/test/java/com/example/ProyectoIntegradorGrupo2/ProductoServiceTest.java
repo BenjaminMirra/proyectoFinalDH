@@ -1,4 +1,4 @@
-package com.example.ProyectoIntegradorGrupo2;
+/*package com.example.ProyectoIntegradorGrupo2;
 
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.model.Caracteristicas;
@@ -91,4 +91,4 @@ public class ProductoServiceTest {
 
         Assertions.assertNotNull(categoriaDTOGuardada.getId());
     }*/
-}
+

@@ -11,8 +11,11 @@ import format from 'date-fns/format';
 
 export const CalendarDrop = () => {
 
-    const {beforeToday } = DateRangePicker;
-    
+    const { beforeToday } = DateRangePicker;
+
+
+    const formatYmd = date => date.toISOString().slice(0, 10);
+
 
     const [userInfo, setUserInfo] = useState({})
     const resetUserInfo = () => setUserInfo({});
@@ -33,7 +36,7 @@ export const CalendarDrop = () => {
 
     useEffect(() => {
         if (windowWidth <= 768) {
-            serCalendarDisplayed(<DateRangePicker disabledDate={beforeToday()}  className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={true} format={"d MMMM yyyy"} locale={{
+            serCalendarDisplayed(<DateRangePicker disabledDate={beforeToday()} className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={true} format={"d MMMM yyyy"} locale={{
                 sunday: 'D',
                 monday: 'L',
                 tuesday: 'M',
@@ -44,12 +47,12 @@ export const CalendarDrop = () => {
                 ok: 'Aplicar',
                 today: 'Today',
             }} renderValue={(value) => {
-                return format(value[0],"dd") + " de " + format(value[0],'MMM').toLowerCase() + ". - " + format(value[1],"dd") + " de " + format(value[1],'MMM').toLowerCase() + "."
-            }}/>)
+                return format(value[0], "dd") + " de " + format(value[0], 'MMM').toLowerCase() + ". - " + format(value[1], "dd") + " de " + format(value[1], 'MMM').toLowerCase() + "."
+            }} />)
         }
         else if (windowWidth > 768 && windowWidth < 1366) {
             serCalendarDisplayed(<>
-                <DateRangePicker disabledDate={beforeToday()}  placement='auto' className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"d MMMM yyyy"} locale={{
+                <DateRangePicker disabledDate={beforeToday()} placement='auto' className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"d MMMM yyyy"} locale={{
                     sunday: 'D',
                     monday: 'L',
                     tuesday: 'M',
@@ -59,13 +62,16 @@ export const CalendarDrop = () => {
                     saturday: 'S',
                     ok: 'Aplicar',
                     today: 'Today',
-                }} renderValue={(value) => {
-                    return format(value[0],"dd") + " de " + format(value[0],'MMM').toLowerCase() + ". - " + format(value[1],"dd") + " de " + format(value[1],'MMM').toLowerCase() + "."
-                }}/>
+                }} onOk={
+                    (value) => { console.log([formatYmd(value[0]), formatYmd(value[1])]) }
+                }
+                    renderValue={(value) => {
+                        return format(value[0], "dd") + " de " + format(value[0], 'MMM').toLowerCase() + ". - " + format(value[1], "dd") + " de " + format(value[1], 'MMM').toLowerCase() + "."
+                    }} />
             </>)
         } else if (windowWidth => 1366) {
             serCalendarDisplayed(<>
-                <DateRangePicker disabledDate={beforeToday()}  className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"dd MMMM y"} locale={{
+                <DateRangePicker disabledDate={beforeToday()} className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"dd MMMM y"} locale={{
                     sunday: 'D',
                     monday: 'L',
                     tuesday: 'M',
@@ -77,7 +83,7 @@ export const CalendarDrop = () => {
                     today: 'Today',
                 }}
                     renderValue={(value) => {
-                        return format(value[0],"dd") + " de " + format(value[0],'MMM').toLowerCase() + ". - " + format(value[1],"dd") + " de " + format(value[1],'MMM').toLowerCase() + "."
+                        return format(value[0], "dd") + " de " + format(value[0], 'MMM').toLowerCase() + ". - " + format(value[1], "dd") + " de " + format(value[1], 'MMM').toLowerCase() + "."
                     }}
                 />
             </>)
