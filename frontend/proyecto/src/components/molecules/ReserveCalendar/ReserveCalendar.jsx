@@ -8,7 +8,7 @@ import { registerLocale, setDefaultLocale } from "react-datepicker";
 import es from 'date-fns/locale/es';
 import './ReserveCalendar.css'
 export const ReserveCalendar = (props) => {
-    
+  
     const [reservedDatesL,setReservedDatesL]=useState([])
     useEffect(() => {
         // setReservedDatesL([])
@@ -45,16 +45,26 @@ export const ReserveCalendar = (props) => {
         return newDate
     }
     const TabletAndDesktopCalendar=(props)=>{
+    const [cancelDates, setCancelDates] = useState([{start:new Date(2022,11,25) , end: new Date(2022, 11, 30)}]);
     registerLocale('es', es)
     const [dateRange, setDateRange] = useState([null,null]);
     const [startDate, endDate] = dateRange;
-    const [arrayDaysReserve, setArrayDaysReserve] = useState([]);
+    
     const [reservedDatesArray,setReservedDatesArray]=useState([])
     const onChange = (dates) => {
         
             setDateRange(dates);
         
     }
+
+    // useEffect(() => {
+    //     // console.log(startDate);
+    //     let xDate=new Date(2022,6,7)
+    //     console.log(reservedDatesArray[0].getDate()+' otro: '+xDate.getDate());
+        
+        
+    // }, [startDate,reservedDatesArray]);
+
     useEffect(() => {
         
         if (props.reservedDates) {
@@ -86,7 +96,12 @@ export const ReserveCalendar = (props) => {
     // }
     
     
-    
+    // useEffect(()=>{
+    //     for (let i = 0; i < 365; i++) {
+    //         if
+            
+    //     }
+    // },[startDate])
     useEffect(() => {
         if(dateRange[0]!==null){
             let startDate=formatDate(dateRange[0]);
@@ -113,7 +128,7 @@ export const ReserveCalendar = (props) => {
  
     return(
       <>
-     
+        
         <DatePicker
                 inline
                 locale="es"
@@ -173,6 +188,7 @@ export const ReserveCalendar = (props) => {
                 selectsRange={true}
                 onChange={onChange}
                 monthsShown={2}
+                excludeDateIntervals={cancelDates}
             />
       </>
       )

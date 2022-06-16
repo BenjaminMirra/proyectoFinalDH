@@ -5,13 +5,15 @@ import { Button } from '../../atoms/Button/Button'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { Outlet, Link,useNavigate } from "react-router-dom";
-
+import { urlAPI } from '../../../global'
 import './LoginForm.css'
 import { Picture } from '../../atoms/Picture/Picture'
-
+import axios from 'axios'
 export const LoginForm = ({failReserve,setFailReserve}) => {
        
-        console.log(failReserve);
+        useEffect(() => {
+         
+        }, []);
     
     
       
@@ -74,10 +76,36 @@ let userData={}
             navigate(-1)
         }
         else if(firstValidation('email','password')){
+             var formdata = new FormData();
+            formdata.append("email", formValues.email);
+            formdata.append("password", formValues.password);
+                
+            var requestOptions = {
+              method: 'POST',
+              body: formdata,
+              redirect: 'follow',
+              headers:{'Access-Control-Allow-Origin':'*/*'}
+            };
             
-            localStorage.setItem("userData",JSON.stringify(userData))
+            fetch(`${urlAPI}usuarios/login`, requestOptions)
+              .then(response => response.text())
+              .then(result => {
+                axios({
+	                method: "POST",
+	                url: "http://localhost:8080/usuarios/porEmail",
+	                data:{
+		                "email": formValues.email
+	                }
+                }).then(data=>localStorage.setItem("userData",JSON.stringify({nombre:data.data.nombre,apellido:data.data.apellido})));
+                
+                
+                return navigate('/')
+            })
+              .catch(error => console.log('error', error));
+
+            // localStorage.setItem("userData",JSON.stringify(userData))
             // window.location.href='http://localhost:3000/'
-            navigate('/')
+           
             
         }
         }
@@ -113,7 +141,7 @@ let userData={}
                     handleErrorsFalse(email)
                 },3500)
     }
-        if(formValues[password].length<6){
+        if(formValues[password].length<2){
             result=false
             handleErrorsTrue(password)
                 setTimeout(function(){
