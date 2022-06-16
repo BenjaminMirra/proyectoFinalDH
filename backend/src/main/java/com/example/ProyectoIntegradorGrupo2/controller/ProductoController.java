@@ -73,7 +73,7 @@ public class ProductoController {
     }
 
     @Operation(summary = "Listar los productos según su disponibilidad por fecha")
-    @GetMapping("/disponibles/porFecha")
+    @PostMapping("/disponibles/porFecha")
     public  ResponseEntity<?> listarProductosPorDisponibilidad(@RequestBody DisponibilidadDTO disponibilidadDTO) throws ResourceNotFoundException {
         List<ProductoCardDTO> productosDTO = productoService.buscarProductosPorDisponibilidad(disponibilidadDTO);
 
@@ -81,7 +81,7 @@ public class ProductoController {
     }
 
     @Operation(summary = "Listar los productos según su disponibilidad por ciudad y fecha")
-    @GetMapping("/disponibles/porCiudadYFecha")
+    @PostMapping("/disponibles/porCiudadYFecha")
     public  ResponseEntity<?> listarProductosPorDisponibilidadByCiudadYFecha(@RequestBody CiudadYFechaReservaDTO ciudadYFechaReservaDTO) throws ResourceNotFoundException {
         List<ProductoCardDTO> productosDTO = productoService.buscarProductosPorCiudadYRangoFecha(ciudadYFechaReservaDTO);
 
