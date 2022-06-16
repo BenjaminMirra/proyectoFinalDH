@@ -38,7 +38,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         /*CustomAuthenticationFilter customAuthenticationFilter1 = new CustomAuthenticationFilter(authenticationManagerBean());
         customAuthenticationFilter1.setFilterProcessesUrl("usuarios/agregar");*/
 
-        http.csrf().disable();
+        http.cors().and().csrf().disable();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(POST, "/reservas/agregar").hasRole("USER");
         http.authorizeRequests().anyRequest().permitAll()
@@ -46,6 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         /*http.addFilter(customAuthenticationFilter1);*/
         http.addFilter(customAuthenticationFilter);
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
+
 
     }
 

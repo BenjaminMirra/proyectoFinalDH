@@ -20,7 +20,8 @@ public class ProyectoIntegradorGrupo2Application {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("http://localhost:8080","https://d1hx9yhvlj2zs6.cloudfront.net","http://d1hx9yhvlj2zs6.cloudfront.net", "http://localhost:3000").allowedMethods("*").allowedHeaders("*");
+				registry.addMapping("/**")
+								.allowedOrigins("http://localhost:8080","https://d1hx9yhvlj2zs6.cloudfront.net","http://d1hx9yhvlj2zs6.cloudfront.net", "http://localhost:3000").allowedMethods("*").allowedHeaders("*");
 			}
 		};
 	}

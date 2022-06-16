@@ -10,29 +10,11 @@ import axios from 'axios'
 import { urlAPI } from '../../../global.js';
 
 
-export const CalendarDrop = () => {
-
+export const CalendarDrop = ({startDate,setStartDate,setEndDate, endDate}) => {
+    
     const { beforeToday } = DateRangePicker;
 
-    const [startDate, setStartDate] = useState({})
-    const [endDate, setEndtDate] = useState({})
-    const [productos, setProductos] = useState({})
-
-
-
-
-    useEffect(() => {
-            axios.get(`${urlAPI}reservas/1`).then(data => {
-                setProductos(data.data)
-                console.log("hola")
-                console.log(productos)
-                
-            });
-    }, []);
-
     const formatYmd = date => date.toISOString().slice(0, 10);
-
-
 
     const [userInfo, setUserInfo] = useState({})
     const resetUserInfo = () => setUserInfo({});
@@ -82,11 +64,8 @@ export const CalendarDrop = () => {
                 }} onOk={
                     (value) => {
                         setStartDate(formatYmd(value[0]).toString())
-                        setEndtDate(formatYmd(value[1]).toString())
+                        setEndDate(formatYmd(value[1]).toString())
                         console.log(formatYmd(value[0]) + " " + formatYmd(value[1]));
-                        console.log(startDate)
-                        console.log(endDate)
-                        console.log(productos);
                     }
                 }
 

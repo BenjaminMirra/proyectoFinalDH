@@ -39,7 +39,6 @@ export const DropPlaces = ({lugarInput, setLugarInput,placeholder, icon }) => {
 
     return (
         <div className="search">
-           
             <div className="searchInputIcon">
                 <Icon className="icon" icon={icon} width={icon.width} />
                 <input autoComplete='off' type="text" id="inputLugar" placeholder={placeholder} onChange={handleFilter}></input>

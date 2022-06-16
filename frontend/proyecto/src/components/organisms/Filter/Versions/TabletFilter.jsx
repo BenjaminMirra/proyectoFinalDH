@@ -11,14 +11,35 @@ import { CalendarDrop } from '../../../molecules/DropCalendar/CalendarDrop'
 export const TabletFilter = (props) => {
 
   const scroll = () => {
-    
-    window.scrollTo({top:580,behavior: 'smooth'})
+
+    window.scrollTo({ top: 580, behavior: 'smooth' })
   };
 
   const handleSubmit = (e) => {
     e.preventDefault()
     if (props) {
+
+      const spanValueFecha = document.getElementsByClassName("rs-picker-toggle-value")[0];
+
       let ciudadId = undefined;
+      let raw = JSON.stringify({
+        "fechaInicioReserva": "props.startDate",
+        "fechaFinReserva": "props.endDate"
+      });
+
+      var axios = require('axios');
+
+      var config = {
+        method: 'get',
+        url: `${urlAPI}productos/disponibles/porFecha`,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin':'*/*'
+        },
+        data: raw,
+        redirect: 'follow'
+      };
+
       if (props.lugarInput == 'San Carlos de Bariloche') {
         ciudadId = 1
         props.setLugarInput('')
@@ -42,13 +63,34 @@ export const TabletFilter = (props) => {
         props.setLugarInput('')
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
         scroll()
-      }
-      else {
-        props.setLugarInput('')
-        props.setFilterProducts([])
-      }
+      } else if (spanValueFecha != "") {
+        // fetch(`${urlAPI}productos/disponibles/porFecha`, requestOptions)
+        // .then(response => props.setFilterProducts(response.data))
+        // .catch(error => console.log('error', error));
+        console.log("hola")
+        // axios.get(`${urlAPI}productos/disponibles/porFecha`, raw).then(resp => {
+        //   console.log(resp.data)
+        //   props.setFilterProducts(resp.data)
+        // }).catch(e => {
+        //   console.log(e);
+        // })
 
+        axios(config)
+          .then(function (response) {
+            console.log(JSON.stringify(response.data));
+            scroll()
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+        
+      }
     }
+    else {
+      props.setLugarInput('')
+      props.setFilterProducts([])
+    }
+
   }
 
   return (
@@ -61,7 +103,7 @@ export const TabletFilter = (props) => {
           <div className='tablet-filters-button'>
             <DropPlaces lugarInput={props.lugarInput} setLugarInput={props.setLugarInput} placeholder='¿A donde vamos?' icon='location' />
             <div className='tablet-calendar-input'>
-              <CalendarDrop />
+              <CalendarDrop startDate={props.startDate} setStartDate={props.setStartDate} endDate={props.endDate} setEndDate={props.setEndDate} />
             </div>
             <Button size='base' type='submit' label='Buscar'></Button>
           </div>
