@@ -1,6 +1,6 @@
-package com.example.ProyectoIntegradorGrupo2;
+/*package com.example.ProyectoIntegradorGrupo2;*/
 
-import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
+/*import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.model.Caracteristicas;
 import com.example.ProyectoIntegradorGrupo2.model.dto.*;
 import com.example.ProyectoIntegradorGrupo2.service.ICategoriaService;
@@ -15,11 +15,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.List;*/
 
 //@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 //@SpringBootTest
-public class ProductoServiceTest {
+/*public class ProductoServiceTest {*/
 
     /*private static final Logger logger = Logger.getLogger(ProductoServiceTest.class);
     @Autowired
@@ -91,4 +91,4 @@ public class ProductoServiceTest {
 
         Assertions.assertNotNull(categoriaDTOGuardada.getId());
     }*/
-}
+/*}*/
