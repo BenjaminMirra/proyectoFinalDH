@@ -22,68 +22,54 @@ export const TabletFilter = (props) => {
       const spanValueFecha = document.getElementsByClassName("rs-picker-toggle-value")[0];
 
       let ciudadId = undefined;
-      let raw = JSON.stringify({
-        "fechaInicioReserva": "props.startDate",
-        "fechaFinReserva": "props.endDate"
-      });
 
       var axios = require('axios');
+      var data = JSON.stringify({
+        "fechaInicioReserva": props.startDate,
+        "fechaFinReserva": props.endDate
+      });
 
       var config = {
-        method: 'get',
-        url: `${urlAPI}productos/disponibles/porFecha`,
+        method: 'post',
+        url: `${urlAPI}productos/disponibles/porFecha/`,
         headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin':'*/*'
+          'Content-Type': 'application/json'
         },
-        data: raw,
-        redirect: 'follow'
+        data: data
       };
 
-      if (props.lugarInput == 'San Carlos de Bariloche') {
+      if (!props.startDate && props.lugarInput == 'San Carlos de Bariloche') {
         ciudadId = 1
         props.setLugarInput('')
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
         scroll()
       }
-      else if (props.lugarInput == 'Buenos Aires') {
+      else if (!props.startDate && props.lugarInput == 'Buenos Aires') {
         ciudadId = 2;
         props.setLugarInput('')
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
         scroll()
       }
-      else if (props.lugarInput == 'Mendoza') {
+      else if (!props.startDate && props.lugarInput == 'Mendoza') {
         ciudadId = 3;
         props.setLugarInput('')
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
         scroll()
       }
-      else if (props.lugarInput == 'Córdoba') {
+      else if (!props.startDate && props.lugarInput == 'Córdoba') {
         ciudadId = 4;
         props.setLugarInput('')
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
         scroll()
       } else if (spanValueFecha != "") {
-        // fetch(`${urlAPI}productos/disponibles/porFecha`, requestOptions)
-        // .then(response => props.setFilterProducts(response.data))
-        // .catch(error => console.log('error', error));
-        console.log("hola")
-        // axios.get(`${urlAPI}productos/disponibles/porFecha`, raw).then(resp => {
-        //   console.log(resp.data)
-        //   props.setFilterProducts(resp.data)
-        // }).catch(e => {
-        //   console.log(e);
-        // })
-
         axios(config)
           .then(function (response) {
-            console.log(JSON.stringify(response.data));
-            scroll()
+            props.setFilterProducts(response.data)
+
           })
           .catch(function (error) {
-            console.log(error);
           });
-        
+        scroll()
       }
     }
     else {
