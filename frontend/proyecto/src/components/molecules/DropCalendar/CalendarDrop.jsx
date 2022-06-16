@@ -18,14 +18,15 @@ export const CalendarDrop = () => {
     const [endDate, setEndtDate] = useState({})
     const [productos, setProductos] = useState({})
 
-    const handleSubmit = () => {
-        if (startDate) {
-            axios.get(`${urlAPI}productos/1`).then(data => setProductos(data.data));
-            console.log(startDate)
-            console.log(endDate)
-            console.log(productos);
+    useEffect(() => {
+        if(productos != null){
+        axios.get(`${urlAPI}productos/1`).then(data => setProductos(data.data));
+        console.log(productos)
+        console.log("hola")
         }
-    }
+    }, []);
+
+
 
     const formatYmd = date => date.toISOString().slice(0, 10);
 
@@ -78,17 +79,15 @@ export const CalendarDrop = () => {
                     today: 'Today',
                 }} onOk={
                     (value) => {
-                        setTimeout(() => {
-                            setStartDate(formatYmd(value[0]).toString())
-                            setEndtDate(formatYmd(value[1]).toString())
-                            console.log(formatYmd(value[0]) + " " + formatYmd(value[1]));
-                            console.log(startDate)
-                            console.log(endDate)
-                            handleSubmit();
-                        }, 1000)
+                        setStartDate(formatYmd(value[0]).toString())
+                        setEndtDate(formatYmd(value[1]).toString())
+                        console.log(formatYmd(value[0]) + " " + formatYmd(value[1]));
+                        console.log(startDate)
+                        console.log(endDate)
+                        console.log(productos);
                     }
-
                 }
+
                     renderValue={(value) => {
                         return format(value[0], "dd") + " de " + format(value[0], 'MMM').toLowerCase() + ". - " + format(value[1], "dd") + " de " + format(value[1], 'MMM').toLowerCase() + "."
                     }} />
