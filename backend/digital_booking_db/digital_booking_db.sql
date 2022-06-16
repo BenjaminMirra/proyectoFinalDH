@@ -85,7 +85,7 @@ CREATE TABLE `categoria_sequence` (
 
 LOCK TABLES `categoria_sequence` WRITE;
 /*!40000 ALTER TABLE `categoria_sequence` DISABLE KEYS */;
-INSERT INTO `categoria_sequence` VALUES (1);
+INSERT INTO `categoria_sequence` VALUES (5);
 /*!40000 ALTER TABLE `categoria_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -133,7 +133,7 @@ CREATE TABLE `ciudad_sequence` (
 
 LOCK TABLES `ciudad_sequence` WRITE;
 /*!40000 ALTER TABLE `ciudad_sequence` DISABLE KEYS */;
-INSERT INTO `ciudad_sequence` VALUES (1);
+INSERT INTO `ciudad_sequence` VALUES (5);
 /*!40000 ALTER TABLE `ciudad_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -501,7 +501,7 @@ CREATE TABLE `role_sequence` (
 
 LOCK TABLES `role_sequence` WRITE;
 /*!40000 ALTER TABLE `role_sequence` DISABLE KEYS */;
-INSERT INTO `role_sequence` VALUES (1);
+INSERT INTO `role_sequence` VALUES (3);
 /*!40000 ALTER TABLE `role_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -571,7 +571,7 @@ CREATE TABLE `tp_sequence` (
 
 LOCK TABLES `tp_sequence` WRITE;
 /*!40000 ALTER TABLE `tp_sequence` DISABLE KEYS */;
-INSERT INTO `tp_sequence` VALUES (1);
+INSERT INTO `tp_sequence` VALUES (4);
 /*!40000 ALTER TABLE `tp_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
