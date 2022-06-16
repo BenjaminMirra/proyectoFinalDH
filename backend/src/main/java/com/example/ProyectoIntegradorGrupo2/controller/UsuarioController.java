@@ -66,8 +66,8 @@ public class UsuarioController {
 
         TokenYIdDeRegistroDTO tokenYIdDeRegistroDTO = new TokenYIdDeRegistroDTO(usuarioAgregado.getId(),token_de_acceso);
 
-      /*  emailSenderService.sendEmail(usuarioDTO.getEmail(), "Registro realizado","Bienvenido/a "+usuarioDTO.getNombre()+"! Su registro ha sido realizado. Muchas gracias por ser parte de Digital Booking.");*/
-        emailSenderService.sendEmail(usuarioDTO.getEmail(), "Registro realizado",buildEmail(usuarioDTO.getNombre()));
+        emailSenderService.sendEmail(usuarioDTO.getEmail(), "Registro realizado","Bienvenido/a "+usuarioDTO.getNombre()+"! Su registro ha sido realizado. Muchas gracias por ser parte de Digital Booking.");
+        /*emailSenderService.sendEmail(usuarioDTO.getEmail(), "Registro realizado",buildEmail(usuarioDTO.getNombre()));*/
         return ResponseEntity.created(uri).body(tokenYIdDeRegistroDTO);
         /*return ResponseEntity.ok(usuarioAgregado.getId());*/
     }
@@ -110,7 +110,7 @@ public class UsuarioController {
     }
 
 
-    private String buildEmail(String name) {
+    /*private String buildEmail(String name) {
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
                 "<head>\n" +
@@ -188,5 +188,5 @@ public class UsuarioController {
                 "</div></div>"+
                 "</body>\n" +
                 "</html>";
-    }
+    }*/
 }
