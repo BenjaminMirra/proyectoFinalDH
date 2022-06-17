@@ -7,3 +7,8 @@
 .mobile-calendar-heading{
     padding: 10px;
 }
+@media(max-width:768px){
+    .react-datepicker .mobile-calendarReact:nth-child(3){
+        display: none;
+    }
+}
