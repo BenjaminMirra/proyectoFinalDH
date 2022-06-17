@@ -7,11 +7,10 @@ import product3 from "./components/utils/images/productImg3.png";
 import product4 from "./components/utils/images/productImg4.png";
 import product5 from "./components/utils/images/productImg5.png";
 import App from './App';
-import { ReactCalendar } from './components/molecules/Calendar/MuiCalendar/ReactCalendar';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <App/>
   </React.StrictMode>
 );
 

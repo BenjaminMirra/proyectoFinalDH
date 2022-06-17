@@ -48,6 +48,9 @@
        width: 100%;
        
    }
+   .product-info-container{
+    width: 95%;
+   }
    .product-info-section:nth-child(2){
        margin-top: 45px;
    }

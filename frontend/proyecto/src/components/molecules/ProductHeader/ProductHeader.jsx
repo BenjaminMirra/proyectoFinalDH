@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from "react-router-dom";
+import { Link,useLocation, useParams } from "react-router-dom";
 import { Heading } from '../../atoms/Heading/Heading'
 import { Icon } from '../../atoms/Icon/Icon'
 import product1 from '../../utils/images/productImg1.png'
@@ -10,8 +10,9 @@ import product5 from '../../utils/images/productImg5.png'
 
 import './ProductHeader.css'
 export const ProductHeader = ({category,title}) => {
+    let location=useLocation().pathname.slice(-7)
     
-   
+    const {id}=useParams()
     const MockData={
         product:{
             category:'Hotel',
@@ -40,7 +41,8 @@ export const ProductHeader = ({category,title}) => {
         <Heading title='h4' variant='primary' type='xs' >{category}</Heading>
         <Heading title='h2' variant='base' type='lg' >{title}</Heading>
         </div>
-            <Link to={'/'}>
+        
+            <Link to={location==='reserva'?`/productos/${id}`:'/'}>
                 <Icon icon='back' />
             </Link>
             

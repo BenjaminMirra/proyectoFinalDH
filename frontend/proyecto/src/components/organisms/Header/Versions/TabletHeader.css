@@ -16,7 +16,7 @@
 }
 .header-tablet-content{
     height: 100px;
-    width: 97%;
+    width: 95%;
     /* max-width: 1366px; */
     margin: auto;
     display: flex;
@@ -36,6 +36,7 @@
     display: flex;
     align-items: center;
     margin-right: 15px;
+    min-width: 140px;
     
 }
 .tablet-user-info img{

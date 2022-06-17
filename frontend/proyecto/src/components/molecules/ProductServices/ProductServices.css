@@ -15,9 +15,12 @@
 }
 .service-description{
     display: flex;
+    align-items: center;
+    
     width: 25%;
-    margin-bottom:20px ;
+    margin-bottom:25px ;
 }
+
 .service-description img{
     margin-right: 10px;
 }
@@ -32,9 +35,13 @@
     }
     .service-description{
         width: 33.3333%;
+       
     }
+    .service-description p{
+    max-width: 140px;
 }
-@media (max-width:414px) {
+}
+@media (max-width:480px) {
     .productServices{
         margin-top: 30px;
     }

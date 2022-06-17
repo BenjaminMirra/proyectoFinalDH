@@ -47,3 +47,7 @@
     background-color:#FFE1E1 ;
     border: 1px solid  var(--color-error);
 }
+.disabled{
+    background-color: #DFE4EA;
+    cursor: inherit !important;
+}

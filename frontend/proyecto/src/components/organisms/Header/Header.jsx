@@ -5,11 +5,39 @@ import { TabletHeader } from './Versions/TabletHeader'
 import { MobileHeader } from './Versions/MobileHeader'
 export const Header = ({}) => {
 
-    const UserDataLocalStorage=JSON.parse(localStorage.getItem('userData'))
     
-    const [userInfo,setUserInfo]=useState({firstname:UserDataLocalStorage!==null?UserDataLocalStorage.firstname:undefined,lastname:UserDataLocalStorage!==null?UserDataLocalStorage.lastname:undefined})
+    const [UserDataLocalStorage,setUserDataLocalStorage]=useState({})
+    
+       
+
+    useEffect(() => {
+        console.log("Toolbar hi from useEffect")
+        console.log(JSON.parse(localStorage.getItem('userData')));
+        setUserDataLocalStorage(JSON.parse(localStorage.getItem('userData'))); 
+        if (JSON.parse(localStorage.getItem('userData'))!==null) {
+                    setUserInfo({firstname:JSON.parse(localStorage.getItem('userData')).nombre,lastname:JSON.parse(localStorage.getItem('userData')).apellido})
+        } 
+        window.addEventListener('storage', storageEventHandler, false);
+
+    }, []);
+
+    function storageEventHandler() {
+        console.log("hi from storageEventHandler")
+        console.log(JSON.parse(localStorage.getItem('userData')));
+       setUserDataLocalStorage(JSON.parse(localStorage.getItem('userData')));  
+    }
+
+    // function testFunc() {  
+    //     console.log("hi from test function")
+    //     storageEventHandler();
+    // }
+        
+        
+    
+    const [userInfo,setUserInfo]=useState({firstname:UserDataLocalStorage!==null?UserDataLocalStorage.nombre:undefined,lastname:UserDataLocalStorage!==null?UserDataLocalStorage.apellido:undefined})
     const resetUserInfo=()=>{
         localStorage.removeItem('userData')
+        localStorage.removeItem('jwt')
         return setUserInfo({})};
         
     
