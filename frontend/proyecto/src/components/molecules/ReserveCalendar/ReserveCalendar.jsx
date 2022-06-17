@@ -194,16 +194,26 @@ export const ReserveCalendar = (props) => {
       )
   }
   const MobileCalendar=(props)=>{
-     registerLocale('es', es)
-    const [dateRange, setDateRange] = useState([null, null]);
+    const [cancelDates, setCancelDates] = useState([{start:new Date(2022,11,25) , end: new Date(2022, 11, 30)}]);
+    registerLocale('es', es)
+    const [dateRange, setDateRange] = useState([null,null]);
     const [startDate, endDate] = dateRange;
-    const [arrayDaysReserve, setArrayDaysReserve] = useState([]);
+    
     const [reservedDatesArray,setReservedDatesArray]=useState([])
     const onChange = (dates) => {
         
             setDateRange(dates);
         
     }
+
+    // useEffect(() => {
+    //     // console.log(startDate);
+    //     let xDate=new Date(2022,6,7)
+    //     console.log(reservedDatesArray[0].getDate()+' otro: '+xDate.getDate());
+        
+        
+    // }, [startDate,reservedDatesArray]);
+
     useEffect(() => {
         
         if (props.reservedDates) {
@@ -227,17 +237,48 @@ export const ReserveCalendar = (props) => {
     return setReservedDatesArray(prevDates=>[...prevDates.concat(aux)])
     }
     
-    function editNamesDaysWeek() {
-        const namesDaysWeek = document.querySelectorAll(".react-datepicker__day-name");
-        namesDaysWeek.forEach(name => {
-            name.innerHTML = name.textContent.substring(0, 1).toUpperCase();
-        })
-    }
+    // function editNamesDaysWeek() {
+    //     const namesDaysWeek = document.querySelectorAll(".react-datepicker__day-name");
+    //     namesDaysWeek.forEach(name => {
+    //         name.innerHTML = name.textContent.substring(0, 1).toUpperCase();
+    //     })
+    // }
     
     
-    return(<>
+    // useEffect(()=>{
+    //     for (let i = 0; i < 365; i++) {
+    //         if
+            
+    //     }
+    // },[startDate])
+    useEffect(() => {
+        if(dateRange[0]!==null){
+            let startDate=formatDate(dateRange[0]);
+        let endDate=formatDate(dateRange[1]);
+        props.setReservedDays({startDate:{year:startDate.slice(0,4),month:startDate.slice(5,7),day:startDate.slice(8,10)},endDate:{year:endDate.slice(0,4),month:endDate.slice(5,7),day:endDate.slice(8,10)}})
     
-            <DatePicker
+        }
+        
+    },[dateRange])
+
+    function formatDate(date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) 
+        month = '0' + month;
+    if (day.length < 2) 
+        day = '0' + day;
+
+    return [year, month, day].join('-');
+}
+ 
+    return(
+      <>
+        
+        <DatePicker
                 inline
                 locale="es"
                 excludeDates={reservedDatesArray}
@@ -290,12 +331,16 @@ export const ReserveCalendar = (props) => {
                     </div>
                 )}
                 
+                startDate={startDate}
+                endDate={endDate}
+                selected={startDate}
                 selectsRange={true}
                 onChange={onChange}
                 monthsShown={1}
-                
+                excludeDateIntervals={cancelDates}
             />
-    </>)
+      </>
+      )
   }
     const [calendarDisplayed,setCalendarDisplayed]=useState(<><TabletAndDesktopCalendar setReservedDays={props.setReservedDays} reservedDates={reservedDatesL} /></>)
     
@@ -311,9 +356,9 @@ export const ReserveCalendar = (props) => {
     useEffect(() => {
         if(windowWidth <= 768){
             
-            setCalendarDisplayed(prevCalendar=>prevCalendar==<><MobileCalendar setReservedDays={props.setReservedDays} reservedDates={reservedDatesL} /></>?prevCalendar:<><MobileCalendar reservedDates={reservedDatesL} /></>)
+            setCalendarDisplayed(<><MobileCalendar setReservedDays={props.setReservedDays} reservedDates={reservedDatesL} /></>)
         }
-        else{ setCalendarDisplayed(prevCalendar=>prevCalendar==<><TabletAndDesktopCalendar setReservedDays={props.setReservedDays} reservedDates={reservedDatesL}/></>?prevCalendar:<><TabletAndDesktopCalendar setReservedDays={props.setReservedDays} reservedDates={reservedDatesL}   /></>)}
+        else{ setCalendarDisplayed(<><TabletAndDesktopCalendar setReservedDays={props.setReservedDays} reservedDates={reservedDatesL} /></>)}
         
     },[windowWidth,reservedDatesL]);
   return (

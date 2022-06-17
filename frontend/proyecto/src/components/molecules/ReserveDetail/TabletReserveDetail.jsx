@@ -1,12 +1,79 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
+import { Link,useNavigate,useParams } from 'react-router-dom'
+import { urlAPI } from '../../../global'
 import { Button } from '../../atoms/Button/Button'
 import { Heading } from '../../atoms/Heading/Heading'
 import { Icon } from '../../atoms/Icon/Icon'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
+import axios from 'axios'
 import './TabletReserveDetail.css'
-export const TabletReserveDetail = ({product,category,location,reservedDays}) => {
+export const TabletReserveDetail = ({product,category,location,setFailReserve,reservedDays,setSubmitData,submitData}) => {
+const navigate=useNavigate()
+    // const [submitData,setSubmitData]=useState({fechaInicioReserva:'',fechaFinReserva:'',horaEstimadaDeLlegada:'',mensajeUsuario:'',vacunadoCovid:true,usuarioId:'',productoId:''})
 
+    let {id}=useParams()
+    useEffect(() => {
+        id=0
+        if (setSubmitData) {
+            
+
+            
+        if (reservedDays.startDate.year!=='1969' &&reservedDays.startDate &&reservedDays.endDate.year!=='1969' &&reservedDays.endDate) {
+           setSubmitData(prevData=>({...prevData,fechaInicioReserva:`${reservedDays.startDate.year}-${reservedDays.startDate.month}-${reservedDays.startDate.day}`,fechaFinReserva:`${reservedDays.endDate.year}-${reservedDays.endDate.month}-${reservedDays.endDate.day}`}))
+        }
+        }
+        
+    }, [reservedDays]);
+    
+//         header:'Authorization':Bearer jwt
+//         body:{
+//   "fechaInicioReserva": "2022-08-10",
+//   "fechaFinReserva": "2022-08-20",
+//   "horaEstimadaDeLlegada": "15:00",
+//    "mensajeUsuario": "1234h",
+//    "vacunadoCovid": true,
+//    "usuario_id": 4,
+//    "producto_id": 2
+    const  handleSubmit=async()=>{
+        
+        // console.log(JSON.stringify(submitData));
+        if (JSON.parse(localStorage.getItem('jwt'))==null) {
+            setFailReserve(true)
+            navigate('/login')
+        }
+        else{
+            
+            // console.log(JSON.stringify(submitData));
+            // console.log(JSON.parse(localStorage.getItem('jwt')));
+            try {
+                
+                
+               axios({
+                method: 'POST',
+                url:`${urlAPI}reservas/agregar`,
+                data:{
+                    fechaInicioReserva:`${submitData.fechaInicioReserva}`,
+                    fechaFinReserva:`${submitData.fechaFinReserva}`,
+                    horaEstimadaDeLlegada:`${submitData.horaEstimadaDeLlegada}`,
+                    mensajeUsuario:`${submitData.mensajeUsuario}`,
+                    vacunadoCovid:submitData.vacunadoCovid,
+                    usuario_id:JSON.parse(localStorage.getItem('userData')).id,
+                    producto_id:id
+                },
+                headers:{'Content-Type': 'application/json',
+                        'Authorization': 'Bearer '+JSON.parse(localStorage.getItem('jwt'))
+                    }
+             }).then(res=>console.log(res)).catch(err=>console.log(err))
+            //  console.log(response);
+             
+            } catch (error) {
+                console.log(error);
+            }
+            
+            // navigate('/reserva-exitosa')
+        }
+    }
   return (
     <div className='reserveDetail'>
         <SpacerHorizontal height={'md'} />
@@ -40,7 +107,7 @@ export const TabletReserveDetail = ({product,category,location,reservedDays}) =>
                 <div className='check-date' >
                      <Paragraph>Check In  </Paragraph>
                 <div>
-                   <span>{reservedDays.startDate.year!=='1969'?reservedDays.startDate.day: <span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.startDate.year!=='1969'?reservedDays.startDate.month:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.startDate.year!=='1969'?reservedDays.startDate.year:<span className='date-skeleton'>nad</span>}</span>
+                    <span>{reservedDays.startDate.year!=='1969'&&reservedDays.startDate.year?reservedDays.startDate.day: <span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.startDate.year!=='1969'&&reservedDays.startDate.year?reservedDays.startDate.month:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.startDate.year!=='1969'&&reservedDays.startDate.year?reservedDays.startDate.year:<span className='date-skeleton'>nad</span>}</span>
                 </div>
                 </div>
                    
@@ -48,13 +115,13 @@ export const TabletReserveDetail = ({product,category,location,reservedDays}) =>
                 <div className='check-date' >
                      <Paragraph>Check Out  </Paragraph>
                 <div>
-                    <span>{reservedDays.endDate.year!=='1969'?reservedDays.endDate.day:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.endDate.year!=='1969'?reservedDays.endDate.month:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.endDate.year!=='1969'?reservedDays.endDate.year:<span className='date-skeleton'>nad</span>}</span>
+                   <span>{reservedDays.endDate.year!=='1969'&&reservedDays.endDate.year?reservedDays.endDate.day:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.endDate.year!=='1969'&&reservedDays.endDate.year?reservedDays.endDate.month:<span className='date-skeleton'>nad</span>}</span> / <span>{reservedDays.endDate.year!=='1969'&&reservedDays.endDate.year?reservedDays.endDate.year:<span className='date-skeleton'>nad</span>}</span> 
                 </div>
                 </div>
                 <hr />
                
                 
-                <Button label='Confirmar reserva' variant={true} ></Button>
+                <Button onClick={handleSubmit} label='Confirmar reserva' variant={true} ></Button>
                  
             </div>
             

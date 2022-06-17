@@ -23,8 +23,16 @@ export const MainReserve = ({setFailReserve}) => {
             setProductData(data.data)
             setLocationData(data.data.ciudad_id==1?'San Carlos de Bariloche, Río Negro, Argentina':data.data.ciudad_id==2?'Buenos Aires, Ciudad Autónoma de Buenos Aires, Argentina':data.data.ciudad_id==3?'Mendoza, Mendoza, Argentina':'Córdoba, Córdoba, Argentina')
         })
-        axios.get(`${urlAPI}reservas/todas`).then(data=>setGetDate(data.data))
-  }, []);
+            
+           
+            
+             axios.get(`${urlAPI}reservas/porProductoId/${id}`).then(data=>setGetDate(data.data))
+            //  
+        // setSubmitData({producto_id:Number(id)?Number(id):0,usuario_id:JSON.parse(localStorage.getItem('userData')).id})
+        
+       
+
+  }, [id]);
 
 
  
@@ -42,7 +50,7 @@ export const MainReserve = ({setFailReserve}) => {
 
     useEffect(() => {
         if(windowWidth < 768){
-            setReserveDisplayed(<><ReserveMobile setSubmitData={setSubmitData} submitData={submitData}  setFailReserve={setFailReserve} reservedDays={reservedDays} reservedDates={getDate} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} /></>)
+            setReserveDisplayed(<><ReserveMobile setSubmitData={setSubmitData} submitData={submitData} setFailReserve={setFailReserve} reservedDays={reservedDays} reservedDates={getDate} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} /></>)
         }
         else if(windowWidth<=1365){
             setReserveDisplayed(<ReserveTablet setSubmitData={setSubmitData} submitData={submitData} setFailReserve={setFailReserve} reservedDays={reservedDays} reservedDates={getDate} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} />)

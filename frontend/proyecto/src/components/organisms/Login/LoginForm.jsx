@@ -71,9 +71,38 @@ let userData={}
         
         e.preventDefault()
         if(failReserve&&firstValidation('email','password')){
-            localStorage.setItem("userData",JSON.stringify(userData))
-            setFailReserve(false)
-            navigate(-1)
+             var formdata = new FormData();
+            formdata.append("email", formValues.email);
+            formdata.append("password", formValues.password);
+                
+            var requestOptions = {
+              method: 'POST',
+              body: formdata,
+              redirect: 'follow',
+              headers:{'Access-Control-Allow-Origin':'*/*'}
+            };
+            
+            fetch(`${urlAPI}usuarios/login`, requestOptions)
+              .then(response => response.text())
+              .then(result => {
+                console.log(JSON.parse(result));
+                localStorage.setItem('jwt',JSON.stringify(JSON.parse(result).token_de_acceso))
+                axios({
+	                method: "POST",
+	                url: "http://localhost:8080/usuarios/porEmail",
+	                data:{
+		                "email": `${formValues.email}`
+	                }
+                }).then(data=>{
+                    
+                    localStorage.setItem("userData",JSON.stringify({nombre:data.data.nombre,apellido:data.data.apellido,id:data.data.id,email:data.data.email}))});
+                
+                setFailReserve(false)
+                return navigate(-1)
+                
+            })
+              .catch(error => console.log('error', error));
+            
         }
         else if(firstValidation('email','password')){
              var formdata = new FormData();

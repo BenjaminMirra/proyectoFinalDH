@@ -67,3 +67,17 @@ form .login-input{
     height: 62px;
     margin-bottom: 30px;
 }
+@media (max-width:768px){
+    .warning-messagge{
+        max-width: 320px;
+        
+    }
+     .warning-message img{
+        margin-left: 8px;
+     }
+    .warning-message p{
+        font-size: 12px;
+        max-width: 90%;
+        
+    }
+}

@@ -31,7 +31,7 @@ export const Product = () => {
       setLocationData(data.data.ciudad_id==1?'San Carlos de Bariloche, Río Negro, Argentina':data.data.ciudad_id==2?'Buenos Aires, Ciudad Autónoma de Buenos Aires, Argentina':data.data.ciudad_id==3?'Mendoza, Mendoza, Argentina':'Córdoba, Córdoba, Argentina')
       setProductData(data.data)
     })
-    axios.get(`${urlAPI}reservas/todas`).then(data=>setGetDate(data.data))
+    axios.get(`${urlAPI}reservas/porProductoId/${id}`).then(data=>setGetDate(data.data))
   }, [id]);
 
 

@@ -14,7 +14,7 @@ import axios from 'axios'
 import './ReserveDesktop.css'
 import './ReserveMobile.css'
 import { SpacerHorizontal } from '../../../atoms/Spacer/SpacerHorizontal'
-export const ReserveMobile = ({productData,categoria,locationData,reservedDays,setReservedDays,reservedDates}) => {
+export const ReserveMobile = ({productData,categoria,locationData,setFailReserve,reservedDays,setReservedDays,reservedDates,setSubmitData,submitData}) => {
     
   return (
 
@@ -27,7 +27,7 @@ export const ReserveMobile = ({productData,categoria,locationData,reservedDays,s
         <div className='mobile-reserve-content'>
             <SpacerHorizontal height={'2md'} />
             <div className='reserve-content-userData'>
-                <UserData/>
+                <UserData setSubmitData={setSubmitData}/>
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='reserve-content-calendar' >
@@ -35,11 +35,11 @@ export const ReserveMobile = ({productData,categoria,locationData,reservedDays,s
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='reserve-content-checkInReserve' >
-                <CheckInReserve />
+                <CheckInReserve setSubmitData={setSubmitData} />
             </div>
             {/* <SpacerHorizontal height={'2md'} /> */}
             <div className='reserve-content-reserveDetail' >
-                <MobileReserveDetail reservedDays={reservedDays} location={locationData?locationData:'cargando'} category={categoria?categoria:'cargando'} product={productData?productData:[]} image={productData?productData.imagenDTOList?productData.imagenDTOList[0].url_img_producto:[]:[]} />
+                <MobileReserveDetail reservedDays={reservedDays} setSubmitData={setSubmitData} setFailReserve={setFailReserve} submitData={submitData} location={locationData?locationData:'cargando'} category={categoria?categoria:'cargando'} product={productData?productData:[]} image={productData?productData.imagenDTOList?productData.imagenDTOList[0].url_img_producto:[]:[]} />
             </div>
             <SpacerHorizontal height={'2md'} />
         </div>

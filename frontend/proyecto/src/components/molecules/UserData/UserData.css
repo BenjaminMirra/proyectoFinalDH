@@ -37,6 +37,10 @@ border-radius: 8px
     margin-right: 10px;
     margin-bottom: 2.5px;
 }
+input[type="checkbox"]:checked {
+      border-color: red;
+    background-color:red;
+}
 .additional-info{
     grid-column: 1/3;
     

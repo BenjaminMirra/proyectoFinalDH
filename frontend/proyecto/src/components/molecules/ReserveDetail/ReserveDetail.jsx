@@ -14,8 +14,11 @@ export const ReserveDetail = ({product,category,location,reservedDays,setFailRes
 
     const {id}=useParams()
     useEffect(() => {
+        
         if (setSubmitData) {
-            setSubmitData(prevData=>({...prevData,producto_id:Number(id),usuario_id:JSON.parse(localStorage.getItem('userData')).id}))
+            
+
+            
         if (reservedDays.startDate.year!=='1969' &&reservedDays.startDate &&reservedDays.endDate.year!=='1969' &&reservedDays.endDate) {
            setSubmitData(prevData=>({...prevData,fechaInicioReserva:`${reservedDays.startDate.year}-${reservedDays.startDate.month}-${reservedDays.startDate.day}`,fechaFinReserva:`${reservedDays.endDate.year}-${reservedDays.endDate.month}-${reservedDays.endDate.day}`}))
         }
@@ -32,22 +35,42 @@ export const ReserveDetail = ({product,category,location,reservedDays,setFailRes
 //    "vacunadoCovid": true,
 //    "usuario_id": 4,
 //    "producto_id": 2
-    const handleSubmit=()=>{
+    const  handleSubmit=async()=>{
         
-        console.log(submitData);
+        // console.log(JSON.stringify(submitData));
         if (JSON.parse(localStorage.getItem('jwt'))==null) {
             setFailReserve(true)
             navigate('/login')
         }
         else{
-            var settings={
-                method:'POST',
-                headers:{'Authorization':`Bearer ${localStorage.getItem('jwt')}`,'Content-Type':'application/json'},
-                body:JSON.stringify(submitData)
-            }
-            console.log(JSON.stringify(submitData));
+            
+            // console.log(JSON.stringify(submitData));
             // console.log(JSON.parse(localStorage.getItem('jwt')));
-             axios.post(`${urlAPI}reservas/agregar`,settings).then(res=>console.log(res)).catch(err=>console.log(err))
+            try {
+                
+                
+               axios({
+                method: 'POST',
+                url:`${urlAPI}reservas/agregar`,
+                data:{
+                    fechaInicioReserva:`${submitData.fechaInicioReserva}`,
+                    fechaFinReserva:`${submitData.fechaFinReserva}`,
+                    horaEstimadaDeLlegada:`${submitData.horaEstimadaDeLlegada}`,
+                    mensajeUsuario:`${submitData.mensajeUsuario}`,
+                    vacunadoCovid:submitData.vacunadoCovid,
+                    usuario_id:JSON.parse(localStorage.getItem('userData')).id,
+                    producto_id:id
+                },
+                headers:{'Content-Type': 'application/json',
+                        'Authorization': 'Bearer '+JSON.parse(localStorage.getItem('jwt'))
+                    }
+             }).then(res=>console.log(res)).catch(err=>console.log(err))
+            //  console.log(response);
+             
+            } catch (error) {
+                console.log(error);
+            }
+            
             // navigate('/reserva-exitosa')
         }
     }
@@ -95,10 +118,14 @@ export const ReserveDetail = ({product,category,location,reservedDays,setFailRes
                 <hr />
                 <div style={{height:'27px'}}></div>
                 <SpacerHorizontal height={'lg'} />
-               <Button onClick={handleSubmit} label='Confirmar reserva' variant={true} ></Button>
+               
                 
                  <SpacerHorizontal height={'md'} />
             </div>
+            
+        </div>
+        <div className='desktop-reserve-submit-button'>
+        <Button onClick={handleSubmit} label='Confirmar reserva' variant={true} ></Button>
         </div>
     </div>
   )
