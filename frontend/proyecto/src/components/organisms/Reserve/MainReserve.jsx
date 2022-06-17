@@ -12,6 +12,8 @@ export const MainReserve = ({setFailReserve}) => {
     const [categoria, setCategoria] = useState('cargando');
     const [locationData, setLocationData] = useState();
     const [reservedDays, setReservedDays] = useState({startDate: {day:'',month:'',year:''}, endDate: {day:'',month:'',year:''}});
+    const [getDate, setGetDate] = useState([]);
+    const [submitData,setSubmitData]=useState([])
      useEffect(() => {
             
             
@@ -21,10 +23,13 @@ export const MainReserve = ({setFailReserve}) => {
             setProductData(data.data)
             setLocationData(data.data.ciudad_id==1?'San Carlos de Bariloche, Río Negro, Argentina':data.data.ciudad_id==2?'Buenos Aires, Ciudad Autónoma de Buenos Aires, Argentina':data.data.ciudad_id==3?'Mendoza, Mendoza, Argentina':'Córdoba, Córdoba, Argentina')
         })
-
+        axios.get(`${urlAPI}reservas/todas`).then(data=>setGetDate(data.data))
   }, []);
-  
 
+
+ 
+  
+// }
     const [reserveDisplayed,setReserveDisplayed]=useState(<><ReserveDesktop reservedDays={reservedDays} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} /></>)
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
     useEffect(() => {
@@ -37,17 +42,17 @@ export const MainReserve = ({setFailReserve}) => {
 
     useEffect(() => {
         if(windowWidth < 768){
-            setReserveDisplayed(<><ReserveMobile  setFailReserve={setFailReserve} reservedDays={reservedDays} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} /></>)
+            setReserveDisplayed(<><ReserveMobile setSubmitData={setSubmitData} submitData={submitData}  setFailReserve={setFailReserve} reservedDays={reservedDays} reservedDates={getDate} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} /></>)
         }
         else if(windowWidth<=1365){
-            setReserveDisplayed(<ReserveTablet setFailReserve={setFailReserve} reservedDays={reservedDays} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} />)
+            setReserveDisplayed(<ReserveTablet setSubmitData={setSubmitData} submitData={submitData} setFailReserve={setFailReserve} reservedDays={reservedDays} reservedDates={getDate} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} />)
         }
         else if(windowWidth>=1366){
-            setReserveDisplayed(<ReserveDesktop setFailReserve={setFailReserve} reservedDays={reservedDays} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} />)
+            setReserveDisplayed(<ReserveDesktop setSubmitData={setSubmitData} submitData={submitData} setFailReserve={setFailReserve} reservedDays={reservedDays} reservedDates={getDate} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} />)
 
         }
         
-    },[windowWidth,reservedDays,productData]);
+    },[windowWidth,reservedDays,productData,submitData]);
   return (
     <>
     

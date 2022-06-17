@@ -90,13 +90,17 @@ let userData={}
             fetch(`${urlAPI}usuarios/login`, requestOptions)
               .then(response => response.text())
               .then(result => {
+                console.log(JSON.parse(result));
+                localStorage.setItem('jwt',JSON.stringify(JSON.parse(result).token_de_acceso))
                 axios({
 	                method: "POST",
 	                url: "http://localhost:8080/usuarios/porEmail",
 	                data:{
-		                "email": formValues.email
+		                "email": `${formValues.email}`
 	                }
-                }).then(data=>localStorage.setItem("userData",JSON.stringify({nombre:data.data.nombre,apellido:data.data.apellido})));
+                }).then(data=>{
+                    
+                    localStorage.setItem("userData",JSON.stringify({nombre:data.data.nombre,apellido:data.data.apellido,id:data.data.id,email:data.data.email}))});
                 
                 
                 return navigate('/')

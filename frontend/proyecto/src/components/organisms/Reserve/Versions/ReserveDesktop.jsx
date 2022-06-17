@@ -12,7 +12,7 @@ import {urlAPI} from '../../../../global'
 import axios from 'axios'
 import './ReserveDesktop.css'
 
-export const ReserveDesktop = ({productData,categoria,locationData,reservedDays,setReservedDays,setFailReserve}) => {
+export const ReserveDesktop = ({productData,categoria,locationData,reservedDays,setReservedDays,setFailReserve,reservedDates,setSubmitData,submitData}) => {
     
   return (
 
@@ -24,17 +24,17 @@ export const ReserveDesktop = ({productData,categoria,locationData,reservedDays,
         <div className='reserve-general-container'>
         <div className='reserve-content'>
             <div className='reserve-content-userData'>
-                <UserData/>
+                <UserData setSubmitData={setSubmitData}/>
             </div>
             
             <div className='reserve-content-reserveDetail' >
-                <ReserveDetail setFailReserve={setFailReserve} reservedDays={reservedDays} location={locationData?locationData:'cargando'} category={categoria?categoria:'cargando'} product={productData?productData:[]} image={productData?productData.imagenDTOList?productData.imagenDTOList[0].url_img_producto:[]:[]} />
+                <ReserveDetail setSubmitData={setSubmitData} submitData={submitData}  setFailReserve={setFailReserve} reservedDays={reservedDays} location={locationData?locationData:'cargando'} category={categoria?categoria:'cargando'} product={productData?productData:[]} image={productData?productData.imagenDTOList?productData.imagenDTOList[0].url_img_producto:[]:[]} />
             </div>
             <div className='reserve-content-calendar' >
-                <ReserveCalendar setReservedDays={setReservedDays} reservedDates={productData.reservaDTOList} />
+                <ReserveCalendar setReservedDays={setReservedDays} reservedDates={reservedDates} />
             </div>
             <div className='reserve-content-checkInReserve' >
-                <CheckInReserve/>
+                <CheckInReserve setSubmitData={setSubmitData}/>
             </div>
         </div>
         </div>

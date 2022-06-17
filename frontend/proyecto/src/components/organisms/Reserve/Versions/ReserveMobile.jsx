@@ -14,7 +14,7 @@ import axios from 'axios'
 import './ReserveDesktop.css'
 import './ReserveMobile.css'
 import { SpacerHorizontal } from '../../../atoms/Spacer/SpacerHorizontal'
-export const ReserveMobile = ({productData,categoria,locationData,reservedDays,setReservedDays}) => {
+export const ReserveMobile = ({productData,categoria,locationData,reservedDays,setReservedDays,reservedDates}) => {
     
   return (
 
@@ -31,7 +31,7 @@ export const ReserveMobile = ({productData,categoria,locationData,reservedDays,s
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='reserve-content-calendar' >
-                <ReserveCalendar setReservedDays={setReservedDays} reservedDates={productData.reservaDTOList}/>
+                <ReserveCalendar setReservedDays={setReservedDays} reservedDates={reservedDates}/>
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='reserve-content-checkInReserve' >

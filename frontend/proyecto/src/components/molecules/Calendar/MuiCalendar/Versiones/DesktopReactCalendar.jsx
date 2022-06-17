@@ -10,6 +10,7 @@ import './DesktopReactCalendar.css'
 import '../ReactCalendar.css'
 import { Link } from 'react-router-dom';
 export const DesktopReactCalendar = (props) => {
+    
     registerLocale('es', es)
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
@@ -23,6 +24,7 @@ export const DesktopReactCalendar = (props) => {
     useEffect(() => {
         
         if (props.reservedDates) {
+            console.log(props.reservedDates);
             props.reservedDates.forEach(element => {
             createReservedDaysArray(element.fechaInicio,element.fechaFin)
         });
@@ -63,6 +65,7 @@ export const DesktopReactCalendar = (props) => {
                 <div className='desktop-calendarReserve-title' >
                <Heading title='h3' type='lg' variant='primary' >Fechas disponibles</Heading>
                </div>
+               {reservedDatesArray&&console.log(reservedDatesArray)}
             <DatePicker
                 inline
                 locale="es"

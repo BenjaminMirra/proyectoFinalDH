@@ -1,23 +1,54 @@
-import React from 'react'
-import { Link,useNavigate } from 'react-router-dom'
+import React,{useState,useEffect} from 'react'
+import { Link,useNavigate,useParams } from 'react-router-dom'
+import { urlAPI } from '../../../global'
 import { Button } from '../../atoms/Button/Button'
 import { Heading } from '../../atoms/Heading/Heading'
 import { Icon } from '../../atoms/Icon/Icon'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
+import axios from 'axios'
 import './ReserveDetail.css'
-export const ReserveDetail = ({product,category,location,reservedDays,setFailReserve}) => {
+export const ReserveDetail = ({product,category,location,reservedDays,setFailReserve,setSubmitData,submitData}) => {
     const navigate=useNavigate()
-    const handleSubmit=()=>{
-        console.log(reservedDays.startDate.year);
+    // const [submitData,setSubmitData]=useState({fechaInicioReserva:'',fechaFinReserva:'',horaEstimadaDeLlegada:'',mensajeUsuario:'',vacunadoCovid:true,usuarioId:'',productoId:''})
+
+    const {id}=useParams()
+    useEffect(() => {
+        if (setSubmitData) {
+            setSubmitData(prevData=>({...prevData,producto_id:Number(id),usuario_id:JSON.parse(localStorage.getItem('userData')).id}))
+        if (reservedDays.startDate.year!=='1969' &&reservedDays.startDate &&reservedDays.endDate.year!=='1969' &&reservedDays.endDate) {
+           setSubmitData(prevData=>({...prevData,fechaInicioReserva:`${reservedDays.startDate.year}-${reservedDays.startDate.month}-${reservedDays.startDate.day}`,fechaFinReserva:`${reservedDays.endDate.year}-${reservedDays.endDate.month}-${reservedDays.endDate.day}`}))
+        }
+        }
         
-        if (reservedDays.endDate.year=='1969'|| !reservedDays.endDate.year) {
+    }, [reservedDays]);
+    
+//         header:'Authorization':Bearer jwt
+//         body:{
+//   "fechaInicioReserva": "2022-08-10",
+//   "fechaFinReserva": "2022-08-20",
+//   "horaEstimadaDeLlegada": "15:00",
+//    "mensajeUsuario": "1234h",
+//    "vacunadoCovid": true,
+//    "usuario_id": 4,
+//    "producto_id": 2
+    const handleSubmit=()=>{
+        
+        console.log(submitData);
+        if (JSON.parse(localStorage.getItem('jwt'))==null) {
             setFailReserve(true)
             navigate('/login')
         }
         else{
-             console.log(reservedDays.startDate.year);
-            navigate('/reserva-exitosa')
+            var settings={
+                method:'POST',
+                headers:{'Authorization':`Bearer ${localStorage.getItem('jwt')}`,'Content-Type':'application/json'},
+                body:JSON.stringify(submitData)
+            }
+            console.log(JSON.stringify(submitData));
+            // console.log(JSON.parse(localStorage.getItem('jwt')));
+             axios.post(`${urlAPI}reservas/agregar`,settings).then(res=>console.log(res)).catch(err=>console.log(err))
+            // navigate('/reserva-exitosa')
         }
     }
   return (

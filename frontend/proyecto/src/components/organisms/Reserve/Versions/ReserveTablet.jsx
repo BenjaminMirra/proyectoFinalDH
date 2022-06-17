@@ -11,7 +11,7 @@ import { TabletReserveDetail } from '../../../molecules/ReserveDetail/TabletRese
 import './ReserveTablet.css'
 import { SpacerHorizontal } from '../../../atoms/Spacer/SpacerHorizontal'
 
-export const ReserveTablet = ({productData,categoria,locationData,reservedDays,setReservedDays}) => {
+export const ReserveTablet = ({productData,categoria,locationData,reservedDays,setReservedDays,reservedDates}) => {
     
   return (
 
@@ -28,7 +28,7 @@ export const ReserveTablet = ({productData,categoria,locationData,reservedDays,s
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='tablet-reserve-content-calendar' >
-                <ReserveCalendar setReservedDays={setReservedDays} reservedDates={productData.reservaDTOList} />
+                <ReserveCalendar setReservedDays={setReservedDays} reservedDates={reservedDates} />
             </div>
             <SpacerHorizontal height={'2md'} />
             <div className='tablet-reserve-content-checkInReserve' >
