@@ -4,7 +4,6 @@ import React,{useState} from 'react'
  import { Login } from './components/pages/Login';
  import { SignUp } from "./components/pages/SignUp";
  import {Product} from './components/pages/Product';
- import {ReactCalendarMirra} from './components/molecules/ReactCalendarMirra/ReactCalendarMirra'
 import {Mapa} from './components/pages/Mapa'
 import {Reserve} from './components/pages/Reserve'
 import { SuccessBooking } from "./components/pages/SuccessBooking";
@@ -32,7 +31,6 @@ function App() {
             path="/productos/:id/reserva"
             element={<Reserve setFailReserve={setFailReserve} />}
           ></Route>
-          <Route path="/calendario" element={<ReactCalendarMirra />} />
           <Route path="/mapa" element={<Mapa />}></Route>
           <Route path="/reserva-exitosa" element={<SuccessBooking />}></Route>
         </Routes>

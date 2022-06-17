@@ -5,13 +5,11 @@ import { MobileFilter } from './Versions/MobileFilter'
 
 export const Filter = ({setFilterProducts}) => {
     const [lugarInput,setLugarInput]=useState('')
-    const [filterDisplayed,setFilterDisplayed]=useState(<><DesktopFilter /></>)
+    const [startDate,setStartDate] = useState('')
+    const [endDate, setEndDate] =  useState('')
+    const [filterDisplayed,setFilterDisplayed]=useState('')
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
-    useEffect(() => {
-        if (lugarInput) {
-            console.log(lugarInput);
-        }
-    }, [lugarInput]);
+
     useEffect(() => {
     function handleResize() {
         setWindowWidth(window.innerWidth);
@@ -22,16 +20,17 @@ export const Filter = ({setFilterProducts}) => {
 
     useEffect(() => {
         if(windowWidth <= 768){
-            setFilterDisplayed(<MobileFilter setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput} />)
+            setFilterDisplayed(<MobileFilter setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput}  startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate}/>)
         }
         else if(windowWidth<1365){
-            setFilterDisplayed(<TabletFilter setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput} />)
+            setFilterDisplayed(<TabletFilter setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput}  startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />)
         }
-        else if(windowWidth=>1366){
-            setFilterDisplayed(<DesktopFilter setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput}   />)
+        else if(windowWidth>=1366){
+            setFilterDisplayed(<DesktopFilter setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput}  startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />)
         }
         
-    },[windowWidth,lugarInput]);
+    },[windowWidth,lugarInput,startDate,endDate, setEndDate, setStartDate,setFilterProducts]);
+
 
 
 

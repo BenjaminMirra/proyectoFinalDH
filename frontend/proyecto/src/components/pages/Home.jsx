@@ -34,7 +34,6 @@ export const Home = () => {
     <div className='wrapper'>
             <Header firstname={undefined} lastname={undefined}/>
         <div className='contenedor-pagina' >
-        {console.log(showMap)}
         {showMap?<MapHome setShowMap={setShowMap} lat={mapHomeData.lat} lng={mapHomeData.lng} />:<></>}
         <Filter setFilterProducts={setFilterProducts} />
         <CategoriesDesktop products={productsData} setFilterProducts={setFilterProducts} ></CategoriesDesktop>
