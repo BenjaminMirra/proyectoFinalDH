@@ -56,3 +56,5 @@ function LoadedMap({lat,lng,location,noTitle}){
     </div>
         </div>)
 }
+
+ 

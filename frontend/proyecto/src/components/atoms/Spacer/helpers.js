@@ -5,6 +5,7 @@ const Spacerheight={
     xs:'15px',
     sm:'18px',
     md:'21px',
+    '2md':'40px',
     lg:'55px',
 }
 

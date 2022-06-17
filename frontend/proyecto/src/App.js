@@ -1,27 +1,40 @@
-
+import React,{useState} from 'react'
  import { Routes, Route, BrowserRouter } from "react-router-dom";
  import { Home } from "./components/pages/Home";
  import { Login } from './components/pages/Login';
  import { SignUp } from "./components/pages/SignUp";
  import {Product} from './components/pages/Product';
- import {ReactCalendarMirra} from './components/molecules/ReactCalendarMirra/ReactCalendarMirra'
 import {Mapa} from './components/pages/Mapa'
+import {Reserve} from './components/pages/Reserve'
+import { SuccessBooking } from "./components/pages/SuccessBooking";
+
 function App() {
-  const text ="Este sencillo hotel se encuentra en una calle residencial arbolada, a 4 minutos a pie de la Catedral de La Plata, a 5 de los jardines de Plaza Moreno y a 2 km de la estación de tren La Plata. \nLas habitaciones, sencillas y con capacidad para 3 personas, cuentan con muebles de madera, Wi‑Fi gratis, televisión por cable y aire acondicionado. \nEl hotel ofrece desayuno gratuito y dispone de un salón en el vestíbulo y una cafetería informal.";
+  const [failReserve,setFailReserve] = useState(false)
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Home />} />
-          
-          <Route path="/login" element={<Login />} />
+
+          <Route
+            path="/login"
+            element={
+              <Login
+                setFailReserve={setFailReserve}
+                failReserve={failReserve}
+              />
+            }
+          />
           <Route path="/sign-up" element={<SignUp />} />
           <Route path="/productos/:id" element={<Product />} />
-          <Route path="/calendario" element={<ReactCalendarMirra />} />
-          <Route path="/mapa" element={<Mapa/>} ></Route>
+          <Route
+            path="/productos/:id/reserva"
+            element={<Reserve setFailReserve={setFailReserve} />}
+          ></Route>
+          <Route path="/mapa" element={<Mapa />}></Route>
+          <Route path="/reserva-exitosa" element={<SuccessBooking />}></Route>
         </Routes>
       </BrowserRouter>
-
     </div>
   );
 }

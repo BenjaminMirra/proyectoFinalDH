@@ -34,15 +34,16 @@ export const Home = () => {
     <div className='wrapper'>
             <Header firstname={undefined} lastname={undefined}/>
         <div className='contenedor-pagina' >
-        {console.log(showMap)}
         {showMap?<MapHome setShowMap={setShowMap} lat={mapHomeData.lat} lng={mapHomeData.lng} />:<></>}
         <Filter setFilterProducts={setFilterProducts} />
         <CategoriesDesktop products={productsData} setFilterProducts={setFilterProducts} ></CategoriesDesktop>
         <Products setShowMap={setShowMap} setMapHomeData={setMapHomeData} data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></Products>
         <Link to={'/mapa'}>
         <div className='show-mapa'>
-            <Paragraph variant='base' >Mostrar Mapa</Paragraph>
+            <div className='show-mapa-container' >
+            <Paragraph variant='base' size='xs' >Mostrar Mapa</Paragraph>
             <Icon icon='mapa' />
+            </div>
         </div>
         </Link>
         

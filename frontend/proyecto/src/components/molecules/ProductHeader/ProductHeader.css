@@ -19,6 +19,6 @@
 }
 @media (min-width:768px) {
     .product-header-container{
-        width: 97%;
+        /* width: 95%; */
     }
 }

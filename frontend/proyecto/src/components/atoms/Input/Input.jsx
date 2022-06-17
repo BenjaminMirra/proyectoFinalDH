@@ -2,16 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import classNames from 'classnames'
 import './Input.css'
-export const  Input = ({type,placeholder,variant,size,isError,value,onChange,name,hasBorder}) => {
+export const  Input = ({type,placeholder,variant,size,isError,value,onChange,name,hasBorder,disabled}) => {
 
     const InputClassNames=classNames('input',{
         [`type-${variant}`] :variant,
         [`input-size-${size}`]:size,
-        'is-error':isError
+        'is-error':isError,
+        'disabled':disabled
     })
 
     return (<>
-                <input autoComplete='off' name={name} id={name} value={value} onChange={onChange} className={InputClassNames} type={type} placeholder={placeholder} />
+                <input autoComplete='off' disabled={disabled} name={name} id={name} value={value} onChange={onChange} className={InputClassNames} type={type} placeholder={placeholder} />
                 {hasBorder&&<span className="separator"> </span>}
     </>
     )

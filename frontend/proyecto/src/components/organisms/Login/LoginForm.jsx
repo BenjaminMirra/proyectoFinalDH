@@ -5,11 +5,18 @@ import { Button } from '../../atoms/Button/Button'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { Outlet, Link,useNavigate } from "react-router-dom";
-
+import { urlAPI } from '../../../global'
 import './LoginForm.css'
-
-export const LoginForm = () => {
+import { Picture } from '../../atoms/Picture/Picture'
+import axios from 'axios'
+export const LoginForm = ({failReserve,setFailReserve}) => {
+       
+        useEffect(() => {
+         
+        }, []);
     
+    
+      
     const [medidas,setMedidas]=useState({inputSize:'base',inputSpacerHeight:'xs',buttonWidth:'xs',titleSpacerHeight:'xs'})
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
     useEffect(() => {
@@ -58,18 +65,85 @@ let userData={}
     },[formValues])
 
     const navigate=useNavigate()
+    
     const handleSubmit=(e)=>{
     
         
         e.preventDefault()
-        
-        if(firstValidation('email','password')){
-            localStorage.setItem("userData",JSON.stringify(userData))
+        if(failReserve&&firstValidation('email','password')){
+             var formdata = new FormData();
+            formdata.append("email", formValues.email);
+            formdata.append("password", formValues.password);
+                
+            var requestOptions = {
+              method: 'POST',
+              body: formdata,
+              redirect: 'follow',
+              headers:{'Access-Control-Allow-Origin':'*/*'}
+            };
+            
+            fetch(`${urlAPI}usuarios/login`, requestOptions)
+              .then(response => response.text())
+              .then(result => {
+                console.log(JSON.parse(result));
+                localStorage.setItem('jwt',JSON.stringify(JSON.parse(result).token_de_acceso))
+                axios({
+	                method: "POST",
+	                url: "http://localhost:8080/usuarios/porEmail",
+	                data:{
+		                "email": `${formValues.email}`
+	                }
+                }).then(data=>{
+                    
+                    localStorage.setItem("userData",JSON.stringify({nombre:data.data.nombre,apellido:data.data.apellido,id:data.data.id,email:data.data.email}))});
+                
+                setFailReserve(false)
+                return navigate(-1)
+                
+            })
+              .catch(error => console.log('error', error));
+            
+        }
+        else if(firstValidation('email','password')){
+             var formdata = new FormData();
+            formdata.append("email", formValues.email);
+            formdata.append("password", formValues.password);
+                
+            var requestOptions = {
+              method: 'POST',
+              body: formdata,
+              redirect: 'follow',
+              headers:{'Access-Control-Allow-Origin':'*/*'}
+            };
+            
+            fetch(`${urlAPI}usuarios/login`, requestOptions)
+              .then(response => response.text())
+              .then(result => {
+                console.log(JSON.parse(result));
+                localStorage.setItem('jwt',JSON.stringify(JSON.parse(result).token_de_acceso))
+                axios({
+	                method: "POST",
+	                url: "http://localhost:8080/usuarios/porEmail",
+	                data:{
+		                "email": `${formValues.email}`
+	                }
+                }).then(data=>{
+                    
+                    localStorage.setItem("userData",JSON.stringify({nombre:data.data.nombre,apellido:data.data.apellido,id:data.data.id,email:data.data.email}))});
+                
+                
+                return navigate('/')
+            })
+              .catch(error => console.log('error', error));
+
+            // localStorage.setItem("userData",JSON.stringify(userData))
             // window.location.href='http://localhost:3000/'
-            navigate('/')
+           
+            
+        }
         }
         
-    }
+    
 
      function firstValidation(email,password){
         
@@ -100,7 +174,7 @@ let userData={}
                     handleErrorsFalse(email)
                 },3500)
     }
-        if(formValues[password].length<6){
+        if(formValues[password].length<2){
             result=false
             handleErrorsTrue(password)
                 setTimeout(function(){
@@ -131,6 +205,12 @@ let userData={}
     const toggleInputType=()=>setInputType(inputType.input==='password'?{input:'text',icon:'visibility'}:{input:'password',icon:'disabled'})
     return (<>
         <div className="login">
+            {failReserve&&<div className='warning-message' >
+                <Picture image={'warning'} width='xxs' />
+                <Paragraph size={'md'} variant={'error'}>Para realizar una reserva necesitas estar logueado</Paragraph>
+                <SpacerHorizontal height={'md'} />
+            </div>}
+            
             <div>
                 <Heading title='h2' type='lg' variant='primary' >Iniciar Sesión</Heading>
             </div>
