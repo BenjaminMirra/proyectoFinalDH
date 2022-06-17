@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import './TabletFilter.css'
-import axios from 'axios'
 import { DropPlaces } from '../../../molecules/DropPlaces/DropPlaces'
 import { Heading } from '../../../atoms/Heading/Heading'
 import { Button } from '../../../atoms/Button/Button'
@@ -12,7 +11,7 @@ export const TabletFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
 
 
   const scroll = () => {
-    
+
     window.scrollTo({ top: 580, behavior: 'smooth' })
   };
 
@@ -20,14 +19,14 @@ export const TabletFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    
-    if (true) {
+
+    try {
       let ciudadId = undefined;
 
       var axios = require('axios');
 
 
-      if (startDate.startsWith("20") == true && endDate.startsWith("20") == true && lugarInput === "San Carlos de Bariloche") {
+      if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === "San Carlos de Bariloche") {
         ciudadId = 1;
         setLugarInput('')
         setFilterProducts([])
@@ -47,7 +46,7 @@ export const TabletFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
           });
         scroll()
 
-      } else if (startDate.startsWith("20") == true && endDate.startsWith("20") == true && lugarInput === 'Buenos Aires') {
+      } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Buenos Aires') {
         ciudadId = 2;
         setLugarInput('')
         setFilterProducts([])
@@ -65,10 +64,10 @@ export const TabletFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
           })
           .catch(function (error) {
           });
-        
+
         scroll()
 
-      } else if (startDate.startsWith("20") == true && endDate.startsWith("20") == true && lugarInput === 'Mendoza') {
+      } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Mendoza') {
         ciudadId = 3;
         setLugarInput('')
         setFilterProducts([])
@@ -88,7 +87,7 @@ export const TabletFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
           });
         scroll()
 
-      } else if (startDate.startsWith("20") == true && endDate.startsWith("20") == true && lugarInput === 'Córdoba') {
+      } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Córdoba') {
         ciudadId = 4;
         setLugarInput('')
         setFilterProducts([])
@@ -136,7 +135,7 @@ export const TabletFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
         scroll()
       }
-      else {
+      else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true) {
         axios({
           method: "POST",
           url: `${urlAPI}productos/disponibles/porFecha/`,
@@ -150,7 +149,7 @@ export const TabletFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
           })
         scroll()
       }
-    } else {
+    } catch (e) {
       setLugarInput('')
       setEndDate('')
       setStartDate('')

@@ -6,12 +6,10 @@ import { CustomProvider } from 'rsuite';
 import { Icon } from '../../atoms/Icon/Icon'
 import esAR from 'rsuite/locales/es_AR';
 import format from 'date-fns/format';
-import axios from 'axios'
-import { urlAPI } from '../../../global.js';
 
 
-export const CalendarDrop = ({startDate,setStartDate,setEndDate, endDate}) => {
-    
+export const CalendarDrop = ({ startDate, setStartDate, setEndDate, endDate }) => {
+
     const { beforeToday } = DateRangePicker;
 
     const formatYmd = date => date.toISOString().slice(0, 10);
@@ -47,9 +45,15 @@ export const CalendarDrop = ({startDate,setStartDate,setEndDate, endDate}) => {
                 saturday: 'S',
                 ok: 'Aplicar',
                 today: 'Today',
-            }} renderValue={(value) => {
-                return format(value[0], "dd") + " de " + format(value[0], 'MMM').toLowerCase() + ". - " + format(value[1], "dd") + " de " + format(value[1], 'MMM').toLowerCase() + "."
-            }} />)
+            }}
+                onOk={
+                    (value) => {
+                        setStartDate(formatYmd(value[0]).toString())
+                        setEndDate(formatYmd(value[1]).toString())
+                    }
+                } renderValue={(value) => {
+                    return format(value[0], "dd") + " de " + format(value[0], 'MMM').toLowerCase() + ". - " + format(value[1], "dd") + " de " + format(value[1], 'MMM').toLowerCase() + "."
+                }} />)
         }
         else if (windowWidth > 768 && windowWidth < 1366) {
             serCalendarDisplayed(<>
@@ -73,7 +77,7 @@ export const CalendarDrop = ({startDate,setStartDate,setEndDate, endDate}) => {
                         return format(value[0], "dd") + " de " + format(value[0], 'MMM').toLowerCase() + ". - " + format(value[1], "dd") + " de " + format(value[1], 'MMM').toLowerCase() + "."
                     }} />
             </>)
-        } else if (windowWidth => 1366) {
+        } else if (windowWidth >= 1366) {
             serCalendarDisplayed(<>
                 <DateRangePicker disabledDate={beforeToday()} className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"dd MMMM y"} locale={{
                     sunday: 'D',
@@ -86,6 +90,12 @@ export const CalendarDrop = ({startDate,setStartDate,setEndDate, endDate}) => {
                     ok: 'Aplicar',
                     today: 'Today',
                 }}
+                    onOk={
+                        (value) => {
+                            setStartDate(formatYmd(value[0]).toString())
+                            setEndDate(formatYmd(value[1]).toString())
+                        }
+                    }
                     renderValue={(value) => {
                         return format(value[0], "dd") + " de " + format(value[0], 'MMM').toLowerCase() + ". - " + format(value[1], "dd") + " de " + format(value[1], 'MMM').toLowerCase() + "."
                     }}
