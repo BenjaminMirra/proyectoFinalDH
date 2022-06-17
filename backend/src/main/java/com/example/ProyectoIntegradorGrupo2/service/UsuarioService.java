@@ -49,7 +49,7 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
     @Override
     public UsuarioDTO agregarUsuario(UsuarioDTO usuarioDTO) throws BadRequestException {
 
-        if (usuarioDTO.getNombre_rol() == null){
+        if (usuarioDTO.getNombre_rol() == null || usuarioDTO.getNombre_rol().equals("")){
             throw new BadRequestException("No se puede guardar un usuario sin asignarle un rol");
         }
         Optional<Usuario> usuarioABuscar = usuarioRepository.findUserByEmail(usuarioDTO.getEmail());
