@@ -21,7 +21,7 @@ import java.util.Set;
 public class Categoria {
     @Id
 
-    @SequenceGenerator(name = "categoria_sequence", sequenceName = "categoria_sequence", allocationSize = 1, initialValue=5) // initialValue=5
+    @SequenceGenerator(name = "categoria_sequence", sequenceName = "categoria_sequence", allocationSize = 1) // initialValue=5
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "categoria_sequence")
     private Long id;
     @NotNull

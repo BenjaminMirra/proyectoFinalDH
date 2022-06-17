@@ -340,7 +340,7 @@ CREATE TABLE `puntuacion_sequence` (
 
 LOCK TABLES `puntuacion_sequence` WRITE;
 /*!40000 ALTER TABLE `puntuacion_sequence` DISABLE KEYS */;
-INSERT INTO `puntuacion_sequence` VALUES (10);
+INSERT INTO `puntuacion_sequence` VALUES (16);
 /*!40000 ALTER TABLE `puntuacion_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -370,7 +370,7 @@ CREATE TABLE `puntuaciones` (
 
 LOCK TABLES `puntuaciones` WRITE;
 /*!40000 ALTER TABLE `puntuaciones` DISABLE KEYS */;
-INSERT INTO `puntuaciones` VALUES (1,5,1,1),(2,3,9,1),(3,4,22,1),(4,5,22,2),(5,4,9,2),(6,3,1,2),(7,5,1,3),(8,3,9,3),(9,2,22,3);
+INSERT INTO `puntuaciones` VALUES (1,4,4,1),(2,5,4,2),(3,3,12,2),(4,4,12,3),(5,3,21,3),(6,5,1,4),(7,3,6,4),(8,4,2,4),(9,5,3,4),(10,2,5,2),(11,4,7,3),(12,2,13,5),(13,4,1,6),(14,3,12,6),(15,4,25,6);
 /*!40000 ALTER TABLE `puntuaciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -392,7 +392,7 @@ CREATE TABLE `reaccion_sequence` (
 
 LOCK TABLES `reaccion_sequence` WRITE;
 /*!40000 ALTER TABLE `reaccion_sequence` DISABLE KEYS */;
-INSERT INTO `reaccion_sequence` VALUES (15);
+INSERT INTO `reaccion_sequence` VALUES (37);
 /*!40000 ALTER TABLE `reaccion_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -422,7 +422,7 @@ CREATE TABLE `reacciones` (
 
 LOCK TABLES `reacciones` WRITE;
 /*!40000 ALTER TABLE `reacciones` DISABLE KEYS */;
-INSERT INTO `reacciones` VALUES (1,1,1,1),(2,1,7,1),(3,1,29,1),(4,1,19,1),(5,1,2,2),(6,1,15,2),(7,1,26,2),(8,1,12,2),(9,1,7,3),(10,1,13,3),(11,1,24,3),(12,1,32,3),(13,1,18,3),(14,1,11,3);
+INSERT INTO `reacciones` VALUES (1,1,1,1),(2,1,7,1),(3,1,23,1),(4,1,25,1),(5,1,2,1),(6,1,11,1),(7,1,5,2),(8,1,9,2),(9,1,13,2),(10,1,1,2),(11,1,28,2),(12,1,4,2),(13,1,3,3),(14,1,2,3),(15,1,4,3),(16,1,15,3),(17,1,25,3),(18,1,32,3),(19,1,6,4),(20,1,29,4),(21,1,19,4),(22,1,1,4),(23,1,18,4),(24,1,2,4),(25,1,11,5),(26,1,27,5),(27,1,30,5),(28,1,12,5),(29,1,26,5),(30,1,1,5),(31,1,22,6),(32,1,29,6),(33,1,23,6),(34,1,17,6),(35,1,14,6),(36,1,6,6);
 /*!40000 ALTER TABLE `reacciones` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -444,7 +444,7 @@ CREATE TABLE `reserva_sequence` (
 
 LOCK TABLES `reserva_sequence` WRITE;
 /*!40000 ALTER TABLE `reserva_sequence` DISABLE KEYS */;
-INSERT INTO `reserva_sequence` VALUES (10);
+INSERT INTO `reserva_sequence` VALUES (31);
 /*!40000 ALTER TABLE `reserva_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -479,7 +479,7 @@ CREATE TABLE `reservas` (
 
 LOCK TABLES `reservas` WRITE;
 /*!40000 ALTER TABLE `reservas` DISABLE KEYS */;
-INSERT INTO `reservas` VALUES (1,'2022-06-16 01:10:23','2022-07-31','2022-07-25','15:00:00','Hola, me gustaría una habitación con dos camas simples por favor.',1,1,1),(2,'2022-06-16 01:12:03','2022-08-18','2022-08-10','19:30:00','Unos días antes de mi llegada va a llegar una encomienda. Les pido por favor si pueden recibirla y guardarla. Gracias!',1,3,1),(3,'2022-06-16 01:13:08','2022-08-30','2022-08-23','11:30:00','bla bla bla bla bla',1,14,1),(4,'2022-06-16 01:13:57','2022-08-22','2022-08-18','15:00:00','bla bla bla bla bla',1,5,2),(5,'2022-06-16 01:14:40','2022-07-30','2022-07-15','17:00:00','bla bla bla bla bla',1,19,2),(6,'2022-06-16 01:16:17','2022-08-10','2022-08-09','13:00:00','bla bla bla bla bla',1,30,2),(7,'2022-06-16 01:16:41','2022-08-13','2022-08-07','16:00:00','bla bla bla bla bla',1,24,3),(8,'2022-06-16 01:17:10','2022-08-12','2022-08-05','16:00:00','bla bla bla bla bla',1,27,3),(9,'2022-06-16 01:18:43','2022-07-29','2022-07-25','12:00:00','bla bla bla bla bla',1,2,3);
+INSERT INTO `reservas` VALUES (1,'2022-06-17 21:31:52','2022-06-12','2022-06-10','17:00:00','Solicito una habitación doble con dos camas simples. Muchas gracias!',1,4,1),(2,'2022-06-17 21:32:13','2022-06-28','2022-06-23','12:00:00','Solicito una habitación doble con dos camas simples. Muchas gracias!',1,1,1),(3,'2022-06-17 21:32:55','2022-07-09','2022-07-02','12:00:00','Solicito una habitación doble con dos camas simples. Muchas gracias!',1,18,1),(4,'2022-06-17 21:33:34','2022-07-23','2022-07-18','14:00:00','Solicito una habitación doble con dos camas simples. Muchas gracias!',1,6,1),(5,'2022-06-17 21:37:09','2022-06-07','2022-06-02','17:00:00','Unos días antes de mi estadía va a llegar una encomienda a mi nombre. Por favor recibirla. Gracias!',1,4,2),(6,'2022-06-17 21:40:06','2022-06-25','2022-06-18','13:00:00','Unos días antes de mi estadía va a llegar una encomienda a mi nombre. Por favor recibirla. Gracias!',1,12,2),(7,'2022-06-17 21:41:25','2022-07-31','2022-07-25','19:00:00','Unos días antes de mi estadía va a llegar una encomienda a mi nombre. Por favor recibirla. Gracias!',1,21,2),(8,'2022-06-17 21:42:42','2022-08-30','2022-08-17','11:00:00','Unos días antes de mi estadía va a llegar una encomienda a mi nombre. Por favor recibirla. Gracias!',1,6,2),(9,'2022-06-17 21:44:58','2022-06-16','2022-06-05','18:00:00','Viajo con un bebé de 7 meses, necesito una cuna en la habitación. Gracias!',1,12,3),(10,'2022-06-17 21:47:15','2022-06-22','2022-06-18','14:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,21,3),(11,'2022-06-17 21:48:39','2022-07-13','2022-07-02','18:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,1,3),(12,'2022-06-17 21:49:45','2022-07-31','2022-07-27','15:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,19,3),(13,'2022-06-17 21:57:55','2022-06-14','2022-06-09','16:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,1,4),(14,'2022-06-17 22:00:04','2022-06-27','2022-06-21','14:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,9,4),(15,'2022-06-17 22:03:12','2022-06-19','2022-06-17','14:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,6,4),(16,'2022-06-17 22:04:52','2022-07-25','2022-07-20','14:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,17,4),(17,'2022-06-17 22:09:20','2022-05-29','2022-05-23','14:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,2,4),(18,'2022-06-17 22:11:35','2022-05-28','2022-05-20','14:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,3,1),(19,'2022-06-17 22:13:13','2022-05-19','2022-05-15','18:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,5,2),(20,'2022-06-17 22:14:54','2022-05-13','2022-05-10','14:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,7,3),(21,'2022-06-17 22:16:26','2022-05-19','2022-05-13','17:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,13,5),(22,'2022-06-17 22:19:34','2022-06-18','2022-06-02','12:30:00','Por favor asegurarse de que la habitación sea de no fumadores',1,5,5),(23,'2022-06-17 22:21:49','2022-07-12','2022-07-05','14:30:00','Por favor asegurarse de que la habitación sea de no fumadores',1,28,5),(24,'2022-06-17 22:25:18','2022-07-30','2022-07-19','16:30:00','Por favor asegurarse de que la habitación sea de no fumadores',1,20,5),(25,'2022-06-17 22:26:03','2022-08-10','2022-08-03','12:30:00','Por favor asegurarse de que la habitación sea de no fumadores',1,8,5),(26,'2022-06-17 22:28:50','2022-05-10','2022-05-04','15:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,1,6),(27,'2022-06-17 22:30:50','2022-05-30','2022-05-23','18:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,12,6),(28,'2022-06-17 22:32:27','2022-06-15','2022-06-08','16:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,25,6),(29,'2022-06-17 22:34:03','2022-06-30','2022-06-24','14:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,11,6),(30,'2022-06-17 22:35:20','2022-07-26','2022-07-09','14:00:00','Por favor asegurarse de que la habitación sea de no fumadores',1,15,6);
 /*!40000 ALTER TABLE `reservas` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -593,7 +593,7 @@ CREATE TABLE `usuario_sequence` (
 
 LOCK TABLES `usuario_sequence` WRITE;
 /*!40000 ALTER TABLE `usuario_sequence` DISABLE KEYS */;
-INSERT INTO `usuario_sequence` VALUES (4);
+INSERT INTO `usuario_sequence` VALUES (7);
 /*!40000 ALTER TABLE `usuario_sequence` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -625,7 +625,7 @@ CREATE TABLE `usuarios` (
 
 LOCK TABLES `usuarios` WRITE;
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
-INSERT INTO `usuarios` VALUES (1,1,'Fernandez','Buenos Aires','flor@mail.com','Flor','$2a$10$34H8vV2.bVOKlv/ZzYqmJOFtEdN4pq.KAa50yZYUw.l1GStxZLECC',1),(2,1,'Fidalgo','Buenos Aires','ana@mail.com','Ana','$2a$10$KeXFymqkzhtjFvc5ggtTmuZRDfDxwOKiykrXyHkax9NId3WylkGgK',1),(3,1,'Fernandez Fidalgo','Buenos Aires','lolo@mail.com','Lorenzo','$2a$10$ePEAMzQcjkDB0hGfiTP75.WqOcHu5IVRJLT0az4uI5E18OOPxgGV6',1);
+INSERT INTO `usuarios` VALUES (1,1,'Fidalgo','Buenos Aires','ana@mail.com','Ana','$2a$10$j/csYuwDjL5erlfbsovdieHHVPzdBPvoOyDLNFlc1dO536EFW6WkW',1),(2,1,'Fernandez','Rosario','flor@mail.com','Flor','$2a$10$sivs8ibnLBnBw8BEEeBhw.A7Rd487pb5GqfL4jcO6nPoCg6tzeJk6',1),(3,1,'García','Buenos Aires','aye@mail.com','Aye','$2a$10$YmKC5.tO6fg6ETGJh65OhOb8kL2Hyio7Cf9WIKPSfOBcyfDuIqhnW',1),(4,1,'Mirra','Tucumán','benja@mail.com','Benja','$2a$10$jFNimVG5wuQn9KayIsqKbOdzJ9DpENbwWDeQJYJw9haQearHS3O1C',1),(5,1,'Cabrera','Mendoza','rodri@mail.com','Rodri','$2a$10$UVYU.0HSDwF9owjJgkND5.I/cKAVAV2eXAdo5taAuyzGVjIhaqsum',1),(6,1,'Frei','Buenos Aires','martin@mail.com','Martin','$2a$10$KNl.qwSrnUAEuyVOa9/uWeRCODzEKHvc05or.t2uySVHW/thMgAI2',1);
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -638,4 +638,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-16 10:59:59
+-- Dump completed on 2022-06-17 19:38:45
