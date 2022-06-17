@@ -5,36 +5,44 @@ import { Header} from '../organisms/Header/Header'
 import { Footer } from '../organisms/Footer/Footer'
 import { Icon } from '../atoms/Icon/Icon'
 import { Paragraph } from '../atoms/paragraph/Paragraph'
-import { Link } from 'react-router-dom'
+import { Link,Navigate, useNavigate } from 'react-router-dom'
 import './Mapa.css'
+import googleMarker from '../utils/icons/googleMarker.png'
 import axios from 'axios'
 import { urlAPI } from '../../global'
+import {MockUp} from '../molecules/MockUpCard/MockUp'
 export const Mapa = () => {
     const {isLoaded}=useLoadScript({googleMapsApiKey:credentials.mapsKey})
     const [allLocations,setAllLocations]=useState([])
+    const [mockUpStatic,setMockUpStatic]=useState(true)
     useEffect(() => {
+        setTimeout(()=>setMockUpStatic(false),4000)
         setAllLocations([])
         axios.get(`${urlAPI}productos/todos`).then(data=>data.data.forEach(element => {
             setAllLocations(prevData=>{
-                return [...prevData,{lat:element.latitud,lng:element.longitud}]
+                return [...prevData,{id:element.id,lat:element.latitud,lng:element.longitud}]
             })
         }))
+        
     }, []);
-    if(!isLoaded)return <div>Loading...</div>;
+    if(!isLoaded && mockUpStatic)return <div><MockUp height='85vh' width='100%' /></div>;
     return<>
     {console.log(allLocations)}
         
             <Header firstname={undefined} lastname={undefined}/>
             <Link to={'/'}>
         <div className='show-mapa'>
-            <Paragraph variant='base' >Mostrar Home</Paragraph>
+            <div className='show-mapa-container' >
+                <Paragraph variant='base' >Mostrar Home</Paragraph>
             <Icon icon='home' />
+            </div>
+            
         </div>
         </Link>
         <LoadedMap locations={allLocations} />
         
         
-        <Footer></Footer>
+        
         
     
     
@@ -44,7 +52,7 @@ export const Mapa = () => {
 function LoadedMap({locations}){
     
     
-    
+    const navigate=useNavigate()
     const[random,setRandom]=useState('1')
     
     // const MockUp={lat:-37.335028,lng:-59.136085,location:'Buenos Aires, Argentina'}
@@ -55,14 +63,14 @@ function LoadedMap({locations}){
     }, []);
     const center={lat:-34.342905,lng:-65.467429}
     
-    
+    const handleNavigate=(path)=>navigate(`/productos/${path}`)
     var createMapOptions={
         panControl:false,
         mapTypeControl: false,
         scrollwheel: true,
         fullscreenControl: false,
         zoomControl:true,
-        streetViewControl:false,
+        streetViewControl:true,
         
         
     }
@@ -71,10 +79,12 @@ function LoadedMap({locations}){
         <div className='full-map-loaded'>
             <div className='full-map-loaded-container'>
                 
-            <GoogleMap zoom={4}
+            <GoogleMap zoom={5}
         center={center}
         mapContainerClassName='full-map-container' options={createMapOptions} >
-        {locations.map(location=><Marker position={location} key={random} />)}
+        {locations.map(location=> <Marker
+        // icon={{url: googleMarker }}
+        onClick={()=>handleNavigate(location.id)} position={location} key={random} /> )}
           
 
     </GoogleMap>

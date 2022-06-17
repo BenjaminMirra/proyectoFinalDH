@@ -59,11 +59,9 @@ import rules from "../../utils/icons/rules.png";
 import cancelationpolicy from "../../utils/icons/cancelationpolicy.png";
 import mapa from "../../utils/icons/mapa.png";
 import home from "../../utils/icons/home.png";
-import reservaExitosa from "../../utils/icons/reservaExitosa.svg";
-import notLogin from "../../utils/icons/notLogin.svg";
+import logout from "../../utils/icons/logout.png";
 
 const IconsList = {
-  notLogin: notLogin,
   user: user,
   calendar: calendar,
   search: search,
@@ -87,7 +85,6 @@ const IconsList = {
   wlinkedin: wlinkedin,
   locationEmpty: locationEmpty,
   back: back,
-  reservaExitosa : reservaExitosa,
   backBlack: backBlack,
   emptyStar: emptyStar,
   emptyHeart: emptyHeart,
@@ -125,8 +122,9 @@ const IconsList = {
   cocina: cocina,
   rules: rules,
   cancelationpolicy: cancelationpolicy,
-  mapa:mapa,
-  home:home,
+  mapa: mapa,
+  home: home,
+  logout: logout,
 };
 export const KeysIconsList = Object.keys(IconsList);
 const IconWidth = {

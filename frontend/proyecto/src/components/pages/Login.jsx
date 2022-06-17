@@ -3,7 +3,7 @@ import { Header } from '../organisms/Header/Header'
 import { Footer } from '../organisms/Footer/Footer'
 import { LoginForm } from '../organisms/Login/LoginForm'
 import './Login.css'
-export const Login = () => {
+export const Login = ({failReserve,setFailReserve}) => {
   return (
     <>
         <div className='wrapper'>
@@ -11,7 +11,7 @@ export const Login = () => {
         <div className='contenedor-pagina' >
             
         
-        <LoginForm/>
+        <LoginForm setFailReserve={setFailReserve} failReserve={failReserve}/>
         
         
         

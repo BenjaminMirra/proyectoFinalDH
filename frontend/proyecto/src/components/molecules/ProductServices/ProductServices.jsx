@@ -24,7 +24,7 @@ export const ProductServices = ({services}) => {
     }, [services]);
   return (
     <div className='productServices'>
-      {console.log(serviceList)}
+   
         <div className='productServices-container'>
         <Heading title='h2' type='lg' variant='primary'  >¿Qué ofrece este lugar?</Heading>
         </div>

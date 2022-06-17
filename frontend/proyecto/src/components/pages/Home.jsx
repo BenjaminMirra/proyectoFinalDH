@@ -40,8 +40,10 @@ export const Home = () => {
         <Products setShowMap={setShowMap} setMapHomeData={setMapHomeData} data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></Products>
         <Link to={'/mapa'}>
         <div className='show-mapa'>
-            <Paragraph variant='base' >Mostrar Mapa</Paragraph>
+            <div className='show-mapa-container' >
+            <Paragraph variant='base' size='xs' >Mostrar Mapa</Paragraph>
             <Icon icon='mapa' />
+            </div>
         </div>
         </Link>
         
