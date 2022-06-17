@@ -1,4 +1,4 @@
-package com.example.ProyectoIntegradorGrupo2.model.dto;
+package com.example.ProyectoIntegradorGrupo2.model.dto.politicaDTO;
 
 import com.example.ProyectoIntegradorGrupo2.model.Producto;
 import com.example.ProyectoIntegradorGrupo2.model.TipoDePoliticas;

@@ -1,4 +1,4 @@
-package com.example.ProyectoIntegradorGrupo2.model.dto;
+package com.example.ProyectoIntegradorGrupo2.model.dto.ciudadDTO;
 
 import com.example.ProyectoIntegradorGrupo2.model.Producto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
