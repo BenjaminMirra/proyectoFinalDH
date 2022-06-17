@@ -5,7 +5,10 @@ import { Button } from '../../atoms/Button/Button'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
 import { Outlet, Link,useNavigate } from "react-router-dom";
+import { urlAPI } from '../../../global'
+import axios from 'axios'
 import './RegisterForm.css'
+import { Picture } from '../../atoms/Picture/Picture'
 
 export const RegisterForm = () => {
     const [medidas,setMedidas]=useState({inputSize:'base',inputSpacerHeight:'xs',buttonWidth:'xs',titleSpacerHeight:'xs'})
@@ -34,7 +37,7 @@ export const RegisterForm = () => {
 
 
 
-
+    const [errorMessage,setErrorMessage]=useState(false)
     const [formValues,setFormValues]=useState({})
     const handleChange=()=>(event)=>{
         const {value,name}=event.target
@@ -60,12 +63,30 @@ export const RegisterForm = () => {
         e.preventDefault()
         
         if(firstValidation('firstname','lastname','email','password','repassword')){
-            localStorage.setItem("userData",JSON.stringify(userData))
-            // window.location.href='http://localhost:3000/'
-            navigate('/')
-        }
+            const data={
+                        nombre: `${formValues.firstname}`,
+                        apellido: `${formValues.lastname}`,
+                        email: `${formValues.email}`,
+                        password:`${formValues.password}`,
+                        ciudad:'Buenos Aires',
+                        nombre_rol:'ROLE_USER',
+            }
+            console.log(data);
+          axios({
+                method: 'POST',
+                url: `${urlAPI}usuarios/agregar`,
+                data: data,
+                headers:{'Access-Control-Allow-Origin':'*/*'}
+            }).then(res=>{
+                localStorage.setItem('jwt',JSON.stringify(res.data.token_acceso_registro))
+                localStorage.setItem('userData',JSON.stringify({nombre:formValues.firstname,apellido:formValues.lastname,email:formValues.email,id:res.data.id}))
+                return navigate('/')
+            }).catch(err=>{
+                setErrorMessage(true)
+                return setTimeout(()=>setErrorMessage(false),3000)
+            });
     }
-    
+}
 
     function firstValidation(firstname,lastname,email,password,repassword){
         const localEmail=formValues[email]||'';
@@ -152,33 +173,37 @@ export const RegisterForm = () => {
     const toggleInputType=()=>setInputType(inputType.input==='password'?{input:'text',icon:'visibility'}:{input:'password',icon:'disabled'})
     return (
         <div className="register">
-            
+            {errorMessage&& <div className='warning-message'>
+                    <Picture image={'warning'} />
+                    <Paragraph variant={'error'}>Ha habido un problema en el registro, intentelo mas tarde</Paragraph>
+                </div>}
+               
             <div>
-                <Heading title='h2' type='md' variant='primary' >Crear Cuenta</Heading>
+                <Heading title='h2' type='lg' variant='primary' >Crear Cuenta</Heading>
             </div>
-            <SpacerHorizontal height={medidas.titleSpacerHeight}/>
+            <SpacerHorizontal height={'2md'}/>
             <form >
                 <div className="name-surname">
                 <div className="name register-input ">
                     <InputLabel value={formValues.firstname}  id='firstname' name='firstname' onChange={handleChange()} label={"Nombre"} size={"base"} type={"text"} placeholder={"Ingrese su nombre"} isError={errors.firstname} ></InputLabel>
-                        {errors.firstname&&<Paragraph variant='error' size='sm' > Un nombre válido es requerido</Paragraph>}
+                        {errors.firstname&&<><Paragraph variant='error' size='sm' > Un nombre válido es requerido</Paragraph> <SpacerHorizontal height={'xxs'}/> </>}
                 </div>
                 {!errors.firstname&&<SpacerHorizontal height={medidas.inputSpacerHeight} />}
                 <div className="surname register-input ">
                     <InputLabel value={formValues.lastname} id='lastname' name='lastname' onChange={handleChange()} label={"Apellido"} size={"base"} type={"text"} placeholder={"Ingrese su apellido"} isError={errors.lastname} ></InputLabel>
-                    {errors.lastname&&<Paragraph variant='error' size='sm' > Un apellido válido es requerido</Paragraph>}
+                    {errors.lastname&&<><Paragraph variant='error' size='sm' > Un apellido válido es requerido</Paragraph><SpacerHorizontal height={'xxs'}/> </>}
                 </div>
             </div>
                {!errors.lastname&&<SpacerHorizontal height={medidas.inputSpacerHeight} />} 
             <div className='register-input'>
                 <InputLabel value={formValues.email} id='email' name='email' onChange={handleChange()} label={"Correo electrónico"} size={medidas.inputSize} type={"email"} placeholder={"Ingrese su email"} isError={errors.email} ></InputLabel>
-                {errors.email&&<Paragraph variant='error' size='sm' > Un email válido es requerido</Paragraph>}
+                {errors.email&&<><Paragraph variant='error' size='sm' > Un email válido es requerido</Paragraph><SpacerHorizontal height={'xxs'}/> </>}
             </div>
             {!errors.email&&<SpacerHorizontal height={medidas.inputSpacerHeight} />}
             
             <div className='register-input' >
                 <InputLabel onClick={toggleInputType} icon={inputType.icon} variant='right' iconWidth={'lg'} value={formValues.password} id='password' name='password' onChange={handleChange()} label={"Contraseña"} size={medidas.inputSize} type={inputType.input} placeholder={"Ingrese su contraseña"} isError={errors.password} ></InputLabel>
-                {errors.password&&<Paragraph variant='error' size='sm' > Una contraseña válida es requerido</Paragraph>}
+                {errors.password&&<><Paragraph variant='error' size='sm' > Una contraseña válida es requerido</Paragraph><SpacerHorizontal height={'xxs'}/> </>}
             </div>
             {!errors.password&&<SpacerHorizontal height={medidas.inputSpacerHeight} />}
             

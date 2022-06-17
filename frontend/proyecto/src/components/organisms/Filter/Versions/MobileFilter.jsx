@@ -1,7 +1,5 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { DropPlaces } from '../../../molecules/DropPlaces/DropPlaces'
-import axios from 'axios'
 import './MobileFilter.css'
 import { Heading } from '../../../atoms/Heading/Heading'
 import { Button } from '../../../atoms/Button/Button'
@@ -9,47 +7,156 @@ import { SpacerHorizontal } from '../../../atoms/Spacer/SpacerHorizontal'
 import { CalendarDrop } from '../../../molecules/DropCalendar/CalendarDrop'
 import { urlAPI } from '../../../../global.js';
 
-export const MobileFilter = ( props ) => {
+export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, setFilterProducts, setStartDate, setEndDate }) => {
 
     const scroll = () => {
-    
-        window.scrollTo({top:1505,behavior: 'smooth'})
-      };
+        window.scrollTo({ top: 1580, behavior: 'smooth' })
+    };
+
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (props) {
-            let ciudadId = undefined;
-            if (props.lugarInput == 'San Carlos de Bariloche') {
-                ciudadId = 1
-                props.setLugarInput('')
-                axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
-                scroll()
-            }
-            else if (props.lugarInput == 'Buenos Aires') {
-                ciudadId = 2;
-                props.setLugarInput('')
-                axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
-                scroll()
-            }
-            else if (props.lugarInput == 'Mendoza') {
-                ciudadId = 3;
-                props.setLugarInput('')
-                axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
-                scroll()
-            }
-            else if (props.lugarInput == 'Córdoba') {
-                ciudadId = 4;
-                props.setLugarInput('')
-                axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => props.setFilterProducts(data.data))
-                scroll()
-            }
-            else {
-                props.setLugarInput('')
-                props.setFilterProducts([])
-            }
 
+        try {
+            let ciudadId = undefined;
+
+            var axios = require('axios');
+
+
+            if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === "San Carlos de Bariloche") {
+                ciudadId = 1;
+                setLugarInput('')
+                setFilterProducts([])
+                axios({
+                    method: "POST",
+                    url: `${urlAPI}productos/disponibles/porCiudadYFecha`,
+                    data: ({
+                        "fechaInicioReserva": `${startDate}`,
+                        "fechaFinReserva": `${endDate}`,
+                        "id_ciudad": ciudadId,
+                    })
+                })
+                    .then((response) => {
+                        setFilterProducts(response.data)
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    });
+                scroll()
+
+            } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Buenos Aires') {
+                ciudadId = 2;
+                setLugarInput('')
+                setFilterProducts([])
+                axios({
+                    method: "POST",
+                    url: `${urlAPI}productos/disponibles/porCiudadYFecha`,
+                    data: ({
+                        "fechaInicioReserva": `${startDate}`,
+                        "fechaFinReserva": `${endDate}`,
+                        "id_ciudad": ciudadId,
+                    })
+                })
+                    .then((response) => {
+                        setFilterProducts(response.data)
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    });
+
+                scroll()
+
+            } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Mendoza') {
+                ciudadId = 3;
+                setLugarInput('')
+                setFilterProducts([])
+                axios({
+                    method: "POST",
+                    url: `${urlAPI}productos/disponibles/porCiudadYFecha`,
+                    data: ({
+                        "fechaInicioReserva": `${startDate}`,
+                        "fechaFinReserva": `${endDate}`,
+                        "id_ciudad": ciudadId,
+                    })
+                })
+                    .then((response) => {
+                        setFilterProducts(response.data)
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    });
+                scroll()
+
+            } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Córdoba') {
+                ciudadId = 4;
+                setLugarInput('')
+                setFilterProducts([])
+                axios({
+                    method: "POST",
+                    url: `${urlAPI}productos/disponibles/porCiudadYFecha`,
+                    data: ({
+                        "fechaInicioReserva": `${startDate}`,
+                        "fechaFinReserva": `${endDate}`,
+                        "id_ciudad": ciudadId,
+                    })
+                })
+                    .then((response) => {
+                        setFilterProducts(response.data)
+                    })
+                    .catch(function (error) {
+                        console.log(error)
+                    });
+                scroll()
+
+            } else if (lugarInput === 'San Carlos de Bariloche') {
+                ciudadId = 1
+                setLugarInput('')
+                setFilterProducts([])
+                axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
+                scroll()
+            }
+            else if (lugarInput === 'Buenos Aires') {
+                ciudadId = 2;
+                setLugarInput('')
+                setFilterProducts([])
+                axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
+                scroll()
+            }
+            else if (lugarInput === 'Mendoza') {
+                ciudadId = 3;
+                setLugarInput('')
+                setFilterProducts([])
+                axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
+                scroll()
+            }
+            else if (lugarInput === 'Córdoba') {
+                ciudadId = 4;
+                setLugarInput('')
+                setFilterProducts([])
+                axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
+                scroll()
+            }
+            else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true ){
+                axios({
+                    method: "POST",
+                    url: `${urlAPI}productos/disponibles/porFecha/`,
+                    data: ({
+                        "fechaInicioReserva": `${startDate}`,
+                        "fechaFinReserva": `${endDate}`
+                    })
+                })
+                    .then((response) => {
+                        setFilterProducts(response.data)
+                    })
+                scroll()
+            }
+        } catch (e) {
+            setLugarInput('')
+            setEndDate('')
+            setStartDate('')
+            setFilterProducts([])
         }
+
     }
 
 
@@ -60,10 +167,10 @@ export const MobileFilter = ( props ) => {
                 <SpacerHorizontal height='sm' />
                 <form onSubmit={handleSubmit}>
                     <div className="mobile-filters-button">
-                        <DropPlaces lugarInput={props.lugarInput} setLugarInput={props.setLugarInput} placeholder='¿A donde vamos?' icon='location' />
+                        <DropPlaces lugarInput={lugarInput} setLugarInput={setLugarInput} placeholder='¿A donde vamos?' icon='location' />
                         <SpacerHorizontal height='xxs' />
                         <div style={{ width: '100%' }}>
-                            <CalendarDrop />
+                            <CalendarDrop startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />
                         </div>
                         <SpacerHorizontal height='xxs' />
                         <Button type='submit' size='xl' label='Buscar'></Button>
@@ -74,5 +181,4 @@ export const MobileFilter = ( props ) => {
     )
 }
 
-MobileFilter.propTypes = {}
 
