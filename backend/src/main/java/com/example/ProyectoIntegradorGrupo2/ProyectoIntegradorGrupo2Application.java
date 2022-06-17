@@ -21,6 +21,8 @@ public class ProyectoIntegradorGrupo2Application {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
 				registry.addMapping("/**")
+						.allowedOriginPatterns("*")
+						.exposedHeaders("*")
 								.allowedOrigins("http://localhost:8080","https://d1hx9yhvlj2zs6.cloudfront.net","http://d1hx9yhvlj2zs6.cloudfront.net","http://djsbg6s1up8ew.cloudfront.net/","https://djsbg6s1up8ew.cloudfront.net/","https://d2c3dl3bmc4qis.cloudfront.net/","http://d2c3dl3bmc4qis.cloudfront.net/", "http://localhost:3000").allowedMethods("*").allowedHeaders("*");
 			}
 		};
