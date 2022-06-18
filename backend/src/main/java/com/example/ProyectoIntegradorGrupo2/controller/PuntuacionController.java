@@ -66,7 +66,7 @@ public class PuntuacionController {
 
     @Operation(summary = "Mostrar la puntuación que un usuario le dió a un determinado producto")
     @GetMapping("/porProducto/{id_producto}/porUsuario/{id_usuario}")
-    ResponseEntity<?> listarPuntuacionesPorIdUsuarioY(@PathVariable Long id_producto, @PathVariable Long id_usuario) throws ResourceNotFoundException {
+    ResponseEntity<?> findPuntuacionByProductoIdAndUsuarioId(@PathVariable Long id_producto, @PathVariable Long id_usuario) throws ResourceNotFoundException {
         return ResponseEntity.ok(puntuacionService.findPuntuacionByProductoIdAndUsuarioId(id_producto, id_usuario));
     }
 

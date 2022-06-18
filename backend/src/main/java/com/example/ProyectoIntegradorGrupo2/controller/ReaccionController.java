@@ -64,4 +64,10 @@ public class ReaccionController {
         return ResponseEntity.ok(reaccionService.findReaccionesByUsuarioId(id));
     }
 
+    @Operation(summary = "Mostrar la reaccion que un usuario le dió a un determinado producto")
+    @GetMapping("/porProducto/{id_producto}/porUsuario/{id_usuario}")
+    ResponseEntity<?> findReaccionByProductoIdAndUsuarioId(@PathVariable Long id_producto, @PathVariable Long id_usuario) throws ResourceNotFoundException {
+        return ResponseEntity.ok(reaccionService.findReaccionByProductoIdAndUsuarioId(id_producto, id_usuario));
+    }
+
 }

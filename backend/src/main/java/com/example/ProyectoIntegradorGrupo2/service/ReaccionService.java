@@ -34,8 +34,7 @@ public class ReaccionService implements IReaccionService {
     @Autowired
     ObjectMapper mapper;
 
-    @Override
-    public ReaccionDTO agregarReaccion(ReaccionDTO reaccionDTO) throws BadRequestException {
+    private ReaccionDTO crearReaccion (ReaccionDTO reaccionDTO) throws BadRequestException {
 
         Reaccion reaccion = mapper.convertValue(reaccionDTO, Reaccion.class);
 
@@ -53,6 +52,13 @@ public class ReaccionService implements IReaccionService {
     }
 
     @Override
+    public ReaccionDTO agregarReaccion(ReaccionDTO reaccionDTO) throws BadRequestException {
+
+        if (!(reaccionRepository.findReaccionByProductoIdAndUsuarioId(reaccionDTO.getProducto_id(), reaccionDTO.getUsuario_id()).isEmpty())) throw new BadRequestException("El usuario ya ha agregado este producto a favoritos");
+        return crearReaccion(reaccionDTO);
+    }
+
+    @Override
     public ReaccionDTO obtenerReaccionPorId(Long id) throws ResourceNotFoundException {
 
         Optional<Reaccion> reaccionPorId = reaccionRepository.findById(id);
@@ -60,11 +66,9 @@ public class ReaccionService implements IReaccionService {
         if (reaccionPorId.isEmpty()) {
             throw new ResourceNotFoundException("No se pudo encontrar la reacción con el ID indicado");
         }
-        if (reaccionPorId.isPresent()) {
-            reaccionDTOPorId = mapper.convertValue(reaccionPorId, ReaccionDTO.class);
-            reaccionDTOPorId.setProducto_id(reaccionPorId.get().getProducto().getId());
-            reaccionDTOPorId.setUsuario_id(reaccionPorId.get().getUsuario().getId());
-        }
+        reaccionDTOPorId = mapper.convertValue(reaccionPorId, ReaccionDTO.class);
+        reaccionDTOPorId.setProducto_id(reaccionPorId.get().getProducto().getId());
+        reaccionDTOPorId.setUsuario_id(reaccionPorId.get().getUsuario().getId());
         return reaccionDTOPorId;
     }
 
@@ -94,7 +98,7 @@ public class ReaccionService implements IReaccionService {
         if (reaccion.isEmpty()) {
             throw new ResourceNotFoundException("No se pudo encontrar la reacción para editar");
         }
-        return agregarReaccion(reaccionDTO);
+        return crearReaccion(reaccionDTO);
     }
 
     @Override
@@ -130,5 +134,23 @@ public class ReaccionService implements IReaccionService {
 
         return reaccionDTOList;
 
+    }
+
+    @Override
+    public ReaccionDTO findReaccionByProductoIdAndUsuarioId(Long id_producto, Long id_usuario) throws ResourceNotFoundException {
+        Optional<Usuario> usuarioEncontrado = usuarioRepository.findById(id_usuario);
+        if (usuarioEncontrado.isEmpty()) throw new ResourceNotFoundException("No se ha encontrado el usuario con el ID indicado");
+
+        Optional<Producto> productoEncontrado = productoRepository.findById(id_producto);
+        if (productoEncontrado.isEmpty()) throw new ResourceNotFoundException("No se ha encontrado el producto con el ID indicado");
+
+        Optional<Reaccion> reaccion = reaccionRepository.findReaccionByProductoIdAndUsuarioId(id_producto, id_usuario);
+        if (reaccion.isEmpty())
+            throw new ResourceNotFoundException("El usuario no ha agregado el producto con el ID solicitado a sus favoritos");
+
+        ReaccionDTO reaccionDTO = mapper.convertValue(reaccion, ReaccionDTO.class);
+        reaccionDTO.setUsuario_id(reaccion.get().getUsuario().getId());
+        reaccionDTO.setProducto_id(reaccion.get().getProducto().getId());
+        return reaccionDTO;
     }
 }
