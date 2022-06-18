@@ -6,7 +6,7 @@ import { CardProduct } from "../../molecules/CardProduct/CardProduct";
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { MockUp } from "../../molecules/MockUpCard/MockUp";
-export const Products = ({ data,setMapHomeData ,setShowMap}) => {
+export const Products = ({ data,setMapHomeData ,setShowMap,filterTitle}) => {
 
 
   
@@ -26,7 +26,7 @@ export const Products = ({ data,setMapHomeData ,setShowMap}) => {
       <section className="products-content">
         <div className="product-title">
           <Heading type="lg" title="h2" variant="primary">
-            Recomendaciones
+            {filterTitle}
           </Heading>
         </div>
         

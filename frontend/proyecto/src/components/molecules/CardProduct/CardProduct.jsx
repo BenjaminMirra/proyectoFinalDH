@@ -6,7 +6,8 @@ import { Button } from "../../atoms/Button/Button";
 import { Icon } from "../../atoms/Icon/Icon";
 import { Span } from "../../atoms/Span/Span";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
+import { urlAPI } from "../../../global";
 export const CardProduct = ({
   url,
   titulo,
@@ -36,11 +37,24 @@ export const CardProduct = ({
     }, [services]);
 
   const [stars,setStars]=useState('')
-    useEffect(() => {
-        if (rating) {
-          setStars(rating/2)
-        }
-    }, [rating]);
+     useEffect(() => {
+      
+        axios({
+          url:`${urlAPI}puntuaciones/porProducto/${id}`,
+          method:'GET',
+          headers:{'Content-Type':'application/json'}
+        }).then(data=>{
+          
+          let scores=[]
+          data.data.forEach(element => {
+            scores.push(element.puntuacion)
+          });
+          let avgScore=scores.reduce((a,b)=>a+b,0)/scores.length
+          // console.log(avgScore.toFixed(1));
+          setStars(avgScore.toFixed(1)*2)
+
+        }).catch(err=>console.log(err))
+    }, []);
     const handleHomeMap=(latitud,longitud)=>{  
       setMapHomeData({lat:latitud,lng:longitud})
       return setShowMap(true)
@@ -63,11 +77,11 @@ export const CardProduct = ({
             {category}
           </Heading>
           <div className="product-cat-cat">
-            {rating<2?<><Icon icon='star'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/></>
-            :rating<=4? <><Icon icon='star'/><Icon icon='star'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/></>
-            :rating<=6?<><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/></>
-            :rating<8?<><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='emptyStar'/></>
-            :rating<9?<><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='emptyStar'/></>
+            {stars<2?<><Icon icon='star'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/></>
+            :stars<=4? <><Icon icon='star'/><Icon icon='star'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/></>
+            :stars<=6?<><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='emptyStar'/><Icon icon='emptyStar'/></>
+            :stars<9?<><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='emptyStar'/></>
+            :stars<=9.5?<><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='emptyStar'/></>
             :<><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/><Icon icon='star'/></>}
           </div>
         </div>
@@ -77,11 +91,11 @@ export const CardProduct = ({
         <div className="product-rating">
           <div className="product-rating-score">
             <Paragraph size="md" variant="secondary">
-              {rating}
+              {stars}
             </Paragraph>
           </div>
           <div className="product-rating-score-text">
-            <Paragraph size="md" variant="secondary">{rating<2?'Muy Malo':rating<4? 'Malo':rating<6?'Regular':rating<=7?'Bueno':rating<=9?'Muy Bueno':'Excelente'}</Paragraph>
+            <Paragraph size="md" variant="secondary">{stars<2?'Muy Malo':stars<4? 'Malo':stars<6?'Regular':stars<9?'Bueno':stars<=9.5?'Muy Bueno':'Excelente'}</Paragraph>
           </div>
         </div>
         <div className="product-location">

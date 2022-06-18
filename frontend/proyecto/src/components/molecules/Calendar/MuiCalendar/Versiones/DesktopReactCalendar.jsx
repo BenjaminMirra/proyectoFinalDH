@@ -8,23 +8,29 @@ import { Button } from '../../../../atoms/Button/Button';
 import { Heading } from '../../../../atoms/Heading/Heading';
 import './DesktopReactCalendar.css'
 import '../ReactCalendar.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { setDate } from 'rsuite/esm/utils/dateUtils';
 export const DesktopReactCalendar = (props) => {
-    
+    const navigation=useNavigate()
     registerLocale('es', es)
-    const [dateRange, setDateRange] = useState([null, null]);
+    const [dateRange, setDateRange] = useState([null,null]);
     const [startDate, endDate] = dateRange;
     const [arrayDaysReserve, setArrayDaysReserve] = useState([]);
     const [reservedDatesArray,setReservedDatesArray]=useState([])
     const onChange = (dates) => {
         
             setDateRange(dates);
-        
+            
     }
+   
+        
+        // setDateRange([ JSON.parse(localStorage.getItem('dates'))[0], JSON.parse(localStorage.getItem('dates'))[1]]);
+    
+
     useEffect(() => {
         
         if (props.reservedDates) {
-            console.log(props.reservedDates);
+           
             props.reservedDates.forEach(element => {
             createReservedDaysArray(element.fechaInicio,element.fechaFin)
         });
@@ -58,6 +64,12 @@ export const DesktopReactCalendar = (props) => {
         let dateEnd = new Date(endDate);
         
     }, [startDate, endDate])
+
+    const handleStartBooking=()=>{
+        localStorage.setItem('dates',JSON.stringify(dateRange))
+        
+        navigation('reserva')
+    }
     return (
     <div className="desktop-calendarReserve">
         
@@ -65,7 +77,7 @@ export const DesktopReactCalendar = (props) => {
                 <div className='desktop-calendarReserve-title' >
                <Heading title='h3' type='lg' variant='primary' >Fechas disponibles</Heading>
                </div>
-               {reservedDatesArray&&console.log(reservedDatesArray)}
+               
             <DatePicker
                 inline
                 locale="es"
@@ -129,9 +141,9 @@ export const DesktopReactCalendar = (props) => {
             <div className='start-booking' >
                 <div className='start-booking-container' >
                         <h4>Agrega tus fechas de viaje para obtener precios exactos </h4>
-                        <Link to={'reserva'}>
-                        <Button label='Iniciar reserva' > </Button>
-                        </Link>
+                        
+                        <Button onClick={handleStartBooking} label='Iniciar reserva' > </Button>
+                        
                         
                 </div>
             </div>
