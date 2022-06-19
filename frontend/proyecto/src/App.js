@@ -7,7 +7,7 @@ import React,{useState} from 'react'
 import {Mapa} from './components/pages/Mapa'
 import {Reserve} from './components/pages/Reserve'
 import { SuccessBooking } from "./components/pages/SuccessBooking";
-
+import {Favorite} from './components/pages/Favorite'
 function App() {
   const [failReserve,setFailReserve] = useState(false)
   return (
@@ -33,6 +33,7 @@ function App() {
           ></Route>
           <Route path="/mapa" element={<Mapa />}></Route>
           <Route path="/reserva-exitosa" element={<SuccessBooking />}></Route>
+          <Route path='/favoritos' element={<Favorite/>} ></Route>
         </Routes>
       </BrowserRouter>
     </div>

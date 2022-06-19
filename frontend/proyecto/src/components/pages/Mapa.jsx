@@ -11,44 +11,60 @@ import googleMarker from '../utils/icons/googleMarker.png'
 import axios from 'axios'
 import { urlAPI } from '../../global'
 import {MockUp} from '../molecules/MockUpCard/MockUp'
-export const Mapa = () => {
-    const {isLoaded}=useLoadScript({googleMapsApiKey:credentials.mapsKey})
-    const [allLocations,setAllLocations]=useState([])
-    const [mockUpStatic,setMockUpStatic]=useState(true)
-    useEffect(() => {
-        setTimeout(()=>setMockUpStatic(false),4000)
-        setAllLocations([])
-        axios.get(`${urlAPI}productos/todos`).then(data=>data.data.forEach(element => {
-            setAllLocations(prevData=>{
-                return [...prevData,{id:element.id,lat:element.latitud,lng:element.longitud}]
-            })
-        }))
+export const Mapa = ({ favorite, favoriteLocations }) => {
+  const { isLoaded } = useLoadScript({ googleMapsApiKey: credentials.mapsKey });
+  const [allLocations, setAllLocations] = useState([]);
+  const [mockUpStatic, setMockUpStatic] = useState(true);
+  const [favoriteAllLocations, setFavoriteAllLocations] = useState([]);
+  useEffect(() => {
+    setTimeout(() => setMockUpStatic(false), 4000);
+    setAllLocations([]);
+    if (favoriteLocations) {
         
-    }, []);
-    if(!isLoaded && mockUpStatic)return <div><MockUp height='85vh' width='100%' /></div>;
-    return<>
-    {console.log(allLocations)}
+            setFavoriteAllLocations(favoriteLocations);
         
-            <Header firstname={undefined} lastname={undefined}/>
-            <Link to={'/'}>
-        <div className='show-mapa'>
-            <div className='show-mapa-container' >
-                <Paragraph variant='base' >Mostrar Home</Paragraph>
-            <Icon icon='home' />
+        
+    }
+    else{
+        axios.get(`${urlAPI}productos/todos`).then((data) =>
+          data.data.forEach((element) => {
+            setAllLocations((prevData) => {
+              return [
+                ...prevData,
+                { id: element.id, lat: element.latitud, lng: element.longitud },
+              ];
+            });
+          })
+        );
+    }
+    
+  }, [favoriteLocations]);
+  if (!isLoaded && mockUpStatic)
+    return (
+      <div>
+        <MockUp height="85vh" width="100%" />
+      </div>
+    );
+  return (
+    <>
+      {!favorite && (
+        <>
+          <Header firstname={undefined} lastname={undefined} />
+          <Link to={"/"}>
+            <div className="show-mapa">
+              <div className="show-mapa-container">
+                <Paragraph variant="base">Mostrar Home</Paragraph>
+                <Icon icon="home" />
+              </div>
             </div>
-            
-        </div>
-        </Link>
-        <LoadedMap locations={allLocations} />
-        
-        
-        
-        
-    
-    
-    </> 
-  
-}
+          </Link>
+        </>
+      )}
+
+      <LoadedMap locations={favoriteAllLocations.length>0?favoriteAllLocations:allLocations} />
+    </>
+  );
+};
 function LoadedMap({locations}){
     
     

@@ -95,7 +95,7 @@ export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle}) =
       <Heading title="h2" type="lg" variant="primary" > Busca por tipo de alojamiento</Heading>
       </div>
           
-        {mockUpFixed || mockUpDinamic ?<div className="cards-container">
+        {mockUpDinamic ?<div className="cards-container">
           <MockUp noContent={true}/><MockUp noContent={true}/><MockUp noContent={true}/><MockUp noContent={true}/>
           
       </div>:<>

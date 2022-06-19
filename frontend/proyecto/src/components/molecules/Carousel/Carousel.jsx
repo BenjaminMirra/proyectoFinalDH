@@ -15,14 +15,14 @@ export const Carousel = (props) => {
         const {product}=props;
         if (product.imagenDTOList!==undefined) {
             product.imagenDTOList.forEach(element => {
-                setImages((prevValue)=>{
-                    if (prevValue.indexOf(element.url_img_producto)==-1) {
-                        return [...prevValue,element.url_img_producto]
-                    }
-                    else{
-                        return prevValue
-                    }
-                    });
+                setImages((prevValue) => {
+                  if (prevValue.indexOf(element.url_img_producto) == -1) {
+                    return [...prevValue, element.url_img_producto];
+                  } else {
+                    return prevValue;
+                  }
+                });
+
                 
             });
         }

@@ -38,7 +38,7 @@
 
 @media (max-width: 910px) {
   .card-category {
-    
+    max-width: 47.6vw;
     height: 244px;
   }
   
@@ -53,11 +53,12 @@
 }
 @media (max-width: 767px) {
   .card-category {
-    width: 392px;
+    /* width: 392px; */
+    max-width: 450px ;
     height: 276px;
   }
   .categories-content{
-  max-width: 450px;
+  max-width: 450px ;
   
 }
   .cards-container {
