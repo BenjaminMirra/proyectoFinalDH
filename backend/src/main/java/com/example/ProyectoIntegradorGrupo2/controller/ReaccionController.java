@@ -64,13 +64,13 @@ public class ReaccionController {
     }
 
     @Operation(summary = "Mostrar la reaccion que un usuario le dió a un determinado producto")
-    @GetMapping("porProducto/{id_producto}/porUsuario/{id_usuario}")
+    @GetMapping("/porProducto/{id_producto}/porUsuario/{id_usuario}")
     ResponseEntity<?> findReaccionByProductoIdAndUsuarioId(@PathVariable Long id_producto, @PathVariable Long id_usuario) throws ResourceNotFoundException {
         return ResponseEntity.ok(reaccionService.findReaccionByProductoIdAndUsuarioId(id_producto, id_usuario));
     }
 
     @Operation(summary = "Borrar una reacción por id de producto y id de usuario")
-    @DeleteMapping("eliminar/porProducto/{id_producto}/porUsuario/{id_usuario}")
+    @DeleteMapping("/eliminar/porProducto/{id_producto}/porUsuario/{id_usuario}")
     public ResponseEntity<?> eliminarReaccion(@PathVariable Long id_producto, @PathVariable Long id_usuario) throws ResourceNotFoundException {
         ReaccionDTO reaccion = reaccionService.findReaccionByProductoIdAndUsuarioId(id_producto, id_usuario);
         reaccionService.eliminar(reaccion.getId());

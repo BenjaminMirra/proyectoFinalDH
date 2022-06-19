@@ -71,7 +71,7 @@ public class PuntuacionController {
     }
 
     @Operation(summary = "Borrar una puntuación por id de producto y id de usuario")
-    @DeleteMapping("eliminar/porProducto/{id_producto}/porUsuario/{id_usuario}")
+    @DeleteMapping("/eliminar/porProducto/{id_producto}/porUsuario/{id_usuario}")
     public ResponseEntity<?> eliminarPuntuacionByProductoIdAndUsuarioId(@PathVariable Long id_producto, @PathVariable Long id_usuario) throws ResourceNotFoundException {
         PuntuacionDTO puntuacion = puntuacionService.findPuntuacionByProductoIdAndUsuarioId(id_producto, id_usuario);
         puntuacionService.eliminar(puntuacion.getId());
