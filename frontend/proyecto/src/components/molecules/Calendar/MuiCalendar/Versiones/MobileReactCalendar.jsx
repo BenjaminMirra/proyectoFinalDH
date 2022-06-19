@@ -7,8 +7,9 @@ import es from 'date-fns/locale/es';
 import { Button } from '../../../../atoms/Button/Button';
 import { Heading } from '../../../../atoms/Heading/Heading';
 import './MobileReactCalendar.css'
-import { Link } from 'react-router-dom';
+import { Link,useNavigate } from 'react-router-dom';
 export const MobileReactCalendar = (props) => {
+    const navigation=useNavigate()
    registerLocale('es', es)
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
@@ -66,6 +67,11 @@ export const MobileReactCalendar = (props) => {
         const calendarPadre = document.getElementsByClassName("react-datepicker")[0].parentNode;
         calendarPadre.classList.add("mobile-calendarReact-padre");
     }, 500)
+    const handleStartBooking=()=>{
+        localStorage.setItem('dates',JSON.stringify(dateRange))
+        
+        navigation('reserva')
+    }
     return (
         <div className="mobileCalendar-Container">
             <div className="mobile-calendar-heading">
@@ -137,7 +143,7 @@ export const MobileReactCalendar = (props) => {
                 <div className='start-booking' >
                     <div className='start-booking-container' >
                         <Heading title='h4' variant='primary' type='sm' >Agrega tus fechas de viaje para obtener precios exactos </Heading>
-                        <Link to={'reserva'} ><Button label='Iniciar reserva' > </Button></Link>
+                        <Button onClick={handleStartBooking} label='Iniciar reserva' > </Button>
                         
                     </div>
                 </div>

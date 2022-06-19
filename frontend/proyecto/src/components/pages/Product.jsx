@@ -39,7 +39,7 @@ export const Product = () => {
     <div className='wrapper'>
       <Header />
       <div className='contenedor-pagina' >
-        {productData&&console.log(productData)}
+        
         <ProductHeader category={categoria} title={productData.titulo} />
         <LocationInfo location={locationData} rating={productData.puntaje} />
         <Carousel product={productData} />

@@ -35,15 +35,40 @@
     position: relative;
     display: flex;
     align-items: center;
-    margin-right: 15px;
-    min-width: 140px;
+    /* margin-right: 15px; */
+    width: 500px;
+    justify-content: space-between;
     
 }
+.header-links{
+    margin: 0;
+    height: 100%;
+    border-right: 2px solid var(--color-primary);
+    padding-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.header-links p:hover{
+    color: var(--color-tertiary);
+    
+}
+.header-links a{
+    text-decoration: none !important;
+    color: inherit !important;
+}
+.tablet-user-info .header-links p{
+    height: 100%;
+}
+
 .tablet-user-info img{
-    position: absolute;
-    top:0;
-    right: 0;;
+    margin-left:8px ;
 }
 .tablet-user-info h3{
     margin-left: 10px;
+}
+.avatar-name{
+    display: flex;
+    align-items: center;
 }

@@ -188,6 +188,7 @@
 .react-datepicker__year-text--disabled:hover {
     background-color: transparent !important;
     color: grey !important;
+    
 }
 
 @media(min-width:1361px) {

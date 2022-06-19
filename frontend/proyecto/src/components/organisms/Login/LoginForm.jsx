@@ -119,30 +119,52 @@ let userData={}
             fetch(`${urlAPI}usuarios/login`, requestOptions)
               .then(response => response.text())
               .then(result => {
-                console.log(JSON.parse(result));
-                localStorage.setItem('jwt',JSON.stringify(JSON.parse(result).token_de_acceso))
-                axios({
+                // console.log(result.status);
+                if(JSON.parse(result).status!==401){
+                    console.log(JSON.parse(result));
+                    localStorage.setItem('jwt',JSON.stringify(JSON.parse(result).token_de_acceso))
+                   
+                        axios({
 	                method: "POST",
 	                url: "http://localhost:8080/usuarios/porEmail",
 	                data:{
 		                "email": `${formValues.email}`
 	                }
                 }).then(data=>{
+                    console.log(data);
+                    localStorage.setItem("userData",JSON.stringify({nombre:data.data.nombre,apellido:data.data.apellido,id:data.data.id,email:data.data.email}))
+                    return window.location.pathname='/'
+                })
                     
-                    localStorage.setItem("userData",JSON.stringify({nombre:data.data.nombre,apellido:data.data.apellido,id:data.data.id,email:data.data.email}))});
+                    
+                }})
+            }
+        }
+            
+            
                 
                 
-                return navigate('/')
-            })
-              .catch(error => console.log('error', error));
+            //     axios({
+	        //         method: "POST",
+	        //         url: "http://localhost:8080/usuarios/porEmail",
+	        //         data:{
+		    //             "email": `${formValues.email}`
+	        //         }
+            //     }).then(data=>{
+            //         console.log(data);
+            //         localStorage.setItem("userData",JSON.stringify({nombre:data.data.nombre,apellido:data.data.apellido,id:data.data.id,email:data.data.email}))});
+                
+                
+                
+            // })
+            //   .catch(error => console.log('error', error));
 
             // localStorage.setItem("userData",JSON.stringify(userData))
             // window.location.href='http://localhost:3000/'
            
             
-        }
-        }
         
+    
     
 
      function firstValidation(email,password){

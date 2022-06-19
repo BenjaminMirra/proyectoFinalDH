@@ -49,6 +49,9 @@
       grid-template-columns: 1fr; 
       grid-template-rows: 1fr 1fr; 
     }
+    .product-cards-container:nth-child(1){
+     
+    }
     .product-title{
       width: 448px;
       margin: auto;
