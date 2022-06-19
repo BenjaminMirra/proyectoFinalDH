@@ -16,4 +16,5 @@ public interface IReaccionService {
     void eliminar(Long id)throws ResourceNotFoundException;
     List<ReaccionDTO> findReaccionesByUsuarioId(Long id) throws ResourceNotFoundException;
     ReaccionDTO findReaccionByProductoIdAndUsuarioId (Long id_producto, Long id_usuario) throws ResourceNotFoundException;
+    void eliminarReaccionByProductoIdAndUsuarioId(Long id_producto, Long id_usuario) throws ResourceNotFoundException;
 }

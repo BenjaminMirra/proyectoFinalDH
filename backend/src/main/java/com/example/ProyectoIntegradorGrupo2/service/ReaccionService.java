@@ -153,4 +153,13 @@ public class ReaccionService implements IReaccionService {
         reaccionDTO.setProducto_id(reaccion.get().getProducto().getId());
         return reaccionDTO;
     }
+
+    public void eliminarReaccionByProductoIdAndUsuarioId(Long id_producto, Long id_usuario) throws ResourceNotFoundException {
+
+        Optional<Reaccion> reaccion = reaccionRepository.findReaccionByProductoIdAndUsuarioId(id_producto, id_usuario);
+        if (reaccion.isEmpty()){
+            throw new ResourceNotFoundException("No se pudo encontrar la reacción a eliminar");
+        }
+        reaccionRepository.deleteById(reaccion.get().getId());
+    }
 }

@@ -156,7 +156,16 @@ public class PuntuacionService implements IPuntuacionService{
         return puntuacionDTO;
         }
 
+    @Override
+    public void eliminarPuntuacionByProductoIdAndUsuarioId(Long id_producto, Long id_usuario) throws ResourceNotFoundException {
+        Optional<Puntuacion> puntuacion = puntuacionRepository.findPuntuacionByProductoIdAndUsuarioId(id_producto, id_usuario);
+        if (puntuacion.isEmpty()){
+            throw new ResourceNotFoundException("No se pudo encontrar la puntuación a eliminar");
+        }
+       puntuacionRepository.deleteById(puntuacion.get().getId());
     }
+
+}
 
 
 
