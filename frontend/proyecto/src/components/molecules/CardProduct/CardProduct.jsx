@@ -24,12 +24,15 @@ export const CardProduct = ({
   likedProducts,
   setLikedProducts
 }) => {
-  
+  useEffect(() => {
+    setLiked(false)
+  }, [likedProducts]);
   const [serviceList,setServiceList]=useState([])
   
   
 
     useEffect(() => {
+      setLiked(false);
         if (services) {
             setServiceList([])
             services.forEach(element => {
@@ -85,12 +88,14 @@ export const CardProduct = ({
       return setShowMap(true)
     }
     useEffect(() => {
-      
+      setLiked(false);
+        
         if(likedProducts.includes(id)){
+          console.log('ESTE ID: '+id+ " ESTA EN LOS FAVORITOS: "+ likedProducts);
           setLiked(true)
         }
       
-    }, [likedProducts]);
+    }, [likedProducts,id]);
   return (
     <div className="card-product">
       <div className="card-product-img">
@@ -100,7 +105,7 @@ export const CardProduct = ({
         <div className="fav">
           <Icon
             icon={liked?"favorite":'bEmptyHeart'}
-            width="md"
+            width="lg"
             height="sm"
             onClick={() => handleFavorite(id)}
           ></Icon>

@@ -20,6 +20,26 @@
     
     
 }
+
+.none-favorite{
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    right: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.none-favorite h2{
+    white-space:nowrap;
+    
+}
+.none-favorite img{
+    margin-right: 15px;
+}
+
 .favorite-back{
     position: absolute;
     /* top: 10px; */

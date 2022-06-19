@@ -122,8 +122,10 @@ export const Favorite = () => {
               <Icon icon={"backBlack"} width="lg" />
             </Link>
           </div>
+          
           {selectedProducts.length > 0 ? (
             <>
+            
               {" "}
               <Products
                 data={
@@ -136,9 +138,10 @@ export const Favorite = () => {
           ) : (
             <>
               
-              <div>
+              <div className="none-favorite">
                 {" "}
-                <Heading>No tienes alojamientos guardados</Heading>{" "}
+                <Icon icon={'prohibido'} width='lg' />
+                <Heading title={'h2'} variant='secondary' type={'lg'}>No tienes alojamientos guardados</Heading>{" "}
               </div>
             </>
           )}

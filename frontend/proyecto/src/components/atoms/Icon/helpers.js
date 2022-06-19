@@ -60,6 +60,7 @@ import cancelationpolicy from "../../utils/icons/cancelationpolicy.png";
 import mapa from "../../utils/icons/mapa.png";
 import home from "../../utils/icons/home.png";
 import logout from "../../utils/icons/logout.png";
+import prohibido from "../../utils/icons/prohibido.png";
 
 const IconsList = {
   user: user,
@@ -125,6 +126,7 @@ const IconsList = {
   mapa: mapa,
   home: home,
   logout: logout,
+  prohibido: prohibido,
 };
 export const KeysIconsList = Object.keys(IconsList);
 const IconWidth = {

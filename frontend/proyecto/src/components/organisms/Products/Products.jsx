@@ -23,6 +23,9 @@ export const Products = ({ data,setMapHomeData ,setShowMap,filterTitle}) => {
       if (data.length>0) {
         setMockUpDinamic(false);
       }
+
+      
+
       setLikedProducts([]);
       if (localStorage.getItem("userData")) {
         const id = JSON.parse(localStorage.getItem("userData")).id;
@@ -32,6 +35,7 @@ export const Products = ({ data,setMapHomeData ,setShowMap,filterTitle}) => {
               if (prevData.includes(element.producto_id)) {
                 return prevData;
               } else {
+                
                 return [...prevData, element.producto_id];
               }
             });
