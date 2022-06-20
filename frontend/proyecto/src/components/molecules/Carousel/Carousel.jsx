@@ -66,20 +66,23 @@ export const Carousel = (props) => {
       }
     }, [likedProducts, id]);
     const handleFavorite = (productId) => {
-      if (!liked) {
-        axios({
-          url: `${urlAPI}reacciones/agregar`,
-          method: "POST",
-          data: {
-            usuario_id: JSON.parse(localStorage.getItem("userData")).id,
-            producto_id: productId,
-            favorito: true,
-          },
-        })
-          .then((res) => setLiked(true))
-          .catch((err) => console.log(err));
-      } else {
+      if(JSON.parse(localStorage.getItem("userData"))){
+         if (!liked) {
+           axios({
+             url: `${urlAPI}reacciones/agregar`,
+             method: "POST",
+             data: {
+               usuario_id: JSON.parse(localStorage.getItem("userData")).id,
+               producto_id: productId,
+               favorito: true,
+             },
+           })
+             .then((res) => setLiked(true))
+             .catch((err) => console.log(err));
+         } else {
+         }
       }
+     
     }; 
     
         

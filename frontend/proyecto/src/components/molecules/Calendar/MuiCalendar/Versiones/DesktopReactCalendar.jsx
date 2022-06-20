@@ -8,10 +8,11 @@ import { Button } from '../../../../atoms/Button/Button';
 import { Heading } from '../../../../atoms/Heading/Heading';
 import './DesktopReactCalendar.css'
 import '../ReactCalendar.css'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { setDate } from 'rsuite/esm/utils/dateUtils';
 export const DesktopReactCalendar = (props) => {
     const navigation=useNavigate()
+    const {id}=useParams()
     registerLocale('es', es)
     const [dateRange, setDateRange] = useState([null,null]);
     const [startDate, endDate] = dateRange;
@@ -25,7 +26,16 @@ export const DesktopReactCalendar = (props) => {
    
         
         // setDateRange([ JSON.parse(localStorage.getItem('dates'))[0], JSON.parse(localStorage.getItem('dates'))[1]]);
-    
+    useEffect(() => {
+      // console.log('ENTROOOO');
+      // console.log( JSON.parse(localStorage.getItem('dates')));
+      if (JSON.parse(localStorage.getItem("dates"))) {
+        setDateRange([
+          new Date(JSON.parse(localStorage.getItem("dates"))[0]),
+          new Date(JSON.parse(localStorage.getItem("dates"))[1]),
+        ]);
+      }
+    }, []);
 
     useEffect(() => {
         
@@ -66,9 +76,15 @@ export const DesktopReactCalendar = (props) => {
     }, [startDate, endDate])
 
     const handleStartBooking=()=>{
-        localStorage.setItem('dates',JSON.stringify(dateRange))
-        
-        navigation('reserva')
+        localStorage.setItem("dates", JSON.stringify(dateRange));
+        if (localStorage.getItem("userData")) {
+            
+          navigation("reserva");
+        } else {
+            localStorage.setItem("lastProduct", JSON.stringify(id));
+            props.setFailReserve(true);
+            navigation("/login");
+        }
     }
     return (
     <div className="desktop-calendarReserve">

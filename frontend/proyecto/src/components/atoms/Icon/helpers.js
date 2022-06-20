@@ -61,6 +61,10 @@ import mapa from "../../utils/icons/mapa.png";
 import home from "../../utils/icons/home.png";
 import logout from "../../utils/icons/logout.png";
 import prohibido from "../../utils/icons/prohibido.png";
+import wEmptyHeart from "../../utils/icons/wEmptyHeart.svg";
+import fFavorite from "../../utils/icons/fFavorite.png";
+import eFavorite from "../../utils/icons/eFavorite.png";
+
 
 const IconsList = {
   user: user,
@@ -127,6 +131,9 @@ const IconsList = {
   home: home,
   logout: logout,
   prohibido: prohibido,
+  wEmptyHeart: wEmptyHeart,
+  fFavorite: fFavorite,
+  eFavorite: eFavorite,
 };
 export const KeysIconsList = Object.keys(IconsList);
 const IconWidth = {
