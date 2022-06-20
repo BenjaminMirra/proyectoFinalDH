@@ -102,11 +102,29 @@ export const Favorite = () => {
    
   }, [favoriteProducts]);
 
-
-  
+  const navigate=useNavigate();
+  const handleBack=()=>{
+    navigate(-1)
+  }
     
-
-
+const [showMap, setShowMap] = useState(true);
+const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+useEffect(() => {
+  function handleResize() {
+    setWindowWidth(window.innerWidth);
+  }
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, [windowWidth]);
+  const [randomValue, setRandomValue] = useState(0);
+useEffect(() => {
+  if (windowWidth < 1120) {
+    setShowMap(false);
+  } else {
+    setShowMap(true);
+    setRandomValue(prevData=>prevData+1);
+  }
+}, [windowWidth]);
 
 
 
@@ -118,14 +136,11 @@ export const Favorite = () => {
 
         <div className="favorite-products">
           <div className="favorite-back">
-            <Link to={"/"}>
-              <Icon icon={"backBlack"} width="lg" />
-            </Link>
+            <Icon onClick={handleBack} icon={"backBlack"} width="lg" />
           </div>
-          
+
           {selectedProducts.length > 0 ? (
             <>
-            
               {" "}
               <Products
                 data={
@@ -137,18 +152,23 @@ export const Favorite = () => {
             </>
           ) : (
             <>
-              
               <div className="none-favorite">
                 {" "}
-                <Icon icon={'prohibido'} width='lg' />
-                <Heading title={'h2'} variant='secondary' type={'lg'}>No tienes alojamientos guardados</Heading>{" "}
+                <Icon icon={"prohibido"} width="lg" />
+                <Heading title={"h2"} variant="secondary" type={"lg"}>
+                  No tienes alojamientos guardados
+                </Heading>{" "}
               </div>
             </>
           )}
         </div>
-        {favoriteLocations.length > 0 && (
+        {favoriteLocations.length > 0 && showMap && (
           <div className="favorite-mapa">
-            <Mapa favoriteLocations={favoriteLocations} favorite={true} />
+            <Mapa
+              randomProp={randomValue}
+              favoriteLocations={favoriteLocations}
+              favorite={true}
+            />
           </div>
         )}
       </div>

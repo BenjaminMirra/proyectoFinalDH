@@ -59,7 +59,14 @@ export const CardProduct = ({
         .catch((err) => console.log(err));
     }
     else{
-
+      const userId = JSON.parse(localStorage.getItem("userData")).id;
+        axios({
+          url: `${urlAPI}/eliminar/porProducto/${productId}/porUsuario/${userId}`,
+          method: "DELETE",
+          
+        })
+          .then((res) => setLiked(false))
+          .catch((err) => console.log(err));
     }
       
   } 

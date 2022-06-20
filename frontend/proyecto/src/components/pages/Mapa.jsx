@@ -20,29 +20,24 @@ export const Mapa = ({ favorite, favoriteLocations }) => {
     setTimeout(() => setMockUpStatic(false), 4000);
     setAllLocations([]);
     if (favoriteLocations) {
-        
-            setFavoriteAllLocations(favoriteLocations);
-        
-        
+      setFavoriteAllLocations(favoriteLocations);
+    } else {
+      axios.get(`${urlAPI}productos/todos`).then((data) =>
+        data.data.forEach((element) => {
+          setAllLocations((prevData) => {
+            return [
+              ...prevData,
+              { id: element.id, lat: element.latitud, lng: element.longitud },
+            ];
+          });
+        })
+      );
     }
-    else{
-        axios.get(`${urlAPI}productos/todos`).then((data) =>
-          data.data.forEach((element) => {
-            setAllLocations((prevData) => {
-              return [
-                ...prevData,
-                { id: element.id, lat: element.latitud, lng: element.longitud },
-              ];
-            });
-          })
-        );
-    }
-    
   }, [favoriteLocations]);
   if (!isLoaded && mockUpStatic)
     return (
       <div>
-        <MockUp height="85vh" width="100%" />
+        <MockUp height="100vh" width="100%" />
       </div>
     );
   return (
@@ -61,7 +56,11 @@ export const Mapa = ({ favorite, favoriteLocations }) => {
         </>
       )}
 
-      <LoadedMap locations={favoriteAllLocations.length>0?favoriteAllLocations:allLocations} />
+      <LoadedMap
+        locations={
+          favoriteAllLocations.length > 0 ? favoriteAllLocations : allLocations
+        }
+      />
     </>
   );
 };
@@ -69,27 +68,27 @@ function LoadedMap({locations}){
     
     
     const navigate=useNavigate()
-    const[random,setRandom]=useState('1')
+    const[random,setRandom]=useState(1)
+    
     
     // const MockUp={lat:-37.335028,lng:-59.136085,location:'Buenos Aires, Argentina'}
     useEffect(() => {
-        setTimeout(()=> setRandom('2'),1)
+        setTimeout(()=> setRandom(3),1)
     
     
     }, []);
     const center={lat:-34.342905,lng:-65.467429}
     
     const handleNavigate=(path)=>navigate(`/productos/${path}`)
-    var createMapOptions={
-        panControl:false,
-        mapTypeControl: false,
-        scrollwheel: true,
-        fullscreenControl: false,
-        zoomControl:true,
-        streetViewControl:true,
-        
-        
-    }
+    var createMapOptions = {
+      panControl: false,
+      mapTypeControl: false,
+      scrollwheel: true,
+      fullscreenControl: false,
+      zoomControl: true,
+      streetViewControl: true,
+      gestureHandling: "greedy",
+    };
     
     return (
         <div className='full-map-loaded'>
@@ -100,7 +99,7 @@ function LoadedMap({locations}){
         mapContainerClassName='full-map-container' options={createMapOptions} >
         {locations.map(location=> <Marker
         // icon={{url: googleMarker }}
-        onClick={()=>handleNavigate(location.id)} position={location} key={random} /> )}
+        onClick={()=>handleNavigate(location.id)} position={location} randomProp={random} /> )}
           
 
     </GoogleMap>

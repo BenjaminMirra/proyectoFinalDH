@@ -48,13 +48,25 @@
 }
 .favorite-map-loaded-container{
     width: 50%;
-    height: 100vh;
+    height: 50vh !important;
 }
 .map-favorite-products{
     width: 50%;
-    height: 100vh;
+    height: 50vh !important ; 
 }
 .favorite-products-container{
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+@media (max-width:1120px) {
+    .favorite-products .product-cards-container{
+        width: 75%;
+        margin: auto;
+    }
+}
+@media (max-width:465px) {
+    .favorite-products .card-product{
+        width: auto !important;
+        margin: auto;
+    }
 }

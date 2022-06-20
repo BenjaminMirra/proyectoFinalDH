@@ -22,14 +22,14 @@ export const TabletHeader = ({ firstname, lastname, handleUserInfo }) => {
           <>
             <div className="tablet-user-info">
               <div className="header-links">
-                <Link to={"favoritos"}>
+                <Link to={"/favoritos"}>
                   <Paragraph size={"xmd"} variant={"secondary"}>
                     Mis reservas
                   </Paragraph>
                 </Link>
               </div>
               <div className="header-links">
-                <Link to={"favoritos"}>
+                <Link to={"/favoritos"}>
                   <Paragraph size={"xmd"} variant={"secondary"}>
                     Favoritos
                   </Paragraph>
