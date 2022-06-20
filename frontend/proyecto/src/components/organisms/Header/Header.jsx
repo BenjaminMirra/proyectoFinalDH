@@ -3,11 +3,12 @@ import PropTypes from 'prop-types'
 import { DesktopHeader } from './Versions/DesktopHeader'
 import { TabletHeader } from './Versions/TabletHeader'
 import { MobileHeader } from './Versions/MobileHeader'
+import { useLocation } from 'react-router-dom'
 export const Header = ({}) => {
 
     
     const [UserDataLocalStorage,setUserDataLocalStorage]=useState({})
-    
+    const location=useLocation()
        
 
     useEffect(() => {
@@ -19,7 +20,7 @@ export const Header = ({}) => {
         } 
         window.addEventListener('storage', storageEventHandler, false);
 
-    }, []);
+    }, [location.pathname]);
 
     function storageEventHandler() {
         console.log("hi from storageEventHandler")

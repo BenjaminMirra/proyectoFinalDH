@@ -17,11 +17,11 @@
 .paragraph-colors-base{
     color: var(--color-base);
 }
-.paragraph-colors-primary {
+.paragraph-colors-secondary {
     color: var(--color-secondary);
 }
 
-.paragraph-colors-secondary {
+.paragraph-colors-tertiary {
     color: var(--color-tertiary);
 }
 .paragraph-colors-error{

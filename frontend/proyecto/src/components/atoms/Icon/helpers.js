@@ -31,7 +31,7 @@ import television from "../../utils/icons/television.svg";
 import kitchen from "../../utils/icons/kitchen.svg";
 import clock from "../../utils/icons/clock.svg";
 import card from "../../utils/icons/card.svg";
-import airconditioner from "../../utils/icons/airConditioner.svg";
+import airconditioner from "../../utils/icons/airconditioner.svg";
 import noSmoking from "../../utils/icons/noSmoking.svg";
 import noParty from "../../utils/icons/noParty.svg";
 import smoke from "../../utils/icons/smoke.svg";
@@ -50,7 +50,7 @@ import gym from "../../utils/icons/gym.png";
 import lift from "../../utils/icons/lift.svg";
 import reception from "../../utils/icons/reception.svg";
 import calefaccion from "../../utils/icons/calefaccion.svg";
-import cajafuerte from "../../utils/icons/cajaFuerte.svg";
+import cajafuerte from "../../utils/icons/cajafuerte.svg";
 import bano from "../../utils/icons/bano.svg";
 import limpieza from "../../utils/icons/limpieza.svg";
 import security from "../../utils/icons/security.png";
@@ -60,6 +60,11 @@ import cancelationpolicy from "../../utils/icons/cancelationpolicy.png";
 import mapa from "../../utils/icons/mapa.png";
 import home from "../../utils/icons/home.png";
 import logout from "../../utils/icons/logout.png";
+import prohibido from "../../utils/icons/prohibido.png";
+import wEmptyHeart from "../../utils/icons/wEmptyHeart.svg";
+import fFavorite from "../../utils/icons/fFavorite.png";
+import eFavorite from "../../utils/icons/eFavorite.png";
+
 
 const IconsList = {
   user: user,
@@ -125,6 +130,10 @@ const IconsList = {
   mapa: mapa,
   home: home,
   logout: logout,
+  prohibido: prohibido,
+  wEmptyHeart: wEmptyHeart,
+  fFavorite: fFavorite,
+  eFavorite: eFavorite,
 };
 export const KeysIconsList = Object.keys(IconsList);
 const IconWidth = {

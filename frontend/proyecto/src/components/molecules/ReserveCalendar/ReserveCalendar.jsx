@@ -54,9 +54,19 @@ export const ReserveCalendar = (props) => {
     const onChange = (dates) => {
         
             setDateRange(dates);
-        
+            // localStorage.setItem('dates',JSON.stringify(dateRange))
+            localStorage.removeItem('dates')
+           
     }
-
+     useEffect(() => {
+        // console.log('ENTROOOO');
+        // console.log( JSON.parse(localStorage.getItem('dates')));
+ if (JSON.parse(localStorage.getItem("dates"))) {
+   setDateRange([
+     new Date(JSON.parse(localStorage.getItem("dates"))[0]),
+     new Date(JSON.parse(localStorage.getItem("dates"))[1]),
+   ]);
+ }    }, []);
     // useEffect(() => {
     //     // console.log(startDate);
     //     let xDate=new Date(2022,6,7)
@@ -203,9 +213,15 @@ export const ReserveCalendar = (props) => {
     const onChange = (dates) => {
         
             setDateRange(dates);
-        
+            localStorage.removeItem('dates')
     }
-
+     useEffect(() => {
+        // console.log('ENTROOOO');
+        // console.log( JSON.parse(localStorage.getItem('dates')));
+        if (JSON.parse(localStorage.getItem("dates"))) {
+            setDateRange([new Date(JSON.parse(localStorage.getItem('dates'))[0]),new Date(JSON.parse(localStorage.getItem('dates'))[1])]);
+        }
+    }, []);
     // useEffect(() => {
     //     // console.log(startDate);
     //     let xDate=new Date(2022,6,7)

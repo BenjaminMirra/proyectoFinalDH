@@ -6,39 +6,65 @@ import { CardProduct } from "../../molecules/CardProduct/CardProduct";
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { MockUp } from "../../molecules/MockUpCard/MockUp";
-export const Products = ({ data,setMapHomeData ,setShowMap}) => {
+import { urlAPI } from "../../../global";
+export const Products = ({ data,setMapHomeData ,setShowMap,filterTitle}) => {
 
 
   
   const [mockUp, setMockUp] = useState(true)
   const [mockUpDinamic,setMockUpDinamic]=useState(true)
+  const [likedProducts, setLikedProducts] = useState([]);
   useEffect(() => {
     
     
     setTimeout(() => {
       setMockUp(false)}, 2000)
-      if (data) {
-        setMockUpDinamic(false)
+      console.log(data);
+      if (data.length>0) {
+        setMockUpDinamic(false);
       }
+
+      
+
+      setLikedProducts([]);
+      if (localStorage.getItem("userData")) {
+        const id = JSON.parse(localStorage.getItem("userData")).id;
+        axios.get(`${urlAPI}reacciones/porUsuario/${id}`).then((res) =>
+          res.data.forEach((element) => {
+            setLikedProducts((prevData) => {
+              if (prevData.includes(element.producto_id)) {
+                return prevData;
+              } else {
+                
+                return [...prevData, element.producto_id];
+              }
+            });
+            setMockUpDinamic(false);
+          })
+        );
+      }
+
     }, [data]);
+
+   
   return (
     <div className="products-container">
       <section className="products-content">
         <div className="product-title">
           <Heading type="lg" title="h2" variant="primary">
-            Recomendaciones
+            {filterTitle}
           </Heading>
         </div>
         
 
-        {mockUp || mockUpDinamic ?
+        {mockUpDinamic ||mockUp ?
           <div className="product-cards-container">
             
             <MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} />
           </div> : <div className="product-cards-container">
             
             {data.map((product, idx) => {
-
+               
               let descriptionPreview = product.descripcion.slice(0, 130)
 
               return (
@@ -57,6 +83,8 @@ export const Products = ({ data,setMapHomeData ,setShowMap}) => {
                     lat={product.latitud}
                     lng={product.longitud}
                     setShowMap={setShowMap}
+                    likedProducts={likedProducts}
+                    setLikedProducts={setLikedProducts}
                   />
 
                 </div>
