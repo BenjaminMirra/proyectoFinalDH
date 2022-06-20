@@ -13,6 +13,7 @@ import axios from 'axios'
 import { urlAPI } from '../../global.js';
 import { Paragraph } from '../atoms/paragraph/Paragraph'
 import { Icon } from '../atoms/Icon/Icon'
+import { ProductsPagination } from '../organisms/ProductsPagination/ProductsPagination'
 
 export const Home = () => {
 
@@ -39,8 +40,7 @@ export const Home = () => {
         <Filter setFilterProducts={setFilterProducts} />
         
         <CategoriesDesktop setFilterTitle={setFilterTitle} products={productsData} setFilterProducts={setFilterProducts} ></CategoriesDesktop>
-        
-        <Products filterTitle={filterTitle} setShowMap={setShowMap} setMapHomeData={setMapHomeData} data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></Products>
+        <ProductsPagination filterTitle={filterTitle} setShowMap={setShowMap} setMapHomeData={setMapHomeData} data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></ProductsPagination>
         <Link to={'/mapa'}>
         <div className='show-mapa'>
             <div className='show-mapa-container' >
