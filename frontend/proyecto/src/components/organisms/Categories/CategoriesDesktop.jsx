@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { urlAPI } from '../../../global.js';
 
 
-export const CategoriesDesktop = ({products,setFilterProducts}) => {
+export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle}) => {
   const [categoriesData,setCategoriesData]=useState({})
   const [mockUpFixed,setMockUpFixed]=useState(true)
   const [mockUpDinamic,setMockUpDinamic]=useState(true)
@@ -58,15 +58,33 @@ export const CategoriesDesktop = ({products,setFilterProducts}) => {
     setTimeout(()=>setMockUpFixed(false),1500)
   }, [products]);
   const navigate=useNavigate()
-  const handleCategoryProducts=(id)=>{
+  const handleCategoryProducts=(id,title)=>{
+    const filterTitle=document.getElementById('filterTitle')
     if (id===prevId) {
       axios.get(`${urlAPI}productos/todos`).then(res=>setFilterProducts(res.data))
-      navigate("/")
+      setFilterTitle('Recomendaciones')
+      // navigate("/")
+      console.log(window.innerWidth);
+      if (window.innerWidth<=768) {
+        filterTitle.scrollIntoView({behavior: 'smooth'})
+      }
+      else{
+        window.scrollTo({left:0,top:470,behavior:'smooth'})
+      }
+     
       return setPrevId(undefined)
     }
     
     else{
        axios.get(`${urlAPI}productos/porCategoria/${id}`).then(data=>setFilterProducts(data.data))
+       setFilterTitle(title)
+       if (window.innerWidth<=768) {
+        filterTitle.scrollIntoView({behavior: 'smooth'})
+      }
+      else{
+        window.scrollTo({left:0,top:470,behavior:'smooth'})
+      }
+      
       return setPrevId(id)
     }
   }
@@ -77,16 +95,21 @@ export const CategoriesDesktop = ({products,setFilterProducts}) => {
       <Heading title="h2" type="lg" variant="primary" > Busca por tipo de alojamiento</Heading>
       </div>
           
-        {mockUpFixed || mockUpDinamic ?<div className="cards-container">
+        {mockUpDinamic ?<div className="cards-container">
           <MockUp noContent={true}/><MockUp noContent={true}/><MockUp noContent={true}/><MockUp noContent={true}/>
-      </div>:<div className="cards-container">
+          
+      </div>:<>
+        
+      <div className="cards-container">
+        
           {categoriesData.map((card,index)=>{
             // console.log(card.titulo.toLowerCase());
             
-            return <div onClick={()=>handleCategoryProducts(card.id)}><CardCategory id={card.id} titulo={card.titulo} url={card.url_imagen} descripcion={`${totalPerCategory[card.titulo.toLowerCase()]} ${card.titulo}`} /></div>
+            return <div onClick={()=>handleCategoryProducts(card.id,card.titulo)}><CardCategory id={card.id} titulo={card.titulo} url={card.url_imagen} descripcion={`${totalPerCategory[card.titulo.toLowerCase()]} ${card.titulo}`} /></div>
           })}
-      </div>}
-        
+          
+      </div></>}
+        <span id="filterTitle"></span>
     </section>
     </div>
   );

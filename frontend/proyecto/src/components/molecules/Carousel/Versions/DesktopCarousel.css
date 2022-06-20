@@ -11,7 +11,14 @@
     align-items: center;
     
 }
-
+.desktop-icons-content{
+    display: flex;
+    background-color: var(--color-fourth);
+    padding: 5px 8px;
+    border-radius: 20px;
+    justify-content: space-between;
+    width: 100px;
+}
 .desktop-icons-container{
     width: 97%;
     margin: auto;
@@ -31,7 +38,7 @@
 .desktop-icons-container-mockUp div:first-child{
     margin-right: 15px;
 }
-.desktop-icons-container img{
+.desktop-icons-container:first-child{
     margin-right: 20px;
 }
 
@@ -48,7 +55,7 @@
 }
 .desktop-share-icons{
     position: absolute;
-    left: 0px;
+    left: 7px;
     top: 5px;
     z-index: 5;
 }

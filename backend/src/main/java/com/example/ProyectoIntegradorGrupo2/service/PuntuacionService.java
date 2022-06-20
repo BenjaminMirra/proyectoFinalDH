@@ -8,7 +8,6 @@ import com.example.ProyectoIntegradorGrupo2.repository.IProductoRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.IPuntuacionRepository;
 import com.example.ProyectoIntegradorGrupo2.repository.IUsuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import org.aspectj.weaver.ast.And;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,21 +32,26 @@ public class PuntuacionService implements IPuntuacionService{
 
     private PuntuacionDTO crearPuntuacion (PuntuacionDTO puntuacionDTO) throws BadRequestException {
 
-        if ((puntuacionDTO.getPuntuacion() < 1 || puntuacionDTO.getPuntuacion() > 5)) throw new BadRequestException("La puntuación debe ser un numero entero del 1 al 5");
+        if (puntuacionDTO.getPuntuacion() < 1 || puntuacionDTO.getPuntuacion() > 5) throw new BadRequestException("La puntuación debe ser un numero del 1 al 5");
 
-        Puntuacion puntuacion = mapper.convertValue(puntuacionDTO, Puntuacion.class);
+            Puntuacion puntuacion = mapper.convertValue(puntuacionDTO, Puntuacion.class);
 
-        Optional<Producto> productoDesdeDB = productoRepository.findById(puntuacionDTO.getProducto_id());
-        puntuacion.setProducto(productoDesdeDB.get());
+            Math.floor(puntuacion.getPuntuacion());
 
-        Optional<Usuario> usuarioDesdeDB = usuarioRepository.findById(puntuacionDTO.getUsuario_id());
-        puntuacion.setUsuario(usuarioDesdeDB.get());
+            Optional<Producto> productoDesdeDB = productoRepository.findById(puntuacionDTO.getProducto_id());
+            puntuacion.setProducto(productoDesdeDB.get());
 
-        Puntuacion puntuacionGuardada = puntuacionRepository.save(puntuacion);
+            Optional<Usuario> usuarioDesdeDB = usuarioRepository.findById(puntuacionDTO.getUsuario_id());
+            puntuacion.setUsuario(usuarioDesdeDB.get());
 
-        puntuacionDTO.setId(puntuacionGuardada.getId());
+            if (puntuacion.getUsuario().getId() == null || puntuacion.getProducto().getId() == null)
+                throw new BadRequestException("Debe indicar un usuario y un producto para agregar una puntuación");
 
-        return puntuacionDTO;
+            Puntuacion puntuacionGuardada = puntuacionRepository.save(puntuacion);
+
+            puntuacionDTO.setId(puntuacionGuardada.getId());
+
+            return puntuacionDTO;
     }
 
     @Override
@@ -60,9 +64,10 @@ public class PuntuacionService implements IPuntuacionService{
 
     @Override
     public PuntuacionDTO editar(PuntuacionDTO puntuacionDTO) throws ResourceNotFoundException, BadRequestException {
-        Optional<Puntuacion> puntuacion = puntuacionRepository.findById(puntuacionDTO.getId());
+
         if (puntuacionDTO.getUsuario_id()==null || puntuacionDTO.getProducto_id()==null)
             throw new BadRequestException("La puntuación debe tener asignado un producto y un usuario");
+        Optional<Puntuacion> puntuacion = puntuacionRepository.findById(puntuacionDTO.getId());
         if (puntuacion.isEmpty()) {
             throw new ResourceNotFoundException("No se pudo encontrar la puntuacion para editar");
         }
@@ -78,11 +83,9 @@ public class PuntuacionService implements IPuntuacionService{
         if (puntuacionPorId.isEmpty()) {
             throw new ResourceNotFoundException("No se pudo encontrar la puntuacion con el ID indicado");
         }
-        if (puntuacionPorId.isPresent()) {
-            puntuacionDTOPorId = mapper.convertValue(puntuacionPorId, PuntuacionDTO.class);
-            puntuacionDTOPorId.setProducto_id(puntuacionPorId.get().getProducto().getId());
-            puntuacionDTOPorId.setUsuario_id(puntuacionPorId.get().getUsuario().getId());
-        }
+        puntuacionDTOPorId = mapper.convertValue(puntuacionPorId, PuntuacionDTO.class);
+        puntuacionDTOPorId.setProducto_id(puntuacionPorId.get().getProducto().getId());
+        puntuacionDTOPorId.setUsuario_id(puntuacionPorId.get().getUsuario().getId());
         return puntuacionDTOPorId;
     }
 
@@ -118,6 +121,7 @@ public class PuntuacionService implements IPuntuacionService{
     public List<PuntuacionDTO> findPuntuacionesByProductoId(Long id) throws ResourceNotFoundException {
 
         Optional<Producto> productoEncontrado = productoRepository.findById(id);
+
         if (productoEncontrado.isEmpty()) throw new ResourceNotFoundException("No se ha encontrado el producto con el ID indicado");
         List<Optional<Puntuacion>> puntuacionList =puntuacionRepository.findPuntuacionesByProductoId(id);
         if (puntuacionList.isEmpty())
@@ -152,7 +156,16 @@ public class PuntuacionService implements IPuntuacionService{
         return puntuacionDTO;
         }
 
+    @Override
+    public void eliminarPuntuacionByProductoIdAndUsuarioId(Long id_producto, Long id_usuario) throws ResourceNotFoundException {
+        Optional<Puntuacion> puntuacion = puntuacionRepository.findPuntuacionByProductoIdAndUsuarioId(id_producto, id_usuario);
+        if (puntuacion.isEmpty()){
+            throw new ResourceNotFoundException("No se pudo encontrar la puntuación a eliminar");
+        }
+       puntuacionRepository.deleteById(puntuacion.get().getId());
     }
+
+}
 
 
 

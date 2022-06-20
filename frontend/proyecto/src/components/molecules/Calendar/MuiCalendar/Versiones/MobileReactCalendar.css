@@ -8,6 +8,7 @@
 
 .mobile-calendarReact-padre{
     width: 100%;
+    border: 1px solid red;
 }
 
 .mobile-calendarReact{
@@ -44,4 +45,10 @@
 .mobile-calendar-heading{
     margin-bottom: 15px;
     margin-top: 10px;
+}
+ .mobile-calendarReact .reserveCalendar-container .react-datepicker__day-name,
+ .mobile-calendarReact .reserveCalendar-container .react-datepicker__day,
+.mobile-calendarReact .reserveCalendar-container .react-datepicker__time-name {
+    border-radius: 10px;
+    width: 11vw !important;
 }

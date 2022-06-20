@@ -20,6 +20,7 @@ export const Home = () => {
     const [filterProducts,setFilterProducts]=useState([])
     const [mapHomeData,setMapHomeData]=useState({})
     const [showMap,setShowMap]=useState(false)
+    const [filterTitle,setFilterTitle]=useState('Recomendaciones')
     useEffect(() => {
         
             axios.get(`${urlAPI}productos/todos`).then(data=>setProductsData(data.data)) 
@@ -34,15 +35,18 @@ export const Home = () => {
     <div className='wrapper'>
             <Header firstname={undefined} lastname={undefined}/>
         <div className='contenedor-pagina' >
-        {console.log(showMap)}
         {showMap?<MapHome setShowMap={setShowMap} lat={mapHomeData.lat} lng={mapHomeData.lng} />:<></>}
         <Filter setFilterProducts={setFilterProducts} />
-        <CategoriesDesktop products={productsData} setFilterProducts={setFilterProducts} ></CategoriesDesktop>
-        <Products setShowMap={setShowMap} setMapHomeData={setMapHomeData} data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></Products>
+        
+        <CategoriesDesktop setFilterTitle={setFilterTitle} products={productsData} setFilterProducts={setFilterProducts} ></CategoriesDesktop>
+        
+        <Products filterTitle={filterTitle} setShowMap={setShowMap} setMapHomeData={setMapHomeData} data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></Products>
         <Link to={'/mapa'}>
         <div className='show-mapa'>
-            <Paragraph variant='base' >Mostrar Mapa</Paragraph>
+            <div className='show-mapa-container' >
+            <Paragraph variant='base' size='xs' >Mostrar Mapa</Paragraph>
             <Icon icon='mapa' />
+            </div>
         </div>
         </Link>
         

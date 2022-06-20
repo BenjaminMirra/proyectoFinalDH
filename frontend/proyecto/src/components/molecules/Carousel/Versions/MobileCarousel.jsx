@@ -23,7 +23,7 @@ export function MobileCarousel(props) {
     slidesToScroll: 1,
     autoplay:true,
     autoplaySpeed:3500,
-    lazyLoad:'ondemand',
+    
     
   };
   const Share=()=>{

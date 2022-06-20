@@ -14,4 +14,5 @@ public interface IPuntuacionService {
     void eliminar(Long id)throws ResourceNotFoundException;
     List<PuntuacionDTO> findPuntuacionesByProductoId (Long id) throws ResourceNotFoundException;
     PuntuacionDTO findPuntuacionByProductoIdAndUsuarioId (Long id_producto, Long id_usuario) throws ResourceNotFoundException;
+    void eliminarPuntuacionByProductoIdAndUsuarioId(Long id_producto, Long id_usuario) throws ResourceNotFoundException;
 }
