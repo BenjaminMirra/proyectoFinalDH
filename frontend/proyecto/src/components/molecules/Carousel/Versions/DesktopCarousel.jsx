@@ -91,7 +91,7 @@ export function DesktopCarousel(props){
                 />
                 <Icon
                   width="lg"
-                  icon={props.liked ? "favorite" : "bEmptyHeart"}
+                  icon={"bEmptyHeart"}
                   onClick={toggleFavorite(id)}
                 />
               </div>

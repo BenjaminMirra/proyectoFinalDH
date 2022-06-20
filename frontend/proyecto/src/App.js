@@ -26,14 +26,17 @@ function App() {
             }
           />
           <Route path="/sign-up" element={<SignUp />} />
-          <Route path="/productos/:id" element={<Product />} />
+          <Route
+            path="/productos/:id"
+            element={<Product setFailReserve={setFailReserve} />}
+          />
           <Route
             path="/productos/:id/reserva"
             element={<Reserve setFailReserve={setFailReserve} />}
           ></Route>
           <Route path="/mapa" element={<Mapa />}></Route>
           <Route path="/reserva-exitosa" element={<SuccessBooking />}></Route>
-          <Route path='/favoritos' element={<Favorite/>} ></Route>
+          <Route path="/favoritos" element={<Favorite />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

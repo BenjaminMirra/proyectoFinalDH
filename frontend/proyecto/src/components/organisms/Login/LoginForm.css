@@ -12,6 +12,7 @@
     font-weight: 700;
     /* font-size: 24px; */
     line-height: 28px;
+    text-align: center;
     /* text-align: center; */
 }
 
@@ -63,10 +64,20 @@ form .login-input{
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    width: 448px;
+    min-width: 35vw;
     height: 62px;
     margin-bottom: 30px;
+    
 }
+.warning-message img{
+        margin-right: 8px;
+     }
+    .warning-message p{
+        font-size: 12px;
+        max-width: 90%;
+        margin-right: 8px;
+        
+    }
 @media (max-width:768px){
     .warning-messagge{
         max-width: 320px;
@@ -78,6 +89,12 @@ form .login-input{
     .warning-message p{
         font-size: 12px;
         max-width: 90%;
+        
+    }
+}
+@media ( min-width:500px){
+    .warning-messagge{
+        width: 40%;
         
     }
 }

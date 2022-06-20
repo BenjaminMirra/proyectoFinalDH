@@ -25,7 +25,7 @@ export const Favorite = () => {
     setFavoriteProducts('');
     const userId=JSON.parse(localStorage.getItem('userData')).id;
     axios.get(`${urlAPI}reacciones/porUsuario/${userId}`).then((data) => {
-      console.log(data);
+      
       setFavoriteProducts('');
       
       data.data.forEach((element) => {
@@ -155,13 +155,14 @@ useEffect(() => {
               <div className="none-favorite">
                 {" "}
                 <Icon icon={"prohibido"} width="lg" />
-                <Heading title={"h2"} variant="secondary" type={"lg"}>
+                <Heading title={"h2"} variant="secondary">
                   No tienes alojamientos guardados
                 </Heading>{" "}
               </div>
             </>
           )}
         </div>
+
         {favoriteLocations.length > 0 && showMap && (
           <div className="favorite-mapa">
             <Mapa
@@ -172,6 +173,11 @@ useEffect(() => {
           </div>
         )}
       </div>
+      {!favoriteLocations.length > 0 && (
+        <div className="favorite-footer">
+          <Footer />
+        </div>
+      )}
     </>
   );
 };

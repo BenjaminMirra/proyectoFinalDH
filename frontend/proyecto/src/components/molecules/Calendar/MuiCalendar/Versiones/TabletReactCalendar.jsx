@@ -57,9 +57,16 @@ export const TabletReactCalendar = (props) => {
         
     }, [startDate, endDate])
         const handleStartBooking=()=>{
-        localStorage.setItem('dates',JSON.stringify(dateRange))
+             localStorage.setItem("dates", JSON.stringify(dateRange));
+           if (localStorage.getItem("userData")) {
+             navigation("reserva");
+           } else {
+             props.setFailReserve(true);
+             navigation("/login");
+           }
+       
         
-        navigation('reserva')
+        
     }
         return (
 

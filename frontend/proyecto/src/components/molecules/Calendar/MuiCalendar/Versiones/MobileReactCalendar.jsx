@@ -68,9 +68,17 @@ export const MobileReactCalendar = (props) => {
         calendarPadre.classList.add("mobile-calendarReact-padre");
     }, 500)
     const handleStartBooking=()=>{
-        localStorage.setItem('dates',JSON.stringify(dateRange))
         
-        navigation('reserva')
+        localStorage.setItem('dates',JSON.stringify(dateRange))
+       
+        if (localStorage.getItem("userData")) {
+          navigation("reserva");
+        } else {
+          props.setFailReserve(true);
+          navigation("/login");
+        }
+         
+        
     }
     return (
         <div className="mobileCalendar-Container">

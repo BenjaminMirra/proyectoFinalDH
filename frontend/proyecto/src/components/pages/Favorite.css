@@ -22,11 +22,12 @@
 }
 
 .none-favorite{
-    position: absolute;
-    top: 50%;
-    left: 40%;
-    right: 50%;
-    transform: translate(-50%, -50%);
+   position: absolute;
+    
+    bottom: 40px;
+    left: 50%;
+    top: 30%;
+     transform: translate(-50%, -50%);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -34,7 +35,7 @@
 
 .none-favorite h2{
     white-space:nowrap;
-    
+   
 }
 .none-favorite img{
     margin-right: 15px;
@@ -69,4 +70,10 @@
         width: auto !important;
         margin: auto;
     }
+}
+
+.favorite-footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
 }

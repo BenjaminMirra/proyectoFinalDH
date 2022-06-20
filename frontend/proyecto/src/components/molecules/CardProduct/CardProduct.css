@@ -49,14 +49,17 @@
   top: 15px;
   right: 15px;
   width: 20px;
-  background-color: var(--color-tertiary);
   width: 45px;
   height: 42px;
-  opacity: .7;
+  /* opacity: .4; */
   border-radius: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: .5s;
+}
+.fav:hover{
+    background-color: var(--color-fourth);
 }
 
 .cat-cat {

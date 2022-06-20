@@ -43,8 +43,11 @@
 .header-links{
     margin: 0;
     height: 100%;
-    border-right: 2px solid var(--color-primary);
-    padding-right: 15px;
+    width: 120px;
+    text-align: center;
+    /* border-right: 2px solid var(--color-primary); */
+    /* padding-right: 15px; */
+    padding-right: 0 !important;
     display: flex;
     justify-content: center;
     align-items: center;

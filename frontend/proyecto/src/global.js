@@ -1,2 +1,5 @@
+// export const urlAPI = "http://digitalbookingg2sprint3v2-env.eba-wfrhwq8z.us-east-1.elasticbeanstalk.com/" ;
 export const urlAPI = "http://digitalbookingg2sprint3v2-env.eba-wfrhwq8z.us-east-1.elasticbeanstalk.com/" ;
-    // export const urlAPI = "http://localhost:3000/" ;
+
+    // export const urlAPI = "http://localhost:8080/" ;
+// http://digitalbookingg2sprint3v2-env.eba-wfrhwq8z.us-east-1.elasticbeanstalk.com/ciudades/todas

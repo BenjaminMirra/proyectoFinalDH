@@ -5,7 +5,7 @@ import { Header} from '../organisms/Header/Header'
 import { Footer } from '../organisms/Footer/Footer'
 import { Icon } from '../atoms/Icon/Icon'
 import { Paragraph } from '../atoms/paragraph/Paragraph'
-import { Link,Navigate, useNavigate } from 'react-router-dom'
+import { Link,Navigate, useLocation, useNavigate } from 'react-router-dom'
 import './Mapa.css'
 import googleMarker from '../utils/icons/googleMarker.png'
 import axios from 'axios'
@@ -20,7 +20,10 @@ export const Mapa = ({ favorite, favoriteLocations }) => {
     setTimeout(() => setMockUpStatic(false), 4000);
     setAllLocations([]);
     if (favoriteLocations) {
-      setFavoriteAllLocations(favoriteLocations);
+      if (favoriteLocations.length > 0) {
+        setFavoriteAllLocations(favoriteLocations);
+      }
+      
     } else {
       axios.get(`${urlAPI}productos/todos`).then((data) =>
         data.data.forEach((element) => {
@@ -78,7 +81,7 @@ function LoadedMap({locations}){
     
     }, []);
     const center={lat:-34.342905,lng:-65.467429}
-    
+    const locationPathname=useLocation().pathname
     const handleNavigate=(path)=>navigate(`/productos/${path}`)
     var createMapOptions = {
       panControl: false,
@@ -96,7 +99,7 @@ function LoadedMap({locations}){
                 
             <GoogleMap zoom={5}
         center={center}
-        mapContainerClassName='full-map-container' options={createMapOptions} >
+        mapContainerClassName={locationPathname.slice(-4)=='mapa'?'full-map-container':'favorite-map-container-desktop'} options={createMapOptions} >
         {locations.map(location=> <Marker
         // icon={{url: googleMarker }}
         onClick={()=>handleNavigate(location.id)} position={location} randomProp={random} /> )}

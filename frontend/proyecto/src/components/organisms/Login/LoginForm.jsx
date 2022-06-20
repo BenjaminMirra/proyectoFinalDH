@@ -65,13 +65,13 @@ let userData={}
     },[formValues])
 
     const navigate=useNavigate()
-    
+    const [logError,setLogError]=useState(false)
     const handleSubmit=(e)=>{
     
         
         e.preventDefault()
         if(failReserve&&firstValidation('email','password')){
-             var formdata = new FormData();
+            var formdata = new FormData();
             formdata.append("email", formValues.email);
             formdata.append("password", formValues.password);
                 
@@ -83,27 +83,53 @@ let userData={}
             };
             
             fetch(`${urlAPI}usuarios/login`, requestOptions)
-              .then(response => response.text())
-              .then(result => {
-                console.log(JSON.parse(result));
-                localStorage.setItem('jwt',JSON.stringify(JSON.parse(result).token_de_acceso))
-                axios({
-	                method: "POST",
-	                url: "http://localhost:8080/usuarios/porEmail",
-	                data:{
-		                "email": `${formValues.email}`
-	                }
-                }).then(data=>{
+              .then(response=>{
+                
+                
+                // console.log(response.status);
+                if (response.status==401) {
+                    console.log('entro');
+                    setLogError(true)
+                    setTimeout(()=>setLogError(false),5000)
+                }
+                 return response.text()})
+              .then((result) => {
+                // console.log(result.status);
+               
+                  
+                  localStorage.setItem(
+                    "jwt",
+                    JSON.stringify(JSON.parse(result).token_de_acceso)
+                  )
+
+                  axios({
+                    method: "POST",
+                    url: `${urlAPI}usuarios/porEmail`,
+                    data: {
+                      email: `${formValues.email}`,
+                    },
+                  })
+                    .then((data) => {
+                      console.log(data);
+                      localStorage.setItem(
+                        "userData",
+                        JSON.stringify({
+                          nombre: data.data.nombre,
+                          apellido: data.data.apellido,
+                          id: data.data.id,
+                          email: data.data.email,
+                        })
+                      );
+                      setFailReserve(false)
+                      const lastProduct=JSON.parse(localStorage.getItem('lastProduct'))
+                      return (window.location.pathname = `/productos/${lastProduct}` );
+                    })
                     
-                    localStorage.setItem("userData",JSON.stringify({nombre:data.data.nombre,apellido:data.data.apellido,id:data.data.id,email:data.data.email}))});
                 
-                setFailReserve(false)
-                return navigate(-1)
-                
-            })
-              .catch(error => console.log('error', error));
-            
-        }
+              })
+              
+            }
+        
         else if(firstValidation('email','password')){
              var formdata = new FormData();
             formdata.append("email", formValues.email);
@@ -117,27 +143,49 @@ let userData={}
             };
             
             fetch(`${urlAPI}usuarios/login`, requestOptions)
-              .then(response => response.text())
-              .then(result => {
+              .then(response=>{
+                
+                
+                // console.log(response.status);
+                if (response.status==401) {
+                    console.log('entro');
+                    setLogError(true)
+                    setTimeout(()=>setLogError(false),5000)
+                }
+                 return response.text()})
+              .then((result) => {
                 // console.log(result.status);
-                if(JSON.parse(result).status!==401){
-                    console.log(JSON.parse(result));
-                    localStorage.setItem('jwt',JSON.stringify(JSON.parse(result).token_de_acceso))
-                   
-                        axios({
-	                method: "POST",
-	                url: "http://localhost:8080/usuarios/porEmail",
-	                data:{
-		                "email": `${formValues.email}`
-	                }
-                }).then(data=>{
-                    console.log(data);
-                    localStorage.setItem("userData",JSON.stringify({nombre:data.data.nombre,apellido:data.data.apellido,id:data.data.id,email:data.data.email}))
-                    return window.location.pathname='/'
-                })
+               
+                  
+                  localStorage.setItem(
+                    "jwt",
+                    JSON.stringify(JSON.parse(result).token_de_acceso)
+                  )
+
+                  axios({
+                    method: "POST",
+                    url: `${urlAPI}usuarios/porEmail`,
+                    data: {
+                      email: `${formValues.email}`,
+                    },
+                  })
+                    .then((data) => {
+                      console.log(data);
+                      localStorage.setItem(
+                        "userData",
+                        JSON.stringify({
+                          nombre: data.data.nombre,
+                          apellido: data.data.apellido,
+                          id: data.data.id,
+                          email: data.data.email,
+                        })
+                      );
+                      return (window.location.pathname = "/");
+                    })
                     
-                    
-                }})
+                
+              })
+              
             }
         }
             
@@ -225,55 +273,95 @@ let userData={}
     }
    const [inputType,setInputType]=useState({input:'password',icon:'disabled'})
     const toggleInputType=()=>setInputType(inputType.input==='password'?{input:'text',icon:'visibility'}:{input:'password',icon:'disabled'})
-    return (<>
+    return (
+      <>
         <div className="login">
-            {failReserve&&<div className='warning-message' >
-                <Picture image={'warning'} width='xxs' />
-                <Paragraph size={'md'} variant={'error'}>Para realizar una reserva necesitas estar logueado</Paragraph>
-                <SpacerHorizontal height={'md'} />
-            </div>}
-            
-            <div>
-                <Heading title='h2' type='lg' variant='primary' >Iniciar Sesión</Heading>
+          {failReserve && (
+            <div className="warning-message">
+              <Picture image={"warning"} width="xxs" />
+              <Paragraph size={"md"} variant={"error"}>
+                Para realizar una reserva necesitas estar logueado
+              </Paragraph>
+              <SpacerHorizontal height={"md"} />
             </div>
-            <SpacerHorizontal height={medidas.titleSpacerHeight}/>
-            <form >
-                <div className='login-input'>
-                <InputLabel value={formValues.email} id='email' name='email' onChange={handleChange()} label={"Email"} size={medidas.inputSize} type={"text"} placeholder={"Ingrese su email"} isError={errors.email} ></InputLabel>
-                {errors.email&&<Paragraph variant='error' size='sm' > Un email válido es requerido</Paragraph>}
-            </div>
-            {!errors.email&&<SpacerHorizontal height={medidas.inputSpacerHeight} />}
-            <div className='login-input'>
-                <InputLabel onClick={toggleInputType} icon={inputType.icon} variant='right' iconWidth={'lg'} value={formValues.password} id='password' name='password' onChange={handleChange()} label={"Contraseña"} size={medidas.inputSize} type={inputType.input} placeholder={"Ingrese su contraseña"} isError={errors.password}></InputLabel>
-                {errors.password&&<Paragraph variant='error' size='sm' >La contraseña es requerida</Paragraph>}
-            </div>
-            <div className='boton-register'>
-                <Button onClick={handleSubmit} size={medidas.buttonWidth} type='submit' variant={true} label='Ingresar' ></Button>
-            </div>
-                
-            </form>
-            <p>
-                    ¿No tienes cuenta?
-                    <Link to={'/sign-up'}>Crear cuenta</Link >
-                </p>
+          )}
 
-            
-            
+          <div>
+            {logError && (
+              <Paragraph variant={"error"}>
+                Lamentablemente no ha podido iniciar sesión, intentelo más tarde
+              </Paragraph>
+            )}
+
+            <SpacerHorizontal height={"xs"} />
+            <Heading title="h2" type="lg" variant="primary">
+              Iniciar Sesión
+            </Heading>
+          </div>
+          <SpacerHorizontal height={medidas.titleSpacerHeight} />
+          <form>
+            <div className="login-input">
+              <InputLabel
+                value={formValues.email}
+                id="email"
+                name="email"
+                onChange={handleChange()}
+                label={"Email"}
+                size={medidas.inputSize}
+                type={"text"}
+                placeholder={"Ingrese su email"}
+                isError={errors.email}
+              ></InputLabel>
+              {errors.email && (
+                <Paragraph variant="error" size="sm">
+                  {" "}
+                  Un email válido es requerido
+                </Paragraph>
+              )}
+            </div>
+            {!errors.email && (
+              <SpacerHorizontal height={medidas.inputSpacerHeight} />
+            )}
+            <div className="login-input">
+              <InputLabel
+                onClick={toggleInputType}
+                icon={inputType.icon}
+                variant="right"
+                iconWidth={"lg"}
+                value={formValues.password}
+                id="password"
+                name="password"
+                onChange={handleChange()}
+                label={"Contraseña"}
+                size={medidas.inputSize}
+                type={inputType.input}
+                placeholder={"Ingrese su contraseña"}
+                isError={errors.password}
+              ></InputLabel>
+              {errors.password && (
+                <Paragraph variant="error" size="sm">
+                  La contraseña es requerida
+                </Paragraph>
+              )}
+            </div>
+
+            <div className="boton-register">
+              <Button
+                onClick={handleSubmit}
+                size={medidas.buttonWidth}
+                type="submit"
+                variant={true}
+                label="Ingresar"
+              ></Button>
+            </div>
+          </form>
+          <p>
+            ¿No tienes cuenta?
+            <Link to={"/sign-up"}>Crear cuenta</Link>
+          </p>
         </div>
-
-
-
-
-
-
-
-        
-
-
-
-
-        </>
-    )
+      </>
+    );
 }
 
 
