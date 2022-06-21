@@ -28,13 +28,28 @@ export const ReactCalendar = (props) => {
 
     useEffect(() => {
         if(windowWidth <= 768){
-            setCalendarDisplayed(<MobileReactCalendar reservedDates={reservedDatesL} />)
+            setCalendarDisplayed(
+              <MobileReactCalendar
+                setFailReserve={props.setFailReserve}
+                reservedDates={reservedDatesL}
+              />
+            );
         }
         else if(windowWidth<1366){
-            setCalendarDisplayed(<TabletReactCalendar reservedDates={reservedDatesL} />)
+            setCalendarDisplayed(
+              <TabletReactCalendar
+                setFailReserve={props.setFailReserve}
+                reservedDates={reservedDatesL}
+              />
+            );
         }
         else if(windowWidth>=1366){
-            setCalendarDisplayed(<DesktopReactCalendar reservedDates={reservedDatesL}/>)
+            setCalendarDisplayed(
+              <DesktopReactCalendar
+                setFailReserve={props.setFailReserve}
+                reservedDates={reservedDatesL}
+              />
+            );
 
         }
         

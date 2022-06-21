@@ -13,6 +13,7 @@ import axios from 'axios'
 import { urlAPI } from '../../global.js';
 import { Paragraph } from '../atoms/paragraph/Paragraph'
 import { Icon } from '../atoms/Icon/Icon'
+import { ProductsPagination } from '../organisms/ProductsPagination/ProductsPagination'
 
 export const Home = () => {
 
@@ -20,6 +21,7 @@ export const Home = () => {
     const [filterProducts,setFilterProducts]=useState([])
     const [mapHomeData,setMapHomeData]=useState({})
     const [showMap,setShowMap]=useState(false)
+    const [filterTitle,setFilterTitle]=useState('Recomendaciones')
     useEffect(() => {
         
             axios.get(`${urlAPI}productos/todos`).then(data=>setProductsData(data.data)) 
@@ -36,8 +38,9 @@ export const Home = () => {
         <div className='contenedor-pagina' >
         {showMap?<MapHome setShowMap={setShowMap} lat={mapHomeData.lat} lng={mapHomeData.lng} />:<></>}
         <Filter setFilterProducts={setFilterProducts} />
-        <CategoriesDesktop products={productsData} setFilterProducts={setFilterProducts} ></CategoriesDesktop>
-        <Products setShowMap={setShowMap} setMapHomeData={setMapHomeData} data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></Products>
+        
+        <CategoriesDesktop setFilterTitle={setFilterTitle} products={productsData} setFilterProducts={setFilterProducts} ></CategoriesDesktop>
+        <ProductsPagination filterTitle={filterTitle} setShowMap={setShowMap} setMapHomeData={setMapHomeData} data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></ProductsPagination>
         <Link to={'/mapa'}>
         <div className='show-mapa'>
             <div className='show-mapa-container' >

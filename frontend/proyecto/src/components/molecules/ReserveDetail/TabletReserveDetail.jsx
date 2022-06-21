@@ -46,7 +46,7 @@ const navigate=useNavigate()
             
             // console.log(JSON.stringify(submitData));
             // console.log(JSON.parse(localStorage.getItem('jwt')));
-            try {
+            
                 
                 
                axios({
@@ -64,12 +64,16 @@ const navigate=useNavigate()
                 headers:{'Content-Type': 'application/json',
                         'Authorization': 'Bearer '+JSON.parse(localStorage.getItem('jwt'))
                     }
-             }).then(res=>console.log(res)).catch(err=>console.log(err))
+             }).then(res=>{
+                
+               
+                localStorage.removeItem('lastProduct')
+                localStorage.removeItem('date')
+                return navigate("/reserva-exitosa");
+                }).catch(err=>console.log(err))
             //  console.log(response);
              
-            } catch (error) {
-                console.log(error);
-            }
+            
             
             // navigate('/reserva-exitosa')
         }

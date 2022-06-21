@@ -32,7 +32,7 @@ public class PuntuacionService implements IPuntuacionService{
 
     private PuntuacionDTO crearPuntuacion (PuntuacionDTO puntuacionDTO) throws BadRequestException {
 
-        if (puntuacionDTO.getPuntuacion() < 1 || puntuacionDTO.getPuntuacion() > 5) throw new BadRequestException("La puntuación debe ser un numero del 1 al 5");
+        if (puntuacionDTO.getPuntuacion() < 1 || puntuacionDTO.getPuntuacion() > 5) throw new BadRequestException("La puntuación debe ser un número del 1 al 5");
 
             Puntuacion puntuacion = mapper.convertValue(puntuacionDTO, Puntuacion.class);
 
@@ -101,7 +101,7 @@ public class PuntuacionService implements IPuntuacionService{
             PuntuacionDTO puntuacionDTO = mapper.convertValue(p, PuntuacionDTO.class);
             puntuacionDTO.setUsuario_id(usuario.getId());
             puntuacionDTO.setProducto_id(prod.getId());
-           puntuacionDTOList.add(puntuacionDTO);
+            puntuacionDTOList.add(puntuacionDTO);
         }
         return puntuacionDTOList;
 
@@ -156,7 +156,16 @@ public class PuntuacionService implements IPuntuacionService{
         return puntuacionDTO;
         }
 
+    @Override
+    public void eliminarPuntuacionByProductoIdAndUsuarioId(Long id_producto, Long id_usuario) throws ResourceNotFoundException {
+        Optional<Puntuacion> puntuacion = puntuacionRepository.findPuntuacionByProductoIdAndUsuarioId(id_producto, id_usuario);
+        if (puntuacion.isEmpty()){
+            throw new ResourceNotFoundException("No se pudo encontrar la puntuación a eliminar");
+        }
+       puntuacionRepository.deleteById(puntuacion.get().getId());
     }
+
+}
 
 
 

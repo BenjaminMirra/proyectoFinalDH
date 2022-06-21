@@ -39,9 +39,6 @@ export const DesktopFilter = ({ lugarInput, setLugarInput, startDate, endDate, s
           .then((response) => {
             setFilterProducts(response.data)
           })
-          .catch(function (error) {
-            console.log(error)
-          });
         scroll()
 
       } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Buenos Aires') {
@@ -60,10 +57,6 @@ export const DesktopFilter = ({ lugarInput, setLugarInput, startDate, endDate, s
           .then((response) => {
             setFilterProducts(response.data)
           })
-          .catch(function (error) {
-            console.log(error)
-          });
-
         scroll()
 
       } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Mendoza') {
@@ -82,9 +75,6 @@ export const DesktopFilter = ({ lugarInput, setLugarInput, startDate, endDate, s
           .then((response) => {
             setFilterProducts(response.data)
           })
-          .catch(function (error) {
-            console.log(error)
-          });
         scroll()
 
       } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Córdoba') {
@@ -103,9 +93,6 @@ export const DesktopFilter = ({ lugarInput, setLugarInput, startDate, endDate, s
           .then((response) => {
             setFilterProducts(response.data)
           })
-          .catch(function (error) {
-            console.log(error)
-          });
         scroll()
 
       } else if (lugarInput === 'San Carlos de Bariloche') {
@@ -149,6 +136,7 @@ export const DesktopFilter = ({ lugarInput, setLugarInput, startDate, endDate, s
             setFilterProducts(response.data)
           })
         scroll()
+        
       }
     } catch (e) {
       setLugarInput('')

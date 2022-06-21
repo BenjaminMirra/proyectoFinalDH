@@ -11,14 +11,17 @@ import { Icon } from "../../../atoms/Icon/Icon";
 import { Paragraph } from "../../../atoms/paragraph/Paragraph";
 import './DesktopCarousel.css'
 import { MockUp } from '../../MockUpCard/MockUp'
+import { useParams } from 'react-router-dom'
 
 export function DesktopCarousel(props){
     // const imagesLocal=[product1,product2,product3,product4,product5]
 
     const images=props.images
-    const [favorite,setFavorite]=useState('bEmptyHeart')
+    const {id}=useParams()
     
-    const toggleFavorite=()=>setFavorite((prevValue)=>prevValue==='bEmptyHeart'?'bFavorite':'bEmptyHeart')
+    const toggleFavorite=(id)=>{
+      props.handleFavorite(id);
+    }
     const [show,setShow]=useState(false)
     const [load,setLoad]=useState(true)
     const [share,setShare]=useState(false)
@@ -71,28 +74,51 @@ export function DesktopCarousel(props){
   </div>
   </>)
     }
-  return (<>
-    {load?<DesktopCarouselMockUp/>: <div className='desktopCarousel'>
-      <WatchMore images={images} setShow={setShow} show={show}/>
-        <div className='desktop-icons'>
-            <div className='desktop-icons-container'>
-                <Icon width='lg' icon='bShare' onClick={()=>setShare(!share)}/>
-                <Icon width='lg' icon={favorite} onClick={toggleFavorite} />
+  return (
+    <>
+      {load ? (
+        <DesktopCarouselMockUp />
+      ) : (
+        <div className="desktopCarousel">
+          <WatchMore images={images} setShow={setShow} show={show} />
+          <div className="desktop-icons">
+            <div className="desktop-icons-container">
+              <div className="desktop-icons-content">
+                <Icon
+                  width="lg"
+                  icon="bShare"
+                  onClick={() => setShare(!share)}
+                />
+                <Icon
+                  width="lg"
+                  icon={"bEmptyHeart"}
+                  onClick={toggleFavorite(id)}
+                />
+              </div>
             </div>
-        </div>
-        <div className='desktopCarousel-container' >
-            {share&&<Share/>}
-            {images.map((image,id)=><div className={`desktopCarousel-image desktopCarousel-image-${id+1} `}> <img src={image} alt="" /> </div>)}
+          </div>
+          <div className="desktopCarousel-container">
+            {share && <Share />}
+            {images.map((image, id) => (
+              <div
+                className={`desktopCarousel-image desktopCarousel-image-${
+                  id + 1
+                } `}
+              >
+                {" "}
+                <img src={image} alt="" />{" "}
+              </div>
+            ))}
             <div className="watch-more">
-            <Paragraph onClick={()=>setShow(true)} variant='base' size='lg' >Ver más</Paragraph>
+              <Paragraph onClick={() => setShow(true)} variant="base" size="lg">
+                Ver más
+              </Paragraph>
             </div>
+          </div>
         </div>
-        
-    </div>}
- 
-  </>
-    
-  )
+      )}
+    </>
+  );
 }
 
 function DesktopCarouselMockUp(){
