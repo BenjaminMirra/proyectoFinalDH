@@ -130,8 +130,17 @@ public class UsuarioService implements IUsuarioService, UserDetailsService {
         /*usuario.get().setNombre(usuarioEditarDTO.getNombre());
         usuario.get().setApellido(usuarioEditarDTO.getApellido());
         usuario.get().setCiudad(usuarioEditarDTO.getCiudad());*/
-        Usuario usuarioActualizar = mapper.convertValue(usuarioEditarDTO, Usuario.class);
-        Usuario usuarioActualizado = usuarioRepository.save(usuarioActualizar);
+        if (usuarioEditarDTO.getNombre() != null){
+            usuario.get().setNombre(usuarioEditarDTO.getNombre());
+        }
+        if (usuarioEditarDTO.getApellido() != null){
+            usuario.get().setApellido(usuarioEditarDTO.getApellido());
+        }
+        if (usuarioEditarDTO.getCiudad() != null){
+            usuario.get().setCiudad(usuarioEditarDTO.getCiudad());
+        }
+
+        Usuario usuarioActualizado = usuarioRepository.save(usuario.get());
         UsuarioEditarDTO usuarioEditarDTOActualizado = mapper.convertValue(usuarioActualizado, UsuarioEditarDTO.class);
 
         return usuarioEditarDTOActualizado;

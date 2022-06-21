@@ -39,11 +39,14 @@ public class ReservaService implements IReservaService{
     ObjectMapper mapper;
 
     @Override
-    public ReservaDTO agregarReserva(ReservaDTO reservaDTO) throws BadRequestException {
+    public ReservaDTO agregarReserva(ReservaDTO reservaDTO) throws BadRequestException , ResourceNotFoundException{
         Reserva reserva = mapper.convertValue(reservaDTO, Reserva.class);
        List<Optional<Reserva>> reservaList = reservaRepository.listarReservasGuardadas(reservaDTO.getProducto_id(),reservaDTO.getFechaInicioReserva(),reservaDTO.getFechaFinReserva());
        if (!reservaList.isEmpty()){
            throw new BadRequestException("El producto ya tiene reservas para ese rango de fechas");
+       }
+       if (reservaDTO.getProducto_id()== null || reservaDTO.getUsuario_id()== null){
+           throw new BadRequestException("Se debe conocer el id del producto a reservar y el id del usuario que reserva");
        }
         //reservaDTO.setFechaEnLaQueSeHaceLaReserva(new Date());
         LocalDate hoy = LocalDate.now();
@@ -54,9 +57,15 @@ public class ReservaService implements IReservaService{
 
 
         Optional<Producto> productoDesdeDB = productoRepository.findById(reservaDTO.getProducto_id());
+        if (productoDesdeDB.isEmpty()){
+            throw new ResourceNotFoundException("No se ha encontrado el producto con el id indicado");
+        }
         reserva.setProducto(productoDesdeDB.get());
 
         Optional<Usuario> usuarioDesdeDB = usuarioRepository.findById(reservaDTO.getUsuario_id());
+        if (usuarioDesdeDB.isEmpty()){
+            throw new ResourceNotFoundException("No se ha encontrado el usuario con el id indicado");
+        }
         reserva.setUsuario(usuarioDesdeDB.get());
         /*Cliente clienteAGuardar = (Cliente) usuarioDesdeDB.get();*/
         /*Cliente cliente = (Cliente) usuarioDesdeDB.get();
