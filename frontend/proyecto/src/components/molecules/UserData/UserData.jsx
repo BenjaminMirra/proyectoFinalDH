@@ -48,7 +48,7 @@ export const UserData = ({setSubmitData}) => {
                 <InputLabel label={'Ciudad de residencia'} placeholder='Ej: Buenos aires' ></InputLabel>
                 <div className='vaccinated-container'>
                   <input value={dataForm.vacunadoCovid} onChange={handleChange} id='vaccinated' type={'checkbox'} ></input>
-                  <Label id={'vaccinated'}label='¿Estas vacunado contra el COVID-19?' ></Label>
+                  <Label  id={'vaccinated'}label='¿Estas vacunado contra el COVID-19?' ></Label>
                 </div>
                 <div className='additional-info'>
                   <Label id={'vaccinated'}label='Informacion adicional' ></Label>

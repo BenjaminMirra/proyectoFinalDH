@@ -54,3 +54,7 @@ position: relative;
     color: white;
     user-select: none;
 }
+.check-date p::after{
+    content:" *";
+    color:red;
+}

@@ -65,10 +65,11 @@ export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle}) =
       setFilterTitle('Recomendaciones')
       // navigate("/")
       console.log(window.innerWidth);
-      if (window.innerWidth<=768) {
+      if (window.innerWidth<768) {
         filterTitle.scrollIntoView({behavior: 'smooth'})
       }
       else{
+        console.log('entro');
         window.scrollTo({left:0,top:470,behavior:'smooth'})
       }
      

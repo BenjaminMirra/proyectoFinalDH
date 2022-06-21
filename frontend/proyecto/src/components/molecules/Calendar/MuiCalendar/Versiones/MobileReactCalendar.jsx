@@ -7,7 +7,7 @@ import es from 'date-fns/locale/es';
 import { Button } from '../../../../atoms/Button/Button';
 import { Heading } from '../../../../atoms/Heading/Heading';
 import './MobileReactCalendar.css'
-import { Link,useNavigate } from 'react-router-dom';
+import { Link,useNavigate, useParams } from 'react-router-dom';
 export const MobileReactCalendar = (props) => {
     const navigation=useNavigate()
    registerLocale('es', es)
@@ -42,7 +42,7 @@ export const MobileReactCalendar = (props) => {
     
     return setReservedDatesArray(prevDates=>[...prevDates.concat(aux)])
     }
-    
+    const {id}=useParams()
     function editNamesDaysWeek() {
         const namesDaysWeek = document.querySelectorAll(".react-datepicker__day-name");
         namesDaysWeek.forEach(name => {
@@ -67,16 +67,17 @@ export const MobileReactCalendar = (props) => {
         const calendarPadre = document.getElementsByClassName("react-datepicker")[0].parentNode;
         calendarPadre.classList.add("mobile-calendarReact-padre");
     }, 500)
+    
     const handleStartBooking=()=>{
         
-        localStorage.setItem('dates',JSON.stringify(dateRange))
-       
-        if (localStorage.getItem("userData")) {
-          navigation("reserva");
-        } else {
-          props.setFailReserve(true);
-          navigation("/login");
-        }
+       localStorage.setItem("dates", JSON.stringify(dateRange));
+       if (localStorage.getItem("userData")) {
+         navigation("reserva");
+       } else {
+         localStorage.setItem("lastProduct", JSON.stringify(id));
+         props.setFailReserve(true);
+         navigation("/login");
+       }
          
         
     }

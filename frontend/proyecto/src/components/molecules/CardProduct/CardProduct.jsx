@@ -60,7 +60,9 @@ export const CardProduct = ({
           favorito: true,
         },
       })
-        .then((res) => setLiked(true))
+        .then((res) =>{
+          console.log('Se guardo el producto '+productId);
+          return  setLiked(true);} )
         .catch((err) => console.log(err));
     }
     else{
@@ -72,6 +74,7 @@ export const CardProduct = ({
           
         })
           .then((res) =>{
+            console.log('Se elimino el producto '+ productId);
               if (localStorage.getItem("userData")) {
                 
                 const id = JSON.parse(localStorage.getItem("userData")).id;
@@ -247,13 +250,13 @@ export const CardProduct = ({
           <div className="product-description">
             <Paragraph size="md" variant="secondary">
               {descripcion}
-              <Link style={{ textDecoration: "none" }} to={`productos/${id}`}>
+              <Link style={{ textDecoration: "none" }} to={`/productos/${id}`}>
                 <Span size="md" variant="primary">
                   Más...
                 </Span>
               </Link>
             </Paragraph>
-            <Link style={{ width: "100%" }} to={`productos/${id}`}>
+            <Link style={{ width: "100%" }} to={`/productos/${id}`}>
               <Button
                 size="sm"
                 label="Ver Detalle"

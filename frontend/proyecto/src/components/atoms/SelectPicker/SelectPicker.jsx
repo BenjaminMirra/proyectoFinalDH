@@ -9,7 +9,7 @@ export const SelectPicker = ({setSelectValue}) => {
   }
   return (
     <div className='selectPicker'>
-        <Label label='Indica tu horario estimado de llegada' />
+        <Label required={true} label='Indica tu horario estimado de llegada' />
         <SpacerHorizontal height={'xxs'} />
         <select onChange={handleChange} name="" id="selectTime">
             <option disabled selected>Seleccionar hora de llegada</option>

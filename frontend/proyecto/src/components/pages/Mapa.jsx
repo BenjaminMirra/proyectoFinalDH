@@ -91,6 +91,10 @@ function LoadedMap({locations}){
       zoomControl: true,
       streetViewControl: true,
       gestureHandling: "greedy",
+      mapTypeControlOptions: {
+        // style: HORIZONTAL_BAR,
+        position: 'TOP',
+      },
     };
     
     return (
@@ -99,6 +103,7 @@ function LoadedMap({locations}){
                 
             <GoogleMap zoom={5}
         center={center}
+        
         mapContainerClassName={locationPathname.slice(-4)=='mapa'?'full-map-container':'favorite-map-container-desktop'} options={createMapOptions} >
         {locations.map(location=> <Marker
         // icon={{url: googleMarker }}

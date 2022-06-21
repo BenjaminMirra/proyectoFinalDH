@@ -46,31 +46,39 @@ const navigate=useNavigate()
             
             // console.log(JSON.stringify(submitData));
             // console.log(JSON.parse(localStorage.getItem('jwt')));
-            
-                
-                
-               axios({
-                method: 'POST',
-                url:`${urlAPI}reservas/agregar`,
-                data:{
-                    fechaInicioReserva:`${submitData.fechaInicioReserva}`,
-                    fechaFinReserva:`${submitData.fechaFinReserva}`,
-                    horaEstimadaDeLlegada:`${submitData.horaEstimadaDeLlegada}`,
-                    mensajeUsuario:`${submitData.mensajeUsuario}`,
-                    vacunadoCovid:submitData.vacunadoCovid,
-                    usuario_id:JSON.parse(localStorage.getItem('userData')).id,
-                    producto_id:id
-                },
-                headers:{'Content-Type': 'application/json',
-                        'Authorization': 'Bearer '+JSON.parse(localStorage.getItem('jwt'))
-                    }
-             }).then(res=>{
-                
-               
-                localStorage.removeItem('lastProduct')
-                localStorage.removeItem('date')
-                return navigate("/reserva-exitosa");
-                }).catch(err=>console.log(err))
+            if (
+              reservedDays.startDate.year !== "1969" &&
+              reservedDays.startDate.year &&
+              reservedDays.endDate.year !== "1969" &&
+              reservedDays.endDate.year
+            ){
+                 axios({
+                   method: "POST",
+                   url: `${urlAPI}reservas/agregar`,
+                   data: {
+                     fechaInicioReserva: `${submitData.fechaInicioReserva}`,
+                     fechaFinReserva: `${submitData.fechaFinReserva}`,
+                     horaEstimadaDeLlegada: `${submitData.horaEstimadaDeLlegada}`,
+                     mensajeUsuario: `${submitData.mensajeUsuario}`,
+                     vacunadoCovid: submitData.vacunadoCovid,
+                     usuario_id: JSON.parse(localStorage.getItem("userData"))
+                       .id,
+                     producto_id: id,
+                   },
+                   headers: {
+                     "Content-Type": "application/json",
+                     Authorization:
+                       "Bearer " + JSON.parse(localStorage.getItem("jwt")),
+                   },
+                 })
+                   .then((res) => {
+                     localStorage.removeItem("lastProduct");
+                     localStorage.removeItem("dates");
+                     return navigate("/reserva-exitosa");
+                   })
+                   .catch((err) => console.log(err));
+            }
+             
             //  console.log(response);
              
             
