@@ -50,7 +50,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
         http.cors();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers(POST, "/reservas/agregar").hasRole("USER");
+        http.authorizeRequests().antMatchers(POST, "/reservas/agregar").hasAnyAuthority("ROLE_USER");
         http.authorizeRequests().anyRequest().permitAll()
                 .and().logout().permitAll();
         /*http.addFilter(customAuthenticationFilter1);*/
