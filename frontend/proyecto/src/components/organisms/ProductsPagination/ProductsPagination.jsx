@@ -8,7 +8,6 @@ export const ProductsPagination = ({ data,setMapHomeData ,setShowMap,filterTitle
     const [currentPage, setCurrentPage] = useState(1);
     const [postsPerPage, setPostsPerPage] = useState(8);
 
-
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
