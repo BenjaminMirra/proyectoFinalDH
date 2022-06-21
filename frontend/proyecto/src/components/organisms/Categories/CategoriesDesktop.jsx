@@ -69,6 +69,7 @@ export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle}) =
         filterTitle.scrollIntoView({behavior: 'smooth'})
       }
       else{
+        console.log('entro');
         window.scrollTo({left:0,top:470,behavior:'smooth'})
       }
      

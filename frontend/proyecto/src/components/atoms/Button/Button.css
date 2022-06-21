@@ -47,3 +47,9 @@
 .button-size-xl{
     width:392px;
 }
+.is-disabled{
+    background-color:var(--color-primary) !important;
+    color:white !important;
+    opacity: .5;
+    cursor:inherit !important;
+}

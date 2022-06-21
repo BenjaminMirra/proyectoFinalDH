@@ -11,7 +11,7 @@ import { Icon } from "../../../atoms/Icon/Icon";
 import { Paragraph } from "../../../atoms/paragraph/Paragraph";
 import './DesktopCarousel.css'
 import { MockUp } from '../../MockUpCard/MockUp'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 
 export function DesktopCarousel(props){
     // const imagesLocal=[product1,product2,product3,product4,product5]
@@ -20,11 +20,12 @@ export function DesktopCarousel(props){
     const {id}=useParams()
     
     const toggleFavorite=(id)=>{
-      props.handleFavorite(id);
+      
     }
     const [show,setShow]=useState(false)
     const [load,setLoad]=useState(true)
     const [share,setShare]=useState(false)
+    const location=useLocation().pathname
     useEffect(() => {
         setTimeout(()=>{
           if (props.images) {
@@ -34,17 +35,17 @@ export function DesktopCarousel(props){
     }, [props.images]);
     const Share=()=>{
       return( <div className='desktop-share-icons'>
-        <FacebookShareButton style={{display:'block'}} url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search' quote='Mira este producto!!!' hashtag='#booking'>
+        <FacebookShareButton style={{display:'block'}} url={location} quote='Mira este producto!!!' hashtag='#booking'>
             <FacebookIcon  size={30} logoFillIcon='white' round={true} ></FacebookIcon>
         </FacebookShareButton>
-        <WhatsappShareButton style={{display:'block'}} className='icono'  url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search' >
+        <WhatsappShareButton style={{display:'block'}} className='icono'  url={location} >
             <WhatsappIcon   size={30} logoFillIcon='white' round={true}  >
             </WhatsappIcon>
         </WhatsappShareButton>
-        <TwitterShareButton style={{display:'block'}} className='icono' url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search'>
+        <TwitterShareButton style={{display:'block'}} className='icono' url={location}>
             <TwitterIcon  size={30} logoFillIcon='white' round={true}></TwitterIcon>
         </TwitterShareButton>
-        <LinkedinShareButton style={{display:'block'}} className='icono' url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search'>
+        <LinkedinShareButton style={{display:'block'}} className='icono' url={location}>
             <LinkedinIcon  size={30} logoFillIcon='white' round={true}></LinkedinIcon>
         </LinkedinShareButton>
     </div>)

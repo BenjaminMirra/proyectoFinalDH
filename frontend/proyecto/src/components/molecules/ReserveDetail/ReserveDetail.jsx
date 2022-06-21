@@ -67,7 +67,7 @@ export const ReserveDetail = ({product,category,location,reservedDays,setFailRes
              }).then(res=>{
              
                 localStorage.removeItem("lastProduct");
-                localStorage.removeItem("date")
+                localStorage.removeItem("dates")
                 navigate("/reserva-exitosa");
             })
             //  console.log(response);

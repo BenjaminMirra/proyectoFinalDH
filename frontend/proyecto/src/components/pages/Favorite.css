@@ -23,7 +23,8 @@
 
 .none-favorite{
    position: absolute;
-    
+    width: 90% !important;
+    max-width: 450px !important;
     bottom: 40px;
     left: 50%;
     top: 30%;
@@ -34,7 +35,7 @@
 }
 
 .none-favorite h2{
-    white-space:nowrap;
+    /* white-space:nowrap; */
    
 }
 .none-favorite img{

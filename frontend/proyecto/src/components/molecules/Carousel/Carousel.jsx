@@ -30,52 +30,10 @@ export const Carousel = (props) => {
         ;
     }, [props]);
     
-    useEffect(() => {
-       setLikedProducts([]);
-       if (localStorage.getItem("userData")) {
-         const id = JSON.parse(localStorage.getItem("userData")).id;
-         axios.get(`${urlAPI}reacciones/porUsuario/${id}`).then((res) =>
-           res.data.forEach((element) => {
-             setLikedProducts((prevData) => {
-               if (prevData.includes(element.producto_id)) {
-                 return prevData;
-               } else {
-                 return [...prevData, element.producto_id];
-               }
-             });
-             
-           })
-         );
-       }
-    }, []);
-    const [liked, setLiked] = useState(false);
+    
+    
 
-    useEffect(() => {
-      setLiked(false);
-
-      if (likedProducts.includes(id)) {
-        setLiked(true);
-      }
-    }, [likedProducts, id]);
-    const handleFavorite = (productId) => {
-      if(JSON.parse(localStorage.getItem("userData"))){
-         if (!liked) {
-           axios({
-             url: `${urlAPI}reacciones/agregar`,
-             method: "POST",
-             data: {
-               usuario_id: JSON.parse(localStorage.getItem("userData")).id,
-               producto_id: productId,
-               favorito: true,
-             },
-           })
-             .then((res) => setLiked(true))
-             
-         } else {
-         }
-      }
-     
-    }; 
+   
     
         
     
@@ -96,9 +54,9 @@ export const Carousel = (props) => {
         if(windowWidth <= 768){
             setCarouselDisplayed(
               <MobileCarousel
-                liked={liked}
-                setLiked={setLiked}
-                handleFavorite={handleFavorite}
+               
+                
+                
                 images={images ? images : imagesTesteo}
               />
             );
@@ -106,9 +64,9 @@ export const Carousel = (props) => {
         else if(windowWidth<=1000){
             setCarouselDisplayed(
               <TabletCarousel
-                liked={liked}
-                setLiked={setLiked}
-                handleFavorite={handleFavorite}
+                
+               
+               
                 images={images ? images : imagesTesteo}
               />
             );
@@ -116,9 +74,9 @@ export const Carousel = (props) => {
         else if(windowWidth>=1001){
             setCarouselDisplayed(
               <DesktopCarousel
-                liked={liked}
-                setLiked={setLiked}
-                handleFavorite={handleFavorite}
+                
+                
+               
                 images={images ? images : imagesTesteo}
               />
             );
