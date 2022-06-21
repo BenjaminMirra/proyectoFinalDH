@@ -1,5 +1,5 @@
-import React,{useState,useEffect} from 'react'
-import { Link,useNavigate,useParams } from 'react-router-dom'
+import React,{useEffect} from 'react'
+import {useNavigate,useParams } from 'react-router-dom'
 import { urlAPI } from '../../../global'
 import { Button } from '../../atoms/Button/Button'
 import { Heading } from '../../atoms/Heading/Heading'
@@ -70,7 +70,7 @@ const navigate=useNavigate()
                 localStorage.removeItem('lastProduct')
                 localStorage.removeItem('date')
                 return navigate("/reserva-exitosa");
-                }).catch(err=>console.log(err))
+                })
             //  console.log(response);
              
             

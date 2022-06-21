@@ -56,13 +56,6 @@ export const LoginForm = ({failReserve,setFailReserve}) => {
     }
     const handleErrorsFalse=(id)=>setErrors({...errors,[id]:false})
 
-let userData={}
-    useEffect(()=>{
-        userData={
-            firstname:'Juan',
-            lastname:'Perez',
-        }
-    },[formValues])
 
     const navigate=useNavigate()
     const [logError,setLogError]=useState(false)
@@ -88,7 +81,7 @@ let userData={}
                 
                 // console.log(response.status);
                 if (response.status==401) {
-                    console.log('entro');
+                    //console.log('entro');
                     setLogError(true)
                     setTimeout(()=>setLogError(false),5000)
                 }
@@ -110,7 +103,7 @@ let userData={}
                     },
                   })
                     .then((data) => {
-                      console.log(data);
+                      //console.log(data);
                       localStorage.setItem(
                         "userData",
                         JSON.stringify({
@@ -148,7 +141,7 @@ let userData={}
                 
                 // console.log(response.status);
                 if (response.status==401) {
-                    console.log('entro');
+                    //console.log('entro');
                     setLogError(true)
                     setTimeout(()=>setLogError(false),5000)
                 }
@@ -170,7 +163,7 @@ let userData={}
                     },
                   })
                     .then((data) => {
-                      console.log(data);
+                      //console.log(data);
                       localStorage.setItem(
                         "userData",
                         JSON.stringify({

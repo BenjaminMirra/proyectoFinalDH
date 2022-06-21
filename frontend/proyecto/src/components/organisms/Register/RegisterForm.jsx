@@ -71,7 +71,7 @@ export const RegisterForm = () => {
                         ciudad:'Buenos Aires',
                         nombre_rol:'ROLE_USER',
             }
-            console.log(data);
+            //console.log(data);
           axios({
                 method: 'POST',
                 url: `${urlAPI}usuarios/agregar`,

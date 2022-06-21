@@ -9,7 +9,7 @@ export const LocationInfo = ({location,rating}) => {
     const [stars,setStars]=useState('')
     const {id}=useParams()
     useEffect(() => {
-      console.log('entroo');
+      
         axios({
           url:`${urlAPI}puntuaciones/porProducto/${id}`,
           method:'GET',
@@ -24,11 +24,10 @@ export const LocationInfo = ({location,rating}) => {
           // console.log(avgScore.toFixed(1));
           setStars(avgScore.toFixed(1)*2)
 
-        }).catch(err=>console.log(err))
+        })
     }, []);
     useEffect(() => {
       
-      console.log(stars);
     }, [stars]);
   return (
     <div className='location-info'>

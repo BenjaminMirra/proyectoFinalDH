@@ -1,9 +1,4 @@
-import React,{useState,useEffect,useContext} from 'react'
-import product1 from '../../utils/images/productImg1.png'
-import product2 from '../../utils/images/productImg2.jpg'
-import product3 from '../../utils/images/productImg3.jpg'
-import product4 from '../../utils/images/productImg4.png'
-import product5 from '../../utils/images/productImg5.png'
+import React,{useState,useEffect} from 'react'
 import { MobileCarousel } from './Versions/MobileCarousel'
 import { TabletCarousel } from './Versions/TabletCarousel'
 import { DesktopCarousel } from './Versions/DesktopCarousel'
@@ -59,9 +54,6 @@ export const Carousel = (props) => {
       setLiked(false);
 
       if (likedProducts.includes(id)) {
-        console.log(
-          "ESTE ID: " + id + " ESTA EN LOS FAVORITOS: " + likedProducts
-        );
         setLiked(true);
       }
     }, [likedProducts, id]);
@@ -78,7 +70,7 @@ export const Carousel = (props) => {
              },
            })
              .then((res) => setLiked(true))
-             .catch((err) => console.log(err));
+             
          } else {
          }
       }

@@ -69,11 +69,11 @@ const navigate=useNavigate()
              localStorage.removeItem("lastProduct");
              localStorage.removeItem("date")
             return navigate("/reserva-exitosa");
-        }).catch(err=>console.log(err))
+        })
             //  console.log(response);
              
             } catch (error) {
-                console.log(error);
+                //console.log(error);
             }
             
             // navigate('/reserva-exitosa')
