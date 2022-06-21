@@ -61,7 +61,7 @@ export const CardProduct = ({
         },
       })
         .then((res) =>{
-          console.log('Se guardo el producto '+productId);
+          //console.log('Se guardo el producto '+productId);
           return  setLiked(true);} )
         .catch((err) => console.log(err));
     }
@@ -92,7 +92,6 @@ export const CardProduct = ({
                 );
               }
             } )
-          .catch((err) => console.log(err));
     }
       
   } 
@@ -114,7 +113,7 @@ export const CardProduct = ({
           // console.log(avgScore.toFixed(1));
           setStars(avgScore.toFixed(1)*2)
 
-        }).catch(err=>console.log(err))
+        })
     }, []);
     const handleHomeMap=(latitud,longitud)=>{  
       setMapHomeData({lat:latitud,lng:longitud})
@@ -122,9 +121,7 @@ export const CardProduct = ({
     }
     useEffect(() => {
       setLiked(false);
-        console.log(likedProducts);
         if(likedProducts.includes(id)){
-          console.log('ESTE ID: '+id+ " ESTA EN LOS FAVORITOS: "+ likedProducts);
           setLiked(true)
         }
       

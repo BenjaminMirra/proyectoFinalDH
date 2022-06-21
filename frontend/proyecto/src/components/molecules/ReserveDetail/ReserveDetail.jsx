@@ -64,12 +64,12 @@ export const ReserveDetail = ({product,category,location,reservedDays,setFailRes
                 headers:{'Content-Type': 'application/json',
                         'Authorization': 'Bearer '+JSON.parse(localStorage.getItem('jwt'))
                     }
-             }).then(res=>{console.log("entrorooooo");
+             }).then(res=>{
              
                 localStorage.removeItem("lastProduct");
                 localStorage.removeItem("dates")
                 navigate("/reserva-exitosa");
-            }).catch(err=>console.log(err))
+            })
             //  console.log(response);
              
             } catch (error) {
