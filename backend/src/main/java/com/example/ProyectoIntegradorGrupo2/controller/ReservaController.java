@@ -20,7 +20,7 @@ public class ReservaController {
 
     @Operation(summary = "Agregar una reserva")
     @PostMapping("/agregar")
-    public ResponseEntity<?> agregarReserva(@RequestBody ReservaDTO reservaDTO) throws BadRequestException {
+    public ResponseEntity<?> agregarReserva(@RequestBody ReservaDTO reservaDTO) throws BadRequestException , ResourceNotFoundException{
         ReservaDTO reservaAgregada = reservaService.agregarReserva(reservaDTO);
 
         return ResponseEntity.ok(reservaAgregada.getId());

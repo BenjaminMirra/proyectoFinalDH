@@ -7,7 +7,7 @@ import com.example.ProyectoIntegradorGrupo2.model.dto.reservaDTO.*;
 import java.util.List;
 
 public interface IReservaService {
-    ReservaDTO agregarReserva(ReservaDTO reservaDTO) throws BadRequestException;
+    ReservaDTO agregarReserva(ReservaDTO reservaDTO) throws BadRequestException, ResourceNotFoundException;
     ReservaDTO obtenerReservaPorId(Long id) throws ResourceNotFoundException;
     List<ReservaListarTodasDTO> listarTodas();
     ReservaActualizarDTO editar(ReservaActualizarDTO reservaActualizarDTO)throws ResourceNotFoundException,BadRequestException;

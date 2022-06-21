@@ -54,6 +54,7 @@ public class ReaccionService implements IReaccionService {
     @Override
     public ReaccionDTO agregarReaccion(ReaccionDTO reaccionDTO) throws BadRequestException {
 
+        if (reaccionDTO.getProducto_id() == null || reaccionDTO.getUsuario_id() == null) throw new BadRequestException("Una reacción debe tener un id de usuario y un id de producto asignado");
         if (!(reaccionRepository.findReaccionByProductoIdAndUsuarioId(reaccionDTO.getProducto_id(), reaccionDTO.getUsuario_id()).isEmpty())) throw new BadRequestException("El usuario ya ha agregado este producto a favoritos");
         return crearReaccion(reaccionDTO);
     }
@@ -94,7 +95,7 @@ public class ReaccionService implements IReaccionService {
 
         Optional<Reaccion> reaccion = reaccionRepository.findById(reaccionDTO.getId());
         if (reaccionDTO.getUsuario_id()==null || reaccionDTO.getProducto_id()==null)
-            throw new BadRequestException("La reacción debe tener asignado un producto y un usuario");
+            throw new BadRequestException("La reacción a editar debe tener asignado un producto y un usuario");
         if (reaccion.isEmpty()) {
             throw new ResourceNotFoundException("No se pudo encontrar la reacción para editar");
         }
