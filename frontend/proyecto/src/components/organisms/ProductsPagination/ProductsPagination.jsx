@@ -4,8 +4,8 @@ import { Products } from "../Products/Products";
 import { Pagination } from "./Pagination";
 import "./ProductsPagination.css";
 
-export const ProductsPagination = ({ data,setMapHomeData ,setShowMap,filterTitle }) => {
-    const [currentPage, setCurrentPage] = useState(1);
+export const ProductsPagination = ({ currentPage, setCurrentPage,data,setMapHomeData ,setShowMap,filterTitle }) => {
+
     const [postsPerPage, setPostsPerPage] = useState(8);
 
     // Get current posts

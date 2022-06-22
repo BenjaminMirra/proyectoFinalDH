@@ -1,17 +1,16 @@
-
-.error404-container footer{
+.error404-container footer {
     margin-top: 0px
 }
 
-.error404-primeraParte-mobile{
+.error404-primeraParte-mobile {
     display: none;
 }
 
-.error404-segundaParte .error404-perdon h1{
+.error404-segundaParte .error404-perdon h1 {
     color: black;
 }
 
-.error404{
+.error404 {
     background-color: #EBEBEE;
     display: flex;
     flex-direction: row;
@@ -22,30 +21,31 @@
     padding-bottom: 20px;
 }
 
-.error404-img img{
-    height: 450px;
-    width: 300px;
+.error404-img img {
+    width: 90%;
+    height: 90%;
 }
 
 .error404-perdon {
     margin-bottom: 6px;
 }
 
-@media (max-width:768px){
-    .error404{
+@media (max-width:768px) {
+    .error404 {
         flex-direction: column;
         justify-content: center;
     }
-    .error404-segundaParte .error404-perdon h1{
+
+    .error404-segundaParte .error404-perdon h1 {
         display: none;
     }
 
-    .error404-primeraParte-mobile{
+    .error404-primeraParte-mobile {
         display: flex;
         margin-bottom: 6px;
     }
 
-    .error404-primeraParte-mobile .error404-mobile-h1{
+    .error404-primeraParte-mobile .error404-mobile-h1 {
         color: black;
     }
 }
