@@ -35,17 +35,17 @@ export function DesktopCarousel(props){
     }, [props.images]);
     const Share=()=>{
       return( <div className='desktop-share-icons'>
-        <FacebookShareButton style={{display:'block'}} url={location} quote='Mira este producto!!!' hashtag='#booking'>
+        <FacebookShareButton style={{display:'block'}} url={`http://d275h292qzwkdh.cloudfront.net/productos/${id}`} quote='Mira este producto!!!' hashtag='#booking'>
             <FacebookIcon  size={30} logoFillIcon='white' round={true} ></FacebookIcon>
         </FacebookShareButton>
-        <WhatsappShareButton style={{display:'block'}} className='icono'  url={location} >
+        <WhatsappShareButton style={{display:'block'}} className='icono'  url={`http://d275h292qzwkdh.cloudfront.net/productos/${id}`} >
             <WhatsappIcon   size={30} logoFillIcon='white' round={true}  >
             </WhatsappIcon>
         </WhatsappShareButton>
-        <TwitterShareButton style={{display:'block'}} className='icono' url={location}>
+        <TwitterShareButton style={{display:'block'}} className='icono' url={`http://d275h292qzwkdh.cloudfront.net/productos/${id}`}>
             <TwitterIcon  size={30} logoFillIcon='white' round={true}></TwitterIcon>
         </TwitterShareButton>
-        <LinkedinShareButton style={{display:'block'}} className='icono' url={location}>
+        <LinkedinShareButton style={{display:'block'}} className='icono' url={`http://d275h292qzwkdh.cloudfront.net/productos/${id}`}>
             <LinkedinIcon  size={30} logoFillIcon='white' round={true}></LinkedinIcon>
         </LinkedinShareButton>
     </div>)
