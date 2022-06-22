@@ -92,7 +92,7 @@ export function DesktopCarousel(props){
                 />
                 <Icon
                   width="lg"
-                  icon={"bEmptyHeart"}
+                  icon={"eFavorite"}
                   onClick={toggleFavorite(id)}
                 />
               </div>

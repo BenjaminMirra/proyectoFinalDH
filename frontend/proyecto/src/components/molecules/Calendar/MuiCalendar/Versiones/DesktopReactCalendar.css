@@ -265,7 +265,7 @@
     .desktop-calendarReserve .react-datepicker__day,
     .desktop-calendarReserve .react-datepicker__time-name {
         display: inline-block;
-        width: 2.5vw;
+        width: 2.7vw !important;
         line-height: 2.3rem;
         text-align: center;
         margin: 0.166rem;
@@ -276,6 +276,7 @@
 .desktop-calendarReserve .react-datepicker {
     
     width: 52vw;
+    max-width: 830px;
     height: 360px;
     margin: 0;
     margin-left: 2%;
@@ -379,4 +380,18 @@
     transform: rotate(45deg);
     left: -7px;
     top: 10px;
+}
+@media (min-width:1710px) {
+    .desktop-calendarReserve .react-datepicker{
+        
+    }
+    .desktop-calendarReserve .react-datepicker__day-name,
+    .desktop-calendarReserve .react-datepicker__day,
+    .desktop-calendarReserve .react-datepicker__time-name {
+        display: inline-block;
+        width: 2.4vw !important;
+        line-height: 2.3rem;
+        text-align: center;
+        margin: 0.166rem;
+    }
 }
