@@ -35,48 +35,96 @@ export const CalendarDrop = ({ startDate, setStartDate, setEndDate, endDate }) =
 
     useEffect(() => {
         if (windowWidth <= 768) {
-            serCalendarDisplayed(<DateRangePicker disabledDate={beforeToday()} className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={true} format={"d MMMM yyyy"} locale={{
-                sunday: 'D',
-                monday: 'L',
-                tuesday: 'M',
-                wednesday: 'X',
-                thursday: 'J',
-                friday: 'V',
-                saturday: 'S',
-                ok: 'Aplicar',
-                today: 'Today',
-            }}
-                onOk={
-                    (value) => {
-                        setStartDate(formatYmd(value[0]).toString())
-                        setEndDate(formatYmd(value[1]).toString())
-                    }
-                } renderValue={(value) => {
-                    return format(value[0], "dd") + " de " + format(value[0], 'MMM').toLowerCase() + ". - " + format(value[1], "dd") + " de " + format(value[1], 'MMM').toLowerCase() + "."
-                }} />)
+            serCalendarDisplayed(
+              <DateRangePicker
+                disabledDate={beforeToday()}
+                className="primerCalendario"
+                size="md"
+                placeholder="Check in - Check out"
+                showOneCalendar={true}
+                format={"d MMMM yyyy"}
+                locale={{
+                  sunday: "D",
+                  monday: "L",
+                  tuesday: "M",
+                  wednesday: "X",
+                  thursday: "J",
+                  friday: "V",
+                  saturday: "S",
+                  ok: "Aplicar",
+                  today: "Today",
+                }}
+                onClean={() => localStorage.removeItem("dates")}
+                onOk={(value) => {
+                  setStartDate(formatYmd(value[0]).toString());
+                  setEndDate(formatYmd(value[1]).toString());
+                  localStorage.setItem(
+                    "dates",
+                    JSON.stringify([value[0], value[1]])
+                  );
+                }}
+                renderValue={(value) => {
+                  return (
+                    format(value[0], "dd") +
+                    " de " +
+                    format(value[0], "MMM").toLowerCase() +
+                    ". - " +
+                    format(value[1], "dd") +
+                    " de " +
+                    format(value[1], "MMM").toLowerCase() +
+                    "."
+                  );
+                }}
+              />
+            );
         }
         else if (windowWidth > 768 && windowWidth < 1366) {
-            serCalendarDisplayed(<>
-                <DateRangePicker disabledDate={beforeToday()} placement='auto' className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"d MMMM yyyy"} locale={{
-                    sunday: 'D',
-                    monday: 'L',
-                    tuesday: 'M',
-                    wednesday: 'X',
-                    thursday: 'J',
-                    friday: 'V',
-                    saturday: 'S',
-                    ok: 'Aplicar',
-                    today: 'Today',
-                }} onOk={
-                    (value) => {
-                        setStartDate(formatYmd(value[0]).toString())
-                        setEndDate(formatYmd(value[1]).toString())
-                    }
-                }
-                    renderValue={(value) => {
-                        return format(value[0], "dd") + " de " + format(value[0], 'MMM').toLowerCase() + ". - " + format(value[1], "dd") + " de " + format(value[1], 'MMM').toLowerCase() + "."
-                    }} />
-            </>)
+            serCalendarDisplayed(
+              <>
+                <DateRangePicker
+                  disabledDate={beforeToday()}
+                  placement="auto"
+                  className="primerCalendario"
+                  size="md"
+                  placeholder="Check in - Check out"
+                  showOneCalendar={false}
+                  format={"d MMMM yyyy"}
+                  locale={{
+                    sunday: "D",
+                    monday: "L",
+                    tuesday: "M",
+                    wednesday: "X",
+                    thursday: "J",
+                    friday: "V",
+                    saturday: "S",
+                    ok: "Aplicar",
+                    today: "Today",
+                  }}
+                  onClean={() => localStorage.removeItem("dates")}
+                  onOk={(value) => {
+                    setStartDate(formatYmd(value[0]).toString());
+                    setEndDate(formatYmd(value[1]).toString());
+
+                    localStorage.setItem(
+                      "dates",
+                      JSON.stringify([value[0], value[1]])
+                    );
+                  }}
+                  renderValue={(value) => {
+                    return (
+                      format(value[0], "dd") +
+                      " de " +
+                      format(value[0], "MMM").toLowerCase() +
+                      ". - " +
+                      format(value[1], "dd") +
+                      " de " +
+                      format(value[1], "MMM").toLowerCase() +
+                      "."
+                    );
+                  }}
+                />
+              </>
+            );
         } else if (windowWidth >= 1366) {
             serCalendarDisplayed(<>
                 <DateRangePicker disabledDate={beforeToday()} className="primerCalendario" size="md" placeholder="Check in - Check out" showOneCalendar={false} format={"dd MMMM y"} locale={{
@@ -90,10 +138,16 @@ export const CalendarDrop = ({ startDate, setStartDate, setEndDate, endDate }) =
                     ok: 'Aplicar',
                     today: 'Today',
                 }}
+                onClean={()=>localStorage.removeItem('dates')}
                     onOk={
                         (value) => {
+                            console.log(value[0], " fin: ", value[1]);
                             setStartDate(formatYmd(value[0]).toString())
                             setEndDate(formatYmd(value[1]).toString())
+                            localStorage.setItem(
+                              "dates",
+                              JSON.stringify([value[0].toString(), value[1].toString()])
+                            );
                         }
                     }
                     renderValue={(value) => {

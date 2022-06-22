@@ -39,9 +39,6 @@ export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
                     .then((response) => {
                         setFilterProducts(response.data)
                     })
-                    .catch(function (error) {
-                        console.log(error)
-                    });
                 scroll()
 
             } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Buenos Aires') {
@@ -60,9 +57,6 @@ export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
                     .then((response) => {
                         setFilterProducts(response.data)
                     })
-                    .catch(function (error) {
-                        console.log(error)
-                    });
 
                 scroll()
 
@@ -82,9 +76,6 @@ export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
                     .then((response) => {
                         setFilterProducts(response.data)
                     })
-                    .catch(function (error) {
-                        console.log(error)
-                    });
                 scroll()
 
             } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Córdoba') {
@@ -103,9 +94,6 @@ export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
                     .then((response) => {
                         setFilterProducts(response.data)
                     })
-                    .catch(function (error) {
-                        console.log(error)
-                    });
                 scroll()
 
             } else if (lugarInput === 'San Carlos de Bariloche') {

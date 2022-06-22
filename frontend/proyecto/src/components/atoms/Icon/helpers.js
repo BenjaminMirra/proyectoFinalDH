@@ -65,7 +65,6 @@ import wEmptyHeart from "../../utils/icons/wEmptyHeart.svg";
 import fFavorite from "../../utils/icons/fFavorite.png";
 import eFavorite from "../../utils/icons/eFavorite.png";
 
-
 const IconsList = {
   user: user,
   calendar: calendar,

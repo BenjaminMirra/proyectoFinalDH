@@ -64,11 +64,12 @@ export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle}) =
       axios.get(`${urlAPI}productos/todos`).then(res=>setFilterProducts(res.data))
       setFilterTitle('Recomendaciones')
       // navigate("/")
-      console.log(window.innerWidth);
+      //console.log(window.innerWidth);
       if (window.innerWidth<=768) {
         filterTitle.scrollIntoView({behavior: 'smooth'})
       }
       else{
+        console.log('entro');
         window.scrollTo({left:0,top:470,behavior:'smooth'})
       }
      
