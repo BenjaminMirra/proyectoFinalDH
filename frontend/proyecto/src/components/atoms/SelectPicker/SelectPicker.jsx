@@ -38,7 +38,7 @@ export const SelectPicker = ({setSelectValue}) => {
         <option className="options">21:00 PM</option>
         <option className="options">22:00 PM</option>
         <option className="options">23:00 PM</option>
-        <option className="options">24:00 PM</option>
+        <option className="options">00:00 PM</option>
       </select>
     </div>
   );
