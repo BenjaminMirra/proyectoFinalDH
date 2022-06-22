@@ -21,9 +21,14 @@
     padding-bottom: 20px;
 }
 
+.error404-img {
+    width: 100%;
+    height: 100%;
+}
+
 .error404-img img {
-    width: 90%;
-    height: 90%;
+    width: 100%;
+    height: 476px;
 }
 
 .error404-perdon {
