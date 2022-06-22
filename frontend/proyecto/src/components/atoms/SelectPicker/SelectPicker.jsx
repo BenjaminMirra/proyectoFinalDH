@@ -13,7 +13,6 @@ export const SelectPicker = ({setSelectValue}) => {
         <SpacerHorizontal height={'xxs'} />
         <select onChange={handleChange} name="" id="selectTime">
             <option disabled selected>Seleccionar hora de llegada</option>
-            <option className='options' >12:00 AM</option>
             <option className='options' >01:00 AM</option>
             <option className='options' >02:00 AM</option>
             <option className='options' >03:00 AM</option>
@@ -25,18 +24,6 @@ export const SelectPicker = ({setSelectValue}) => {
             <option className='options' >09:00 AM</option>
             <option className='options' >10:00 AM</option>
             <option className='options' >11:00 AM</option>
-            <option className='options' >12:00 PM</option>
-            <option className='options' >01:00 PM</option>
-            <option className='options' >02:00 PM</option>
-            <option className='options' >03:00 PM</option>
-            <option className='options' >04:00 PM</option>
-            <option className='options' >05:00 PM</option>
-            <option className='options' >06:00 PM</option>
-            <option className='options' >07:00 PM</option>
-            <option className='options' >08:00 PM</option>
-            <option className='options' >09:00 PM</option>
-            <option className='options' >10:00 PM</option>
-            <option className='options' >11:00 PM</option>
 
 
         </select>
