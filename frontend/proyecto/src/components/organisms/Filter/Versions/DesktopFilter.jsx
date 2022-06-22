@@ -6,8 +6,9 @@ import { Button } from '../../../atoms/Button/Button'
 import { SpacerHorizontal } from '../../../atoms/Spacer/SpacerHorizontal'
 import { CalendarDrop } from '../../../molecules/DropCalendar/CalendarDrop'
 import { urlAPI } from '../../../../global.js';
+import format from 'date-fns/format';
 
-export const DesktopFilter = ({setCurrentPage, lugarInput, setLugarInput, startDate, endDate, setFilterProducts, setStartDate, setEndDate }) => {
+export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setLugarInput, startDate, endDate, setFilterProducts, setStartDate, setEndDate }) => {
 
   const scroll = () => {
     window.scrollTo({ top: 480, behavior: 'smooth' });
@@ -26,7 +27,6 @@ export const DesktopFilter = ({setCurrentPage, lugarInput, setLugarInput, startD
 
       if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === "San Carlos de Bariloche") {
         ciudadId = 1;
-        setLugarInput('')
         setFilterProducts([])
         axios({
           method: "POST",
@@ -41,12 +41,11 @@ export const DesktopFilter = ({setCurrentPage, lugarInput, setLugarInput, startD
             setFilterProducts(response.data)
           })
 
-        
+        setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina entre las fechas " + startDate + " y " + endDate + ":");
         scroll()
 
       } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Buenos Aires') {
         ciudadId = 2;
-        setLugarInput('')
         setFilterProducts([])
         axios({
           method: "POST",
@@ -60,12 +59,11 @@ export const DesktopFilter = ({setCurrentPage, lugarInput, setLugarInput, startD
           .then((response) => {
             setFilterProducts(response.data)
           })
-        
+        setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina entre las fechas " + startDate + " y " + endDate + ":");
         scroll()
 
       } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Mendoza') {
         ciudadId = 3;
-        setLugarInput('')
         setFilterProducts([])
         axios({
           method: "POST",
@@ -79,13 +77,11 @@ export const DesktopFilter = ({setCurrentPage, lugarInput, setLugarInput, startD
           .then((response) => {
             setFilterProducts(response.data)
           })
-        
+        setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina entre las fechas " + startDate + " y " + endDate + ":");
         scroll()
 
       } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Córdoba') {
         ciudadId = 4;
-        
-        setLugarInput('')
         setFilterProducts([])
         axios({
           method: "POST",
@@ -99,42 +95,47 @@ export const DesktopFilter = ({setCurrentPage, lugarInput, setLugarInput, startD
           .then((response) => {
             setFilterProducts(response.data)
           })
-        
+        setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina entre las fechas " + startDate + " y " + endDate + ":");
+
         scroll()
 
       } else if (lugarInput === 'San Carlos de Bariloche') {
         ciudadId = 1
-        setLugarInput('')
+        setEndDate('')
+        setStartDate('')
         setFilterProducts([])
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
-        
+        setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
         scroll()
       }
       else if (lugarInput === 'Buenos Aires') {
         ciudadId = 2;
-        setLugarInput('')
+        setEndDate('')
+        setStartDate('')
         setFilterProducts([])
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
-        
+        setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
         scroll()
       }
       else if (lugarInput === 'Mendoza') {
         ciudadId = 3;
-        setLugarInput('')
+        setEndDate('')
+        setStartDate('')
         setFilterProducts([])
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
-        
+        setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
         scroll()
-        
+
       }
       else if (lugarInput === 'Córdoba') {
         ciudadId = 4;
-        setLugarInput('')
+        setEndDate('')
+        setStartDate('')
         setFilterProducts([])
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
-        
+        setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
         scroll()
-        
+
       }
       else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true) {
         axios({
@@ -148,14 +149,15 @@ export const DesktopFilter = ({setCurrentPage, lugarInput, setLugarInput, startD
           .then((response) => {
             setFilterProducts(response.data)
           })
+        setFilterTitle("Disponibles entre " + startDate + " y " + endDate + ":")
         scroll()
 
-      }else{
+      } else {
         axios.get(`${urlAPI}productos/todos`).then(data => {
           setFilterProducts(data.data)
         })
         scroll()
-        
+
       }
     } catch (e) {
       setLugarInput('')

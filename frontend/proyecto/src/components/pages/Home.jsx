@@ -40,7 +40,7 @@ export const Home = () => {
             <Header firstname={undefined} lastname={undefined}/>
         <div className='contenedor-pagina' >
         {showMap?<MapHome setShowMap={setShowMap} lat={mapHomeData.lat} lng={mapHomeData.lng} />:<></>}
-        <Filter setCurrentPage={setCurrentPage}  setFilterProducts={setFilterProducts} />
+        <Filter setFilterTitle={setFilterTitle} setCurrentPage={setCurrentPage}  setFilterProducts={setFilterProducts} />
         
         <CategoriesDesktop setFilterTitle={setFilterTitle} products={productsData} setFilterProducts={setFilterProducts} ></CategoriesDesktop>
         <ProductsPagination currentPage={currentPage} setCurrentPage={setCurrentPage}  filterTitle={filterTitle} setShowMap={setShowMap} setMapHomeData={setMapHomeData} data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></ProductsPagination>

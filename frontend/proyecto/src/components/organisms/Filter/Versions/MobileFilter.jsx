@@ -7,10 +7,11 @@ import { SpacerHorizontal } from '../../../atoms/Spacer/SpacerHorizontal'
 import { CalendarDrop } from '../../../molecules/DropCalendar/CalendarDrop'
 import { urlAPI } from '../../../../global.js';
 
-export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, setFilterProducts, setStartDate, setEndDate }) => {
+export const MobileFilter = ({ setCurrentPage, setFilterTitle, lugarInput, setLugarInput, startDate, endDate, setFilterProducts, setStartDate, setEndDate }) => {
 
     const scroll = () => {
         window.scrollTo({ top: 1580, behavior: 'smooth' })
+        setCurrentPage(1);
     };
 
 
@@ -39,6 +40,7 @@ export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
                     .then((response) => {
                         setFilterProducts(response.data)
                     })
+                    setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina entre las fechas " + startDate + " y " + endDate + ":");
                 scroll()
 
             } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Buenos Aires') {
@@ -57,7 +59,7 @@ export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
                     .then((response) => {
                         setFilterProducts(response.data)
                     })
-
+                    setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina entre las fechas " + startDate + " y " + endDate + ":");
                 scroll()
 
             } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Mendoza') {
@@ -76,6 +78,7 @@ export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
                     .then((response) => {
                         setFilterProducts(response.data)
                     })
+                    setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina entre las fechas " + startDate + " y " + endDate + ":");
                 scroll()
 
             } else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true && lugarInput === 'Córdoba') {
@@ -94,6 +97,7 @@ export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
                     .then((response) => {
                         setFilterProducts(response.data)
                     })
+                    setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina entre las fechas " + startDate + " y " + endDate + ":");
                 scroll()
 
             } else if (lugarInput === 'San Carlos de Bariloche') {
@@ -101,6 +105,7 @@ export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
                 setLugarInput('')
                 setFilterProducts([])
                 axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
+                setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
                 scroll()
             }
             else if (lugarInput === 'Buenos Aires') {
@@ -108,6 +113,7 @@ export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
                 setLugarInput('')
                 setFilterProducts([])
                 axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
+                setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
                 scroll()
             }
             else if (lugarInput === 'Mendoza') {
@@ -115,6 +121,7 @@ export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
                 setLugarInput('')
                 setFilterProducts([])
                 axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
+                setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
                 scroll()
             }
             else if (lugarInput === 'Córdoba') {
@@ -122,6 +129,7 @@ export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
                 setLugarInput('')
                 setFilterProducts([])
                 axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
+                setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
                 scroll()
             }
             else if (startDate.startsWith("20") === true && endDate.startsWith("20") === true ){
@@ -136,6 +144,7 @@ export const MobileFilter = ({ lugarInput, setLugarInput, startDate, endDate, se
                     .then((response) => {
                         setFilterProducts(response.data)
                     })
+                    setFilterTitle("Disponibles entre " + startDate + " y " + endDate + ":")
                 scroll()
             }
         } catch (e) {
