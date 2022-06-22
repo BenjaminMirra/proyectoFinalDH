@@ -22,12 +22,15 @@ export const Home = () => {
     const [mapHomeData,setMapHomeData]=useState({})
     const [showMap,setShowMap]=useState(false)
     const [filterTitle,setFilterTitle]=useState('Recomendaciones')
+
+    const [currentPage, setCurrentPage] = useState(1);
+
+    
     useEffect(() => {
         
             axios.get(`${urlAPI}productos/todos`).then(data=>setProductsData(data.data)) 
-        
-           
-    }, [filterProducts]);
+         
+    }, [filterProducts,currentPage]);
     
     
     
@@ -37,10 +40,10 @@ export const Home = () => {
             <Header firstname={undefined} lastname={undefined}/>
         <div className='contenedor-pagina' >
         {showMap?<MapHome setShowMap={setShowMap} lat={mapHomeData.lat} lng={mapHomeData.lng} />:<></>}
-        <Filter setFilterProducts={setFilterProducts} />
+        <Filter setCurrentPage={setCurrentPage}  setFilterProducts={setFilterProducts} />
         
         <CategoriesDesktop setFilterTitle={setFilterTitle} products={productsData} setFilterProducts={setFilterProducts} ></CategoriesDesktop>
-        <ProductsPagination filterTitle={filterTitle} setShowMap={setShowMap} setMapHomeData={setMapHomeData} data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></ProductsPagination>
+        <ProductsPagination currentPage={currentPage} setCurrentPage={setCurrentPage}  filterTitle={filterTitle} setShowMap={setShowMap} setMapHomeData={setMapHomeData} data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></ProductsPagination>
         <Link to={'/mapa'}>
         <div className='show-mapa'>
             <div className='show-mapa-container' >
