@@ -149,7 +149,9 @@ export const CardProduct = ({
               {category}
             </Heading>
             <div className="product-cat-cat">
-              {stars < 2 ? (
+              {
+              stars<1?'':
+              stars < 2 ? (
                 <>
                   <Icon icon="star" />
                   <Icon icon="emptyStar" />
@@ -206,12 +208,13 @@ export const CardProduct = ({
           <div className="product-rating">
             <div className="product-rating-score">
               <Paragraph size="md" variant="secondary">
-                {stars}
+                {stars<1?'-':stars}
               </Paragraph>
             </div>
             <div className="product-rating-score-text">
               <Paragraph size="md" variant="secondary">
-                {stars < 2
+                {stars<1?'Sin puntaje':
+                stars < 2
                   ? "Muy Malo"
                   : stars < 4
                   ? "Malo"

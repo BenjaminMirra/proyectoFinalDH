@@ -50,6 +50,10 @@ export const CalendarDrop = ({ startDate, setStartDate, setEndDate, endDate }) =
                     (value) => {
                         setStartDate(formatYmd(value[0]).toString())
                         setEndDate(formatYmd(value[1]).toString())
+                        localStorage.setItem(
+                          "dates",
+                          JSON.stringify([value[0], value[1]])
+                        );
                     }
                 } renderValue={(value) => {
                     return format(value[0], "dd") + " de " + format(value[0], 'MMM').toLowerCase() + ". - " + format(value[1], "dd") + " de " + format(value[1], 'MMM').toLowerCase() + "."
@@ -71,6 +75,8 @@ export const CalendarDrop = ({ startDate, setStartDate, setEndDate, endDate }) =
                     (value) => {
                         setStartDate(formatYmd(value[0]).toString())
                         setEndDate(formatYmd(value[1]).toString())
+                        
+                        localStorage.setItem('dates',JSON.stringify([value[0],value[1]]))
                     }
                 }
                     renderValue={(value) => {
@@ -92,8 +98,13 @@ export const CalendarDrop = ({ startDate, setStartDate, setEndDate, endDate }) =
                 }}
                     onOk={
                         (value) => {
+                            console.log(value[0], " fin: ", value[1]);
                             setStartDate(formatYmd(value[0]).toString())
                             setEndDate(formatYmd(value[1]).toString())
+                            localStorage.setItem(
+                              "dates",
+                              JSON.stringify([value[0].toString(), value[1].toString()])
+                            );
                         }
                     }
                     renderValue={(value) => {

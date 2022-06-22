@@ -87,6 +87,7 @@ export const RegisterForm = () => {
                 setButtonValue({ disabled: false, value: "Crear Cuenta" });
                 return window.location.pathname='/'
             }).catch(err=>{
+                setButtonValue({ disabled: false, value: "Crear Cuenta" });
                 setErrorMessage(true)
                 return setTimeout(()=>setErrorMessage(false),3000)
             });
