@@ -108,7 +108,7 @@ export const TabletReserveDetail = ({ product, category, location, setFailReserv
             <div className='reserveDetail-stars'>
               <Icon icon={'star'} /><Icon icon={'star'} /><Icon icon={'star'} /><Icon icon={'star'} /><Icon icon={'star'} />
             </div>
-            <SpacerHorizontal height={'xs'} />
+            <SpacerHorizontal height={'xxs'} />
             <div className='reserveDetail-location'>
               <Icon icon='location' width={'xs'} />
               <Paragraph> {location} </Paragraph>

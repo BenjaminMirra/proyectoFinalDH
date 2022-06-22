@@ -135,7 +135,7 @@ export const CardProduct = ({
           </Link>
           <div className="fav">
             <Icon
-              icon={liked ? "fFavorite" : "eFavorite"}
+              icon={liked ? "favorite" : "bEmptyHeart"}
               width="lg"
               height="sm"
               onClick={() => handleFavorite(id)}

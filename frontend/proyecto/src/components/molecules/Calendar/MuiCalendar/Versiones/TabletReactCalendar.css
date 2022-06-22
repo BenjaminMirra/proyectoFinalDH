@@ -271,8 +271,9 @@
 .tablet-calendarReserve .react-datepicker {
     margin-top: 40px;
     width: 90%;
+    max-width: 1060px;
     margin: auto;
-    height: 360px;
+    height: 340px;
     margin: 0;
     margin-left: 5%;
 }
@@ -296,7 +297,7 @@
 }
 .tablet-start-booking-container button{
     width: 100%;
-    margin-top: 30px;
+    margin-top: 15px;
 }
 .tablet-start-booking-container h4{
     margin-bottom: 10px;
@@ -334,4 +335,11 @@
     border-radius: 0px !important;
     box-shadow: none !important;
     background-color: none !important;
+}
+
+  .tablet-calendarReservetablet-container .react-datepicker__day-name,
+.tablet-calendarReservetablet-container .react-datepicker__day,
+.tablet-calendarReservetablet-container .react-datepicker__time-name {
+    width: 4.8vw !important;
+    max-width: 64px !important;
 }

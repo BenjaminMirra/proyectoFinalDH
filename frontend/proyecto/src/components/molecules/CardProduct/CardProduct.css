@@ -59,7 +59,7 @@
   transition: .5s;
 }
 .fav:hover{
-    background-color: var(--color-fourth);
+    background-color: var(--color-primary);
 }
 
 .cat-cat {

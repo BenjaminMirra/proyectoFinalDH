@@ -36,7 +36,7 @@
     display: flex;
     align-items: center;
     /* margin-right: 15px; */
-    width: 500px;
+    
     justify-content: space-between;
     
 }
@@ -74,4 +74,5 @@
 .avatar-name{
     display: flex;
     align-items: center;
+    margin-right: 18px;
 }

@@ -21,7 +21,7 @@ export const MainReserve = ({setFailReserve}) => {
             axios.get(`${urlAPI}productos/${id}`).then(data => {
             setCategoria(data.data.categoria_id == 1 ? 'Hoteles' : data.data.categoria_id == 2 ? 'Hosteles' : data.data.categoria_id == 3 ? 'Departamentos' : 'Bed & Breakfast')
             setProductData(data.data)
-            setLocationData(data.data.ciudad_id==1?'San Carlos de Bariloche, Río Negro, Argentina':data.data.ciudad_id==2?'Buenos Aires, Ciudad Autónoma de Buenos Aires, Argentina':data.data.ciudad_id==3?'Mendoza, Mendoza, Argentina':'Córdoba, Córdoba, Argentina')
+            setLocationData(data.data.ciudad_id==1?'San Carlos de Bariloche, Argentina':data.data.ciudad_id==2?'Buenos Aires, Argentina':data.data.ciudad_id==3?'Mendoza, Argentina':'Córdoba, Argentina')
         })
             
            
@@ -49,7 +49,7 @@ export const MainReserve = ({setFailReserve}) => {
     }, [windowWidth]);
 
     useEffect(() => {
-        if(windowWidth < 768){
+        if(windowWidth <= 800){
             setReserveDisplayed(<><ReserveMobile setSubmitData={setSubmitData} submitData={submitData} setFailReserve={setFailReserve} reservedDays={reservedDays} reservedDates={getDate} setReservedDays={setReservedDays} productData={productData} categoria={categoria} locationData={locationData} /></>)
         }
         else if(windowWidth<=1365){
