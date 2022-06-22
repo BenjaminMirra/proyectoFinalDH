@@ -84,9 +84,15 @@ export const ReactCalendar = (props) => {
     
     // console.log(reservedDatesL[0]&&Date.parse(reservedDatesL[0].fechaInicio).toString('yyyy/mm/dd'));
     return (
-        // 
-        <>
-            {calendarDisplayed}
-        </>
-    )
+      //
+      <div className="desktop-reserveCalendar">
+        {/* <Heading title="h2" variant={"primary"} type="lg">
+          Seleccioná tu fecha de reserva
+        </Heading> */}
+        {/* <SpacerHorizontal height={"md"} /> */}
+        <div className="desktop-reserveCalendar-container">
+          <div className="desktop-reserveCalendar-calendar">{calendarDisplayed}</div>
+        </div>
+      </div>
+    );
 }

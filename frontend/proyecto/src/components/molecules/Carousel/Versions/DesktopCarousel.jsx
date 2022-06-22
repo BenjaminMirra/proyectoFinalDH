@@ -31,7 +31,7 @@ export function DesktopCarousel(props){
           if (props.images) {
             setLoad(false)
           }
-          },1500)
+          },2000)
     }, [props.images]);
     const Share=()=>{
       return( <div className='desktop-share-icons'>
