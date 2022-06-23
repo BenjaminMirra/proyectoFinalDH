@@ -136,10 +136,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
                setButtonValue({
                  disabled: false,
                  value: "Iniciar sesión",
-               }).catch(error=>setButtonValue({
-                disabled: false,
-                value: "Iniciar sesión",
-              }));
+               });
               return (window.location.pathname = `/productos/${lastProduct}`);
             });
           }
