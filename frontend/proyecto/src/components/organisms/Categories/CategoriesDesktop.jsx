@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { urlAPI } from '../../../global.js';
 
 
-export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle}) => {
+export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle,setCurrentPage}) => {
   const [categoriesData,setCategoriesData]=useState({})
   const [mockUpFixed,setMockUpFixed]=useState(true)
   const [mockUpDinamic,setMockUpDinamic]=useState(true)
@@ -60,7 +60,8 @@ export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle}) =
   const navigate=useNavigate()
   const handleCategoryProducts=(id,title)=>{
     const filterTitle=document.getElementById('filterTitle')
-    if (id===prevId) {
+    if (id===prevId) { 
+      setCurrentPage(1)
       axios.get(`${urlAPI}productos/todos`).then(res=>setFilterProducts(res.data))
       setFilterTitle('Recomendaciones')
       // navigate("/")
@@ -77,6 +78,7 @@ export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle}) =
     }
     
     else{
+      setCurrentPage(1);
        axios.get(`${urlAPI}productos/porCategoria/${id}`).then(data=>setFilterProducts(data.data))
        setFilterTitle(title)
        if (window.innerWidth<=768) {
