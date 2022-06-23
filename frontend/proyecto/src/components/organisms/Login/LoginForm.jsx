@@ -89,6 +89,10 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
         .then((response) => {
           // console.log(response.status);
           if (response.status == 401) {
+            setButtonValue({
+              disabled: false,
+              value: "Iniciar sesión",
+            });
             console.log("entro");
             setLogError(true);
             setTimeout(() => setLogError(false), 5000);
