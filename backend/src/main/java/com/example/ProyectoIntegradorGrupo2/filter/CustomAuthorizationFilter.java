@@ -23,6 +23,7 @@ import java.util.Map;
 
 import static java.util.Arrays.stream;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
@@ -52,6 +53,8 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
                 } catch (Exception ex){
                     response.setHeader("error", ex.getMessage());
                     //response.sendError(FORBIDDEN.value());
+                    response.setStatus(400);
+                    //response.sendError(BAD_REQUEST.value());
                     Map<String, String> errors = new HashMap<>();
                     errors.put("error_message", ex.getMessage());
                     response.setContentType(APPLICATION_JSON_VALUE);

@@ -6,11 +6,12 @@ import { registerLocale, setDefaultLocale } from "react-datepicker";
 import es from 'date-fns/locale/es';
 import { Button } from '../../../../atoms/Button/Button';
 import { Heading } from '../../../../atoms/Heading/Heading';
-import { Link,useNavigate } from 'react-router-dom';
+import { Link,useNavigate, useParams } from 'react-router-dom';
 import './TabletReactCalendar.css'
 export const TabletReactCalendar = (props) => {
     const navigation=useNavigate()
     registerLocale('es', es)
+    const {id}=useParams()
     const [dateRange, setDateRange] = useState([null, null]);
     const [startDate, endDate] = dateRange;
     const [arrayDaysReserve, setArrayDaysReserve] = useState([]);
@@ -57,13 +58,14 @@ export const TabletReactCalendar = (props) => {
         
     }, [startDate, endDate])
         const handleStartBooking=()=>{
-             localStorage.setItem("dates", JSON.stringify(dateRange));
-           if (localStorage.getItem("userData")) {
-             navigation("reserva");
-           } else {
-             props.setFailReserve(true);
-             navigation("/login");
-           }
+            localStorage.setItem("dates", JSON.stringify(dateRange));
+            if (localStorage.getItem("userData")) {
+              navigation("reserva");
+            } else {
+              localStorage.setItem("lastProduct", JSON.stringify(id));
+              props.setFailReserve(true);
+              navigation("/login");
+            }
        
         
         

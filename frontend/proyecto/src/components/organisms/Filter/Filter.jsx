@@ -3,12 +3,13 @@ import { DesktopFilter } from './Versions/DesktopFilter'
 import { TabletFilter } from './Versions/TabletFilter'
 import { MobileFilter } from './Versions/MobileFilter'
 
-export const Filter = ({setFilterProducts}) => {
+export const Filter = ({setCurrentPage,setFilterProducts}) => {
     const [lugarInput,setLugarInput]=useState('')
     const [startDate,setStartDate] = useState('')
     const [endDate, setEndDate] =  useState('')
     const [filterDisplayed,setFilterDisplayed]=useState('')
     const [windowWidth,setWindowWidth]=useState(window.innerWidth);
+    
 
     useEffect(() => {
     function handleResize() {
@@ -26,10 +27,10 @@ export const Filter = ({setFilterProducts}) => {
             setFilterDisplayed(<TabletFilter setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput}  startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />)
         }
         else if(windowWidth>=1366){
-            setFilterDisplayed(<DesktopFilter setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput}  startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />)
+            setFilterDisplayed(<DesktopFilter setCurrentPage={setCurrentPage}  setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput}  startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />)
         }
         
-    },[windowWidth,lugarInput,startDate,endDate, setEndDate, setStartDate,setFilterProducts]);
+    },[windowWidth,lugarInput,startDate,endDate, setEndDate, setStartDate,setFilterProducts,setCurrentPage]);
 
 
 

@@ -12,8 +12,8 @@ export const Header = ({}) => {
        
 
     useEffect(() => {
-        console.log("Toolbar hi from useEffect")
-        console.log(JSON.parse(localStorage.getItem('userData')));
+        //console.log("Toolbar hi from useEffect")
+        //console.log(JSON.parse(localStorage.getItem('userData')));
         setUserDataLocalStorage(JSON.parse(localStorage.getItem('userData'))); 
         if (JSON.parse(localStorage.getItem('userData'))!==null) {
                     setUserInfo({firstname:JSON.parse(localStorage.getItem('userData')).nombre,lastname:JSON.parse(localStorage.getItem('userData')).apellido})
@@ -23,8 +23,8 @@ export const Header = ({}) => {
     }, [location.pathname]);
 
     function storageEventHandler() {
-        console.log("hi from storageEventHandler")
-        console.log(JSON.parse(localStorage.getItem('userData')));
+        //console.log("hi from storageEventHandler")
+        //console.log(JSON.parse(localStorage.getItem('userData')));
        setUserDataLocalStorage(JSON.parse(localStorage.getItem('userData')));  
     }
 

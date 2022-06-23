@@ -10,7 +10,7 @@ const Select = ({ options,size, placeholder }) => {
 
   return (
     <div className='dr'>
-      <select className={SelectClassNames} size={size} placeholder={placeholder}>
+      <select required className={SelectClassNames} size={size} placeholder={placeholder}>
         {options.map((item, index) => <option value={index} key={index++}>{item}</option>)}
       </select>
     </div>

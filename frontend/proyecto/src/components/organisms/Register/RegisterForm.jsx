@@ -36,7 +36,10 @@ export const RegisterForm = () => {
     },[windowWidth]);
 
 
-
+    const [buttonValue, setButtonValue] = useState({
+      disabled: false,
+      value: "Crear cuenta",
+    });
     const [errorMessage,setErrorMessage]=useState(false)
     const [formValues,setFormValues]=useState({})
     const handleChange=()=>(event)=>{
@@ -63,6 +66,7 @@ export const RegisterForm = () => {
         e.preventDefault()
         
         if(firstValidation('firstname','lastname','email','password','repassword')){
+            setButtonValue({disabled: true,value: "Creando cuenta...",});
             const data={
                         nombre: `${formValues.firstname}`,
                         apellido: `${formValues.lastname}`,
@@ -71,7 +75,7 @@ export const RegisterForm = () => {
                         ciudad:'Buenos Aires',
                         nombre_rol:'ROLE_USER',
             }
-            console.log(data);
+            //console.log(data);
           axios({
                 method: 'POST',
                 url: `${urlAPI}usuarios/agregar`,
@@ -80,8 +84,10 @@ export const RegisterForm = () => {
             }).then(res=>{
                 localStorage.setItem('jwt',JSON.stringify(res.data.token_acceso_registro))
                 localStorage.setItem('userData',JSON.stringify({nombre:formValues.firstname,apellido:formValues.lastname,email:formValues.email,id:res.data.id}))
-                return navigate('/')
+                setButtonValue({ disabled: false, value: "Crear Cuenta" });
+                return window.location.pathname='/'
             }).catch(err=>{
+                setButtonValue({ disabled: false, value: "Crear Cuenta" });
                 setErrorMessage(true)
                 return setTimeout(()=>setErrorMessage(false),3000)
             });
@@ -212,7 +218,7 @@ export const RegisterForm = () => {
                 {errors.repassword&&<Paragraph variant='error' size='sm' > Las contraseñas no coinciden</Paragraph>}
             </div>
             
-                <Button onClick={handleSubmit} size={medidas.buttonWidth} type='submit' variant={true} label='Crear cuenta' ></Button>
+                <Button disabled={buttonValue.disabled} onClick={handleSubmit} size={medidas.buttonWidth} type='submit' variant={true} label={buttonValue.value} ></Button>
             
                 
             </form>

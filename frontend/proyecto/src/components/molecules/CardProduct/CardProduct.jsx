@@ -60,7 +60,9 @@ export const CardProduct = ({
           favorito: true,
         },
       })
-        .then((res) => setLiked(true))
+        .then((res) =>{
+          //console.log('Se guardo el producto '+productId);
+          return  setLiked(true);} )
         .catch((err) => console.log(err));
     }
     else{
@@ -72,6 +74,7 @@ export const CardProduct = ({
           
         })
           .then((res) =>{
+            console.log('Se elimino el producto '+ productId);
               if (localStorage.getItem("userData")) {
                 
                 const id = JSON.parse(localStorage.getItem("userData")).id;
@@ -89,7 +92,6 @@ export const CardProduct = ({
                 );
               }
             } )
-          .catch((err) => console.log(err));
     }
       
   } 
@@ -111,7 +113,7 @@ export const CardProduct = ({
           // console.log(avgScore.toFixed(1));
           setStars(avgScore.toFixed(1)*2)
 
-        }).catch(err=>console.log(err))
+        })
     }, []);
     const handleHomeMap=(latitud,longitud)=>{  
       setMapHomeData({lat:latitud,lng:longitud})
@@ -119,9 +121,7 @@ export const CardProduct = ({
     }
     useEffect(() => {
       setLiked(false);
-        console.log(likedProducts);
         if(likedProducts.includes(id)){
-          console.log('ESTE ID: '+id+ " ESTA EN LOS FAVORITOS: "+ likedProducts);
           setLiked(true)
         }
       
@@ -149,7 +149,9 @@ export const CardProduct = ({
               {category}
             </Heading>
             <div className="product-cat-cat">
-              {stars < 2 ? (
+              {
+              stars<1?'':
+              stars < 2 ? (
                 <>
                   <Icon icon="star" />
                   <Icon icon="emptyStar" />
@@ -206,12 +208,13 @@ export const CardProduct = ({
           <div className="product-rating">
             <div className="product-rating-score">
               <Paragraph size="md" variant="secondary">
-                {stars}
+                {stars<1?'-':stars}
               </Paragraph>
             </div>
             <div className="product-rating-score-text">
               <Paragraph size="md" variant="secondary">
-                {stars < 2
+                {stars<1?'Sin puntaje':
+                stars < 2
                   ? "Muy Malo"
                   : stars < 4
                   ? "Malo"
@@ -247,13 +250,13 @@ export const CardProduct = ({
           <div className="product-description">
             <Paragraph size="md" variant="secondary">
               {descripcion}
-              <Link style={{ textDecoration: "none" }} to={`productos/${id}`}>
+              <Link style={{ textDecoration: "none" }} to={`/productos/${id}`}>
                 <Span size="md" variant="primary">
                   Más...
                 </Span>
               </Link>
             </Paragraph>
-            <Link style={{ width: "100%" }} to={`productos/${id}`}>
+            <Link style={{ width: "100%" }} to={`/productos/${id}`}>
               <Button
                 size="sm"
                 label="Ver Detalle"

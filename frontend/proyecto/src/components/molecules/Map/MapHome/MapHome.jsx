@@ -12,7 +12,7 @@ export const MapHome = ({lat,lng,setShowMap}) => {
         
         if (lat) {
            setData({longitud:lng,latitud:lat})
-           console.log(data);
+          //console.log(data);
            setTimeout(()=>setFixedMockup(false),1500)
         }
         

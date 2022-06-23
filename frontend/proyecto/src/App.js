@@ -9,6 +9,7 @@ import {Reserve} from './components/pages/Reserve'
 import { SuccessBooking } from "./components/pages/SuccessBooking";
 import {Favorite} from './components/pages/Favorite'
 import {ProductsPagination} from './components/organisms/ProductsPagination/ProductsPagination';
+import { Error404 } from './components/pages/Error404';
 function App() {
   const [failReserve,setFailReserve] = useState(false)
   return (
@@ -39,6 +40,7 @@ function App() {
           <Route path="/reserva-exitosa" element={<SuccessBooking />}></Route>
           <Route path="/favoritos" element={<Favorite />}></Route>
           <Route path="/productsPagination" element={<ProductsPagination/>}></Route>
+          <Route path="*" element={<Error404/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>
