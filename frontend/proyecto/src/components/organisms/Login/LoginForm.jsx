@@ -110,6 +110,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
                 email: `${formValues.email}`,
               },
             }).then((data) => {
+               
               console.log(data);
               localStorage.setItem(
                 "userData",
@@ -128,6 +129,13 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
               const lastProduct = JSON.parse(
                 localStorage.getItem("lastProduct")
               );
+               setButtonValue({
+                 disabled: false,
+                 value: "Iniciar sesión",
+               }).catch(error=>setButtonValue({
+                disabled: false,
+                value: "Iniciar sesión",
+              }));
               return (window.location.pathname = `/productos/${lastProduct}`);
             });
           }
