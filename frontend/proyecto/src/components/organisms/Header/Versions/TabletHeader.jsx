@@ -11,6 +11,9 @@ import "./TabletHeader.css";
 import { Avatar } from "../../../atoms/Avatar/Avatar";
 
 export const TabletHeader = ({ firstname, lastname, handleUserInfo }) => {
+
+  const userId = JSON.parse(localStorage.getItem('userData')).id;
+
   return (
     <header className="header-tablet">
       <div className="header-tablet-content">
@@ -23,7 +26,7 @@ export const TabletHeader = ({ firstname, lastname, handleUserInfo }) => {
             <div className="tablet-user-info">
               <div className="header-links">
                 
-                <Link to={"/favoritos"}>
+                <Link to={`/${userId}/misreservas`}>
                   <Paragraph size={"xmd"} variant={"secondary"}>
                     Mis reservas
                   </Paragraph>
@@ -36,7 +39,13 @@ export const TabletHeader = ({ firstname, lastname, handleUserInfo }) => {
                   </Paragraph>
                 </Link>
               </div>
-
+              <div className="header-links header-links-administracion">
+                  <Link to={"/administracion"}>
+                    <Paragraph size={"xmd"} variant={"secondary"}>
+                      Administración
+                    </Paragraph>
+                  </Link>
+                </div>
               <div className="avatar-name">
                 <Avatar
                   firstname={firstname}
