@@ -155,7 +155,19 @@ export const RegisterForm = () => {
                 },3500)
         }
         
-        return result;
+        else if (
+          formValues[password].length !==
+          formValues[password] !== formValues[repassword]
+        ){
+            result = false;
+            handleErrorsTrue(repassword);
+            // handleErrorsTrue(password);
+            setTimeout(function () {
+              handleErrorsFalse(repassword);
+              handleErrorsFalse(password);
+            }, 3500);
+        }
+          return result;
     }
     
     
