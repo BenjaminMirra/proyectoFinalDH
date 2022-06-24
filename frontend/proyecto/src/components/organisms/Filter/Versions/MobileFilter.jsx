@@ -145,8 +145,17 @@ export const MobileFilter = ({ setCurrentPage, setFilterTitle, lugarInput, setLu
                         setFilterProducts(response.data)
                     })
                     setFilterTitle("Disponibles entre " + startDate + " y " + endDate + ":")
+                
+                    scroll()
+                
+            } else {
+                axios.get(`${urlAPI}productos/todos`).then(data => {
+                  setFilterProducts(data.data)
+                })
+                setFilterTitle("Recomendaciones")
                 scroll()
-            }
+        
+              }
         } catch (e) {
             setLugarInput('')
             setEndDate('')

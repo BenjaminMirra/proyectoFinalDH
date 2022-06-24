@@ -6,7 +6,6 @@ import { Button } from '../../../atoms/Button/Button'
 import { SpacerHorizontal } from '../../../atoms/Spacer/SpacerHorizontal'
 import { CalendarDrop } from '../../../molecules/DropCalendar/CalendarDrop'
 import { urlAPI } from '../../../../global.js';
-import format from 'date-fns/format';
 
 export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setLugarInput, startDate, endDate, setFilterProducts, setStartDate, setEndDate }) => {
 
@@ -101,8 +100,7 @@ export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setL
 
       } else if (lugarInput === 'San Carlos de Bariloche') {
         ciudadId = 1
-        setEndDate('')
-        setStartDate('')
+        
         setFilterProducts([])
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
         setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
@@ -110,8 +108,7 @@ export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setL
       }
       else if (lugarInput === 'Buenos Aires') {
         ciudadId = 2;
-        setEndDate('')
-        setStartDate('')
+        
         setFilterProducts([])
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
         setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
@@ -119,8 +116,7 @@ export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setL
       }
       else if (lugarInput === 'Mendoza') {
         ciudadId = 3;
-        setEndDate('')
-        setStartDate('')
+        
         setFilterProducts([])
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
         setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
@@ -129,8 +125,7 @@ export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setL
       }
       else if (lugarInput === 'Córdoba') {
         ciudadId = 4;
-        setEndDate('')
-        setStartDate('')
+        
         setFilterProducts([])
         axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
         setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
@@ -156,6 +151,7 @@ export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setL
         axios.get(`${urlAPI}productos/todos`).then(data => {
           setFilterProducts(data.data)
         })
+        setFilterTitle("Recomendaciones")
         scroll()
 
       }
