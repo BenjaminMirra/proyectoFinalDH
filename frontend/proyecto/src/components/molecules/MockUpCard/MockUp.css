@@ -37,7 +37,7 @@
 
  
 .product-is-loading{
-  height: 250px;
+  height: 283px;
   display: flex;
   
   
@@ -78,7 +78,7 @@
   .mockUp-description{
     width: 95%;
   /* border: 1px solid green; */
-  height: 80px;
+  height: 110px;
   margin-top: 15px;
   margin-left: 10px;
   border-radius: 20px;
@@ -87,7 +87,7 @@
       width: 95%;
   /* border: 1px solid green; */
   height: 45px;
-  margin-top: 15px;
+  margin-top: 20px;
   margin-left: 10px;
   border-radius: 20px;
   }

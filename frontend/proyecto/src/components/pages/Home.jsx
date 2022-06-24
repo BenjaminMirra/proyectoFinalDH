@@ -22,7 +22,7 @@ export const Home = () => {
     const [mapHomeData,setMapHomeData]=useState({})
     const [showMap,setShowMap]=useState(false)
     const [filterTitle,setFilterTitle]=useState('Recomendaciones')
-
+    const [reRender, setReRender] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
 
     
@@ -54,12 +54,16 @@ export const Home = () => {
           />
 
           <CategoriesDesktop
+            reRender={reRender}
+            setReRender={setReRender}
             setCurrentPage={setCurrentPage}
             setFilterTitle={setFilterTitle}
             products={productsData}
             setFilterProducts={setFilterProducts}
           ></CategoriesDesktop>
           <ProductsPagination
+            reRender={reRender}
+            setReRender={setReRender}
             currentPage={currentPage}
             setCurrentPage={setCurrentPage}
             filterTitle={filterTitle}
