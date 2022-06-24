@@ -12,7 +12,12 @@ import { Avatar } from "../../../atoms/Avatar/Avatar";
 
 export const TabletHeader = ({ firstname, lastname, handleUserInfo }) => {
 
-  const userId = JSON.parse(localStorage.getItem('userData')).id;
+ const [userId, setUserId] = useState(undefined);
+ useEffect(() => {
+   if (JSON.parse(localStorage.getItem("userData"))) {
+     setUserId(JSON.parse(localStorage.getItem("userData")).id);
+   }
+ }, []);
 
   return (
     <header className="header-tablet">

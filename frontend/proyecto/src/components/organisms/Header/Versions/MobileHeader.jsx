@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState,useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Picture } from '../../../atoms/Picture/Picture'
 import { Heading } from '../../../atoms/Heading/Heading'
@@ -11,7 +11,12 @@ import classNames from 'classnames'
 import './MobileHeader.css'
 export const MobileHeader = ({ firstname, lastname, handleUserInfo }) => {
 
-  const userId = JSON.parse(localStorage.getItem('userData')).id;
+ const [userId, setUserId] = useState(undefined);
+ useEffect(() => {
+   if (JSON.parse(localStorage.getItem("userData"))) {
+     setUserId(JSON.parse(localStorage.getItem("userData")).id);
+   }
+ }, []);
 
   const [isOn, setIsOn] = useState(false)
   const toggleIsOn = () => setIsOn(!isOn)
