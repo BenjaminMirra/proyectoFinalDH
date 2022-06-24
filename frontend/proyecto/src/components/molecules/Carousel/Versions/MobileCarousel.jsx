@@ -11,6 +11,11 @@ import './MobileCarousel.css'
 import {FacebookShareButton,TwitterShareButton, WhatsappIcon, WhatsappShareButton,LinkedinIcon,LinkedinShareButton, TwitterIcon} from 'react-share'
 import { FacebookIcon } from 'react-share'
 import { MockUp } from "../../MockUpCard/MockUp";
+import {
+  LazyLoadImage,
+  LazyLoadComponent,
+} from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 export function MobileCarousel(props) {
    const images=props.images
   
@@ -60,7 +65,7 @@ export function MobileCarousel(props) {
              {share&&<Share/>}
             <Slider {...settings}>
                  {images.map((image,id)=><div className="mobileCarousel-container" key={id}>
-                     <img style={{width:'100%',height:'380px'}} src={image} alt="" />
+                     <LazyLoadImage effect="blur" width='100%' height='380px' src={image} alt="" />
                      <div className="counter-carousel">
                      <Paragraph variant="base" >{id+1}/{images.length}</Paragraph>
                      </div>

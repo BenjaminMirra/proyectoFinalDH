@@ -7,6 +7,11 @@ import { Icon } from "../../atoms/Icon/Icon";
 import { Paragraph } from "../../atoms/paragraph/Paragraph";
 import { SpacerHorizontal } from "../../atoms/Spacer/SpacerHorizontal";
 import {MockUp} from '../../molecules/MockUpCard/MockUp'
+import {
+  LazyLoadImage,
+  LazyLoadComponent,
+} from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import axios from "axios";
 import "./ReserveDetail.css";
 export const ReserveDetail = ({
@@ -143,8 +148,8 @@ export const ReserveDetail = ({
         {mockUp ? (
           <MockUp height={"100%"} width="100%" />
         ) : (
-          <img
-            style={{ width: "100%", height: "100%" }}
+          <LazyLoadImage effect="blur"
+            width="100%" height= "100%" 
             src={
               product.imagenDTOList
                 ? product.imagenDTOList[0].url_img_producto

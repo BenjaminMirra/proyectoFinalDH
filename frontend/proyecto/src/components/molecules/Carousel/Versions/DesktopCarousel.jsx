@@ -12,7 +12,11 @@ import { Paragraph } from "../../../atoms/paragraph/Paragraph";
 import './DesktopCarousel.css'
 import { MockUp } from '../../MockUpCard/MockUp'
 import { useLocation, useParams } from 'react-router-dom'
-
+import {
+  LazyLoadImage,
+  LazyLoadComponent,
+} from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 export function DesktopCarousel(props){
     // const imagesLocal=[product1,product2,product3,product4,product5]
 
@@ -29,7 +33,10 @@ export function DesktopCarousel(props){
     useEffect(() => {
         setTimeout(()=>{
           if (props.images) {
-            setLoad(false)
+            if (props.images.length>3) {
+              setLoad(false);
+            }
+            
           }
           },2000)
     }, [props.images]);
@@ -107,7 +114,7 @@ export function DesktopCarousel(props){
                 } `}
               >
                 {" "}
-                <img src={image} alt="" />{" "}
+                <LazyLoadImage effect='blur' width={'100%'} height='100%' src={image} alt="" />{" "}
               </div>
             ))}
             <div className="watch-more">
