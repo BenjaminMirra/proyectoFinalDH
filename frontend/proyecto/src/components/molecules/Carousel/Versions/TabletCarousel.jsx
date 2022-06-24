@@ -10,6 +10,11 @@ import {FacebookShareButton,TwitterShareButton, WhatsappIcon, WhatsappShareButto
 import { FacebookIcon } from 'react-share'
 import { MockUp } from "../../MockUpCard/MockUp";
 import { Paragraph } from "../../../atoms/paragraph/Paragraph";
+import {
+  LazyLoadImage,
+  LazyLoadComponent,
+} from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import './TabletCarousel.css'
 export function TabletCarousel(props) {
   const Share=()=>{
@@ -61,7 +66,7 @@ export function TabletCarousel(props) {
               {share&&<Share/>}
             <Slider  {...settings}>
                {images.map((image,id)=><div className="tablet-imagenes" key={id}>
-                     <img src={image} alt="" />
+                     <LazyLoadImage effect="blur" width={'100%'} height='100%' src={image} alt="" />
                      <div className="counter-carousel">
                      <Paragraph variant="base" >{id+1}/{images.length}</Paragraph>
                      </div>

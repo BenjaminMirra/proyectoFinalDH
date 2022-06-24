@@ -7,6 +7,11 @@ import { Icon } from '../../atoms/Icon/Icon'
 import { Paragraph } from '../../atoms/paragraph/Paragraph'
 import axios from 'axios'
 import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
+import {
+  LazyLoadImage,
+  LazyLoadComponent,
+} from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import './ReserveDetail.css'
 export const MobileReserveDetail = ({product,category,location,setFailReserve,reservedDays,setSubmitData,submitData}) => {
 const navigate=useNavigate()
@@ -87,7 +92,7 @@ const navigate=useNavigate()
         </div>
         <SpacerHorizontal height={'md'} />
         <div className='reserveDetail-image-product'>
-            <img style={{width:'100%',height:'100%'}} src={product.imagenDTOList?product.imagenDTOList[0].url_img_producto:''} alt="" />
+            <LazyLoadImage effect='blur' width='100%' height='100%' src={product.imagenDTOList?product.imagenDTOList[0].url_img_producto:''} alt="" />
         </div>
         <SpacerHorizontal height={'sm'} />
         <div className='reserveDetail-container' >

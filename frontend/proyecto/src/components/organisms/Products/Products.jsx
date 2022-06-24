@@ -6,6 +6,7 @@ import { CardProduct } from "../../molecules/CardProduct/CardProduct";
 import { Link } from 'react-router-dom';
 import axios from 'axios'
 import { MockUp } from "../../molecules/MockUpCard/MockUp";
+import { MockUpProduct } from "../../molecules/MockUpCard/MockUpProduct";
 import { urlAPI } from "../../../global";
 export const Products = ({ data,setMapHomeData ,setShowMap,filterTitle}) => {
 
@@ -54,45 +55,60 @@ export const Products = ({ data,setMapHomeData ,setShowMap,filterTitle}) => {
             {filterTitle}
           </Heading>
         </div>
-        
 
-        {mockUpDinamic ||mockUp ?
+        {mockUpDinamic || mockUp ? (
           <div className="product-cards-container">
-            
-            <MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} />
-          </div> : <div className="product-cards-container">
-            
+            <MockUpProduct />
+            <MockUpProduct />
+            <MockUpProduct />
+            <MockUpProduct />
+            <MockUpProduct />
+            <MockUpProduct />
+
+            {/* <MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /> */}
+          </div>
+        ) : (
+          <div className="product-cards-container">
             {data.map((product, idx) => {
-               
-              let descriptionPreview = product.descripcion.slice(0, 130)
+              let descriptionPreview = product.descripcion.slice(0, 130);
 
               return (
-                <div key={idx}>
-
-                  <CardProduct
-                    setMapHomeData={setMapHomeData}
-                    titulo={product.titulo}
-                    url={product.imagenDTOList[0].url_img_producto}
-                    descripcion={descriptionPreview}
-                    location={product.ciudad_id==1?'San Carlos de Bariloche':product.ciudad_id==2?'Buenos Aires':product.ciudad_id==3?'Mendoza':'Córdoba'}
-                    category={product.categoria_id==1?'Hoteles':product.categoria_id==2?'Hosteles':product.categoria_id==3?'Departamentos':'Bed & Breakfast'}
-                    id={product.id}
-                    rating={product.puntaje}
-                    services={product.caracteristicasDTOList}
-                    lat={product.latitud}
-                    lng={product.longitud}
-                    setShowMap={setShowMap}
-                    likedProducts={likedProducts}
-                    setLikedProducts={setLikedProducts}
-                  />
-
-                </div>
-              )
+                <CardProduct
+                  setMapHomeData={setMapHomeData}
+                  titulo={product.titulo}
+                  url={product.imagenDTOList[0].url_img_producto}
+                  descripcion={descriptionPreview}
+                  location={
+                    product.ciudad_id == 1
+                      ? "San Carlos de Bariloche"
+                      : product.ciudad_id == 2
+                      ? "Buenos Aires"
+                      : product.ciudad_id == 3
+                      ? "Mendoza"
+                      : "Córdoba"
+                  }
+                  category={
+                    product.categoria_id == 1
+                      ? "Hoteles"
+                      : product.categoria_id == 2
+                      ? "Hosteles"
+                      : product.categoria_id == 3
+                      ? "Departamentos"
+                      : "Bed & Breakfast"
+                  }
+                  id={product.id}
+                  rating={product.puntaje}
+                  services={product.caracteristicasDTOList}
+                  lat={product.latitud}
+                  lng={product.longitud}
+                  setShowMap={setShowMap}
+                  likedProducts={likedProducts}
+                  setLikedProducts={setLikedProducts}
+                />
+              );
             })}
-          </div>}
-
-
-
+          </div>
+        )}
       </section>
     </div>
   );
