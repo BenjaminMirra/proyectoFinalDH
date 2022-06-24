@@ -11,6 +11,8 @@ import { Paragraph } from '../../../atoms/paragraph/Paragraph'
 
 export const DesktopHeader = ({firstname,lastname,handleUserInfo}) => {
    
+  const userId = JSON.parse(localStorage.getItem('userData')).id;
+
     return (
       <header className="header-desktop">
         <div className="header-desktop-content">
@@ -27,7 +29,7 @@ export const DesktopHeader = ({firstname,lastname,handleUserInfo}) => {
             <>
               <div className="tablet-user-info">
                 <div className="header-links">
-                  <Link to={"/favoritos"}>
+                  <Link to={`/${userId}/misreservas`}>
                     <Paragraph size={"xmd"} variant={"secondary"}>
                       Mis reservas
                     </Paragraph>
@@ -37,6 +39,13 @@ export const DesktopHeader = ({firstname,lastname,handleUserInfo}) => {
                   <Link to={"/favoritos"}>
                     <Paragraph size={"xmd"} variant={"secondary"}>
                       Favoritos
+                    </Paragraph>
+                  </Link>
+                </div>
+                <div className="header-links header-links-administracion">
+                  <Link to={"/administracion"}>
+                    <Paragraph size={"xmd"} variant={"secondary"}>
+                      Administración
                     </Paragraph>
                   </Link>
                 </div>

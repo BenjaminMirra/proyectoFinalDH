@@ -11,9 +11,8 @@
     margin-top: 0;
     margin-bottom: 0;
     font-family: 'Poppins';
-    
-    
 }
+
 .header-tablet-content{
     height: 100px;
     width: 95%;
@@ -41,7 +40,6 @@
     
 }
 .header-links{
-    margin: 0;
     height: 100%;
     width: 120px;
     text-align: center;
