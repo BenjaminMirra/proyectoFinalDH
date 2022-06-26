@@ -59,20 +59,15 @@ export const MobileAdministration = () => {
   })
 
   const firstValidation = () => {
-    setTimeout(() => {
       if (dataForm.descripcion === " " || dataForm.latitud === " " || dataForm.longitud === " " || dataForm.nombre === " " || dataForm.ciudad === " " || dataForm.categoria === " " || dataForm.direccion === " ") {
-        errorContainer.innerHTML = ` <p>
-      Debes completar todos los datos que tienen un " * "
-    </p>`
-        setButtonValue({ value: "Crear", disabled: false })
+        return false
       } else {
-        errorContainer.innerHTML = "";
+        return true
       }
-    }, 2000)
-
   }
 
-  const cityValidation = () =>{
+
+  const cityValidation = () => {
     if (dataForm.ciudad === "San carlos de Bariloche") {
       dataForm.ciudad = 1
     } else if (dataForm.ciudad === "Buenos Aires") {
@@ -109,29 +104,34 @@ export const MobileAdministration = () => {
     setButtonValue({ value: "Creando reserva...", disabled: true })
     setDataForm((prevData) => ({ ...prevData, ciudad: selectPlaceInfo.value }))
     setDataForm((prevData) => ({ ...prevData, categoria: selectCategoryInfo.value }))
-    firstValidation()
-
-    cityValidation()
-    categoryValidation()
-
-    const data = {
-      titulo: dataForm.nombre,
-      descripcion: dataForm.descripcion,
-      direccion: dataForm.direccion,
-      latitud: dataForm.latitud,
-      longitud: dataForm.longitud,
-      ciudad_id: dataForm.ciudad,
-      categoria_id: dataForm.categoria,
+    if (firstValidation()) {
+      cityValidation()
+      categoryValidation()
+      const data = {
+        titulo: dataForm.nombre,
+        descripcion: dataForm.descripcion,
+        direccion: dataForm.direccion,
+        latitud: dataForm.latitud,
+        longitud: dataForm.longitud,
+        ciudad_id: dataForm.ciudad,
+        categoria_id: dataForm.categoria,
+      }
+      axios({
+        method: 'POST',
+        url: `${urlAPI}productos/agregar`,
+        data: data,
+        headers: { 'Access-Control-Allow-Origin': '*/*' }
+      }).then(res => {
+        console.log(res.data)
+      })
+      errorContainer.innerHTML = `Creado`
+      setButtonValue({ value: "Creado", disabled: false })
+    } else if (!firstValidation()) {
+      errorContainer.innerHTML = ` <p>
+      Debes completar todos los datos que tienen un " * "
+    </p>`
+      setButtonValue({ value: "Crear", disabled: false })
     }
-
-    axios({
-      method: 'POST',
-      url: `${urlAPI}productos/agregar`,
-      data: data,
-      headers: { 'Access-Control-Allow-Origin': '*/*' }
-    }).then(res => {
-      console.log(res.data)
-    })
   }
 
   const addAtribute = () => {
@@ -253,7 +253,7 @@ export const MobileAdministration = () => {
             </div>
           </div>
           <div className="mobileAdministracion-add-cargarImagen">
-            <Heading title='h2'required={true} variant='primary' type='md' >
+            <Heading title='h2' required={true} variant='primary' type='md' >
               Cargar imágenes
             </Heading>
             <div className="mobileAdministracion-add-imagen">

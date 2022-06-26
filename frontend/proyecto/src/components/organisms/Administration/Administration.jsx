@@ -5,19 +5,8 @@ import { MobileAdministration } from './Versiones/MobileAdministration'
 
 export const Administration = () => {
 
-
-    const [data, setData] = useState("")
     const [reserveDisplayed, setReserveDisplayed] = useState(<DesktopAdministration />)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
-    useEffect(() => {
-        console.log("data:" + data)
-        console.log("setData: " + setData)
-        if (data) {
-            console.log(data)
-        }
-    }, [data])
-
 
     useEffect(() => {
         function handleResize() {
@@ -29,7 +18,7 @@ export const Administration = () => {
 
     useEffect(() => {
         if (windowWidth < 768) {
-            setReserveDisplayed(<MobileAdministration setData={setData} />)
+            setReserveDisplayed(<MobileAdministration/>)
         }
         else if (windowWidth <= 1365) {
             setReserveDisplayed(<DesktopAdministration />)
@@ -37,7 +26,7 @@ export const Administration = () => {
         else if (windowWidth >= 1366) {
             setReserveDisplayed(<DesktopAdministration />)
         }
-    }, [windowWidth, setData]);
+    }, [windowWidth]);
     return (
         <>
             {reserveDisplayed}
