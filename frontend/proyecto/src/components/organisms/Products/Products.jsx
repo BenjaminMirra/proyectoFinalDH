@@ -8,7 +8,7 @@ import axios from 'axios'
 import { MockUp } from "../../molecules/MockUpCard/MockUp";
 import { MockUpProduct } from "../../molecules/MockUpCard/MockUpProduct";
 import { urlAPI } from "../../../global";
-export const Products = ({ data,setMapHomeData ,setShowMap,filterTitle}) => {
+export const Products = ({ data,setMapHomeData ,setShowMap,filterTitle,reRender}) => {
 
 
   
@@ -45,12 +45,22 @@ export const Products = ({ data,setMapHomeData ,setShowMap,filterTitle}) => {
       }
 
     }, [data]);
+    useEffect(() => {
+      setMockUp(true)
+      window.scrollTo({ top: 480, behavior: "smooth" }); 
+        setTimeout(()=>setMockUp(false),1700)
 
+    }, [reRender]);
+    useEffect(() => {
+      if (!mockUpDinamic && !mockUp) {
+        window.scrollTo({ top: 480, behavior: "smooth" });
+      }
+    }, [mockUpDinamic, mockUp]);
    
   return (
     <div className="products-container">
       <section className="products-content">
-        <div className="product-title">
+        <div className="product-title" id="filterTitle">
           <Heading type="lg" title="h2" variant="primary">
             {filterTitle}
           </Heading>
@@ -58,6 +68,8 @@ export const Products = ({ data,setMapHomeData ,setShowMap,filterTitle}) => {
 
         {mockUpDinamic || mockUp ? (
           <div className="product-cards-container">
+            <MockUpProduct />
+            <MockUpProduct />
             <MockUpProduct />
             <MockUpProduct />
             <MockUpProduct />

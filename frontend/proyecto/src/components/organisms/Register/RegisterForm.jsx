@@ -156,8 +156,7 @@ export const RegisterForm = () => {
         }
         
         else if (
-          formValues[password].length !==
-          formValues[password] !== formValues[repassword]
+          formValues[password] !==formValues[repassword]
         ){
             result = false;
             handleErrorsTrue(repassword);
