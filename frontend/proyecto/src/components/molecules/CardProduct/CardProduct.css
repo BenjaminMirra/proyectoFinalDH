@@ -59,7 +59,7 @@
   transition: .5s;
 }
 .fav:hover{
-    background-color: var(--color-fourth);
+    background-color: var(--color-primary);
 }
 
 .cat-cat {
@@ -169,6 +169,7 @@
 
   .card-product-img {
     width: 100%;
+    height: 100%;
     position: relative;
   }
 
@@ -223,7 +224,7 @@
 
   .card-product-img {
     width: 100%;
-    height: 30%;
+    height: 100%;
     position: relative;
   }
 

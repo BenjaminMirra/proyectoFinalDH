@@ -89,6 +89,10 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
         .then((response) => {
           // console.log(response.status);
           if (response.status == 401) {
+            setButtonValue({
+              disabled: false,
+              value: "Iniciar sesión",
+            });
             console.log("entro");
             setLogError(true);
             setTimeout(() => setLogError(false), 5000);
@@ -110,6 +114,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
                 email: `${formValues.email}`,
               },
             }).then((data) => {
+               
               console.log(data);
               localStorage.setItem(
                 "userData",
@@ -128,6 +133,10 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
               const lastProduct = JSON.parse(
                 localStorage.getItem("lastProduct")
               );
+               setButtonValue({
+                 disabled: false,
+                 value: "Iniciar sesión",
+               });
               return (window.location.pathname = `/productos/${lastProduct}`);
             });
           }

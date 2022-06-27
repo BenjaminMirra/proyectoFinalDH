@@ -16,7 +16,7 @@ border-radius: 5px;
 .reserveCalendar-container .react-datepicker__day,
 .reserveCalendar-container .react-datepicker__time-name {
     display: inline-block;
-    width: 3.85vw;
+    width: 3.7vw;
     line-height: 2rem;
     text-align: center;
     margin: 0.166rem;
@@ -37,7 +37,7 @@ border-radius: 5px;
     .reserveCalendar-container .react-datepicker__day-name,
 .reserveCalendar-container .react-datepicker__day,
 .reserveCalendar-container .react-datepicker__time-name {
-    width: 5.3vw;
+    width: 5.1vw;
 }
 .react-datepicker__header:not(.react-datepicker__header--has-time-select){
     max-width: 100%;

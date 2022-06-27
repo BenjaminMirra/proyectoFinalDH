@@ -6,6 +6,12 @@ import { Heading } from "../../atoms/Heading/Heading";
 import { Icon } from "../../atoms/Icon/Icon";
 import { Paragraph } from "../../atoms/paragraph/Paragraph";
 import { SpacerHorizontal } from "../../atoms/Spacer/SpacerHorizontal";
+import {MockUp} from '../../molecules/MockUpCard/MockUp'
+import {
+  LazyLoadImage,
+  LazyLoadComponent,
+} from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import axios from "axios";
 import "./ReserveDetail.css";
 export const ReserveDetail = ({
@@ -19,7 +25,7 @@ export const ReserveDetail = ({
 }) => {
   const navigate = useNavigate();
   // const [submitData,setSubmitData]=useState({fechaInicioReserva:'',fechaFinReserva:'',horaEstimadaDeLlegada:'',mensajeUsuario:'',vacunadoCovid:true,usuarioId:'',productoId:''})
-
+  const [buttonValue,setButtonValue]=useState({disabled:false,value:'Confirmar reserva'})
   const { id } = useParams();
   useEffect(() => {
     if (setSubmitData) {
@@ -39,6 +45,11 @@ export const ReserveDetail = ({
   }, [reservedDays]);
 
   const [warnings, setWarnings] = useState({ server: false, data: false,range:false });
+  const [mockUp,setMockUp]=useState(true)
+
+  useEffect(() => {
+   setTimeout(()=>setMockUp(false),1500)
+  }, []);
 
   const handleSubmit = async () => {
     // console.log(JSON.stringify(submitData));
@@ -55,6 +66,7 @@ export const ReserveDetail = ({
         reservedDays.endDate &&
         submitData.horaEstimadaDeLlegada
       ) {
+        setButtonValue({ value: "Creando reserva..." ,disabled:true});
         try {
           axios({
             method: "POST",
@@ -77,6 +89,7 @@ export const ReserveDetail = ({
             console.log(res);
             if (res.status != 200) {
               setWarnings({ server: true, data: false, range: false });
+              setButtonValue({ value: "Confirmar reserva", disabled: false });
               setTimeout(
                 () => setWarnings({ server: false, data: false, range: false }),
                 5000
@@ -84,15 +97,17 @@ export const ReserveDetail = ({
             } else {
               localStorage.removeItem("lastProduct");
               localStorage.removeItem("dates");
+              setButtonValue({ value: "Confirmar reserva", disabled: false });
               navigate("/reserva-exitosa");
             }
             
           }).catch(error=>{
              setWarnings(prevValue=>{
-                if (!prevValue.data) {
+                
                     return { server: false, data: false, range: true };
-                }
+                
              });
+             setButtonValue({ value: "Confirmar reserva", disabled: false });
              setTimeout(
                () => setWarnings({ server: false, data: false, range: false }),
                5000
@@ -101,6 +116,7 @@ export const ReserveDetail = ({
           //  console.log(response);
         } catch (error) {
           setWarnings({ server: false, data: false,range:true });
+          setButtonValue({ value: "Confirmar reserva", disabled: false });
           setTimeout(() => setWarnings({ server: false, data: false,range:false }), 5000);
         }
       }
@@ -129,15 +145,19 @@ export const ReserveDetail = ({
       </div>
       <SpacerHorizontal height={"md"} />
       <div className="reserveDetail-image-product">
-        <img
-          style={{ width: "100%", height: "100%" }}
-          src={
-            product.imagenDTOList
-              ? product.imagenDTOList[0].url_img_producto
-              : ""
-          }
-          alt=""
-        />
+        {mockUp ? (
+          <MockUp height={"100%"} width="100%" />
+        ) : (
+          <LazyLoadImage effect="blur"
+            width="100%" height= "100%" 
+            src={
+              product.imagenDTOList
+                ? product.imagenDTOList[0].url_img_producto
+                : ""
+            }
+            alt=""
+          />
+        )}
       </div>
       <SpacerHorizontal height={"md"} />
       <div className="reserveDetail-container">
@@ -261,8 +281,9 @@ export const ReserveDetail = ({
       <div className="desktop-reserve-submit-button">
         <Button
           onClick={handleSubmit}
-          label="Confirmar reserva"
+          label={buttonValue.value}
           variant={true}
+          disabled={buttonValue.disabled}
         ></Button>
       </div>
     </div>

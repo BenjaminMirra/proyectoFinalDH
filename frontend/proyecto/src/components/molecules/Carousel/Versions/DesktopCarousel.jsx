@@ -12,7 +12,11 @@ import { Paragraph } from "../../../atoms/paragraph/Paragraph";
 import './DesktopCarousel.css'
 import { MockUp } from '../../MockUpCard/MockUp'
 import { useLocation, useParams } from 'react-router-dom'
-
+import {
+  LazyLoadImage,
+  LazyLoadComponent,
+} from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 export function DesktopCarousel(props){
     // const imagesLocal=[product1,product2,product3,product4,product5]
 
@@ -29,23 +33,26 @@ export function DesktopCarousel(props){
     useEffect(() => {
         setTimeout(()=>{
           if (props.images) {
-            setLoad(false)
+            if (props.images.length>3) {
+              setLoad(false);
+            }
+            
           }
-          },1500)
+          },2000)
     }, [props.images]);
     const Share=()=>{
       return( <div className='desktop-share-icons'>
-        <FacebookShareButton style={{display:'block'}} url={location} quote='Mira este producto!!!' hashtag='#booking'>
+        <FacebookShareButton style={{display:'block'}} url={`http://d275h292qzwkdh.cloudfront.net/productos/${id}`} quote='Mira este producto!!!' hashtag='#booking'>
             <FacebookIcon  size={30} logoFillIcon='white' round={true} ></FacebookIcon>
         </FacebookShareButton>
-        <WhatsappShareButton style={{display:'block'}} className='icono'  url={location} >
+        <WhatsappShareButton style={{display:'block'}} className='icono'  url={`http://d275h292qzwkdh.cloudfront.net/productos/${id}`} >
             <WhatsappIcon   size={30} logoFillIcon='white' round={true}  >
             </WhatsappIcon>
         </WhatsappShareButton>
-        <TwitterShareButton style={{display:'block'}} className='icono' url={location}>
+        <TwitterShareButton style={{display:'block'}} className='icono' url={`http://d275h292qzwkdh.cloudfront.net/productos/${id}`}>
             <TwitterIcon  size={30} logoFillIcon='white' round={true}></TwitterIcon>
         </TwitterShareButton>
-        <LinkedinShareButton style={{display:'block'}} className='icono' url={location}>
+        <LinkedinShareButton style={{display:'block'}} className='icono' url={`http://d275h292qzwkdh.cloudfront.net/productos/${id}`}>
             <LinkedinIcon  size={30} logoFillIcon='white' round={true}></LinkedinIcon>
         </LinkedinShareButton>
     </div>)
@@ -92,7 +99,7 @@ export function DesktopCarousel(props){
                 />
                 <Icon
                   width="lg"
-                  icon={"bEmptyHeart"}
+                  icon={"eFavorite"}
                   onClick={toggleFavorite(id)}
                 />
               </div>
@@ -107,7 +114,7 @@ export function DesktopCarousel(props){
                 } `}
               >
                 {" "}
-                <img src={image} alt="" />{" "}
+                <LazyLoadImage effect='blur' width={'100%'} height='100%' src={image} alt="" />{" "}
               </div>
             ))}
             <div className="watch-more">

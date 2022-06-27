@@ -43,15 +43,21 @@
 .react-datepicker__day--keyboard-selected{
     background-color: var(--color-primary);
 }
-.desktop-calendarReserve .disabled .react-datepicker__day--selected:hover,
-.desktop-calendarReserve .disabled .react-datepicker__day--in-range:hover,
-.desktop-calendarReserve .disabled .react-datepicker__day:hover,
-.desktop-calendarReserve .disabled .react-datepicker__day--weekend:hover,
-.desktop-calendarReserve .disabled .react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range) {
+.desktop-reserveCalendar-calendar .disabled .react-datepicker__day--selected:hover,
+.desktop-reserveCalendar-calendar.disabled .react-datepicker__day--in-range:hover,
+.desktop-reserveCalendar-calendar .disabled .react-datepicker__day:hover,
+.desktop-reserveCalendar-calendar .disabled .react-datepicker__day--weekend:hover,
+.desktop-reserveCalendar-calendar .disabled .react-datepicker__day--in-selecting-range:not(.react-datepicker__day--in-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--in-range) {
     border-radius: unset;
     background-color: var(--color-primary);
     color: var(--color-primary);
+    
 }
+/* .desktop-reserveCalendar-calendar .react-datepicker__day-name,
+.desktop-reserveCalendar-calendar .react-datepicker__day,
+.desktop-reserveCalendar-calendar .react-datepicker__time-name {
+    width: 2.7vw !important;
+} */
 
 .desktop-calendarReserve .disabled div.react-datepicker__day:not(.react-datepicker__day--disabled, .react-datepicker__day--excluded) {
     border-radius: 50px;
@@ -238,12 +244,12 @@
     }
 
     .desktop-calendarReserve .react-datepicker__navigation--next {
-        right: -12%;
+        right: -26px;
         top: 9rem;
     }
 
     .desktop-calendarReserve .react-datepicker__navigation--previous {
-        left: -14%;
+        left: -35px;
         top: 9rem;
     }
 
@@ -259,7 +265,7 @@
     .desktop-calendarReserve .react-datepicker__day,
     .desktop-calendarReserve .react-datepicker__time-name {
         display: inline-block;
-        width: 2.5vw;
+        width: 2.7vw !important;
         line-height: 2.3rem;
         text-align: center;
         margin: 0.166rem;
@@ -270,6 +276,7 @@
 .desktop-calendarReserve .react-datepicker {
     
     width: 52vw;
+    max-width: 830px;
     height: 360px;
     margin: 0;
     margin-left: 2%;
@@ -373,4 +380,18 @@
     transform: rotate(45deg);
     left: -7px;
     top: 10px;
+}
+@media (min-width:1710px) {
+    .desktop-calendarReserve .react-datepicker{
+        
+    }
+    .desktop-calendarReserve .react-datepicker__day-name,
+    .desktop-calendarReserve .react-datepicker__day,
+    .desktop-calendarReserve .react-datepicker__time-name {
+        display: inline-block;
+        width: 2.4vw !important;
+        line-height: 2.3rem;
+        text-align: center;
+        margin: 0.166rem;
+    }
 }

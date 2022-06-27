@@ -11,9 +11,8 @@
     margin-top: 0;
     margin-bottom: 0;
     font-family: 'Poppins';
-    
-    
 }
+
 .header-tablet-content{
     height: 100px;
     width: 95%;
@@ -36,12 +35,11 @@
     display: flex;
     align-items: center;
     /* margin-right: 15px; */
-    width: 500px;
+    
     justify-content: space-between;
     
 }
 .header-links{
-    margin: 0;
     height: 100%;
     width: 120px;
     text-align: center;
@@ -74,4 +72,5 @@
 .avatar-name{
     display: flex;
     align-items: center;
+    margin-right: 18px;
 }

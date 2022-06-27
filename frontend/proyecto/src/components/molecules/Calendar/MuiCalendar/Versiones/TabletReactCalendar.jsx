@@ -70,6 +70,14 @@ export const TabletReactCalendar = (props) => {
         
         
     }
+    useEffect(() => {
+      if (JSON.parse(localStorage.getItem("dates"))) {
+        setDateRange([
+          new Date(JSON.parse(localStorage.getItem("dates"))[0]),
+          new Date(JSON.parse(localStorage.getItem("dates"))[1]),
+        ]);
+      }
+    }, []);
         return (
 
     <div className="tablet-calendarReserve">

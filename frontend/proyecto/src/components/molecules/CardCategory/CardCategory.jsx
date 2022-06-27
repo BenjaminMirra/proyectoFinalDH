@@ -5,7 +5,11 @@ import classNames from "classnames";
 import {Link} from 'react-router-dom'
 import PropTypes from "prop-types";
 import "./CardCategory.css";
-
+import {
+  LazyLoadImage,
+  LazyLoadComponent,
+} from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 export const CardCategory = ({ titulo, descripcion, url, id, toShow }) => {
   const CardCategoryClassnames = classNames("card-category", {
     "to-show": toShow,
@@ -13,7 +17,7 @@ export const CardCategory = ({ titulo, descripcion, url, id, toShow }) => {
   return (
     
     <div className={CardCategoryClassnames}>
-      <img src={url} alt={titulo}></img>
+      <LazyLoadImage effect="blur" width={'100%'} src={url} alt={titulo}/>
 
       <div className="card-category-text">
         <Heading type="md" title="h3" variant="primary">

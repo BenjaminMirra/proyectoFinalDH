@@ -22,7 +22,7 @@ export const Home = () => {
     const [mapHomeData,setMapHomeData]=useState({})
     const [showMap,setShowMap]=useState(false)
     const [filterTitle,setFilterTitle]=useState('Recomendaciones')
-
+    const [reRender, setReRender] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
 
     
@@ -35,28 +35,59 @@ export const Home = () => {
     
     
     return (
-        
-    <div className='wrapper'>
-            <Header firstname={undefined} lastname={undefined}/>
-        <div className='contenedor-pagina' >
-        {showMap?<MapHome setShowMap={setShowMap} lat={mapHomeData.lat} lng={mapHomeData.lng} />:<></>}
-        <Filter setCurrentPage={setCurrentPage}  setFilterProducts={setFilterProducts} />
-        
-        <CategoriesDesktop setFilterTitle={setFilterTitle} products={productsData} setFilterProducts={setFilterProducts} ></CategoriesDesktop>
-        <ProductsPagination currentPage={currentPage} setCurrentPage={setCurrentPage}  filterTitle={filterTitle} setShowMap={setShowMap} setMapHomeData={setMapHomeData} data={filterProducts&&filterProducts.length>0?filterProducts:productsData}></ProductsPagination>
-        <Link to={'/mapa'}>
-        <div className='show-mapa'>
-            <div className='show-mapa-container' >
-            <Paragraph variant='base' size='xs' >Mostrar Mapa</Paragraph>
-            <Icon icon='mapa' />
+      <div className="wrapper">
+        <Header firstname={undefined} lastname={undefined} />
+        <div className="contenedor-pagina">
+          {showMap ? (
+            <MapHome
+              setShowMap={setShowMap}
+              lat={mapHomeData.lat}
+              lng={mapHomeData.lng}
+            />
+          ) : (
+            <></>
+          )}
+          <Filter
+            setFilterTitle={setFilterTitle}
+            setCurrentPage={setCurrentPage}
+            setFilterProducts={setFilterProducts}
+          />
+
+          <CategoriesDesktop
+            reRender={reRender}
+            setReRender={setReRender}
+            setCurrentPage={setCurrentPage}
+            setFilterTitle={setFilterTitle}
+            products={productsData}
+            setFilterProducts={setFilterProducts}
+          ></CategoriesDesktop>
+          <ProductsPagination
+            reRender={reRender}
+            setReRender={setReRender}
+            currentPage={currentPage}
+            setCurrentPage={setCurrentPage}
+            filterTitle={filterTitle}
+            setShowMap={setShowMap}
+            setMapHomeData={setMapHomeData}
+            data={
+              filterProducts && filterProducts.length > 0
+                ? filterProducts
+                : productsData
+            }
+          ></ProductsPagination>
+          <Link to={"/mapa"}>
+            <div className="show-mapa">
+              <div className="show-mapa-container">
+                <Paragraph variant="base" size="xs">
+                  Mostrar Mapa
+                </Paragraph>
+                <Icon icon="mapa" />
+              </div>
             </div>
+          </Link>
+
+          <Footer />
         </div>
-        </Link>
-        
-        <Footer/>
-        </div>
-        
-        </div>
-        
-    )
+      </div>
+    );
 }

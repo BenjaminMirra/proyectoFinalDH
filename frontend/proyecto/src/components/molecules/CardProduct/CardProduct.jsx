@@ -9,6 +9,9 @@ import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
 import { urlAPI } from "../../../global";
 import {useNavigate} from "react-router-dom";
+import { LazyLoadImage,LazyLoadComponent } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+
 export const CardProduct = ({
   url,
   titulo,
@@ -128,145 +131,158 @@ export const CardProduct = ({
     }, [likedProducts,id]);
   return (
     <>
-      <div className="card-product">
-        <div className="card-product-img">
-          <Link to={`/productos/${id}`}>
-            <img className="product-img" src={url} alt={titulo} />
-          </Link>
-          <div className="fav">
-            <Icon
-              icon={liked ? "fFavorite" : "eFavorite"}
-              width="lg"
-              height="sm"
-              onClick={() => handleFavorite(id)}
-            ></Icon>
-          </div>
-        </div>
-
-        <div className="card-product-text">
-          <div className="cat-cat">
-            <Heading type="xs" title="h4" variant="tertiary">
-              {category}
-            </Heading>
-            <div className="product-cat-cat">
-              {
-              stars<1?'':
-              stars < 2 ? (
-                <>
-                  <Icon icon="star" />
-                  <Icon icon="emptyStar" />
-                  <Icon icon="emptyStar" />
-                  <Icon icon="emptyStar" />
-                  <Icon icon="emptyStar" />
-                </>
-              ) : stars <= 4 ? (
-                <>
-                  <Icon icon="star" />
-                  <Icon icon="star" />
-                  <Icon icon="emptyStar" />
-                  <Icon icon="emptyStar" />
-                  <Icon icon="emptyStar" />
-                </>
-              ) : stars <= 6 ? (
-                <>
-                  <Icon icon="star" />
-                  <Icon icon="star" />
-                  <Icon icon="star" />
-                  <Icon icon="emptyStar" />
-                  <Icon icon="emptyStar" />
-                </>
-              ) : stars < 9 ? (
-                <>
-                  <Icon icon="star" />
-                  <Icon icon="star" />
-                  <Icon icon="star" />
-                  <Icon icon="star" />
-                  <Icon icon="emptyStar" />
-                </>
-              ) : stars <= 9.5 ? (
-                <>
-                  <Icon icon="star" />
-                  <Icon icon="star" />
-                  <Icon icon="star" />
-                  <Icon icon="star" />
-                  <Icon icon="emptyStar" />
-                </>
-              ) : (
-                <>
-                  <Icon icon="star" />
-                  <Icon icon="star" />
-                  <Icon icon="star" />
-                  <Icon icon="star" />
-                  <Icon icon="star" />
-                </>
-              )}
-            </div>
-          </div>
-          <Heading type="md" title="h3" variant="secondary">
-            {titulo}
-          </Heading>
-          <div className="product-rating">
-            <div className="product-rating-score">
-              <Paragraph size="md" variant="secondary">
-                {stars<1?'-':stars}
-              </Paragraph>
-            </div>
-            <div className="product-rating-score-text">
-              <Paragraph size="md" variant="secondary">
-                {stars<1?'Sin puntaje':
-                stars < 2
-                  ? "Muy Malo"
-                  : stars < 4
-                  ? "Malo"
-                  : stars < 6
-                  ? "Regular"
-                  : stars < 9
-                  ? "Bueno"
-                  : stars <= 9.5
-                  ? "Muy Bueno"
-                  : "Excelente"}
-              </Paragraph>
-            </div>
-          </div>
-          <div className="product-location">
-            <Icon icon="location" width="xs" onClick={() => {}}></Icon>
-            <Paragraph size="md" variant="secondary">
-              {location}
-              <Span
-                onClick={() => handleHomeMap(lat, lng)}
-                size="md"
-                variant="primary"
-              >
-                MOSTRAR EN EL MAPA
-              </Span>
-            </Paragraph>
-          </div>
-          <div className="icons">
-            {serviceList &&
-              serviceList.map((service) => (
-                <Icon width="sm" icon={service.icon} />
-              ))}
-          </div>
-          <div className="product-description">
-            <Paragraph size="md" variant="secondary">
-              {descripcion}
-              <Link style={{ textDecoration: "none" }} to={`/productos/${id}`}>
-                <Span size="md" variant="primary">
-                  Más...
-                </Span>
-              </Link>
-            </Paragraph>
-            <Link style={{ width: "100%" }} to={`/productos/${id}`}>
-              <Button
-                size="sm"
-                label="Ver Detalle"
-                variant={true}
-                onClick={() => {}}
-              ></Button>
+      <LazyLoadComponent effect="blur">
+        <div className="card-product">
+          <div className="card-product-img">
+            <Link to={`/productos/${id}`}>
+              <LazyLoadImage
+                width={"100%"}
+                height="100%"
+                effect="blur"
+                className="product-img"
+                src={url}
+                alt={titulo}
+              />
             </Link>
+            <div className="fav">
+              <Icon
+                icon={liked ? "favorite" : "bEmptyHeart"}
+                width="lg"
+                height="sm"
+                onClick={() => handleFavorite(id)}
+              ></Icon>
+            </div>
+          </div>
+
+          <div className="card-product-text">
+            <div className="cat-cat">
+              <Heading type="xs" title="h4" variant="tertiary">
+                {category}
+              </Heading>
+              <div className="product-cat-cat">
+                {stars < 1 ? (
+                  ""
+                ) : stars < 2 ? (
+                  <>
+                    <Icon icon="star" />
+                    <Icon icon="emptyStar" />
+                    <Icon icon="emptyStar" />
+                    <Icon icon="emptyStar" />
+                    <Icon icon="emptyStar" />
+                  </>
+                ) : stars <= 4 ? (
+                  <>
+                    <Icon icon="star" />
+                    <Icon icon="star" />
+                    <Icon icon="emptyStar" />
+                    <Icon icon="emptyStar" />
+                    <Icon icon="emptyStar" />
+                  </>
+                ) : stars <= 6 ? (
+                  <>
+                    <Icon icon="star" />
+                    <Icon icon="star" />
+                    <Icon icon="star" />
+                    <Icon icon="emptyStar" />
+                    <Icon icon="emptyStar" />
+                  </>
+                ) : stars < 9 ? (
+                  <>
+                    <Icon icon="star" />
+                    <Icon icon="star" />
+                    <Icon icon="star" />
+                    <Icon icon="star" />
+                    <Icon icon="emptyStar" />
+                  </>
+                ) : stars <= 9.5 ? (
+                  <>
+                    <Icon icon="star" />
+                    <Icon icon="star" />
+                    <Icon icon="star" />
+                    <Icon icon="star" />
+                    <Icon icon="emptyStar" />
+                  </>
+                ) : (
+                  <>
+                    <Icon icon="star" />
+                    <Icon icon="star" />
+                    <Icon icon="star" />
+                    <Icon icon="star" />
+                    <Icon icon="star" />
+                  </>
+                )}
+              </div>
+            </div>
+            <Heading type="md" title="h3" variant="secondary">
+              {titulo}
+            </Heading>
+            <div className="product-rating">
+              <div className="product-rating-score">
+                <Paragraph size="md" variant="secondary">
+                  {stars < 1 ? "-" : stars}
+                </Paragraph>
+              </div>
+              <div className="product-rating-score-text">
+                <Paragraph size="md" variant="secondary">
+                  {stars < 1
+                    ? "Sin puntaje"
+                    : stars < 2
+                    ? "Muy Malo"
+                    : stars < 4
+                    ? "Malo"
+                    : stars < 6
+                    ? "Regular"
+                    : stars < 9
+                    ? "Bueno"
+                    : stars <= 9.5
+                    ? "Muy Bueno"
+                    : "Excelente"}
+                </Paragraph>
+              </div>
+            </div>
+            <div className="product-location">
+              <Icon icon="location" width="xs" onClick={() => {}}></Icon>
+              <Paragraph size="md" variant="secondary">
+                {location}
+                <Span
+                  onClick={() => handleHomeMap(lat, lng)}
+                  size="md"
+                  variant="primary"
+                >
+                  MOSTRAR EN EL MAPA
+                </Span>
+              </Paragraph>
+            </div>
+            <div className="icons">
+              {serviceList &&
+                serviceList.map((service) => (
+                  <Icon width="sm" icon={service.icon} />
+                ))}
+            </div>
+            <div className="product-description">
+              <Paragraph size="md" variant="secondary">
+                {descripcion}
+                <Link
+                  style={{ textDecoration: "none" }}
+                  to={`/productos/${id}`}
+                >
+                  <Span size="md" variant="primary">
+                    Más...
+                  </Span>
+                </Link>
+              </Paragraph>
+              <Link style={{ width: "100%" }} to={`/productos/${id}`}>
+                <Button
+                  size="sm"
+                  label="Ver Detalle"
+                  variant={true}
+                  onClick={() => {}}
+                ></Button>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </LazyLoadComponent>
     </>
   );
 };

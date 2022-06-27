@@ -9,7 +9,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { urlAPI } from '../../../global.js';
 
 
-export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle}) => {
+export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle,setCurrentPage,setReRender}) => {
   const [categoriesData,setCategoriesData]=useState({})
   const [mockUpFixed,setMockUpFixed]=useState(true)
   const [mockUpDinamic,setMockUpDinamic]=useState(true)
@@ -60,9 +60,12 @@ export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle}) =
   const navigate=useNavigate()
   const handleCategoryProducts=(id,title)=>{
     const filterTitle=document.getElementById('filterTitle')
-    if (id===prevId) {
+    if (id===prevId) { 
+      setReRender((prevValue) => prevValue + 1);
+      setCurrentPage(1)
       axios.get(`${urlAPI}productos/todos`).then(res=>setFilterProducts(res.data))
       setFilterTitle('Recomendaciones')
+      
       // navigate("/")
       //console.log(window.innerWidth);
       if (window.innerWidth<=768) {
@@ -72,13 +75,16 @@ export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle}) =
         console.log('entro');
         window.scrollTo({left:0,top:470,behavior:'smooth'})
       }
-     
+      
       return setPrevId(undefined)
     }
     
     else{
+       setReRender((prevValue) => prevValue + 1);
+      setCurrentPage(1);
        axios.get(`${urlAPI}productos/porCategoria/${id}`).then(data=>setFilterProducts(data.data))
        setFilterTitle(title)
+      
        if (window.innerWidth<=768) {
         filterTitle.scrollIntoView({behavior: 'smooth'})
       }

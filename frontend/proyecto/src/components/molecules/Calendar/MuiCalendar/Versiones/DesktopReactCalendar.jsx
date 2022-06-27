@@ -67,7 +67,14 @@ export const DesktopReactCalendar = (props) => {
             name.innerHTML = name.textContent.substring(0, 1).toUpperCase();
         })
     }
-    
+    useEffect(() => {
+        if (JSON.parse(localStorage.getItem("dates"))) {
+          setDateRange([
+            new Date(JSON.parse(localStorage.getItem("dates"))[0]),
+            new Date(JSON.parse(localStorage.getItem("dates"))[1]),
+          ]);
+        }
+    }, []);
      useEffect(() => {
         editNamesDaysWeek();
         let dateStart = new Date(startDate);
@@ -87,83 +94,97 @@ export const DesktopReactCalendar = (props) => {
         }
     }
     return (
-    <div className="desktop-calendarReserve">
-        
-            <div className='desktop-calendarReserve-container' >
-                <div className='desktop-calendarReserve-title' >
-               <Heading title='h3' type='lg' variant='primary' >Fechas disponibles</Heading>
-               </div>
-               
-            <DatePicker
-                inline
-                locale="es"
-                excludeDates={reservedDatesArray}
-                minDate={new Date()}
-                dateFormat="dd MMM."
-                renderCustomHeader={({
-                    monthDate,
-                    customHeaderCount,
-                    decreaseMonth,
-                    increaseMonth,
-                }) => (
-                    <div>
-                        <button
-                            aria-label="Previous Month"
-                            className={
-                                "react-datepicker__navigation react-datepicker__navigation--previous"
-                            }
-                            style={customHeaderCount === 1 ? { visibility: "hidden" } : null}
-                            onClick={decreaseMonth}
-                        >
-                            <span
-                                className={
-                                    "react-datepicker__navigation-icon react-datepicker__navigation-icon--previous"
-                                }
-                            >
-                                {"<"}
-                            </span>
-                        </button>
-                        <span className="react-datepicker__current-month">
-                            {monthDate.toLocaleString("es-ES", {
-                                month: "long",
-                            }).substring(0, 1).toUpperCase() + monthDate.toLocaleString("es-ES", { month: "long" }).slice(1)}
-                        </span>
-                        <button
-                            aria-label="Next Month"
-                            className={
-                                "react-datepicker__navigation react-datepicker__navigation--next"
-                            }
-                            style={customHeaderCount === 0 ? { visibility: "hidden" } : null}
-                            onClick={increaseMonth}
-                        >
-                            <span
-                                className={
-                                    "react-datepicker__navigation-icon react-datepicker__navigation-icon--next"
-                                }
-                            >
-                                {">"}
-                            </span>
-                        </button>
-                    </div>
-                )}
-                startDate={startDate}
-                endDate={endDate}
-                selected={startDate}
-                selectsRange={true}
-                onChange={onChange}
-                monthsShown={2}
-            />
+      <div className="desktop-calendarReserve">
+        <div className="desktop-calendarReserve-container">
+          <div className="desktop-calendarReserve-title">
+            <Heading title="h3" type="lg" variant="primary">
+              Fechas disponibles
+            </Heading>
+          </div>
 
-            <div className='start-booking' >
-                <div className='start-booking-container' >
-                        <h4>Agrega tus fechas de viaje para obtener precios exactos </h4>
-                        
-                        <Button onClick={handleStartBooking} label='Iniciar reserva' > </Button>
-                        
-                        
+          <>
+            <DatePicker
+              inline
+              locale="es"
+              excludeDates={reservedDatesArray}
+              minDate={new Date()}
+              dateFormat="dd MMM."
+              renderCustomHeader={({
+                monthDate,
+                customHeaderCount,
+                decreaseMonth,
+                increaseMonth,
+              }) => (
+                <div>
+                  <button
+                    aria-label="Previous Month"
+                    className={
+                      "react-datepicker__navigation react-datepicker__navigation--previous"
+                    }
+                    style={
+                      customHeaderCount === 1 ? { visibility: "hidden" } : null
+                    }
+                    onClick={decreaseMonth}
+                  >
+                    <span
+                      className={
+                        "react-datepicker__navigation-icon react-datepicker__navigation-icon--previous"
+                      }
+                    >
+                      {"<"}
+                    </span>
+                  </button>
+                  <span className="react-datepicker__current-month">
+                    {monthDate
+                      .toLocaleString("es-ES", {
+                        month: "long",
+                      })
+                      .substring(0, 1)
+                      .toUpperCase() +
+                      monthDate
+                        .toLocaleString("es-ES", { month: "long" })
+                        .slice(1)}
+                  </span>
+                  <button
+                    aria-label="Next Month"
+                    className={
+                      "react-datepicker__navigation react-datepicker__navigation--next"
+                    }
+                    style={
+                      customHeaderCount === 0 ? { visibility: "hidden" } : null
+                    }
+                    onClick={increaseMonth}
+                  >
+                    <span
+                      className={
+                        "react-datepicker__navigation-icon react-datepicker__navigation-icon--next"
+                      }
+                    >
+                      {">"}
+                    </span>
+                  </button>
                 </div>
+              )}
+              startDate={startDate}
+              endDate={endDate}
+              selected={startDate}
+              selectsRange={true}
+              onChange={onChange}
+              monthsShown={2}
+              
+            />
+          </>
+
+          <div className="start-booking">
+            <div className="start-booking-container">
+              <h4>Agrega tus fechas de viaje para obtener precios exactos </h4>
+
+              <Button onClick={handleStartBooking} label="Iniciar reserva">
+                {" "}
+              </Button>
             </div>
-            </div>
+          </div>
         </div>
-  )
+      </div>
+    );
 }
