@@ -1,0 +1,217 @@
+{
+	"id": "1c5deca3-d2c8-41e2-b54b-13c40007818b",
+	"name": "ProyectoIntegradorGrupo2",
+	"timestamp": "2022-06-26T20:16:25.330Z",
+	"collection_id": "18041092-804f0994-fcec-47e9-a93a-a6cb8f7d89b0",
+	"folder_id": "18041092-62357a23-7226-490f-baf5-f4372d771100",
+	"environment_id": "0",
+	"totalPass": 17,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "99e62714-d252-4e4d-a13a-5d57f0e68ae0",
+			"name": "Modificar reserva",
+			"url": "http://localhost:8080/reservas/editar",
+			"time": 27,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				27
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f6ea885d-5b65-492e-802f-ae6fc2a3779c",
+			"name": "Modificar reserva script tests",
+			"url": "http://localhost:8080/reservas/editar",
+			"time": 19,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue actualizada la ciudad": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue actualizada la ciudad": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				19
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue actualizada la ciudad": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "2b12aef3-b728-4513-94d5-da4fe47a0d4a",
+			"name": "Modificar reserva exception",
+			"url": "http://localhost:8080/reservas/editar",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Bad Request": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Bad Request": true
+				}
+			]
+		},
+		{
+			"id": "62bdf306-376e-4f0c-ab46-2a08ef19c527",
+			"name": "Modificar reserva exception script tests",
+			"url": "http://localhost:8080/reservas/editar",
+			"time": 11,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 65,
+	"collection": {
+		"requests": [
+			{
+				"id": "99e62714-d252-4e4d-a13a-5d57f0e68ae0",
+				"method": "PUT"
+			},
+			{
+				"id": "f6ea885d-5b65-492e-802f-ae6fc2a3779c",
+				"method": "PUT"
+			},
+			{
+				"id": "2b12aef3-b728-4513-94d5-da4fe47a0d4a",
+				"method": "PUT"
+			},
+			{
+				"id": "62bdf306-376e-4f0c-ab46-2a08ef19c527",
+				"method": "PUT"
+			}
+		]
+	}
+}

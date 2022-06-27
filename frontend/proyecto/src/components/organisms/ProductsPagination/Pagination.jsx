@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
+export const Pagination = ({ postsPerPage, totalPosts, paginate ,setReRender}) => {
 
     const pageNumbers = [];
 
@@ -11,7 +11,8 @@ export const Pagination = ({ postsPerPage, totalPosts, paginate }) => {
     return (
         <div className="productsPagination-items">
                 {pageNumbers.map(number => (
-                    <div onClick={() => paginate(number)} className="pagination-item">
+                    <div onClick={() =>{ setReRender(prevValue=>prevValue+1)
+                     return paginate(number);} } className="pagination-item">
                             <h5 key={number}  className='page-link'>
                                 {number}
                             </h5>

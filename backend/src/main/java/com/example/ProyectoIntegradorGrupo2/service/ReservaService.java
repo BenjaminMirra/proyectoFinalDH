@@ -49,6 +49,10 @@ public class ReservaService implements IReservaService{
            throw new BadRequestException("Se debe conocer el id del producto a reservar y el id del usuario que reserva");
        }
         //reservaDTO.setFechaEnLaQueSeHaceLaReserva(new Date());
+        if (reservaDTO.getFechaInicioReserva() == null || reservaDTO.getFechaFinReserva() == null){
+            throw new BadRequestException("Se debe conocer la fecha de inicio y la fecha de fin para la reserva");
+        }
+
         LocalDate hoy = LocalDate.now();
         LocalTime ahora = LocalTime.now();
 

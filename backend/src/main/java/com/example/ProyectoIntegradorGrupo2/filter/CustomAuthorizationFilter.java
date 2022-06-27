@@ -23,13 +23,14 @@ import java.util.Map;
 
 import static java.util.Arrays.stream;
 import static org.springframework.http.HttpHeaders.AUTHORIZATION;
+import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 public class CustomAuthorizationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
-        if (request.getServletPath().equals("/reservas/agregar")){
+        if (request.getServletPath().equals("/reservas/agregar") || request.getServletPath().equals("/productos/agregar") || request.getServletPath().equals("/productos/editar")){
             String authorizationHeader = request.getHeader(AUTHORIZATION);
             if (authorizationHeader != null && authorizationHeader.startsWith("Bearer ")){
                 try {
@@ -52,6 +53,8 @@ public class CustomAuthorizationFilter extends OncePerRequestFilter {
                 } catch (Exception ex){
                     response.setHeader("error", ex.getMessage());
                     //response.sendError(FORBIDDEN.value());
+                    response.setStatus(400);
+                    //response.sendError(BAD_REQUEST.value());
                     Map<String, String> errors = new HashMap<>();
                     errors.put("error_message", ex.getMessage());
                     response.setContentType(APPLICATION_JSON_VALUE);

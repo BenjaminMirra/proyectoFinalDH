@@ -38,6 +38,8 @@ public class Producto {
 
     private double longitud;
 
+    private double precio;
+
     //@Size(min=1,max = 10)
     //@Min(value= 1) @Max(value=10)
 
