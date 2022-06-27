@@ -1,0 +1,178 @@
+{
+	"id": "08b4ff83-7f81-4930-b3a5-41a99cc0238c",
+	"name": "ProyectoIntegradorGrupo2",
+	"timestamp": "2022-06-26T20:16:46.043Z",
+	"collection_id": "18041092-804f0994-fcec-47e9-a93a-a6cb8f7d89b0",
+	"folder_id": "18041092-044f5cc1-c6c8-46b6-b200-eb29fb8c6842",
+	"environment_id": "0",
+	"totalPass": 11,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "525b0316-761c-430d-896b-2b3e7dc8fe13",
+			"name": "Eliminar reserva",
+			"url": "http://localhost:8080/reservas/eliminar/32",
+			"time": 21,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				21
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "93a8c241-2eb8-4c9d-82de-51e2afa27499",
+			"name": "Eliminar reserva script tests",
+			"url": "http://localhost:8080/reservas/eliminar/31",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"El código de status es 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue borrada la ciudad": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue borrada la ciudad": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"El código de status es 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue borrada la ciudad": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "c38d1824-aeb6-4641-8045-eac41d78e0e7",
+			"name": "Eliminar reserva exception",
+			"url": "http://localhost:8080/reservas/eliminar/1500",
+			"time": 13,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				13
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "89258531-0382-4fcd-8e79-5ed8444649f4",
+			"name": "Eliminar reserva exception script tests",
+			"url": "http://localhost:8080/reservas/eliminar/1500",
+			"time": 12,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 61,
+	"collection": {
+		"requests": [
+			{
+				"id": "525b0316-761c-430d-896b-2b3e7dc8fe13",
+				"method": "DELETE"
+			},
+			{
+				"id": "93a8c241-2eb8-4c9d-82de-51e2afa27499",
+				"method": "DELETE"
+			},
+			{
+				"id": "c38d1824-aeb6-4641-8045-eac41d78e0e7",
+				"method": "DELETE"
+			},
+			{
+				"id": "89258531-0382-4fcd-8e79-5ed8444649f4",
+				"method": "DELETE"
+			}
+		]
+	}
+}

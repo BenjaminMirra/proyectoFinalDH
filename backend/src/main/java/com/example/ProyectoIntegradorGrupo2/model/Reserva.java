@@ -47,6 +47,8 @@ public class Reserva {
     @Column(columnDefinition = "DATE")
     private LocalDate fechaFinReserva;
 
+    // private int cantidadNoches;
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "producto_id", nullable = false)
     @JsonIgnore

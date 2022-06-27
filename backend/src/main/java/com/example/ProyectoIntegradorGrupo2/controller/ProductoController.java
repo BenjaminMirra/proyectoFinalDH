@@ -11,7 +11,9 @@ import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 /*@CrossOrigin("*")*/
@@ -27,8 +29,9 @@ public class ProductoController {
     @PostMapping("/agregar")
     public ResponseEntity<?> agregarProducto(@RequestBody ProductoDTO productoDTO) throws BadRequestException {
         ProductoDTO productoAgregado = productoService.agregarProducto(productoDTO);
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("productos/agregar").toUriString());
 
-        return ResponseEntity.ok(productoAgregado.getId());
+        return ResponseEntity.created(uri).body(productoAgregado.getId());
     }
 
     @Operation(summary = "Obtener un producto por su id")

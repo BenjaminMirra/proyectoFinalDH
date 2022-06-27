@@ -67,8 +67,8 @@ public class UsuarioController {
 
         TokenYIdDeRegistroDTO tokenYIdDeRegistroDTO = new TokenYIdDeRegistroDTO(usuarioAgregado.getId(),token_de_acceso);
 
-        emailSenderService.sendEmail(usuarioDTO.getEmail(), "Registro realizado","Bienvenido/a "+usuarioDTO.getNombre()+"! Su registro ha sido realizado. Muchas gracias por ser parte de Digital Booking.");
-        /*emailSenderService.sendEmail(usuarioDTO.getEmail(), "Registro realizado",buildEmail(usuarioDTO.getNombre()));*/
+        /*emailSenderService.sendEmail(usuarioDTO.getEmail(), "Registro realizado","Bienvenido/a "+usuarioDTO.getNombre()+"! Su registro ha sido realizado. Muchas gracias por ser parte de Digital Booking.");*/
+        emailSenderService.sendEmail(usuarioDTO.getEmail(), "Registro realizado",buildEmail(usuarioDTO.getNombre()));
         return ResponseEntity.created(uri).body(tokenYIdDeRegistroDTO);
         /*return ResponseEntity.ok(usuarioAgregado.getId());*/
     }
@@ -111,83 +111,82 @@ public class UsuarioController {
     }
 
 
-    /*private String buildEmail(String name) {
+    private String buildEmail(String name) {
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
-                "<head>\n" +
-                "    <meta charset=\"UTF-8\">\n" +
-                "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n" +
-                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n" +
+                "  <head>\n" +
+                "    <meta charset=\"UTF-8\" />\n" +
+                "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\" />\n" +
+                "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n" +
                 "    <title>Document</title>\n" +
-                "</head>\n" +
-                "<body>" +
-                "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +
+                "  </head>\n" +
+                "  <body style=\"margin: 0px; padding: 0%\">\n" +
+                "    <div\n" +
+                "      style=\"\n" +
+                "        background-color: #fbc02d;\n" +
+                "        margin: 0px;\n" +
+                "        padding: 0%;\n" +
+                "        width: 350px;\n" +
+                "        height: 35px;\n" +
+                "      \"\n" +
+                "    ></div>\n" +
+                "    <div\n" +
+                "      style=\"\n" +
+                "        background-color: #31363f;\n" +
+                "        opacity: 0.8;\n" +
+                "        margin: 0px;\n" +
+                "        width: 350px;\n" +
+                "        padding: 0%;\n" +
+                "        height: 375px;\n" +
+                "      \"\n" +
+                "    >\n" +
+                "      <div style=\"margin: 0px; color: white; padding: 5%\">\n" +
+                "        <h1\n" +
+                "          style=\"\n" +
+                "            margin: 0px;\n" +
+                "            padding: 0%;\n" +
+                "            font-family: Helvetica, Arial, sans-serif;\n" +
+                "            font-size: 24px;\n" +
+                "          \"\n" +
+                "        >\n" +
+                "          ¡Bienvenido/a "+ name +"!\n" +
+                "        </h1>\n" +
+                "        <br />\n" +
+                "        <p style=\"font-family: Helvetica, Arial, sans-serif; font-size: 18px\">\n" +
+                "          Tu registro ha sido realizado.<span style=\"font-size: 16px\">\uD83D\uDE01</span>\n" +
+                "        </p>\n" +
                 "\n" +
-                "<span style=\"display:none;font-size:1px;color:#fff;max-height:0\"></span>\n" +
-                "\n" +
-                "  <table role=\"presentation\" width=\"100%\" style=\"border-collapse:collapse;min-width:100%;width:100%!important\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\">\n" +
-                "    <tbody><tr>\n" +
-                "      <td width=\"100%\" height=\"53\" bgcolor=\"#0b0c0c\">\n" +
-                "        \n" +
-                "        <table role=\"presentation\" width=\"100%\" style=\"border-collapse:collapse;max-width:580px\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" align=\"center\">\n" +
-                "          <tbody><tr>\n" +
-                "            <td width=\"70\" bgcolor=\"#0b0c0c\" valign=\"middle\">\n" +
-                "                <table role=\"presentation\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse\">\n" +
-                "                  <tbody><tr>\n" +
-                "                    <td style=\"padding-left:10px\">\n" +
-                "                  \n" +
-                "                    </td>\n" +
-                "                    <td style=\"font-size:28px;line-height:1.315789474;Margin-top:4px;padding-left:10px\">\n" +
-                "                      <span style=\"font-family:Helvetica,Arial,sans-serif;font-weight:700;color:#ffffff;text-decoration:none;vertical-align:top;display:inline-block\">Registro realizado</span>\n" +
-                "                    </td>\n" +
-                "                  </tr>\n" +
-                "                </tbody></table>\n" +
-                "              </a>\n" +
-                "            </td>\n" +
-                "          </tr>\n" +
-                "        </tbody></table>\n" +
-                "        \n" +
-                "      </td>\n" +
-                "    </tr>\n" +
-                "  </tbody></table>\n" +
-                "  <table role=\"presentation\" class=\"m_-6186904992287805515content\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;max-width:580px;width:100%!important\" width=\"100%\">\n" +
-                "    <tbody><tr>\n" +
-                "      <td width=\"10\" height=\"10\" valign=\"middle\"></td>\n" +
-                "      <td>\n" +
-                "        \n" +
-                "                <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse\">\n" +
-                "                  <tbody><tr>\n" +
-                "                    <td bgcolor=\"#1D70B8\" width=\"100%\" height=\"10\"></td>\n" +
-                "                  </tr>\n" +
-                "                </tbody></table>\n" +
-                "        \n" +
-                "      </td>\n" +
-                "      <td width=\"10\" valign=\"middle\" height=\"10\"></td>\n" +
-                "    </tr>\n" +
-                "  </tbody></table>\n" +
-                "\n" +
-                "\n" +
-                "\n" +
-                "  <table role=\"presentation\" class=\"m_-6186904992287805515content\" align=\"center\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"border-collapse:collapse;max-width:580px;width:100%!important\" width=\"100%\">\n" +
-                "    <tbody><tr>\n" +
-                "      <td height=\"30\"><br></td>\n" +
-                "    </tr>\n" +
-                "    <tr>\n" +
-                "      <td width=\"10\" valign=\"middle\"><br></td>\n" +
-                "      <td style=\"font-family:Helvetica,Arial,sans-serif;font-size:19px;line-height:1.315789474;max-width:560px\">\n" +
-                "        \n" +
-                "            <p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">Bienvenido/a " + name + ",</p><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\">! Su registro ha sido realizado. Muchas gracias por ser parte de Digital Booking. </p><blockquote style=\"Margin:0 0 20px 0;border-left:10px solid #b1b4b6;padding:15px 0 0.1px 15px;font-size:19px;line-height:25px\"><p style=\"Margin:0 0 20px 0;font-size:19px;line-height:25px;color:#0b0c0c\"> </p>" +
-                "        \n" +
-                "      </td>\n" +
-                "      <td width=\"10\" valign=\"middle\"><br></td>\n" +
-                "    </tr>\n" +
-                "    <tr>\n" +
-                "      <td height=\"30\"><br></td>\n" +
-                "    </tr>\n" +
-                "  </tbody></table><div class=\"yj6qo\"></div><div class=\"adL\">\n" +
-                "\n" +
-                "</div></div>"+
-                "</body>\n" +
+                "        <p style=\"font-family: Helvetica, Arial, sans-serif; font-size: 18px\">\n" +
+                "          Muchas gracias por ser parte de Digital Booking.\n" +
+                "        </p>\n" +
+                "        <br />\n" +
+                "        <p style=\"font-family: Helvetica, Arial, sans-serif; font-size: 18px\">\n" +
+                "          Continua navegando\n" +
+                "          <a\n" +
+                "            href=\"http://d275h292qzwkdh.cloudfront.net/\"\n" +
+                "            target=\"_blank\"\n" +
+                "            style=\"\n" +
+                "              font-family: Helvetica, Arial, sans-serif;\n" +
+                "              font-size: 18px;\n" +
+                "              color: #1dbeb4;\n" +
+                "            \"\n" +
+                "          >\n" +
+                "            en nuestro sitio</a\n" +
+                "          >\n" +
+                "          y eneterate de los mejores lugares para alojarte en tus vacaciones! \uD83D\uDE0E\n" +
+                "        </p>\n" +
+                "      </div>\n" +
+                "    </div>\n" +
+                "    <div\n" +
+                "      style=\"\n" +
+                "        background-color: #fbc02d;\n" +
+                "        margin: 0px;\n" +
+                "        padding: 0%;\n" +
+                "        width: 350px;\n" +
+                "        height: 25px;\n" +
+                "      \"\n" +
+                "    ></div>\n" +
+                "  </body>\n" +
                 "</html>";
-    }*/
+    }
 }

@@ -37,6 +37,8 @@ public class ProductoDTO {
 
     private double longitud;
 
+    private double precio;
+
 
     private List<PoliticaDTO> politicaListDTO = new ArrayList<>(); //precargar
 
