@@ -21,7 +21,7 @@
     margin-top: 17px;
     border-top: 1px solid #DFE4EA;
     border-left: 1px solid #DFE4EA;
-    border-right:1px solid #DFE4EA;
+    border-right: 1px solid #DFE4EA;
     border-bottom: none;
 }
 
@@ -57,6 +57,16 @@
     margin-bottom: 15px;
 }
 
+.mobileAdministracion-add-precio {
+    width: 100%;
+}
+
+.mobileAdministracion-add-precio input {
+    margin-top: 8px;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
 .mobileAdministracion-add-descripcion {
     width: 100%;
 }
@@ -81,24 +91,24 @@
     font-size: 12px;
 }
 
-.mobileAdministracion-add-latitud-longitud{
+.mobileAdministracion-add-latitud-longitud {
     width: 100%;
 }
 
-.mobileAdministracion-add-latitud{
+.mobileAdministracion-add-latitud {
     width: 100%;
 }
 
-.mobileAdministracion-add-latitud input{
+.mobileAdministracion-add-latitud input {
     margin-bottom: 15px;
     width: 100%;
 }
 
-.mobileAdministracion-add-longitud{
+.mobileAdministracion-add-longitud {
     width: 100%;
 }
 
-.mobileAdministracion-add-longitud input{
+.mobileAdministracion-add-longitud input {
     width: 100%;
     margin-bottom: 30px;
 }
@@ -115,7 +125,7 @@
     padding-right: 9px;
     border-top: none;
     border-left: 1px solid #DFE4EA;
-    border-right:1px solid #DFE4EA;
+    border-right: 1px solid #DFE4EA;
     border-bottom: 1px solid #DFE4EA;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 0px;
@@ -267,11 +277,11 @@
     margin-bottom: 30px;
 }
 
-.mobileAdministracion-add-cargarImagen h2{
+.mobileAdministracion-add-cargarImagen h2 {
     margin: 0px;
 }
 
-.mobileAdministracion-add-imagen{
+.mobileAdministracion-add-imagen {
     width: 100%;
     display: flex;
     padding: 10px;
@@ -281,25 +291,25 @@
     margin-top: 15px;
 }
 
-.mobileAdministracion-add-imagen-parte1{
+.mobileAdministracion-add-imagen-parte1 {
     width: 100%;
 }
 
-.mobileAdministracion-add-imagen-parte2{
+.mobileAdministracion-add-imagen-parte2 {
     width: 10%;
 }
 
-.mobileAdministracion-add-imagen-parte2 button{
+.mobileAdministracion-add-imagen-parte2 button {
     width: 40px;
     height: 40px;
     margin-left: 5px;
 }
 
-.mobileAdministracion-add-imagen-parte1 input{
+.mobileAdministracion-add-imagen-parte1 input {
     width: 100%;
 }
 
-.mobileAdminsitracion-add-button{
+.mobileAdminsitracion-add-button {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -308,25 +318,25 @@
     margin-top: 20px;
 }
 
-.mobileAdminsitracion-add-button button{
+.mobileAdminsitracion-add-button button {
     width: 90%;
     margin-bottom: 30px;
 }
 
-.renderButton-mobileAtributo{
+.renderButton-mobileAtributo {
     width: 100%;
     display: flex;
     flex-direction: column;
     background-color: #DFE4EA;
 }
 
-.renderizado-mobileAtribute{
+.renderizado-mobileAtribute {
     width: 100%;
     display: flex;
     flex-direction: row;
 }
 
-.renderizado-mobileAtribute-parte1{
+.renderizado-mobileAtribute-parte1 {
     display: flex;
     flex-direction: column;
     width: 85%;
@@ -334,7 +344,7 @@
     align-items: flex-start;
 }
 
-.errorContainer{
+.errorContainer {
     width: 100%;
     display: flex;
     justify-content: center;
@@ -342,13 +352,151 @@
     align-items: center;
 }
 
-.errorContainer p{
+.errorContainer p {
     font-size: 14px;
     color: red;
 
 }
 
-.renderizado-mobileAtribute-parte2 button{
+.renderizado-mobileAtribute-parte2 button {
     width: 40px;
     height: 40px;
+}
+
+
+/* para el map de atributos */
+.mobileAdministracion-add-atributo-guardado {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    border-radius: 8px;
+    flex-direction: row;
+    background-color: #DFE4EA;
+    margin-bottom: 15px;
+}
+
+.mobileAdministracion-add-atributo-parte1-guardado {
+    width: 100%;
+}
+
+.mobileAdministracion-add-atributo-parte1-guardado input {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.mobileAdministracion-add-atributo-parte2-guardado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.mobileAdministracion-add-atributo-parte2-guardado button {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    background-color: var(--color-primary) !important;
+    color: white !important;
+    opacity: .5;
+    cursor: inherit !important;
+}
+
+/* para el map de atributos traídos de BD */
+.mobileAdministracion-add-atributo-checkbox {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    border-radius: 8px;
+    flex-direction: row;
+    background-color: #DFE4EA;
+    margin-bottom: 15px;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+}
+
+.mobileAdministracion-atributos-checkboxs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 30%
+}
+
+.mobileAdministracion-atributos-checkboxs input {
+    box-shadow: none;
+}
+
+
+.mobileAdministracion-atributos-checkboxs img {
+    margin-left: 5px;
+}
+
+.mobileAdministracion-atributos-checkboxs label {
+    margin-left: 5px;
+}
+
+/* imagen map cargadas */
+
+.mobileAdministracion-add-imagen-cargada {
+    width: 100%;
+    display: flex;
+    padding: 10px;
+    border-radius: 8px;
+    flex-direction: row;
+    background-color: #DFE4EA;
+    margin-top: 15px;
+}
+
+.mobileAdministracion-add-imagen-parte1-cargada {
+    width: 100%;
+}
+
+.mobileAdministracion-add-imagen-parte2-cargada {
+    width: 10%;
+}
+
+.mobileAdministracion-add-imagen-parte2-cargada button {
+    width: 40px;
+    height: 40px;
+    margin-left: 10px;
+    background-color: var(--color-primary) !important;
+    color: white !important;
+    opacity: .5;
+    cursor: inherit !important;
+}
+
+.mobileAdministracion-add-imagen-parte1-cargada input {
+    width: 100%;
+}
+
+.errorContainerImagen {
+    width: 100%;
+    display: flex;
+    margin-top: 10px;
+    margin-bottom: -20px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.errorContainerImagen p {
+    font-size: 14px;
+    color: red;
+}
+
+.errorContainerAtributo {
+    width: 100%;
+    display: flex;
+    margin-bottom: 8px;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.errorContainerAtributo p {
+    font-size: 14px;
+    color: red;
 }

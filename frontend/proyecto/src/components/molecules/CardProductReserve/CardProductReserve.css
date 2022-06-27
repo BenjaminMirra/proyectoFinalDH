@@ -1,0 +1,48 @@
+.checkInCheckOut-product-reserve {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+
+.checkIn-product-reserve {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.checkIn-product-reserve h6 {
+    margin-left: 10px;
+    margin-top: 2px
+}
+
+.checkOut-product-reserve {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.checkOut-product-reserve h6 {
+    margin-left: 10px;
+    margin-top: 2px
+}
+
+.button-opinion-container {
+    display: flex;
+    width: 100%;
+}
+
+.card-product-text-reserves h3 {
+    overflow: hidden;
+    white-space: nowrap;
+}

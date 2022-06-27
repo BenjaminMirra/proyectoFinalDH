@@ -45,6 +45,10 @@
     width: 48%;
 }
 
+.desktopAdministracion-add-category select{
+    margin-top: 13px;
+}
+
 .desktopAdministracion-add-category input {
     width: 100%;
     margin-top: 13px;
@@ -56,7 +60,7 @@
     justify-content: center;
     text-align: center;
     width: 100%;
-    margin-top: 48px;
+    margin-top: 20px;
 }
 
 .desktopAdministracion-add-direccion {
@@ -71,9 +75,41 @@
 .desktopAdministracion-add-ciudad {
     width: 48%;
     margin-left: 33px;
+} 
+
+.desktopAdministracion-add-ciudad select{
+    margin-top: 13px;
 }
 
 .desktopAdministracion-add-ciudad input {
+    width: 100%;
+    margin-top: 13px;
+}
+
+.desktopAdministracion-add-tituloDescripcion-precio{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.desktopAdministracion-add-tituloDescripcion {
+    width: 48%;
+}
+
+.desktopAdministracion-add-tituloDescripcion input {
+    width: 100%;
+    margin-top: 13px;
+}
+
+.desktopAdministracion-add-precio {
+    width: 48%;
+    margin-left: 33px;
+} 
+
+.desktopAdministracion-add-precio input {
     width: 100%;
     margin-top: 13px;
 }
@@ -186,6 +222,45 @@
 }
 
 .desktopAdministracion-add-atributo-parte3 button {
+    width: 40px;
+    height: 40px;
+}
+
+.desktopAdministracion-add-atributo-guardado{
+    display: flex;
+    flex-direction: row;
+    width: 98%;
+    background-color: #E5E5E5;
+    border-radius: 8px;
+    margin-top: 20px;
+    padding: 20px;
+}
+
+.desktopAdministracion-add-atributo-parte1-guardado{
+    width: 100%
+}
+
+.desktopAdministracion-add-atributo-parte1-guardado input{
+    width: 100%
+}
+
+.desktopAdministracion-add-atributo-parte2-guardado{
+    margin-left: 15px;
+    margin-right: 15px;
+    width: 25%
+}
+
+.desktopAdministracion-add-atributo-parte2-guardado input{
+    width: 100%
+}
+
+.desktopAdministracion-add-atributo-parte3-guardado{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end
+}
+
+.desktopAdministracion-add-atributo-parte3-guardado button{
     width: 40px;
     height: 40px;
 }
@@ -303,6 +378,7 @@
     text-align: center;
     align-items: center;
     margin-bottom: 30px;
+    margin-top: 15px;
 }
 
 @media (max-width:896px){
@@ -331,4 +407,37 @@
     .desktopAdministracion-politicas h4 {
         font-size: 16px;
     }
+}
+
+/* error atributo */
+
+.desktop-errorContainerAtributo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: -20px;
+}
+
+.desktop-errorContainerAtributo p {
+    font-size: 14px;
+    color: red;
+}
+
+/* error imagen */
+
+.desktop-errorContainerImagen {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top:-10px
+}
+
+.desktop-errorContainerImagen p {
+    font-size: 14px;
+    color: red;
 }

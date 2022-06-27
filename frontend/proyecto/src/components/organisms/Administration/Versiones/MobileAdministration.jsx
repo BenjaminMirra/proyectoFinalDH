@@ -11,8 +11,9 @@ import { SelectPickerCategories } from '../../../atoms/SelectPickerCategories/Se
 import { AtributeCard } from '../../../molecules/AtributesCard/AtributeCard';
 import axios from 'axios';
 import { urlAPI } from '../../../../global.js'
+import { Icon } from '../../../atoms/Icon/Icon';
 
-export const MobileAdministration = () => {
+export const MobileAdministration = (atributosBD) => {
 
   //Mensajes de error
   const [errors, setErrors] = useState({ server: false, data: false });
@@ -23,9 +24,20 @@ export const MobileAdministration = () => {
   //le envío al select Category
   const [categories, setCategories] = useState([]);
 
+  //Atributos render
+  const [atributosRender, setAtributosRender] = useState([]);
+
+  //Imágenes render
+  const [imagenesRender, setImagenesRender] = useState([])
+
+  //Atributos de la base de datos
+
+
   //Guardo toda la info del form aquí
   const [dataForm, setDataForm] = useState({
+    tituloDescripcion: " ",
     descripcion: " ",
+    precio: " ",
     longitud: " ",
     direccion: " ",
     latitud: " ",
@@ -58,12 +70,13 @@ export const MobileAdministration = () => {
     }
   })
 
+
   const firstValidation = () => {
-      if (dataForm.descripcion === " " || dataForm.latitud === " " || dataForm.longitud === " " || dataForm.nombre === " " || dataForm.ciudad === " " || dataForm.categoria === " " || dataForm.direccion === " ") {
-        return false
-      } else {
-        return true
-      }
+    if (dataForm.descripcion === " " || dataForm.latitud === " " || dataForm.longitud === " " || dataForm.nombre === " " || dataForm.ciudad === " " || dataForm.categoria === " " || dataForm.direccion === " " || dataForm.tituloDescripcion === " " || dataForm.precio === " ") {
+      return false
+    } else {
+      return true
+    }
   }
 
 
@@ -97,6 +110,8 @@ export const MobileAdministration = () => {
   const selectPlaceInfo = document.getElementById("selectPlace");
   const selectCategoryInfo = document.getElementById("selectCategory");
   const errorContainer = document.getElementById("errorContainer");
+  const imagenURL = document.getElementById("imagenURL")
+  const errorContainerAtributo = document.getElementById("errorContainerAtributo")
 
   const [buttonValue, setButtonValue] = useState({ disabled: false, value: 'Crear' })
 
@@ -109,12 +124,21 @@ export const MobileAdministration = () => {
       categoryValidation()
       const data = {
         titulo: dataForm.nombre,
+        titulo_descripcion: dataForm.tituloDescripcion,
+        precio: dataForm.precio,
         descripcion: dataForm.descripcion,
         direccion: dataForm.direccion,
         latitud: dataForm.latitud,
         longitud: dataForm.longitud,
         ciudad_id: dataForm.ciudad,
         categoria_id: dataForm.categoria,
+        imagenes: {
+          imagen_1: " ",
+          imagen_2: " ",
+          imagen_3: " ",
+          imagen_4: " ",
+          imagen_5: " "
+        }
       }
       axios({
         method: 'POST',
@@ -135,14 +159,58 @@ export const MobileAdministration = () => {
   }
 
   const addAtribute = () => {
-    const nombre = atributoNombre.value;
-    const icono = atributoIcono.value
-
-    if (nombre.length > 2 && icono.length > 2) {
-      atributeContainer.innerHTML += <AtributeCard />
+    if (atributoNombre.value != "" && atributoIcono.value != "") {
+      const nombre = atributoNombre.value;
+      const icono = atributoIcono.value
+      setAtributosRender((prevData) => [...prevData, { iconoAtributo: icono, nombreAtributo: nombre }])
+      atributoNombre.value = "";
+      atributoIcono.value = "";
+      errorContainerAtributo.innerHTML = ""
+      console.log("agregado atributo")
+    } else if (atributoNombre.value != "") {
+      errorContainerAtributo.innerHTML = ` <p>
+      El ícono no pueden estar vacío
+    </p>`
+    } else if (atributoIcono.value != "") {
+      errorContainerAtributo.innerHTML = ` <p>
+      El nombre no pueden estar vacío
+    </p>`
     } else {
-      alert("pone bien")
+      errorContainerAtributo.innerHTML = ` <p>
+      El nombre y el ícono no pueden estar vacíos
+    </p>`
     }
+  }
+
+  const addImage = () => {
+
+    if (imagenURL.value != "") {
+      const urlImagen = imagenURL.value;
+      setImagenesRender((prevData) => [...prevData, { url: urlImagen }])
+      imagenURL.value = ""
+      errorContainer.innerHTML = ``
+      console.log("agregado imagen")
+    } else {
+      errorContainer.innerHTML = `<p>
+      La url no puede estar vacía
+    </p>`
+    }
+  }
+
+  const deleteAtribute = (indexABorrar) => {
+    console.log("borrado atributo")
+    const nuevoArray = [...atributosRender];
+    nuevoArray.splice(indexABorrar, 1)
+    setAtributosRender(nuevoArray)
+  }
+
+  const deleteImage = (indexABorrar) => {
+    console.log("borrado imagen")
+    const nuevoArray = [...imagenesRender];
+    nuevoArray.splice(indexABorrar, 1);
+    console.log(indexABorrar)
+    return setImagenesRender(nuevoArray);
+
   }
 
   const handleChangeDescription = (e) => {
@@ -159,6 +227,12 @@ export const MobileAdministration = () => {
   }
   const handleChangeDireccion = (e) => {
     setDataForm(prevData => ({ ...prevData, direccion: e.target.value }))
+  }
+  const handleChangeTituloDescription = (e) => {
+    setDataForm(prevData => ({ ...prevData, tituloDireccion: e.target.value }))
+  }
+  const handleChangePrecio = (e) => {
+    setDataForm(prevData => ({ ...prevData, precio: e.target.value }))
   }
 
 
@@ -189,7 +263,15 @@ export const MobileAdministration = () => {
               <SelectPickerPlaces places={places} setPlaces={setPlaces} />
             </div>
           </div>
+          <div className="mobileAdministracion-add-precio">
+            <InputLabel required={true} onChange={handleChangePrecio} placeholder="15.878" label='Precio por Noche' disabled={false}>
+            </InputLabel>
+          </div>
           <div className="mobileAdministracion-add-descripcion">
+            <div className="mobileAdministracion-add-descripcion-info">
+              <Label required={true} label='Título Descripción'></Label>
+              <textarea value={dataForm.descripcion} onChange={handleChangeTituloDescription} placeholder='Escriba aquí' name="" id="descripcionInfo" rows="3" />
+            </div>
             <div className="mobileAdministracion-add-descripcion-info">
               <Label required={true} label='Descripción'></Label>
               <textarea value={dataForm.descripcion} onChange={handleChangeDescription} placeholder='Escriba aquí' name="" id="descripcionInfo" cols="30" rows="10" />
@@ -211,7 +293,53 @@ export const MobileAdministration = () => {
             <Heading title='h5' variant='primary' type='md' >
               Agregar atributos
             </Heading>
-            <div className='renderButton-mobileAtributo' id="atributeContainer"></div>
+            <div className="mobileAdministracion-add-atributo-checkbox">
+              <div className="mobileAdministracion-atributos-checkboxs">
+                <Input type="checkbox"></Input>
+                <Icon width='xs' icon={"user"} />
+                <Label label="Baño"></Label>
+              </div>
+              <div className="mobileAdministracion-atributos-checkboxs">
+                <Input type="checkbox"></Input>
+                <Icon width='xs' icon={"user"} />
+                <Label label="Baño"></Label>
+              </div>
+              <div className="mobileAdministracion-atributos-checkboxs">
+                <Input type="checkbox"></Input>
+                <Icon width='xs' icon={"user"} />
+                <Label label="Baño"></Label>
+              </div>
+              <div className="mobileAdministracion-atributos-checkboxs">
+                <Input type="checkbox"></Input>
+                <Icon width='xs' icon={"user"} />
+                <Label label="Baño"></Label>
+              </div>
+              <div className="mobileAdministracion-atributos-checkboxs">
+                <Input type="checkbox"></Input>
+                <Icon width='xs' icon={"user"} />
+                <Label label="Baño"></Label>
+              </div>
+              <div className="mobileAdministracion-atributos-checkboxs">
+                <Input type="checkbox"></Input>
+                <Icon width='xs' icon={"user"} />
+                <Label label="Baño"></Label>
+              </div>
+            </div>
+            {atributosRender.map((atributo, index) => {
+              return (
+                <div key={index++} className="mobileAdministracion-add-atributo-guardado">
+                  <div className='mobileAdministracion-add-atributo-parte1-guardado'>
+                    <InputLabel disabled={true} name={`AtributoNombreGuardado_${index}`} placeholder={atributo.nombreAtributo} label='Nombre'>
+                    </InputLabel>
+                    <InputLabel disabled={true} name={`AtributoIconoGuardado_${index}`} placeholder={atributo.iconoAtributo} label='Ícono'>
+                    </InputLabel>
+                  </div>
+                  <div className='mobileAdministracion-add-atributo-parte2-guardado'>
+                    <Button label="X" onClick={deleteAtribute} />
+                  </div>
+                </div>
+              )
+            })}
             <div className="mobileAdministracion-add-atributo">
               <div className='mobileAdministracion-add-atributo-parte1'>
                 <InputLabel name="AtributoNombre" placeholder="Wifi" label='Nombre' disabled={false}>
@@ -222,6 +350,10 @@ export const MobileAdministration = () => {
               <div className='mobileAdministracion-add-atributo-parte2'>
                 <Button label="+" onClick={addAtribute} />
               </div>
+
+            </div>
+            <div className="errorContainerAtributo" id="errorContainerAtributo">
+
             </div>
           </div>
           <div className="mobileAdministracion-add-politicas">
@@ -256,18 +388,31 @@ export const MobileAdministration = () => {
             <Heading title='h2' required={true} variant='primary' type='md' >
               Cargar imágenes
             </Heading>
+            {imagenesRender.map((imagen, index) => {
+              return (
+                <div key={index++} className="mobileAdministracion-add-imagen-cargada">
+                  <div className='mobileAdministracion-add-imagen-parte1-cargada'>
+                    <Input disabled={true} required={true} name={`imagenURLGuardada_${index}`} placeholder={imagen.url}>
+                    </Input>
+                  </div>
+                  <div className='mobileAdministracion-add-imagen-parte2-cargada'>
+                    <Button id={`deleteImage_${index}`} label="X" onClick={deleteImage(index)} />
+                  </div>
+                </div>
+              )
+            })}
             <div className="mobileAdministracion-add-imagen">
               <div className='mobileAdministracion-add-imagen-parte1'>
-                <Input required={true} placeholder="Insertar https://">
+                <Input required={true} name="imagenURL" placeholder="Insertar https://">
                 </Input>
               </div>
               <div className='mobileAdministracion-add-imagen-parte2'>
-                <Button label="+" />
+                <Button id="buttonAdd" label="+" onClick={addImage} />
               </div>
             </div>
+            
           </div>
           <div className="errorContainer" id="errorContainer">
-
           </div>
           <div className='mobileAdminsitracion-add-button'>
             <Button
