@@ -25,6 +25,7 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.Arrays;
 
 import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
 
 @Configuration
 @EnableWebSecurity
@@ -51,6 +52,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.authorizeRequests().antMatchers(POST, "/reservas/agregar").hasAnyAuthority("ROLE_USER");
+        http.authorizeRequests().antMatchers(POST,"/productos/agregar").hasAnyAuthority("ROLE_ADMIN")
+        .antMatchers(PUT, "/productos/editar").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().anyRequest().permitAll()
                 .and().logout().permitAll();
         /*http.addFilter(customAuthenticationFilter1);*/
