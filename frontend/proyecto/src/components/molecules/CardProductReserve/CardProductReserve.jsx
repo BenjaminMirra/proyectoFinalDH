@@ -136,7 +136,7 @@ export const CardProductReserve = ({
     <>
       <LazyLoadComponent effect="blur">
         <div className="card-product">
-          <div className="card-product-img">
+          <div className="card-product-img-reserve">
             <Link to={`/productos/${id}`}>
               <LazyLoadImage
                 width={"100%"}
@@ -157,7 +157,7 @@ export const CardProductReserve = ({
             </div>
           </div>
 
-          <div className="card-product-text card-product-text-reserves">
+          <div className="card-product-text card-product-text-reserve">
             <div className="cat-cat">
               <Heading type="xs" title="h4" variant="tertiary">
                 {category}
@@ -249,7 +249,7 @@ export const CardProductReserve = ({
                 {location}
               </Paragraph>
             </div>
-            <div className="product-description">
+            <div className="product-description-reserve">
               <div className="checkInCheckOut-product-reserve">
                 <div className="checkIn-product-reserve">
                   <h4>Check in:</h4>
@@ -261,7 +261,7 @@ export const CardProductReserve = ({
                   <h6>{endReserveDate}</h6>
                 </div>
               </div>
-              <div className="button-opinion-container" id="button-opinion">
+              <div className="button-opinion-container-reserve" id="button-opinion">
               <Link style={{ width: "100%" }} to={`/productos/${id}`}>
                 <Button
                   size="sm"
