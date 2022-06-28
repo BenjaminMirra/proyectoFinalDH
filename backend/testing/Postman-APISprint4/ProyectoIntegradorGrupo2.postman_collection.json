@@ -9466,19 +9466,13 @@
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "email",
-											"value": "ana@mail.com",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "123456H",
-											"type": "text"
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"ana@mail.com\",\r\n    \"password\": \"123456H\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
 									"raw": "{{URL_USUARIOS}}/login",
@@ -9493,17 +9487,14 @@
 							"response": []
 						},
 						{
-							"name": "Loguear usuario aws",
+							"name": "Loguear usuario exception script tests",
 							"event": [
 								{
 									"listen": "test",
 									"script": {
 										"exec": [
-											"const jsonData = pm.response.json();\r",
-											"console.log(jsonData)\r",
-											"\r",
-											"pm.test(\"Status code is 200\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
+											"pm.test(\"El código de status es 400\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
 											"});\r",
 											"\r",
 											"pm.test(\"Content-Type header está presente\", () => {\r",
@@ -9514,21 +9505,8 @@
 											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
 											"});\r",
 											"\r",
-											"\r",
-											"\r",
-											"pm.test(\"Testear que el tipo de respuesta tenga un token)\", () => {\r",
-											"    \r",
-											"    pm.expect(jsonData.token_de_acceso).to.be.a(\"string\");\r",
-											"  \r",
-											"});\r",
-											"\r",
-											"pm.test(\"La respuesta es un status OK\", () => {\r",
-											"    pm.response.to.have.status(\"OK\");\r",
-											"});\r",
-											"\r",
-											"pm.test(\"Setear el token del usuario logueado\", () => {\r",
-											"    const jsonData = pm.response.json();\r",
-											"   pm.collectionVariables.set(\"TOKENLOGIN_USUARIO\", jsonData.token_de_acceso);\r",
+											"pm.test(\"La respuesta es un status Forbidden\", () => {\r",
+											"    pm.response.to.have.status(\"Forbidden\");\r",
 											"});"
 										],
 										"type": "text/javascript"
@@ -9555,32 +9533,20 @@
 									}
 								],
 								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "email",
-											"value": "ana@mail.com",
-											"type": "text"
-										},
-										{
-											"key": "password",
-											"value": "123456H",
-											"type": "text"
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"ana@mail.com\",\r\n    \"password\": \"1234567H\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
 										}
-									]
+									}
 								},
 								"url": {
-									"raw": "http://digitalbookingg2sprint3v2-env.eba-wfrhwq8z.us-east-1.elasticbeanstalk.com/usuarios/login",
-									"protocol": "http",
+									"raw": "{{URL_USUARIOS}}/login",
 									"host": [
-										"digitalbookingg2sprint3v2-env",
-										"eba-wfrhwq8z",
-										"us-east-1",
-										"elasticbeanstalk",
-										"com"
+										"{{URL_USUARIOS}}"
 									],
 									"path": [
-										"usuarios",
 										"login"
 									]
 								}
@@ -10810,7 +10776,7 @@
 								"header": [],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"fechaInicioReserva\": \"2022-09-30\",\r\n  \"fechaFinReserva\": \"2022-09-30\",\r\n  \"horaEstimadaDeLlegada\": \"15:00\",\r\n   \"mensajeUsuario\": \"Quiero reservar\",\r\n   \"vacunadoCovid\": true,\r\n   \"usuario_id\": 1,\r\n   \"producto_id\": 2\r\n \r\n  \r\n}",
+									"raw": "{\r\n  \"fechaInicioReserva\": \"2022-09-30\",\r\n  \"fechaFinReserva\": \"2022-09-30\",\r\n  \"horaEstimadaDeLlegada\": \"15:00\",\r\n   \"mensajeUsuario\": \"Quiero reservar\",\r\n   \"vacunadoCovid\": true,\r\n   \"usuario_id\": {{ID_POST2_USUARIO_ADMIN}},\r\n   \"producto_id\": 2\r\n \r\n  \r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
