@@ -2,14 +2,17 @@ import React from "react";
 import PropTypes from "prop-types"
 import classNames from "classnames"
 import "./Heading.css"
-export const Heading=({children,title,type,variant})=>
+export const Heading=({required, children,title,type,variant})=>
 
 {
     const HeadingClassNames=classNames('heading',
     {
+        'is-required': required,
         [`size-${type}`]:type,
-        [`color-${variant}`]:variant
-    })
+        [`color-${variant}`]:variant,
+        
+    },
+    )
     return( title==="h1"?<h1 className={HeadingClassNames} >{children}</h1>:title==="h2" ?
     <h2 className={HeadingClassNames} >{children}</h2>:title==="h3"?
     <h3 className={HeadingClassNames} >{children}</h3>:<h4 className={HeadingClassNames} >{children}</h4>)
@@ -27,3 +30,4 @@ Heading.defaultProps={
     title:"h1",
     type:"md",
 }
+

@@ -5,16 +5,17 @@ import './Button.css'
 
 
     
-export const Button = ({size,label,onClick,variant,type,disabled}) => {
+export const Button = ({id, size,label,onClick,variant,type,disabled}) => {
     const ButtonClassNames=classNames('button',{
         'variant-primary':variant,
         'variant-secondary':!variant,
         [`button-size-${size}`]:size,
-        'is-disabled':disabled
+        'is-disabled':disabled,
+        'id': id
     })
   return (
       <>
-      <button disabled={disabled} type={type} onClick={onClick} className={ButtonClassNames} >{label}</button>
+      <button id={id} disabled={disabled} type={type} onClick={onClick} className={ButtonClassNames} >{label}</button>
     </>
   )
 }
@@ -33,6 +34,7 @@ Button.defaultProps={
     onClick:()=>{},
     type:'button',
     disabled:false,
+    id: null
 }
 
 
