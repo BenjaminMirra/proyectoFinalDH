@@ -14,12 +14,25 @@ export const Administration = () => {
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
     const [atributosBD, setAtributosBD] = useState([])
 
-    useEffect(() => {
-        axios.get(`${urlAPI}atributos/todos`).then(data => {
-            setAtributosBD(data.data)
-        })
+    //Atributos render
+    const [atributosRender, setAtributosRender] = useState([]);
 
-    }, [])
+    //Imágenes render
+    const [imagenesRender, setImagenesRender] = useState([])
+
+    useEffect(() => {
+        if (atributosBD) {
+            console.log(atributosBD)
+        }
+    }, [atributosBD])
+
+    useEffect(() => {
+        axios.get(`${urlAPI}caracteristicas/todas`).then(response =>
+            setAtributosBD(response.data)
+        ).catch(err => console.log(err))
+    }, [setAtributosBD])
+
+
 
     useEffect(() => {
         function handleResize() {
@@ -31,15 +44,11 @@ export const Administration = () => {
 
     useEffect(() => {
         if (windowWidth < 768) {
-            setReserveDisplayed(<MobileAdministration />)
+            setReserveDisplayed(<MobileAdministration imagenesRender={imagenesRender} setImagenesRender={setImagenesRender} atributosRender={atributosRender} setAtributosRender={setAtributosRender} atributosBD={atributosBD} />)
+        } else {
+            setReserveDisplayed(<DesktopAdministration imagenesRender={imagenesRender} setImagenesRender={setImagenesRender} atributosRender={atributosRender} setAtributosRender={setAtributosRender} atributosBD={atributosBD} />)
         }
-        else if (windowWidth <= 1365) {
-            setReserveDisplayed(<DesktopAdministration />)
-        }
-        else if (windowWidth >= 1366) {
-            setReserveDisplayed(<DesktopAdministration />)
-        }
-    }, [windowWidth]);
+    }, [windowWidth, atributosBD, atributosRender, imagenesRender]);
     return (
         <>
             {reserveDisplayed}

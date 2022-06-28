@@ -500,3 +500,70 @@
     font-size: 14px;
     color: red;
 }
+
+/* error imagen */
+
+.desktop-errorContainerImagen {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    margin-top:-10px
+}
+
+.desktop-errorContainerImagen p {
+    font-size: 14px;
+    color: red;
+}
+
+/* estilos para atributos checkboxs */
+
+.mobileAdministracion-add-atributo-checkbox-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    justify-items: center;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    width: 100%;
+    background-color: #E5E5E5;
+}
+
+.mobileAdministracion-add-atributo-checkbox{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(4, 150px);
+    grid-auto-rows: minmax(50px, auto);
+}
+
+.mobileAdministracion-atributos-checkboxs{
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.mobileAdministracion-atributos-checkboxs input{
+    box-shadow: none;
+}
+
+.mobileAdministracion-atributos-checkboxs img{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+@media (max-width:615px){
+    .mobileAdministracion-add-atributo-checkbox{
+        grid-template-columns: repeat(3, 150px);
+    }
+}
+
+@media (max-width:450px){
+    .mobileAdministracion-add-atributo-checkbox{
+        grid-template-columns: repeat(2, 150px);
+    }
+}

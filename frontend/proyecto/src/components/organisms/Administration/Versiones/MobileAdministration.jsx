@@ -2,21 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { Input } from '../../../atoms/Input/Input';
 import { Button } from '../../../atoms/Button/Button';
 import { Heading } from '../../../atoms/Heading/Heading';
-import { useNavigate } from "react-router-dom";
 import Label from '../../../atoms/Label/Label';
 import { InputLabel } from '../../../molecules/InputLabel/InputLabel';
 import './MobileAdministration.css';
 import { SelectPickerPlaces } from '../../../atoms/SelectPickerPlaces/SelectPickerPlaces';
 import { SelectPickerCategories } from '../../../atoms/SelectPickerCategories/SelectPickerCategories';
-import { AtributeCard } from '../../../molecules/AtributesCard/AtributeCard';
 import axios from 'axios';
 import { urlAPI } from '../../../../global.js'
 import { Icon } from '../../../atoms/Icon/Icon';
 
-export const MobileAdministration = (atributosBD) => {
+export const MobileAdministration = ({ atributosBD, imagenesRender, setImagenesRender, atributosRender, setAtributosRender }) => {
 
-  //Mensajes de error
-  const [errors, setErrors] = useState({ server: false, data: false });
 
   //le envío al select Place
   const [places, setPlaces] = useState([]);
@@ -24,14 +20,11 @@ export const MobileAdministration = (atributosBD) => {
   //le envío al select Category
   const [categories, setCategories] = useState([]);
 
-  //Atributos render
-  const [atributosRender, setAtributosRender] = useState([]);
 
-  //Imágenes render
-  const [imagenesRender, setImagenesRender] = useState([])
+
+  // const [atributeRender,setAtributeRender] = useState("")
 
   //Atributos de la base de datos
-
 
   //Guardo toda la info del form aquí
   const [dataForm, setDataForm] = useState({
@@ -70,6 +63,23 @@ export const MobileAdministration = (atributosBD) => {
     }
   })
 
+  // useEffect(() => {
+  //   if (atributosBD.length > 0) {
+  //     setAtributeRender(
+  //       <>
+  //         <CheckBoxIconLabel data={atributosBD} />
+  //       </>
+  //     )
+  //   } else {
+  //     setAtributeRender(
+  //       <>
+  //         <h2>Cargando</h2>
+  //       </>
+  //     )
+  //   }
+  // }, [atributosBD])
+
+
 
   const firstValidation = () => {
     if (dataForm.descripcion === " " || dataForm.latitud === " " || dataForm.longitud === " " || dataForm.nombre === " " || dataForm.ciudad === " " || dataForm.categoria === " " || dataForm.direccion === " " || dataForm.tituloDescripcion === " " || dataForm.precio === " ") {
@@ -104,7 +114,6 @@ export const MobileAdministration = (atributosBD) => {
     }
   }
 
-  const atributeContainer = document.getElementById("atributeContainer");
   const atributoNombre = document.getElementById("AtributoNombre");
   const atributoIcono = document.getElementById("AtributoIcono");
   const selectPlaceInfo = document.getElementById("selectPlace");
@@ -159,7 +168,7 @@ export const MobileAdministration = (atributosBD) => {
   }
 
   const addAtribute = () => {
-    if (atributoNombre.value != "" && atributoIcono.value != "") {
+    if (atributoNombre.value !== "" && atributoIcono.value !== "") {
       const nombre = atributoNombre.value;
       const icono = atributoIcono.value
       setAtributosRender((prevData) => [...prevData, { iconoAtributo: icono, nombreAtributo: nombre }])
@@ -167,11 +176,11 @@ export const MobileAdministration = (atributosBD) => {
       atributoIcono.value = "";
       errorContainerAtributo.innerHTML = ""
       console.log("agregado atributo")
-    } else if (atributoNombre.value != "") {
+    } else if (atributoNombre.value !== "") {
       errorContainerAtributo.innerHTML = ` <p>
       El ícono no pueden estar vacío
     </p>`
-    } else if (atributoIcono.value != "") {
+    } else if (atributoIcono.value !== "") {
       errorContainerAtributo.innerHTML = ` <p>
       El nombre no pueden estar vacío
     </p>`
@@ -184,7 +193,7 @@ export const MobileAdministration = (atributosBD) => {
 
   const addImage = () => {
 
-    if (imagenURL.value != "") {
+    if (imagenURL.value !== "") {
       const urlImagen = imagenURL.value;
       setImagenesRender((prevData) => [...prevData, { url: urlImagen }])
       imagenURL.value = ""
@@ -197,20 +206,12 @@ export const MobileAdministration = (atributosBD) => {
     }
   }
 
-  const deleteAtribute = (indexABorrar) => {
-    console.log("borrado atributo")
-    const nuevoArray = [...atributosRender];
-    nuevoArray.splice(indexABorrar, 1)
-    setAtributosRender(nuevoArray)
+  const deleteAtribute = (nombre) => {
+    setAtributosRender((prevValue) => (prevValue.filter(item => item.nombreAtributo !== nombre)))
   }
 
-  const deleteImage = (indexABorrar) => {
-    console.log("borrado imagen")
-    const nuevoArray = [...imagenesRender];
-    nuevoArray.splice(indexABorrar, 1);
-    console.log(indexABorrar)
-    return setImagenesRender(nuevoArray);
-
+  const deleteImage = (url) => {
+    setImagenesRender((prevValue) => (prevValue.filter(item => item.url !== url)))
   }
 
   const handleChangeDescription = (e) => {
@@ -293,39 +294,20 @@ export const MobileAdministration = (atributosBD) => {
             <Heading title='h5' variant='primary' type='md' >
               Agregar atributos
             </Heading>
-            <div className="mobileAdministracion-add-atributo-checkbox">
-              <div className="mobileAdministracion-atributos-checkboxs">
-                <Input type="checkbox"></Input>
-                <Icon width='xs' icon={"user"} />
-                <Label label="Baño"></Label>
-              </div>
-              <div className="mobileAdministracion-atributos-checkboxs">
-                <Input type="checkbox"></Input>
-                <Icon width='xs' icon={"user"} />
-                <Label label="Baño"></Label>
-              </div>
-              <div className="mobileAdministracion-atributos-checkboxs">
-                <Input type="checkbox"></Input>
-                <Icon width='xs' icon={"user"} />
-                <Label label="Baño"></Label>
-              </div>
-              <div className="mobileAdministracion-atributos-checkboxs">
-                <Input type="checkbox"></Input>
-                <Icon width='xs' icon={"user"} />
-                <Label label="Baño"></Label>
-              </div>
-              <div className="mobileAdministracion-atributos-checkboxs">
-                <Input type="checkbox"></Input>
-                <Icon width='xs' icon={"user"} />
-                <Label label="Baño"></Label>
-              </div>
-              <div className="mobileAdministracion-atributos-checkboxs">
-                <Input type="checkbox"></Input>
-                <Icon width='xs' icon={"user"} />
-                <Label label="Baño"></Label>
+            <div className='mobileAdministracion-add-atributo-checkbox-container'>
+              <div className="mobileAdministracion-add-atributo-checkbox">
+                {atributosBD && atributosBD.map((atributo) => {
+                  return (
+                    <div className="desktopAdministracion-atributos-checkboxs">
+                      <Input type="checkbox"></Input>
+                      <Icon width='xs' icon={atributo.nombre_icono} />
+                      <Label label={atributo.titulo}></Label>
+                    </div>
+                  )
+                })}
               </div>
             </div>
-            {atributosRender.map((atributo, index) => {
+            {atributosRender && atributosRender.map((atributo, index) => {
               return (
                 <div key={index++} className="mobileAdministracion-add-atributo-guardado">
                   <div className='mobileAdministracion-add-atributo-parte1-guardado'>
@@ -335,7 +317,7 @@ export const MobileAdministration = (atributosBD) => {
                     </InputLabel>
                   </div>
                   <div className='mobileAdministracion-add-atributo-parte2-guardado'>
-                    <Button label="X" onClick={deleteAtribute} />
+                    <Button label="X" onClick={() => deleteAtribute(atributo.nombreAtributo)} />
                   </div>
                 </div>
               )
@@ -396,7 +378,7 @@ export const MobileAdministration = (atributosBD) => {
                     </Input>
                   </div>
                   <div className='mobileAdministracion-add-imagen-parte2-cargada'>
-                    <Button id={`deleteImage_${index}`} label="X" onClick={deleteImage(index)} />
+                    <Button id={`deleteImage_${index}`} label="X" onClick={() => deleteImage(imagen.url)} />
                   </div>
                 </div>
               )
@@ -410,7 +392,7 @@ export const MobileAdministration = (atributosBD) => {
                 <Button id="buttonAdd" label="+" onClick={addImage} />
               </div>
             </div>
-            
+
           </div>
           <div className="errorContainer" id="errorContainer">
           </div>

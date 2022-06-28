@@ -250,18 +250,6 @@ export const CardProductReserve = ({
               </Paragraph>
             </div>
             <div className="product-description">
-
-              <Paragraph size="md" variant="secondary">
-                {descripcion}
-                <Link
-                  style={{ textDecoration: "none" }}
-                  to={`/productos/${id}`}
-                >
-                  <Span size="md" variant="primary">
-                    Más...
-                  </Span>
-                </Link>
-              </Paragraph>
               <div className="checkInCheckOut-product-reserve">
                 <div className="checkIn-product-reserve">
                   <h4>Check in:</h4>

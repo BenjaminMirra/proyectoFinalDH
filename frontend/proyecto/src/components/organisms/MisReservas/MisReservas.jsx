@@ -25,12 +25,7 @@ export const MisReservas = () => {
     const [reserveDate, setReserveDate] = useState([])
 
     useEffect(() => {
-        if (reservasPorId) {
-            console.log("ReservasPorId ")
-            console.log(reservasPorId);
-        }if(reserveDate){
-            console.log("reserveDate")
-            console.log(reserveDate)
+        if(reserveDate){
             reservasPorId.map((reserva) => {
                 
                 if(reserva.usuario_id === userId){
@@ -110,9 +105,9 @@ export const MisReservas = () => {
 
     }, [])
 
+    
     useEffect(() => {
-        if (productsData.length > 0) {
-
+        if (productsData && productsData.length > 0) {
             return (
 
                 setRender(
@@ -145,7 +140,7 @@ export const MisReservas = () => {
 
             )
         }
-    }, [productsData])
+    }, [productsData,reserveDate])
 
 
 

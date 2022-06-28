@@ -441,3 +441,68 @@
     font-size: 14px;
     color: red;
 }
+
+/* estilos para atributos checkboxs */
+
+.desktopAdministracion-add-atributo-checkbox-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    justify-items: center;
+    margin-top: 15px;
+    margin-bottom: -10px;
+    border-radius: 8px;
+    width: 98%;
+    background-color: #E5E5E5;
+}
+
+.desktopAdministracion-add-atributo-checkbox{
+    display: grid;
+    justify-items: center;
+    grid-template-columns: repeat(8, 150px);
+    grid-auto-rows: minmax(50px, auto);
+}
+
+.desktopAdministracion-atributos-checkboxs{
+    display: flex;
+    width: 50%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.desktopAdministracion-atributos-checkboxs input{
+    box-shadow: none;
+}
+
+.desktopAdministracion-atributos-checkboxs img{
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+@media (max-width:1375px){
+    .desktopAdministracion-add-atributo-checkbox{
+        grid-template-columns: repeat(7, 150px);
+    }
+}
+
+@media (max-width:1225px){
+    .desktopAdministracion-add-atributo-checkbox{
+        grid-template-columns: repeat(6, 150px);
+    }
+}
+
+
+@media (max-width:1075px){
+    .desktopAdministracion-add-atributo-checkbox{
+        grid-template-columns: repeat(5, 150px);
+    }
+}
+
+@media(max-width:925px){
+    .desktopAdministracion-add-atributo-checkbox{
+        grid-template-columns: repeat(4, 150px);
+    }
+}

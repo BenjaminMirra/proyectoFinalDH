@@ -65,8 +65,9 @@ export const ProductsReserve = ({ reserveDate, setReservasPorId, data, setMapHom
 
 
     useEffect(() => {
-
-    }, [])
+        console.log("reservedate")
+        console.log(reserveDate)
+    }, [reserveDate])
 
 
     return (

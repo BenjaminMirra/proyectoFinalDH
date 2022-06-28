@@ -7,14 +7,12 @@ import axios from 'axios';
 import { urlAPI } from '../../../../global.js'
 import { SelectPickerCategories } from '../../../atoms/SelectPickerCategories/SelectPickerCategories';
 import { SelectPickerPlaces } from '../../../atoms/SelectPickerPlaces/SelectPickerPlaces';
-import { AtributeCard } from '../../../molecules/AtributesCard/AtributeCard';
 import { InputLabel } from '../../../molecules/InputLabel/InputLabel';
 import './DesktopAdministration.css';
+import { Icon } from '../../../atoms/Icon/Icon';
 
-export const DesktopAdministration = () => {
+export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenesRender, atributosRender, setAtributosRender }) => {
 
-    //Mensajes de error
-    const [errors, setErrors] = useState({ server: false, data: false });
 
     //le envío al select Place
     const [places, setPlaces] = useState([]);
@@ -22,11 +20,12 @@ export const DesktopAdministration = () => {
     //le envío al select Category
     const [categories, setCategories] = useState([]);
 
-    //Atributos render
-    const [atributosRender, setAtributosRender] = useState([]);
-
-    //Imágenes render
-    const [imagenesRender, setImagenesRender] = useState([])
+    useEffect(() => {
+        if (atributosBD) {
+            console.log("desde desktop: ")
+            console.log(atributosBD)
+        }
+    }, [atributosBD])
 
     //Guardo toda la info del form aquí
     const [dataForm, setDataForm] = useState({
@@ -98,7 +97,6 @@ export const DesktopAdministration = () => {
         }
     }
 
-    const atributeContainer = document.getElementById("atributeContainer");
     const atributoNombre = document.getElementById("AtributoNombre");
     const atributoIcono = document.getElementById("AtributoIcono");
     const selectPlaceInfo = document.getElementById("selectPlace");
@@ -147,7 +145,7 @@ export const DesktopAdministration = () => {
     }
 
     const addAtribute = () => {
-        if (atributoNombre.value != "" && atributoIcono.value != "") {
+        if (atributoNombre.value !== "" && atributoIcono.value !== "") {
             const nombre = atributoNombre.value;
             const icono = atributoIcono.value
             setAtributosRender((prevData) => [...prevData, { iconoAtributo: icono, nombreAtributo: nombre }])
@@ -155,11 +153,11 @@ export const DesktopAdministration = () => {
             atributoIcono.value = "";
             errorContainerAtributo.innerHTML = ""
             console.log("agregado atributo")
-        } else if (atributoNombre.value != "") {
+        } else if (atributoNombre.value !== "") {
             errorContainerAtributo.innerHTML = ` <p>
             El ícono no pueden estar vacío
             </p>`
-        } else if (atributoIcono.value != "") {
+        } else if (atributoIcono.value !== "") {
             errorContainerAtributo.innerHTML = ` <p>
             El nombre no pueden estar vacío
             </p>`
@@ -172,7 +170,7 @@ export const DesktopAdministration = () => {
 
     const addImage = () => {
 
-        if (imagenURL.value != "") {
+        if (imagenURL.value !== "") {
             const urlImagen = imagenURL.value;
             setImagenesRender((prevData) => [...prevData, { url: urlImagen }])
             imagenURL.value = ""
@@ -185,13 +183,12 @@ export const DesktopAdministration = () => {
         }
     }
 
-    const deleteAtribute = (indexABorrar) => {
-        console.log("borrado atributo")
+    const deleteAtribute = (nombre) => {
+        setAtributosRender((prevValue) => (prevValue.filter(item => item.nombreAtributo !== nombre)))
     }
 
-    const deleteImage = (indexABorrar) => {
-        console.log("borrado imagen")
-
+    const deleteImage = (url) => {
+        setImagenesRender((prevValue) => (prevValue.filter(item => item.url !== url)))
     }
 
     const handleChangeDescription = (e) => {
@@ -273,7 +270,21 @@ export const DesktopAdministration = () => {
                         <Heading title='h4' variant='primary' type='md' >
                             Agregar atributos
                         </Heading>
-                        {atributosRender.map((atributo, index) => {
+                        <div className='desktopAdministracion-add-atributo-checkbox-container'>
+                            <div className="desktopAdministracion-add-atributo-checkbox">
+                                {atributosBD && atributosBD.map((atributo) => {
+                                    console.log("checkbox")
+                                    return (
+                                        <div className="desktopAdministracion-atributos-checkboxs">
+                                            <Input type="checkbox"></Input>
+                                            <Icon width='xs' icon={atributo.nombre_icono} />
+                                            <Label label={atributo.titulo}></Label>
+                                        </div>
+                                    )
+                                })}
+                            </div>
+                        </div>
+                        {atributosRender && atributosRender.map((atributo, index) => {
                             return (
                                 <div key={index++} className="desktopAdministracion-add-atributo-guardado">
                                     <div className='desktopAdministracion-add-atributo-parte1-guardado'>
@@ -285,7 +296,7 @@ export const DesktopAdministration = () => {
                                         </InputLabel>
                                     </div>
                                     <div className='desktopAdministracion-add-atributo-parte3-guardado'>
-                                        <Button disabled={true} label="X" onClick={deleteAtribute} />
+                                        <Button disabled={true} label="X" onClick={() => deleteAtribute(atributo.nombreAtributo)} />
                                     </div>
                                 </div>
                             )
@@ -342,7 +353,7 @@ export const DesktopAdministration = () => {
                         <Heading required={true} title='h4' variant='primary' type='md' >
                             Cargar imágenes
                         </Heading>
-                        {imagenesRender.map((imagen, index) => {
+                        {imagenesRender && imagenesRender.map((imagen, index) => {
                             return (
                                 <div key={index++} className="mobileAdministracion-add-imagen-cargada">
                                     <div className='mobileAdministracion-add-imagen-parte1-cargada'>
@@ -350,7 +361,7 @@ export const DesktopAdministration = () => {
                                         </Input>
                                     </div>
                                     <div className='mobileAdministracion-add-imagen-parte2-cargada'>
-                                        <Button id={`deleteImage_${index}`} label="X" onClick={deleteImage(index)} />
+                                        <Button id={`deleteImage_${index}`} label="X" onClick={() => deleteImage(imagen.url)} />
                                     </div>
                                 </div>
                             )
