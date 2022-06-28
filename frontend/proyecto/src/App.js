@@ -7,6 +7,7 @@ import React,{useState} from 'react'
 import {Mapa} from './components/pages/Mapa'
 import {Reserve} from './components/pages/Reserve'
 import { SuccessBooking } from "./components/pages/SuccessBooking";
+import { SuccessAdd } from "./components/pages/SuccessAdd";
 import {Favorite} from './components/pages/Favorite'
 import {ProductsPagination} from './components/organisms/ProductsPagination/ProductsPagination';
 import { Error404 } from './components/pages/Error404';
@@ -44,6 +45,7 @@ function App() {
           <Route path="/productsPagination" element={<ProductsPagination/>}></Route>
           <Route path="/:id/misreservas" element={<MyReservePage/>}></Route>
           <Route path="/administracion" element={<Administracion/>}></Route>
+          <Route path="/producto-exitoso" element={<SuccessAdd />}></Route>
           <Route path="*" element={<Error404/>}></Route>
         </Routes>
       </BrowserRouter>
