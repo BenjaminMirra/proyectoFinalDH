@@ -24,9 +24,9 @@ import java.util.stream.Collectors;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
-public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
+public class CustomAuthenticationFilter /*extends UsernamePasswordAuthenticationFilter*/ {
 
-    @Autowired
+   /* @Autowired
     private AuthenticationManager authenticationManager;
 
     public CustomAuthenticationFilter(AuthenticationManager authenticationManager) {
@@ -37,8 +37,8 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        /*String email = request.getHeader("email");
-        String password = request.getHeader("password");*/
+        *//*String email = request.getHeader("email");
+        String password = request.getHeader("password");*//*
         UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(email,password);
         return authenticationManager.authenticate(authenticationToken);
     }
@@ -53,7 +53,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
                 .withIssuer(request.getRequestURL().toString())
                 .withClaim("roles", user.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
                 .sign(algorithm);
-
+*/
         /*String token_de_recuperacion = JWT.create()
                 .withSubject(user.getUsername())
                 .withExpiresAt(new Date(System.currentTimeMillis() + 1440 * 60 * 1000))
@@ -61,10 +61,10 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
                 .sign(algorithm);*/
         /*response.setHeader("token_de_acceso", token_de_acceso);
         response.setHeader("token_de_recuperacion", token_de_recuperacion);*/
-        Map<String, String> tokens = new HashMap<>();
+       /* Map<String, String> tokens = new HashMap<>();
         tokens.put("token_de_acceso", token_de_acceso);
-        /*tokens.put("token_de_recuperacion", token_de_recuperacion);*/
+        *//*tokens.put("token_de_recuperacion", token_de_recuperacion);*//*
         response.setContentType(APPLICATION_JSON_VALUE);
         new ObjectMapper().writeValue(response.getOutputStream(), tokens);
-    }
+    }*/
 }

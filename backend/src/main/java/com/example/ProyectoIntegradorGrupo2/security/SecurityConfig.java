@@ -43,8 +43,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
-        customAuthenticationFilter.setFilterProcessesUrl("/usuarios/login");
+        /*CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
+        customAuthenticationFilter.setFilterProcessesUrl("/usuarios/login");*/
         /*CustomAuthenticationFilter customAuthenticationFilter1 = new CustomAuthenticationFilter(authenticationManagerBean());
         customAuthenticationFilter1.setFilterProcessesUrl("usuarios/agregar");*/
 
@@ -57,7 +57,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().anyRequest().permitAll()
                 .and().logout().permitAll();
         /*http.addFilter(customAuthenticationFilter1);*/
-        http.addFilter(customAuthenticationFilter);
+        /*http.addFilter(customAuthenticationFilter);*/
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(corsFilter(), ChannelProcessingFilter.class);
 
