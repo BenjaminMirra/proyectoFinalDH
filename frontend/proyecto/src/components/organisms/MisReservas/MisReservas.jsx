@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react';
 import './MisReservas.css'
 import { Link, useNavigate } from "react-router-dom";
 import { Heading } from '../../atoms/Heading/Heading'
 import { Icon } from '../../atoms/Icon/Icon'
 import { urlAPI } from "../../../global.js";
 import axios from 'axios';
+import sinReservas from '../../utils/images/sinReservas.jpeg'
 
 import { ProductsReserve } from '../ProductsReserve/ProductsReserve';
 
@@ -126,7 +127,7 @@ export const MisReservas = () => {
                         <div className="misReservas-vacia">
                             <div className="misReservas-vacia-box">
 
-                                <Icon icon={"prohibido"} />
+                                <img src={sinReservas} alt="reservasVacias"/>
                                 <Heading title="h2" variant="secondary" type='lg'>
                                     Aún no haz efectuado ninguna reserva
                                 </Heading>{" "}

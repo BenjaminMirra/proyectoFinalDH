@@ -79,6 +79,11 @@
     flex-direction: column;
 }
 
+.mobileAdministracion-add-descripcion-info .input-label{
+    width: 100%;
+    margin-bottom: 13px;
+}
+
 .mobileAdministracion-add-descripcion-info textarea {
     margin-top: 10px;
     margin-bottom: 15px;
@@ -183,26 +188,34 @@
 
 .mobileAdministracion-add-politicas h1 {
     display: flex;
+    font-size: 23px;
 }
 
-.mobile-add-politicas-normas {
+.mobile-add-politicas-normas{
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    text-align: center;
     width: 100%;
+    text-align: left;
+}
+
+.mobile-add-normaDeCasa{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    align-items: center;
+    background-color: #E5E5E5;
+    border-radius: 8px;
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
-.mobile-add-politicas-normas h3 {
-    margin-bottom: 10px;
-}
-
-.mobile-add-politicas-normas textarea {
+.mobile-add-normaDeCasa textarea {
     margin-top: 10px;
     width: 100%;
     padding-left: 8px;
@@ -213,32 +226,26 @@
     font-size: 12px;
 }
 
-.mobile-add-politicas-saludyseguridad {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    text-align: center;
+.mobileAdministracion-add-SaludSeguridad-parte1{
     width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 10px;
 }
 
-.mobile-add-politicas-saludyseguridad h3 {
-    margin-bottom: 10px;
+.mobileAdministracion-add-normaDeCasa-parte2 button{
+    margin-top: 23px;
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
 }
 
-.mobile-add-politicas-saludyseguridad textarea {
-    margin-top: 10px;
+.mobileAdministracion-add-normaDeCasa-parte1{
     width: 100%;
-    padding-left: 8px;
-    padding-top: 5px;
-    outline: none;
-    border: 1px solid #DFE4EA;
-    border-radius: 8px;
-    font-size: 12px;
+}
+
+.mobileAdministracion-add-normaDeCasa-parte2 button{
+    margin-top: 23px;
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
 }
 
 .mobile-add-politicas-cancelacion {
@@ -248,14 +255,108 @@
     align-items: flex-start;
     text-align: center;
     width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
     padding-top: 20px;
     padding-bottom: 10px;
+    
+}
+
+.mobile-add-politicas-saludyseguridad{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+
+.mobile-add-politicas-saludyseguridad h3{
+    margin-top: 10px;
+}
+
+.mobile-add-politicas-normas h3{
+    margin-top: 10px;
+}
+
+.mobile-add-saludSeguridad{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    align-items: center;
+    background-color: #E5E5E5;
+    border-radius: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.mobile-add-saludSeguridad textarea {
+    margin-top: 10px;
+    width: 100%;
+    padding-left: 8px;
+    padding-top: 5px;
+    outline: none;
+    border: 1px solid #DFE4EA;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+.mobileAdministracion-add-SaludSeguridad-parte1{
+    width: 100%;
+}
+
+.mobileAdministracion-add-saludSeguridad-parte2 button{
+    margin-top: 23px;
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+}
+
+.mobileAdministracion-add-saludSeguridad-parte1{
+    width: 100%;
+}
+
+.mobileAdministracion-add-saludSeguridad-parte2 button{
+    margin-top: 23px;
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+}
+
+.mobile-add-politicas-cancelacion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    text-align: center;
+    width: 100%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    
 }
 
 .mobile-add-politicas-cancelacion h3 {
     margin-bottom: 10px;
+}
+
+.mobile-add-politicasCancelacion{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    text-align: left;
+    align-items: center;
+    background-color: #E5E5E5;
+    border-radius: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 .mobile-add-politicas-cancelacion textarea {
@@ -267,6 +368,50 @@
     border: 1px solid #DFE4EA;
     border-radius: 8px;
     font-size: 12px;
+}
+
+.mobileAdministracion-add-politicaCancelacion-parte1{
+    width: 100%;
+}
+
+.mobileAdministracion-add-politicaCancelacion-parte2 button{
+    margin-top: 23px;
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+}
+
+.mobile-add-politicas-guardado{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 10px;
+    background-color: #E5E5E5;
+    border-radius: 8px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 10px;
+    margin-top: 10px;
+}
+
+.mobile-add-politica-parte1-guardado{
+    width: 100%;
+}
+
+.mobile-add-politica-parte1-guardado input{
+    width: 100%;
+}
+
+.mobile-add-politica-parte2-guardado button{
+    margin-top: 6px;
+    width: 40px;
+    height: 40px;
+    margin-left: 5px;
+    opacity: 0.5;
 }
 
 .mobileAdministracion-add-cargarImagen {
@@ -284,11 +429,14 @@
 .mobileAdministracion-add-imagen {
     width: 100%;
     display: flex;
-    padding: 10px;
     border-radius: 8px;
     flex-direction: row;
     background-color: #DFE4EA;
     margin-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .mobileAdministracion-add-imagen-parte1 {
@@ -443,19 +591,18 @@
 .mobileAdministracion-add-imagen-cargada {
     width: 100%;
     display: flex;
-    padding: 10px;
     border-radius: 8px;
     flex-direction: row;
     background-color: #DFE4EA;
     margin-top: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .mobileAdministracion-add-imagen-parte1-cargada {
     width: 100%;
-}
-
-.mobileAdministracion-add-imagen-parte2-cargada {
-    width: 10%;
 }
 
 .mobileAdministracion-add-imagen-parte2-cargada button {

@@ -148,11 +148,20 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
       formdata.append("email", formValues.email);
       formdata.append("password", formValues.password);
 
+
+
+      //arreglar login, ya no es formdata es JSON.
+      var myHeaders = new Headers();
+      myHeaders.append("Content-Type", "application/json");
+      
       var requestOptions = {
-        method: "POST",
-        body: formdata,
+        method: 'POST',
+        body: JSON.stringify({
+          "email": `${formValues.email}`,
+          "password": `${formValues.password}`,
+        }),
         redirect: "follow",
-        headers: { "Access-Control-Allow-Origin": "*/*" },
+        headers: myHeaders,
       };
       setButtonValue({disabled:true,value:'Iniciando sesión...'})
       fetch(`${urlAPI}usuarios/login`, requestOptions)
