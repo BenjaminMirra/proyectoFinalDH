@@ -148,6 +148,8 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
       formdata.append("email", formValues.email);
       formdata.append("password", formValues.password);
 
+      //arreglar login, ya no es formdata es JSON.
+
       var requestOptions = {
         method: "POST",
         body: formdata,

@@ -11,7 +11,7 @@ import { InputLabel } from '../../../molecules/InputLabel/InputLabel';
 import './DesktopAdministration.css';
 import { Icon } from '../../../atoms/Icon/Icon';
 
-export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenesRender, atributosRender, setAtributosRender }) => {
+export const DesktopAdministration = ({ normasDeCasa, setNormasDeCasa, saludSeguridad, setSaludSeguridad, politicasCancelacion, setPoliticasCancelacion, atributosBD, imagenesRender, setImagenesRender, atributosRender, setAtributosRender }) => {
 
 
     //le envío al select Place
@@ -104,6 +104,12 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
     const errorContainer = document.getElementById("errorContainer");
     const imagenURL = document.getElementById("imagenURL")
     const errorContainerAtributo = document.getElementById("errorContainerAtributo")
+    const politicaNormaDeCasa = document.getElementById("normaDeCasa-info")
+    const errorContainerNormaDeCasa = document.getElementById("errorContainerNormasDeCasa")
+    const politicaCancelacion = document.getElementById("cancelacion-info")
+    const errorContainerPoliticaCancelacion = document.getElementById("errorContainerPoliticaCancelacion")
+    const politicaSaludSeguridad = document.getElementById("saludSeguridad-info")
+    const errorContainerSaludSeguridad = document.getElementById("errorContainerSaludSeguridad")
 
     const [buttonValue, setButtonValue] = useState({ disabled: false, value: 'Crear' })
 
@@ -171,15 +177,79 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
     const addImage = () => {
 
         if (imagenURL.value !== "") {
-            const urlImagen = imagenURL.value;
-            setImagenesRender((prevData) => [...prevData, { url: urlImagen }])
-            imagenURL.value = ""
-            errorContainer.innerHTML = ``
-            console.log("agregado imagen")
+            if (imagenesRender.length > 4) {
+                errorContainer.innerHTML = `<p>
+                Solo puede agregar hasta 5 imágenes
+                </p>`
+            } else {
+                const urlImagen = imagenURL.value;
+                setImagenesRender((prevData) => [...prevData, { url: urlImagen }])
+                imagenURL.value = ""
+                errorContainer.innerHTML = ``
+                console.log("agregado imagen")
+            }
         } else {
             errorContainer.innerHTML = `<p>
             La url no puede estar vacía
             </p>`
+        }
+    }
+
+    const addNormasDeCasa = () => {
+        if (politicaNormaDeCasa.value !== "") {
+            if (normasDeCasa.length > 2) {
+                errorContainerNormaDeCasa.innerHTML = `<p>
+                Solo puedes agregar un máximo de 3 políticas.
+                </p>`
+            } else {
+                const politicaInput = politicaNormaDeCasa.value;
+                console.log(politicaInput)
+                setNormasDeCasa((prevData) => [...prevData, { input: politicaInput }])
+                politicaNormaDeCasa.value = ""
+                errorContainerNormaDeCasa.innerHTML = ''
+            }
+        } else {
+            errorContainerNormaDeCasa.innerHTML = `<p>
+          La política no puede estar vacía.
+        </p>`
+        }
+    }
+
+    const addPoliticaCancelacion = () => {
+        if (politicaCancelacion.value !== "") {
+            if (politicasCancelacion.length > 2) {
+                errorContainerPoliticaCancelacion.innerHTML = `<p>
+                Solo puedes agregar un máximo de 3 políticas.
+                </p>`
+            } else {
+                const politicaInput = politicaCancelacion.value;
+                setPoliticasCancelacion((prevData) => [...prevData, { input: politicaInput }])
+                politicaCancelacion.value = ""
+                errorContainerPoliticaCancelacion.innerHTML = ''
+            }
+        } else {
+            errorContainerPoliticaCancelacion.innerHTML = `<p>
+          La política no puede estar vacía
+        </p>`
+        }
+    }
+
+    const addSaludSeguridad = () => {
+        if (politicaSaludSeguridad.value !== "") {
+            if (saludSeguridad.length > 2) {
+                errorContainerSaludSeguridad.innerHTML = `<p>
+                Solo puedes agregar un máximo de 3 políticas.
+                </p>`
+            } else {
+                const politicaInput = politicaSaludSeguridad.value;
+                setSaludSeguridad((prevData) => [...prevData, { input: politicaInput }])
+                politicaSaludSeguridad.value = ""
+                errorContainerSaludSeguridad.innerHTML = ''
+            }
+        } else {
+            errorContainerSaludSeguridad.innerHTML = `<p>
+          La política no puede estar vacía
+        </p>`
         }
     }
 
@@ -189,6 +259,18 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
 
     const deleteImage = (url) => {
         setImagenesRender((prevValue) => (prevValue.filter(item => item.url !== url)))
+    }
+
+    const deleteNormasDeCasa = (input) => {
+        setNormasDeCasa((prevValue) => (prevValue.filter(item => item.input !== input)))
+    }
+
+    const deletePoliticaCancelacion = (input) => {
+        setPoliticasCancelacion((prevValue) => (prevValue.filter(item => item.input !== input)))
+    }
+
+    const deleteSaludSeguridad = (input) => {
+        setSaludSeguridad((prevValue) => (prevValue.filter(item => item.input !== input)))
     }
 
     const handleChangeDescription = (e) => {
@@ -330,22 +412,89 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
                                 <Heading title='h4' variant='primary' type='md' >
                                     Normas de la Casa
                                 </Heading>
-                                <Label label='Descripción'></Label>
-                                <textarea placeholder='Escriba aquí' name="" id="norma-info" cols="30" rows="10" />
+                                {normasDeCasa && normasDeCasa.map((politica, index) => {
+                                    return (
+                                        <div key={index++} className="mobile-add-politicas-guardado">
+                                            <div className='mobile-add-politica-parte1-guardado'>
+                                                <InputLabel disabled={true} name={`normaDeCasa_${index}`} placeholder={politica.input}>
+                                                </InputLabel>
+                                            </div>
+                                            <div className='mobile-add-politica-parte2-guardado'>
+                                                <Button label="X" onClick={() => deleteNormasDeCasa(politica.input)} />
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                                <div className="mobile-add-normaDeCasa">
+                                    <div className='mobileAdministracion-add-normaDeCasa-parte1'>
+                                        <Label label='Descripción'></Label>
+                                        <textarea placeholder='Escriba aquí' name="" id="normaDeCasa-info" cols="30" rows="2" />
+                                    </div>
+                                    <div className='mobileAdministracion-add-normaDeCasa-parte2'>
+                                        <Button id="buttonAdd" label="+" onClick={addNormasDeCasa} />
+                                    </div>
+                                </div>
+                                <div className="errorContainer" id="errorContainerNormasDeCasa">
+                                </div>
                             </div>
                             <div className="add-politicas-saludyseguridad">
                                 <Heading title='h4' variant='primary' type='md' >
                                     Salud y Seguridad
                                 </Heading>
-                                <Label label='Descripción'></Label>
-                                <textarea placeholder='Escriba aquí' name="" id="saludyseguridad-info" cols="30" rows="10" />
+                                {saludSeguridad && saludSeguridad.map((politica, index) => {
+                                    return (
+                                        <div key={index++} className="mobile-add-politicas-guardado">
+                                            <div className='mobile-add-politica-parte1-guardado'>
+                                                <InputLabel disabled={true} name={`normaDeCasa_${index}`} placeholder={politica.input}>
+                                                </InputLabel>
+                                            </div>
+                                            <div className='mobile-add-politica-parte2-guardado'>
+                                                <Button label="X" onClick={() => deleteSaludSeguridad(politica.input)} />
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                                <div className="mobile-add-saludSeguridad">
+                                    <div className='mobileAdministracion-add-saludSeguridad-parte1'>
+                                        <Label label='Descripción'></Label>
+                                        <textarea placeholder='Escriba aquí' name="" id="saludSeguridad-info" cols="30" rows="2" />
+                                    </div>
+                                    <div className='mobileAdministracion-add-saludSeguridad-parte2'>
+                                        <Button id="buttonAdd" label="+" onClick={addSaludSeguridad} />
+                                    </div>
+                                </div>
+                                <div className="errorContainer" id="errorContainerSaludSeguridad">
+                                </div>
                             </div>
                             <div className="add-politicas-cancelacion">
                                 <Heading title='h4' variant='primary' type='md' >
                                     Políticas de Cancelación
                                 </Heading>
-                                <Label label='Descripción'></Label>
-                                <textarea placeholder='Escriba aquí' name="" id="cancelacion-info" cols="30" rows="10" />
+                                {politicasCancelacion && politicasCancelacion.map((politica, index) => {
+                                    return (
+                                        <div key={index++} className="mobile-add-politicas-guardado">
+                                            <div className='mobile-add-politica-parte1-guardado'>
+                                                <InputLabel disabled={true} name={`normaDeCasa_${index}`} placeholder={politica.input}>
+                                                </InputLabel>
+                                            </div>
+                                            <div className='mobile-add-politica-parte2-guardado'>
+                                                <Button label="X" onClick={() => deletePoliticaCancelacion(politica.input)} />
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                                <div className="mobile-add-politicasCancelacion">
+                                    <div className='mobileAdministracion-add-politicaCancelacion-parte1'>
+                                        <Label label='Descripción'></Label>
+                                        <textarea placeholder='Escriba aquí' name="" id="cancelacion-info" cols="30" rows="2" />
+                                    </div>
+                                    <div className='mobileAdministracion-add-politicaCancelacion-parte2'>
+                                        <Button id="buttonAdd" label="+" onClick={addPoliticaCancelacion} />
+                                    </div>
+                                </div>
+                                <div className="errorContainer" id="errorContainerPoliticaCancelacion">
+
+                                </div>
                             </div>
                         </div>
                     </div>

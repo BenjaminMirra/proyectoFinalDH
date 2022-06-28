@@ -12,7 +12,11 @@ export const Administration = () => {
 
     const [reserveDisplayed, setReserveDisplayed] = useState(<DesktopAdministration />)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const [atributosBD, setAtributosBD] = useState([])
+    const [atributosBD, setAtributosBD] = useState([]);
+    const [saludSeguridad, setSaludSeguridad] = useState([]);
+    const [politicasCancelacion, setPoliticasCancelacion] = useState([]);
+    const [normasDeCasa, setNormasDeCasa] = useState([]);
+
 
     //Atributos render
     const [atributosRender, setAtributosRender] = useState([]);
@@ -44,11 +48,11 @@ export const Administration = () => {
 
     useEffect(() => {
         if (windowWidth < 768) {
-            setReserveDisplayed(<MobileAdministration imagenesRender={imagenesRender} setImagenesRender={setImagenesRender} atributosRender={atributosRender} setAtributosRender={setAtributosRender} atributosBD={atributosBD} />)
+            setReserveDisplayed(<MobileAdministration normasDeCasa={normasDeCasa} setNormasDeCasa={setNormasDeCasa} saludSeguridad={saludSeguridad} setSaludSeguridad={setSaludSeguridad} politicasCancelacion={politicasCancelacion} setPoliticasCancelacion={setPoliticasCancelacion} imagenesRender={imagenesRender} setImagenesRender={setImagenesRender} atributosRender={atributosRender} setAtributosRender={setAtributosRender} atributosBD={atributosBD} />)
         } else {
-            setReserveDisplayed(<DesktopAdministration imagenesRender={imagenesRender} setImagenesRender={setImagenesRender} atributosRender={atributosRender} setAtributosRender={setAtributosRender} atributosBD={atributosBD} />)
+            setReserveDisplayed(<DesktopAdministration normasDeCasa={normasDeCasa} setNormasDeCasa={setNormasDeCasa} saludSeguridad={saludSeguridad} setSaludSeguridad={setSaludSeguridad} politicasCancelacion={politicasCancelacion} setPoliticasCancelacion={setPoliticasCancelacion} imagenesRender={imagenesRender} setImagenesRender={setImagenesRender} atributosRender={atributosRender} setAtributosRender={setAtributosRender} atributosBD={atributosBD} />)
         }
-    }, [windowWidth, atributosBD, atributosRender, imagenesRender]);
+    }, [windowWidth, atributosBD, atributosRender, imagenesRender,politicasCancelacion,saludSeguridad,normasDeCasa]);
     return (
         <>
             {reserveDisplayed}
