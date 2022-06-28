@@ -275,3 +275,10 @@
     width: 300px;
   }
 }
+
+@media (min-width:1600px){
+  .card-product-img {
+    width: 200%;
+    height: 200%;;
+  }
+}
