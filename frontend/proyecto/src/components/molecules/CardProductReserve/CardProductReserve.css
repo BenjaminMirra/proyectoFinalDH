@@ -1,0 +1,82 @@
+.card-product-img-reserve {
+    max-width: 360px;
+    height: 100%;
+    position: relative;
+}
+
+.card-product-text-reserve button{
+    position: inherit;
+}
+
+.product-description-reserve button {
+    margin-top: 10px;
+}
+
+.button-opinion-container-reserve{
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.button-opinion-container-reserve button{
+    width: 96%;
+}
+
+.checkInCheckOut-product-reserve {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    width: 275px;
+}
+
+.checkIn-product-reserve {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.checkIn-product-reserve h4{
+    font-size: 18px;
+}
+
+.checkIn-product-reserve h6 {
+    margin-top: 2px
+}
+
+.checkOut-product-reserve {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.checkOut-product-reserve h4{
+    font-size: 18px;
+}
+
+.checkOut-product-reserve h6 {
+    margin-top: 2px
+}
+
+.button-opinion-container {
+    display: flex;
+    width: 100%;
+}
+
+.card-product-text-reserves h3 {
+    overflow: hidden;
+    white-space: nowrap;
+}
