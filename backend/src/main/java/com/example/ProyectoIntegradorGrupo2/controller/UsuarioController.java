@@ -6,23 +6,22 @@ import com.example.ProyectoIntegradorGrupo2.emailsender.IEmailSenderService;
 import com.example.ProyectoIntegradorGrupo2.exceptions.BadRequestException;
 import com.example.ProyectoIntegradorGrupo2.exceptions.ResourceNotFoundException;
 import com.example.ProyectoIntegradorGrupo2.model.Usuario;
-import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.TokenYIdDeRegistroDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.UsuarioDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.UsuarioEditarDTO;
-import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.UsuarioPorEmailDTO;
+import com.example.ProyectoIntegradorGrupo2.model.dto.usuarioDTO.*;
 import com.example.ProyectoIntegradorGrupo2.service.IUsuarioService;
+import com.example.ProyectoIntegradorGrupo2.service.UsuarioService;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RestController
@@ -31,6 +30,9 @@ public class UsuarioController {
 
     @Autowired
     private IUsuarioService usuarioService;
+
+    @Autowired
+    private UsuarioService usuarioServiceImpl;
 
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -72,6 +74,48 @@ public class UsuarioController {
         return ResponseEntity.created(uri).body(tokenYIdDeRegistroDTO);
         /*return ResponseEntity.ok(usuarioAgregado.getId());*/
     }
+
+    @Operation(summary = "Loguear un usuario")
+    @PostMapping("/login")
+    public ResponseEntity<?> loguearUsuario(@RequestBody UsuarioLoginDTO usuarioLoginDTO) throws Exception {
+
+
+        try {
+
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(usuarioLoginDTO.getEmail(),usuarioLoginDTO.getPassword()));
+
+        }catch (BadCredentialsException e) {
+            throw new Exception("Incorrect", e);
+
+        }
+  /* UsuarioPorEmailDTO usuarioPorEmailDTO = new UsuarioPorEmailDTO();
+   usuarioPorEmailDTO.setEmail(usuarioLoginDTO.getEmail());
+
+   UsuarioGETByIdOrEmailDTO usuarioEncontrado = usuarioService.obtenerUsuarioPorEmail(usuarioPorEmailDTO);
+   List<String> usuarioRoles = new ArrayList<>();
+   usuarioRoles.add(usuarioEncontrado.getNombre_rol());
+   Usuario usuarioEncontrado2 = usuarioService.getUsuario(usuarioEncontrado.getId());*/
+        URI uri = URI.create(ServletUriComponentsBuilder.fromCurrentContextPath().path("/usuarios/login").toUriString());
+        UserDetails userDetails = usuarioServiceImpl.loadUserByUsername(usuarioLoginDTO.getEmail());
+
+        Algorithm algorithm = Algorithm.HMAC256("secret".getBytes());
+        String token_de_acceso = JWT.create()
+                .withSubject(userDetails.getUsername()) //usuarioEncontrado.getEmail()
+                .withExpiresAt(new Date(System.currentTimeMillis() + 60 * 60 * 1000))
+                .withIssuer(uri.toString())
+                .withClaim("roles", userDetails.getAuthorities().stream().map(GrantedAuthority::getAuthority).collect(Collectors.toList()))
+                .sign(algorithm);
+
+        Map<String, String> tokens = new HashMap<>();
+        tokens.put("token_de_acceso", token_de_acceso);
+        /*tokens.put("token_de_recuperacion", token_de_recuperacion);*/
+
+
+
+        return ResponseEntity.ok(tokens);
+        /*return ResponseEntity.ok(usuarioAgregado.getId());*/
+    }
+
 
     @Operation(summary = "Obtener un usuario por su id")
     @GetMapping("/{id}")
