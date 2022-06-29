@@ -18,7 +18,7 @@
 .products-content {
   width: 97%;
   margin: auto;
- padding-top: 19px;
+  padding-top: 19px;
 }
 
 .product-cards-container {
@@ -41,7 +41,6 @@
   }
 
   @media (max-width: 767px) {
-  
     .products-container {
       padding-bottom: 20px;
     }
@@ -49,14 +48,10 @@
       grid-template-columns: 1fr; 
       grid-template-rows: 1fr 1fr; 
     }
-    .product-cards-container:nth-child(1){
-     
-    }
     .product-title{
       width: 448px;
       margin: auto;
     }
-   
   }
   @media (max-width: 465px){
     .product-title{

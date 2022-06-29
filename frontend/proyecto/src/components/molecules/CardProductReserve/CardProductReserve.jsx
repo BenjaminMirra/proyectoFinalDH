@@ -4,6 +4,7 @@ import { Heading } from "../../atoms/Heading/Heading";
 import { Paragraph } from "../../atoms/paragraph/Paragraph";
 import { Button } from "../../atoms/Button/Button";
 import { Icon } from "../../atoms/Icon/Icon";
+import { Input } from "../../atoms/Input/Input";
 import { Span } from "../../atoms/Span/Span";
 import { Link, useLocation } from "react-router-dom";
 import axios from "axios";
@@ -15,21 +16,27 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 export const CardProductReserve = ({
   url,
   titulo,
-  descripcion,
   location,
   category,
   id,
-  rating,
   services,
   setMapHomeData,
-  lat,
-  lng,
   setShowMap,
   likedProducts,
   startReserveDate,
   endReserveDate,
   setLikedProducts
 }) => {
+
+  const [opinion, setOpinion] = useState(false);
+
+
+  useEffect(() => {
+    if (endReserveDate < new Date()) {
+      setOpinion(true)
+    }
+  }, [endReserveDate])
+
   useEffect(() => {
     setLiked(false)
   }, [likedProducts]);
@@ -102,6 +109,16 @@ export const CardProductReserve = ({
 
   }
 
+  const [opinionStar, setOpinionStar] = useState(true);
+
+  const handleOpinion = () =>{
+    if(!opinionStar){
+      setOpinionStar(true)
+    }else{
+      setOpinionStar(false)
+    }
+  }
+
   const [stars, setStars] = useState('')
   useEffect(() => {
 
@@ -135,8 +152,8 @@ export const CardProductReserve = ({
   return (
     <>
       <LazyLoadComponent effect="blur">
-        <div className="card-product">
-          <div className="card-product-img-reserve">
+        <div className="card-product-reserves">
+          <div className="card-product-reserves-img">
             <Link to={`/productos/${id}`}>
               <LazyLoadImage
                 width={"100%"}
@@ -147,121 +164,143 @@ export const CardProductReserve = ({
                 alt={titulo}
               />
             </Link>
-            <div className="fav">
+          </div>
+          {/* <div className="fav">
               <Icon
                 icon={liked ? "favorite" : "bEmptyHeart"}
                 width="lg"
                 height="sm"
                 onClick={() => handleFavorite(id)}
               ></Icon>
-            </div>
-          </div>
+            </div> */}
 
-          <div className="card-product-text card-product-text-reserve">
-            <div className="cat-cat">
-              <Heading type="xs" title="h4" variant="tertiary">
-                {category}
-              </Heading>
-              <div className="product-cat-cat">
-                {stars < 1 ? (
-                  ""
-                ) : stars < 2 ? (
-                  <>
-                    <Icon icon="star" />
-                    <Icon icon="emptyStar" />
-                    <Icon icon="emptyStar" />
-                    <Icon icon="emptyStar" />
-                    <Icon icon="emptyStar" />
-                  </>
-                ) : stars <= 4 ? (
-                  <>
-                    <Icon icon="star" />
-                    <Icon icon="star" />
-                    <Icon icon="emptyStar" />
-                    <Icon icon="emptyStar" />
-                    <Icon icon="emptyStar" />
-                  </>
-                ) : stars <= 6 ? (
-                  <>
-                    <Icon icon="star" />
-                    <Icon icon="star" />
-                    <Icon icon="star" />
-                    <Icon icon="emptyStar" />
-                    <Icon icon="emptyStar" />
-                  </>
-                ) : stars < 9 ? (
-                  <>
-                    <Icon icon="star" />
-                    <Icon icon="star" />
-                    <Icon icon="star" />
-                    <Icon icon="star" />
-                    <Icon icon="emptyStar" />
-                  </>
-                ) : stars <= 9.5 ? (
-                  <>
-                    <Icon icon="star" />
-                    <Icon icon="star" />
-                    <Icon icon="star" />
-                    <Icon icon="star" />
-                    <Icon icon="emptyStar" />
-                  </>
-                ) : (
-                  <>
-                    <Icon icon="star" />
-                    <Icon icon="star" />
-                    <Icon icon="star" />
-                    <Icon icon="star" />
-                    <Icon icon="star" />
-                  </>
-                )}
-              </div>
-            </div>
-            <Heading type="md" title="h3" variant="secondary">
-              {titulo}
-            </Heading>
-            <div className="product-rating">
-              <div className="product-rating-score">
-                <Paragraph size="md" variant="secondary">
-                  {stars < 1 ? "-" : stars}
-                </Paragraph>
-              </div>
-              <div className="product-rating-score-text">
-                <Paragraph size="md" variant="secondary">
-                  {stars < 1
-                    ? "Sin puntaje"
-                    : stars < 2
-                      ? "Muy Malo"
-                      : stars < 4
-                        ? "Malo"
-                        : stars < 6
-                          ? "Regular"
-                          : stars < 9
-                            ? "Bueno"
-                            : stars <= 9.5
-                              ? "Muy Bueno"
-                              : "Excelente"}
-                </Paragraph>
-              </div>
-            </div>
-            <div className="product-location">
-              <Icon icon="location" width="xs" onClick={() => { }}></Icon>
-              <Paragraph size="md" variant="secondary">
-                {location}
-              </Paragraph>
-            </div>
-            <div className="product-description-reserve">
-              <div className="checkInCheckOut-product-reserve">
-                <div className="checkIn-product-reserve">
-                  <h4>Check in:</h4>
-                  <h6>{startReserveDate}</h6>
+          <div className="card-product-reserves-text">
+            <div className="card-product-reserves-text-primeraParte">
+              <div className="card-product-reserves-primerParte-1">
+                <div className="cat-cat">
+                  <Heading type="xs" title="h4" variant="tertiary">
+                    {category}
+                  </Heading>
+                  <div className="product-cat-cat">
+                    {stars < 1 ? (
+                      ""
+                    ) : stars < 2 ? (
+                      <>
+                        <Icon icon="star" />
+                        <Icon icon="emptyStar" />
+                        <Icon icon="emptyStar" />
+                        <Icon icon="emptyStar" />
+                        <Icon icon="emptyStar" />
+                      </>
+                    ) : stars <= 4 ? (
+                      <>
+                        <Icon icon="star" />
+                        <Icon icon="star" />
+                        <Icon icon="emptyStar" />
+                        <Icon icon="emptyStar" />
+                        <Icon icon="emptyStar" />
+                      </>
+                    ) : stars <= 6 ? (
+                      <>
+                        <Icon icon="star" />
+                        <Icon icon="star" />
+                        <Icon icon="star" />
+                        <Icon icon="emptyStar" />
+                        <Icon icon="emptyStar" />
+                      </>
+                    ) : stars < 9 ? (
+                      <>
+                        <Icon icon="star" />
+                        <Icon icon="star" />
+                        <Icon icon="star" />
+                        <Icon icon="star" />
+                        <Icon icon="emptyStar" />
+                      </>
+                    ) : stars <= 9.5 ? (
+                      <>
+                        <Icon icon="star" />
+                        <Icon icon="star" />
+                        <Icon icon="star" />
+                        <Icon icon="star" />
+                        <Icon icon="emptyStar" />
+                      </>
+                    ) : (
+                      <>
+                        <Icon icon="star" />
+                        <Icon icon="star" />
+                        <Icon icon="star" />
+                        <Icon icon="star" />
+                        <Icon icon="star" />
+                      </>
+                    )}
+                  </div>
                 </div>
-                <hr />
-                <div className="checkOut-product-reserve">
-                  <h4>Check out:</h4>
-                  <h6>{endReserveDate}</h6>
+                <div className="product-rating-reserve">
+                  <div className="product-rating-score">
+                    <Paragraph size="md" variant="secondary">
+                      {stars < 1 ? "-" : stars}
+                    </Paragraph>
+                  </div>
+                  <div className="product-rating-score-text">
+                    <Paragraph size="md" variant="secondary">
+                      {stars < 1
+                        ? "Sin puntaje"
+                        : stars < 2
+                          ? "Muy Malo"
+                          : stars < 4
+                            ? "Malo"
+                            : stars < 6
+                              ? "Regular"
+                              : stars < 9
+                                ? "Bueno"
+                                : stars <= 9.5
+                                  ? "Muy Bueno"
+                                  : "Excelente"}
+                    </Paragraph>
+                  </div>
                 </div>
               </div>
-              <div className="button-opinion-container-reserve" id="button-opinion">
+              <div className="card-product-reserves-primerParte-2">
+
+                <Heading type="md" title="h3" variant="secondary">
+                  {titulo}
+                </Heading>
+                <div className="product-location-reserve">
+                  <Icon icon="location" width="xs" onClick={() => { }}></Icon>
+                  <Paragraph size="md" variant="secondary">
+                    {location}
+                  </Paragraph>
+                </div>
+              </div>
+            </div>
+            <div className="checkInCheckOut-product-reserve">
+              <div className="checkIn-product-reserve">
+                <h4>Check in:</h4>
+                <h6>{startReserveDate}</h6>
+              </div>
+              <hr />
+              <div className="checkOut-product-reserve">
+                <h4>Check out:</h4>
+                <h6>{endReserveDate}</h6>
+              </div>
+            </div>
+
+            <div className="leaveAnOpinion-container">
+              {!opinion ? ("") : (
+                <div class="leaveAnOpinion">
+                  <Heading>Dejanos tu opinión:</Heading>
+                  <div className="opinionsStars">
+                      <Icon id={"starOpinions1"} onClick={() => handleOpinion()} icon={opinionStar ? "emptyStarGrey" : "star"} />
+                      <Icon id={"starOpinions2"} onClick={() => handleOpinion()} icon={opinionStar ? "emptyStarGrey" : "star"} />
+                      <Icon id={"starOpinions3"} onClick={() => handleOpinion()} icon={opinionStar ? "emptyStarGrey" : "star"} />
+                      <Icon id={"starOpinions4"} onClick={() => handleOpinion()} icon={opinionStar ? "emptyStarGrey" : "star"} />
+                      <Icon id={"starOpinions5"} onClick={() => handleOpinion()} icon={opinionStar ? "emptyStarGrey" : "star"} />
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="button-container-reserves" id="button-opinion">
               <Link style={{ width: "100%" }} to={`/productos/${id}`}>
                 <Button
                   size="sm"
@@ -270,8 +309,8 @@ export const CardProductReserve = ({
                   onClick={() => { }}
                 ></Button>
               </Link>
-              </div>
             </div>
+
           </div>
         </div>
       </LazyLoadComponent>
