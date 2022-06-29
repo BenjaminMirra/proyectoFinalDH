@@ -32,7 +32,10 @@ export const CardProductReserve = ({
 
 
   useEffect(() => {
-    if (endReserveDate < new Date()) {
+    console.log(endReserveDate)
+    const fecha = ([JSON.stringify(new Date().getFullYear() + "-0" + new Date().getMonth() + "-0" + new Date().getDay())])
+    console.log(fecha)
+    if (endReserveDate < fecha) {
       setOpinion(true)
     }
   }, [endReserveDate])

@@ -348,7 +348,7 @@ export const MobileAdministration = ({ dataForm, setDataForm,normasDeCasa, setNo
               <div className="mobileAdministracion-add-atributo-checkbox">
                 {atributosBD && atributosBD.map((atributo) => {
                   return (
-                    <div className="desktopAdministracion-atributos-checkboxs">
+                    <div className="mobileAdministracion-atributos-checkboxs">
                       <Input type="checkbox"></Input>
                       <Icon width='xs' icon={atributo.nombre_icono} />
                       <Label label={atributo.titulo}></Label>
