@@ -10,14 +10,14 @@ import { Paragraph } from "../../../atoms/paragraph/Paragraph";
 import "./TabletHeader.css";
 import { Avatar } from "../../../atoms/Avatar/Avatar";
 
-export const TabletHeader = ({ firstname, lastname, handleUserInfo }) => {
+export const TabletHeader = ({ rol, firstname, lastname, handleUserInfo }) => {
 
- const [userId, setUserId] = useState(undefined);
- useEffect(() => {
-   if (JSON.parse(localStorage.getItem("userData"))) {
-     setUserId(JSON.parse(localStorage.getItem("userData")).id);
-   }
- }, []);
+  const [userId, setUserId] = useState(undefined);
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("userData"))) {
+      setUserId(JSON.parse(localStorage.getItem("userData")).id);
+    }
+  }, []);
 
   return (
     <header className="header-tablet">
@@ -30,7 +30,7 @@ export const TabletHeader = ({ firstname, lastname, handleUserInfo }) => {
           <>
             <div className="tablet-user-info">
               <div className="header-links">
-                
+
                 <Link to={`/${userId}/misreservas`}>
                   <Paragraph size={"xmd"} variant={"secondary"}>
                     Mis reservas
@@ -44,13 +44,15 @@ export const TabletHeader = ({ firstname, lastname, handleUserInfo }) => {
                   </Paragraph>
                 </Link>
               </div>
-              <div className="header-links header-links-administracion">
+              {rol === "ROLE_ADMIN" ?
+                <div className="header-links header-links-administracion">
                   <Link to={"/administracion"}>
                     <Paragraph size={"xmd"} variant={"secondary"}>
                       Administración
                     </Paragraph>
                   </Link>
                 </div>
+                : ""}
               <div className="avatar-name">
                 <Avatar
                   firstname={firstname}
@@ -59,9 +61,8 @@ export const TabletHeader = ({ firstname, lastname, handleUserInfo }) => {
                 />
                 <Heading title="h3" type="sm" variant="primary">
                   <span style={{ color: "#383B58" }}>Hola, </span> <br />{" "}
-                  {`${firstname.charAt(0).toUpperCase() + firstname.slice(1)} ${
-                    lastname.charAt(0).toUpperCase() + lastname.slice(1)
-                  }`}
+                  {`${firstname.charAt(0).toUpperCase() + firstname.slice(1)} ${lastname.charAt(0).toUpperCase() + lastname.slice(1)
+                    }`}
                 </Heading>
               </div>
               <Icon onClick={handleUserInfo} icon="logout" width="sm" />

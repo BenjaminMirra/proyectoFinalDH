@@ -11,7 +11,7 @@ import axios from 'axios';
 import { urlAPI } from '../../../../global.js'
 import { Icon } from '../../../atoms/Icon/Icon';
 
-export const MobileAdministration = ({ normasDeCasa, setNormasDeCasa, saludSeguridad, setSaludSeguridad, politicasCancelacion, setPoliticasCancelacion, atributosBD, imagenesRender, setImagenesRender, atributosRender, setAtributosRender }) => {
+export const MobileAdministration = ({ dataForm, setDataForm,normasDeCasa, setNormasDeCasa, saludSeguridad, setSaludSeguridad, politicasCancelacion, setPoliticasCancelacion, atributosBD, imagenesRender, setImagenesRender, atributosRender, setAtributosRender }) => {
 
 
   //le envío al select Place
@@ -21,44 +21,10 @@ export const MobileAdministration = ({ normasDeCasa, setNormasDeCasa, saludSegur
   const [categories, setCategories] = useState([]);
 
 
+
   //Atributos de la base de datos
 
   //Guardo toda la info del form aquí
-  const [dataForm, setDataForm] = useState({
-    tituloDescripcion: " ",
-    descripcion: " ",
-    precio: " ",
-    longitud: " ",
-    direccion: " ",
-    latitud: " ",
-    nombre: " ",
-    ciudad: " ",
-    categoria: " ",
-    imagenes: {
-      imagen_1: " ",
-      imagen_2: " ",
-      imagen_3: " ",
-      imagen_4: " ",
-      imagen_5: " "
-    },
-    politicaListDTO: {
-      seguridadysalud: {
-        pol_seguridadysalud_1: " ",
-        pol_seguridadysalud_2: " ",
-        pol_seguridadysalud_3: " "
-      },
-      cancelacion: {
-        pol_cancelacion_1: " ",
-        pol_cancelacion_2: " ",
-        pol_cancelacion_3: " "
-      },
-      normas: {
-        pol_normas_1: " ",
-        pol_normas_2: " ",
-        pol_normas_3: " "
-      },
-    }
-  })
 
   // useEffect(() => {
   //   if (atributosBD.length > 0) {
@@ -79,16 +45,16 @@ export const MobileAdministration = ({ normasDeCasa, setNormasDeCasa, saludSegur
 
 
   const firstValidation = () => {
-    if (dataForm.descripcion === " " || dataForm.latitud === " " || dataForm.longitud === " " || dataForm.nombre === " " || dataForm.ciudad === " " || dataForm.categoria === " " || dataForm.direccion === " " || dataForm.tituloDescripcion === " " || dataForm.precio === " ") {
+    if (dataForm.descripcion === " " || dataForm.latitud === " " || dataForm.longitud === " " || dataForm.nombre === " " || dataForm.tituloDescripcion === " " || dataForm.precio === " ") {
       console.log("descripcion" + dataForm.descripcion)
       console.log("latitud" + dataForm.latitud)
       console.log("longitud" + dataForm.longitud)
       console.log("nombre" + dataForm.nombre)
+      console.log("tituloDescripcion" + dataForm.tituloDescripcion)
+      console.log("precio" + dataForm.precio)
       console.log("ciudad" + dataForm.ciudad)
       console.log("categoria" + dataForm.categoria)
-      console.log("direccion" + dataForm.direccion)
-      console.log("precio" + dataForm.precio)
-      console.log("tituloDescripcion" + dataForm.tituloDescripcion)
+
       return false
     } else {
       return true
@@ -153,19 +119,16 @@ export const MobileAdministration = ({ normasDeCasa, setNormasDeCasa, saludSegur
         longitud: dataForm.longitud,
         ciudad_id: dataForm.ciudad,
         categoria_id: dataForm.categoria,
-        imagenes: {
-          imagen_1: " ",
-          imagen_2: " ",
-          imagen_3: " ",
-          imagen_4: " ",
-          imagen_5: " "
-        }
       }
       axios({
         method: 'POST',
         url: `${urlAPI}productos/agregar`,
-        data: data,
-        headers: { 'Access-Control-Allow-Origin': '*/*' }
+        data: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Authorization:
+            "Bearer " + JSON.parse(localStorage.getItem("jwt")),
+        },
       }).then(res => {
         console.log(res.data)
       })
@@ -187,7 +150,6 @@ export const MobileAdministration = ({ normasDeCasa, setNormasDeCasa, saludSegur
       atributoNombre.value = "";
       atributoIcono.value = "";
       errorContainerAtributo.innerHTML = ""
-      console.log("agregado atributo")
     } else if (atributoNombre.value !== "") {
       errorContainerAtributo.innerHTML = ` <p>
       El ícono no pueden estar vacío
@@ -271,7 +233,6 @@ export const MobileAdministration = ({ normasDeCasa, setNormasDeCasa, saludSegur
         </p>`
       } else {
         const politicaInput = politicaNormaDeCasa.value;
-        console.log(politicaInput)
         setNormasDeCasa((prevData) => [...prevData, { input: politicaInput }])
         politicaNormaDeCasa.value = ""
         errorContainerNormaDeCasa.innerHTML = ''
@@ -300,7 +261,6 @@ export const MobileAdministration = ({ normasDeCasa, setNormasDeCasa, saludSegur
   }
 
   const deleteNormaDeCasa = (input) => {
-    console.log(input)
     setNormasDeCasa((prevValue) => (prevValue.filter(item => item.input !== input)))
   }
 
@@ -319,8 +279,8 @@ export const MobileAdministration = ({ normasDeCasa, setNormasDeCasa, saludSegur
   const handleChangeDireccion = (e) => {
     setDataForm(prevData => ({ ...prevData, direccion: e.target.value }))
   }
-  const handleChangeTituloDescription = (e) => {
-    setDataForm(prevData => ({ ...prevData, tituloDireccion: e.target.value }))
+  const handleChangeTituloDescripcion = (e) => {
+    setDataForm(prevData => ({ ...prevData, tituloDescripcion: e.target.value }))
   }
   const handleChangePrecio = (e) => {
     setDataForm(prevData => ({ ...prevData, precio: e.target.value }))
@@ -360,12 +320,12 @@ export const MobileAdministration = ({ normasDeCasa, setNormasDeCasa, saludSegur
           </div>
           <div className="mobileAdministracion-add-descripcion">
             <div className="mobileAdministracion-add-descripcion-info">
-              <InputLabel required={true} onChange={handleChangeTituloDescription} placeholder="El Hotel Hermitage se encuentra a 400 metros de..." label='Título de la Descripción' disabled={false}>
+              <InputLabel required={true} onChange={handleChangeTituloDescripcion} placeholder="El Hotel Hermitage se encuentra a 400 metros de..." label='Título de la Descripción' disabled={false}>
               </InputLabel>
             </div>
             <div className="mobileAdministracion-add-descripcion-info">
               <Label required={true} label='Descripción'></Label>
-              <textarea value={dataForm.descripcion} onChange={handleChangeDescription} placeholder='Escriba aquí' id="descripcionInfo" cols="30" rows="10"></textarea>
+              <textarea onChange={handleChangeDescription} placeholder='El Hotel Hermitage está ubicado en Tandil, Buenos Aires, a 200 metros de la Plaza San Martín. Este hotel de 3 estrellas cuenta...' name="" id="descripcion-info" cols="30" rows="10" />
             </div>
           </div>
           <div className="mobileAdministracion-add-latitud-longitud">

@@ -79,6 +79,10 @@
     flex-direction: column;
 }
 
+.mobileAdministracion-add-descripcion-info input{
+    width: 100%;
+}
+
 .mobileAdministracion-add-descripcion-info .input-label{
     width: 100%;
     margin-bottom: 13px;
@@ -441,10 +445,6 @@
 
 .mobileAdministracion-add-imagen-parte1 {
     width: 100%;
-}
-
-.mobileAdministracion-add-imagen-parte2 {
-    width: 10%;
 }
 
 .mobileAdministracion-add-imagen-parte2 button {
