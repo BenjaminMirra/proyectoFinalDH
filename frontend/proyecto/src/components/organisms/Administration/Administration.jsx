@@ -8,23 +8,38 @@ import { useParams } from 'react-router-dom'
 
 export const Administration = () => {
 
-    const { id } = useParams()
+    const { id } = useParams() 
+
+    const [politicas, setPoliticas] = useState([])
+
+    //estado para todas las politicas
+    const [dataForm, setDataForm] = useState({
+        descripcion: " ",
+        tituloDescripcion: " ",
+        precio: " ",
+        longitud: " ",
+        direccion: " ",
+        latitud: " ",
+        nombre: " ",
+        ciudad: " ",
+        categoria: " ",
+        imagenDTOList: [],
+        caracteristicasDTOList: [],
+        politicaListDTO: []
+    })
 
     const [reserveDisplayed, setReserveDisplayed] = useState(<DesktopAdministration />)
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-    const [atributosBD, setAtributosBD] = useState([])
+    const [atributosBD, setAtributosBD] = useState([]);
+    const [saludSeguridad, setSaludSeguridad] = useState([]);
+    const [politicasCancelacion, setPoliticasCancelacion] = useState([]);
+    const [normasDeCasa, setNormasDeCasa] = useState([]);
 
     //Atributos render
     const [atributosRender, setAtributosRender] = useState([]);
 
     //Imágenes render
     const [imagenesRender, setImagenesRender] = useState([])
-
-    useEffect(() => {
-        if (atributosBD) {
-            console.log(atributosBD)
-        }
-    }, [atributosBD])
 
     useEffect(() => {
         axios.get(`${urlAPI}caracteristicas/todas`).then(response =>
@@ -44,11 +59,11 @@ export const Administration = () => {
 
     useEffect(() => {
         if (windowWidth < 768) {
-            setReserveDisplayed(<MobileAdministration imagenesRender={imagenesRender} setImagenesRender={setImagenesRender} atributosRender={atributosRender} setAtributosRender={setAtributosRender} atributosBD={atributosBD} />)
+            setReserveDisplayed(<MobileAdministration dataForm={dataForm} setDataForm={setDataForm} normasDeCasa={normasDeCasa} setNormasDeCasa={setNormasDeCasa} saludSeguridad={saludSeguridad} setSaludSeguridad={setSaludSeguridad} politicasCancelacion={politicasCancelacion} setPoliticasCancelacion={setPoliticasCancelacion} imagenesRender={imagenesRender} setImagenesRender={setImagenesRender} atributosRender={atributosRender} setAtributosRender={setAtributosRender} atributosBD={atributosBD} />)
         } else {
-            setReserveDisplayed(<DesktopAdministration imagenesRender={imagenesRender} setImagenesRender={setImagenesRender} atributosRender={atributosRender} setAtributosRender={setAtributosRender} atributosBD={atributosBD} />)
+            setReserveDisplayed(<DesktopAdministration politicas={politicas} setPoliticas={setPoliticas} dataForm={dataForm} setDataForm={setDataForm} normasDeCasa={normasDeCasa} setNormasDeCasa={setNormasDeCasa} saludSeguridad={saludSeguridad} setSaludSeguridad={setSaludSeguridad} politicasCancelacion={politicasCancelacion} setPoliticasCancelacion={setPoliticasCancelacion} imagenesRender={imagenesRender} setImagenesRender={setImagenesRender} atributosRender={atributosRender} setAtributosRender={setAtributosRender} atributosBD={atributosBD} />)
         }
-    }, [windowWidth, atributosBD, atributosRender, imagenesRender]);
+    }, [windowWidth, atributosBD, atributosRender, imagenesRender, politicasCancelacion, saludSeguridad, normasDeCasa,dataForm,politicas]);
     return (
         <>
             {reserveDisplayed}

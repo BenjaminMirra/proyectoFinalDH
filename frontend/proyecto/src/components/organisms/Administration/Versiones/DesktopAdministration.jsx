@@ -11,8 +11,7 @@ import { InputLabel } from '../../../molecules/InputLabel/InputLabel';
 import './DesktopAdministration.css';
 import { Icon } from '../../../atoms/Icon/Icon';
 
-export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenesRender, atributosRender, setAtributosRender }) => {
-
+export const DesktopAdministration = ({ politicas, setPoliticas, dataForm, setDataForm, normasDeCasa, setNormasDeCasa, saludSeguridad, setSaludSeguridad, politicasCancelacion, setPoliticasCancelacion, atributosBD, imagenesRender, setImagenesRender, atributosRender, setAtributosRender }) => {
 
     //le envío al select Place
     const [places, setPlaces] = useState([]);
@@ -20,58 +19,19 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
     //le envío al select Category
     const [categories, setCategories] = useState([]);
 
-    useEffect(() => {
-        if (atributosBD) {
-            console.log("desde desktop: ")
-            console.log(atributosBD)
-        }
-    }, [atributosBD])
-
     //Guardo toda la info del form aquí
-    const [dataForm, setDataForm] = useState({
-        descripcion: " ",
-        tituloDescripcion: " ",
-        precio: " ",
-        longitud: " ",
-        direccion: " ",
-        latitud: " ",
-        nombre: " ",
-        ciudad: " ",
-        categoria: " ",
-        imagenes: {
-            imagen_1: " ",
-            imagen_2: " ",
-            imagen_3: " ",
-            imagen_4: " ",
-            imagen_5: " "
-        },
-        politicaListDTO: {
-            seguridadysalud: {
-                pol_seguridadysalud_1: " ",
-                pol_seguridadysalud_2: " ",
-                pol_seguridadysalud_3: " "
-            },
-            cancelacion: {
-                pol_cancelacion_1: " ",
-                pol_cancelacion_2: " ",
-                pol_cancelacion_3: " "
-            },
-            normas: {
-                pol_normas_1: " ",
-                pol_normas_2: " ",
-                pol_normas_3: " "
-            },
-        }
-    })
 
     const firstValidation = () => {
+
         if (dataForm.descripcion === " " || dataForm.latitud === " " || dataForm.longitud === " " || dataForm.nombre === " " || dataForm.ciudad === " " || dataForm.categoria === " " || dataForm.direccion === " " || dataForm.precio === " " || dataForm.tituloDescripcion === " ") {
+
             return false
+        } else if (imagenesRender.length < 5) {
+            return null
         } else {
             return true
         }
     }
-
 
     const cityValidation = () => {
         if (dataForm.ciudad === "San carlos de Bariloche") {
@@ -104,8 +64,15 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
     const errorContainer = document.getElementById("errorContainer");
     const imagenURL = document.getElementById("imagenURL")
     const errorContainerAtributo = document.getElementById("errorContainerAtributo")
-
+    const politicaNormaDeCasa = document.getElementById("normaDeCasa-info")
+    const errorContainerNormaDeCasa = document.getElementById("errorContainerNormasDeCasa")
+    const politicaCancelacion = document.getElementById("cancelacion-info")
+    const errorContainerPoliticaCancelacion = document.getElementById("errorContainerPoliticaCancelacion")
+    const politicaSaludSeguridad = document.getElementById("saludSeguridad-info")
+    const errorContainerSaludSeguridad = document.getElementById("errorContainerSaludSeguridad")
     const [buttonValue, setButtonValue] = useState({ disabled: false, value: 'Crear' })
+
+
 
     const postData = () => {
         setButtonValue({ value: "Creando reserva...", disabled: true })
@@ -116,30 +83,47 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
             categoryValidation()
             const data = {
                 titulo: dataForm.nombre,
-                descripcion: dataForm.descripcion,
                 titulo_descripcion: dataForm.tituloDescripcion,
+                descripcion: dataForm.descripcion,
                 direccion: dataForm.direccion,
+                precio: dataForm.precio,
                 latitud: dataForm.latitud,
                 longitud: dataForm.longitud,
+                politicaListDTO: politicas,
                 ciudad_id: dataForm.ciudad,
                 categoria_id: dataForm.categoria,
-                precio: dataForm.precio,
-
+                imagenDTOList: imagenesRender,
+                caracteristicasDTOList: []
             }
+            console.log(data)
             axios({
                 method: 'POST',
                 url: `${urlAPI}productos/agregar`,
-                data: data,
-                headers: { 'Access-Control-Allow-Origin': '*/*' }
+                data: JSON.stringify(data),
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization:
+                        "Bearer " + JSON.parse(localStorage.getItem("jwt")),
+                },
             }).then(res => {
                 console.log(res.data)
+                console.log(res.status)
+            }).catch(error => {
+                errorContainer.innerHTML = `Error al crear el producto, por favor intente mas tarde.`
+                setButtonValue({ value: "Crear", disabled: false })
             })
             errorContainer.innerHTML = `Creado`
             setButtonValue({ value: "Creado", disabled: false })
+            return (window.location.pathname = `/producto-exitoso`);
+        } else if (firstValidation() == null) {
+            errorContainer.innerHTML = ` <p>
+            Deben ser un total de 5 imágenes.
+            </p>`
+            setButtonValue({ value: "Crear", disabled: false })
         } else if (!firstValidation()) {
             errorContainer.innerHTML = ` <p>
-    Debes completar todos los datos que tienen un " * "
-    </p>`
+            Debes completar todos los datos que tienen un " * ".
+            </p>`
             setButtonValue({ value: "Crear", disabled: false })
         }
     }
@@ -148,11 +132,10 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
         if (atributoNombre.value !== "" && atributoIcono.value !== "") {
             const nombre = atributoNombre.value;
             const icono = atributoIcono.value
-            setAtributosRender((prevData) => [...prevData, { iconoAtributo: icono, nombreAtributo: nombre }])
+            setAtributosRender((prevData) => [...prevData, { nombre_icono: icono, titulo: nombre }])
             atributoNombre.value = "";
             atributoIcono.value = "";
             errorContainerAtributo.innerHTML = ""
-            console.log("agregado atributo")
         } else if (atributoNombre.value !== "") {
             errorContainerAtributo.innerHTML = ` <p>
             El ícono no pueden estar vacío
@@ -169,13 +152,17 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
     }
 
     const addImage = () => {
-
         if (imagenURL.value !== "") {
-            const urlImagen = imagenURL.value;
-            setImagenesRender((prevData) => [...prevData, { url: urlImagen }])
-            imagenURL.value = ""
-            errorContainer.innerHTML = ``
-            console.log("agregado imagen")
+            if (imagenesRender.length > 4) {
+                errorContainer.innerHTML = `<p>
+                Solo puede agregar hasta 5 imágenes
+                </p>`
+            } else {
+                const urlImagen = imagenURL.value;
+                setImagenesRender((prevData) => [...prevData, { url_img_producto: urlImagen, titulo_img_producto: "" }])
+                imagenURL.value = ""
+                errorContainer.innerHTML = ``
+            }
         } else {
             errorContainer.innerHTML = `<p>
             La url no puede estar vacía
@@ -183,12 +170,90 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
         }
     }
 
-    const deleteAtribute = (nombre) => {
+    const addNormasDeCasa = () => {
+        if (politicaNormaDeCasa.value !== "") {
+            if (normasDeCasa.length > 2) {
+                errorContainerNormaDeCasa.innerHTML = `<p>
+                Solo puedes agregar un máximo de 3 políticas.
+                </p>`
+            } else {
+                const politicaInput = politicaNormaDeCasa.value;
+                setNormasDeCasa((prevData) => [...prevData, { input: politicaInput }])
+                setPoliticas((prevData) => ([...prevData, { descripcion: politicaInput, tipo_politica_id: 1 }]))
+                politicaNormaDeCasa.value = ""
+                errorContainerNormaDeCasa.innerHTML = ''
+            }
+        } else {
+            errorContainerNormaDeCasa.innerHTML = `<p>
+          La política no puede estar vacía.
+        </p>`
+        }
+    }
+
+    const addPoliticaCancelacion = () => {
+        if (politicaCancelacion.value !== "") {
+            if (politicasCancelacion.length > 2) {
+                errorContainerPoliticaCancelacion.innerHTML = `<p>
+                Solo puedes agregar un máximo de 3 políticas.
+                </p>`
+            } else {
+                const politicaInput = politicaCancelacion.value;
+                setPoliticasCancelacion((prevData) => [...prevData, { input: politicaInput }])
+                setPoliticas((prevData) => ([...prevData, { descripcion: politicaInput, tipo_politica_id: 3 }]))
+                politicaCancelacion.value = ""
+                errorContainerPoliticaCancelacion.innerHTML = ''
+            }
+        } else {
+            errorContainerPoliticaCancelacion.innerHTML = `<p>
+          La política no puede estar vacía
+        </p>`
+        }
+    }
+
+    const addSaludSeguridad = () => {
+        if (politicaSaludSeguridad.value !== "") {
+            if (saludSeguridad.length > 2) {
+                errorContainerSaludSeguridad.innerHTML = `<p>
+                Solo puedes agregar un máximo de 3 políticas.
+                </p>`
+            } else {
+                const politicaInput = politicaSaludSeguridad.value;
+                setSaludSeguridad((prevData) => [...prevData, { input: politicaInput }])
+                setPoliticas((prevData) => ([...prevData, { descripcion: politicaInput, tipo_politica_id: 2 }]))
+                politicaSaludSeguridad.value = ""
+                errorContainerSaludSeguridad.innerHTML = ''
+            }
+        } else {
+            errorContainerSaludSeguridad.innerHTML = `
+            <p>
+            La política no puede estar vacía
+            </p>
+            `
+        }
+    }
+
+    const deleteAtribute = (nombre, icono) => {
         setAtributosRender((prevValue) => (prevValue.filter(item => item.nombreAtributo !== nombre)))
     }
 
     const deleteImage = (url) => {
-        setImagenesRender((prevValue) => (prevValue.filter(item => item.url !== url)))
+        setImagenesRender((prevValue) => (prevValue.filter(item => item.url_img_producto !== url)))
+
+    }
+
+    const deleteNormasDeCasa = (input) => {
+        setNormasDeCasa((prevValue) => (prevValue.filter(item => item.input !== input)))
+        setPoliticas((prevData) => (prevData.filter(item => item.descripcion !== input)))
+    }
+
+    const deletePoliticaCancelacion = (input) => {
+        setPoliticasCancelacion((prevValue) => (prevValue.filter(item => item.input !== input)))
+        setPoliticas((prevData) => (prevData.filter(item => item.descripcion !== input)))
+    }
+
+    const deleteSaludSeguridad = (input) => {
+        setSaludSeguridad((prevValue) => (prevValue.filter(item => item.input !== input)))
+        setPoliticas((prevData) => (prevData.filter(item => item.descripcion !== input)))
     }
 
     const handleChangeDescription = (e) => {
@@ -251,7 +316,7 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
                     <div className="desktopAdministracion-add-descripcion">
                         <div className="desktopAdministracion-add-descripcion-info">
                             <Label required={true} label='Descripción'></Label>
-                            <textarea onChange={handleChangeDescription} placeholder='Escriba aquí' name="" id="descripcion-info" cols="30" rows="10" />
+                            <textarea onChange={handleChangeDescription} placeholder='El Hotel Hermitage está ubicado en Tandil, Buenos Aires, a 200 metros de la Plaza San Martín. Este hotel de 3 estrellas cuenta...' name="" id="descripcion-info" cols="30" rows="10" />
                         </div>
                     </div>
                     <div className="desktopAdministracion-add-latitud-longitud">
@@ -272,11 +337,10 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
                         </Heading>
                         <div className='desktopAdministracion-add-atributo-checkbox-container'>
                             <div className="desktopAdministracion-add-atributo-checkbox">
-                                {atributosBD && atributosBD.map((atributo) => {
-                                    console.log("checkbox")
+                                {atributosBD && atributosBD.map((atributo, index) => {
                                     return (
-                                        <div className="desktopAdministracion-atributos-checkboxs">
-                                            <Input type="checkbox"></Input>
+                                        <div key={index++} className="desktopAdministracion-atributos-checkboxs">
+                                            <Input name="checkBoxAtributo" type="checkbox"></Input>
                                             <Icon width='xs' icon={atributo.nombre_icono} />
                                             <Label label={atributo.titulo}></Label>
                                         </div>
@@ -288,15 +352,15 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
                             return (
                                 <div key={index++} className="desktopAdministracion-add-atributo-guardado">
                                     <div className='desktopAdministracion-add-atributo-parte1-guardado'>
-                                        <InputLabel disabled={true} name={`AtributoNombreGuardado_${index}`} placeholder={atributo.nombreAtributo} label='Nombre'>
+                                        <InputLabel disabled={true} name={`AtributoNombreGuardado_${index}`} placeholder={atributo.titulo} label='Nombre'>
                                         </InputLabel>
                                     </div>
                                     <div className='desktopAdministracion-add-atributo-parte2-guardado'>
-                                        <InputLabel disabled={true} name={`AtributoIconoGuardado_${index}`} placeholder={atributo.iconoAtributo} label='Ícono'>
+                                        <InputLabel disabled={true} name={`AtributoIconoGuardado_${index}`} placeholder={atributo.nombre_icono} label='Ícono'>
                                         </InputLabel>
                                     </div>
                                     <div className='desktopAdministracion-add-atributo-parte3-guardado'>
-                                        <Button disabled={true} label="X" onClick={() => deleteAtribute(atributo.nombreAtributo)} />
+                                        <Button label="X" onClick={() => deleteAtribute(atributo.titulo)} />
                                     </div>
                                 </div>
                             )
@@ -330,22 +394,89 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
                                 <Heading title='h4' variant='primary' type='md' >
                                     Normas de la Casa
                                 </Heading>
-                                <Label label='Descripción'></Label>
-                                <textarea placeholder='Escriba aquí' name="" id="norma-info" cols="30" rows="10" />
+                                {normasDeCasa && normasDeCasa.map((politica, index) => {
+                                    return (
+                                        <div key={index++} className="mobile-add-politicas-guardado">
+                                            <div className='mobile-add-politica-parte1-guardado'>
+                                                <InputLabel disabled={true} name={`normaDeCasa_${index}`} placeholder={politica.input}>
+                                                </InputLabel>
+                                            </div>
+                                            <div className='mobile-add-politica-parte2-guardado'>
+                                                <Button label="X" onClick={() => deleteNormasDeCasa(politica.input)} />
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                                <div className="mobile-add-normaDeCasa">
+                                    <div className='mobileAdministracion-add-normaDeCasa-parte1'>
+                                        <Label label='Descripción'></Label>
+                                        <textarea placeholder='Escriba aquí' name="" id="normaDeCasa-info" cols="30" rows="2" />
+                                    </div>
+                                    <div className='mobileAdministracion-add-normaDeCasa-parte2'>
+                                        <Button id="buttonAdd" label="+" onClick={addNormasDeCasa} />
+                                    </div>
+                                </div>
+                                <div className="errorContainer" id="errorContainerNormasDeCasa">
+                                </div>
                             </div>
                             <div className="add-politicas-saludyseguridad">
                                 <Heading title='h4' variant='primary' type='md' >
                                     Salud y Seguridad
                                 </Heading>
-                                <Label label='Descripción'></Label>
-                                <textarea placeholder='Escriba aquí' name="" id="saludyseguridad-info" cols="30" rows="10" />
+                                {saludSeguridad && saludSeguridad.map((politica, index) => {
+                                    return (
+                                        <div key={index++} className="mobile-add-politicas-guardado">
+                                            <div className='mobile-add-politica-parte1-guardado'>
+                                                <InputLabel disabled={true} name={`normaDeCasa_${index}`} placeholder={politica.input}>
+                                                </InputLabel>
+                                            </div>
+                                            <div className='mobile-add-politica-parte2-guardado'>
+                                                <Button label="X" onClick={() => deleteSaludSeguridad(politica.input)} />
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                                <div className="mobile-add-saludSeguridad">
+                                    <div className='mobileAdministracion-add-saludSeguridad-parte1'>
+                                        <Label label='Descripción'></Label>
+                                        <textarea placeholder='Escriba aquí' name="" id="saludSeguridad-info" cols="30" rows="2" />
+                                    </div>
+                                    <div className='mobileAdministracion-add-saludSeguridad-parte2'>
+                                        <Button id="buttonAdd" label="+" onClick={addSaludSeguridad} />
+                                    </div>
+                                </div>
+                                <div className="errorContainer" id="errorContainerSaludSeguridad">
+                                </div>
                             </div>
                             <div className="add-politicas-cancelacion">
                                 <Heading title='h4' variant='primary' type='md' >
                                     Políticas de Cancelación
                                 </Heading>
-                                <Label label='Descripción'></Label>
-                                <textarea placeholder='Escriba aquí' name="" id="cancelacion-info" cols="30" rows="10" />
+                                {politicasCancelacion && politicasCancelacion.map((politica, index) => {
+                                    return (
+                                        <div key={index++} className="mobile-add-politicas-guardado">
+                                            <div className='mobile-add-politica-parte1-guardado'>
+                                                <InputLabel disabled={true} name={`normaDeCasa_${index}`} placeholder={politica.input}>
+                                                </InputLabel>
+                                            </div>
+                                            <div className='mobile-add-politica-parte2-guardado'>
+                                                <Button label="X" onClick={() => deletePoliticaCancelacion(politica.input)} />
+                                            </div>
+                                        </div>
+                                    )
+                                })}
+                                <div className="mobile-add-politicasCancelacion">
+                                    <div className='mobileAdministracion-add-politicaCancelacion-parte1'>
+                                        <Label label='Descripción'></Label>
+                                        <textarea placeholder='Escriba aquí' name="" id="cancelacion-info" cols="30" rows="2" />
+                                    </div>
+                                    <div className='mobileAdministracion-add-politicaCancelacion-parte2'>
+                                        <Button id="buttonAdd" label="+" onClick={addPoliticaCancelacion} />
+                                    </div>
+                                </div>
+                                <div className="errorContainer" id="errorContainerPoliticaCancelacion">
+
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -357,11 +488,11 @@ export const DesktopAdministration = ({ atributosBD, imagenesRender, setImagenes
                             return (
                                 <div key={index++} className="mobileAdministracion-add-imagen-cargada">
                                     <div className='mobileAdministracion-add-imagen-parte1-cargada'>
-                                        <Input disabled={true} required={true} name={`imagenURLGuardada_${index}`} placeholder={imagen.url}>
+                                        <Input disabled={true} required={true} name={`imagenURLGuardada_${index}`} placeholder={imagen.url_img_producto}>
                                         </Input>
                                     </div>
                                     <div className='mobileAdministracion-add-imagen-parte2-cargada'>
-                                        <Button id={`deleteImage_${index}`} label="X" onClick={() => deleteImage(imagen.url)} />
+                                        <Button id={`deleteImage_${index}`} label="X" onClick={() => deleteImage(imagen.url_img_producto)} />
                                     </div>
                                 </div>
                             )
