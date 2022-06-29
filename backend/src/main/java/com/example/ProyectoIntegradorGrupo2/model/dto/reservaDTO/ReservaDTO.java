@@ -33,6 +33,8 @@ public class ReservaDTO {
 
     private boolean vacunadoCovid;
 
+    private double precioTotal;
+
     private Long usuario_id;
 
     private Long producto_id;

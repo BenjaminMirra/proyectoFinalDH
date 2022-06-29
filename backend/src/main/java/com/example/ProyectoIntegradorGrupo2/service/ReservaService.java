@@ -179,7 +179,7 @@ public class ReservaService implements IReservaService{
         List<ReservaPorIdUsuarioDTO> reservaPorIdUsuarioDTOList = new ArrayList<>();
         for (Optional<Reserva> r:reservaList) {
 
-            ReservaPorIdUsuarioDTO reservaPorIdUsuarioDTO = new ReservaPorIdUsuarioDTO(r.get().getId(), r.get().getFechaInicioReserva(),r.get().getFechaFinReserva(),r.get().getProducto().getId());
+            ReservaPorIdUsuarioDTO reservaPorIdUsuarioDTO = new ReservaPorIdUsuarioDTO(r.get().getId(), r.get().getFechaInicioReserva(),r.get().getFechaFinReserva(),r.get().getPrecioTotal(),r.get().getProducto().getId());
             reservaPorIdUsuarioDTOList.add(reservaPorIdUsuarioDTO);
 
 

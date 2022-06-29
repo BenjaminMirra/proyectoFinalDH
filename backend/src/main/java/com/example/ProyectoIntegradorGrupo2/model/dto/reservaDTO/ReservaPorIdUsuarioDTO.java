@@ -20,5 +20,7 @@ public class ReservaPorIdUsuarioDTO {
 
     private LocalDate fechaFinReserva;
 
+    private double precioTotal;
+
     private Long producto_id;
 }
