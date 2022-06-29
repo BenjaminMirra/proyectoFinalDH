@@ -39,13 +39,15 @@ public class ReservaController {
     public ResponseEntity<?> agregarReserva(@RequestBody ReservaDTO reservaDTO) throws BadRequestException , ResourceNotFoundException{
 
         ReservaDTO reservaAgregada = null;
-        UsuarioGETByIdOrEmailDTO usuarioGETByIdOrEmailDTO = null;
-        ProductoDTO productoDTO = null;
+        UsuarioGETByIdOrEmailDTO usuarioGETByIdOrEmailDTO= usuarioService.obtenerUsuarioPorId(reservaDTO.getUsuario_id());
+
         ResponseEntity response = null;
         try{
            reservaAgregada = reservaService.agregarReserva(reservaDTO);
-           usuarioGETByIdOrEmailDTO = usuarioService.obtenerUsuarioPorId(reservaDTO.getUsuario_id());
-           productoDTO = productoService.obtenerProductoPorId(reservaDTO.getProducto_id());
+
+            ProductoDTO productoDTO = productoService.obtenerProductoPorId(reservaDTO.getProducto_id());
+            assert productoDTO != null;
+            emailSenderService.sendEmail(usuarioGETByIdOrEmailDTO.getEmail(),"Reserva realizada",buildEmail(usuarioGETByIdOrEmailDTO.getNombre(),productoDTO.getTitulo(),reservaDTO.getFechaInicioReserva(),reservaDTO.getFechaFinReserva()));
             assert reservaAgregada != null;
            response = ResponseEntity.ok(reservaAgregada.getId());
 
@@ -54,8 +56,7 @@ public class ReservaController {
             response = ResponseEntity.badRequest().body(e.getMessage());
         }
 
-        assert productoDTO != null;
-        emailSenderService.sendEmail(usuarioGETByIdOrEmailDTO.getEmail(),"Reserva realizada",buildEmail(usuarioGETByIdOrEmailDTO.getNombre(),productoDTO.getTitulo(),reservaDTO.getFechaInicioReserva(),reservaDTO.getFechaFinReserva()));
+
 
         return response;
     }
