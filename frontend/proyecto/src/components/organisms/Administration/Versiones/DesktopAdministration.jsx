@@ -114,6 +114,7 @@ export const DesktopAdministration = ({ politicas, setPoliticas, dataForm, setDa
             })
             errorContainer.innerHTML = `Creado`
             setButtonValue({ value: "Creado", disabled: false })
+            return (window.location.pathname = `/producto-exitoso`);
         } else if (firstValidation() == null) {
             errorContainer.innerHTML = ` <p>
             Deben ser un total de 5 imágenes.
