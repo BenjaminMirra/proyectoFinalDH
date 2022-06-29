@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import { Picture } from '../../../atoms/Picture/Picture'
 import { Heading } from '../../../atoms/Heading/Heading'
@@ -9,14 +9,14 @@ import { Span } from '../../../atoms/Span/Span'
 import { Link } from "react-router-dom";
 import classNames from 'classnames'
 import './MobileHeader.css'
-export const MobileHeader = ({ firstname, lastname, handleUserInfo }) => {
+export const MobileHeader = ({ rol, firstname, lastname, handleUserInfo }) => {
 
- const [userId, setUserId] = useState(undefined);
- useEffect(() => {
-   if (JSON.parse(localStorage.getItem("userData"))) {
-     setUserId(JSON.parse(localStorage.getItem("userData")).id);
-   }
- }, []);
+  const [userId, setUserId] = useState(undefined);
+  useEffect(() => {
+    if (JSON.parse(localStorage.getItem("userData"))) {
+      setUserId(JSON.parse(localStorage.getItem("userData")).id);
+    }
+  }, []);
 
   const [isOn, setIsOn] = useState(false)
   const toggleIsOn = () => setIsOn(!isOn)
@@ -64,14 +64,18 @@ export const MobileHeader = ({ firstname, lastname, handleUserInfo }) => {
               </Link>
             </div>
             <hr />
-            <div className="header-links-Mobile">
-              <Link to={"/administracion"}>
-                <Paragraph size={"xmd"} variant={"secondary"}>
-                  Administración
-                </Paragraph>
-              </Link>
-            </div>
-            <hr/>
+            {rol === "ROLE_ADMIN" ?
+              <>
+                <div className="header-links-Mobile">
+                  <Link to={"/administracion"}>
+                    <Paragraph size={"xmd"} variant={"secondary"}>
+                      Administración
+                    </Paragraph>
+                  </Link>
+                </div>
+                <hr></hr>
+              </>
+              : ""}
           </div>
 
           <div className="nav-content-user">

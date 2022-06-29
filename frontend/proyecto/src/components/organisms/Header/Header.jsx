@@ -16,7 +16,7 @@ export const Header = ({}) => {
         //console.log(JSON.parse(localStorage.getItem('userData')));
         setUserDataLocalStorage(JSON.parse(localStorage.getItem('userData'))); 
         if (JSON.parse(localStorage.getItem('userData'))!==null) {
-                    setUserInfo({firstname:JSON.parse(localStorage.getItem('userData')).nombre,lastname:JSON.parse(localStorage.getItem('userData')).apellido})
+                    setUserInfo({firstname:JSON.parse(localStorage.getItem('userData')).nombre,lastname:JSON.parse(localStorage.getItem('userData')).apellido,rol:JSON.parse(localStorage.getItem('userData')).nombre_rol})
         } 
         window.addEventListener('storage', storageEventHandler, false);
 
@@ -55,13 +55,13 @@ export const Header = ({}) => {
 
     useEffect(() => {
         if(windowWidth < 768){
-            setHeaderDisplayed(<MobileHeader handleUserInfo={resetUserInfo} firstname={userInfo.firstname} lastname={userInfo.lastname} />)
+            setHeaderDisplayed(<MobileHeader rol={userInfo.rol} handleUserInfo={resetUserInfo} firstname={userInfo.firstname} lastname={userInfo.lastname} />)
         }
         else if(windowWidth<=1365){
-            setHeaderDisplayed(<TabletHeader handleUserInfo={resetUserInfo} firstname={userInfo.firstname} lastname={userInfo.lastname} />)
+            setHeaderDisplayed(<TabletHeader rol={userInfo.rol} handleUserInfo={resetUserInfo} firstname={userInfo.firstname} lastname={userInfo.lastname} />)
         }
         else if(windowWidth>=1366){
-            setHeaderDisplayed(<DesktopHeader handleUserInfo={resetUserInfo} firstname={userInfo.firstname} lastname={userInfo.lastname} />)
+            setHeaderDisplayed(<DesktopHeader rol={userInfo.rol} handleUserInfo={resetUserInfo} firstname={userInfo.firstname} lastname={userInfo.lastname} />)
 
         }
         
