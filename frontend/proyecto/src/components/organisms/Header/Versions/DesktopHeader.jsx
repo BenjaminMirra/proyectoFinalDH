@@ -9,7 +9,7 @@ import { Outlet, Link } from "react-router-dom";
 import './DesktopHeader.css'
 import { Paragraph } from '../../../atoms/paragraph/Paragraph'
 
-export const DesktopHeader = ({firstname,lastname,handleUserInfo}) => {
+export const DesktopHeader = ({rol, firstname,lastname,handleUserInfo}) => {
    
 
   const [userId,setUserId]=useState(undefined)
@@ -48,6 +48,7 @@ export const DesktopHeader = ({firstname,lastname,handleUserInfo}) => {
                     </Paragraph>
                   </Link>
                 </div>
+                {rol === "ROLE_ADMIN" ?
                 <div className="header-links header-links-administracion">
                   <Link to={"/administracion"}>
                     <Paragraph size={"xmd"} variant={"secondary"}>
@@ -55,6 +56,7 @@ export const DesktopHeader = ({firstname,lastname,handleUserInfo}) => {
                     </Paragraph>
                   </Link>
                 </div>
+                : " "}
                 <div className="avatar-name">
                   <Avatar
                     firstname={firstname}

@@ -64,6 +64,7 @@ import prohibido from "../../utils/icons/prohibido.png";
 import wEmptyHeart from "../../utils/icons/wEmptyHeart.svg";
 import fFavorite from "../../utils/icons/fFavorite.png";
 import eFavorite from "../../utils/icons/eFavorite.png";
+import emptyStarGrey from '../../utils/icons/emptyStarGrey.svg'
 
 const IconsList = {
   user: user,
@@ -133,6 +134,7 @@ const IconsList = {
   wEmptyHeart: wEmptyHeart,
   fFavorite: fFavorite,
   eFavorite: eFavorite,
+  emptyStarGrey: emptyStarGrey
 };
 export const KeysIconsList = Object.keys(IconsList);
 const IconWidth = {

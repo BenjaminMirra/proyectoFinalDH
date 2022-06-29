@@ -93,7 +93,7 @@ export const ProductsReserve = ({ reserveDate, setReservasPorId, data, setMapHom
                         {/* <MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /><MockUp noContent={true} /> */}
                     </div>
                 ) : (
-                    <div className="product-cards-container">
+                    <div className="product-cards-container-reserves">
                         {data.map((product, idx) => {
                             let descriptionPreview = product.descripcion.slice(0, 130);
                             axios.get(`${urlAPI}reservas/porProductoId/${product.id}`).then((response) => {

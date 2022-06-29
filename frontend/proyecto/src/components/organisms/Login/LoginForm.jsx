@@ -197,6 +197,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
                   apellido: data.data.apellido,
                   id: data.data.id,
                   email: data.data.email,
+                  nombre_rol: data.data.nombre_rol
                 })
               );
               

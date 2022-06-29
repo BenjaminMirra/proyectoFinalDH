@@ -8,7 +8,7 @@ export const  Input = ({type,placeholder,variant,size,isError,value,onChange,nam
         [`type-${variant}`] :variant,
         [`input-size-${size}`]:size,
         'is-error':isError,
-        'disabled':disabled
+        'disabled':disabled,
     })
 
     return (<>
@@ -25,8 +25,8 @@ Input.propTypes = {
     placeholder:PropTypes.string,
     isError:PropTypes.bool,
     hasBorder:PropTypes.bool
-
 }
+
 Input.defaultProps={
     variant:'primary',
     type:'text',
