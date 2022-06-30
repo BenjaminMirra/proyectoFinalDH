@@ -340,7 +340,8 @@ export const DesktopAdministration = ({ politicas, setPoliticas, dataForm, setDa
                                 {atributosBD && atributosBD.map((atributo, index) => {
                                     return (
                                         <div key={index++} className="desktopAdministracion-atributos-checkboxs">
-                                            <Input name="checkBoxAtributo" type="checkbox"></Input>
+                                            <div><Input id={`checkbox_${index++}`} name="checkBoxAtributo" type="checkbox"></Input>
+                                            </div>
                                             <Icon width='xs' icon={atributo.nombre_icono} />
                                             <Label label={atributo.titulo}></Label>
                                         </div>

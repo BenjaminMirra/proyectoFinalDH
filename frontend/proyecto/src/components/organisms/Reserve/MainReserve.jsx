@@ -16,7 +16,7 @@ export const MainReserve = ({setFailReserve}) => {
     const [submitData,setSubmitData]=useState([])
      useEffect(() => {
             
-            
+            setSubmitData([])
             window.scrollTo(0, 0);
             axios.get(`${urlAPI}productos/${id}`).then(data => {
             setCategoria(data.data.categoria_id == 1 ? 'Hoteles' : data.data.categoria_id == 2 ? 'Hosteles' : data.data.categoria_id == 3 ? 'Departamentos' : 'Bed & Breakfast')
@@ -60,7 +60,14 @@ export const MainReserve = ({setFailReserve}) => {
 
         }
         
+        
     },[windowWidth,reservedDays,productData,submitData]);
+
+
+    useEffect(() => {
+    //    console.log(submitData);
+    }, [submitData]);
+
   return (
     <>
     

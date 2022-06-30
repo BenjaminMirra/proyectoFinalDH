@@ -18,6 +18,7 @@ public class ReservaActualizarDTO {
     private LocalDate fechaInicioReserva;
     @NotNull
     private LocalDate fechaFinReserva;
+    private double precioTotal;
     /*@NotNull
     private Long producto_id;*/
 }

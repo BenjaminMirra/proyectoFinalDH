@@ -39,13 +39,16 @@ public class ReservaController {
     public ResponseEntity<?> agregarReserva(@RequestBody ReservaDTO reservaDTO) throws BadRequestException , ResourceNotFoundException{
 
         ReservaDTO reservaAgregada = null;
-        UsuarioGETByIdOrEmailDTO usuarioGETByIdOrEmailDTO = null;
-        ProductoDTO productoDTO = null;
+
+
         ResponseEntity response = null;
         try{
            reservaAgregada = reservaService.agregarReserva(reservaDTO);
-           usuarioGETByIdOrEmailDTO = usuarioService.obtenerUsuarioPorId(reservaDTO.getUsuario_id());
-           productoDTO = productoService.obtenerProductoPorId(reservaDTO.getProducto_id());
+
+            ProductoDTO productoDTO = productoService.obtenerProductoPorId(reservaDTO.getProducto_id());
+            UsuarioGETByIdOrEmailDTO usuarioGETByIdOrEmailDTO= usuarioService.obtenerUsuarioPorId(reservaDTO.getUsuario_id());
+            assert productoDTO != null;
+            emailSenderService.sendEmail(usuarioGETByIdOrEmailDTO.getEmail(),"Reserva realizada",buildEmail(usuarioGETByIdOrEmailDTO.getNombre(),productoDTO.getTitulo(),reservaDTO.getFechaInicioReserva(),reservaDTO.getFechaFinReserva(), reservaDTO.getPrecioTotal()));
             assert reservaAgregada != null;
            response = ResponseEntity.ok(reservaAgregada.getId());
 
@@ -54,8 +57,7 @@ public class ReservaController {
             response = ResponseEntity.badRequest().body(e.getMessage());
         }
 
-        assert productoDTO != null;
-        emailSenderService.sendEmail(usuarioGETByIdOrEmailDTO.getEmail(),"Reserva realizada",buildEmail(usuarioGETByIdOrEmailDTO.getNombre(),productoDTO.getTitulo(),reservaDTO.getFechaInicioReserva(),reservaDTO.getFechaFinReserva()));
+
 
         return response;
     }
@@ -104,7 +106,7 @@ public class ReservaController {
         return ResponseEntity.ok().body("UPDATED");
     }
 
-    private String buildEmail(String name, String producto, LocalDate fechaI, LocalDate fechaF){
+    private String buildEmail(String name, String producto, LocalDate fechaI, LocalDate fechaF, double precio){
         return "<!DOCTYPE html>\n" +
                 "<html lang=\"en\">\n" +
                 "  <head>\n" +
@@ -171,6 +173,13 @@ public class ReservaController {
                 "              style=\"font-family: Helvetica, Arial, sans-serif; font-size: 16px\"\n" +
                 "            >\n" +
                 "              Fecha de fin: "+ fechaF +".\n" +
+                "            </p>\n" +
+                "          </li>\n" +
+                "          <li>\n" +
+                "            <p\n" +
+                "              style=\"font-family: Helvetica, Arial, sans-serif; font-size: 16px\"\n" +
+                "            >\n" +
+                "              Precio total: $"+ precio +".\n" +
                 "            </p>\n" +
                 "          </li>\n" +
                 "        </ul>\n" +

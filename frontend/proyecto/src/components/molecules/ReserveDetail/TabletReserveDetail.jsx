@@ -21,7 +21,7 @@ export const TabletReserveDetail = ({ product, category, location, setFailReserv
   useEffect(() => {
     id = 0
     if (setSubmitData) {
-
+      console.log(submitData); 
 
 
       if (reservedDays.startDate.year !== '1969' && reservedDays.startDate && reservedDays.endDate.year !== '1969' && reservedDays.endDate) {
@@ -63,7 +63,7 @@ export const TabletReserveDetail = ({ product, category, location, setFailReserv
           data: {
             fechaInicioReserva: `${submitData.fechaInicioReserva}`,
             fechaFinReserva: `${submitData.fechaFinReserva}`,
-            horaEstimadaDeLlegada: `${submitData.horaEstimadaDeLlegada}`,
+            horaEstimadaDeLlegada: `${submitData.horaEstimadaDeLlegada.target.value.slice(0,5)}`,
             mensajeUsuario: `${submitData.mensajeUsuario}`,
             vacunadoCovid: submitData.vacunadoCovid,
             usuario_id: JSON.parse(localStorage.getItem("userData"))

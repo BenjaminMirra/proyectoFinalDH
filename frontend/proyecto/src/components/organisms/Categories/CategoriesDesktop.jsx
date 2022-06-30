@@ -69,11 +69,11 @@ export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle,set
       // navigate("/")
       //console.log(window.innerWidth);
       if (window.innerWidth<=768) {
-        filterTitle.scrollIntoView({behavior: 'smooth'})
+        // filterTitle.scrollIntoView({behavior: 'smooth'})
       }
       else{
         console.log('entro');
-        window.scrollTo({left:0,top:470,behavior:'smooth'})
+        // window.scrollTo({left:0,top:470,behavior:'smooth'})
       }
       
       return setPrevId(undefined)
@@ -86,10 +86,10 @@ export const CategoriesDesktop = ({products,setFilterProducts,setFilterTitle,set
        setFilterTitle(title)
       
        if (window.innerWidth<=768) {
-        filterTitle.scrollIntoView({behavior: 'smooth'})
+        // filterTitle.scrollIntoView({behavior: 'smooth'})
       }
       else{
-        window.scrollTo({left:0,top:470,behavior:'smooth'})
+        // window.scrollTo({left:0,top:470,behavior:'smooth'})
       }
       
       return setPrevId(id)

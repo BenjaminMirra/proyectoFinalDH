@@ -12,8 +12,10 @@ import { urlAPI } from "../../../global";
 import { useNavigate } from "react-router-dom";
 import { LazyLoadImage, LazyLoadComponent } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { Stars } from "../ReactStars/ReactStars";
 
 export const CardProductReserve = ({
+  setRating,
   url,
   titulo,
   location,
@@ -32,7 +34,7 @@ export const CardProductReserve = ({
 
 
   useEffect(() => {
-    if (endReserveDate < new Date()) {
+    if (new Date(endReserveDate) < new Date()) {
       setOpinion(true)
     }
   }, [endReserveDate])
@@ -40,6 +42,8 @@ export const CardProductReserve = ({
   useEffect(() => {
     setLiked(false)
   }, [likedProducts]);
+
+
   const [serviceList, setServiceList] = useState([])
   const locationPathname = useLocation().pathname
   const navigate = useNavigate();
@@ -111,10 +115,10 @@ export const CardProductReserve = ({
 
   const [opinionStar, setOpinionStar] = useState(true);
 
-  const handleOpinion = () =>{
-    if(!opinionStar){
+  const handleOpinion = () => {
+    if (!opinionStar) {
       setOpinionStar(true)
-    }else{
+    } else {
       setOpinionStar(false)
     }
   }
@@ -284,21 +288,19 @@ export const CardProductReserve = ({
                 <h6>{endReserveDate}</h6>
               </div>
             </div>
+            
+            {!opinion ? ("") : (
+              <div className="leaveAnOpinion-container">
 
-            <div className="leaveAnOpinion-container">
-              {!opinion ? ("") : (
                 <div class="leaveAnOpinion">
-                  <Heading>Dejanos tu opinión:</Heading>
+                  <Heading type="sm" title="h2">¡Dejanos tu opinión!:</Heading>
                   <div className="opinionsStars">
-                      <Icon id={"starOpinions1"} onClick={() => handleOpinion()} icon={opinionStar ? "emptyStarGrey" : "star"} />
-                      <Icon id={"starOpinions2"} onClick={() => handleOpinion()} icon={opinionStar ? "emptyStarGrey" : "star"} />
-                      <Icon id={"starOpinions3"} onClick={() => handleOpinion()} icon={opinionStar ? "emptyStarGrey" : "star"} />
-                      <Icon id={"starOpinions4"} onClick={() => handleOpinion()} icon={opinionStar ? "emptyStarGrey" : "star"} />
-                      <Icon id={"starOpinions5"} onClick={() => handleOpinion()} icon={opinionStar ? "emptyStarGrey" : "star"} />
+                    <Stars setRating={setRating} />
                   </div>
                 </div>
-              )}
-            </div>
+
+              </div>
+            )}
 
             <div className="button-container-reserves" id="button-opinion">
               <Link style={{ width: "100%" }} to={`/productos/${id}`}>
