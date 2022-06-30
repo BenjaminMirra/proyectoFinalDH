@@ -80,6 +80,7 @@ export const ReserveDetail = ({
               vacunadoCovid: submitData.vacunadoCovid,
               usuario_id: JSON.parse(localStorage.getItem("userData")).id,
               producto_id: id,
+              precioTotal: "100"
             },
             headers: {
               "Content-Type": "application/json",

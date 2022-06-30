@@ -454,6 +454,7 @@
 
 .desktopAdministracion-add-atributo-checkbox-container{
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -466,17 +467,21 @@
 }
 
 .desktopAdministracion-add-atributo-checkbox{
-    display: grid;
-    justify-items: center;
-    grid-template-columns: repeat(8, 150px);
-    grid-auto-rows: minmax(50px, auto);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 80%;
+    margin: auto;
 }
 
 .desktopAdministracion-atributos-checkboxs{
     display: flex;
-    width: 50%;
+    flex-wrap: wrap;
+    width: 25%;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
 }

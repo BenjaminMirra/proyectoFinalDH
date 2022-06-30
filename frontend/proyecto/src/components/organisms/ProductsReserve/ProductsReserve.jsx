@@ -6,7 +6,7 @@ import axios from 'axios'
 import { MockUpProduct } from "../../molecules/MockUpCard/MockUpProduct";
 import { urlAPI } from "../../../global";
 
-export const ProductsReserve = ({ reserveDate, setReservasPorId, data, setMapHomeData, setShowMap, filterTitle, reRender }) => {
+export const ProductsReserve = ({ setRating, reserveDate, setReservasPorId, data, setMapHomeData, setShowMap, filterTitle, reRender }) => {
 
     const [userId, setUserId] = useState(undefined)
     useEffect(() => {
@@ -62,12 +62,6 @@ export const ProductsReserve = ({ reserveDate, setReservasPorId, data, setMapHom
             window.scrollTo({ top: 480, behavior: "smooth" });
         }
     }, [mockUpDinamic, mockUp]);
-
-
-    useEffect(() => {
-        console.log("reservedate")
-        console.log(reserveDate)
-    }, [reserveDate])
 
 
     return (
@@ -133,6 +127,7 @@ export const ProductsReserve = ({ reserveDate, setReservasPorId, data, setMapHom
 
                             return (
                                 <CardProductReserve
+                                    setRating={setRating}
                                     setMapHomeData={setMapHomeData}
                                     titulo={product.titulo}
                                     url={product.imagenDTOList[0].url_img_producto}
