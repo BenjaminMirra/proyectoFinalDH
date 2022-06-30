@@ -34,10 +34,7 @@ export const CardProductReserve = ({
 
 
   useEffect(() => {
-    console.log(endReserveDate)
-    const fecha = ([JSON.stringify(new Date().getFullYear() + "-0" + new Date().getMonth() + "-0" + new Date().getDay())])
-    console.log(fecha)
-    if (endReserveDate < fecha) {
+    if (new Date(endReserveDate) < new Date()) {
       setOpinion(true)
     }
   }, [endReserveDate])
@@ -45,6 +42,8 @@ export const CardProductReserve = ({
   useEffect(() => {
     setLiked(false)
   }, [likedProducts]);
+
+
   const [serviceList, setServiceList] = useState([])
   const locationPathname = useLocation().pathname
   const navigate = useNavigate();
@@ -116,10 +115,10 @@ export const CardProductReserve = ({
 
   const [opinionStar, setOpinionStar] = useState(true);
 
-  const handleOpinion = () =>{
-    if(!opinionStar){
+  const handleOpinion = () => {
+    if (!opinionStar) {
       setOpinionStar(true)
-    }else{
+    } else {
       setOpinionStar(false)
     }
   }
@@ -289,17 +288,19 @@ export const CardProductReserve = ({
                 <h6>{endReserveDate}</h6>
               </div>
             </div>
+            
+            {!opinion ? ("") : (
+              <div className="leaveAnOpinion-container">
 
-            <div className="leaveAnOpinion-container">
-              {!opinion ? ("") : (
                 <div class="leaveAnOpinion">
                   <Heading type="sm" title="h2">¡Dejanos tu opinión!:</Heading>
                   <div className="opinionsStars">
-                  <Stars setRating={setRating} />
+                    <Stars setRating={setRating} />
                   </div>
                 </div>
-              )}
-            </div>
+
+              </div>
+            )}
 
             <div className="button-container-reserves" id="button-opinion">
               <Link style={{ width: "100%" }} to={`/productos/${id}`}>

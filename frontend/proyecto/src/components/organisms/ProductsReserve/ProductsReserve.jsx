@@ -64,12 +64,6 @@ export const ProductsReserve = ({ setRating, reserveDate, setReservasPorId, data
     }, [mockUpDinamic, mockUp]);
 
 
-    useEffect(() => {
-        console.log("reservedate")
-        console.log(reserveDate)
-    }, [reserveDate])
-
-
     return (
         <div className="products-container">
             <section className="products-content">
