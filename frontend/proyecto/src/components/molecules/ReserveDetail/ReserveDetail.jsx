@@ -43,6 +43,7 @@ export const ReserveDetail = ({
       }
     }
   }, [reservedDays]);
+  
 
   const [warnings, setWarnings] = useState({ server: false, data: false,range:false });
   const [mockUp,setMockUp]=useState(true)
@@ -74,11 +75,12 @@ export const ReserveDetail = ({
             data: {
               fechaInicioReserva: `${submitData.fechaInicioReserva}`,
               fechaFinReserva: `${submitData.fechaFinReserva}`,
-              horaEstimadaDeLlegada: `${submitData.horaEstimadaDeLlegada}`,
+              horaEstimadaDeLlegada: `${submitData.horaEstimadaDeLlegada.target.value.slice(0, 5)}`,
               mensajeUsuario: `${submitData.mensajeUsuario}`,
               vacunadoCovid: submitData.vacunadoCovid,
               usuario_id: JSON.parse(localStorage.getItem("userData")).id,
               producto_id: id,
+              precioTotal: "100"
             },
             headers: {
               "Content-Type": "application/json",

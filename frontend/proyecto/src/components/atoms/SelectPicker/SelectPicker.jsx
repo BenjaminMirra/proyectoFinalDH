@@ -1,17 +1,24 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import Label from '../Label/Label'
 import { SpacerHorizontal } from '../Spacer/SpacerHorizontal'
 import './SelectPicker.css'
-export const SelectPicker = ({setSelectValue}) => {
-
+export const SelectPicker = ({submitData,setSelectValue,selected}) => {
+  
+  
   const handleChange=(value)=>{
+    console.log(value);
     setSelectValue(value)
   }
   return (
     <div className="selectPicker">
       <Label required={true} label="Indica tu horario estimado de llegada" />
       <SpacerHorizontal height={"xxs"} />
-      <select  onChange={handleChange} name="" id="selectTime">
+      <select
+        
+        onChange={handleChange}
+        name=""
+        id="selectTime"
+      >
         <option disabled selected>
           Seleccionar hora de llegada
         </option>

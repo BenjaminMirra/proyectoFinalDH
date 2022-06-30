@@ -177,12 +177,11 @@
     text-align: center;
     justify-content: center;
     flex-direction: row;
+    margin-left: 5px;
+    margin-bottom: 5px;
 }
 
-.leaveAnOpinion-container .opinionsStars img{
-    width: 20px;
-    height: 20px;
-}
+
 
 .leaveAnOpinion-container .opinionsStars img:hover{
     background-color: var(--color-primary);
