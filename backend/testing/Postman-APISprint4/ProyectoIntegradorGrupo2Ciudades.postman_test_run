@@ -1,0 +1,768 @@
+{
+	"id": "adcf2b2d-2479-437a-b28c-3a629ca01f57",
+	"name": "ProyectoIntegradorGrupo2",
+	"timestamp": "2022-06-30T21:19:55.438Z",
+	"collection_id": "18041092-76a8721e-9eee-4f39-9276-79c5314c08a3",
+	"folder_id": "18041092-44b1947a-1e15-402c-89ef-9cde298b39e6",
+	"environment_id": "0",
+	"totalPass": 94,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "d6ceb24c-f7a9-4d27-8fdf-043e605071c9",
+			"name": "Agregar ciudad",
+			"url": "http://localhost:8080/ciudades/agregar",
+			"time": 371,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Setear el ID de la ciudad posteada": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID de la ciudad posteada": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				371
+			],
+			"allTests": [
+				{
+					"Setear el ID de la ciudad posteada": true
+				}
+			]
+		},
+		{
+			"id": "532cdaf4-97fa-4426-8c14-428d7ea8981e",
+			"name": "Agregar ciudad script tests",
+			"url": "http://localhost:8080/ciudades/agregar",
+			"time": 305,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Testear que el tipo de respuesta sea un el id (tipo number)": true,
+				"La respuesta es un status OK": true,
+				"Setear el ID de la ciudad posteada": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Testear que el tipo de respuesta sea un el id (tipo number)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Setear el ID de la ciudad posteada": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				305
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Testear que el tipo de respuesta sea un el id (tipo number)": true,
+					"La respuesta es un status OK": true,
+					"Setear el ID de la ciudad posteada": true
+				}
+			]
+		},
+		{
+			"id": "f648093a-9127-40ef-983d-916a604291ee",
+			"name": "Agregar ciudad exception script tests",
+			"url": "http://localhost:8080/ciudades/agregar",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Bad Request": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Bad Request": true
+				}
+			]
+		},
+		{
+			"id": "4001fc80-a4c9-4f71-9cad-8a0de690b0ad",
+			"name": "Obtener todas las ciudades",
+			"url": "http://localhost:8080/ciudades/todas",
+			"time": 164,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				164
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e6092a49-8cbe-4cb9-9606-15f1c0b280a2",
+			"name": "Obtener todas  las ciudades script tests",
+			"url": "http://localhost:8080/ciudades/todas",
+			"time": 194,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validar atributo id": true,
+				"Validar atributo nombre": true,
+				"Validar atributo provincia": true,
+				"Validar atributo pais": true,
+				"Se espera que los elementos dentro de la respuesta sean objetos": true,
+				"Se espera que la respuesta sea un array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo nombre": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo provincia": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo pais": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que los elementos dentro de la respuesta sean objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que la respuesta sea un array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				194
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validar atributo id": true,
+					"Validar atributo nombre": true,
+					"Validar atributo provincia": true,
+					"Validar atributo pais": true,
+					"Se espera que los elementos dentro de la respuesta sean objetos": true,
+					"Se espera que la respuesta sea un array": true
+				}
+			]
+		},
+		{
+			"id": "5f04a3ac-14e4-47ca-9a2d-f8bf66c6e3ab",
+			"name": "Obtener ciudad por id",
+			"url": "http://localhost:8080/ciudades/6",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validar atributo id": true,
+				"Validar atributo nombre": true,
+				"Validar atributo provincia": true,
+				"Validar atributo pais": true,
+				"El id está presente y es un numero": true,
+				"El ID es el mismo que el obtenido al hacer el post de la ciudad previamente": true,
+				"El nombre es un string": true,
+				"El nombre de la ciudad es el mismo que el enviado al hacer el post de la ciudad previamente": true,
+				"La provincia es un string": true,
+				"La provincia es la misma que la enviada al hacer el post de la ciudad previamente": true,
+				"El pais es un string": true,
+				"El pais es el mismo que el enviado al hacer el post de la ciudad previamente": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo nombre": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo provincia": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo pais": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El id está presente y es un numero": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID es el mismo que el obtenido al hacer el post de la ciudad previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El nombre es un string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El nombre de la ciudad es el mismo que el enviado al hacer el post de la ciudad previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La provincia es un string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La provincia es la misma que la enviada al hacer el post de la ciudad previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El pais es un string": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El pais es el mismo que el enviado al hacer el post de la ciudad previamente": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validar atributo id": true,
+					"Validar atributo nombre": true,
+					"Validar atributo provincia": true,
+					"Validar atributo pais": true,
+					"El id está presente y es un numero": true,
+					"El ID es el mismo que el obtenido al hacer el post de la ciudad previamente": true,
+					"El nombre es un string": true,
+					"El nombre de la ciudad es el mismo que el enviado al hacer el post de la ciudad previamente": true,
+					"La provincia es un string": true,
+					"La provincia es la misma que la enviada al hacer el post de la ciudad previamente": true,
+					"El pais es un string": true,
+					"El pais es el mismo que el enviado al hacer el post de la ciudad previamente": true
+				}
+			]
+		},
+		{
+			"id": "4fc27ee9-2dc2-4d51-9cd7-b697fcf61963",
+			"name": "Obtener ciudad por id exception",
+			"url": "http://localhost:8080/ciudades/1500",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "6f3a0ba8-1cae-4a30-88f6-a3e65585a64e",
+			"name": "Modificar ciudad",
+			"url": "http://localhost:8080/ciudades/editar",
+			"time": 107,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				107
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "e7189b20-bdf0-40d6-a4e6-8648df9c8c81",
+			"name": "Modificar ciudad script tests",
+			"url": "http://localhost:8080/ciudades/editar",
+			"time": 139,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue actualizada la ciudad": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue actualizada la ciudad": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				139
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue actualizada la ciudad": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "20a3cd0b-88a8-47a8-907a-bbfdb2707da6",
+			"name": "Modificar ciudad exception",
+			"url": "http://localhost:8080/ciudades/editar",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "4b5e1c4b-126e-4186-a777-a4ea4afa3702",
+			"name": "Modificar ciudad exception script tests",
+			"url": "http://localhost:8080/ciudades/editar",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "1eace317-0a1b-4b5c-8b81-d92b48fe2699",
+			"name": "Eliminar ciudad",
+			"url": "http://localhost:8080/ciudades/eliminar/6",
+			"time": 93,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				93
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d28e92cd-cbc2-4f72-b90e-5fa3f5b45050",
+			"name": "Eliminar ciudad script tests",
+			"url": "http://localhost:8080/ciudades/eliminar/5",
+			"time": 56,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"El código de status es 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue borrada la ciudad": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue borrada la ciudad": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				56
+			],
+			"allTests": [
+				{
+					"El código de status es 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue borrada la ciudad": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "cfc97c8f-6060-4e87-9cda-f6f4c2dd2582",
+			"name": "Eliminar ciudad exception",
+			"url": "http://localhost:8080/ciudades/eliminar/1500",
+			"time": 9,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				9
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "a4fefa78-d9c3-4a62-838b-69a461eaa33e",
+			"name": "Eliminar ciudad exception script tests",
+			"url": "http://localhost:8080/ciudades/eliminar/6",
+			"time": 15,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 1489,
+	"collection": {
+		"requests": [
+			{
+				"id": "d6ceb24c-f7a9-4d27-8fdf-043e605071c9",
+				"method": "POST"
+			},
+			{
+				"id": "532cdaf4-97fa-4426-8c14-428d7ea8981e",
+				"method": "POST"
+			},
+			{
+				"id": "f648093a-9127-40ef-983d-916a604291ee",
+				"method": "POST"
+			},
+			{
+				"id": "4001fc80-a4c9-4f71-9cad-8a0de690b0ad",
+				"method": "GET"
+			},
+			{
+				"id": "e6092a49-8cbe-4cb9-9606-15f1c0b280a2",
+				"method": "GET"
+			},
+			{
+				"id": "5f04a3ac-14e4-47ca-9a2d-f8bf66c6e3ab",
+				"method": "GET"
+			},
+			{
+				"id": "4fc27ee9-2dc2-4d51-9cd7-b697fcf61963",
+				"method": "GET"
+			},
+			{
+				"id": "6f3a0ba8-1cae-4a30-88f6-a3e65585a64e",
+				"method": "PUT"
+			},
+			{
+				"id": "e7189b20-bdf0-40d6-a4e6-8648df9c8c81",
+				"method": "PUT"
+			},
+			{
+				"id": "20a3cd0b-88a8-47a8-907a-bbfdb2707da6",
+				"method": "PUT"
+			},
+			{
+				"id": "4b5e1c4b-126e-4186-a777-a4ea4afa3702",
+				"method": "PUT"
+			},
+			{
+				"id": "1eace317-0a1b-4b5c-8b81-d92b48fe2699",
+				"method": "DELETE"
+			},
+			{
+				"id": "d28e92cd-cbc2-4f72-b90e-5fa3f5b45050",
+				"method": "DELETE"
+			},
+			{
+				"id": "cfc97c8f-6060-4e87-9cda-f6f4c2dd2582",
+				"method": "DELETE"
+			},
+			{
+				"id": "a4fefa78-d9c3-4a62-838b-69a461eaa33e",
+				"method": "DELETE"
+			}
+		]
+	}
+}

@@ -1,0 +1,101 @@
+{
+	"id": "2fa56fd1-81ee-40fd-8570-ed1b198e1953",
+	"name": "ProyectoIntegradorGrupo2",
+	"timestamp": "2022-06-30T21:26:43.201Z",
+	"collection_id": "18041092-76a8721e-9eee-4f39-9276-79c5314c08a3",
+	"folder_id": "18041092-c3e7d62c-af1b-4105-be5a-6cee110f03dc",
+	"environment_id": "0",
+	"totalPass": 23,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "22775013-00f3-4754-b00d-4ef047cedf76",
+			"name": "Obtener todas las caracteristicas",
+			"url": "http://localhost:8080/caracteristicas/todas",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				18
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "78baad46-1e71-4563-8243-bb8f41d69ae6",
+			"name": "Obtener todas las caracteristicas  script tests",
+			"url": "http://localhost:8080/caracteristicas/todas",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"La respuesta es un status OK": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validate schema": true,
+				"Se espera que la respuesta sea un array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validate schema": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que la respuesta sea un array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"La respuesta es un status OK": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validate schema": true,
+					"Se espera que la respuesta sea un array": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 27,
+	"collection": {
+		"requests": [
+			{
+				"id": "22775013-00f3-4754-b00d-4ef047cedf76",
+				"method": "GET"
+			},
+			{
+				"id": "78baad46-1e71-4563-8243-bb8f41d69ae6",
+				"method": "GET"
+			}
+		]
+	}
+}
