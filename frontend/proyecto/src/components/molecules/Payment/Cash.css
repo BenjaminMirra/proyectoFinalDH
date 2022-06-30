@@ -1,0 +1,20 @@
+.cash{
+    width: 90%;
+    margin: auto;
+    margin-top: 45px;
+}
+.cash-content{
+    margin-top: 90px;
+}
+.cash-nav{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 145px;
+}
+.cash-nav button{
+    width: 45%;
+
+}
+.cash-content span{
+    color: var(--color-primary);
+}

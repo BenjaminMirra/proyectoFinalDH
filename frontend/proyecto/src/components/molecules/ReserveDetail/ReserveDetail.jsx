@@ -22,13 +22,18 @@ export const ReserveDetail = ({
   setFailReserve,
   setSubmitData,
   submitData,
+  setShowPayment,
 }) => {
   const navigate = useNavigate();
   // const [submitData,setSubmitData]=useState({fechaInicioReserva:'',fechaFinReserva:'',horaEstimadaDeLlegada:'',mensajeUsuario:'',vacunadoCovid:true,usuarioId:'',productoId:''})
-  const [buttonValue,setButtonValue]=useState({disabled:false,value:'Confirmar reserva'})
+  const [buttonValue, setButtonValue] = useState({
+    disabled: false,
+    value: "Confirmar reserva",
+  });
   const { id } = useParams();
   useEffect(() => {
     if (setSubmitData) {
+      
       if (
         reservedDays.startDate.year !== "1969" &&
         reservedDays.startDate &&
@@ -43,13 +48,16 @@ export const ReserveDetail = ({
       }
     }
   }, [reservedDays]);
-  
 
-  const [warnings, setWarnings] = useState({ server: false, data: false,range:false });
-  const [mockUp,setMockUp]=useState(true)
+  const [warnings, setWarnings] = useState({
+    server: false,
+    data: false,
+    range: false,
+  });
+  const [mockUp, setMockUp] = useState(true);
 
   useEffect(() => {
-   setTimeout(()=>setMockUp(false),1500)
+    setTimeout(() => setMockUp(false), 1500);
   }, []);
 
   const handleSubmit = async () => {
@@ -60,22 +68,27 @@ export const ReserveDetail = ({
     } else {
       // console.log(JSON.stringify(submitData));
       // console.log(JSON.parse(localStorage.getItem('jwt')));
+      
       if (
         reservedDays.startDate.year !== "1969" &&
         reservedDays.startDate &&
         reservedDays.endDate.year !== "1969" &&
-        reservedDays.endDate &&
-        submitData.horaEstimadaDeLlegada
+        reservedDays.endDate
       ) {
-        setButtonValue({ value: "Creando reserva..." ,disabled:true});
+        setButtonValue({ value: "Creando reserva...", disabled: true });
         try {
+          console.log(submitData.fechaInicioReserva);
           axios({
             method: "POST",
             url: `${urlAPI}reservas/agregar`,
             data: {
               fechaInicioReserva: `${submitData.fechaInicioReserva}`,
               fechaFinReserva: `${submitData.fechaFinReserva}`,
-              horaEstimadaDeLlegada: `${submitData.horaEstimadaDeLlegada.target.value.slice(0, 5)}`,
+              // horaEstimadaDeLlegada: `${submitData.horaEstimadaDeLlegada.target.value.slice(
+              //   0,
+              //   5
+              // )}`,
+              horaEstimadaDeLlegada:'13:00',
               mensajeUsuario: `${submitData.mensajeUsuario}`,
               vacunadoCovid: submitData.vacunadoCovid,
               usuario_id: JSON.parse(localStorage.getItem("userData")).id,
@@ -86,44 +99,55 @@ export const ReserveDetail = ({
               Authorization:
                 "Bearer " + JSON.parse(localStorage.getItem("jwt")),
             },
-          }).then((res) => {
-            console.log(res);
-            if (res.status != 200) {
-              setWarnings({ server: true, data: false, range: false });
+          })
+            .then((res) => {
+              console.log(res);
+              if (res.status != 200) {
+                setWarnings({ server: true, data: false, range: false });
+                setButtonValue({ value: "Confirmar reserva", disabled: false });
+                setTimeout(
+                  () =>
+                    setWarnings({ server: false, data: false, range: false }),
+                  5000
+                );
+              } else {
+                // localStorage.removeItem("lastProduct");
+                // localStorage.removeItem("dates");
+                 axios({
+                   method: "DELETE",
+                   url: `${urlAPI}reservas/eliminar/${res.data}`,
+                   headers: {
+                     "Content-Type": "application/json",
+                     Authorization:
+                       "Bearer " + JSON.parse(localStorage.getItem("jwt")),
+                   },
+                 }).then(res=>console.log(res)).catch(err=>console.log(err));
+                setButtonValue({ value: "Confirmar reserva", disabled: false });
+                setShowPayment(true);
+              }
+            })
+            .catch((error) => {
+              setWarnings((prevValue) => {
+                return { server: false, data: false, range: true };
+              });
               setButtonValue({ value: "Confirmar reserva", disabled: false });
               setTimeout(
                 () => setWarnings({ server: false, data: false, range: false }),
                 5000
               );
-            } else {
-              localStorage.removeItem("lastProduct");
-              localStorage.removeItem("dates");
-              setButtonValue({ value: "Confirmar reserva", disabled: false });
-              navigate("/reserva-exitosa");
-            }
-            
-          }).catch(error=>{
-             setWarnings(prevValue=>{
-                
-                    return { server: false, data: false, range: true };
-                
-             });
-             setButtonValue({ value: "Confirmar reserva", disabled: false });
-             setTimeout(
-               () => setWarnings({ server: false, data: false, range: false }),
-               5000
-             );
-          });
+            });
           //  console.log(response);
         } catch (error) {
-          setWarnings({ server: false, data: false,range:true });
+          setWarnings({ server: false, data: false, range: true });
           setButtonValue({ value: "Confirmar reserva", disabled: false });
-          setTimeout(() => setWarnings({ server: false, data: false,range:false }), 5000);
+          setTimeout(
+            () => setWarnings({ server: false, data: false, range: false }),
+            5000
+          );
         }
-      }
-      else{
+      } else {
         setWarnings((prevValue) => {
-            console.log(prevValue);
+          console.log('entro');
           if (!prevValue.range) {
             return { server: false, data: true, range: false };
           }
@@ -149,8 +173,10 @@ export const ReserveDetail = ({
         {mockUp ? (
           <MockUp height={"100%"} width="100%" />
         ) : (
-          <LazyLoadImage effect="blur"
-            width="100%" height= "100%" 
+          <LazyLoadImage
+            effect="blur"
+            width="100%"
+            height="100%"
             src={
               product.imagenDTOList
                 ? product.imagenDTOList[0].url_img_producto
