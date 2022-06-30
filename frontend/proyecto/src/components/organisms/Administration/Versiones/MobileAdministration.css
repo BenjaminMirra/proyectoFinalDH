@@ -551,27 +551,6 @@
 }
 
 /* para el map de atributos traídos de BD */
-.mobileAdministracion-add-atributo-checkbox {
-    width: 100%;
-    display: flex;
-    padding: 10px;
-    border-radius: 8px;
-    flex-direction: row;
-    background-color: #DFE4EA;
-    margin-bottom: 15px;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-}
-
-.mobileAdministracion-atributos-checkboxs {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 30%
-}
 
 .mobileAdministracion-atributos-checkboxs input {
     box-shadow: none;
@@ -679,17 +658,25 @@
 }
 
 .mobileAdministracion-add-atributo-checkbox{
-    display: grid;
-    justify-items: center;
-    grid-template-columns: repeat(4, 150px);
-    grid-auto-rows: minmax(50px, auto);
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 90%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 .mobileAdministracion-atributos-checkboxs{
     display: flex;
-    width: 50%;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    width: 30%;
     flex-direction: row;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     text-align: center;
 }
@@ -703,14 +690,13 @@
     margin-right: 5px;
 }
 
-@media (max-width:615px){
-    .mobileAdministracion-add-atributo-checkbox{
-        grid-template-columns: repeat(3, 150px);
-    }
-}
-
-@media (max-width:450px){
-    .mobileAdministracion-add-atributo-checkbox{
-        grid-template-columns: repeat(2, 150px);
-    }
+@media (max-width:600px){
+    .mobileAdministracion-atributos-checkboxs{
+        display: flex;
+        width: 50%;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        text-align: center;
+    }    
 }

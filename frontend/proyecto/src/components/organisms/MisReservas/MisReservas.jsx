@@ -1,15 +1,46 @@
 import React, { useEffect, useState } from 'react';
 import './MisReservas.css'
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Heading } from '../../atoms/Heading/Heading'
 import { Icon } from '../../atoms/Icon/Icon'
 import { urlAPI } from "../../../global.js";
 import axios from 'axios';
 import sinReservas from '../../utils/images/sinReservas.jpeg'
-
 import { ProductsReserve } from '../ProductsReserve/ProductsReserve';
 
 export const MisReservas = () => {
+
+
+    const[id, setId] = useState()
+    
+    const [rating, setRating] = useState()
+
+    useEffect(() => {
+        setId(localStorage.getItem("id"))
+        console.log(id)
+        if (rating) {
+            axios({
+                method: "POST",
+                url: `${urlAPI}puntuaciones/agregar`,
+                data: {
+                    "puntuacion": "2",
+                    "producto_id": "28",
+                    "usuario_id": id
+                },
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            }).then((res) => {
+                console.log({
+                    "puntuacion": "2",
+                    "producto_id": "28",
+                    "usuario_id": id
+                })
+                console.log(res.status);
+            })
+        }
+    }, [rating,id])
+
 
     const [userId, setUserId] = useState(undefined)
     useEffect(() => {
@@ -17,6 +48,14 @@ export const MisReservas = () => {
             setUserId(JSON.parse(localStorage.getItem("userData")).id);
         }
     }, []);
+
+    useEffect(() => {
+        if (rating) {
+            console.log("desde misreservas: ")
+            console.log(rating);
+
+        }
+    }, [rating])
 
 
     const [productsData, setProductsData] = useState([]);
@@ -26,16 +65,16 @@ export const MisReservas = () => {
     const [reserveDate, setReserveDate] = useState([])
 
     useEffect(() => {
-        if(reserveDate){
+        if (reserveDate) {
             reservasPorId.map((reserva) => {
-                
-                if(reserva.usuario_id === userId){
+
+                if (reserva.usuario_id === userId) {
                     setReserveDate((prevData) => {
                         if (!prevData) {
                             return {
-                                id : reserva.producto_id,
-                                fechaInicioReserva : reserva.fechaInicioReserva,
-                                fechaFinReserva : reserva.fechaFinReserva
+                                id: reserva.producto_id,
+                                fechaInicioReserva: reserva.fechaInicioReserva,
+                                fechaFinReserva: reserva.fechaFinReserva
                             }
                         }
                         else {
@@ -49,9 +88,9 @@ export const MisReservas = () => {
                                 return [
                                     ...prevData,
                                     {
-                                        id : reserva.producto_id,
-                                        fechaInicioReserva : reserva.fechaInicioReserva,
-                                        fechaFinReserva : reserva.fechaFinReserva
+                                        id: reserva.producto_id,
+                                        fechaInicioReserva: reserva.fechaInicioReserva,
+                                        fechaFinReserva: reserva.fechaFinReserva
                                     }
                                 ];
                             }
@@ -63,7 +102,7 @@ export const MisReservas = () => {
                 }
             })
         }
-    }, [reservasPorId,reserveDate])
+    }, [reservasPorId, reserveDate])
 
     const navigate = useNavigate();
     const handleBack = () => {
@@ -106,7 +145,7 @@ export const MisReservas = () => {
 
     }, [])
 
-    
+
     useEffect(() => {
         if (productsData && productsData.length > 0) {
             return (
@@ -114,7 +153,7 @@ export const MisReservas = () => {
                 setRender(
                     <>
                         <ProductsReserve
-                            data={productsData} reserveDate={reserveDate} setReservasPorId={setReservasPorId}
+                            setRating={setRating} data={productsData} reserveDate={reserveDate} setReservasPorId={setReservasPorId}
                         ></ProductsReserve>
                     </>
                 )
@@ -127,7 +166,7 @@ export const MisReservas = () => {
                         <div className="misReservas-vacia">
                             <div className="misReservas-vacia-box">
 
-                                <img src={sinReservas} alt="reservasVacias"/>
+                                <img src={sinReservas} alt="reservasVacias" />
                                 <Heading title="h2" variant="secondary" type='lg'>
                                     Aún no haz efectuado ninguna reserva
                                 </Heading>{" "}
@@ -141,7 +180,7 @@ export const MisReservas = () => {
 
             )
         }
-    }, [productsData,reserveDate])
+    }, [productsData, reserveDate])
 
 
 
