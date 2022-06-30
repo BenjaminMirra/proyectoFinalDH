@@ -12,6 +12,7 @@ import {ProductsPagination} from './components/organisms/ProductsPagination/Prod
 import { Error404 } from './components/pages/Error404';
 import { Administracion } from './components/pages/Administracion';
 import { MyReservePage } from './components/pages/MyReservePage';
+import {Payment} from './components/molecules/Payment/Payment'
 function App() {
   const [failReserve,setFailReserve] = useState(false)
   return (
@@ -36,15 +37,18 @@ function App() {
           />
           <Route
             path="/productos/:id/reserva"
-            element={<Reserve setFailReserve={setFailReserve} />}
+            element={<Payment setFailReserve={setFailReserve} />}
           ></Route>
           <Route path="/mapa" element={<Mapa />}></Route>
           <Route path="/reserva-exitosa" element={<SuccessBooking />}></Route>
           <Route path="/favoritos" element={<Favorite />}></Route>
-          <Route path="/productsPagination" element={<ProductsPagination/>}></Route>
-          <Route path="/:id/misreservas" element={<MyReservePage/>}></Route>
-          <Route path="/administracion" element={<Administracion/>}></Route>
-          <Route path="*" element={<Error404/>}></Route>
+          <Route
+            path="/productsPagination"
+            element={<ProductsPagination />}
+          ></Route>
+          <Route path="/:id/misreservas" element={<MyReservePage />}></Route>
+          <Route path="/administracion" element={<Administracion />}></Route>
+          <Route path="*" element={<Error404 />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

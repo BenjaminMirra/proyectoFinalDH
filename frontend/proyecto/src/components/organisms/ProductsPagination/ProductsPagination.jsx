@@ -15,13 +15,13 @@ export const ProductsPagination = ({ currentPage, setCurrentPage,data,setMapHome
 
     const scroll = () => {
         
-            window.scrollTo({ top: 480, behavior: 'smooth' })        
+            // window.scrollTo({ top: 480, behavior: 'smooth' })        
     }
 
     // Change page
     const paginate = (pageNumber) => {
         setCurrentPage(pageNumber);
-        scroll();
+        // scroll();
     }
     
     return (

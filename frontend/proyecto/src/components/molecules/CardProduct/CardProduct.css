@@ -8,6 +8,8 @@
   display: flex;
   align-items: center;
   background-color: var(--color-base);
+  filter: blur(0);
+  transition: filter .3s;
 }
 
 .card-product span {

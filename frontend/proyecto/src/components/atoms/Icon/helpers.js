@@ -64,6 +64,9 @@ import prohibido from "../../utils/icons/prohibido.png";
 import wEmptyHeart from "../../utils/icons/wEmptyHeart.svg";
 import fFavorite from "../../utils/icons/fFavorite.png";
 import eFavorite from "../../utils/icons/eFavorite.png";
+import cash from "../../utils/icons/cash.png";
+import cripto from "../../utils/icons/cripto.png";
+import mercadopago from "../../utils/icons/mercadopago.svg";
 
 const IconsList = {
   user: user,
@@ -133,6 +136,9 @@ const IconsList = {
   wEmptyHeart: wEmptyHeart,
   fFavorite: fFavorite,
   eFavorite: eFavorite,
+  cash:cash,
+  cripto:cripto,
+  mercadopago:mercadopago,
 };
 export const KeysIconsList = Object.keys(IconsList);
 const IconWidth = {
