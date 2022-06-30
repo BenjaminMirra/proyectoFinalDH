@@ -14,42 +14,59 @@ import { SpacerHorizontal } from '../../../atoms/Spacer/SpacerHorizontal'
 export const ReserveTablet = ({productData,categoria,locationData,setFailReserve,reservedDays,setReservedDays,reservedDates,setSubmitData,submitData}) => {
     
   return (
-
-     <div className='wrapper'>
+    <div className="wrapper">
       <Header />
-      <div className='contenedor-pagina' >
-
-        <ProductHeader category={categoria?categoria:'cargando'} title={productData?productData.titulo:'cargando'} />
-        <div className='tablet-reserve-general-container'>
-        <div className='tablet-reserve-content'>
-            <SpacerHorizontal height={'2md'} />
-            <div className='tablet-reserve-content-userData'>
-                <UserData setSubmitData={setSubmitData}/>
+      <div className="contenedor-pagina">
+        <ProductHeader
+          category={categoria ? categoria : "cargando"}
+          title={productData ? productData.titulo : "cargando"}
+        />
+        <div className="tablet-reserve-general-container">
+          <div className="tablet-reserve-content">
+            <SpacerHorizontal height={"2md"} />
+            <div className="tablet-reserve-content-userData">
+              <UserData submitData={submitData} setSubmitData={setSubmitData} />
             </div>
-            <SpacerHorizontal height={'2md'} />
-            <div className='tablet-reserve-content-calendar' >
-                <ReserveCalendar setReservedDays={setReservedDays} reservedDates={reservedDates} />
+            <SpacerHorizontal height={"2md"} />
+            <div className="tablet-reserve-content-calendar">
+              <ReserveCalendar
+                setReservedDays={setReservedDays}
+                reservedDates={reservedDates}
+              />
             </div>
-            <SpacerHorizontal height={'2md'} />
-            <div className='tablet-reserve-content-checkInReserve' >
-                <CheckInReserve setSubmitData={setSubmitData}/>
+            <SpacerHorizontal height={"2md"} />
+            <div className="tablet-reserve-content-checkInReserve">
+              <CheckInReserve
+                submitData={submitData}
+                setSubmitData={setSubmitData}
+              />
             </div>
-            <SpacerHorizontal height={'2md'} />
-            <div className='tablet-reserve-content-reserveDetail' >
-                <TabletReserveDetail setSubmitData={setSubmitData} setFailReserve={setFailReserve} submitData={submitData}  reservedDays={reservedDays} location={locationData?locationData:'cargando'} category={categoria?categoria:'cargando'} product={productData?productData:[]} image={productData?productData.imagenDTOList?productData.imagenDTOList[0].url_img_producto:[]:[]} />
+            <SpacerHorizontal height={"2md"} />
+            <div className="tablet-reserve-content-reserveDetail">
+              <TabletReserveDetail
+                setSubmitData={setSubmitData}
+                setFailReserve={setFailReserve}
+                submitData={submitData}
+                reservedDays={reservedDays}
+                location={locationData ? locationData : "cargando"}
+                category={categoria ? categoria : "cargando"}
+                product={productData ? productData : []}
+                image={
+                  productData
+                    ? productData.imagenDTOList
+                      ? productData.imagenDTOList[0].url_img_producto
+                      : []
+                    : []
+                }
+              />
             </div>
-            <SpacerHorizontal height={'2md'} />
-            
-            
+            <SpacerHorizontal height={"2md"} />
+          </div>
         </div>
-        </div>
-        <ProductInfo info={productData?productData.politicaListDTO:[]}/>
-        <div className="product-footer">
-          
-        </div>
-            <Footer />
+        <ProductInfo info={productData ? productData.politicaListDTO : []} />
+        <div className="product-footer"></div>
+        <Footer />
       </div>
-        
     </div>
-  )
+  );
 }

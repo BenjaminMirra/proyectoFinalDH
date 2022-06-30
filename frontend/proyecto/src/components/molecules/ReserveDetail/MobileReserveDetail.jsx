@@ -60,7 +60,7 @@ const navigate=useNavigate()
                 data:{
                     fechaInicioReserva:`${submitData.fechaInicioReserva}`,
                     fechaFinReserva:`${submitData.fechaFinReserva}`,
-                    horaEstimadaDeLlegada:`${submitData.horaEstimadaDeLlegada}`,
+            horaEstimadaDeLlegada: `${submitData.horaEstimadaDeLlegada.target.value.slice(0,5)}`,
                     mensajeUsuario:`${submitData.mensajeUsuario}`,
                     vacunadoCovid:submitData.vacunadoCovid,
                     usuario_id:JSON.parse(localStorage.getItem('userData')).id,

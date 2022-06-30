@@ -15,36 +15,55 @@ import './ReserveDesktop.css'
 export const ReserveDesktop = ({productData,categoria,locationData,reservedDays,setReservedDays,setFailReserve,reservedDates,setSubmitData,submitData}) => {
     
   return (
-
-     <div className='wrapper'>
+    <div className="wrapper">
       <Header />
-      <div className='contenedor-pagina' >
+      <div className="contenedor-pagina">
+        <ProductHeader
+          category={categoria ? categoria : "cargando"}
+          title={productData ? productData.titulo : "cargando"}
+        />
+        <div className="reserve-general-container">
+          <div className="reserve-content">
+            <div className="reserve-content-userData">
+              <UserData submitData={submitData} setSubmitData={setSubmitData} />
+            </div>
 
-        <ProductHeader category={categoria?categoria:'cargando'} title={productData?productData.titulo:'cargando'} />
-        <div className='reserve-general-container'>
-        <div className='reserve-content'>
-            <div className='reserve-content-userData'>
-                <UserData setSubmitData={setSubmitData}/>
+            <div className="reserve-content-reserveDetail">
+              <ReserveDetail
+                setSubmitData={setSubmitData}
+                submitData={submitData}
+                setFailReserve={setFailReserve}
+                reservedDays={reservedDays}
+                location={locationData ? locationData : "cargando"}
+                category={categoria ? categoria : "cargando"}
+                product={productData ? productData : []}
+                image={
+                  productData
+                    ? productData.imagenDTOList
+                      ? productData.imagenDTOList[0].url_img_producto
+                      : []
+                    : []
+                }
+              />
             </div>
-            
-            <div className='reserve-content-reserveDetail' >
-                <ReserveDetail setSubmitData={setSubmitData} submitData={submitData}  setFailReserve={setFailReserve} reservedDays={reservedDays} location={locationData?locationData:'cargando'} category={categoria?categoria:'cargando'} product={productData?productData:[]} image={productData?productData.imagenDTOList?productData.imagenDTOList[0].url_img_producto:[]:[]} />
+            <div className="reserve-content-calendar">
+              <ReserveCalendar
+                setReservedDays={setReservedDays}
+                reservedDates={reservedDates}
+              />
             </div>
-            <div className='reserve-content-calendar' >
-                <ReserveCalendar setReservedDays={setReservedDays} reservedDates={reservedDates} />
+            <div className="reserve-content-checkInReserve">
+              <CheckInReserve
+                submitData={submitData}
+                setSubmitData={setSubmitData}
+              />
             </div>
-            <div className='reserve-content-checkInReserve' >
-                <CheckInReserve setSubmitData={setSubmitData}/>
-            </div>
+          </div>
         </div>
-        </div>
-        <ProductInfo info={productData?productData.politicaListDTO:[]}/>
-        <div className="product-footer">
-          
-        </div>
-            <Footer />
+        <ProductInfo info={productData ? productData.politicaListDTO : []} />
+        <div className="product-footer"></div>
+        <Footer />
       </div>
-        
     </div>
-  )
+  );
 }
