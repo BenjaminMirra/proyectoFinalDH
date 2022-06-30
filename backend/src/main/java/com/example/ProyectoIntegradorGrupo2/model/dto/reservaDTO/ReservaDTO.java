@@ -27,9 +27,13 @@ public class ReservaDTO {
     //private LocalDate fechaEnLaQueSeHaceLaReserva;
     private LocalTime horaEstimadaDeLlegada;
 
+    //private int cantidadNoches;
+
     private String mensajeUsuario;
 
     private boolean vacunadoCovid;
+
+    private double precioTotal;
 
     private Long usuario_id;
 

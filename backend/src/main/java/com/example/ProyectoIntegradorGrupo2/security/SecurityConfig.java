@@ -25,6 +25,7 @@ import org.springframework.web.filter.CorsFilter;
 import java.util.Arrays;
 
 import static org.springframework.http.HttpMethod.POST;
+import static org.springframework.http.HttpMethod.PUT;
 
 @Configuration
 @EnableWebSecurity
@@ -42,19 +43,21 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
-        customAuthenticationFilter.setFilterProcessesUrl("/usuarios/login");
+        /*CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManagerBean());
+        customAuthenticationFilter.setFilterProcessesUrl("/usuarios/login");*/
         /*CustomAuthenticationFilter customAuthenticationFilter1 = new CustomAuthenticationFilter(authenticationManagerBean());
         customAuthenticationFilter1.setFilterProcessesUrl("usuarios/agregar");*/
 
         http.csrf().disable();
         http.cors();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        http.authorizeRequests().antMatchers(POST, "/reservas/agregar").hasAnyAuthority("ROLE_USER");
+        http.authorizeRequests().antMatchers(POST, "/reservas/agregar").hasAnyAuthority("ROLE_USER", "ROLE_ADMIN");
+        http.authorizeRequests().antMatchers(POST,"/productos/agregar").hasAnyAuthority("ROLE_ADMIN")
+        .antMatchers(PUT, "/productos/editar").hasAnyAuthority("ROLE_ADMIN");
         http.authorizeRequests().anyRequest().permitAll()
                 .and().logout().permitAll();
         /*http.addFilter(customAuthenticationFilter1);*/
-        http.addFilter(customAuthenticationFilter);
+        /*http.addFilter(customAuthenticationFilter);*/
         http.addFilterBefore(new CustomAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class)
                 .addFilterBefore(corsFilter(), ChannelProcessingFilter.class);
 

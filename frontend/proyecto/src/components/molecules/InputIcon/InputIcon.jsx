@@ -15,7 +15,7 @@ export const InputIcon = ({variant,width,size,placeholder,type,isInline,isError,
         <>
        
         <div className={InputIconClassNames} >
-            <Input  name={name} onChange={onChange} value={value} isError={isError} type= {type} placeholder= {placeholder}/>
+            <Input name={name} onChange={onChange} value={value} isError={isError} type= {type} placeholder= {placeholder}/>
             <Icon onClick={onClick} icon={icon} width={iconWidth}/>
              
         </div>

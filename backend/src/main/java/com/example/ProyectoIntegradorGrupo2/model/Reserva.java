@@ -46,6 +46,9 @@ public class Reserva {
     @NotNull
     @Column(columnDefinition = "DATE")
     private LocalDate fechaFinReserva;
+    private double precioTotal;
+
+    // private int cantidadNoches;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "producto_id", nullable = false)
@@ -74,13 +77,14 @@ public class Reserva {
     }*/
 
 
-    public Reserva(LocalDateTime fechaEnLaQueSeHaceLaReserva, LocalTime horaEstimadaDeLlegada, String mensajeUsuario, boolean vacunadoCovid, LocalDate fechaInicioReserva, LocalDate fechaFinReserva, Producto producto, Usuario usuario) {
+    public Reserva(LocalDateTime fechaEnLaQueSeHaceLaReserva, LocalTime horaEstimadaDeLlegada, String mensajeUsuario, boolean vacunadoCovid, LocalDate fechaInicioReserva, LocalDate fechaFinReserva, double precio_total, Producto producto, Usuario usuario) {
         this.fechaEnLaQueSeHaceLaReserva = fechaEnLaQueSeHaceLaReserva;
         this.horaEstimadaDeLlegada = horaEstimadaDeLlegada;
         this.mensajeUsuario = mensajeUsuario;
         this.vacunadoCovid = vacunadoCovid;
         this.fechaInicioReserva = fechaInicioReserva;
         this.fechaFinReserva = fechaFinReserva;
+        this.precioTotal = precio_total;
         this.producto = producto;
         this.usuario = usuario;
     }

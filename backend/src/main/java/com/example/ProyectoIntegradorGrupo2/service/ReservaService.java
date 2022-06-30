@@ -49,6 +49,10 @@ public class ReservaService implements IReservaService{
            throw new BadRequestException("Se debe conocer el id del producto a reservar y el id del usuario que reserva");
        }
         //reservaDTO.setFechaEnLaQueSeHaceLaReserva(new Date());
+        if (reservaDTO.getFechaInicioReserva() == null || reservaDTO.getFechaFinReserva() == null){
+            throw new BadRequestException("Se debe conocer la fecha de inicio y la fecha de fin para la reserva");
+        }
+
         LocalDate hoy = LocalDate.now();
         LocalTime ahora = LocalTime.now();
 
@@ -175,7 +179,7 @@ public class ReservaService implements IReservaService{
         List<ReservaPorIdUsuarioDTO> reservaPorIdUsuarioDTOList = new ArrayList<>();
         for (Optional<Reserva> r:reservaList) {
 
-            ReservaPorIdUsuarioDTO reservaPorIdUsuarioDTO = new ReservaPorIdUsuarioDTO(r.get().getId(), r.get().getFechaInicioReserva(),r.get().getFechaFinReserva(),r.get().getProducto().getId());
+            ReservaPorIdUsuarioDTO reservaPorIdUsuarioDTO = new ReservaPorIdUsuarioDTO(r.get().getId(), r.get().getFechaInicioReserva(),r.get().getFechaFinReserva(),r.get().getPrecioTotal(),r.get().getProducto().getId());
             reservaPorIdUsuarioDTOList.add(reservaPorIdUsuarioDTO);
 
 

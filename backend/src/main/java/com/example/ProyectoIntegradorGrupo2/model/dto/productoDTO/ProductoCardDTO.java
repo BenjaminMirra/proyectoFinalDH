@@ -32,6 +32,8 @@ public class ProductoCardDTO {
 
     private double longitud;
 
+    private double precio;
+
     private Long categoria_id;
 
     private Long ciudad_id;
