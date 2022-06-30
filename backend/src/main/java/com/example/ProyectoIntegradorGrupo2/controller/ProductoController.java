@@ -16,6 +16,11 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.List;
 
+/**
+ * @since 01/06/2022
+ * @version 1.4
+ * controller de productos
+ */
 /*@CrossOrigin("*")*/
 //@CrossOrigin(origins = "http://localhost:8080")
 @RestController
