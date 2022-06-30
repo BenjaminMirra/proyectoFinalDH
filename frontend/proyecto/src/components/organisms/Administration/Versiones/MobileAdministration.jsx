@@ -10,8 +10,9 @@ import { SelectPickerCategories } from '../../../atoms/SelectPickerCategories/Se
 import axios from 'axios';
 import { urlAPI } from '../../../../global.js'
 import { Icon } from '../../../atoms/Icon/Icon';
+import { Checkbox } from '../../../atoms/CheckBox/Checkbox';
 
-export const MobileAdministration = ({ dataForm, setDataForm,normasDeCasa, setNormasDeCasa, saludSeguridad, setSaludSeguridad, politicasCancelacion, setPoliticasCancelacion, atributosBD, imagenesRender, setImagenesRender, atributosRender, setAtributosRender }) => {
+export const MobileAdministration = ({ atributosTodos, setAtributosTodos, politicas, setPoliticas, dataForm, setDataForm, normasDeCasa, setNormasDeCasa, saludSeguridad, setSaludSeguridad, politicasCancelacion, setPoliticasCancelacion, atributosBD, imagenesRender, setImagenesRender, atributosRender, setAtributosRender }) => {
 
 
   //le envío al select Place
@@ -19,10 +20,6 @@ export const MobileAdministration = ({ dataForm, setDataForm,normasDeCasa, setNo
 
   //le envío al select Category
   const [categories, setCategories] = useState([]);
-
-
-
-  //Atributos de la base de datos
 
   //Guardo toda la info del form aquí
 
@@ -45,17 +42,10 @@ export const MobileAdministration = ({ dataForm, setDataForm,normasDeCasa, setNo
 
 
   const firstValidation = () => {
-    if (dataForm.descripcion === " " || dataForm.latitud === " " || dataForm.longitud === " " || dataForm.nombre === " " || dataForm.tituloDescripcion === " " || dataForm.precio === " ") {
-      console.log("descripcion" + dataForm.descripcion)
-      console.log("latitud" + dataForm.latitud)
-      console.log("longitud" + dataForm.longitud)
-      console.log("nombre" + dataForm.nombre)
-      console.log("tituloDescripcion" + dataForm.tituloDescripcion)
-      console.log("precio" + dataForm.precio)
-      console.log("ciudad" + dataForm.ciudad)
-      console.log("categoria" + dataForm.categoria)
-
+    if (dataForm.descripcion === " " || dataForm.latitud === " " || dataForm.longitud === " " || dataForm.nombre === " " || dataForm.ciudad === " " || dataForm.categoria === " " || dataForm.direccion === " " || dataForm.precio === " " || dataForm.tituloDescripcion === " ") {
       return false
+    } else if (imagenesRender.length < 5) {
+      return null
     } else {
       return true
     }
@@ -112,13 +102,16 @@ export const MobileAdministration = ({ dataForm, setDataForm,normasDeCasa, setNo
       const data = {
         titulo: dataForm.nombre,
         titulo_descripcion: dataForm.tituloDescripcion,
-        precio: dataForm.precio,
         descripcion: dataForm.descripcion,
         direccion: dataForm.direccion,
+        precio: dataForm.precio,
         latitud: dataForm.latitud,
         longitud: dataForm.longitud,
+        politicaListDTO: politicas,
         ciudad_id: dataForm.ciudad,
         categoria_id: dataForm.categoria,
+        imagenDTOList: imagenesRender,
+        caracteristicasDTOList: atributosTodos
       }
       axios({
         method: 'POST',
@@ -130,10 +123,17 @@ export const MobileAdministration = ({ dataForm, setDataForm,normasDeCasa, setNo
             "Bearer " + JSON.parse(localStorage.getItem("jwt")),
         },
       }).then(res => {
-        console.log(res.data)
+      }).catch(error => {
+        errorContainer.innerHTML = `Error al crear el producto, por favor intente mas tarde.`
+        setButtonValue({ value: "Crear", disabled: false })
       })
-      errorContainer.innerHTML = `Creado`
       setButtonValue({ value: "Creado", disabled: false })
+      return (window.location.pathname = `/producto-exitoso`);
+    } else if (firstValidation() == null) {
+      errorContainer.innerHTML = ` <p>
+      Deben ser un total de 5 imágenes.
+      </p>`
+      setButtonValue({ value: "Crear", disabled: false })
     } else if (!firstValidation()) {
       errorContainer.innerHTML = ` <p>
       Debes completar todos los datos que tienen un " * "
@@ -142,86 +142,58 @@ export const MobileAdministration = ({ dataForm, setDataForm,normasDeCasa, setNo
     }
   }
 
+  const handleCheckboxChange = (id, checked, icono) => {
+    if (checked) {
+      setAtributosTodos((prevData) => [...prevData, {
+        titulo: `${id}`,
+        nombre_icono: `${icono}`
+      }])
+    }
+    if (!checked) {
+      setAtributosTodos((prevValue) => (prevValue.filter(item => item.titulo !== id)))
+    }
+  };
+
   const addAtribute = () => {
     if (atributoNombre.value !== "" && atributoIcono.value !== "") {
       const nombre = atributoNombre.value;
       const icono = atributoIcono.value
-      setAtributosRender((prevData) => [...prevData, { iconoAtributo: icono, nombreAtributo: nombre }])
+      setAtributosRender((prevData) => [...prevData, { nombre_icono: icono, titulo: nombre }])
+      setAtributosTodos((prevData) => [...prevData, { nombre_icono: icono, titulo: nombre }])
       atributoNombre.value = "";
       atributoIcono.value = "";
       errorContainerAtributo.innerHTML = ""
     } else if (atributoNombre.value !== "") {
       errorContainerAtributo.innerHTML = ` <p>
       El ícono no pueden estar vacío
-    </p>`
+      </p>`
     } else if (atributoIcono.value !== "") {
       errorContainerAtributo.innerHTML = ` <p>
       El nombre no pueden estar vacío
-    </p>`
+      </p>`
     } else {
       errorContainerAtributo.innerHTML = ` <p>
       El nombre y el ícono no pueden estar vacíos
-    </p>`
+      </p>`
     }
   }
 
   const addImage = () => {
-
     if (imagenURL.value !== "") {
       if (imagenesRender.length > 4) {
         errorContainer.innerHTML = `<p>
-        Solo puede agregar hasta 5 imágenes
-        </p>`
+          Solo puede agregar hasta 5 imágenes
+          </p>`
       } else {
         const urlImagen = imagenURL.value;
-        setImagenesRender((prevData) => [...prevData, { url: urlImagen }])
+        setImagenesRender((prevData) => [...prevData, { url_img_producto: urlImagen, titulo_img_producto: "" }])
         imagenURL.value = ""
         errorContainer.innerHTML = ``
       }
     } else {
       errorContainer.innerHTML = `<p>
       La url no puede estar vacía
-    </p>`
-    }
-  }
-
-  const addPoliticaCancelacion = () => {
-
-    if (politicaCancelacion.value !== "") {
-      if (politicasCancelacion.length > 2) {
-        errorContainerPoliticaCancelacion.innerHTML = `<p>
-        Solo puedes agregar un máximo de 3 políticas.
-        </p>`
-      } else {
-        const politicaInput = politicaCancelacion.value;
-        setPoliticasCancelacion((prevData) => [...prevData, { input: politicaInput }])
-        politicaCancelacion.value = ""
-        errorContainerPoliticaCancelacion.innerHTML = ''
-      }
-
-    } else {
-      errorContainerPoliticaCancelacion.innerHTML = `<p>
-      La política no puede estar vacía
-    </p>`
-    }
-  }
-
-  const addSaludSeguridad = () => {
-    if (politicaSaludSeguridad.value !== "") {
-      if (saludSeguridad.length > 2) {
-        errorContainerSaludSeguridad.innerHTML = `<p>
-        Solo puedes agregar un máximo de 3 políticas.
-        </p>`
-      } else {
-        const politicaInput = politicaSaludSeguridad.value;
-        setSaludSeguridad((prevData) => [...prevData, { input: politicaInput }])
-        politicaSaludSeguridad.value = ""
-        errorContainerSaludSeguridad.innerHTML = ''
-      }
-    } else {
-      errorContainerSaludSeguridad.innerHTML = `<p>
-      La política no puede estar vacía
-    </p>`
+      </p>`
     }
   }
 
@@ -229,39 +201,88 @@ export const MobileAdministration = ({ dataForm, setDataForm,normasDeCasa, setNo
     if (politicaNormaDeCasa.value !== "") {
       if (normasDeCasa.length > 2) {
         errorContainerNormaDeCasa.innerHTML = `<p>
-        Solo puedes agregar un máximo de 3 políticas.
-        </p>`
+          Solo puedes agregar un máximo de 3 políticas.
+          </p>`
       } else {
         const politicaInput = politicaNormaDeCasa.value;
         setNormasDeCasa((prevData) => [...prevData, { input: politicaInput }])
+        setPoliticas((prevData) => ([...prevData, { descripcion: politicaInput, tipo_politica_id: 1 }]))
         politicaNormaDeCasa.value = ""
         errorContainerNormaDeCasa.innerHTML = ''
       }
     } else {
       errorContainerNormaDeCasa.innerHTML = `<p>
+    La política no puede estar vacía.
+  </p>`
+    }
+  }
+
+  const addPoliticaCancelacion = () => {
+    if (politicaCancelacion.value !== "") {
+      if (politicasCancelacion.length > 2) {
+        errorContainerPoliticaCancelacion.innerHTML = `<p>
+          Solo puedes agregar un máximo de 3 políticas.
+          </p>`
+      } else {
+        const politicaInput = politicaCancelacion.value;
+        setPoliticasCancelacion((prevData) => [...prevData, { input: politicaInput }])
+        setPoliticas((prevData) => ([...prevData, { descripcion: politicaInput, tipo_politica_id: 3 }]))
+        politicaCancelacion.value = ""
+        errorContainerPoliticaCancelacion.innerHTML = ''
+      }
+    } else {
+      errorContainerPoliticaCancelacion.innerHTML = `<p>
+    La política no puede estar vacía
+  </p>`
+    }
+  }
+
+  const addSaludSeguridad = () => {
+    if (politicaSaludSeguridad.value !== "") {
+      if (saludSeguridad.length > 2) {
+        errorContainerSaludSeguridad.innerHTML = `<p>
+          Solo puedes agregar un máximo de 3 políticas.
+          </p>`
+      } else {
+        const politicaInput = politicaSaludSeguridad.value;
+        setSaludSeguridad((prevData) => [...prevData, { input: politicaInput }])
+        setPoliticas((prevData) => ([...prevData, { descripcion: politicaInput, tipo_politica_id: 2 }]))
+        politicaSaludSeguridad.value = ""
+        errorContainerSaludSeguridad.innerHTML = ''
+      }
+    } else {
+      errorContainerSaludSeguridad.innerHTML = `
+      <p>
       La política no puede estar vacía
-    </p>`
+      </p>
+      `
     }
   }
 
   const deleteAtribute = (nombre) => {
-    setAtributosRender((prevValue) => (prevValue.filter(item => item.nombreAtributo !== nombre)))
+    console.log("borrando atributo")
+    setAtributosRender((prevValue) => (prevValue.filter(item => item.titulo !== nombre)))
+    setAtributosTodos((prevValue) => (prevValue.filter(item => item.titulo !== nombre)))
   }
 
   const deleteImage = (url) => {
-    setImagenesRender((prevValue) => (prevValue.filter(item => item.url !== url)))
+    setImagenesRender((prevValue) => (prevValue.filter(item => item.url_img_producto !== url)))
+
+  }
+
+  const deleteNormasDeCasa = (input) => {
+    setNormasDeCasa((prevValue) => (prevValue.filter(item => item.input !== input)))
+    setPoliticas((prevData) => (prevData.filter(item => item.descripcion !== input)))
   }
 
   const deletePoliticaCancelacion = (input) => {
     setPoliticasCancelacion((prevValue) => (prevValue.filter(item => item.input !== input)))
+    setPoliticas((prevData) => (prevData.filter(item => item.descripcion !== input)))
   }
 
   const deleteSaludSeguridad = (input) => {
     setSaludSeguridad((prevValue) => (prevValue.filter(item => item.input !== input)))
-  }
-
-  const deleteNormaDeCasa = (input) => {
-    setNormasDeCasa((prevValue) => (prevValue.filter(item => item.input !== input)))
+    setPoliticas((prevData) => (prevData.filter(item => item.descripcion !== input)))
   }
 
   const handleChangeDescription = (e) => {
@@ -285,7 +306,6 @@ export const MobileAdministration = ({ dataForm, setDataForm,normasDeCasa, setNo
   const handleChangePrecio = (e) => {
     setDataForm(prevData => ({ ...prevData, precio: e.target.value }))
   }
-
 
   return (
     <div className="mobileAdministration-container">
@@ -349,7 +369,11 @@ export const MobileAdministration = ({ dataForm, setDataForm,normasDeCasa, setNo
                 {atributosBD && atributosBD.map((atributo) => {
                   return (
                     <div className="mobileAdministracion-atributos-checkboxs">
-                      <Input type="checkbox"></Input>
+                      <Checkbox
+                        id={`${atributo.titulo}`}
+                        onChange={handleCheckboxChange}
+                        icono={`${atributo.nombre_icono}`}
+                      />
                       <Icon width='xs' icon={atributo.nombre_icono} />
                       <Label label={atributo.titulo}></Label>
                     </div>
@@ -405,7 +429,7 @@ export const MobileAdministration = ({ dataForm, setDataForm,normasDeCasa, setNo
                         </InputLabel>
                       </div>
                       <div className='mobile-add-politica-parte2-guardado'>
-                        <Button label="X" onClick={() => deleteNormaDeCasa(politica.input)} />
+                        <Button label="X" onClick={() => deleteNormasDeCasa(politica.input)} />
                       </div>
                     </div>
                   )
@@ -492,11 +516,11 @@ export const MobileAdministration = ({ dataForm, setDataForm,normasDeCasa, setNo
               return (
                 <div key={index++} className="mobileAdministracion-add-imagen-cargada">
                   <div className='mobileAdministracion-add-imagen-parte1-cargada'>
-                    <Input disabled={true} required={true} name={`imagenURLGuardada_${index}`} placeholder={imagen.url}>
+                    <Input disabled={true} required={true} name={`imagenURLGuardada_${index}`} placeholder={imagen.url_img_producto}>
                     </Input>
                   </div>
                   <div className='mobileAdministracion-add-imagen-parte2-cargada'>
-                    <Button id={`deleteImage_${index}`} label="X" onClick={() => deleteImage(imagen.url)} />
+                    <Button id={`deleteImage_${index}`} label="X" onClick={() => deleteImage(imagen.url_img_producto)} />
                   </div>
                 </div>
               )
