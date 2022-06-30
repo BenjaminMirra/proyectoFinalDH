@@ -293,7 +293,7 @@ export const CardProductReserve = ({
               {!opinion ? (
                 <div className="precioReserve-container">
                   <Heading type="sm" title="h2">
-                    {`Precio total de la reserva: $${precio * ((new Date(endReserveDate)) - new Date(startReserveDate)) / (1000 * 3600 * 24)}`}
+                    {`Precio total de la reserva: $${(precio * ((new Date(endReserveDate)) - new Date(startReserveDate)) / (1000 * 3600 * 24))+precio}`}
                   </Heading>
                 </div>
               ) : (

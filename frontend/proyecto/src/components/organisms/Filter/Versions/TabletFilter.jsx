@@ -12,7 +12,7 @@ export const TabletFilter = ({ setCurrentPage, setFilterTitle, lugarInput, setLu
 
   const scroll = () => {
 
-    window.scrollTo({ top: 580, behavior: 'smooth' })
+    // window.scrollTo({ top: 580, behavior: 'smooth' })
     setCurrentPage(1);
   };
 

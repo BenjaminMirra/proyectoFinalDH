@@ -9,7 +9,7 @@ import { urlAPI } from "../../global";
 import { Mapa } from "./Mapa";
 import "./Favorite.css";
 import { Icon } from "../atoms/Icon/Icon";
-
+import { Loader } from "../molecules/Loader/Loader";
 export const Favorite = () => {
 
 
@@ -17,6 +17,7 @@ export const Favorite = () => {
   const [favoriteProducts, setFavoriteProducts] = useState('');
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [favoriteLocations, setFavoriteLocations] = useState([]);
+  const [loader,setLoader]=useState(true)
   useEffect(() => {
     setFavoriteProducts('');
     const userId = JSON.parse(localStorage.getItem('userData')).id;
@@ -121,57 +122,71 @@ export const Favorite = () => {
   }, [windowWidth]);
 
 
-
+  useEffect(() => {
+    if (favoriteLocations.length > 0) {
+      setLoader(false);
+    } else {
+      setTimeout(() => setLoader(false), 2000);
+    }
+  }, [favoriteLocations]);
 
   return (
     <>
       <div className="wrapper">
         <Header firstname={undefined} lastname={undefined} />
-
-        <div className="favorite-products">
-          <div className="favorite-back">
-            <Icon onClick={handleBack} icon={"backBlack"} width="lg" />
-          </div>
-
-          {selectedProducts.length > 0 ? (
-            <>
-              {" "}
-              <Products
-                data={
-                  selectedProducts && selectedProducts.length > 0
-                    ? selectedProducts
-                    : []
-                }
-              ></Products>
-            </>
-          ) : (
-            <>
-              <div className="none-favorite">
-                {" "}
-                <Icon icon={"prohibido"} width="lg" />
-                <Heading title={"h2"} variant="secondary">
-                  No tienes alojamientos guardados
-                </Heading>{" "}
+        {loader ? (
+          <Loader />
+        ) : (
+          <>
+            <div className="favorite-products">
+              <div className="favorite-back">
+                <Icon onClick={handleBack} icon={"backBlack"} width="lg" />
               </div>
-            </>
-          )}
-        </div>
 
-        {favoriteLocations.length > 0 && showMap && (
-          <div className="favorite-mapa">
-            <Mapa
-              randomProp={randomValue}
-              favoriteLocations={favoriteLocations}
-              favorite={true}
-            />
-          </div>
+              {selectedProducts.length > 0 ? (
+                <>
+                  {" "}
+                  <Products
+                    data={
+                      selectedProducts && selectedProducts.length > 0
+                        ? selectedProducts
+                        : []
+                    }
+                  ></Products>
+                </>
+              ) : (
+                <>
+                  <div className="none-favorite">
+                    {" "}
+                    <Icon icon={"prohibido"} width="lg" />
+                    <Heading title={"h2"} variant="secondary">
+                      No tienes alojamientos guardados
+                    </Heading>{" "}
+                  </div>
+                </>
+              )}
+            </div>
+          </>
         )}
       </div>
-      {!favoriteLocations.length > 0 && (
-        <div className="favorite-footer">
-          <Footer />
-        </div>
-      )}
+     
+        <>
+          {favoriteLocations.length > 0 && showMap && (
+            <div className="favorite-mapa">
+              <Mapa
+                randomProp={randomValue}
+                favoriteLocations={favoriteLocations}
+                favorite={true}
+              />
+            </div>
+          )}
+          {!favoriteLocations.length > 0 && (
+            <div className="favorite-footer">
+              <Footer />
+            </div>
+          )}
+        </>
+      
     </>
   );
 };
