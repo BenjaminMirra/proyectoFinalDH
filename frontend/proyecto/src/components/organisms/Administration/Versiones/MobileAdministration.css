@@ -661,6 +661,8 @@
     display: flex;
     flex-wrap: wrap;
     margin: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
     width: 90%;
     justify-content: center;
     align-items: center;
@@ -669,6 +671,9 @@
 
 .mobileAdministracion-atributos-checkboxs{
     display: flex;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     width: 30%;
     flex-direction: row;
     justify-content: flex-start;

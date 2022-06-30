@@ -3,11 +3,12 @@ import PropTypes  from 'prop-types';
 import classNames from 'classnames';
 import './Paragraph.css'
 
-export const Paragraph = ({size, children, variant,onClick}) => {
+export const Paragraph = ({size, children, variant,onClick,light}) => {
 
   const ParagraphClassNames = classNames('paragraph',{
     [`paragraph-colors-${variant}`]:variant,
-    [`paragraph-size-${size}`]:size
+    [`paragraph-size-${size}`]:size,
+    'is-light':light
 })
 return (
     <>
@@ -27,5 +28,6 @@ Paragraph.defaultProps={
     size:'md',
     text: 'String',
     variant: 'primary',
-    onClick:()=>{}
+    onClick:()=>{},
+    light:false
 }

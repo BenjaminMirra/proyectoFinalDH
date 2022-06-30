@@ -27,3 +27,6 @@
 .paragraph-colors-error{
     color: var(--color-error) ;
 }
+.is-light{
+    font-weight: 500;
+}
