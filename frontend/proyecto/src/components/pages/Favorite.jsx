@@ -126,7 +126,7 @@ export const Favorite = () => {
     if (favoriteLocations.length > 0) {
       setLoader(false);
     } else {
-      setTimeout(() => setLoader(false), 2000);
+      setTimeout(() => setLoader(false), 2500);
     }
   }, [favoriteLocations]);
 

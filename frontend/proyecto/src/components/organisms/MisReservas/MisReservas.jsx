@@ -184,9 +184,12 @@ export const MisReservas = () => {
     }, [productsData, reserveDate])
 
         useEffect(() => {
-            setTimeout(() => setLoder(false),2500);
-           
-        }, []);
+          if (productsData.length > 0) {
+            setLoder(false);
+          } else {
+            setTimeout(() => setLoder(false), 2500);
+          }
+        }, [productsData]);
     const MisReservasClassNames = classNames("misReservas-header",{
         'none':loader
     });
