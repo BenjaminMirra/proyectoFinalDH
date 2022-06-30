@@ -157,6 +157,7 @@ export const ProductsReserve = ({ setRating, reserveDate, setReservasPorId, data
                                     lng={product.longitud}
                                     setShowMap={setShowMap}
                                     likedProducts={likedProducts}
+                                    precio={product.precio}
                                     setLikedProducts={setLikedProducts}
                                     startReserveDate={
                                         reserveDate.map(reserve => {

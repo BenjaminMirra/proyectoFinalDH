@@ -25,12 +25,17 @@ export const MisReservas = () => {
                 data: {
                     "puntuacion": "2",
                     "producto_id": "28",
-                    "usuario_id": JSON.stringify(id)
+                    "usuario_id": id
                 },
                 headers: {
                     "Content-Type": "application/json",
                 }
             }).then((res) => {
+                console.log({
+                    "puntuacion": "2",
+                    "producto_id": "28",
+                    "usuario_id": id
+                })
                 console.log(res.status);
             })
         }

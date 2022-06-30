@@ -10,8 +10,9 @@ import { SelectPickerPlaces } from '../../../atoms/SelectPickerPlaces/SelectPick
 import { InputLabel } from '../../../molecules/InputLabel/InputLabel';
 import './DesktopAdministration.css';
 import { Icon } from '../../../atoms/Icon/Icon';
+import { Checkbox } from '../../../atoms/CheckBox/Checkbox';
 
-export const DesktopAdministration = ({ politicas, setPoliticas, dataForm, setDataForm, normasDeCasa, setNormasDeCasa, saludSeguridad, setSaludSeguridad, politicasCancelacion, setPoliticasCancelacion, atributosBD, imagenesRender, setImagenesRender, atributosRender, setAtributosRender }) => {
+export const DesktopAdministration = ({atributosTodos, setAtributosTodos, politicas, setPoliticas, dataForm, setDataForm, normasDeCasa, setNormasDeCasa, saludSeguridad, setSaludSeguridad, politicasCancelacion, setPoliticasCancelacion, atributosBD, imagenesRender, setImagenesRender, atributosRender, setAtributosRender }) => {
 
     //le envío al select Place
     const [places, setPlaces] = useState([]);
@@ -93,9 +94,8 @@ export const DesktopAdministration = ({ politicas, setPoliticas, dataForm, setDa
                 ciudad_id: dataForm.ciudad,
                 categoria_id: dataForm.categoria,
                 imagenDTOList: imagenesRender,
-                caracteristicasDTOList: []
+                caracteristicasDTOList: atributosTodos
             }
-            console.log(data)
             axios({
                 method: 'POST',
                 url: `${urlAPI}productos/agregar`,
@@ -106,13 +106,10 @@ export const DesktopAdministration = ({ politicas, setPoliticas, dataForm, setDa
                         "Bearer " + JSON.parse(localStorage.getItem("jwt")),
                 },
             }).then(res => {
-                console.log(res.data)
-                console.log(res.status)
             }).catch(error => {
                 errorContainer.innerHTML = `Error al crear el producto, por favor intente mas tarde.`
                 setButtonValue({ value: "Crear", disabled: false })
             })
-            errorContainer.innerHTML = `Creado`
             setButtonValue({ value: "Creado", disabled: false })
             return (window.location.pathname = `/producto-exitoso`);
         } else if (firstValidation() == null) {
@@ -128,11 +125,25 @@ export const DesktopAdministration = ({ politicas, setPoliticas, dataForm, setDa
         }
     }
 
+    const handleCheckboxChange = (id, checked, icono) => {
+        if (checked) {
+            setAtributosTodos((prevData) => [...prevData, {
+                titulo: `${id}`,
+                nombre_icono: `${icono}`
+            }])
+        }
+        if (!checked) {
+            setAtributosTodos((prevValue) => (prevValue.filter(item => item.titulo !== id)))
+        }
+
+    };
+
     const addAtribute = () => {
         if (atributoNombre.value !== "" && atributoIcono.value !== "") {
             const nombre = atributoNombre.value;
             const icono = atributoIcono.value
             setAtributosRender((prevData) => [...prevData, { nombre_icono: icono, titulo: nombre }])
+            setAtributosTodos((prevData) => [...prevData, { nombre_icono: icono, titulo: nombre }])
             atributoNombre.value = "";
             atributoIcono.value = "";
             errorContainerAtributo.innerHTML = ""
@@ -232,8 +243,10 @@ export const DesktopAdministration = ({ politicas, setPoliticas, dataForm, setDa
         }
     }
 
-    const deleteAtribute = (nombre, icono) => {
-        setAtributosRender((prevValue) => (prevValue.filter(item => item.nombreAtributo !== nombre)))
+    const deleteAtribute = (nombre) => {
+        console.log("borrando atributo")
+        setAtributosRender((prevValue) => (prevValue.filter(item => item.titulo !== nombre)))
+        setAtributosTodos((prevValue) => (prevValue.filter(item => item.titulo !== nombre)))
     }
 
     const deleteImage = (url) => {
@@ -340,8 +353,11 @@ export const DesktopAdministration = ({ politicas, setPoliticas, dataForm, setDa
                                 {atributosBD && atributosBD.map((atributo, index) => {
                                     return (
                                         <div key={index++} className="desktopAdministracion-atributos-checkboxs">
-                                            <div><Input id={`checkbox_${index++}`} name="checkBoxAtributo" type="checkbox"></Input>
-                                            </div>
+                                            <Checkbox
+                                                id={`${atributo.titulo}`}
+                                                onChange={handleCheckboxChange}
+                                                icono={`${atributo.nombre_icono}`}
+                                            />
                                             <Icon width='xs' icon={atributo.nombre_icono} />
                                             <Label label={atributo.titulo}></Label>
                                         </div>
