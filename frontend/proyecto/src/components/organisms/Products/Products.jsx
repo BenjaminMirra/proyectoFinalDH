@@ -43,17 +43,19 @@ export const Products = ({ data,setMapHomeData ,setShowMap,filterTitle,reRender}
           })
         );
       }
+      const filterTitle=document.getElementById('filterTitle')
+      // window.scrollTo({top:480,behavior:'smooth'});
 
     }, [data]);
     useEffect(() => {
       setMockUp(true)
-      window.scrollTo({ top: 480, behavior: "smooth" }); 
+      // window.scrollTo({ top: 480, behavior: "smooth" }); 
         setTimeout(()=>setMockUp(false),1700)
 
     }, [reRender]);
     useEffect(() => {
       if (!mockUpDinamic && !mockUp) {
-        window.scrollTo({ top: 480, behavior: "smooth" });
+        
       }
     }, [mockUpDinamic, mockUp]);
    

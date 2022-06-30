@@ -17,40 +17,60 @@ import { SpacerHorizontal } from '../../../atoms/Spacer/SpacerHorizontal'
 export const ReserveMobile = ({productData,categoria,locationData,setFailReserve,reservedDays,setReservedDays,reservedDates,setSubmitData,submitData}) => {
     
   return (
-
-     <div className='wrapper'>
+    <div className="wrapper">
       <Header />
-      <div className='contenedor-pagina' >
-        <SpacerHorizontal height={'2md'} />
-        <ProductHeader category={categoria?categoria:'cargando'} title={productData?productData.titulo:'cargando'} />
-        <div className='reserve-general-container'>
-        <div className='mobile-reserve-content'>
-            <SpacerHorizontal height={'2md'} />
-            <div className='reserve-content-userData'>
-                <UserData setSubmitData={setSubmitData}/>
+      <div className="contenedor-pagina">
+        <SpacerHorizontal height={"2md"} />
+        <ProductHeader
+          category={categoria ? categoria : "cargando"}
+          title={productData ? productData.titulo : "cargando"}
+        />
+        <div className="reserve-general-container">
+          <div className="mobile-reserve-content">
+            <SpacerHorizontal height={"2md"} />
+            <div className="reserve-content-userData">
+              <UserData submitData={submitData} setSubmitData={setSubmitData} />
             </div>
-            <SpacerHorizontal height={'2md'} />
-            <div className='reserve-content-calendar' >
-                <ReserveCalendar setReservedDays={setReservedDays} reservedDates={reservedDates}/>
+            <SpacerHorizontal height={"2md"} />
+            <div className="reserve-content-calendar">
+              <ReserveCalendar
+                setReservedDays={setReservedDays}
+                reservedDates={reservedDates}
+              />
             </div>
-            <SpacerHorizontal height={'2md'} />
-            <div className='reserve-content-checkInReserve' >
-                <CheckInReserve setSubmitData={setSubmitData} />
+            <SpacerHorizontal height={"2md"} />
+            <div className="reserve-content-checkInReserve">
+              <CheckInReserve
+                submitData={submitData}
+                setSubmitData={setSubmitData}
+              />
             </div>
             {/* <SpacerHorizontal height={'2md'} /> */}
-            <div className='reserve-content-reserveDetail' >
-                <MobileReserveDetail reservedDays={reservedDays} setSubmitData={setSubmitData} setFailReserve={setFailReserve} submitData={submitData} location={locationData?locationData:'cargando'} category={categoria?categoria:'cargando'} product={productData?productData:[]} image={productData?productData.imagenDTOList?productData.imagenDTOList[0].url_img_producto:[]:[]} />
+            <div className="reserve-content-reserveDetail">
+              <MobileReserveDetail
+                reservedDays={reservedDays}
+                setSubmitData={setSubmitData}
+                setFailReserve={setFailReserve}
+                submitData={submitData}
+                location={locationData ? locationData : "cargando"}
+                category={categoria ? categoria : "cargando"}
+                product={productData ? productData : []}
+                image={
+                  productData
+                    ? productData.imagenDTOList
+                      ? productData.imagenDTOList[0].url_img_producto
+                      : []
+                    : []
+                }
+              />
             </div>
-            <SpacerHorizontal height={'2md'} />
+            <SpacerHorizontal height={"2md"} />
+          </div>
         </div>
-        </div>
-        <ProductInfo info={productData?productData.politicaListDTO:[]}/>
-        <div className="product-footer">
-          
-        </div>
-            <Footer />
+        <ProductInfo info={productData ? productData.politicaListDTO : []} />
+        <div className="product-footer"></div>
+        <Footer />
       </div>
-        
     </div>
-  )
+  );
 }

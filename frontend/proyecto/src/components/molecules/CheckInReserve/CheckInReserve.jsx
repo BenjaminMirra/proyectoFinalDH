@@ -8,15 +8,15 @@ import { SpacerHorizontal } from '../../atoms/Spacer/SpacerHorizontal'
 import { SelectPicker } from '../../atoms/SelectPicker/SelectPicker'
 import './CheckInReserve.css'
 
-export const CheckInReserve = ({setSubmitData}) => {
-  const [selected, setSelected] = React.useState('')
-  useEffect(() => {
-    if (selected) {
+export const CheckInReserve = ({submitData,setSubmitData}) => {
 
-      setSubmitData(prevData=>({...prevData,horaEstimadaDeLlegada:selected.target.value.slice(0, 5)}));
-    }
-    
-  }, [selected]);
+ 
+    useEffect(() => {
+      if (submitData) {
+       console.log(submitData.horaEstimadaDeLlegada)
+       
+      }
+    }, [submitData]);
   return (
     <div className='checkIn' >
         
@@ -30,7 +30,7 @@ export const CheckInReserve = ({setSubmitData}) => {
                 <Paragraph>Tu habitación va a estar lista para el check-in entre las <span>10:00 AM</span> y las <span>11:00 PM</span></Paragraph>
             </div>
             <SpacerHorizontal height={'sm'} />
-            <SelectPicker setSelectValue={setSelected} />
+            <SelectPicker setSelectValue={setSubmitData} />
         </div>
         <SpacerHorizontal height={'md'} />
         </div>
