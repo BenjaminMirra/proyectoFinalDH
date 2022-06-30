@@ -1,0 +1,1788 @@
+{
+	"id": "513805ca-0fce-46bf-8230-ae02a291bb16",
+	"name": "ProyectoIntegradorGrupo2",
+	"timestamp": "2022-06-30T21:20:59.798Z",
+	"collection_id": "18041092-76a8721e-9eee-4f39-9276-79c5314c08a3",
+	"folder_id": "18041092-d5de44da-b6f5-40d3-9cc4-89b8fd71ad10",
+	"environment_id": "0",
+	"totalPass": 534,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "8f69ba2e-b871-41d4-85c6-349d2747b167",
+			"name": "Agregar usuario 1",
+			"url": "http://localhost:8080/usuarios/agregar",
+			"time": 3729,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Setear el ID del usuario posteado": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID del usuario posteado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3729
+			],
+			"allTests": [
+				{
+					"Setear el ID del usuario posteado": true
+				}
+			]
+		},
+		{
+			"id": "1eae28ea-58a8-4f43-8363-20d7e9537dc4",
+			"name": "Agregar admin",
+			"url": "http://localhost:8080/usuarios/agregar",
+			"time": 3441,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Setear el ID del usuario posteado": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID del usuario posteado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3441
+			],
+			"allTests": [
+				{
+					"Setear el ID del usuario posteado": true
+				}
+			]
+		},
+		{
+			"id": "7a2b259a-bcdc-4db3-9e14-def4719616b5",
+			"name": "Agregar producto 1",
+			"url": "http://localhost:8080/productos/agregar",
+			"time": 2846,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Setear el ID del producto posteado": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID del producto posteado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2846
+			],
+			"allTests": [
+				{
+					"Setear el ID del producto posteado": true
+				}
+			]
+		},
+		{
+			"id": "12612c56-2356-42c9-b932-0a70810b7fbc",
+			"name": "Agregar usuario 2",
+			"url": "http://localhost:8080/usuarios/agregar",
+			"time": 2848,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Setear el ID del usuario posteado": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID del usuario posteado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2848
+			],
+			"allTests": [
+				{
+					"Setear el ID del usuario posteado": true
+				}
+			]
+		},
+		{
+			"id": "8157bc47-c34b-4af9-aeb1-11fe1c1cb6da",
+			"name": "Agregar producto 2",
+			"url": "http://localhost:8080/productos/agregar",
+			"time": 3145,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Setear el ID del producto posteado": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID del producto posteado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3145
+			],
+			"allTests": [
+				{
+					"Setear el ID del producto posteado": true
+				}
+			]
+		},
+		{
+			"id": "163facc8-8cf5-4127-9cbe-ad8b2f870d14",
+			"name": "Agregar reacción",
+			"url": "http://localhost:8080/reacciones/agregar",
+			"time": 378,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Setear el ID de la reaccion posteada": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID de la reaccion posteada": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				378
+			],
+			"allTests": [
+				{
+					"Setear el ID de la reaccion posteada": true
+				}
+			]
+		},
+		{
+			"id": "f5db32a2-d85c-42bb-ac9d-294e3b13de84",
+			"name": "Agregar reacción script tests",
+			"url": "http://localhost:8080/reacciones/agregar",
+			"time": 189,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Testear que el tipo de respuesta sea un el id (tipo number)": true,
+				"La respuesta es un status OK": true,
+				"Setear el ID de la reacción posteada": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Testear que el tipo de respuesta sea un el id (tipo number)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Setear el ID de la reacción posteada": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				189
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Testear que el tipo de respuesta sea un el id (tipo number)": true,
+					"La respuesta es un status OK": true,
+					"Setear el ID de la reacción posteada": true
+				}
+			]
+		},
+		{
+			"id": "27785fc3-eb50-4fea-92a1-4c6edec6892f",
+			"name": "Agregar reacción exception 1",
+			"url": "http://localhost:8080/reacciones/agregar",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Bad Request": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Bad Request": true
+				}
+			]
+		},
+		{
+			"id": "bdfb550f-f418-4e66-9cd7-18803202696d",
+			"name": "Agregar reacción exception 2",
+			"url": "http://localhost:8080/reacciones/agregar",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Bad Request": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Bad Request": true
+				}
+			]
+		},
+		{
+			"id": "fd9515b3-92cf-49fb-91bd-2c01ecb4ab96",
+			"name": "Obtener todas las reacciones",
+			"url": "http://localhost:8080/reacciones/todas",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				18
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2716640e-ab70-4750-88ac-26adf4c2e503",
+			"name": "Obtener todas las reacciones script tests",
+			"url": "http://localhost:8080/reacciones/todas",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"La respuesta es un status OK": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validar atributo id": true,
+				"Validar atributo favorito": true,
+				"Validar atributo usuario_id": true,
+				"Validar atributo producto_id": true,
+				"Validar atributo favorito como true o false": true,
+				"Se espera que los elementos dentro de la respuesta sean objetos": true,
+				"Se espera que la respuesta sea un array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo favorito": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo usuario_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo producto_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo favorito como true o false": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que los elementos dentro de la respuesta sean objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que la respuesta sea un array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"La respuesta es un status OK": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validar atributo id": true,
+					"Validar atributo favorito": true,
+					"Validar atributo usuario_id": true,
+					"Validar atributo producto_id": true,
+					"Validar atributo favorito como true o false": true,
+					"Se espera que los elementos dentro de la respuesta sean objetos": true,
+					"Se espera que la respuesta sea un array": true
+				}
+			]
+		},
+		{
+			"id": "24f1be8b-9ddb-4ec7-8365-30289837dda6",
+			"name": "Obtener reacción por id",
+			"url": "http://localhost:8080/reacciones/39",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "224d7a22-972c-4ef0-a59e-7493deb74e0b",
+			"name": "Obtener reacción por id script tests",
+			"url": "http://localhost:8080/reacciones/38",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"La respuesta es un status OK": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validar atributo id": true,
+				"Validar atributo favorito": true,
+				"Validar atributo usuario_id": true,
+				"Validar atributo producto_id": true,
+				"Validar atributo id como number": true,
+				"Validar atributo favorito como boolean": true,
+				"El ID es el mismo que el obtenido al hacer el post de la reaccion previamente": true,
+				"El ID de usuario es el mismo que el ingresado al hacer el post de la reaccion previamente": true,
+				"El ID de producto es el mismo que el ingresado al hacer el post de la reaccion previamente": true,
+				"Se espera que el elemento de respuesta sea un objeto": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo favorito": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo usuario_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo producto_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id como number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo favorito como boolean": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID es el mismo que el obtenido al hacer el post de la reaccion previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID de usuario es el mismo que el ingresado al hacer el post de la reaccion previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID de producto es el mismo que el ingresado al hacer el post de la reaccion previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que el elemento de respuesta sea un objeto": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"La respuesta es un status OK": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validar atributo id": true,
+					"Validar atributo favorito": true,
+					"Validar atributo usuario_id": true,
+					"Validar atributo producto_id": true,
+					"Validar atributo id como number": true,
+					"Validar atributo favorito como boolean": true,
+					"El ID es el mismo que el obtenido al hacer el post de la reaccion previamente": true,
+					"El ID de usuario es el mismo que el ingresado al hacer el post de la reaccion previamente": true,
+					"El ID de producto es el mismo que el ingresado al hacer el post de la reaccion previamente": true,
+					"Se espera que el elemento de respuesta sea un objeto": true
+				}
+			]
+		},
+		{
+			"id": "6059d046-f974-4ecc-9bcc-0380ccd21bcc",
+			"name": "Obtener reacción por id exception",
+			"url": "http://localhost:8080/reacciones/1500",
+			"time": 10,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "b94ea6f2-258a-4390-bf99-35e70d813ed7",
+			"name": "Obtener reacciones por id de usuario",
+			"url": "http://localhost:8080/reacciones/porUsuario/11",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				10
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "4a36dab9-cb38-4b2b-8ab2-b0d81652b3e9",
+			"name": "Obtener reacciones por id de usuario script tests",
+			"url": "http://localhost:8080/reacciones/porUsuario/13",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"La respuesta es un status OK": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"El ID del usuario de cada producto es el mismo que el solicitado en la petición": true,
+				"Validar atributo id": true,
+				"Validar atributo favorito": true,
+				"Validar atributo usuario_id": true,
+				"Validar atributo producto_id": true,
+				"Validar atributo favorito como true o false": true,
+				"Validar que el id de usuario de todas las reacciones de la lista sea el solicitado al realizar la petición": true,
+				"Se espera que los elementos dentro de la respuesta sean objetos": true,
+				"Se espera que la respuesta sea un array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID del usuario de cada producto es el mismo que el solicitado en la petición": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo favorito": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo usuario_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo producto_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo favorito como true o false": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar que el id de usuario de todas las reacciones de la lista sea el solicitado al realizar la petición": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que los elementos dentro de la respuesta sean objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que la respuesta sea un array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"La respuesta es un status OK": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"El ID del usuario de cada producto es el mismo que el solicitado en la petición": true,
+					"Validar atributo id": true,
+					"Validar atributo favorito": true,
+					"Validar atributo usuario_id": true,
+					"Validar atributo producto_id": true,
+					"Validar atributo favorito como true o false": true,
+					"Validar que el id de usuario de todas las reacciones de la lista sea el solicitado al realizar la petición": true,
+					"Se espera que los elementos dentro de la respuesta sean objetos": true,
+					"Se espera que la respuesta sea un array": true
+				}
+			]
+		},
+		{
+			"id": "95bd3fdf-0d3c-4e05-ad3d-aacbdb690f2c",
+			"name": "Obtener reacciones por id de usuario exception",
+			"url": "http://localhost:8080/reacciones/porUsuario/1500",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "99863a97-2144-4680-baa6-20a47db593a1",
+			"name": "Obtener reacción por id de usuario y id de producto",
+			"url": "http://localhost:8080/reacciones/porProducto/37/porUsuario/11",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				12
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "5e904d53-d8c4-4f04-adf6-81d2391687a2",
+			"name": "Obtener reacción por id de usuario y id de producto script tests",
+			"url": "http://localhost:8080/reacciones/porProducto/38/porUsuario/13",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"La respuesta es un status OK": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validar atributo id": true,
+				"Validar atributo favorito": true,
+				"Validar atributo usuario_id": true,
+				"Validar atributo producto_id": true,
+				"Validar atributo id como number": true,
+				"Validar atributo favorito como boolean": true,
+				"El ID de reacción es el mismo que el obtenido al hacer el post de la reacción previamente": true,
+				"El ID de producto es el solicitado": true,
+				"El ID de usuario es el solicitado": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo favorito": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo usuario_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo producto_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id como number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo favorito como boolean": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID de reacción es el mismo que el obtenido al hacer el post de la reacción previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID de producto es el solicitado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID de usuario es el solicitado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"La respuesta es un status OK": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validar atributo id": true,
+					"Validar atributo favorito": true,
+					"Validar atributo usuario_id": true,
+					"Validar atributo producto_id": true,
+					"Validar atributo id como number": true,
+					"Validar atributo favorito como boolean": true,
+					"El ID de reacción es el mismo que el obtenido al hacer el post de la reacción previamente": true,
+					"El ID de producto es el solicitado": true,
+					"El ID de usuario es el solicitado": true
+				}
+			]
+		},
+		{
+			"id": "89576f14-725c-4c97-a1d9-b5f2ade5356a",
+			"name": "Obtener reacción por id de usuario y id de producto exception 1",
+			"url": "http://localhost:8080/reacciones/porProducto/37/porUsuario/1500",
+			"time": 17,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "d784cc61-0166-40b0-8be6-e8b8401c9bea",
+			"name": "Obtener reacción por id de usuario y id de producto exception 2",
+			"url": "http://localhost:8080/reacciones/porProducto/1500/porUsuario/11",
+			"time": 12,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "c92d4cc6-5700-4c98-8777-b615b6dd53fb",
+			"name": "Modificar reacción",
+			"url": "http://localhost:8080/reacciones/editar",
+			"time": 282,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				282
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "66126ca5-fb64-47ff-a853-efb96c14ab56",
+			"name": "Modificar reacción script tests",
+			"url": "http://localhost:8080/reacciones/editar",
+			"time": 272,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue actualizada la reacción": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue actualizada la reacción": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				272
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue actualizada la reacción": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "4e6eea47-ef5d-484f-99f6-bdc450193f2e",
+			"name": "Modificar reacción exception 1",
+			"url": "http://localhost:8080/reacciones/editar",
+			"time": 22,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				22
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "a2049f7c-5069-42ed-92fd-c21c41908bff",
+			"name": "Modificar reacción exception 2",
+			"url": "http://localhost:8080/reacciones/editar",
+			"time": 17,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Bad Request": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				17
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Bad Request": true
+				}
+			]
+		},
+		{
+			"id": "8851a813-2827-408a-b304-536b9cd373b7",
+			"name": "Modificar reacción exception 3",
+			"url": "http://localhost:8080/reacciones/editar",
+			"time": 11,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Bad Request": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Bad Request": true
+				}
+			]
+		},
+		{
+			"id": "68689d83-b8af-4ba2-b4f1-91f80255b353",
+			"name": "Eliminar reacción por id script tests",
+			"url": "http://localhost:8080/reacciones/eliminar/38",
+			"time": 436,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"El código de status es 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue borrada la reacción": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue borrada la reacción": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				436
+			],
+			"allTests": [
+				{
+					"El código de status es 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue borrada la reacción": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "07c20558-247e-4286-8b81-7935f60492e3",
+			"name": "Eliminar reacción por id exception",
+			"url": "http://localhost:8080/reacciones/eliminar/1500",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "383eb542-7346-4a39-9b75-638ef32d7bf3",
+			"name": "Eliminar reacción por id de usuario e id de producto",
+			"url": "http://localhost:8080/reacciones/eliminar/porProducto/38/porUsuario/13",
+			"time": 303,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"El código de status es 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue borrada la reacción": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue borrada la reacción": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				303
+			],
+			"allTests": [
+				{
+					"El código de status es 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue borrada la reacción": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "983741d6-0f29-4412-93ae-9b89e47896c0",
+			"name": "Eliminar reacción por id de usuario e id de producto exception",
+			"url": "http://localhost:8080/reacciones/eliminar/porProducto/1500/porUsuario/13",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "3a779b5a-df8e-44d9-8e82-566494b47a9f",
+			"name": "Eliminar reacción por id de usuario e id de producto exception Copy",
+			"url": "http://localhost:8080/reacciones/eliminar/porProducto/38/porUsuario/1500",
+			"time": 9,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "15a8e273-f539-455c-a287-c142a7dc1c6e",
+			"name": "Eliminar usuario 1",
+			"url": "http://localhost:8080/usuarios/eliminar/11",
+			"time": 229,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				229
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "58b89238-510e-4267-a5fa-b9f366d26d0e",
+			"name": "Eliminar admin",
+			"url": "http://localhost:8080/usuarios/eliminar/12",
+			"time": 53,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				53
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "0cb67a1c-a721-44b3-addb-9fcfad0853a7",
+			"name": "Eliminar producto 1",
+			"url": "http://localhost:8080/productos/eliminar/37",
+			"time": 442,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				442
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "f7d89c0d-1303-4ad6-b13c-ffe913d770f5",
+			"name": "Eliminar producto 2",
+			"url": "http://localhost:8080/productos/eliminar/38",
+			"time": 100,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				100
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "21cad391-a23d-4536-a71e-5f8102b428da",
+			"name": "Eliminar usuario 2",
+			"url": "http://localhost:8080/usuarios/eliminar/13",
+			"time": 200,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				200
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 19114,
+	"collection": {
+		"requests": [
+			{
+				"id": "8f69ba2e-b871-41d4-85c6-349d2747b167",
+				"method": "POST"
+			},
+			{
+				"id": "1eae28ea-58a8-4f43-8363-20d7e9537dc4",
+				"method": "POST"
+			},
+			{
+				"id": "7a2b259a-bcdc-4db3-9e14-def4719616b5",
+				"method": "POST"
+			},
+			{
+				"id": "12612c56-2356-42c9-b932-0a70810b7fbc",
+				"method": "POST"
+			},
+			{
+				"id": "8157bc47-c34b-4af9-aeb1-11fe1c1cb6da",
+				"method": "POST"
+			},
+			{
+				"id": "163facc8-8cf5-4127-9cbe-ad8b2f870d14",
+				"method": "POST"
+			},
+			{
+				"id": "f5db32a2-d85c-42bb-ac9d-294e3b13de84",
+				"method": "POST"
+			},
+			{
+				"id": "27785fc3-eb50-4fea-92a1-4c6edec6892f",
+				"method": "POST"
+			},
+			{
+				"id": "bdfb550f-f418-4e66-9cd7-18803202696d",
+				"method": "POST"
+			},
+			{
+				"id": "fd9515b3-92cf-49fb-91bd-2c01ecb4ab96",
+				"method": "GET"
+			},
+			{
+				"id": "2716640e-ab70-4750-88ac-26adf4c2e503",
+				"method": "GET"
+			},
+			{
+				"id": "24f1be8b-9ddb-4ec7-8365-30289837dda6",
+				"method": "GET"
+			},
+			{
+				"id": "224d7a22-972c-4ef0-a59e-7493deb74e0b",
+				"method": "GET"
+			},
+			{
+				"id": "6059d046-f974-4ecc-9bcc-0380ccd21bcc",
+				"method": "GET"
+			},
+			{
+				"id": "b94ea6f2-258a-4390-bf99-35e70d813ed7",
+				"method": "GET"
+			},
+			{
+				"id": "4a36dab9-cb38-4b2b-8ab2-b0d81652b3e9",
+				"method": "GET"
+			},
+			{
+				"id": "95bd3fdf-0d3c-4e05-ad3d-aacbdb690f2c",
+				"method": "GET"
+			},
+			{
+				"id": "99863a97-2144-4680-baa6-20a47db593a1",
+				"method": "GET"
+			},
+			{
+				"id": "5e904d53-d8c4-4f04-adf6-81d2391687a2",
+				"method": "GET"
+			},
+			{
+				"id": "89576f14-725c-4c97-a1d9-b5f2ade5356a",
+				"method": "GET"
+			},
+			{
+				"id": "d784cc61-0166-40b0-8be6-e8b8401c9bea",
+				"method": "GET"
+			},
+			{
+				"id": "c92d4cc6-5700-4c98-8777-b615b6dd53fb",
+				"method": "PUT"
+			},
+			{
+				"id": "66126ca5-fb64-47ff-a853-efb96c14ab56",
+				"method": "PUT"
+			},
+			{
+				"id": "4e6eea47-ef5d-484f-99f6-bdc450193f2e",
+				"method": "PUT"
+			},
+			{
+				"id": "a2049f7c-5069-42ed-92fd-c21c41908bff",
+				"method": "PUT"
+			},
+			{
+				"id": "8851a813-2827-408a-b304-536b9cd373b7",
+				"method": "PUT"
+			},
+			{
+				"id": "68689d83-b8af-4ba2-b4f1-91f80255b353",
+				"method": "DELETE"
+			},
+			{
+				"id": "07c20558-247e-4286-8b81-7935f60492e3",
+				"method": "DELETE"
+			},
+			{
+				"id": "383eb542-7346-4a39-9b75-638ef32d7bf3",
+				"method": "DELETE"
+			},
+			{
+				"id": "983741d6-0f29-4412-93ae-9b89e47896c0",
+				"method": "DELETE"
+			},
+			{
+				"id": "3a779b5a-df8e-44d9-8e82-566494b47a9f",
+				"method": "DELETE"
+			},
+			{
+				"id": "15a8e273-f539-455c-a287-c142a7dc1c6e",
+				"method": "DELETE"
+			},
+			{
+				"id": "58b89238-510e-4267-a5fa-b9f366d26d0e",
+				"method": "DELETE"
+			},
+			{
+				"id": "0cb67a1c-a721-44b3-addb-9fcfad0853a7",
+				"method": "DELETE"
+			},
+			{
+				"id": "f7d89c0d-1303-4ad6-b13c-ffe913d770f5",
+				"method": "DELETE"
+			},
+			{
+				"id": "21cad391-a23d-4536-a71e-5f8102b428da",
+				"method": "DELETE"
+			}
+		]
+	}
+}
