@@ -4,6 +4,7 @@ import { Button } from "../../atoms/Button/Button";
 import { Heading } from "../../atoms/Heading/Heading";
 import { Paragraph } from "../../atoms/paragraph/Paragraph";
 import { Inicio } from "./Inicio";
+import { Icon } from '../../atoms/Icon/Icon';
 import './CBU.css'
 import { Picture } from '../../atoms/Picture/Picture';
 export const CBU = (props) => {
@@ -20,14 +21,19 @@ export const CBU = (props) => {
     };
   return (
     <div className="cbu">
-      <Heading variant={"secondary"} type="lg" title={"h2"}>
-        Transferencia bancaria
-      </Heading>
+      <div className="method-title">
+        <Icon icon={"bank"} width="lg" />
+        <Heading variant={"secondary"} type="lg" title={"h2"}>
+          Transferencia bancaria
+        </Heading>
+      </div>
+
       <div className="cbu-content">
         <Paragraph variant={"secondary"} size="xmd">
-          Para para realizar el pago escaneá el código QR y enviá <strong>ARG ${props.price}</strong>
+          Para para realizar el pago escaneá el código QR y enviá{" "}
+          <strong>ARG ${props.price}</strong>
         </Paragraph>
-        <div className='qr'>
+        <div className="qr">
           <Picture image={"qr_banco"} width="lg" height={"lg"}></Picture>
         </div>
       </div>

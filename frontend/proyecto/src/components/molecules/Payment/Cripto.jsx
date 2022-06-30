@@ -4,6 +4,7 @@ import { Button } from "../../atoms/Button/Button";
 import { Heading } from "../../atoms/Heading/Heading";
 import { Paragraph } from "../../atoms/paragraph/Paragraph";
 import { Picture } from '../../atoms/Picture/Picture';
+import { Icon } from '../../atoms/Icon/Icon';
 import { Inicio } from "./Inicio";
 export const Cripto = (props) => {
     const navigate = useNavigate();
@@ -19,9 +20,13 @@ export const Cripto = (props) => {
     };
   return (
     <div className="cbu">
-      <Heading variant={"secondary"} type="lg" title={"h2"}>
-        Cripto
-      </Heading>
+      <div className="method-title">
+        <Icon icon={"cripto"} width="lg" />
+        <Heading variant={"secondary"} type="lg" title={"h2"}>
+          Cripto
+        </Heading>
+      </div>
+
       <div className="cbu-content">
         <Paragraph variant={"secondary"} size="xmd">
           Para para realizar el pago escaneá siguiente código de bitcoin

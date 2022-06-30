@@ -49,7 +49,10 @@ export const Payment = ({ setShowPayment, submitData,price,placeName }) => {
 
 
   const handleCardDisplayed = (method) => {
-    if (method === "efectivo") {
+    if(method===""){
+      setCardDisplayed( <Inicio handleCardDisplayed={handleCardDisplayed}></Inicio>);
+    }
+    else if (method === "efectivo") {
       setCardDisplayed(
         <Cash
           placeName={placeName}

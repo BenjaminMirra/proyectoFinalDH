@@ -18,3 +18,9 @@
 .cash-content span{
     color: var(--color-primary);
 }
+.method-title{
+    display: flex;
+}
+.method-title img{
+    margin-right: 12px;
+}
