@@ -13,6 +13,7 @@ import {ProductsPagination} from './components/organisms/ProductsPagination/Prod
 import { Error404 } from './components/pages/Error404';
 import { Administracion } from './components/pages/Administracion';
 import { MyReservePage } from './components/pages/MyReservePage';
+import { Stars } from './components/molecules/ReactStars/ReactStars';
 function App() {
   const [failReserve,setFailReserve] = useState(false)
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route path="/:id/misreservas" element={<MyReservePage/>}></Route>
           <Route path="/administracion" element={<Administracion/>}></Route>
           <Route path="/producto-exitoso" element={<SuccessAdd />}></Route>
+          <Route path="/reactstars" element={<Stars />}></Route>
           <Route path="*" element={<Error404/>}></Route>
         </Routes>
       </BrowserRouter>
