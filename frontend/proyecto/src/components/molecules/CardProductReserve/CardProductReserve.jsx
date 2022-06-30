@@ -27,7 +27,8 @@ export const CardProductReserve = ({
   likedProducts,
   startReserveDate,
   endReserveDate,
-  setLikedProducts
+  setLikedProducts,
+  precio
 }) => {
 
   const [opinion, setOpinion] = useState(false);
@@ -289,19 +290,24 @@ export const CardProductReserve = ({
               </div>
             </div>
             
-            {!opinion ? ("") : (
-              <div className="leaveAnOpinion-container">
+              {!opinion ? (
+                <div className="precioReserve-container">
+                  <Heading type="sm" title="h2">
+                    {`Precio total de la reserva: $${(precio * ((new Date(endReserveDate)) - new Date(startReserveDate)) / (1000 * 3600 * 24))+precio}`}
+                  </Heading>
+                </div>
+              ) : (
 
-                <div class="leaveAnOpinion">
-                  <Heading type="sm" title="h2">¡Dejanos tu opinión!:</Heading>
-                  <div className="opinionsStars">
-                    <Stars setRating={setRating} />
+                <div className="leaveAnOpinion-container">
+                  <div class="leaveAnOpinion">
+                    <Heading type="sm" title="h2">¡Dejanos tu opinión!:</Heading>
+                    <div className="opinionsStars">
+                      <Stars setRating={setRating} />
+                    </div>
                   </div>
                 </div>
 
-              </div>
-            )}
-
+              )}
             <div className="button-container-reserves" id="button-opinion">
               <Link style={{ width: "100%" }} to={`/productos/${id}`}>
                 <Button

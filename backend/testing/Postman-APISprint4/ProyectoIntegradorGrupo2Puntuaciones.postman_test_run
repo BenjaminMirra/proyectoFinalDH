@@ -1,0 +1,2036 @@
+{
+	"id": "76ba859d-7f39-443d-b019-161ff1bb1685",
+	"name": "ProyectoIntegradorGrupo2",
+	"timestamp": "2022-06-30T21:22:00.093Z",
+	"collection_id": "18041092-76a8721e-9eee-4f39-9276-79c5314c08a3",
+	"folder_id": "18041092-172e7f08-e5aa-4b63-a7ed-a9a6b3ef3326",
+	"environment_id": "0",
+	"totalPass": 343,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "906cfe0e-fe6d-462f-a634-b9899ab6f684",
+			"name": "Agregar admin",
+			"url": "http://localhost:8080/usuarios/agregar",
+			"time": 3172,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Setear el ID del usuario posteado": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID del usuario posteado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3172
+			],
+			"allTests": [
+				{
+					"Setear el ID del usuario posteado": true
+				}
+			]
+		},
+		{
+			"id": "24d2abb5-dacf-4c5a-ad12-71c15736e374",
+			"name": "Agregar usuario 1",
+			"url": "http://localhost:8080/usuarios/agregar",
+			"time": 3753,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Setear el ID del usuario posteado": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID del usuario posteado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3753
+			],
+			"allTests": [
+				{
+					"Setear el ID del usuario posteado": true
+				}
+			]
+		},
+		{
+			"id": "51abe065-1767-47ba-ad8f-1b0298466989",
+			"name": "Agregar usuario 2",
+			"url": "http://localhost:8080/usuarios/agregar",
+			"time": 2823,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Setear el ID del usuario posteado": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID del usuario posteado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2823
+			],
+			"allTests": [
+				{
+					"Setear el ID del usuario posteado": true
+				}
+			]
+		},
+		{
+			"id": "65135599-455e-4c3e-a260-0a0f0aa14426",
+			"name": "Agregar producto 1",
+			"url": "http://localhost:8080/productos/agregar",
+			"time": 3073,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Setear el ID del producto posteado": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID del producto posteado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3073
+			],
+			"allTests": [
+				{
+					"Setear el ID del producto posteado": true
+				}
+			]
+		},
+		{
+			"id": "e534605d-780a-46e1-a82a-b723e51f1854",
+			"name": "Agregar producto 2",
+			"url": "http://localhost:8080/productos/agregar",
+			"time": 3589,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Setear el ID del producto posteado": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID del producto posteado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				3589
+			],
+			"allTests": [
+				{
+					"Setear el ID del producto posteado": true
+				}
+			]
+		},
+		{
+			"id": "40937fb5-bd70-4d9d-8f09-b46152e3cd72",
+			"name": "Agregar producto 3",
+			"url": "http://localhost:8080/productos/agregar",
+			"time": 2467,
+			"responseCode": {
+				"code": 201,
+				"name": "Created"
+			},
+			"tests": {
+				"Setear el ID del producto posteado": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID del producto posteado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2467
+			],
+			"allTests": [
+				{
+					"Setear el ID del producto posteado": true
+				}
+			]
+		},
+		{
+			"id": "6861f8e7-9a77-450f-967b-3eaa7a06607f",
+			"name": "Agregar puntuación",
+			"url": "http://localhost:8080/puntuaciones/agregar",
+			"time": 398,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Setear el ID de la reaccion posteada": true
+			},
+			"testPassFailCounts": {
+				"Setear el ID de la reaccion posteada": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				398
+			],
+			"allTests": [
+				{
+					"Setear el ID de la reaccion posteada": true
+				}
+			]
+		},
+		{
+			"id": "12e71dd3-392f-469f-aa45-fac3970c2c52",
+			"name": "Agregar puntuación script tests",
+			"url": "http://localhost:8080/puntuaciones/agregar",
+			"time": 175,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Testear que el tipo de respuesta sea un el id (tipo number)": true,
+				"La respuesta es un status OK": true,
+				"Setear el ID de la puntuación posteada": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Testear que el tipo de respuesta sea un el id (tipo number)": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Setear el ID de la puntuación posteada": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				175
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Testear que el tipo de respuesta sea un el id (tipo number)": true,
+					"La respuesta es un status OK": true,
+					"Setear el ID de la puntuación posteada": true
+				}
+			]
+		},
+		{
+			"id": "ec4a261e-0fbe-4664-a065-db03c67543c8",
+			"name": "Agregar puntuación exception 1",
+			"url": "http://localhost:8080/puntuaciones/agregar",
+			"time": 11,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Bad Request": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Bad Request": true
+				}
+			]
+		},
+		{
+			"id": "4ac04e6a-b917-4b23-96a4-078965444b14",
+			"name": "Agregar puntuación exception 2",
+			"url": "http://localhost:8080/puntuaciones/agregar",
+			"time": 25,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Bad Request": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				25
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Bad Request": true
+				}
+			]
+		},
+		{
+			"id": "6ea240a3-4860-46c8-bdf0-8ba4d4ca7fe7",
+			"name": "Agregar puntuación exception 3",
+			"url": "http://localhost:8080/puntuaciones/agregar",
+			"time": 7,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Bad Request": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Bad Request": true
+				}
+			]
+		},
+		{
+			"id": "702bfaa4-4ce8-435b-b5a8-21c6785d29f7",
+			"name": "Obtener todas las puntuaciones",
+			"url": "http://localhost:8080/puntuaciones/todas",
+			"time": 16,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				16
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d03dcfc4-8d09-4e4d-be48-c6958fb26220",
+			"name": "Obtener todas las puntuaciones script tests",
+			"url": "http://localhost:8080/puntuaciones/todas",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"La respuesta es un status OK": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validar atributo id": true,
+				"Validar atributo puntuacion": true,
+				"Validar atributo usuario_id": true,
+				"Validar atributo producto_id": true,
+				"Validar atributo puntuacion ": true,
+				"Se espera que los elementos dentro de la respuesta sean objetos": true,
+				"Se espera que la respuesta sea un array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo puntuacion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo usuario_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo producto_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo puntuacion ": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que los elementos dentro de la respuesta sean objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que la respuesta sea un array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"La respuesta es un status OK": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validar atributo id": true,
+					"Validar atributo puntuacion": true,
+					"Validar atributo usuario_id": true,
+					"Validar atributo producto_id": true,
+					"Validar atributo puntuacion ": true,
+					"Se espera que los elementos dentro de la respuesta sean objetos": true,
+					"Se espera que la respuesta sea un array": true
+				}
+			]
+		},
+		{
+			"id": "a832e88e-8a25-4e37-888f-880fcd2d10d0",
+			"name": "Obtener puntuación por id",
+			"url": "http://localhost:8080/puntuaciones/17",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				7
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "32a2434f-c6ca-4ad8-b043-9e2f8ccdd725",
+			"name": "Obtener puntuación por id script tests",
+			"url": "http://localhost:8080/puntuaciones/16",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"La respuesta es un status OK": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validar atributo id": true,
+				"Validar atributo puntuacion": true,
+				"Validar atributo usuario_id": true,
+				"Validar atributo producto_id": true,
+				"Validar atributo id como number": true,
+				"Validar atributo puntuacion como number": true,
+				"Validar atributo puntuacion como un numero del 1 al 5": true,
+				"El ID es el mismo que el obtenido al hacer el post de la puntuacion previamente": true,
+				"El ID de producto es el mismo que el ingresado al hacer el post de la puntuacion previamente": true,
+				"El ID de usuario es el mismo que el ingresado al hacer el post de la puntuacion previamente": true,
+				"La puntuacion es la misma que la ingresada al hacer el post de la puntuacion previamente": true,
+				"Se espera que el elemento de respuesta sea un objeto": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo puntuacion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo usuario_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo producto_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id como number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo puntuacion como number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo puntuacion como un numero del 1 al 5": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID es el mismo que el obtenido al hacer el post de la puntuacion previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID de producto es el mismo que el ingresado al hacer el post de la puntuacion previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID de usuario es el mismo que el ingresado al hacer el post de la puntuacion previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La puntuacion es la misma que la ingresada al hacer el post de la puntuacion previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que el elemento de respuesta sea un objeto": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"La respuesta es un status OK": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validar atributo id": true,
+					"Validar atributo puntuacion": true,
+					"Validar atributo usuario_id": true,
+					"Validar atributo producto_id": true,
+					"Validar atributo id como number": true,
+					"Validar atributo puntuacion como number": true,
+					"Validar atributo puntuacion como un numero del 1 al 5": true,
+					"El ID es el mismo que el obtenido al hacer el post de la puntuacion previamente": true,
+					"El ID de producto es el mismo que el ingresado al hacer el post de la puntuacion previamente": true,
+					"El ID de usuario es el mismo que el ingresado al hacer el post de la puntuacion previamente": true,
+					"La puntuacion es la misma que la ingresada al hacer el post de la puntuacion previamente": true,
+					"Se espera que el elemento de respuesta sea un objeto": true
+				}
+			]
+		},
+		{
+			"id": "339fc0f4-8f57-4817-ab1e-582415e74ae8",
+			"name": "Obtener puntuación por id exception",
+			"url": "http://localhost:8080/puntuaciones/1500",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "26db8e75-d7d7-4f66-9711-93474f205b18",
+			"name": "Obtener  puntuaciones por id de producto",
+			"url": "http://localhost:8080/puntuaciones/porProducto/39",
+			"time": 18,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				18
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "02728a11-da4a-4881-8906-64571d9579a2",
+			"name": "Obtener  puntuaciones por id de producto script tests",
+			"url": "http://localhost:8080/puntuaciones/porProducto/40",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"La respuesta es un status OK": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validar atributo id": true,
+				"Validar atributo puntuacion": true,
+				"Validar atributo usuario_id": true,
+				"Validar atributo producto_id": true,
+				"Validar atributo puntuacion ": true,
+				"Validar que el id de producto de todas las puntuaciones de la lista sea el solicitado al realizar la petición": true,
+				"Se espera que los elementos dentro de la respuesta sean objetos": true,
+				"Se espera que la respuesta sea un array": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo puntuacion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo usuario_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo producto_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo puntuacion ": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar que el id de producto de todas las puntuaciones de la lista sea el solicitado al realizar la petición": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que los elementos dentro de la respuesta sean objetos": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Se espera que la respuesta sea un array": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"La respuesta es un status OK": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validar atributo id": true,
+					"Validar atributo puntuacion": true,
+					"Validar atributo usuario_id": true,
+					"Validar atributo producto_id": true,
+					"Validar atributo puntuacion ": true,
+					"Validar que el id de producto de todas las puntuaciones de la lista sea el solicitado al realizar la petición": true,
+					"Se espera que los elementos dentro de la respuesta sean objetos": true,
+					"Se espera que la respuesta sea un array": true
+				}
+			]
+		},
+		{
+			"id": "ce656b18-56b9-450f-8cff-1e2310acfd3f",
+			"name": "Obtener puntuaciones por id de producto exception 1",
+			"url": "http://localhost:8080/puntuaciones/porProducto/1500",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "018afeb3-2679-4078-a10d-7ace439714b5",
+			"name": "Obtener puntuaciones por id de producto exception 2",
+			"url": "http://localhost:8080/puntuaciones/porProducto/41",
+			"time": 8,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "6813140c-7411-4996-8a7b-1eae9213f9e7",
+			"name": "Obtener puntuación por id de usuario y id de producto OK",
+			"url": "http://localhost:8080/puntuaciones/porProducto/39/porUsuario/15",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				8
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "b8cd006e-62ed-4616-9e7d-185cea99bb06",
+			"name": "Obtener puntuación por id de usuario y id de producto script tests",
+			"url": "http://localhost:8080/puntuaciones/porProducto/40/porUsuario/16",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"La respuesta es un status OK": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Validar atributo id": true,
+				"Validar atributo puntuacion": true,
+				"Validar atributo usuario_id": true,
+				"Validar atributo producto_id": true,
+				"Validar atributo id como number": true,
+				"Validar atributo puntuacion como number": true,
+				"Validar atributo puntuacion como un numero del 1 al 5": true,
+				"El ID de puntuacion es el mismo que el obtenido al hacer el post de la puntuacion previamente": true,
+				"El ID de producto es el solicitado": true,
+				"El ID de usuario es el solicitado": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo puntuacion": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo usuario_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo producto_id": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo id como number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo puntuacion como number": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Validar atributo puntuacion como un numero del 1 al 5": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID de puntuacion es el mismo que el obtenido al hacer el post de la puntuacion previamente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID de producto es el solicitado": {
+					"pass": 1,
+					"fail": 0
+				},
+				"El ID de usuario es el solicitado": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"La respuesta es un status OK": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Validar atributo id": true,
+					"Validar atributo puntuacion": true,
+					"Validar atributo usuario_id": true,
+					"Validar atributo producto_id": true,
+					"Validar atributo id como number": true,
+					"Validar atributo puntuacion como number": true,
+					"Validar atributo puntuacion como un numero del 1 al 5": true,
+					"El ID de puntuacion es el mismo que el obtenido al hacer el post de la puntuacion previamente": true,
+					"El ID de producto es el solicitado": true,
+					"El ID de usuario es el solicitado": true
+				}
+			]
+		},
+		{
+			"id": "344a31a8-bfd5-4ecb-aa67-09edfdd12354",
+			"name": "Obtener puntuación por id de usuario y id de producto exception 1",
+			"url": "http://localhost:8080/puntuaciones/porProducto/39/porUsuario/1500",
+			"time": 15,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "453a690d-b0f3-44f1-bdb4-effa12a24839",
+			"name": "Obtener puntuación por id de usuario y id de producto exception 2",
+			"url": "http://localhost:8080/puntuaciones/porProducto/1500/porUsuario/15",
+			"time": 39,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				39
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "8905ea09-55c6-4445-9918-3bbdac4a1019",
+			"name": "Obtener puntuación por id de usuario y id de producto exception 3",
+			"url": "http://localhost:8080/puntuaciones/porProducto/41/porUsuario/15",
+			"time": 30,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "ca51310c-0553-4c5f-8fa8-35e529be35df",
+			"name": "Modificar puntuación",
+			"url": "http://localhost:8080/puntuaciones/editar",
+			"time": 69,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				69
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2569679a-7765-4a13-b00c-46728274850a",
+			"name": "Modificar puntuación script tests",
+			"url": "http://localhost:8080/puntuaciones/editar",
+			"time": 138,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status code is 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue actualizada la puntuación": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"Status code is 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue actualizada la puntuación": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				138
+			],
+			"allTests": [
+				{
+					"Status code is 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue actualizada la puntuación": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "3c3b98a3-1bc2-47a4-8851-427efc318cd0",
+			"name": "Modificar puntuación exception 1",
+			"url": "http://localhost:8080/puntuaciones/editar",
+			"time": 7,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "073e42a9-dc1f-45ed-90a4-bc941c5eaedc",
+			"name": "Modificar puntuación exception 2",
+			"url": "http://localhost:8080/puntuaciones/editar",
+			"time": 9,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Bad Request": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Bad Request": true
+				}
+			]
+		},
+		{
+			"id": "0ea791a2-5f53-4927-93a2-e4e0d19078ab",
+			"name": "Modificar puntuación exception 3",
+			"url": "http://localhost:8080/puntuaciones/editar",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"El código de status es 400": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Bad Request": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 400": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Bad Request": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"El código de status es 400": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Bad Request": true
+				}
+			]
+		},
+		{
+			"id": "00bd7ea8-234d-400f-b573-5e933bdd8479",
+			"name": "Eliminar puntuación por id script tests",
+			"url": "http://localhost:8080/puntuaciones/eliminar/16",
+			"time": 153,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"El código de status es 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue borrada la puntuación": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue borrada la puntuación": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				153
+			],
+			"allTests": [
+				{
+					"El código de status es 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue borrada la puntuación": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "3f9dfbeb-283c-4979-852c-ecc409f2b9fb",
+			"name": "Eliminar puntuación por id exception",
+			"url": "http://localhost:8080/puntuaciones/eliminar/1500",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "6c5e0c29-39c3-4f87-a1cc-2e8ecaa0ae96",
+			"name": "Eliminar puntuación por id de usuario e id de producto",
+			"url": "http://localhost:8080/puntuaciones/eliminar/porProducto/40/porUsuario/16",
+			"time": 228,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"El código de status es 200": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Body de respuesta es un texto que indica que fue borrada la puntuación": true,
+				"La respuesta es un status OK": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 200": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto que indica que fue borrada la puntuación": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status OK": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				228
+			],
+			"allTests": [
+				{
+					"El código de status es 200": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Body de respuesta es un texto que indica que fue borrada la puntuación": true,
+					"La respuesta es un status OK": true
+				}
+			]
+		},
+		{
+			"id": "71a1e745-df4b-4182-8001-135f987105b3",
+			"name": "Eliminar puntuación por id de usuario e id de producto exception",
+			"url": "http://localhost:8080/puntuaciones/eliminar/porProducto/1500/porUsuario/16",
+			"time": 9,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "678d4528-85f7-4eb9-a125-1c704e456aee",
+			"name": "Eliminar puntuación por id de usuario e id de producto exception Copy",
+			"url": "http://localhost:8080/puntuaciones/eliminar/porProducto/40/porUsuario/1500",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"El código de status es 404": true,
+				"Content-Type header está presente": true,
+				"Content-Type header es application/json": true,
+				"Content-Length header está presente": true,
+				"Body de respuesta es un texto con la descripcion del error": true,
+				"La respuesta es un status Not Found": true
+			},
+			"testPassFailCounts": {
+				"El código de status es 404": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Type header es application/json": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Content-Length header está presente": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Body de respuesta es un texto con la descripcion del error": {
+					"pass": 1,
+					"fail": 0
+				},
+				"La respuesta es un status Not Found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"El código de status es 404": true,
+					"Content-Type header está presente": true,
+					"Content-Type header es application/json": true,
+					"Content-Length header está presente": true,
+					"Body de respuesta es un texto con la descripcion del error": true,
+					"La respuesta es un status Not Found": true
+				}
+			]
+		},
+		{
+			"id": "3570640c-f409-499e-b0a2-3ef85943bfe1",
+			"name": "Eliminar admin",
+			"url": "http://localhost:8080/usuarios/eliminar/14",
+			"time": 287,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				287
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "71458b39-9c92-4b21-a7eb-0d3bf93e7d7f",
+			"name": "Eliminar usuario 1",
+			"url": "http://localhost:8080/usuarios/eliminar/15",
+			"time": 76,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				76
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "aa5b5eb4-f404-4bf1-9e17-914873c7b520",
+			"name": "Eliminar usuario 2",
+			"url": "http://localhost:8080/usuarios/eliminar/16",
+			"time": 99,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				99
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "00e45241-34a5-486d-a1dd-765ea6ed2323",
+			"name": "Eliminar producto 1",
+			"url": "http://localhost:8080/productos/eliminar/39",
+			"time": 129,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				129
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "1eeb3104-571c-48f3-9611-df8d81ca7133",
+			"name": "Eliminar producto 2",
+			"url": "http://localhost:8080/productos/eliminar/40",
+			"time": 61,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				61
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "203d248d-0c62-4e17-bebd-39a5a82c469a",
+			"name": "Eliminar producto 3",
+			"url": "http://localhost:8080/productos/eliminar/41",
+			"time": 64,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				64
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 21033,
+	"collection": {
+		"requests": [
+			{
+				"id": "906cfe0e-fe6d-462f-a634-b9899ab6f684",
+				"method": "POST"
+			},
+			{
+				"id": "24d2abb5-dacf-4c5a-ad12-71c15736e374",
+				"method": "POST"
+			},
+			{
+				"id": "51abe065-1767-47ba-ad8f-1b0298466989",
+				"method": "POST"
+			},
+			{
+				"id": "65135599-455e-4c3e-a260-0a0f0aa14426",
+				"method": "POST"
+			},
+			{
+				"id": "e534605d-780a-46e1-a82a-b723e51f1854",
+				"method": "POST"
+			},
+			{
+				"id": "40937fb5-bd70-4d9d-8f09-b46152e3cd72",
+				"method": "POST"
+			},
+			{
+				"id": "6861f8e7-9a77-450f-967b-3eaa7a06607f",
+				"method": "POST"
+			},
+			{
+				"id": "12e71dd3-392f-469f-aa45-fac3970c2c52",
+				"method": "POST"
+			},
+			{
+				"id": "ec4a261e-0fbe-4664-a065-db03c67543c8",
+				"method": "POST"
+			},
+			{
+				"id": "4ac04e6a-b917-4b23-96a4-078965444b14",
+				"method": "POST"
+			},
+			{
+				"id": "6ea240a3-4860-46c8-bdf0-8ba4d4ca7fe7",
+				"method": "POST"
+			},
+			{
+				"id": "702bfaa4-4ce8-435b-b5a8-21c6785d29f7",
+				"method": "GET"
+			},
+			{
+				"id": "d03dcfc4-8d09-4e4d-be48-c6958fb26220",
+				"method": "GET"
+			},
+			{
+				"id": "a832e88e-8a25-4e37-888f-880fcd2d10d0",
+				"method": "GET"
+			},
+			{
+				"id": "32a2434f-c6ca-4ad8-b043-9e2f8ccdd725",
+				"method": "GET"
+			},
+			{
+				"id": "339fc0f4-8f57-4817-ab1e-582415e74ae8",
+				"method": "GET"
+			},
+			{
+				"id": "26db8e75-d7d7-4f66-9711-93474f205b18",
+				"method": "GET"
+			},
+			{
+				"id": "02728a11-da4a-4881-8906-64571d9579a2",
+				"method": "GET"
+			},
+			{
+				"id": "ce656b18-56b9-450f-8cff-1e2310acfd3f",
+				"method": "GET"
+			},
+			{
+				"id": "018afeb3-2679-4078-a10d-7ace439714b5",
+				"method": "GET"
+			},
+			{
+				"id": "6813140c-7411-4996-8a7b-1eae9213f9e7",
+				"method": "GET"
+			},
+			{
+				"id": "b8cd006e-62ed-4616-9e7d-185cea99bb06",
+				"method": "GET"
+			},
+			{
+				"id": "344a31a8-bfd5-4ecb-aa67-09edfdd12354",
+				"method": "GET"
+			},
+			{
+				"id": "453a690d-b0f3-44f1-bdb4-effa12a24839",
+				"method": "GET"
+			},
+			{
+				"id": "8905ea09-55c6-4445-9918-3bbdac4a1019",
+				"method": "GET"
+			},
+			{
+				"id": "ca51310c-0553-4c5f-8fa8-35e529be35df",
+				"method": "PUT"
+			},
+			{
+				"id": "2569679a-7765-4a13-b00c-46728274850a",
+				"method": "PUT"
+			},
+			{
+				"id": "3c3b98a3-1bc2-47a4-8851-427efc318cd0",
+				"method": "PUT"
+			},
+			{
+				"id": "073e42a9-dc1f-45ed-90a4-bc941c5eaedc",
+				"method": "PUT"
+			},
+			{
+				"id": "0ea791a2-5f53-4927-93a2-e4e0d19078ab",
+				"method": "PUT"
+			},
+			{
+				"id": "00bd7ea8-234d-400f-b573-5e933bdd8479",
+				"method": "DELETE"
+			},
+			{
+				"id": "3f9dfbeb-283c-4979-852c-ecc409f2b9fb",
+				"method": "DELETE"
+			},
+			{
+				"id": "6c5e0c29-39c3-4f87-a1cc-2e8ecaa0ae96",
+				"method": "DELETE"
+			},
+			{
+				"id": "71a1e745-df4b-4182-8001-135f987105b3",
+				"method": "DELETE"
+			},
+			{
+				"id": "678d4528-85f7-4eb9-a125-1c704e456aee",
+				"method": "DELETE"
+			},
+			{
+				"id": "3570640c-f409-499e-b0a2-3ef85943bfe1",
+				"method": "DELETE"
+			},
+			{
+				"id": "71458b39-9c92-4b21-a7eb-0d3bf93e7d7f",
+				"method": "DELETE"
+			},
+			{
+				"id": "aa5b5eb4-f404-4bf1-9e17-914873c7b520",
+				"method": "DELETE"
+			},
+			{
+				"id": "00e45241-34a5-486d-a1dd-765ea6ed2323",
+				"method": "DELETE"
+			},
+			{
+				"id": "1eeb3104-571c-48f3-9611-df8d81ca7133",
+				"method": "DELETE"
+			},
+			{
+				"id": "203d248d-0c62-4e17-bebd-39a5a82c469a",
+				"method": "DELETE"
+			}
+		]
+	}
+}

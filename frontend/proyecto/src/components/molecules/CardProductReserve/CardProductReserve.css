@@ -166,8 +166,7 @@
     flex-direction: row;
 }
 
-.leaveAnOpinion h1{
-    margin-right: 5px;
+.leaveAnOpinion h2{
     color: black;
 }
 
@@ -181,6 +180,23 @@
     margin-bottom: 5px;
 }
 
+.precioReserve-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #EBEBEE;
+}
+
+.precioReserve-container h2{
+    color: black;
+}
 
 
 .leaveAnOpinion-container .opinionsStars img:hover{

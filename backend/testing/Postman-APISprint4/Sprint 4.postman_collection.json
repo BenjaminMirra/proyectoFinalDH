@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "76a8721e-9eee-4f39-9276-79c5314c08a3",
-		"name": "ProyectoIntegradorGrupo2",
+		"_postman_id": "48be2180-a2e6-4a27-ad9a-b3bc2b25bf67",
+		"name": "Sprint 4",
 		"description": "Esta colección contiene los test pertinentes de realizar para probar el funcionamiento de las APIs del proyecto integrador.\n\nLa colección contiene subcarpetas que corresponden al testing de cada API de la aplicación. Y dentro de cada subcarpeta se encuentran los test de los métodos del endpoint.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "18041092"
+		"_exporter_id": "18046022"
 	},
 	"item": [
 		{
@@ -3165,6 +3165,44 @@
 												}
 											},
 											"response": []
+										},
+										{
+											"name": "Obtener productos por disponibilidad exception 2",
+											"event": [
+												{
+													"listen": "test",
+													"script": {
+														"exec": [
+															""
+														],
+														"type": "text/javascript"
+													}
+												}
+											],
+											"request": {
+												"method": "POST",
+												"header": [],
+												"body": {
+													"mode": "raw",
+													"raw": "{\n    \"fechaInicioReserva\": \"{{FECHA_INICIO_RESERVA_EXCEPTION}}\",\n    \"fechaFinReserva\":  \"{{FECHA_FIN_RESERVA_EXCEPTION}}\"\n}",
+													"options": {
+														"raw": {
+															"language": "json"
+														}
+													}
+												},
+												"url": {
+													"raw": "{{URL_PRODUCTOS}}/disponibles/porFecha",
+													"host": [
+														"{{URL_PRODUCTOS}}"
+													],
+													"path": [
+														"disponibles",
+														"porFecha"
+													]
+												}
+											},
+											"response": []
 										}
 									]
 								}
@@ -5983,6 +6021,10 @@
 											"response": []
 										}
 									]
+								},
+								{
+									"name": "Obtener todas las reacciones exception",
+									"item": []
 								}
 							]
 						},
@@ -8059,6 +8101,10 @@
 											"response": []
 										}
 									]
+								},
+								{
+									"name": "Obtener todas las puntuaciones exception",
+									"item": []
 								}
 							]
 						},
@@ -9519,36 +9565,58 @@
 			]
 		},
 		{
-			"name": "Usuarios y Reservas",
+			"name": "Usuarios Testing",
 			"item": [
 				{
-					"name": "Usuarios Testing",
+					"name": "Post - Agregar usuario",
 					"item": [
 						{
-							"name": "Post - Agregar usuario",
-							"item": [
+							"name": "Agregar usuario",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Setear el ID del usuario posteado\", () => {\r",
+											"    const jsonData = pm.response.json();\r",
+											"   pm.collectionVariables.set(\"IDPOST2_USUARIO\", jsonData.id);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Setear el token del usuario posteado\", () => {\r",
+											"    const jsonData = pm.response.json();\r",
+											"   pm.collectionVariables.set(\"TOKENREGISTRO2_USUARIO\", jsonData.token_acceso_registro);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nombre\": \"AnaFidalgo\",\r\n  \"apellido\": \"Fidalgo\",\r\n  \"email\": \"ana.fidalgo@hotmail.com\",\r\n   \"password\": \"12345h\",\r\n   \"nombre_rol\": \"ROLE_USER\"\r\n   }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_USUARIOS}}/agregar",
+									"host": [
+										"{{URL_USUARIOS}}"
+									],
+									"path": [
+										"agregar"
+									]
+								}
+							},
+							"response": [
 								{
 									"name": "Agregar usuario",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Setear el ID del usuario posteado\", () => {\r",
-													"    const jsonData = pm.response.json();\r",
-													"   pm.collectionVariables.set(\"IDPOST2_USUARIO\", jsonData.id);\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Setear el token del usuario posteado\", () => {\r",
-													"    const jsonData = pm.response.json();\r",
-													"   pm.collectionVariables.set(\"TOKENREGISTRO2_USUARIO\", jsonData.token_acceso_registro);\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
+									"originalRequest": {
 										"method": "POST",
 										"header": [],
 										"body": {
@@ -9570,110 +9638,470 @@
 											]
 										}
 									},
-									"response": [
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
 										{
-											"name": "Agregar usuario",
-											"originalRequest": {
-												"method": "POST",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n  \"nombre\": \"AnaFidalgo\",\r\n  \"apellido\": \"Fidalgo\",\r\n  \"email\": \"ana.fidalgo@hotmail.com\",\r\n   \"password\": \"12345h\",\r\n   \"nombre_rol\": \"ROLE_USER\"\r\n   }",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{URL_USUARIOS}}/agregar",
-													"host": [
-														"{{URL_USUARIOS}}"
-													],
-													"path": [
-														"agregar"
-													]
-												}
-											},
-											"status": "Created",
-											"code": 201,
-											"_postman_previewlanguage": "json",
-											"header": [
-												{
-													"key": "Vary",
-													"value": "Origin"
-												},
-												{
-													"key": "Vary",
-													"value": "Access-Control-Request-Method"
-												},
-												{
-													"key": "Vary",
-													"value": "Access-Control-Request-Headers"
-												},
-												{
-													"key": "Location",
-													"value": "http://localhost:8080/usuarios/agregar"
-												},
-												{
-													"key": "X-Content-Type-Options",
-													"value": "nosniff"
-												},
-												{
-													"key": "X-XSS-Protection",
-													"value": "1; mode=block"
-												},
-												{
-													"key": "Cache-Control",
-													"value": "no-cache, no-store, max-age=0, must-revalidate"
-												},
-												{
-													"key": "Pragma",
-													"value": "no-cache"
-												},
-												{
-													"key": "Expires",
-													"value": "0"
-												},
-												{
-													"key": "X-Frame-Options",
-													"value": "DENY"
-												},
-												{
-													"key": "Content-Type",
-													"value": "application/json"
-												},
-												{
-													"key": "Transfer-Encoding",
-													"value": "chunked"
-												},
-												{
-													"key": "Date",
-													"value": "Thu, 23 Jun 2022 13:37:47 GMT"
-												},
-												{
-													"key": "Keep-Alive",
-													"value": "timeout=60"
-												},
-												{
-													"key": "Connection",
-													"value": "keep-alive"
-												}
-											],
-											"cookie": [],
-											"body": "{\n    \"id\": 7,\n    \"token_acceso_registro\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmEuZmlkYWxnb0Bob3RtYWlsLmNvbSIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvdXN1YXJpb3MvYWdyZWdhciIsImV4cCI6MTY1NTk5NTA2NH0.ZCXivgH29f_W51I5au2X53wFMuqTWRuBwcN7PcBAyZU\"\n}"
+											"key": "Vary",
+											"value": "Origin"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Method"
+										},
+										{
+											"key": "Vary",
+											"value": "Access-Control-Request-Headers"
+										},
+										{
+											"key": "Location",
+											"value": "http://localhost:8080/usuarios/agregar"
+										},
+										{
+											"key": "X-Content-Type-Options",
+											"value": "nosniff"
+										},
+										{
+											"key": "X-XSS-Protection",
+											"value": "1; mode=block"
+										},
+										{
+											"key": "Cache-Control",
+											"value": "no-cache, no-store, max-age=0, must-revalidate"
+										},
+										{
+											"key": "Pragma",
+											"value": "no-cache"
+										},
+										{
+											"key": "Expires",
+											"value": "0"
+										},
+										{
+											"key": "X-Frame-Options",
+											"value": "DENY"
+										},
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 23 Jun 2022 13:37:47 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
 										}
-									]
-								},
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 7,\n    \"token_acceso_registro\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhbmEuZmlkYWxnb0Bob3RtYWlsLmNvbSIsInJvbGVzIjpbIlJPTEVfVVNFUiJdLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwODAvdXN1YXJpb3MvYWdyZWdhciIsImV4cCI6MTY1NTk5NTA2NH0.ZCXivgH29f_W51I5au2X53wFMuqTWRuBwcN7PcBAyZU\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Loguear usuario",
+							"event": [
 								{
-									"name": "Loguear usuario",
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"console.log(jsonData)\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header es application/json\", () => {\r",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											"pm.test(\"Testear que el tipo de respuesta tenga un token)\", () => {\r",
+											"    \r",
+											"    pm.expect(jsonData.token_de_acceso).to.be.a(\"string\");\r",
+											"  \r",
+											"});\r",
+											"\r",
+											"pm.test(\"La respuesta es un status OK\", () => {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Setear el token del usuario logueado\", () => {\r",
+											"    const jsonData = pm.response.json();\r",
+											"   pm.collectionVariables.set(\"TOKENLOGIN_USUARIO\", jsonData.token_de_acceso);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "email",
+										"value": "ana@mail.com",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "password",
+										"value": "123456H",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"ana@mail.com\",\r\n    \"password\": \"123456H\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_USUARIOS}}/login",
+									"host": [
+										"{{URL_USUARIOS}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Loguear usuario exception script tests",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"El código de status es 400\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header es application/json\", () => {\r",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"La respuesta es un status Forbidden\", () => {\r",
+											"    pm.response.to.have.status(\"Forbidden\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "email",
+										"value": "ana@mail.com",
+										"type": "text",
+										"disabled": true
+									},
+									{
+										"key": "password",
+										"value": "123456H",
+										"type": "text",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\": \"ana@mail.com\",\r\n    \"password\": \"1234567H\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_USUARIOS}}/login",
+									"host": [
+										"{{URL_USUARIOS}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Agregar usuario script tests",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"console.log(jsonData)\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(201);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header es application/json\", () => {\r",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Testear que el tipo de respuesta sea un el id (tipo number)\", () => {\r",
+											"    \r",
+											"    pm.expect(jsonData.id).to.be.a(\"number\");\r",
+											"  \r",
+											"});\r",
+											"\r",
+											"pm.test(\"Testear que el tipo de respuesta tenga un token)\", () => {\r",
+											"    \r",
+											"    pm.expect(jsonData.token_acceso_registro).to.be.a(\"string\");\r",
+											"  \r",
+											"});\r",
+											"\r",
+											"pm.test(\"La respuesta es un status Created\", () => {\r",
+											"    pm.response.to.have.status(\"Created\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Setear el ID del usuario posteado\", () => {\r",
+											"    const jsonData = pm.response.json();\r",
+											"   pm.collectionVariables.set(\"IDPOST_USUARIO\", jsonData.id);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Setear el token del usuario posteado\", () => {\r",
+											"    const jsonData = pm.response.json();\r",
+											"   pm.collectionVariables.set(\"TOKENREGISTRO_USUARIO\", jsonData.token_acceso_registro);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nombre\": \"AnaFidalgo\",\r\n  \"apellido\": \"Fidalgo\",\r\n  \"email\": \"ana.fidalgo4@hotmail.com\",\r\n   \"password\": \"12345h\",\r\n   \"ciudad\": \"Buenos Aires\",\r\n   \"nombre_rol\": \"ROLE_USER\"\r\n   }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_USUARIOS}}/agregar",
+									"host": [
+										"{{URL_USUARIOS}}"
+									],
+									"path": [
+										"agregar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Agregar usuario exception script tests",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"El código de status es 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header es application/json\", () => {\r",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Content-Length header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Length\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+											"  pm.response.to.have.body(\"Se ha encontrado un usuario con el email asignado. No se puede crear un usuario con el mismo email\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nombre\": \"AnaFidalgo\",\r\n  \"apellido\": \"Fidalgo\",\r\n  \"email\": \"ana.fidalgo@hotmail.com\",\r\n   \"password\": \"12345h\",\r\n   \"ciudad\": \"Buenos Aires\",\r\n   \"nombre_rol\": \"ROLE_USER\"\r\n   }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_USUARIOS}}/agregar",
+									"host": [
+										"{{URL_USUARIOS}}"
+									],
+									"path": [
+										"agregar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Agregar usuario exception script tests Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"El código de status es 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header es application/json\", () => {\r",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Content-Length header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Length\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+											"  pm.response.to.have.body(\"No se puede guardar un usuario sin asignarle un rol\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"nombre\": \"AnaFidalgo\",\r\n  \"apellido\": \"Fidalgo\",\r\n  \"email\": \"ana.fidalgo5@hotmail.com\",\r\n   \"password\": \"12345h\",\r\n   \"ciudad\": \"Buenos Aires\",\r\n   \"nombre_rol\": null\r\n   }",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_USUARIOS}}/agregar",
+									"host": [
+										"{{URL_USUARIOS}}"
+									],
+									"path": [
+										"agregar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get - Obtener usuario",
+					"item": [
+						{
+							"name": "Obtener todos los usuarios",
+							"item": [
+								{
+									"name": "Obtener todos los usuarios",
 									"event": [
 										{
 											"listen": "test",
 											"script": {
 												"exec": [
-													"const jsonData = pm.response.json();\r",
-													"console.log(jsonData)\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_USUARIOS}}/todos",
+											"host": [
+												"{{URL_USUARIOS}}"
+											],
+											"path": [
+												"todos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Obtener todos los usuarios script tests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseJson = pm.response.json();\r",
 													"\r",
 													"pm.test(\"Status code is 200\", function () {\r",
 													"    pm.response.to.have.status(200);\r",
@@ -9687,181 +10115,108 @@
 													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
 													"});\r",
 													"\r",
+													"pm.test(\"Validar atributo id\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+													"});\r",
 													"\r",
+													"pm.test(\"Validar atributo nombre\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"nombre\");\r",
+													"});\r",
 													"\r",
-													"pm.test(\"Testear que el tipo de respuesta tenga un token)\", () => {\r",
+													"pm.test(\"Validar atributo apellido\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"apellido\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Validar atributo email\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"email\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Validar atributo nombre_rol\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"nombre_rol\");\r",
+													"});\r",
+													"\r",
+													"const schema = {\r",
+													"    \"type\": \"object\",\r",
+													"    \"properties\": {\r",
+													"        \"id\": { \"type\": \"number\" },\r",
+													"        \"nombre\": { \"type\": \"string\" },\r",
+													"        \"apellido\": { \"type\": \"string\" },\r",
+													"        \"email\": { \"type\": \"string\" },       \r",
+													"        \"nombre_rol\": { \"type\": \"string\" }\r",
+													"    }\r",
+													"};\r",
+													"\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Validate schema\", () => {\r",
+													"    pm.expect(responseJson[pm.info.iteration]).to.have.jsonSchema(schema);\r",
+													"});\r",
+													"\r",
+													"}\r",
+													"\r",
+													"pm.test(\"Validar que los resultados estén ordenados por ID de menor a mayor\", () => {\r",
+													"    const ascendente = responseJson.map(item => item.id).every((current, index, ids) => index === 0 || current >= ids[index-1]);\r",
 													"    \r",
-													"    pm.expect(jsonData.token_de_acceso).to.be.a(\"string\");\r",
+													"    pm.expect(ascendente).to.be.true;\r",
+													"});\r",
+													"\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Validar atributo nombre\", function () {\r",
+													"    \r",
+													"    pm.expect(responseJson[pm.info.iteration].nombre).to.be.a('string');\r",
 													"  \r",
 													"});\r",
+													"}\r",
 													"\r",
-													"pm.test(\"La respuesta es un status OK\", () => {\r",
-													"    pm.response.to.have.status(\"OK\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Setear el token del usuario logueado\", () => {\r",
-													"    const jsonData = pm.response.json();\r",
-													"   pm.collectionVariables.set(\"TOKENLOGIN_USUARIO\", jsonData.token_de_acceso);\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "noauth"
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "email",
-												"value": "ana@mail.com",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "password",
-												"value": "123456H",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"email\": \"ana@mail.com\",\r\n    \"password\": \"123456H\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{URL_USUARIOS}}/login",
-											"host": [
-												"{{URL_USUARIOS}}"
-											],
-											"path": [
-												"login"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Loguear usuario exception script tests",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"El código de status es 400\", function () {\r",
-													"    pm.response.to.have.status(403);\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header está presente\", () => {\r",
-													"  pm.response.to.have.header(\"Content-Type\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header es application/json\", () => {\r",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"La respuesta es un status Forbidden\", () => {\r",
-													"    pm.response.to.have.status(\"Forbidden\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "noauth"
-										},
-										"method": "POST",
-										"header": [
-											{
-												"key": "email",
-												"value": "ana@mail.com",
-												"type": "text",
-												"disabled": true
-											},
-											{
-												"key": "password",
-												"value": "123456H",
-												"type": "text",
-												"disabled": true
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"email\": \"ana@mail.com\",\r\n    \"password\": \"1234567H\"\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{URL_USUARIOS}}/login",
-											"host": [
-												"{{URL_USUARIOS}}"
-											],
-											"path": [
-												"login"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Agregar usuario script tests",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"const jsonData = pm.response.json();\r",
-													"console.log(jsonData)\r",
-													"\r",
-													"pm.test(\"Status code is 200\", function () {\r",
-													"    pm.response.to.have.status(201);\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header está presente\", () => {\r",
-													"  pm.response.to.have.header(\"Content-Type\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header es application/json\", () => {\r",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Testear que el tipo de respuesta sea un el id (tipo number)\", () => {\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Validar atributo apellido\", function () {\r",
 													"    \r",
-													"    pm.expect(jsonData.id).to.be.a(\"number\");\r",
+													"    pm.expect(responseJson[pm.info.iteration].apellido).to.be.a('string');\r",
 													"  \r",
 													"});\r",
+													"}\r",
 													"\r",
-													"pm.test(\"Testear que el tipo de respuesta tenga un token)\", () => {\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Validar atributo email\", function () {\r",
 													"    \r",
-													"    pm.expect(jsonData.token_acceso_registro).to.be.a(\"string\");\r",
+													"    pm.expect(responseJson[pm.info.iteration].email).to.be.a('string');\r",
 													"  \r",
 													"});\r",
+													"}\r",
 													"\r",
-													"pm.test(\"La respuesta es un status Created\", () => {\r",
-													"    pm.response.to.have.status(\"Created\");\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Validar atributo nombre_rol\", function () {\r",
+													"    \r",
+													"    pm.expect(responseJson[pm.info.iteration].nombre_rol).to.be.a('string');\r",
+													"  \r",
+													"});\r",
+													"}\r",
+													"\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Validar atributo id\", function () {\r",
+													"    \r",
+													"    pm.expect(responseJson[pm.info.iteration].id).to.be.a('number');\r",
+													"  \r",
+													"});\r",
+													"}\r",
+													"\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Se espera que los elementos dentro de la respuesta sean objetos\", function () {\r",
+													"    \r",
+													"    pm.expect(responseJson[pm.info.iteration]).to.be.an('object');\r",
+													"});\r",
+													"}\r",
+													"\r",
+													"pm.test(\"Se espera que la respuesta sea un array\", () => {\r",
+													"   \r",
+													"  pm.expect(responseJson).to.be.an(\"array\");\r",
+													"   \r",
 													"});\r",
 													"\r",
-													"pm.test(\"Setear el ID del usuario posteado\", () => {\r",
-													"    const jsonData = pm.response.json();\r",
-													"   pm.collectionVariables.set(\"IDPOST_USUARIO\", jsonData.id);\r",
-													"});\r",
 													"\r",
-													"pm.test(\"Setear el token del usuario posteado\", () => {\r",
-													"    const jsonData = pm.response.json();\r",
-													"   pm.collectionVariables.set(\"TOKENREGISTRO_USUARIO\", jsonData.token_acceso_registro);\r",
-													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
 													"\r",
 													"\r",
 													"\r",
@@ -9872,144 +10227,15 @@
 										}
 									],
 									"request": {
-										"method": "POST",
+										"method": "GET",
 										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n  \"nombre\": \"AnaFidalgo\",\r\n  \"apellido\": \"Fidalgo\",\r\n  \"email\": \"ana.fidalgo4@hotmail.com\",\r\n   \"password\": \"12345h\",\r\n   \"ciudad\": \"Buenos Aires\",\r\n   \"nombre_rol\": \"ROLE_USER\"\r\n   }",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
 										"url": {
-											"raw": "{{URL_USUARIOS}}/agregar",
+											"raw": "{{URL_USUARIOS}}/todos",
 											"host": [
 												"{{URL_USUARIOS}}"
 											],
 											"path": [
-												"agregar"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Agregar usuario exception script tests",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"El código de status es 400\", function () {\r",
-													"    pm.response.to.have.status(400);\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header está presente\", () => {\r",
-													"  pm.response.to.have.header(\"Content-Type\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header es application/json\", () => {\r",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-													"});\r",
-													"\r",
-													"\r",
-													"pm.test(\"Content-Length header está presente\", () => {\r",
-													"  pm.response.to.have.header(\"Content-Length\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-													"  pm.response.to.have.body(\"Se ha encontrado un usuario con el email asignado. No se puede crear un usuario con el mismo email\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
-													"    pm.response.to.have.status(\"Bad Request\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n  \"nombre\": \"AnaFidalgo\",\r\n  \"apellido\": \"Fidalgo\",\r\n  \"email\": \"ana.fidalgo@hotmail.com\",\r\n   \"password\": \"12345h\",\r\n   \"ciudad\": \"Buenos Aires\",\r\n   \"nombre_rol\": \"ROLE_USER\"\r\n   }",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{URL_USUARIOS}}/agregar",
-											"host": [
-												"{{URL_USUARIOS}}"
-											],
-											"path": [
-												"agregar"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Agregar usuario exception script tests Copy",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"El código de status es 400\", function () {\r",
-													"    pm.response.to.have.status(400);\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header está presente\", () => {\r",
-													"  pm.response.to.have.header(\"Content-Type\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header es application/json\", () => {\r",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-													"});\r",
-													"\r",
-													"\r",
-													"pm.test(\"Content-Length header está presente\", () => {\r",
-													"  pm.response.to.have.header(\"Content-Length\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-													"  pm.response.to.have.body(\"No se puede guardar un usuario sin asignarle un rol\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
-													"    pm.response.to.have.status(\"Bad Request\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n  \"nombre\": \"AnaFidalgo\",\r\n  \"apellido\": \"Fidalgo\",\r\n  \"email\": \"ana.fidalgo5@hotmail.com\",\r\n   \"password\": \"12345h\",\r\n   \"ciudad\": \"Buenos Aires\",\r\n   \"nombre_rol\": null\r\n   }",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{URL_USUARIOS}}/agregar",
-											"host": [
-												"{{URL_USUARIOS}}"
-											],
-											"path": [
-												"agregar"
+												"todos"
 											]
 										}
 									},
@@ -10018,753 +10244,161 @@
 							]
 						},
 						{
-							"name": "Get - Obtener usuario",
+							"name": "Obtener usuario por id",
 							"item": [
-								{
-									"name": "Obtener todos los usuarios",
-									"item": [
-										{
-											"name": "Obtener todos los usuarios",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															""
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{URL_USUARIOS}}/todos",
-													"host": [
-														"{{URL_USUARIOS}}"
-													],
-													"path": [
-														"todos"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Obtener todos los usuarios script tests",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"const responseJson = pm.response.json();\r",
-															"\r",
-															"pm.test(\"Status code is 200\", function () {\r",
-															"    pm.response.to.have.status(200);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Validar atributo id\", function () {\r",
-															"    pm.expect(pm.response.text()).to.include(\"id\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Validar atributo nombre\", function () {\r",
-															"    pm.expect(pm.response.text()).to.include(\"nombre\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Validar atributo apellido\", function () {\r",
-															"    pm.expect(pm.response.text()).to.include(\"apellido\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Validar atributo email\", function () {\r",
-															"    pm.expect(pm.response.text()).to.include(\"email\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Validar atributo nombre_rol\", function () {\r",
-															"    pm.expect(pm.response.text()).to.include(\"nombre_rol\");\r",
-															"});\r",
-															"\r",
-															"const schema = {\r",
-															"    \"type\": \"object\",\r",
-															"    \"properties\": {\r",
-															"        \"id\": { \"type\": \"number\" },\r",
-															"        \"nombre\": { \"type\": \"string\" },\r",
-															"        \"apellido\": { \"type\": \"string\" },\r",
-															"        \"email\": { \"type\": \"string\" },       \r",
-															"        \"nombre_rol\": { \"type\": \"string\" }\r",
-															"    }\r",
-															"};\r",
-															"\r",
-															"for (let i = 0; i < responseJson.length; i++) {\r",
-															"    pm.test(\"Validate schema\", () => {\r",
-															"    pm.expect(responseJson[pm.info.iteration]).to.have.jsonSchema(schema);\r",
-															"});\r",
-															"\r",
-															"}\r",
-															"\r",
-															"pm.test(\"Validar que los resultados estén ordenados por ID de menor a mayor\", () => {\r",
-															"    const ascendente = responseJson.map(item => item.id).every((current, index, ids) => index === 0 || current >= ids[index-1]);\r",
-															"    \r",
-															"    pm.expect(ascendente).to.be.true;\r",
-															"});\r",
-															"\r",
-															"for (let i = 0; i < responseJson.length; i++) {\r",
-															"    pm.test(\"Validar atributo nombre\", function () {\r",
-															"    \r",
-															"    pm.expect(responseJson[pm.info.iteration].nombre).to.be.a('string');\r",
-															"  \r",
-															"});\r",
-															"}\r",
-															"\r",
-															"for (let i = 0; i < responseJson.length; i++) {\r",
-															"    pm.test(\"Validar atributo apellido\", function () {\r",
-															"    \r",
-															"    pm.expect(responseJson[pm.info.iteration].apellido).to.be.a('string');\r",
-															"  \r",
-															"});\r",
-															"}\r",
-															"\r",
-															"for (let i = 0; i < responseJson.length; i++) {\r",
-															"    pm.test(\"Validar atributo email\", function () {\r",
-															"    \r",
-															"    pm.expect(responseJson[pm.info.iteration].email).to.be.a('string');\r",
-															"  \r",
-															"});\r",
-															"}\r",
-															"\r",
-															"for (let i = 0; i < responseJson.length; i++) {\r",
-															"    pm.test(\"Validar atributo nombre_rol\", function () {\r",
-															"    \r",
-															"    pm.expect(responseJson[pm.info.iteration].nombre_rol).to.be.a('string');\r",
-															"  \r",
-															"});\r",
-															"}\r",
-															"\r",
-															"for (let i = 0; i < responseJson.length; i++) {\r",
-															"    pm.test(\"Validar atributo id\", function () {\r",
-															"    \r",
-															"    pm.expect(responseJson[pm.info.iteration].id).to.be.a('number');\r",
-															"  \r",
-															"});\r",
-															"}\r",
-															"\r",
-															"for (let i = 0; i < responseJson.length; i++) {\r",
-															"    pm.test(\"Se espera que los elementos dentro de la respuesta sean objetos\", function () {\r",
-															"    \r",
-															"    pm.expect(responseJson[pm.info.iteration]).to.be.an('object');\r",
-															"});\r",
-															"}\r",
-															"\r",
-															"pm.test(\"Se espera que la respuesta sea un array\", () => {\r",
-															"   \r",
-															"  pm.expect(responseJson).to.be.an(\"array\");\r",
-															"   \r",
-															"});\r",
-															"\r",
-															"\r",
-															"\r",
-															"\r",
-															"\r",
-															"\r",
-															"\r",
-															"\r",
-															"\r",
-															""
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{URL_USUARIOS}}/todos",
-													"host": [
-														"{{URL_USUARIOS}}"
-													],
-													"path": [
-														"todos"
-													]
-												}
-											},
-											"response": []
-										}
-									]
-								},
 								{
 									"name": "Obtener usuario por id",
-									"item": [
+									"event": [
 										{
-											"name": "Obtener usuario por id",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"const responseJson = pm.response.json();\r",
-															"\r",
-															"pm.test(\"Status code is 200\", function () {\r",
-															"    pm.response.to.have.status(200);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Validar atributo id\", function () {\r",
-															"    pm.expect(pm.response.text()).to.include(\"id\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Validar atributo nombre\", function () {\r",
-															"    pm.expect(pm.response.text()).to.include(\"nombre\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Validar atributo apellido\", function () {\r",
-															"    pm.expect(pm.response.text()).to.include(\"apellido\");\r",
-															"});\r",
-															"\r",
-															"const schema = {\r",
-															"    \"type\": \"object\",\r",
-															"    \"properties\": {\r",
-															"        \"id\": { \"type\": \"number\" },\r",
-															"        \"nombre\": { \"type\": \"string\" },\r",
-															"        \"apellido\": { \"type\": \"string\" },\r",
-															"        \"email\": { \"type\": \"string\" },\r",
-															"        \"ciudad\": { \"type\": \"string\" },\r",
-															"        \"nombre_rol\": { \"type\": \"string\" }\r",
-															"    }\r",
-															"};\r",
-															"\r",
-															"pm.test(\"Validate schema\", () => {\r",
-															"    pm.response.to.have.jsonSchema(schema);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"El id está presente y es un numero\", () => {\r",
-															"   \r",
-															"    pm.expect(responseJson.id).to.be.a('number');\r",
-															"        \r",
-															"});\r",
-															"\r",
-															"pm.test(\"El ID es el mismo que el obtenido al hacer el post de la ciudad previamente\", () => {\r",
-															"  pm.expect(responseJson.id).to.eql(parseInt(pm.collectionVariables.get(\"IDPOST_USUARIO\")));\r",
-															"});\r",
-															"\r",
-															"pm.test(\"El nombre es un string\", () => {\r",
-															"      pm.expect(responseJson.nombre).to.be.a('string');\r",
-															"       \r",
-															"});\r",
-															"\r",
-															""
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{URL_USUARIOS}}/{{IDPOST_USUARIO}}",
-													"host": [
-														"{{URL_USUARIOS}}"
-													],
-													"path": [
-														"{{IDPOST_USUARIO}}"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Obtener usuario por id exception",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"El código de status es 404\", function () {\r",
-															"    pm.response.to.have.status(404);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Length header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Length\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-															"  pm.response.to.have.body(\"No se ha encontrado el usuario con el id indicado\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"La respuesta es un status Not Found\", () => {\r",
-															"    pm.response.to.have.status(\"Not Found\");\r",
-															"});"
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{URL_USUARIOS}}/{{IDFOREXCEPTION}}",
-													"host": [
-														"{{URL_USUARIOS}}"
-													],
-													"path": [
-														"{{IDFOREXCEPTION}}"
-													]
-												}
-											},
-											"response": []
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseJson = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Validar atributo id\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"id\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Validar atributo nombre\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"nombre\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Validar atributo apellido\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"apellido\");\r",
+													"});\r",
+													"\r",
+													"const schema = {\r",
+													"    \"type\": \"object\",\r",
+													"    \"properties\": {\r",
+													"        \"id\": { \"type\": \"number\" },\r",
+													"        \"nombre\": { \"type\": \"string\" },\r",
+													"        \"apellido\": { \"type\": \"string\" },\r",
+													"        \"email\": { \"type\": \"string\" },\r",
+													"        \"ciudad\": { \"type\": \"string\" },\r",
+													"        \"nombre_rol\": { \"type\": \"string\" }\r",
+													"    }\r",
+													"};\r",
+													"\r",
+													"pm.test(\"Validate schema\", () => {\r",
+													"    pm.response.to.have.jsonSchema(schema);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"El id está presente y es un numero\", () => {\r",
+													"   \r",
+													"    pm.expect(responseJson.id).to.be.a('number');\r",
+													"        \r",
+													"});\r",
+													"\r",
+													"pm.test(\"El ID es el mismo que el obtenido al hacer el post de la ciudad previamente\", () => {\r",
+													"  pm.expect(responseJson.id).to.eql(parseInt(pm.collectionVariables.get(\"IDPOST_USUARIO\")));\r",
+													"});\r",
+													"\r",
+													"pm.test(\"El nombre es un string\", () => {\r",
+													"      pm.expect(responseJson.nombre).to.be.a('string');\r",
+													"       \r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
 										}
-									]
-								}
-							]
-						},
-						{
-							"name": "Put - Modificar usuario",
-							"item": [
-								{
-									"name": "Modificar usuario OK",
-									"item": [
-										{
-											"name": "Modificar usuario",
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"id\": {{IDPOST_USUARIO}},\r\n    \"nombre\": \"AnaFidalgo\",\r\n    \"apellido\": \"Fidalgo\",\r\n    \"ciudad\": \"{{PUT_CIUDAD_NOMBRE}}\"\r\n    \r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{URL_USUARIOS}}/editar",
-													"host": [
-														"{{URL_USUARIOS}}"
-													],
-													"path": [
-														"editar"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Modificar usuario script tests",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"Status code is 200\", function () {\r",
-															"    pm.response.to.have.status(200);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Body de respuesta es un texto que indica que fue actualizado el usuario\", function () {\r",
-															"  pm.response.to.have.body(\"UPDATED\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"La respuesta es un status OK\", () => {\r",
-															"    pm.response.to.have.status(\"OK\");\r",
-															"});\r",
-															"\r",
-															"\r",
-															""
-														],
-														"type": "text/javascript"
-													}
-												}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_USUARIOS}}/{{IDPOST_USUARIO}}",
+											"host": [
+												"{{URL_USUARIOS}}"
 											],
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"id\": {{IDPOST2_USUARIO}},\r\n    \"ciudad\": \"{{PUT_CIUDAD_NOMBRE}}\"\r\n    \r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{URL_USUARIOS}}/editar",
-													"host": [
-														"{{URL_USUARIOS}}"
-													],
-													"path": [
-														"editar"
-													]
-												}
-											},
-											"response": []
+											"path": [
+												"{{IDPOST_USUARIO}}"
+											]
 										}
-									]
+									},
+									"response": []
 								},
 								{
-									"name": "Modificar usuario exception",
-									"item": [
+									"name": "Obtener usuario por id exception",
+									"event": [
 										{
-											"name": "Modificar usuario exception",
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"id\": {{IDFOREXCEPTION}},\r\n    \"nombre\": \"Ana\",\r\n    \"apellido\": \"Fidalgo\",\r\n    \"pais\": \"{{PUT_CIUDAD_NOMBRE}}\"\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{URL_USUARIOS}}/editar",
-													"host": [
-														"{{URL_USUARIOS}}"
-													],
-													"path": [
-														"editar"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Modificar usuario exception script tests",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"El código de status es 404\", function () {\r",
-															"    pm.response.to.have.status(404);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Length header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Length\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-															"  pm.response.to.have.body(\"No se ha encontrado el usuario con el id indicado\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"La respuesta es un status Not Found\", () => {\r",
-															"   pm.response.to.have.status(\"Not Found\");\r",
-															"});"
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"id\": {{IDFOREXCEPTION}},\r\n    \"nombre\": \"Ana\",\r\n    \"apellido\": \"Fidalgo\",\r\n    \"pais\": \"{{PUT_CIUDAD_NOMBRE}}\"\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{URL_USUARIOS}}/editar",
-													"host": [
-														"{{URL_USUARIOS}}"
-													],
-													"path": [
-														"editar"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Modificar usuario exception script tests sin id",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"El código de status es 404\", function () {\r",
-															"    pm.response.to.have.status(400);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Length header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Length\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-															"  pm.response.to.have.body(\"Se debe conocer el id del usuario a actualizar\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
-															"   pm.response.to.have.status(\"Bad Request\");\r",
-															"});"
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"id\": null,\r\n    \"nombre\": \"Ana\",\r\n    \"apellido\": \"Fidalgo\",\r\n    \"pais\": \"{{PUT_CIUDAD_NOMBRE}}\"\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{URL_USUARIOS}}/editar",
-													"host": [
-														"{{URL_USUARIOS}}"
-													],
-													"path": [
-														"editar"
-													]
-												}
-											},
-											"response": []
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Length header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Length\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+													"  pm.response.to.have.body(\"No se ha encontrado el usuario con el id indicado\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status Not Found\", () => {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
 										}
-									]
-								}
-							]
-						},
-						{
-							"name": "Delete - Eliminar usuario",
-							"item": [
-								{
-									"name": "Eliminar usuario OK",
-									"item": [
-										{
-											"name": "Eliminar usuario",
-											"request": {
-												"method": "DELETE",
-												"header": [],
-												"url": {
-													"raw": "{{URL_USUARIOS}}/eliminar/{{IDPOST_USUARIO}}",
-													"host": [
-														"{{URL_USUARIOS}}"
-													],
-													"path": [
-														"eliminar",
-														"{{IDPOST_USUARIO}}"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Eliminar usuario script tests",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"El código de status es 200\", function () {\r",
-															"    pm.response.to.have.status(200);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Body de respuesta es un texto que indica que fue borrada la ciudad\", function () {\r",
-															"  pm.response.to.have.body(\"DELETED\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"La respuesta es un status OK\", () => {\r",
-															"  pm.response.to.have.status(\"OK\");\r",
-															"});"
-														],
-														"type": "text/javascript"
-													}
-												}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_USUARIOS}}/{{IDFOREXCEPTION}}",
+											"host": [
+												"{{URL_USUARIOS}}"
 											],
-											"request": {
-												"method": "DELETE",
-												"header": [],
-												"url": {
-													"raw": "{{URL_USUARIOS}}/eliminar/{{IDPOST2_USUARIO}}",
-													"host": [
-														"{{URL_USUARIOS}}"
-													],
-													"path": [
-														"eliminar",
-														"{{IDPOST2_USUARIO}}"
-													]
-												}
-											},
-											"response": []
+											"path": [
+												"{{IDFOREXCEPTION}}"
+											]
 										}
-									]
-								},
-								{
-									"name": "Eliminar usuario exception",
-									"item": [
-										{
-											"name": "Eliminar usuario exception",
-											"request": {
-												"method": "DELETE",
-												"header": [],
-												"url": {
-													"raw": "{{URL_USUARIOS}}/eliminar/{{IDFOREXCEPTION}}",
-													"host": [
-														"{{URL_USUARIOS}}"
-													],
-													"path": [
-														"eliminar",
-														"{{IDFOREXCEPTION}}"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Eliminar usuario exception script tests",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"El código de status es 404\", function () {\r",
-															"    pm.response.to.have.status(404);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Length header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Length\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-															"  pm.response.to.have.body(\"No se ha encontrado el usuario con el id indicado\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"La respuesta es un status Not Found\", () => {\r",
-															"    pm.response.to.have.status(\"Not Found\");\r",
-															"});"
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "DELETE",
-												"header": [],
-												"url": {
-													"raw": "{{URL_USUARIOS}}/eliminar/{{IDFOREXCEPTION}}",
-													"host": [
-														"{{URL_USUARIOS}}"
-													],
-													"path": [
-														"eliminar",
-														"{{IDFOREXCEPTION}}"
-													]
-												}
-											},
-											"response": []
-										}
-									]
+									},
+									"response": []
 								}
 							]
 						}
 					]
 				},
 				{
-					"name": "Reservas Testing",
+					"name": "Put - Modificar usuario",
 					"item": [
 						{
-							"name": "Aux",
+							"name": "Modificar usuario OK",
 							"item": [
 								{
-									"name": "Agregar usuario admin",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Setear el ID del usuario posteado\", () => {",
-													"    const jsonData = pm.response.json();",
-													"   pm.collectionVariables.set(\"ID_POST2_USUARIO_ADMIN\", jsonData.id);",
-													"   pm.collectionVariables.set(\"TOKEN_POST2_USUARIO_ADMIN\", jsonData.token_acceso_registro);",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
+									"name": "Modificar usuario",
 									"request": {
-										"method": "POST",
+										"method": "PUT",
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\n    \"nombre\": \"usuarioadmin2\",\n    \"apellido\": \"testingproducto1\",\n    \"email\": \"admin2@gmail.com\",\n    \"password\": \"123456H\",\n    \"ciudad\": null,\n    \"activo\": 1,\n    \"nombre_rol\": \"ROLE_ADMIN\"\n}",
+											"raw": "{\r\n    \"id\": {{IDPOST_USUARIO}},\r\n    \"nombre\": \"AnaFidalgo\",\r\n    \"apellido\": \"Fidalgo\",\r\n    \"ciudad\": \"{{PUT_CIUDAD_NOMBRE}}\"\r\n    \r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -10772,189 +10406,24 @@
 											}
 										},
 										"url": {
-											"raw": "{{URL_USUARIOS}}/agregar",
+											"raw": "{{URL_USUARIOS}}/editar",
 											"host": [
 												"{{URL_USUARIOS}}"
 											],
 											"path": [
-												"agregar"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Aux Copy",
-							"item": [
-								{
-									"name": "Agregar usuario admin",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Setear el ID del usuario posteado\", () => {",
-													"    const jsonData = pm.response.json();",
-													"   pm.collectionVariables.set(\"ID_POST3_USUARIO_ADMIN\", jsonData.id);",
-													"   pm.collectionVariables.set(\"TOKEN_POST3_USUARIO_ADMIN\", jsonData.token_acceso_registro);",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n    \"nombre\": \"usuarioadmin2\",\n    \"apellido\": \"testingproducto1\",\n    \"email\": \"admin3@mail.com\",\n    \"password\": \"123456H\",\n    \"ciudad\": null,\n    \"activo\": 1,\n    \"nombre_rol\": \"ROLE_ADMIN\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{URL_USUARIOS}}/agregar",
-											"host": [
-												"{{URL_USUARIOS}}"
-											],
-											"path": [
-												"agregar"
-											]
-										}
-									},
-									"response": []
-								}
-							]
-						},
-						{
-							"name": "Post - Agregar reserva",
-							"item": [
-								{
-									"name": "Agregar reserva",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"Setear el ID de la ciudad posteada\", () => {\r",
-													"    const jsonData = pm.response.json();\r",
-													"   pm.collectionVariables.set(\"IDPOST2_RESERVA\", jsonData);\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{TOKENLOGIN_USUARIO}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n    \"fechaInicioReserva\": \"{{INICIORESERVA_POST}}\",\r\n    \"fechaFinReserva\": \"{{FINRESERVA_POST}}\",\r\n    \"horaEstimadaDeLlegada\": \"15:00\",\r\n    \"mensajeUsuario\": \"Quiero reservar\",\r\n    \"precioTotal\": 4500,\r\n    \"vacunadoCovid\": true,\r\n    \"usuario_id\": 1,\r\n    \"producto_id\": 2\r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{URL_RESERVAS}}/agregar",
-											"host": [
-												"{{URL_RESERVAS}}"
-											],
-											"path": [
-												"agregar"
+												"editar"
 											]
 										}
 									},
 									"response": []
 								},
 								{
-									"name": "Agregar reserva exception script tests token",
+									"name": "Modificar usuario script tests",
 									"event": [
 										{
 											"listen": "test",
 											"script": {
 												"exec": [
-													"pm.test(\"El código de status es 400\", function () {\r",
-													"    pm.response.to.have.status(403);\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header está presente\", () => {\r",
-													"  pm.response.to.have.header(\"Content-Type\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header es application/json\", () => {\r",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
-													"    pm.response.to.have.status(\"Forbidden\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n  \"fechaInicioReserva\": \"2022-09-05\",\r\n  \"fechaFinReserva\": \"2022-09-05\",\r\n  \"horaEstimadaDeLlegada\": \"15:00\",\r\n   \"mensajeUsuario\": \"Quiero reservar\",\r\n   \"precioTotal\": 4500,\r\n   \"vacunadoCovid\": true,\r\n   \"usuario_id\": 1,\r\n   \"producto_id\": 2\r\n \r\n  \r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{URL_RESERVAS}}/agregar",
-											"host": [
-												"{{URL_RESERVAS}}"
-											],
-											"path": [
-												"agregar"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Agregar reserva script tests expired",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"const jsonData = pm.response.json();\r",
-													"console.log(jsonData)\r",
-													"\r",
 													"pm.test(\"Status code is 200\", function () {\r",
 													"    pm.response.to.have.status(200);\r",
 													"});\r",
@@ -10964,24 +10433,16 @@
 													"});\r",
 													"\r",
 													"pm.test(\"Content-Type header es application/json\", () => {\r",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
 													"});\r",
 													"\r",
-													"pm.test(\"Testear que el tipo de respuesta sea un el id (tipo number)\", () => {\r",
-													"    \r",
-													"    pm.expect(jsonData).to.be.a(\"number\");\r",
-													"  \r",
+													"pm.test(\"Body de respuesta es un texto que indica que fue actualizado el usuario\", function () {\r",
+													"  pm.response.to.have.body(\"UPDATED\");\r",
 													"});\r",
 													"\r",
 													"pm.test(\"La respuesta es un status OK\", () => {\r",
 													"    pm.response.to.have.status(\"OK\");\r",
 													"});\r",
-													"\r",
-													"pm.test(\"Setear el ID de la reserva posteada\", () => {\r",
-													"    \r",
-													"   pm.collectionVariables.set(\"IDPOST_RESERVA\", jsonData);\r",
-													"});\r",
-													"\r",
 													"\r",
 													"\r",
 													""
@@ -10991,21 +10452,11 @@
 										}
 									],
 									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{TOKEN_POST_USUARIO_ADMIN}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
+										"method": "PUT",
 										"header": [],
 										"body": {
 											"mode": "raw",
-											"raw": "{\r\n  \"fechaInicioReserva\": \"2022-09-30\",\r\n  \"fechaFinReserva\": \"2022-09-30\",\r\n  \"horaEstimadaDeLlegada\": \"15:00\",\r\n   \"mensajeUsuario\": \"Quiero reservar\",\r\n   \"precioTotal\": 4500,\r\n   \"vacunadoCovid\": true,\r\n   \"usuario_id\": 7,\r\n   \"producto_id\": 2\r\n \r\n  \r\n}",
+											"raw": "{\r\n    \"id\": {{IDPOST2_USUARIO}},\r\n    \"ciudad\": \"{{PUT_CIUDAD_NOMBRE}}\"\r\n    \r\n}",
 											"options": {
 												"raw": {
 													"language": "json"
@@ -11013,301 +10464,12 @@
 											}
 										},
 										"url": {
-											"raw": "{{URL_RESERVAS}}/agregar",
+											"raw": "{{URL_USUARIOS}}/editar",
 											"host": [
-												"{{URL_RESERVAS}}"
+												"{{URL_USUARIOS}}"
 											],
 											"path": [
-												"agregar"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Agregar reserva script tests Copy",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"const jsonData = pm.response.json();\r",
-													"console.log(jsonData)\r",
-													"\r",
-													"pm.test(\"Status code is 200\", function () {\r",
-													"    pm.response.to.have.status(200);\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header está presente\", () => {\r",
-													"  pm.response.to.have.header(\"Content-Type\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header es application/json\", () => {\r",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Testear que el tipo de respuesta sea un el id (tipo number)\", () => {\r",
-													"    \r",
-													"    pm.expect(jsonData).to.be.a(\"number\");\r",
-													"  \r",
-													"});\r",
-													"\r",
-													"pm.test(\"La respuesta es un status OK\", () => {\r",
-													"    pm.response.to.have.status(\"OK\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Setear el ID de la reserva posteada\", () => {\r",
-													"    \r",
-													"   pm.collectionVariables.set(\"IDPOST_RESERVA\", jsonData);\r",
-													"});\r",
-													"\r",
-													"\r",
-													"\r",
-													""
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{TOKEN_POST2_USUARIO_ADMIN}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n  \"fechaInicioReserva\": \"2022-09-28\",\r\n  \"fechaFinReserva\": \"2022-09-28\",\r\n  \"horaEstimadaDeLlegada\": \"15:00\",\r\n   \"mensajeUsuario\": \"Quiero reservar\",\r\n   \"precioTotal\": 4500,\r\n   \"vacunadoCovid\": true,\r\n   \"usuario_id\": {{ID_POST2_USUARIO_ADMIN}},\r\n   \"producto_id\": 2\r\n \r\n  \r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{URL_RESERVAS}}/agregar",
-											"host": [
-												"{{URL_RESERVAS}}"
-											],
-											"path": [
-												"agregar"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Agregar reserva exception script tests",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"El código de status es 400\", function () {\r",
-													"    pm.response.to.have.status(400);\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header está presente\", () => {\r",
-													"  pm.response.to.have.header(\"Content-Type\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header es application/json\", () => {\r",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-													"});\r",
-													"\r",
-													"\r",
-													"pm.test(\"Content-Length header está presente\", () => {\r",
-													"  pm.response.to.have.header(\"Content-Length\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-													"  pm.response.to.have.body(\"El producto ya tiene reservas para ese rango de fechas\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
-													"    pm.response.to.have.status(\"Bad Request\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{TOKENLOGIN_USUARIO}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n  \"fechaInicioReserva\": \"{{INICIORESERVA_POST}}\",\r\n  \"fechaFinReserva\": \"{{FINRESERVA_POST}}\",\r\n  \"horaEstimadaDeLlegada\": \"15:00\",\r\n   \"mensajeUsuario\": \"Quiero reservar\",\r\n   \"precioTotal\": 4500,\r\n   \"vacunadoCovid\": true,\r\n   \"usuario_id\": 1,\r\n   \"producto_id\": 2\r\n \r\n  \r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{URL_RESERVAS}}/agregar",
-											"host": [
-												"{{URL_RESERVAS}}"
-											],
-											"path": [
-												"agregar"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Agregar reserva exception script tests resource not found",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"El código de status es 400\", function () {\r",
-													"    pm.response.to.have.status(400);\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header está presente\", () => {\r",
-													"  pm.response.to.have.header(\"Content-Type\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header es application/json\", () => {\r",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-													"});\r",
-													"\r",
-													"\r",
-													"pm.test(\"Content-Length header está presente\", () => {\r",
-													"  pm.response.to.have.header(\"Content-Length\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-													"  pm.response.to.have.body(\"Se debe conocer el id del producto a reservar y el id del usuario que reserva\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
-													"    pm.response.to.have.status(\"Bad Request\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{TOKENLOGIN_USUARIO}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n  \"fechaInicioReserva\": \"2022-09-05\",\r\n  \"fechaFinReserva\": \"2022-09-05\",\r\n  \"horaEstimadaDeLlegada\": \"15:00\",\r\n   \"mensajeUsuario\": \"Quiero reservar\",\r\n   \"precioTotal\": 4500,\r\n   \"vacunadoCovid\": true,\r\n   \"usuario_id\": null,\r\n   \"producto_id\": 2\r\n \r\n  \r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{URL_RESERVAS}}/agregar",
-											"host": [
-												"{{URL_RESERVAS}}"
-											],
-											"path": [
-												"agregar"
-											]
-										}
-									},
-									"response": []
-								},
-								{
-									"name": "Agregar reserva exception script tests  null",
-									"event": [
-										{
-											"listen": "test",
-											"script": {
-												"exec": [
-													"pm.test(\"El código de status es 400\", function () {\r",
-													"    pm.response.to.have.status(400);\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header está presente\", () => {\r",
-													"  pm.response.to.have.header(\"Content-Type\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Content-Type header es application/json\", () => {\r",
-													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-													"});\r",
-													"\r",
-													"\r",
-													"pm.test(\"Content-Length header está presente\", () => {\r",
-													"  pm.response.to.have.header(\"Content-Length\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-													"  pm.response.to.have.body(\"Se debe conocer la fecha de inicio y la fecha de fin para la reserva\");\r",
-													"});\r",
-													"\r",
-													"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
-													"    pm.response.to.have.status(\"Bad Request\");\r",
-													"});"
-												],
-												"type": "text/javascript"
-											}
-										}
-									],
-									"request": {
-										"auth": {
-											"type": "bearer",
-											"bearer": [
-												{
-													"key": "token",
-													"value": "{{TOKENLOGIN_USUARIO}}",
-													"type": "string"
-												}
-											]
-										},
-										"method": "POST",
-										"header": [],
-										"body": {
-											"mode": "raw",
-											"raw": "{\r\n  \"fechaInicioReserva\": null,\r\n  \"fechaFinReserva\": \"2022-09-05\",\r\n  \"horaEstimadaDeLlegada\": \"15:00\",\r\n   \"mensajeUsuario\": \"Quiero reservar\",\r\n   \"vacunadoCovid\": true,\r\n   \"precioTotal\": 4500,\r\n   \"usuario_id\": 1,\r\n   \"producto_id\": 2\r\n \r\n  \r\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{URL_RESERVAS}}/agregar",
-											"host": [
-												"{{URL_RESERVAS}}"
-											],
-											"path": [
-												"agregar"
+												"editar"
 											]
 										}
 									},
@@ -11316,881 +10478,1764 @@
 							]
 						},
 						{
-							"name": "Get - Obtener reserva",
+							"name": "Modificar usuario exception",
+							"item": [
+								{
+									"name": "Modificar usuario exception",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": {{IDFOREXCEPTION}},\r\n    \"nombre\": \"Ana\",\r\n    \"apellido\": \"Fidalgo\",\r\n    \"pais\": \"{{PUT_CIUDAD_NOMBRE}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_USUARIOS}}/editar",
+											"host": [
+												"{{URL_USUARIOS}}"
+											],
+											"path": [
+												"editar"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modificar usuario exception script tests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Length header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Length\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+													"  pm.response.to.have.body(\"No se ha encontrado el usuario con el id indicado\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status Not Found\", () => {\r",
+													"   pm.response.to.have.status(\"Not Found\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": {{IDFOREXCEPTION}},\r\n    \"nombre\": \"Ana\",\r\n    \"apellido\": \"Fidalgo\",\r\n    \"pais\": \"{{PUT_CIUDAD_NOMBRE}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_USUARIOS}}/editar",
+											"host": [
+												"{{URL_USUARIOS}}"
+											],
+											"path": [
+												"editar"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modificar usuario exception script tests sin id",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 404\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Length header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Length\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+													"  pm.response.to.have.body(\"Se debe conocer el id del usuario a actualizar\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
+													"   pm.response.to.have.status(\"Bad Request\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": null,\r\n    \"nombre\": \"Ana\",\r\n    \"apellido\": \"Fidalgo\",\r\n    \"pais\": \"{{PUT_CIUDAD_NOMBRE}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_USUARIOS}}/editar",
+											"host": [
+												"{{URL_USUARIOS}}"
+											],
+											"path": [
+												"editar"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Delete - Eliminar usuario",
+					"item": [
+						{
+							"name": "Eliminar usuario OK",
+							"item": [
+								{
+									"name": "Eliminar usuario",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{URL_USUARIOS}}/eliminar/{{IDPOST_USUARIO}}",
+											"host": [
+												"{{URL_USUARIOS}}"
+											],
+											"path": [
+												"eliminar",
+												"{{IDPOST_USUARIO}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Eliminar usuario script tests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto que indica que fue borrada la ciudad\", function () {\r",
+													"  pm.response.to.have.body(\"DELETED\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status OK\", () => {\r",
+													"  pm.response.to.have.status(\"OK\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{URL_USUARIOS}}/eliminar/{{IDPOST2_USUARIO}}",
+											"host": [
+												"{{URL_USUARIOS}}"
+											],
+											"path": [
+												"eliminar",
+												"{{IDPOST2_USUARIO}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Eliminar usuario exception",
+							"item": [
+								{
+									"name": "Eliminar usuario exception",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{URL_USUARIOS}}/eliminar/{{IDFOREXCEPTION}}",
+											"host": [
+												"{{URL_USUARIOS}}"
+											],
+											"path": [
+												"eliminar",
+												"{{IDFOREXCEPTION}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Eliminar usuario exception script tests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Length header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Length\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+													"  pm.response.to.have.body(\"No se ha encontrado el usuario con el id indicado\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status Not Found\", () => {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{URL_USUARIOS}}/eliminar/{{IDFOREXCEPTION}}",
+											"host": [
+												"{{URL_USUARIOS}}"
+											],
+											"path": [
+												"eliminar",
+												"{{IDFOREXCEPTION}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reservas Testing",
+			"item": [
+				{
+					"name": "Aux",
+					"item": [
+						{
+							"name": "Agregar usuario admin",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Setear el ID del usuario posteado\", () => {",
+											"    const jsonData = pm.response.json();",
+											"   pm.collectionVariables.set(\"ID_POST2_USUARIO_ADMIN\", jsonData.id);",
+											"   pm.collectionVariables.set(\"TOKEN_POST2_USUARIO_ADMIN\", jsonData.token_acceso_registro);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"usuarioadmin2\",\n    \"apellido\": \"testingproducto1\",\n    \"email\": \"admin2@gmail.com\",\n    \"password\": \"123456H\",\n    \"ciudad\": null,\n    \"activo\": 1,\n    \"nombre_rol\": \"ROLE_ADMIN\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_USUARIOS}}/agregar",
+									"host": [
+										"{{URL_USUARIOS}}"
+									],
+									"path": [
+										"agregar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Post - Agregar reserva",
+					"item": [
+						{
+							"name": "Agregar reserva",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Setear el ID de la ciudad posteada\", () => {\r",
+											"    const jsonData = pm.response.json();\r",
+											"   pm.collectionVariables.set(\"IDPOST2_RESERVA\", jsonData);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKENLOGIN_USUARIO}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fechaInicioReserva\": \"{{INICIORESERVA_POST}}\",\r\n    \"fechaFinReserva\": \"{{FINRESERVA_POST}}\",\r\n    \"horaEstimadaDeLlegada\": \"15:00\",\r\n    \"mensajeUsuario\": \"Quiero reservar\",\r\n    \"precioTotal\": 4500,\r\n    \"vacunadoCovid\": true,\r\n    \"usuario_id\": 1,\r\n    \"producto_id\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_RESERVAS}}/agregar",
+									"host": [
+										"{{URL_RESERVAS}}"
+									],
+									"path": [
+										"agregar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Agregar reserva exception script tests token",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"El código de status es 400\", function () {\r",
+											"    pm.response.to.have.status(403);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header es application/json\", () => {\r",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
+											"    pm.response.to.have.status(\"Forbidden\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"fechaInicioReserva\": \"2022-09-05\",\r\n  \"fechaFinReserva\": \"2022-09-05\",\r\n  \"horaEstimadaDeLlegada\": \"15:00\",\r\n   \"mensajeUsuario\": \"Quiero reservar\",\r\n   \"precioTotal\": 4500,\r\n   \"vacunadoCovid\": true,\r\n   \"usuario_id\": 1,\r\n   \"producto_id\": 2\r\n \r\n  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_RESERVAS}}/agregar",
+									"host": [
+										"{{URL_RESERVAS}}"
+									],
+									"path": [
+										"agregar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Agregar reserva script tests expired",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"console.log(jsonData)\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header es application/json\", () => {\r",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Testear que el tipo de respuesta sea un el id (tipo number)\", () => {\r",
+											"    \r",
+											"    pm.expect(jsonData).to.be.a(\"number\");\r",
+											"  \r",
+											"});\r",
+											"\r",
+											"pm.test(\"La respuesta es un status OK\", () => {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Setear el ID de la reserva posteada\", () => {\r",
+											"    \r",
+											"   pm.collectionVariables.set(\"IDPOST_RESERVA\", jsonData);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN_POST_USUARIO_ADMIN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"fechaInicioReserva\": \"2022-09-30\",\r\n  \"fechaFinReserva\": \"2022-09-30\",\r\n  \"horaEstimadaDeLlegada\": \"15:00\",\r\n   \"mensajeUsuario\": \"Quiero reservar\",\r\n   \"precioTotal\": 4500,\r\n   \"vacunadoCovid\": true,\r\n   \"usuario_id\": 7,\r\n   \"producto_id\": 2\r\n \r\n  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_RESERVAS}}/agregar",
+									"host": [
+										"{{URL_RESERVAS}}"
+									],
+									"path": [
+										"agregar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Agregar reserva script tests Copy",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const jsonData = pm.response.json();\r",
+											"console.log(jsonData)\r",
+											"\r",
+											"pm.test(\"Status code is 200\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header es application/json\", () => {\r",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Testear que el tipo de respuesta sea un el id (tipo number)\", () => {\r",
+											"    \r",
+											"    pm.expect(jsonData).to.be.a(\"number\");\r",
+											"  \r",
+											"});\r",
+											"\r",
+											"pm.test(\"La respuesta es un status OK\", () => {\r",
+											"    pm.response.to.have.status(\"OK\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Setear el ID de la reserva posteada\", () => {\r",
+											"    \r",
+											"   pm.collectionVariables.set(\"IDPOST_RESERVA\", jsonData);\r",
+											"});\r",
+											"\r",
+											"\r",
+											"\r",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKEN_POST2_USUARIO_ADMIN}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"fechaInicioReserva\": \"2022-09-30\",\r\n  \"fechaFinReserva\": \"2022-09-30\",\r\n  \"horaEstimadaDeLlegada\": \"15:00\",\r\n   \"mensajeUsuario\": \"Quiero reservar\",\r\n   \"precioTotal\": 4500,\r\n   \"vacunadoCovid\": true,\r\n   \"usuario_id\": {{ID_POST2_USUARIO_ADMIN}},\r\n   \"producto_id\": 2\r\n \r\n  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_RESERVAS}}/agregar",
+									"host": [
+										"{{URL_RESERVAS}}"
+									],
+									"path": [
+										"agregar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Agregar reserva exception script tests",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"El código de status es 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header es application/json\", () => {\r",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Content-Length header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Length\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+											"  pm.response.to.have.body(\"El producto ya tiene reservas para ese rango de fechas\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKENLOGIN_USUARIO}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"fechaInicioReserva\": \"{{INICIORESERVA_POST}}\",\r\n  \"fechaFinReserva\": \"{{FINRESERVA_POST}}\",\r\n  \"horaEstimadaDeLlegada\": \"15:00\",\r\n   \"mensajeUsuario\": \"Quiero reservar\",\r\n   \"precioTotal\": 4500,\r\n   \"vacunadoCovid\": true,\r\n   \"usuario_id\": 1,\r\n   \"producto_id\": 2\r\n \r\n  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_RESERVAS}}/agregar",
+									"host": [
+										"{{URL_RESERVAS}}"
+									],
+									"path": [
+										"agregar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Agregar reserva exception script tests resource not found",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"El código de status es 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header es application/json\", () => {\r",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Content-Length header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Length\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+											"  pm.response.to.have.body(\"Se debe conocer el id del producto a reservar y el id del usuario que reserva\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKENLOGIN_USUARIO}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"fechaInicioReserva\": \"2022-09-05\",\r\n  \"fechaFinReserva\": \"2022-09-05\",\r\n  \"horaEstimadaDeLlegada\": \"15:00\",\r\n   \"mensajeUsuario\": \"Quiero reservar\",\r\n   \"precioTotal\": 4500,\r\n   \"vacunadoCovid\": true,\r\n   \"usuario_id\": null,\r\n   \"producto_id\": 2\r\n \r\n  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_RESERVAS}}/agregar",
+									"host": [
+										"{{URL_RESERVAS}}"
+									],
+									"path": [
+										"agregar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Agregar reserva exception script tests  null",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"El código de status es 400\", function () {\r",
+											"    pm.response.to.have.status(400);\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Type\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Content-Type header es application/json\", () => {\r",
+											"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+											"});\r",
+											"\r",
+											"\r",
+											"pm.test(\"Content-Length header está presente\", () => {\r",
+											"  pm.response.to.have.header(\"Content-Length\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+											"  pm.response.to.have.body(\"Se debe conocer la fecha de inicio y la fecha de fin para la reserva\");\r",
+											"});\r",
+											"\r",
+											"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
+											"    pm.response.to.have.status(\"Bad Request\");\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{TOKENLOGIN_USUARIO}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"fechaInicioReserva\": null,\r\n  \"fechaFinReserva\": \"2022-09-05\",\r\n  \"horaEstimadaDeLlegada\": \"15:00\",\r\n   \"mensajeUsuario\": \"Quiero reservar\",\r\n   \"vacunadoCovid\": true,\r\n   \"precioTotal\": 4500,\r\n   \"usuario_id\": 1,\r\n   \"producto_id\": 2\r\n \r\n  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{URL_RESERVAS}}/agregar",
+									"host": [
+										"{{URL_RESERVAS}}"
+									],
+									"path": [
+										"agregar"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Get - Obtener reserva",
+					"item": [
+						{
+							"name": "Obtener todas las reservas",
 							"item": [
 								{
 									"name": "Obtener todas las reservas",
-									"item": [
+									"event": [
 										{
-											"name": "Obtener todas las reservas",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															""
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{URL_RESERVAS}}/todas",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"todas"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Obtener todas  las reservas script tests",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"const responseJson = pm.response.json();\r",
-															"\r",
-															"pm.test(\"Status code is 200\", function () {\r",
-															"    pm.response.to.have.status(200);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-															"});\r",
-															"\r",
-															"\r",
-															"const schema = {\r",
-															"    \"type\": \"object\",\r",
-															"    \"properties\": {\r",
-															"        \"id\": { \"type\": \"number\" },\r",
-															"        \"fechaInicioReserva\": { \"type\": \"string\" },\r",
-															"        \"fechaFinReserva\": { \"type\": \"string\" },\r",
-															"        \"producto_id\": { \"type\": \"number\" }\r",
-															"    }\r",
-															"};\r",
-															"\r",
-															"for (let i = 0; i < responseJson.length; i++) {\r",
-															"    pm.test(\"Validate schema\", () => {\r",
-															"    pm.expect(responseJson[pm.info.iteration]).to.have.jsonSchema(schema);\r",
-															"});\r",
-															"\r",
-															"}\r",
-															"\r",
-															"pm.test(\"Validar que los resultados estén ordenados por ID de menor a mayor\", () => {\r",
-															"    const ascendente = responseJson.map(item => item.id).every((current, index, ids) => index === 0 || current >= ids[index-1]);\r",
-															"    \r",
-															"    pm.expect(ascendente).to.be.true;\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Se espera que la respuesta sea un array\", () => {\r",
-															"   \r",
-															"  pm.expect(responseJson).to.be.an(\"array\");\r",
-															"   \r",
-															"});\r",
-															"\r",
-															"\r",
-															"\r",
-															"\r",
-															"\r",
-															"\r",
-															"\r",
-															"\r",
-															"\r",
-															""
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{URL_RESERVAS}}/todas",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"todas"
-													]
-												}
-											},
-											"response": []
+											"listen": "test",
+											"script": {
+												"exec": [
+													""
+												],
+												"type": "text/javascript"
+											}
 										}
-									]
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_RESERVAS}}/todas",
+											"host": [
+												"{{URL_RESERVAS}}"
+											],
+											"path": [
+												"todas"
+											]
+										}
+									},
+									"response": []
 								},
+								{
+									"name": "Obtener todas  las reservas script tests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseJson = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+													"});\r",
+													"\r",
+													"\r",
+													"const schema = {\r",
+													"    \"type\": \"object\",\r",
+													"    \"properties\": {\r",
+													"        \"id\": { \"type\": \"number\" },\r",
+													"        \"fechaInicioReserva\": { \"type\": \"string\" },\r",
+													"        \"fechaFinReserva\": { \"type\": \"string\" },\r",
+													"        \"producto_id\": { \"type\": \"number\" }\r",
+													"    }\r",
+													"};\r",
+													"\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Validate schema\", () => {\r",
+													"    pm.expect(responseJson[pm.info.iteration]).to.have.jsonSchema(schema);\r",
+													"});\r",
+													"\r",
+													"}\r",
+													"\r",
+													"pm.test(\"Validar que los resultados estén ordenados por ID de menor a mayor\", () => {\r",
+													"    const ascendente = responseJson.map(item => item.id).every((current, index, ids) => index === 0 || current >= ids[index-1]);\r",
+													"    \r",
+													"    pm.expect(ascendente).to.be.true;\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Se espera que la respuesta sea un array\", () => {\r",
+													"   \r",
+													"  pm.expect(responseJson).to.be.an(\"array\");\r",
+													"   \r",
+													"});\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_RESERVAS}}/todas",
+											"host": [
+												"{{URL_RESERVAS}}"
+											],
+											"path": [
+												"todas"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Obtener reserva por id",
+							"item": [
 								{
 									"name": "Obtener reserva por id",
-									"item": [
+									"event": [
 										{
-											"name": "Obtener reserva por id",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"const responseJson = pm.response.json();\r",
-															"\r",
-															"pm.test(\"Status code is 200\", function () {\r",
-															"    pm.response.to.have.status(200);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-															"});\r",
-															"\r",
-															"const schema = {\r",
-															"    \"type\": \"object\",\r",
-															"    \"properties\": {\r",
-															"        \"id\": { \"type\": \"number\" },\r",
-															"        \"fechaInicioReserva\": { \"type\": \"string\" },\r",
-															"        \"fechaFinReserva\": { \"type\": \"string\" },\r",
-															"        \"horaEstimadaDeLlegada\": { \"type\": \"string\" },\r",
-															"        \"mensajeUsuario\": { \"type\": \"string\" },\r",
-															"        \"vacunadoCovid\": { \"type\": \"boolean\" },\r",
-															"        \"usuario_id\": { \"type\": \"number\" },\r",
-															"        \"producto_id\": { \"type\": \"number\" },\r",
-															"    }\r",
-															"};\r",
-															"\r",
-															"pm.test(\"Validate schema\", () => {\r",
-															"    pm.response.to.have.jsonSchema(schema);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"El ID es el mismo que el obtenido al hacer el post de la ciudad previamente\", () => {\r",
-															"  pm.expect(responseJson.id).to.eql(parseInt(pm.collectionVariables.get(\"IDPOST_RESERVA\")));\r",
-															"});\r",
-															"\r",
-															""
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{URL_RESERVAS}}/{{IDPOST_RESERVA}}",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"{{IDPOST_RESERVA}}"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Obtener reserva por id  producto",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"const responseJson = pm.response.json();\r",
-															"\r",
-															"pm.test(\"Status code is 200\", function () {\r",
-															"    pm.response.to.have.status(200);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-															"});\r",
-															"\r",
-															"const schema = {\r",
-															"    \"type\": \"object\",\r",
-															"    \"properties\": {\r",
-															"        \"id\": { \"type\": \"number\" },\r",
-															"        \"fechaInicioReserva\": { \"type\": \"string\" },\r",
-															"        \"fechaFinReserva\": { \"type\": \"string\" }\r",
-															"       \r",
-															"    }\r",
-															"};\r",
-															"\r",
-															"for (let i = 0; i < responseJson.length; i++) {\r",
-															"    pm.test(\"Validate schema\", () => {\r",
-															"    pm.expect(responseJson[pm.info.iteration]).to.have.jsonSchema(schema);\r",
-															"});\r",
-															"}\r",
-															""
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"auth": {
-													"type": "noauth"
-												},
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{URL_RESERVAS}}/porProductoId/1",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"porProductoId",
-														"1"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Obtener reserva por id  producto exception",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"El código de status es 404\", function () {\r",
-															"    pm.response.to.have.status(404);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Length header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Length\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-															"  pm.response.to.have.body(\"No se encontraron reservas para el producto indicado\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"La respuesta es un status Not Found\", () => {\r",
-															"    pm.response.to.have.status(\"Not Found\");\r",
-															"});\r",
-															""
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"auth": {
-													"type": "noauth"
-												},
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{URL_RESERVAS}}/porProductoId/10",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"porProductoId",
-														"10"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Obtener reserva por id  usuario",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"const responseJson = pm.response.json();\r",
-															"\r",
-															"pm.test(\"Status code is 200\", function () {\r",
-															"    pm.response.to.have.status(200);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
-															"});\r",
-															"\r",
-															"const schema = {\r",
-															"    \"type\": \"object\",\r",
-															"    \"properties\": {\r",
-															"        \"id\": { \"type\": \"number\" },\r",
-															"        \"fechaInicioReserva\": { \"type\": \"string\" },\r",
-															"        \"fechaFinReserva\": { \"type\": \"string\" },\r",
-															"        \"producto_id\": { \"type\": \"number\" }\r",
-															"       \r",
-															"    }\r",
-															"};\r",
-															"\r",
-															"for (let i = 0; i < responseJson.length; i++) {\r",
-															"    pm.test(\"Validate schema\", () => {\r",
-															"    pm.expect(responseJson[pm.info.iteration]).to.have.jsonSchema(schema);\r",
-															"});\r",
-															"}\r",
-															""
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"auth": {
-													"type": "noauth"
-												},
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{URL_RESERVAS}}/porUsuarioId/1",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"porUsuarioId",
-														"1"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Obtener reserva por id  usuario exception",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"El código de status es 404\", function () {\r",
-															"    pm.response.to.have.status(404);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Length header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Length\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-															"  pm.response.to.have.body(\"No se encontraron reservas para el usuario indicado\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"La respuesta es un status Not Found\", () => {\r",
-															"    pm.response.to.have.status(\"Not Found\");\r",
-															"});\r",
-															""
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"auth": {
-													"type": "noauth"
-												},
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{URL_RESERVAS}}/porUsuarioId/{{ID_POST3_USUARIO_ADMIN}}",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"porUsuarioId",
-														"{{ID_POST3_USUARIO_ADMIN}}"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Obtener reserva por id exception",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"El código de status es 404\", function () {\r",
-															"    pm.response.to.have.status(404);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Length header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Length\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-															"  pm.response.to.have.body(\"No se ha encontrado la reserva con ese id\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"La respuesta es un status Not Found\", () => {\r",
-															"    pm.response.to.have.status(\"Not Found\");\r",
-															"});"
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "GET",
-												"header": [],
-												"url": {
-													"raw": "{{URL_RESERVAS}}/{{IDFOREXCEPTION}}",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"{{IDFOREXCEPTION}}"
-													]
-												}
-											},
-											"response": []
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseJson = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+													"});\r",
+													"\r",
+													"const schema = {\r",
+													"    \"type\": \"object\",\r",
+													"    \"properties\": {\r",
+													"        \"id\": { \"type\": \"number\" },\r",
+													"        \"fechaInicioReserva\": { \"type\": \"string\" },\r",
+													"        \"fechaFinReserva\": { \"type\": \"string\" },\r",
+													"        \"horaEstimadaDeLlegada\": { \"type\": \"string\" },\r",
+													"        \"mensajeUsuario\": { \"type\": \"string\" },\r",
+													"        \"vacunadoCovid\": { \"type\": \"boolean\" },\r",
+													"        \"usuario_id\": { \"type\": \"number\" },\r",
+													"        \"producto_id\": { \"type\": \"number\" },\r",
+													"    }\r",
+													"};\r",
+													"\r",
+													"pm.test(\"Validate schema\", () => {\r",
+													"    pm.response.to.have.jsonSchema(schema);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"El ID es el mismo que el obtenido al hacer el post de la ciudad previamente\", () => {\r",
+													"  pm.expect(responseJson.id).to.eql(parseInt(pm.collectionVariables.get(\"IDPOST_RESERVA\")));\r",
+													"});\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
 										}
-									]
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_RESERVAS}}/{{IDPOST_RESERVA}}",
+											"host": [
+												"{{URL_RESERVAS}}"
+											],
+											"path": [
+												"{{IDPOST_RESERVA}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Obtener reserva por id  producto",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseJson = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+													"});\r",
+													"\r",
+													"const schema = {\r",
+													"    \"type\": \"object\",\r",
+													"    \"properties\": {\r",
+													"        \"id\": { \"type\": \"number\" },\r",
+													"        \"fechaInicioReserva\": { \"type\": \"string\" },\r",
+													"        \"fechaFinReserva\": { \"type\": \"string\" }\r",
+													"       \r",
+													"    }\r",
+													"};\r",
+													"\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Validate schema\", () => {\r",
+													"    pm.expect(responseJson[pm.info.iteration]).to.have.jsonSchema(schema);\r",
+													"});\r",
+													"}\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_RESERVAS}}/porProductoId/1",
+											"host": [
+												"{{URL_RESERVAS}}"
+											],
+											"path": [
+												"porProductoId",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Obtener reserva por id  producto exception",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Length header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Length\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+													"  pm.response.to.have.body(\"No se encontraron reservas para el producto indicado\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status Not Found\", () => {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_RESERVAS}}/porProductoId/10",
+											"host": [
+												"{{URL_RESERVAS}}"
+											],
+											"path": [
+												"porProductoId",
+												"10"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Obtener reserva por id  usuario",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseJson = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+													"});\r",
+													"\r",
+													"const schema = {\r",
+													"    \"type\": \"object\",\r",
+													"    \"properties\": {\r",
+													"        \"id\": { \"type\": \"number\" },\r",
+													"        \"fechaInicioReserva\": { \"type\": \"string\" },\r",
+													"        \"fechaFinReserva\": { \"type\": \"string\" },\r",
+													"        \"producto_id\": { \"type\": \"number\" }\r",
+													"       \r",
+													"    }\r",
+													"};\r",
+													"\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Validate schema\", () => {\r",
+													"    pm.expect(responseJson[pm.info.iteration]).to.have.jsonSchema(schema);\r",
+													"});\r",
+													"}\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_RESERVAS}}/porUsuarioId/1",
+											"host": [
+												"{{URL_RESERVAS}}"
+											],
+											"path": [
+												"porUsuarioId",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Obtener reserva por id  usuario  aws",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"const responseJson = pm.response.json();\r",
+													"\r",
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('application/json');\r",
+													"});\r",
+													"\r",
+													"const schema = {\r",
+													"    \"type\": \"object\",\r",
+													"    \"properties\": {\r",
+													"        \"id\": { \"type\": \"number\" },\r",
+													"        \"fechaInicioReserva\": { \"type\": \"string\" },\r",
+													"        \"fechaFinReserva\": { \"type\": \"string\" },\r",
+													"        \"producto_id\": { \"type\": \"number\" }\r",
+													"       \r",
+													"    }\r",
+													"};\r",
+													"\r",
+													"for (let i = 0; i < responseJson.length; i++) {\r",
+													"    pm.test(\"Validate schema\", () => {\r",
+													"    pm.expect(responseJson[pm.info.iteration]).to.have.jsonSchema(schema);\r",
+													"});\r",
+													"}\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://digitalbookingg2sprint3v2-env.eba-wfrhwq8z.us-east-1.elasticbeanstalk.com/reservas/porUsuarioId/1",
+											"protocol": "http",
+											"host": [
+												"digitalbookingg2sprint3v2-env",
+												"eba-wfrhwq8z",
+												"us-east-1",
+												"elasticbeanstalk",
+												"com"
+											],
+											"path": [
+												"reservas",
+												"porUsuarioId",
+												"1"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Obtener reserva por id  usuario exception",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Length header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Length\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+													"  pm.response.to.have.body(\"No se encontraron reservas para el usuario indicado\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status Not Found\", () => {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_RESERVAS}}/porUsuarioId/7",
+											"host": [
+												"{{URL_RESERVAS}}"
+											],
+											"path": [
+												"porUsuarioId",
+												"7"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Obtener reserva por id exception",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Length header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Length\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+													"  pm.response.to.have.body(\"No se ha encontrado la reserva con ese id\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status Not Found\", () => {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "{{URL_RESERVAS}}/{{IDFOREXCEPTION}}",
+											"host": [
+												"{{URL_RESERVAS}}"
+											],
+											"path": [
+												"{{IDFOREXCEPTION}}"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Put - Modificar reserva",
+					"item": [
+						{
+							"name": "Modificar reserva OK",
+							"item": [
+								{
+									"name": "Modificar reserva",
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": {{IDPOST2_RESERVA}},\r\n    \"fechaInicioReserva\": \"2022-10-03\",\r\n  \"fechaFinReserva\": \"2022-10-03\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_RESERVAS}}/editar",
+											"host": [
+												"{{URL_RESERVAS}}"
+											],
+											"path": [
+												"editar"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modificar reserva script tests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Status code is 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto que indica que fue actualizada la ciudad\", function () {\r",
+													"  pm.response.to.have.body(\"UPDATED\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status OK\", () => {\r",
+													"    pm.response.to.have.status(\"OK\");\r",
+													"});\r",
+													"\r",
+													"\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": {{IDPOST_RESERVA}},\r\n    \"fechaInicioReserva\": \"2022-11-03\",\r\n  \"fechaFinReserva\": \"2022-11-03\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_RESERVAS}}/editar",
+											"host": [
+												"{{URL_RESERVAS}}"
+											],
+											"path": [
+												"editar"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						},
 						{
-							"name": "Put - Modificar reserva",
+							"name": "Modificar reserva exception",
 							"item": [
-								{
-									"name": "Modificar reserva OK",
-									"item": [
-										{
-											"name": "Modificar reserva",
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"id\": {{IDPOST2_RESERVA}},\r\n    \"fechaInicioReserva\": \"2022-10-03\",\r\n  \"fechaFinReserva\": \"2022-10-03\"\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{URL_RESERVAS}}/editar",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"editar"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Modificar reserva script tests",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"Status code is 200\", function () {\r",
-															"    pm.response.to.have.status(200);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Body de respuesta es un texto que indica que fue actualizada la ciudad\", function () {\r",
-															"  pm.response.to.have.body(\"UPDATED\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"La respuesta es un status OK\", () => {\r",
-															"    pm.response.to.have.status(\"OK\");\r",
-															"});\r",
-															"\r",
-															"\r",
-															""
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"id\": {{IDPOST_RESERVA}},\r\n    \"fechaInicioReserva\": \"2022-11-03\",\r\n  \"fechaFinReserva\": \"2022-11-03\"\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{URL_RESERVAS}}/editar",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"editar"
-													]
-												}
-											},
-											"response": []
-										}
-									]
-								},
 								{
 									"name": "Modificar reserva exception",
-									"item": [
+									"event": [
 										{
-											"name": "Modificar reserva exception",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"El código de status es 400\", function () {\r",
-															"    pm.response.to.have.status(400);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Length header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Length\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-															"  pm.response.to.have.body(\"Para actualizar la reserva se debe conocer el id\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
-															"   pm.response.to.have.status(\"Bad Request\");\r",
-															"});"
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"id\": null,\r\n     \"fechaInicioReserva\": \"2022-11-05\",\r\n  \"fechaFinReserva\": \"2022-11-05\"\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{URL_RESERVAS}}/editar",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"editar"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Modificar reserva exception script tests",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"El código de status es 404\", function () {\r",
-															"    pm.response.to.have.status(404);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Length header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Length\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-															"  pm.response.to.have.body(\"No se ha encontrado la reserva con ése id para actualizar\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"La respuesta es un status Not Found\", () => {\r",
-															"   pm.response.to.have.status(\"Not Found\");\r",
-															"});"
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "PUT",
-												"header": [],
-												"body": {
-													"mode": "raw",
-													"raw": "{\r\n    \"id\": {{IDFOREXCEPTION}},\r\n     \"fechaInicioReserva\": \"2022-11-05\",\r\n  \"fechaFinReserva\": \"2022-11-05\"\r\n}",
-													"options": {
-														"raw": {
-															"language": "json"
-														}
-													}
-												},
-												"url": {
-													"raw": "{{URL_RESERVAS}}/editar",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"editar"
-													]
-												}
-											},
-											"response": []
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 400\", function () {\r",
+													"    pm.response.to.have.status(400);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Length header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Length\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+													"  pm.response.to.have.body(\"Para actualizar la reserva se debe conocer el id\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status Bad Request\", () => {\r",
+													"   pm.response.to.have.status(\"Bad Request\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
 										}
-									]
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": null,\r\n     \"fechaInicioReserva\": \"2022-11-05\",\r\n  \"fechaFinReserva\": \"2022-11-05\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_RESERVAS}}/editar",
+											"host": [
+												"{{URL_RESERVAS}}"
+											],
+											"path": [
+												"editar"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Modificar reserva exception script tests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Length header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Length\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+													"  pm.response.to.have.body(\"No se ha encontrado la reserva con ése id para actualizar\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status Not Found\", () => {\r",
+													"   pm.response.to.have.status(\"Not Found\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": {{IDFOREXCEPTION}},\r\n     \"fechaInicioReserva\": \"2022-11-05\",\r\n  \"fechaFinReserva\": \"2022-11-05\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{URL_RESERVAS}}/editar",
+											"host": [
+												"{{URL_RESERVAS}}"
+											],
+											"path": [
+												"editar"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Delete - Eliminar reserva",
+					"item": [
+						{
+							"name": "Eliminar reserva OK",
+							"item": [
+								{
+									"name": "Eliminar reserva",
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{URL_RESERVAS}}/eliminar/{{IDPOST_RESERVA}}",
+											"host": [
+												"{{URL_RESERVAS}}"
+											],
+											"path": [
+												"eliminar",
+												"{{IDPOST_RESERVA}}"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Eliminar reserva script tests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 200\", function () {\r",
+													"    pm.response.to.have.status(200);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto que indica que fue borrada la ciudad\", function () {\r",
+													"  pm.response.to.have.body(\"DELETED\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status OK\", () => {\r",
+													"  pm.response.to.have.status(\"OK\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "{{URL_RESERVAS}}/eliminar/{{IDPOST2_RESERVA}}",
+											"host": [
+												"{{URL_RESERVAS}}"
+											],
+											"path": [
+												"eliminar",
+												"{{IDPOST2_RESERVA}}"
+											]
+										}
+									},
+									"response": []
 								}
 							]
 						},
 						{
-							"name": "Delete - Eliminar reserva",
+							"name": "Eliminar reserva exception",
 							"item": [
-								{
-									"name": "Eliminar reserva OK",
-									"item": [
-										{
-											"name": "Eliminar reserva",
-											"request": {
-												"method": "DELETE",
-												"header": [],
-												"url": {
-													"raw": "{{URL_RESERVAS}}/eliminar/{{IDPOST_RESERVA}}",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"eliminar",
-														"{{IDPOST_RESERVA}}"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Eliminar reserva script tests",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"El código de status es 200\", function () {\r",
-															"    pm.response.to.have.status(200);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Body de respuesta es un texto que indica que fue borrada la ciudad\", function () {\r",
-															"  pm.response.to.have.body(\"DELETED\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"La respuesta es un status OK\", () => {\r",
-															"  pm.response.to.have.status(\"OK\");\r",
-															"});"
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "DELETE",
-												"header": [],
-												"url": {
-													"raw": "{{URL_RESERVAS}}/eliminar/{{IDPOST2_RESERVA}}",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"eliminar",
-														"{{IDPOST2_RESERVA}}"
-													]
-												}
-											},
-											"response": []
-										}
-									]
-								},
 								{
 									"name": "Eliminar reserva exception",
-									"item": [
-										{
-											"name": "Eliminar reserva exception",
-											"request": {
-												"method": "DELETE",
-												"header": [],
-												"url": {
-													"raw": "{{URL_RESERVAS}}/eliminar/{{IDFOREXCEPTION}}",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"eliminar",
-														"{{IDFOREXCEPTION}}"
-													]
-												}
-											},
-											"response": []
-										},
-										{
-											"name": "Eliminar reserva exception script tests",
-											"event": [
-												{
-													"listen": "test",
-													"script": {
-														"exec": [
-															"pm.test(\"El código de status es 404\", function () {\r",
-															"    pm.response.to.have.status(404);\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Type\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Type header es application/json\", () => {\r",
-															"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Content-Length header está presente\", () => {\r",
-															"  pm.response.to.have.header(\"Content-Length\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
-															"  pm.response.to.have.body(\"No se ha encontrado la reserva a elimnar\");\r",
-															"});\r",
-															"\r",
-															"pm.test(\"La respuesta es un status Not Found\", () => {\r",
-															"    pm.response.to.have.status(\"Not Found\");\r",
-															"});"
-														],
-														"type": "text/javascript"
-													}
-												}
-											],
-											"request": {
-												"method": "DELETE",
-												"header": [],
-												"url": {
-													"raw": "{{URL_RESERVAS}}/eliminar/{{IDFOREXCEPTION}}",
-													"host": [
-														"{{URL_RESERVAS}}"
-													],
-													"path": [
-														"eliminar",
-														"{{IDFOREXCEPTION}}"
-													]
-												}
-											},
-											"response": []
-										}
-									]
-								}
-							]
-						},
-						{
-							"name": "Aux 2",
-							"item": [
-								{
-									"name": "Delete usuario admin",
 									"request": {
 										"method": "DELETE",
 										"header": [],
 										"url": {
-											"raw": "{{URL_USUARIOS}}/eliminar/{{ID_POST2_USUARIO_ADMIN}}",
+											"raw": "{{URL_RESERVAS}}/eliminar/{{IDFOREXCEPTION}}",
 											"host": [
-												"{{URL_USUARIOS}}"
+												"{{URL_RESERVAS}}"
 											],
 											"path": [
 												"eliminar",
-												"{{ID_POST2_USUARIO_ADMIN}}"
+												"{{IDFOREXCEPTION}}"
 											]
 										}
 									},
 									"response": []
 								},
 								{
-									"name": "Delete usuario admin Copy",
+									"name": "Eliminar reserva exception script tests",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"El código de status es 404\", function () {\r",
+													"    pm.response.to.have.status(404);\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Type\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Type header es application/json\", () => {\r",
+													"  pm.expect(pm.response.headers.get('Content-Type')).to.eql('text/plain;charset=UTF-8');\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Content-Length header está presente\", () => {\r",
+													"  pm.response.to.have.header(\"Content-Length\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"Body de respuesta es un texto con la descripcion del error\", function () {\r",
+													"  pm.response.to.have.body(\"No se ha encontrado la reserva a elimnar\");\r",
+													"});\r",
+													"\r",
+													"pm.test(\"La respuesta es un status Not Found\", () => {\r",
+													"    pm.response.to.have.status(\"Not Found\");\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
 									"request": {
 										"method": "DELETE",
 										"header": [],
 										"url": {
-											"raw": "{{URL_USUARIOS}}/eliminar/{{ID_POST3_USUARIO_ADMIN}}",
+											"raw": "{{URL_RESERVAS}}/eliminar/{{IDFOREXCEPTION}}",
 											"host": [
-												"{{URL_USUARIOS}}"
+												"{{URL_RESERVAS}}"
 											],
 											"path": [
 												"eliminar",
-												"{{ID_POST3_USUARIO_ADMIN}}"
+												"{{IDFOREXCEPTION}}"
 											]
 										}
 									},
 									"response": []
 								}
 							]
+						}
+					]
+				},
+				{
+					"name": "Aux 2",
+					"item": [
+						{
+							"name": "Delete usuario admin",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{URL_USUARIOS}}/eliminar/{{ID_POST2_USUARIO_ADMIN}}",
+									"host": [
+										"{{URL_USUARIOS}}"
+									],
+									"path": [
+										"eliminar",
+										"{{ID_POST2_USUARIO_ADMIN}}"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
@@ -12675,16 +12720,6 @@
 		},
 		{
 			"key": "TOKEN_POST_USUARIO_ADMIN_PUNTUACION",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"key": "ID_POST3_USUARIO_ADMIN",
-			"value": "",
-			"type": "string"
-		},
-		{
-			"key": "TOKEN_POST3_USUARIO_ADMIN",
 			"value": "",
 			"type": "string"
 		}

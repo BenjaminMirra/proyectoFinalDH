@@ -12,8 +12,18 @@ import {urlAPI} from '../../../../global'
 import axios from 'axios'
 import './ReserveDesktop.css'
 
-export const ReserveDesktop = ({productData,categoria,locationData,reservedDays,setReservedDays,setFailReserve,reservedDates,setSubmitData,submitData}) => {
-    
+export const ReserveDesktop = ({
+  setShowPayment,
+  productData,
+  categoria,
+  locationData,
+  reservedDays,
+  setReservedDays,
+  setFailReserve,
+  reservedDates,
+  setSubmitData,
+  submitData,
+}) => {
   return (
     <div className="wrapper">
       <Header />
@@ -30,6 +40,7 @@ export const ReserveDesktop = ({productData,categoria,locationData,reservedDays,
 
             <div className="reserve-content-reserveDetail">
               <ReserveDetail
+                setShowPayment={setShowPayment}
                 setSubmitData={setSubmitData}
                 submitData={submitData}
                 setFailReserve={setFailReserve}
@@ -66,4 +77,4 @@ export const ReserveDesktop = ({productData,categoria,locationData,reservedDays,
       </div>
     </div>
   );
-}
+};

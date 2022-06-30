@@ -7,13 +7,21 @@ import { MisReservas } from '../organisms/MisReservas/MisReservas'
 
 export const MyReservePage = () => {
 
-  
+  const [showFooter,setShowFooter]=useState(false)
+  useEffect(() => {
+    
+    setTimeout(()=>setShowFooter(true),2500)
+  }, []);
 
   return (
-    <div className="reservePage">
-      <Header />
-      <MisReservas/>
-      <Footer />
-    </div>
-  )
+    <>
+      <div className="wrapper">
+        <Header firstname={undefined} lastname={undefined} />
+        <div className="reservePage">
+          <MisReservas />
+        </div>
+        {showFooter && <Footer />}
+      </div>
+    </>
+  );
 }

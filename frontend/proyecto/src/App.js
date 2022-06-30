@@ -38,7 +38,7 @@ function App() {
           />
           <Route
             path="/productos/:id/reserva"
-            element={<Payment setFailReserve={setFailReserve} />}
+            element={<Reserve setFailReserve={setFailReserve} />}
           ></Route>
           <Route path="/mapa" element={<Mapa />}></Route>
           <Route path="/reserva-exitosa" element={<SuccessBooking />}></Route>
