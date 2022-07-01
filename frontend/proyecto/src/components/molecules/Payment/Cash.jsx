@@ -24,16 +24,17 @@ export const Cash = (props) => {
     
   return (
     <div className="cash">
-      <div className='method-title'>
-        <Icon icon={'cash'} width='lg' />
+      <div className="method-title">
+        <Icon icon={"cash"} width="lg" />
         <Heading variant={"secondary"} type="lg" title={"h2"}>
           Efectivo
         </Heading>
       </div>
+      <hr />
       <div className="cash-content">
         <Paragraph size={"xmd"} variant={"secondary"}>
-          Ha seleccionado el pago en efectivo, por lo que realizará el pago
-          una vez llegue al alojamiento <span>{props.placeName}</span>. <br />
+          Ha seleccionado el pago en efectivo, por lo que realizará el pago una
+          vez llegue al alojamiento <span>{props.placeName}</span>. <br />
           <br />
           Recuerde que el precio total de su estadía es de:{" "}
           <strong>ARS ${props.price}</strong>
