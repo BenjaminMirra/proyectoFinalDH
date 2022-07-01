@@ -302,7 +302,7 @@ export const CardProductReserve = ({
                   <div class="leaveAnOpinion">
                     <Heading type="sm" title="h2">¡Dejanos tu opinión!:</Heading>
                     <div className="opinionsStars">
-                      <Stars setRating={setRating} />
+                      <Stars productId={id} setRating={setRating} />
                     </div>
                   </div>
                 </div>

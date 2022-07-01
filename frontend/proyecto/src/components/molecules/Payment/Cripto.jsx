@@ -6,6 +6,7 @@ import { Paragraph } from "../../atoms/paragraph/Paragraph";
 import { Picture } from '../../atoms/Picture/Picture';
 import { Icon } from '../../atoms/Icon/Icon';
 import { Inicio } from "./Inicio";
+import './Cripto.css'
 export const Cripto = (props) => {
     const navigate = useNavigate();
     const handleNavigation = (direction) => {
@@ -26,7 +27,7 @@ export const Cripto = (props) => {
           Cripto
         </Heading>
       </div>
-
+          <hr />
       <div className="cbu-content">
         <Paragraph variant={"secondary"} size="xmd">
           Para para realizar el pago escaneá siguiente código de bitcoin
@@ -35,7 +36,7 @@ export const Cripto = (props) => {
           <Picture image={"qr_cripto"} width="lg" height={"lg"}></Picture>
         </div>
       </div>
-      <div className="cbu-nav">
+      <div className="cripto-nav">
         <Button
           onClick={() => handleNavigation("back")}
           variant={false}

@@ -72,7 +72,10 @@ function LoadedMap({locations}){
     
     const navigate=useNavigate()
     const[random,setRandom]=useState(1)
-    
+    const [loader,setLoader]=useState(true)
+    useEffect(() => {
+      setTimeout(()=>setLoader(false),1500)
+    }, []);
     
     // const MockUp={lat:-37.335028,lng:-59.136085,location:'Buenos Aires, Argentina'}
     useEffect(() => {
@@ -98,6 +101,7 @@ function LoadedMap({locations}){
     };
     
     return (
+      
         <div className='full-map-loaded'>
             <div className='full-map-loaded-container'>
                 
