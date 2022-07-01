@@ -1,11 +1,13 @@
 import React from 'react'
 import ReactStars from "react-rating-stars-component";
 
-export const Stars = ({ setRating }) => {
+export const Stars = ({ setRating,productId }) => {
 
-
+    
     const ratingChanged = (newRating) => {
-        console.log(newRating)
+        console.log(productId);
+        console.log(newRating);
+        
         setRating("2")
     };
 

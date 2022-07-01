@@ -36,7 +36,7 @@ export const Cash = (props) => {
           una vez llegue al alojamiento <span>{props.placeName}</span>. <br />
           <br />
           Recuerde que el precio total de su estadía es de:{" "}
-          <strong>ARG ${props.price}</strong>
+          <strong>ARS ${props.price}</strong>
         </Paragraph>
       </div>
       <div className="cash-nav">

@@ -30,10 +30,15 @@ export const MercadoPago = (props) => {
 
       <div className="cbu-content">
         <Paragraph variant={"secondary"} size="xmd">
-          Para realizar el pago escaneá el siguiente código de mercado pago
+          Para realizar el pago ingresá en el siguiente link de mercado pago y enviá <strong>ARS ${props.price}</strong>
         </Paragraph>
         <div className="qr">
-          <Picture image={"qr_mp"} width="lg" height={"lg"}></Picture>
+          <Paragraph>
+            {" "}
+            <a target={"_blank"} href="https://link.mercadopago.com.ar/digitalbooking">
+              link.mercadopago.com.ar/digitalbooking
+            </a>{" "}
+          </Paragraph>
         </div>
       </div>
       <div className="cbu-nav">
