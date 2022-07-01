@@ -1,15 +1,14 @@
 import React from 'react'
 import ReactStars from "react-rating-stars-component";
 
-export const Stars = ({ setRating, firstClick, setFirstClick }) => {
+export const Stars = ({ setRating,productId }) => {
 
-
-    const ratingChanged = () => {
-        if (!firstClick) {
-            setRating("2")
-            setFirstClick(true)
-            console.log(firstClick)
-        }
+    
+    const ratingChanged = (newRating) => {
+        console.log(productId);
+        console.log(newRating);
+        
+        setRating("2")
     };
 
     return (

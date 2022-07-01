@@ -27,11 +27,11 @@ export const CBU = (props) => {
           Transferencia bancaria
         </Heading>
       </div>
-
+      <hr />
       <div className="cbu-content">
         <Paragraph variant={"secondary"} size="xmd">
           Para para realizar el pago escaneá el código QR y enviá{" "}
-          <strong>ARG ${props.price}</strong>
+          <strong>ARS ${props.price}</strong>
         </Paragraph>
         <div className="qr">
           <Picture image={"qr_banco"} width="lg" height={"lg"}></Picture>
