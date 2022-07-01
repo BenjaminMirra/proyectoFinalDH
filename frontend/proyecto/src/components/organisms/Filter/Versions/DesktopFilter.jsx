@@ -10,7 +10,7 @@ import { urlAPI } from '../../../../global.js';
 export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setLugarInput, startDate, endDate, setFilterProducts, setStartDate, setEndDate }) => {
 
   const scroll = () => {
-    window.scrollTo({ top: 480, behavior: 'smooth' });
+    // window.scrollTo({ top: 480, behavior: 'smooth' });
     setCurrentPage(1);
   };
 

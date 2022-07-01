@@ -53,13 +53,13 @@ export const ProductsReserve = ({ setRating, reserveDate, setReservasPorId, data
     }, [data]);
     useEffect(() => {
         setMockUp(true)
-        window.scrollTo({ top: 480, behavior: "smooth" });
-        setTimeout(() => setMockUp(false), 1700)
+        // window.scrollTo({ top: 480, behavior: "smooth" });
+        setTimeout(() => setMockUp(false), 3000)
 
     }, [reRender]);
     useEffect(() => {
         if (!mockUpDinamic && !mockUp) {
-            window.scrollTo({ top: 480, behavior: "smooth" });
+            // window.scrollTo({ top: 480, behavior: "smooth" });
         }
     }, [mockUpDinamic, mockUp]);
 

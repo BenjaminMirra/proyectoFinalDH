@@ -7,12 +7,13 @@ import { urlAPI } from "../../../global.js";
 import axios from 'axios';
 import sinReservas from '../../utils/images/sinReservas.jpeg'
 import { ProductsReserve } from '../ProductsReserve/ProductsReserve';
-
+import { Loader } from '../../molecules/Loader/Loader';
+import classNames from 'classnames';
 export const MisReservas = () => {
 
 
     const[id, setId] = useState()
-    
+    const [loader,setLoder]=useState(true)
     const [rating, setRating] = useState()
 
     useEffect(() => {
@@ -182,22 +183,33 @@ export const MisReservas = () => {
         }
     }, [productsData, reserveDate])
 
-
-
+        useEffect(() => {
+          if (productsData.length > 0) {
+            setLoder(false);
+          } else {
+            setTimeout(() => setLoder(false), 2500);
+          }
+        }, [productsData]);
+    const MisReservasClassNames = classNames("misReservas-header",{
+        'none':loader
+    });
     return (
-        <>
-            <div className='misReservas-header'>
-                <div className='misReservas-header-container'>
-                    <div className='misReservas-header-title'>
-                        <Heading title='h2' variant='base' type='md'>Mis Reservas
-                        </Heading>
-                    </div>
-                    <Icon onClick={handleBack} icon='back' />
+      <>
+        {loader?<Loader></Loader> : (
+          <>
+            <div className={MisReservasClassNames}>
+              <div className="misReservas-header-container">
+                <div className="misReservas-header-title">
+                  <Heading title="h2" variant="base" type="md">
+                    Mis Reservas
+                  </Heading>
                 </div>
+                <Icon onClick={handleBack} icon="back" />
+              </div>
             </div>
-            <div className="misReservas-products">
-                {render}
-            </div>
-        </>
-    )
+            <div className="misReservas-products">{render}</div>
+          </>
+        )}
+      </>
+    );
 }

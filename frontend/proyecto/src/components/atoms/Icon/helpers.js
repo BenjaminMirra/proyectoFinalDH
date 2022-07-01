@@ -68,6 +68,7 @@ import cash from "../../utils/icons/cash.png";
 import cripto from "../../utils/icons/cripto.png";
 import mercadopago from "../../utils/icons/mercadopago.svg";
 import emptyStarGrey from '../../utils/icons/emptyStarGrey.svg'
+import bank from "../../utils/icons/bank.png";
 
 const IconsList = {
   user: user,
@@ -140,7 +141,8 @@ const IconsList = {
   cash:cash,
   cripto:cripto,
   mercadopago:mercadopago,
-  emptyStarGrey: emptyStarGrey
+  emptyStarGrey: emptyStarGrey,
+  bank:bank,
 };
 export const KeysIconsList = Object.keys(IconsList);
 const IconWidth = {
