@@ -31,6 +31,9 @@ export const CardProductReserve = ({
   precio
 }) => {
 
+
+  const [firstClick, setFirstClick] = useState(false)
+
   const [opinion, setOpinion] = useState(false);
 
 
@@ -289,25 +292,32 @@ export const CardProductReserve = ({
                 <h6>{endReserveDate}</h6>
               </div>
             </div>
-            
-              {!opinion ? (
-                <div className="precioReserve-container">
-                  <Heading type="sm" title="h2">
-                    {`Precio total de la reserva: $${precio * ((new Date(endReserveDate)) - new Date(startReserveDate)) / (1000 * 3600 * 24)}`}
-                  </Heading>
-                </div>
-              ) : (
 
+            {!opinion ? (
+              <div className="precioReserve-container">
+                <Heading type="sm" title="h2">
+                  {`Precio total de la reserva: $${precio * ((new Date(endReserveDate)) - new Date(startReserveDate)) / (1000 * 3600 * 24)}`}
+                </Heading>
+              </div>
+            ) : (
+              !firstClick ? (
                 <div className="leaveAnOpinion-container">
                   <div class="leaveAnOpinion">
                     <Heading type="sm" title="h2">¡Dejanos tu opinión!:</Heading>
                     <div className="opinionsStars">
-                      <Stars setRating={setRating} />
+                      <Stars firstClick={firstClick} setFirstClick={setFirstClick} setRating={setRating} />
                     </div>
                   </div>
                 </div>
+              ) :
+                (<div className="leaveAnOpinion-container">
+                  <div class="leaveAnOpinion">
+                    <Heading type="sm" title="h2">¡Muchas Gracias!</Heading>
+                  </div>
+                </div>
+                )
 
-              )}
+            )}
             <div className="button-container-reserves" id="button-opinion">
               <Link style={{ width: "100%" }} to={`/productos/${id}`}>
                 <Button
