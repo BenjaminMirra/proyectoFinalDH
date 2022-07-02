@@ -286,7 +286,6 @@ export const CardProductReserve = ({
                 <h4>Check in:</h4>
                 <h6>{startReserveDate}</h6>
               </div>
-              <hr />
               <div className="checkOut-product-reserve">
                 <h4>Check out:</h4>
                 <h6>{endReserveDate}</h6>
@@ -296,7 +295,7 @@ export const CardProductReserve = ({
             {!opinion ? (
               <div className="precioReserve-container">
                 <Heading type="sm" title="h2">
-                  {`Precio total de la reserva: $${precio * ((new Date(endReserveDate)) - new Date(startReserveDate)) / (1000 * 3600 * 24)}`}
+                  {`Precio total de la reserva: $${precio * [((new Date(endReserveDate)) - new Date(startReserveDate)) / (1000 * 3600 * 24) + 1]}`}
                 </Heading>
               </div>
             ) : (
