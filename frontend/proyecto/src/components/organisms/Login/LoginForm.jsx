@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { InputLabel } from "../../molecules/InputLabel/InputLabel";
 import { Heading } from "../../atoms/Heading/Heading";
 import { Button } from "../../atoms/Button/Button";
@@ -9,8 +9,21 @@ import { urlAPI } from "../../../global";
 import "./LoginForm.css";
 import { Picture } from "../../atoms/Picture/Picture";
 import axios from "axios";
+import ReCAPTCHA from "react-google-recaptcha";
+
 export const LoginForm = ({ failReserve, setFailReserve }) => {
-  useEffect(() => {}, []);
+  useEffect(() => { }, []);
+
+
+  const [captchaValido, setCaptchaValido] = useState(null)
+
+  const captcha = useRef(null)
+
+  const onChange = () => {
+      if (captcha.current.getValue()) {
+          setCaptchaValido(true)
+      }
+  }
 
   const [medidas, setMedidas] = useState({
     inputSize: "base",
@@ -72,8 +85,9 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
   const [logError, setLogError] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     if (failReserve && firstValidation("email", "password")) {
-      setButtonValue({disabled:true,value:'Iniciando Sesion...'})
+      setButtonValue({ disabled: true, value: 'Iniciando Sesion...' })
       var formdata = new FormData();
       formdata.append("email", formValues.email);
       formdata.append("password", formValues.password);
@@ -114,7 +128,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
                 email: `${formValues.email}`,
               },
             }).then((data) => {
-               
+
               console.log(data);
               localStorage.setItem(
                 "userData",
@@ -133,27 +147,27 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
               const lastProduct = JSON.parse(
                 localStorage.getItem("lastProduct")
               );
-               setButtonValue({
-                 disabled: false,
-                 value: "Iniciar sesión",
-               });
+              setButtonValue({
+                disabled: false,
+                value: "Iniciar sesión",
+              });
               return (window.location.pathname = `/productos/${lastProduct}`);
             });
           }
         });
     } else if (firstValidation("email", "password")) {
-      console.log('entro');
       setButtonValue({ disabled: true, value: "Iniciando Sesion..." });
       var formdata = new FormData();
       formdata.append("email", formValues.email);
       formdata.append("password", formValues.password);
+    
 
 
 
       //arreglar login, ya no es formdata es JSON.
       var myHeaders = new Headers();
       myHeaders.append("Content-Type", "application/json");
-      
+
       var requestOptions = {
         method: 'POST',
         body: JSON.stringify({
@@ -163,7 +177,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
         redirect: "follow",
         headers: myHeaders,
       };
-      setButtonValue({disabled:true,value:'Iniciando sesión...'})
+      setButtonValue({ disabled: true, value: 'Iniciando sesión...' })
       fetch(`${urlAPI}usuarios/login`, requestOptions)
         .then((response) => {
           // console.log(response.status);
@@ -200,7 +214,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
                   nombre_rol: data.data.nombre_rol
                 })
               );
-              
+
               const lastProduct = JSON.parse(
                 localStorage.getItem("lastProduct")
               );
@@ -211,7 +225,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
               return (window.location.pathname = `/`);
             });
           }
-          else{
+          else {
             setButtonValue({
               disabled: false,
               value: "Iniciar sesión",
@@ -219,7 +233,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
           }
         });
     }
-    
+
   };
 
   //     axios({
@@ -240,6 +254,13 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
 
   function firstValidation(email, password) {
     let result = true;
+    
+    if(!captchaValido){
+      console.log(captchaValido)
+      alert("Chee... sos un robot")
+      result = false;
+    }
+
 
     if (!checkLength(formValues[email])) {
       result = false;
@@ -385,11 +406,20 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
             ></Button>
           </div>
         </form>
+        <div className="reCaptcha">
+            <ReCAPTCHA
+                ref={captcha}
+                sitekey="6LeG4LggAAAAAIj07QYr4X8XsV4pM8n19ngidcDm"
+                onChange={onChange}
+            />
+        </div>
         <p>
           ¿No tienes cuenta?
           <Link to={"/sign-up"}>Crear cuenta</Link>
         </p>
       </div>
+
+
     </>
   );
 };
