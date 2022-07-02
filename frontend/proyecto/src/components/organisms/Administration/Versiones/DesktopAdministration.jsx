@@ -12,7 +12,7 @@ import './DesktopAdministration.css';
 import { Icon } from '../../../atoms/Icon/Icon';
 import { Checkbox } from '../../../atoms/CheckBox/Checkbox';
 
-export const DesktopAdministration = ({atributosTodos, setAtributosTodos, politicas, setPoliticas, dataForm, setDataForm, normasDeCasa, setNormasDeCasa, saludSeguridad, setSaludSeguridad, politicasCancelacion, setPoliticasCancelacion, atributosBD, imagenesRender, setImagenesRender, atributosRender, setAtributosRender }) => {
+export const DesktopAdministration = ({ atributosTodos, setAtributosTodos, politicas, setPoliticas, dataForm, setDataForm, normasDeCasa, setNormasDeCasa, saludSeguridad, setSaludSeguridad, politicasCancelacion, setPoliticasCancelacion, atributosBD, imagenesRender, setImagenesRender, atributosRender, setAtributosRender }) => {
 
     //le envío al select Place
     const [places, setPlaces] = useState([]);
@@ -58,6 +58,14 @@ export const DesktopAdministration = ({atributosTodos, setAtributosTodos, politi
         }
     }
 
+    const descripcionLengthValidation = () => {
+        if (dataForm.tituloDescripcion.length < 200) {
+            return false
+        } else {
+            return true;
+        }
+    }
+
     const atributoNombre = document.getElementById("AtributoNombre");
     const atributoIcono = document.getElementById("AtributoIcono");
     const selectPlaceInfo = document.getElementById("selectPlace");
@@ -96,22 +104,31 @@ export const DesktopAdministration = ({atributosTodos, setAtributosTodos, politi
                 imagenDTOList: imagenesRender,
                 caracteristicasDTOList: atributosTodos
             }
-            axios({
-                method: 'POST',
-                url: `${urlAPI}productos/agregar`,
-                data: JSON.stringify(data),
-                headers: {
-                    "Content-Type": "application/json",
-                    Authorization:
-                        "Bearer " + JSON.parse(localStorage.getItem("jwt")),
-                },
-            }).then(res => {
-            }).catch(error => {
-                errorContainer.innerHTML = `Error al crear el producto, por favor intente mas tarde.`
+            if (data.descripcion.length >= 200) {
+                axios({
+                    method: 'POST',
+                    url: `${urlAPI}productos/agregar`,
+                    data: JSON.stringify(data),
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization:
+                            "Bearer " + JSON.parse(localStorage.getItem("jwt")),
+                    },
+                }).then(res => {
+                }).catch(error => {
+                    errorContainer.innerHTML = `Error al crear el producto, por favor intente mas tarde.`
+                    setButtonValue({ value: "Crear", disabled: false })
+                })
+                setButtonValue({ value: "Creado", disabled: false })
+                return (window.location.pathname = `/producto-exitoso`);
+
+            } else if (data.descripcion.length < 200) {
+                errorContainer.innerHTML = ` <p>
+            La descripción debe tener un mínimo de 200 caracteres.
+            </p>`
                 setButtonValue({ value: "Crear", disabled: false })
-            })
-            setButtonValue({ value: "Creado", disabled: false })
-            return (window.location.pathname = `/producto-exitoso`);
+            }
+
         } else if (firstValidation() == null) {
             errorContainer.innerHTML = ` <p>
             Deben ser un total de 5 imágenes.
@@ -328,8 +345,8 @@ export const DesktopAdministration = ({atributosTodos, setAtributosTodos, politi
                     </div>
                     <div className="desktopAdministracion-add-descripcion">
                         <div className="desktopAdministracion-add-descripcion-info">
-                            <Label required={true} label='Descripción'></Label>
-                            <textarea onChange={handleChangeDescription} placeholder='El Hotel Hermitage está ubicado en Tandil, Buenos Aires, a 200 metros de la Plaza San Martín. Este hotel de 3 estrellas cuenta...' name="" id="descripcion-info" cols="30" rows="10" />
+                            <Label required={true} label='Descripción (mínimo 200 caracteres)'></Label>
+                            <textarea onChange={handleChangeDescription} placeholder='El Hotel Hermitage está ubicado en Tandil, Buenos Aires, a 200 metros de la Plaza San Martín. Este hotel de 3 estrellas cuenta...' name="" id="descripcion-info" cols="30" rows="10" maxLength="500" />
                         </div>
                     </div>
                     <div className="desktopAdministracion-add-latitud-longitud">
@@ -369,14 +386,14 @@ export const DesktopAdministration = ({atributosTodos, setAtributosTodos, politi
                             return (
                                 <div key={index++} className="desktopAdministracion-add-atributo-guardado">
                                     <div className="desktopAdministracion-add-atributo-parte1y2-guardado">
-                                    <div className='desktopAdministracion-add-atributo-parte1-guardado'>
-                                        <InputLabel disabled={true} name={`AtributoNombreGuardado_${index}`} placeholder={atributo.titulo} label='Nombre'>
-                                        </InputLabel>
-                                    </div>
-                                    <div className='desktopAdministracion-add-atributo-parte2-guardado'>
-                                        <InputLabel disabled={true} name={`AtributoIconoGuardado_${index}`} placeholder={atributo.nombre_icono} label='Ícono'>
-                                        </InputLabel>
-                                    </div>
+                                        <div className='desktopAdministracion-add-atributo-parte1-guardado'>
+                                            <InputLabel disabled={true} name={`AtributoNombreGuardado_${index}`} placeholder={atributo.titulo} label='Nombre'>
+                                            </InputLabel>
+                                        </div>
+                                        <div className='desktopAdministracion-add-atributo-parte2-guardado'>
+                                            <InputLabel disabled={true} name={`AtributoIconoGuardado_${index}`} placeholder={atributo.nombre_icono} label='Ícono'>
+                                            </InputLabel>
+                                        </div>
                                     </div>
                                     <div className='desktopAdministracion-add-atributo-parte3-guardado'>
                                         <Button label="X" onClick={() => deleteAtribute(atributo.titulo)} />
@@ -386,16 +403,16 @@ export const DesktopAdministration = ({atributosTodos, setAtributosTodos, politi
                         })}
                         <div className="desktopAdministracion-add-atributo">
                             <div className="desktopAdministracion-add-atributo-parte1y2">
-                            <div className='desktopAdministracion-add-atributo-parte1'>
-                                <InputLabel
-                                    name="AtributoNombre" placeholder="Wifi" label='Nombre' disabled={false}>
-                                </InputLabel>
-                            </div>
-                            <div className='desktopAdministracion-add-atributo-parte2'>
-                                <InputLabel
-                                    name="AtributoIcono" placeholder="fa-wifi" label='Ícono' disabled={false}>
-                                </InputLabel>
-                            </div>
+                                <div className='desktopAdministracion-add-atributo-parte1'>
+                                    <InputLabel
+                                        name="AtributoNombre" placeholder="Wifi" label='Nombre' disabled={false}>
+                                    </InputLabel>
+                                </div>
+                                <div className='desktopAdministracion-add-atributo-parte2'>
+                                    <InputLabel
+                                        name="AtributoIcono" placeholder="fa-wifi" label='Ícono' disabled={false}>
+                                    </InputLabel>
+                                </div>
                             </div>
                             <div className='desktopAdministracion-add-atributo-parte3'>
                                 <Button label="+"
