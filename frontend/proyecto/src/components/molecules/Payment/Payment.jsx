@@ -16,7 +16,10 @@ import { useNavigate,useParams } from 'react-router-dom';
 export const Payment = ({ setShowPayment, submitData,price,placeName }) => {
   const { id } = useParams();
   const navigate=useNavigate();
-
+  const [finishButtonValue, setFinishButtonValue] = useState({
+    disabled:false,
+    label: "Finalizar reserva",
+  });
   const [cardDisplayed, setCardDisplayed] = useState();
   useEffect(() => {
     console.log(cardDisplayed);
@@ -24,7 +27,10 @@ export const Payment = ({ setShowPayment, submitData,price,placeName }) => {
 
   
   const handleFinish = () => {
+    console.log('entro');
+    setFinishButtonValue({label:'Finalizando',disabled:true});
     axios({
+      
       method: "POST",
       url: `${urlAPI}reservas/agregar`,
       data: {
@@ -44,7 +50,11 @@ export const Payment = ({ setShowPayment, submitData,price,placeName }) => {
         "Content-Type": "application/json",
         Authorization: "Bearer " + JSON.parse(localStorage.getItem("jwt")),
       },
-    }).then((res) => navigate("/reserva-exitosa"));
+    }).then((res) =>{
+      // setFinishButtonValue({disabled:false,
+      // label: "Finalizar reserva",})
+    return navigate("/reserva-exitosa");
+    } );
   };
 
 
@@ -55,6 +65,8 @@ export const Payment = ({ setShowPayment, submitData,price,placeName }) => {
     else if (method === "efectivo") {
       setCardDisplayed(
         <Cash
+          finishButtonValue={finishButtonValue}
+          setFinishButtonValue={setFinishButtonValue}
           placeName={placeName}
           price={price}
           handleFinish={handleFinish}
@@ -66,6 +78,8 @@ export const Payment = ({ setShowPayment, submitData,price,placeName }) => {
     } else if (method === "mercadopago") {
       setCardDisplayed(
         <MercadoPago
+          finishButtonValue={finishButtonValue}
+          setFinishButtonValue={setFinishButtonValue}
           price={price}
           handleFinish={handleFinish}
           handleCardDisplayed={handleCardDisplayed}
@@ -75,6 +89,8 @@ export const Payment = ({ setShowPayment, submitData,price,placeName }) => {
     } else if (method === "cbu") {
       setCardDisplayed(
         <CBU
+          finishButtonValue={finishButtonValue}
+          setFinishButtonValue={setFinishButtonValue}
           price={price}
           handleFinish={handleFinish}
           handleCardDisplayed={handleCardDisplayed}
@@ -84,6 +100,8 @@ export const Payment = ({ setShowPayment, submitData,price,placeName }) => {
     } else {
       setCardDisplayed(
         <Cripto
+          finishButtonValue={finishButtonValue}
+          setFinishButtonValue={setFinishButtonValue}
           price={price}
           handleFinish={handleFinish}
           handleCardDisplayed={handleCardDisplayed}

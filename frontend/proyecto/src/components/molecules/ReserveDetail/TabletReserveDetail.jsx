@@ -24,10 +24,11 @@ export const TabletReserveDetail = ({
   setSubmitData,
   submitData,
   price,
+  stars,
 }) => {
-  // useEffect(() => {
-  //  console.log(price);
-  // }, [price]);
+  useEffect(() => {
+    console.log(product);
+  }, [product]);
   const navigate = useNavigate();
   // const [submitData,setSubmitData]=useState({fechaInicioReserva:'',fechaFinReserva:'',horaEstimadaDeLlegada:'',mensajeUsuario:'',vacunadoCovid:true,usuarioId:'',productoId:''})
   const [buttonValue, setButtonValue] = useState({
@@ -200,11 +201,57 @@ export const TabletReserveDetail = ({
           </Heading>
 
           <div className="reserveDetail-stars">
-            <Icon icon={"star"} />
-            <Icon icon={"star"} />
-            <Icon icon={"star"} />
-            <Icon icon={"star"} />
-            <Icon icon={"star"} />
+            {stars < 1 ? (
+              ""
+            ) : stars < 2 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : stars <= 4 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : stars <= 6 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : stars < 9 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : stars <= 9.5 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+              </>
+            )}
           </div>
           <SpacerHorizontal height={"xxs"} />
           <div className="reserveDetail-location">
@@ -291,27 +338,21 @@ export const TabletReserveDetail = ({
           </div>
           <div className="warning-tabletDetail">
             {warnings.data && (
-              
-                <Paragraph variant={"error"}>
-                  Debes completar todos los datos que tienen un "
-                  <span className="required"> * "</span>
-                </Paragraph>
-              
+              <Paragraph variant={"error"}>
+                Debes completar todos los datos que tienen un "
+                <span className="required"> * "</span>
+              </Paragraph>
             )}
             {warnings.server && (
-             
-                <Paragraph variant={"error"}>
-                  Lamentablemente no se ha podido realizar la reserva, inténtelo
-                  más tarde
-                </Paragraph>
-              
+              <Paragraph variant={"error"}>
+                Lamentablemente no se ha podido realizar la reserva, inténtelo
+                más tarde
+              </Paragraph>
             )}
             {warnings.range && (
-              
-                <Paragraph variant={"error"}>
-                  Asegúrate de estar ingresando un rango de fechas valido
-                </Paragraph>
-              
+              <Paragraph variant={"error"}>
+                Asegúrate de estar ingresando un rango de fechas valido
+              </Paragraph>
             )}
           </div>
           <Button

@@ -28,15 +28,23 @@ export const CardProductReserve = ({
   startReserveDate,
   endReserveDate,
   setLikedProducts,
-  precio
+  precio,
+  scored,
+  setScored
 }) => {
 
+
+  const [alreadyScored,setAlreadyScored]=useState(false)
 
   const [firstClick, setFirstClick] = useState(false)
 
   const [opinion, setOpinion] = useState(false);
 
-
+  useEffect(() => {
+    if (scored.indexOf(Number(id))!=-1) {
+      setAlreadyScored(true)
+    }
+  }, [scored]);
   useEffect(() => {
     if (new Date(endReserveDate) < new Date()) {
       setOpinion(true)
@@ -157,6 +165,11 @@ export const CardProductReserve = ({
     }
 
   }, [likedProducts, id]);
+
+  const handleStar=()=>{
+
+  }
+
   return (
     <>
       <LazyLoadComponent effect="blur">
@@ -254,27 +267,26 @@ export const CardProductReserve = ({
                       {stars < 1
                         ? "Sin puntaje"
                         : stars < 2
-                          ? "Muy Malo"
-                          : stars < 4
-                            ? "Malo"
-                            : stars < 6
-                              ? "Regular"
-                              : stars < 9
-                                ? "Bueno"
-                                : stars <= 9.5
-                                  ? "Muy Bueno"
-                                  : "Excelente"}
+                        ? "Muy Malo"
+                        : stars < 4
+                        ? "Malo"
+                        : stars < 6
+                        ? "Regular"
+                        : stars < 9
+                        ? "Bueno"
+                        : stars <= 9.5
+                        ? "Muy Bueno"
+                        : "Excelente"}
                     </Paragraph>
                   </div>
                 </div>
               </div>
               <div className="card-product-reserves-primerParte-2">
-
                 <Heading type="md" title="h3" variant="secondary">
                   {titulo}
                 </Heading>
                 <div className="product-location-reserve">
-                  <Icon icon="location" width="xs" onClick={() => { }}></Icon>
+                  <Icon icon="location" width="xs" onClick={() => {}}></Icon>
                   <Paragraph size="md" variant="secondary">
                     {location}
                   </Paragraph>
@@ -292,30 +304,54 @@ export const CardProductReserve = ({
               </div>
             </div>
 
-            {!opinion ? (
-              <div className="precioReserve-container">
-                <Heading type="sm" title="h2">
-                  {`Precio total de la reserva: $${precio * [((new Date(endReserveDate)) - new Date(startReserveDate)) / (1000 * 3600 * 24) + 1]}`}
-                </Heading>
-              </div>
-            ) : (
-              !firstClick ? (
+            {alreadyScored ? (
+              <>
                 <div className="leaveAnOpinion-container">
                   <div class="leaveAnOpinion">
-                    <Heading type="sm" title="h2">¡Dejanos tu opinión!:</Heading>
-                    <div className="opinionsStars">
-                      <Stars productId={id} setRating={setRating} />
-                    </div>
+                    <Paragraph variant={"secondary"}>
+                      <strong>Gracias por valorar el alojamiento !</strong>
+                    </Paragraph>
                   </div>
                 </div>
-              ) :
-                (<div className="leaveAnOpinion-container">
-                  <div class="leaveAnOpinion">
-                    <Heading type="sm" title="h2">¡Muchas Gracias!</Heading>
+              </>
+            ) : !opinion ? (
+              <div className="precioReserve-container">
+                <Paragraph variant={"secondary"}>
+                  <strong>{`Precio total de la reserva: $${
+                    precio *
+                    [
+                      (new Date(endReserveDate) - new Date(startReserveDate)) /
+                        (1000 * 3600 * 24) +
+                        1,
+                    ]
+                  }`}</strong>
+                </Paragraph>
+              </div>
+            ) : !firstClick ? (
+              <div className="leaveAnOpinion-container">
+                <div class="leaveAnOpinion">
+                  <Heading type="sm" title="h2">
+                    ¡Dejanos tu opinión!:
+                  </Heading>
+                  <div className="opinionsStars">
+                    <Stars
+                      scored={scored}
+                      setScored={setScored}
+                      userId={JSON.parse(localStorage.getItem("userData")).id}
+                      productId={id}
+                      setRating={setRating}
+                    />
                   </div>
                 </div>
-                )
-
+              </div>
+            ) : (
+              <div className="leaveAnOpinion-container">
+                <div class="leaveAnOpinion">
+                  <Heading type="sm" title="h2">
+                    ¡Muchas Gracias!
+                  </Heading>
+                </div>
+              </div>
             )}
             <div className="button-container-reserves" id="button-opinion">
               <Link style={{ width: "100%" }} to={`/productos/${id}`}>
@@ -323,11 +359,10 @@ export const CardProductReserve = ({
                   size="sm"
                   label="Ver Detalle"
                   variant={true}
-                  onClick={() => { }}
+                  onClick={() => {}}
                 ></Button>
               </Link>
             </div>
-
           </div>
         </div>
       </LazyLoadComponent>

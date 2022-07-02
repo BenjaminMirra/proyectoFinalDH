@@ -11,6 +11,7 @@ import './MobileCarousel.css'
 import {FacebookShareButton,TwitterShareButton, WhatsappIcon, WhatsappShareButton,LinkedinIcon,LinkedinShareButton, TwitterIcon} from 'react-share'
 import { FacebookIcon } from 'react-share'
 import { MockUp } from "../../MockUpCard/MockUp";
+import { useParams } from "react-router-dom";
 import {
   LazyLoadImage,
   LazyLoadComponent,
@@ -48,17 +49,32 @@ export function MobileCarousel(props) {
         </LinkedinShareButton>
     </div>)
     }
-  const [favorite,setFavorite]=useState('emptyHeart')
-  const toggleFavorite=()=>setFavorite(favorite==='emptyHeart'?'favorite':'emptyHeart')
-  const [load,setLoad]=useState(true)
-  const [share,setShare]=useState(false)
-    useEffect(() => {
-        setTimeout(()=>{
-          if (props.images) {
-            setLoad(false)
-          }
-          },2000)
-    }, [props.images]);
+ const { id } = useParams();
+ // const imagesLocal=[product1,product2,product3,product4,product5]
+
+ useEffect(() => {
+   console.log(props.likedProducts);
+   console.log(id);
+   const likedProducts = props.likedProducts;
+   if (likedProducts.indexOf(Number(id)) != -1) {
+     props.setLiked(true);
+   }
+ }, [props.likedProducts]);
+
+
+ const [show, setShow] = useState(false);
+ const [load, setLoad] = useState(true);
+ const [share, setShare] = useState(false);
+
+ useEffect(() => {
+   setTimeout(() => {
+     if (props.images) {
+       if (props.images.length > 3) {
+         setLoad(false);
+       }
+     }
+   }, 2000);
+ }, [props.images]);
   return (<>
   {load?<MockUp width='100%' height='380px'/>:<div className="mobileCarousel">
            <div className="mobileCarousel-container">
@@ -73,7 +89,7 @@ export function MobileCarousel(props) {
              </Slider>
              <div className="carousel-icons" >
                  <Icon width="md" icon="share" onClick={()=>setShare(!share)} />
-                 <Icon width="md" icon={favorite} onClick={toggleFavorite}/>
+                 <Icon width="md" icon={props.liked?'favorite':'bEmptyHeart'} onClick={()=>props.handleFavorite()}/>
              </div>
             </div>
       

@@ -11,8 +11,9 @@
 .mobile-share-icons{
     position: absolute;
     top: 48px;
-    left: 6px;
+    left: 10px;
     z-index: 5;
+    
 }
 
 .carousel-icons{
@@ -22,6 +23,9 @@
     width: 75px;
     display: flex;
     justify-content: space-between;
+    background: rgb(251, 192, 45,.5);
+    padding:5px;
+    border-radius: 12px;
 }
 .mobileCarousel-container{
     position: relative;

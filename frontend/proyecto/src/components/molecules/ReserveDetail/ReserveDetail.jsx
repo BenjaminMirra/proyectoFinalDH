@@ -15,15 +15,16 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 import axios from "axios";
 import "./ReserveDetail.css";
 export const ReserveDetail = ({
+  setShowPayment,
   product,
   category,
   location,
-  reservedDays,
   setFailReserve,
+  reservedDays,
   setSubmitData,
   submitData,
-  setShowPayment,
   price,
+  stars,
 }) => {
   // useEffect(() => {
   //  console.log(price);
@@ -202,11 +203,57 @@ export const ReserveDetail = ({
           </Heading>
 
           <div className="reserveDetail-stars">
-            <Icon icon={"star"} />
-            <Icon icon={"star"} />
-            <Icon icon={"star"} />
-            <Icon icon={"star"} />
-            <Icon icon={"star"} />
+            {stars < 1 ? (
+              ""
+            ) : stars < 2 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : stars <= 4 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : stars <= 6 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : stars < 9 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : stars <= 9.5 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+              </>
+            )}
           </div>
           <SpacerHorizontal height={"xs"} />
           <div className="reserveDetail-location">
@@ -283,16 +330,14 @@ export const ReserveDetail = ({
           <hr />
 
           <div className="desktopDetail-price">
-            {
-              price / product.precio ? (
-                <Paragraph>
-                  Precio por {price / product.precio} noches: ARS ${price}{" "}
-                  <br /> (ARS ${product.precio} / noche)
-                </Paragraph>
-              ) : (
-                <Paragraph>Precio por noche : $ {product.precio}</Paragraph>
-              )
-            }
+            {price / product.precio ? (
+              <Paragraph>
+                Precio por {price / product.precio} noches: ARS ${price} <br />{" "}
+                (ARS ${product.precio} / noche)
+              </Paragraph>
+            ) : (
+              <Paragraph>Precio por noche : $ {product.precio}</Paragraph>
+            )}
           </div>
           <div style={{ height: "27px" }}></div>
           <SpacerHorizontal height={"lg"} />

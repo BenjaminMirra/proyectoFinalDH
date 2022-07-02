@@ -45,7 +45,8 @@ export const CBU = (props) => {
         ></Button>
         <Button
           onClick={() => handleNavigation("finish")}
-          label="Finalizar Reserva"
+          disabled={props.finishButtonValue.disabled}
+          label={props.finishButtonValue.label}
         ></Button>
       </div>
     </div>

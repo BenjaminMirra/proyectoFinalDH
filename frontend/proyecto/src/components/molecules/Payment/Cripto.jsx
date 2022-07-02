@@ -27,7 +27,7 @@ export const Cripto = (props) => {
           Cripto
         </Heading>
       </div>
-          <hr />
+      <hr />
       <div className="cbu-content">
         <Paragraph variant={"secondary"} size="xmd">
           Para para realizar el pago escaneá siguiente código de bitcoin
@@ -44,7 +44,8 @@ export const Cripto = (props) => {
         ></Button>
         <Button
           onClick={() => handleNavigation("finish")}
-          label="Finalizar Reserva"
+          disabled={props.finishButtonValue.disabled}
+          label={props.finishButtonValue.label}
         ></Button>
       </div>
     </div>

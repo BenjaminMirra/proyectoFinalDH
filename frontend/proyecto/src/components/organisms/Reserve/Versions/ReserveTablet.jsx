@@ -23,6 +23,7 @@ export const ReserveTablet = ({
   setSubmitData,
   submitData,
   price,
+  stars,
 }) => {
   return (
     <div className="wrapper">
@@ -55,6 +56,7 @@ export const ReserveTablet = ({
             <SpacerHorizontal height={"2md"} />
             <div className="tablet-reserve-content-reserveDetail">
               <TabletReserveDetail
+                stars={stars}
                 price={price}
                 setShowPayment={setShowPayment}
                 setSubmitData={setSubmitData}

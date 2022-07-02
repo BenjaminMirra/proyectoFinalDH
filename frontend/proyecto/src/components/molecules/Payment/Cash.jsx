@@ -1,4 +1,4 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { Button } from '../../atoms/Button/Button'
 import { Heading } from '../../atoms/Heading/Heading'
@@ -8,7 +8,9 @@ import { Inicio } from './Inicio'
 import './Cash.css'
 import { Icon } from '../../atoms/Icon/Icon'
 export const Cash = (props) => {
-    
+    useEffect(() => {
+      console.log(props.finishButtonValue);
+    }, [props.finishButtonValue]);
     const handleNavigation=(direction)=>{
         console.log(direction);
           direction === "back"
@@ -48,7 +50,8 @@ export const Cash = (props) => {
         ></Button>
         <Button
           onClick={() => handleNavigation("finish")}
-          label="Finalizar Reserva"
+          label={props.finishButtonValue.label}
+          disabled={props.finishButtonValue.disabled}
         ></Button>
       </div>
     </div>

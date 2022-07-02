@@ -18,7 +18,7 @@ export const ProductsReserve = ({ setRating, reserveDate, setReservasPorId, data
     const [mockUp, setMockUp] = useState(true)
     const [mockUpDinamic, setMockUpDinamic] = useState(true)
     const [likedProducts, setLikedProducts] = useState([]);
-
+    const [scored,setScored]=useState([])
 
 
     useEffect(() => {
@@ -30,11 +30,11 @@ export const ProductsReserve = ({ setRating, reserveDate, setReservasPorId, data
             setMockUpDinamic(false);
         }
 
-
+    const id = JSON.parse(localStorage.getItem("userData")).id;
 
         setLikedProducts([]);
         if (localStorage.getItem("userData")) {
-            const id = JSON.parse(localStorage.getItem("userData")).id;
+            
             axios.get(`${urlAPI}reacciones/porUsuario/${id}`).then((res) =>
                 res.data.forEach((element) => {
                     setLikedProducts((prevData) => {
@@ -49,8 +49,20 @@ export const ProductsReserve = ({ setRating, reserveDate, setReservasPorId, data
                 })
             );
         }
+        data.forEach(element => {
+            axios.get(
+              `${urlAPI}puntuaciones/porProducto/${element.id}/porUsuario/${id}`
+            ).then(res=>{
+                if (res.status==200) {
+                    setScored((prevScores)=>[...prevScores,element.id])
+                }
+            });
+        });
 
     }, [data]);
+    // useEffect(() => {
+    //   console.log(scored);
+    // }, [scored]);
     useEffect(() => {
         setMockUp(true)
         // window.scrollTo({ top: 480, behavior: "smooth" });
@@ -126,54 +138,52 @@ export const ProductsReserve = ({ setRating, reserveDate, setReservasPorId, data
 
 
                             return (
-                                <CardProductReserve
-                                    setRating={setRating}
-                                    setMapHomeData={setMapHomeData}
-                                    titulo={product.titulo}
-                                    url={product.imagenDTOList[0].url_img_producto}
-                                    descripcion={descriptionPreview}
-                                    location={
-                                        product.ciudad_id === 1
-                                            ? "San Carlos de Bariloche"
-                                            : product.ciudad_id === 2
-                                                ? "Buenos Aires"
-                                                : product.ciudad_id === 3
-                                                    ? "Mendoza"
-                                                    : "Córdoba"
-                                    }
-                                    category={
-                                        product.categoria_id === 1
-                                            ? "Hoteles"
-                                            : product.categoria_id === 2
-                                                ? "Hosteles"
-                                                : product.categoria_id === 3
-                                                    ? "Departamentos"
-                                                    : "Bed & Breakfast"
-                                    }
-                                    id={product.id}
-                                    rating={product.puntaje}
-                                    services={product.caracteristicasDTOList}
-                                    lat={product.latitud}
-                                    lng={product.longitud}
-                                    setShowMap={setShowMap}
-                                    likedProducts={likedProducts}
-                                    precio={product.precio}
-                                    setLikedProducts={setLikedProducts}
-                                    startReserveDate={
-                                        reserveDate.map(reserve => {
-                                            if (reserve.id == product.id) {
-                                                return reserve.fechaInicioReserva
-                                            }
-                                        })
-                                    }
-                                    endReserveDate={
-                                        reserveDate.map(reserve => {
-                                            if (reserve.id == product.id) {
-                                                return reserve.fechaFinReserva
-                                            }
-                                        })
-                                    }
-                                />
+                              <CardProductReserve
+                                scored={scored}
+                                setScored={setScored}
+                                setRating={setRating}
+                                setMapHomeData={setMapHomeData}
+                                titulo={product.titulo}
+                                url={product.imagenDTOList[0].url_img_producto}
+                                descripcion={descriptionPreview}
+                                location={
+                                  product.ciudad_id === 1
+                                    ? "San Carlos de Bariloche"
+                                    : product.ciudad_id === 2
+                                    ? "Buenos Aires"
+                                    : product.ciudad_id === 3
+                                    ? "Mendoza"
+                                    : "Córdoba"
+                                }
+                                category={
+                                  product.categoria_id === 1
+                                    ? "Hoteles"
+                                    : product.categoria_id === 2
+                                    ? "Hosteles"
+                                    : product.categoria_id === 3
+                                    ? "Departamentos"
+                                    : "Bed & Breakfast"
+                                }
+                                id={product.id}
+                                rating={product.puntaje}
+                                services={product.caracteristicasDTOList}
+                                lat={product.latitud}
+                                lng={product.longitud}
+                                setShowMap={setShowMap}
+                                likedProducts={likedProducts}
+                                precio={product.precio}
+                                setLikedProducts={setLikedProducts}
+                                startReserveDate={reserveDate.map((reserve) => {
+                                  if (reserve.id == product.id) {
+                                    return reserve.fechaInicioReserva;
+                                  }
+                                })}
+                                endReserveDate={reserveDate.map((reserve) => {
+                                  if (reserve.id == product.id) {
+                                    return reserve.fechaFinReserva;
+                                  }
+                                })}
+                              />
                             );
                         })}
                     </div>

@@ -15,15 +15,16 @@ import {
 import "react-lazy-load-image-component/src/effects/blur.css";
 import './ReserveDetail.css'
 export const MobileReserveDetail = ({
+  setShowPayment,
   product,
   category,
   location,
-  reservedDays,
   setFailReserve,
+  reservedDays,
   setSubmitData,
   submitData,
-  setShowPayment,
   price,
+  stars,
 }) => {
   // useEffect(() => {
   //  console.log(price);
@@ -198,11 +199,57 @@ export const MobileReserveDetail = ({
           </Heading>
 
           <div className="reserveDetail-stars">
-            <Icon icon={"star"} />
-            <Icon icon={"star"} />
-            <Icon icon={"star"} />
-            <Icon icon={"star"} />
-            <Icon icon={"star"} />
+            {stars < 1 ? (
+              ""
+            ) : stars < 2 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : stars <= 4 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : stars <= 6 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : stars < 9 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : stars <= 9.5 ? (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="emptyStar" />
+              </>
+            ) : (
+              <>
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+                <Icon icon="star" />
+              </>
+            )}
           </div>
           <SpacerHorizontal height={"xs"} />
           <div className="reserveDetail-location">

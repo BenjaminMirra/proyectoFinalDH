@@ -9,6 +9,9 @@
     width: 90px;
     display: flex;
     justify-content: space-between;
+    background: rgb(251, 192, 45,.5);
+    padding:5px;
+    border-radius: 12px;
 }
 .tablet-slider-container{
     width: 100%;

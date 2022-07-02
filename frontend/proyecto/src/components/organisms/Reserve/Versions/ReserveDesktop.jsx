@@ -24,6 +24,7 @@ export const ReserveDesktop = ({
   setSubmitData,
   submitData,
   price,
+  stars,
 }) => {
   // useEffect(() => {
   //   console.log(price);
@@ -44,6 +45,7 @@ export const ReserveDesktop = ({
 
             <div className="reserve-content-reserveDetail">
               <ReserveDetail
+                stars={stars}
                 price={price}
                 setShowPayment={setShowPayment}
                 setSubmitData={setSubmitData}

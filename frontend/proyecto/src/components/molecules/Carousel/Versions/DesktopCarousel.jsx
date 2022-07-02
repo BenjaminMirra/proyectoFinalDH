@@ -18,14 +18,22 @@ import {
 } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 export function DesktopCarousel(props){
+   const { id } = useParams();
     // const imagesLocal=[product1,product2,product3,product4,product5]
-
-    const images=props.images
-    const {id}=useParams()
-    
-    const toggleFavorite=(id)=>{
+   
+    useEffect(() => {
       
-    }
+      console.log(props.likedProducts);
+      console.log(id);
+      const likedProducts=props.likedProducts
+      if (likedProducts.indexOf(Number(id))!=-1) {
+        props.setLiked(true)
+      }
+    }, [props.likedProducts]);
+    const images=props.images
+   
+    
+    
     const [show,setShow]=useState(false)
     const [load,setLoad]=useState(true)
     const [share,setShare]=useState(false)
@@ -82,6 +90,10 @@ export function DesktopCarousel(props){
   </div>
   </>)
     }
+
+    useEffect(() => {
+      console.log(props.liked);
+    }, [props.liked]);
   return (
     <>
       {load ? (
@@ -92,15 +104,16 @@ export function DesktopCarousel(props){
           <div className="desktop-icons">
             <div className="desktop-icons-container">
               <div className="desktop-icons-content">
+                
                 <Icon
                   width="lg"
-                  icon="bShare"
+                  icon="share"
                   onClick={() => setShare(!share)}
                 />
                 <Icon
                   width="lg"
-                  icon={"eFavorite"}
-                  onClick={toggleFavorite(id)}
+                  icon={props.liked?'favorite':"bEmptyHeart"}
+                  onClick={()=>props.handleFavorite()}
                 />
               </div>
             </div>
@@ -114,7 +127,13 @@ export function DesktopCarousel(props){
                 } `}
               >
                 {" "}
-                <LazyLoadImage effect='blur' width={'100%'} height='100%' src={image} alt="" />{" "}
+                <LazyLoadImage
+                  effect="blur"
+                  width={"100%"}
+                  height="100%"
+                  src={image}
+                  alt=""
+                />{" "}
               </div>
             ))}
             <div className="watch-more">

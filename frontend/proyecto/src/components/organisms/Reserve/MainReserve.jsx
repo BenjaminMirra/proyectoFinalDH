@@ -17,6 +17,7 @@ export const MainReserve = ({setFailReserve}) => {
     const [submitData,setSubmitData]=useState([])
     const [showPayment,setShowPayment]=useState(false)
     const [price,setPrice]=useState(0)
+    const [stars,setStars]=useState(0)
      useEffect(() => {
             
             setSubmitData([])
@@ -34,7 +35,19 @@ export const MainReserve = ({setFailReserve}) => {
             //  
         // setSubmitData({producto_id:Number(id)?Number(id):0,usuario_id:JSON.parse(localStorage.getItem('userData')).id})
         
-       
+        axios({
+          url: `${urlAPI}puntuaciones/porProducto/${id}`,
+          method: "GET",
+          headers: { "Content-Type": "application/json" },
+        }).then((data) => {
+          let scores = [];
+          data.data.forEach((element) => {
+            scores.push(element.puntuacion);
+          });
+          let avgScore = scores.reduce((a, b) => a + b, 0) / scores.length;
+          // console.log(avgScore.toFixed(1));
+          setStars(avgScore.toFixed(1) * 2);
+        });
 
   }, [id]);
   useEffect(() => {
@@ -55,14 +68,15 @@ export const MainReserve = ({setFailReserve}) => {
     }
   }, [submitData]);
  
-  // useEffect(() => {
-  //   console.log(price);
-  // }, [price]);
+  useEffect(() => {
+    console.log(stars);
+  }, [stars]);
   
-// }
+
     const [reserveDisplayed, setReserveDisplayed] = useState(
       <>
         <ReserveDesktop
+          stars={stars}
           price={price}
           setShowPayment={setShowPayment}
           reservedDays={reservedDays}
@@ -88,6 +102,7 @@ export const MainReserve = ({setFailReserve}) => {
             setReserveDisplayed(
               <>
                 <ReserveMobile
+                  stars={stars}
                   price={price}
                   setShowPayment={setShowPayment}
                   setSubmitData={setSubmitData}
@@ -106,6 +121,7 @@ export const MainReserve = ({setFailReserve}) => {
         else if(windowWidth<=1365){
             setReserveDisplayed(
               <ReserveTablet
+                stars={stars}
                 price={price}
                 setShowPayment={setShowPayment}
                 setSubmitData={setSubmitData}
@@ -123,6 +139,7 @@ export const MainReserve = ({setFailReserve}) => {
         else if(windowWidth>=1366){
             setReserveDisplayed(
               <ReserveDesktop
+                stars={stars}
                 price={price}
                 setShowPayment={setShowPayment}
                 setSubmitData={setSubmitData}

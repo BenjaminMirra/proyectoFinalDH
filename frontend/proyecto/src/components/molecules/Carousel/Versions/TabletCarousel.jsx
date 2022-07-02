@@ -9,6 +9,7 @@ import { Icon } from "../../../atoms/Icon/Icon";
 import {FacebookShareButton,TwitterShareButton, WhatsappIcon, WhatsappShareButton,LinkedinIcon,LinkedinShareButton, TwitterIcon} from 'react-share'
 import { FacebookIcon } from 'react-share'
 import { MockUp } from "../../MockUpCard/MockUp";
+import { useParams,useNavigate } from "react-router-dom";
 import { Paragraph } from "../../../atoms/paragraph/Paragraph";
 import {
   LazyLoadImage,
@@ -47,17 +48,31 @@ export function TabletCarousel(props) {
     slideCount:true,
     
   };
-  const [favorite,setFavorite]=useState('emptyHeart')
-  const toggleFavorite=()=>setFavorite(favorite==='emptyHeart'?'favorite':'emptyHeart')
-   const [load,setLoad]=useState(true)
-    const [share,setShare]=useState(false)
-    useEffect(() => {
-        setTimeout(()=>{
-          if (props.images) {
-            setLoad(false)
-          }
-          },1500)
-    }, [props.images]);
+  const { id } = useParams();
+  // const imagesLocal=[product1,product2,product3,product4,product5]
+
+  useEffect(() => {
+    console.log(props.likedProducts);
+    console.log(id);
+    const likedProducts = props.likedProducts;
+    if (likedProducts.indexOf(Number(id)) != -1) {
+      props.setLiked(true);
+    }
+  }, [props.likedProducts]);
+
+  const [show, setShow] = useState(false);
+  const [load, setLoad] = useState(true);
+  const [share, setShare] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => {
+      if (props.images) {
+        if (props.images.length > 3) {
+          setLoad(false);
+        }
+      }
+    }, 2000);
+  }, [props.images]);
   return (<> 
 
       {load?<div style={{width:'100%'}}><MockUp width='100%' height='454px' /></div>:<div className="contenedor-tablet-carousel" >
@@ -79,7 +94,7 @@ export function TabletCarousel(props) {
              </div>
              <div className="tablet-carousel-icons" >
                  <Icon width="lg" icon="share" onClick={()=>setShare(!share)} />
-                 <Icon width="lg" icon={favorite} onClick={toggleFavorite}/>
+                 <Icon width="lg" icon={props.liked?'favorite':'bEmptyHeart'} onClick={()=>props.handleFavorite()}/>
              </div>
             </div>}
            
