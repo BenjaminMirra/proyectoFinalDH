@@ -31,6 +31,9 @@ export const CardProductReserve = ({
   precio
 }) => {
 
+
+  const [firstClick, setFirstClick] = useState(false)
+
   const [opinion, setOpinion] = useState(false);
 
 
@@ -283,21 +286,20 @@ export const CardProductReserve = ({
                 <h4>Check in:</h4>
                 <h6>{startReserveDate}</h6>
               </div>
-              <hr />
               <div className="checkOut-product-reserve">
                 <h4>Check out:</h4>
                 <h6>{endReserveDate}</h6>
               </div>
             </div>
-            
-              {!opinion ? (
-                <div className="precioReserve-container">
-                  <Heading type="sm" title="h2">
-                    {`Precio total de la reserva: $${(precio * ((new Date(endReserveDate)) - new Date(startReserveDate)) / (1000 * 3600 * 24))+precio}`}
-                  </Heading>
-                </div>
-              ) : (
 
+            {!opinion ? (
+              <div className="precioReserve-container">
+                <Heading type="sm" title="h2">
+                  {`Precio total de la reserva: $${precio * [((new Date(endReserveDate)) - new Date(startReserveDate)) / (1000 * 3600 * 24) + 1]}`}
+                </Heading>
+              </div>
+            ) : (
+              !firstClick ? (
                 <div className="leaveAnOpinion-container">
                   <div class="leaveAnOpinion">
                     <Heading type="sm" title="h2">¡Dejanos tu opinión!:</Heading>
@@ -306,8 +308,15 @@ export const CardProductReserve = ({
                     </div>
                   </div>
                 </div>
+              ) :
+                (<div className="leaveAnOpinion-container">
+                  <div class="leaveAnOpinion">
+                    <Heading type="sm" title="h2">¡Muchas Gracias!</Heading>
+                  </div>
+                </div>
+                )
 
-              )}
+            )}
             <div className="button-container-reserves" id="button-opinion">
               <Link style={{ width: "100%" }} to={`/productos/${id}`}>
                 <Button
