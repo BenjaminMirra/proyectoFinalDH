@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './Administration.css'
 import { DesktopAdministration } from './Versiones/DesktopAdministration'
-import { MobileAdministration } from './Versiones/MobileAdministration'
 import { useLocation } from 'react-router-dom'
 import axios from 'axios';
 import { urlAPI } from '../../../global.js'
@@ -81,7 +80,7 @@ export const Administration = () => {
 
     useEffect(() => {
         if (windowWidth < 768) {
-            setAdministrationDisplayed(<MobileAdministration atributosTodos={atributosTodos} setAtributosTodos={setAtributosTodos} politicas={politicas} setPoliticas={setPoliticas} dataForm={dataForm} setDataForm={setDataForm} normasDeCasa={normasDeCasa} setNormasDeCasa={setNormasDeCasa} saludSeguridad={saludSeguridad} setSaludSeguridad={setSaludSeguridad} politicasCancelacion={politicasCancelacion} setPoliticasCancelacion={setPoliticasCancelacion} imagenesRender={imagenesRender} setImagenesRender={setImagenesRender} atributosRender={atributosRender} setAtributosRender={setAtributosRender} atributosBD={atributosBD} />)
+            setAdministrationDisplayed(<DesktopAdministration atributosTodos={atributosTodos} setAtributosTodos={setAtributosTodos} politicas={politicas} setPoliticas={setPoliticas} dataForm={dataForm} setDataForm={setDataForm} normasDeCasa={normasDeCasa} setNormasDeCasa={setNormasDeCasa} saludSeguridad={saludSeguridad} setSaludSeguridad={setSaludSeguridad} politicasCancelacion={politicasCancelacion} setPoliticasCancelacion={setPoliticasCancelacion} imagenesRender={imagenesRender} setImagenesRender={setImagenesRender} atributosRender={atributosRender} setAtributosRender={setAtributosRender} atributosBD={atributosBD} />)
         } else {
             setAdministrationDisplayed(<DesktopAdministration atributosTodos={atributosTodos} setAtributosTodos={setAtributosTodos} politicas={politicas} setPoliticas={setPoliticas} dataForm={dataForm} setDataForm={setDataForm} normasDeCasa={normasDeCasa} setNormasDeCasa={setNormasDeCasa} saludSeguridad={saludSeguridad} setSaludSeguridad={setSaludSeguridad} politicasCancelacion={politicasCancelacion} setPoliticasCancelacion={setPoliticasCancelacion} imagenesRender={imagenesRender} setImagenesRender={setImagenesRender} atributosRender={atributosRender} setAtributosRender={setAtributosRender} atributosBD={atributosBD} />)
         }
