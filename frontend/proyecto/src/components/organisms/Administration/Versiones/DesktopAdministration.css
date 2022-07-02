@@ -247,6 +247,15 @@
     width: 100%
 }
 
+.desktopAdministracion-add-atributo-parte1y2-guardado{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .desktopAdministracion-add-atributo-parte1-guardado input {
     width: 100%
 }
@@ -270,10 +279,10 @@
 .desktopAdministracion-add-atributo-parte3-guardado button {
     width: 40px;
     height: 40px;
-    background-color: var(--color-primary) !important;
-    color: white !important;
-    opacity: .5;
-    cursor: inherit !important;
+    background-color: var(--color-tertiary);
+    opacity: .6;
+    color: white ;
+    cursor: inherit ;
 }
 
 .desktopAdministracion-add-politicas {
@@ -301,6 +310,7 @@
 
 .desktopAdministracion-politicas textarea {
     width: 100%;
+    height: 150px;
     margin-top: 10px;
     padding-left: 8px;
     padding-top: 5px;
@@ -504,6 +514,15 @@
     margin-right: 5px;
 }
 
+.errorContainer{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    color: red;
+}
+
 @media (max-width:1375px) {
     .desktopAdministracion-add-atributo-checkbox {
         grid-template-columns: repeat(7, 150px);
@@ -551,10 +570,10 @@
     width: 40px;
     height: 40px;
     margin-left: 10px;
-    background-color: var(--color-primary) !important;
-    color: white !important;
+    background-color: var(--color-tertiary);
+    color: white ;
     opacity: .5;
-    cursor: inherit !important;
+    cursor: inherit ;
 }
 
 .mobileAdministracion-add-imagen-parte1-cargada input {
@@ -591,8 +610,9 @@
     margin-top: 6px;
     width: 40px;
     height: 40px;
+    background-color: var(--color-tertiary);
     margin-left: 5px;
-    opacity: 0.5;
+    opacity: .5;
 }
 
 .mobile-add-politicasCancelacion {
@@ -614,6 +634,7 @@
 
 .mobile-add-politicas-cancelacion textarea {
     margin-top: 10px;
+    height: 150px;
     width: 100%;
     padding-left: 8px;
     padding-top: 5px;
@@ -654,6 +675,7 @@
 .mobile-add-saludSeguridad textarea {
     margin-top: 10px;
     width: 100%;
+    height: 150px;
     padding-left: 8px;
     padding-top: 5px;
     outline: none;
@@ -826,12 +848,19 @@
     }
 
     .desktopAdministracion-add-atributo-parte1y2 {
-        display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
         width: 100%;
+    }
+
+    .desktopAdministracion-add-atributo-parte1y2-guardado{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .desktopAdministracion-add-atributo-parte2-guardado{
+        width: 100%;
+        margin-top: 15px;
+        margin-left: 0px;
     }
 
     .desktopAdministracion-add-atributo {
@@ -839,16 +868,25 @@
     }
 
     .desktopAdministracion-add-atributo-parte2 {
-        width: 100%;
-        margin-top: 25px
+        margin-top: 15px;
+        width: 100%
+    }
+
+    .desktopAdministracion-add-atributo-parte3-guardado{        
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+        margin-top: 20px;
+        margin-left: 10px;
+        align-items: center;
     }
 
     .desktopAdministracion-add-atributo-parte3 {
         display: flex;
         align-items: flex-end;
         justify-content: center;
-        margin-left: 15px;
-        margin-top: 12px;
+        margin-top: 20px;
+        margin-left: 10px;
         align-items: center;
     }
 
@@ -890,6 +928,53 @@
         font-size: 18px;
     }
 
+}
+
+@media (min-width:768px) and (max-width:1000px){
+    .mobile-add-politicasCancelacion{
+        flex-direction: column;
+    }
+
+    .mobileAdministracion-add-politicaCancelacion-parte2 {
+        width: 100%;
+    }
+
+    .mobileAdministracion-add-politicaCancelacion-parte2 button{
+        margin-left: 0px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .mobile-add-normaDeCasa {
+        flex-direction: column;
+    }
+
+    .mobileAdministracion-add-normaDeCasa-parte2 {
+        width: 100%;
+    }
+
+    .mobileAdministracion-add-normaDeCasa-parte2 button{
+        margin-left: 0px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .mobile-add-saludSeguridad {
+        flex-direction: column;
+    }
+
+    .mobileAdministracion-add-saludSeguridad-parte2{
+        width: 100%;
+    }
+
+    .mobileAdministracion-add-saludSeguridad-parte2 button{
+        margin-left: 0px;
+        width: 100%;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 }
 
 @media (max-width:460px) {

@@ -368,6 +368,7 @@ export const DesktopAdministration = ({atributosTodos, setAtributosTodos, politi
                         {atributosRender && atributosRender.map((atributo, index) => {
                             return (
                                 <div key={index++} className="desktopAdministracion-add-atributo-guardado">
+                                    <div className="desktopAdministracion-add-atributo-parte1y2-guardado">
                                     <div className='desktopAdministracion-add-atributo-parte1-guardado'>
                                         <InputLabel disabled={true} name={`AtributoNombreGuardado_${index}`} placeholder={atributo.titulo} label='Nombre'>
                                         </InputLabel>
@@ -376,6 +377,7 @@ export const DesktopAdministration = ({atributosTodos, setAtributosTodos, politi
                                         <InputLabel disabled={true} name={`AtributoIconoGuardado_${index}`} placeholder={atributo.nombre_icono} label='Ícono'>
                                         </InputLabel>
                                     </div>
+                                    </div>
                                     <div className='desktopAdministracion-add-atributo-parte3-guardado'>
                                         <Button label="X" onClick={() => deleteAtribute(atributo.titulo)} />
                                     </div>
@@ -383,6 +385,7 @@ export const DesktopAdministration = ({atributosTodos, setAtributosTodos, politi
                             )
                         })}
                         <div className="desktopAdministracion-add-atributo">
+                            <div className="desktopAdministracion-add-atributo-parte1y2">
                             <div className='desktopAdministracion-add-atributo-parte1'>
                                 <InputLabel
                                     name="AtributoNombre" placeholder="Wifi" label='Nombre' disabled={false}>
@@ -392,6 +395,7 @@ export const DesktopAdministration = ({atributosTodos, setAtributosTodos, politi
                                 <InputLabel
                                     name="AtributoIcono" placeholder="fa-wifi" label='Ícono' disabled={false}>
                                 </InputLabel>
+                            </div>
                             </div>
                             <div className='desktopAdministracion-add-atributo-parte3'>
                                 <Button label="+"
