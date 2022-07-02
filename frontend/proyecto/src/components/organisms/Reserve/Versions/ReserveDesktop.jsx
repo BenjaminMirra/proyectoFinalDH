@@ -23,7 +23,11 @@ export const ReserveDesktop = ({
   reservedDates,
   setSubmitData,
   submitData,
+  price,
 }) => {
+  // useEffect(() => {
+  //   console.log(price);
+  // }, [price]);
   return (
     <div className="wrapper">
       <Header />
@@ -40,6 +44,7 @@ export const ReserveDesktop = ({
 
             <div className="reserve-content-reserveDetail">
               <ReserveDetail
+                price={price}
                 setShowPayment={setShowPayment}
                 setSubmitData={setSubmitData}
                 submitData={submitData}

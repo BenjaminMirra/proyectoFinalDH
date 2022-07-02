@@ -40,7 +40,7 @@ export const Cash = (props) => {
           <strong>ARS ${props.price}</strong>
         </Paragraph>
       </div>
-      <div className="cash-nav">
+      <div className="cash-nav nav-cash">
         <Button
           onClick={() => handleNavigation("back")}
           variant={false}

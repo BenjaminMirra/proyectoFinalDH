@@ -55,14 +55,15 @@ export const MainReserve = ({setFailReserve}) => {
     }
   }, [submitData]);
  
-  useEffect(() => {
-    console.log(price);
-  }, [price]);
+  // useEffect(() => {
+  //   console.log(price);
+  // }, [price]);
   
 // }
     const [reserveDisplayed, setReserveDisplayed] = useState(
       <>
         <ReserveDesktop
+          price={price}
           setShowPayment={setShowPayment}
           reservedDays={reservedDays}
           setReservedDays={setReservedDays}
@@ -82,10 +83,12 @@ export const MainReserve = ({setFailReserve}) => {
     }, [windowWidth]);
 
     useEffect(() => {
+      console.log(price);
         if(windowWidth <= 800){
             setReserveDisplayed(
               <>
                 <ReserveMobile
+                  price={price}
                   setShowPayment={setShowPayment}
                   setSubmitData={setSubmitData}
                   submitData={submitData}
@@ -103,6 +106,7 @@ export const MainReserve = ({setFailReserve}) => {
         else if(windowWidth<=1365){
             setReserveDisplayed(
               <ReserveTablet
+                price={price}
                 setShowPayment={setShowPayment}
                 setSubmitData={setSubmitData}
                 submitData={submitData}
@@ -119,6 +123,7 @@ export const MainReserve = ({setFailReserve}) => {
         else if(windowWidth>=1366){
             setReserveDisplayed(
               <ReserveDesktop
+                price={price}
                 setShowPayment={setShowPayment}
                 setSubmitData={setSubmitData}
                 submitData={submitData}
@@ -135,12 +140,10 @@ export const MainReserve = ({setFailReserve}) => {
         }
         
         
-    },[windowWidth,reservedDays,productData,submitData]);
+    },[windowWidth,reservedDays,productData,submitData,price]);
 
 
-    useEffect(() => {
-    //    console.log(submitData);
-    }, [submitData]);
+    
 
   return (
     <>

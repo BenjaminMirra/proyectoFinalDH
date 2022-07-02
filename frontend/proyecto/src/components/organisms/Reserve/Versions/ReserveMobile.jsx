@@ -14,8 +14,19 @@ import axios from 'axios'
 import './ReserveDesktop.css'
 import './ReserveMobile.css'
 import { SpacerHorizontal } from '../../../atoms/Spacer/SpacerHorizontal'
-export const ReserveMobile = ({productData,categoria,locationData,setFailReserve,reservedDays,setReservedDays,reservedDates,setSubmitData,submitData}) => {
-    
+export const ReserveMobile = ({
+  setShowPayment,
+  productData,
+  categoria,
+  locationData,
+  reservedDays,
+  setReservedDays,
+  setFailReserve,
+  reservedDates,
+  setSubmitData,
+  submitData,
+  price,
+}) => {
   return (
     <div className="wrapper">
       <Header />
@@ -48,10 +59,12 @@ export const ReserveMobile = ({productData,categoria,locationData,setFailReserve
             {/* <SpacerHorizontal height={'2md'} /> */}
             <div className="reserve-content-reserveDetail">
               <MobileReserveDetail
-                reservedDays={reservedDays}
+                price={price}
+                setShowPayment={setShowPayment}
                 setSubmitData={setSubmitData}
-                setFailReserve={setFailReserve}
                 submitData={submitData}
+                setFailReserve={setFailReserve}
+                reservedDays={reservedDays}
                 location={locationData ? locationData : "cargando"}
                 category={categoria ? categoria : "cargando"}
                 product={productData ? productData : []}
@@ -73,4 +86,4 @@ export const ReserveMobile = ({productData,categoria,locationData,setFailReserve
       </div>
     </div>
   );
-}
+};

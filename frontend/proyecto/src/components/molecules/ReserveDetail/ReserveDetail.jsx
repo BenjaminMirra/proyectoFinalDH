@@ -23,7 +23,11 @@ export const ReserveDetail = ({
   setSubmitData,
   submitData,
   setShowPayment,
+  price,
 }) => {
+  // useEffect(() => {
+  //  console.log(price);
+  // }, [price]);
   const navigate = useNavigate();
   // const [submitData,setSubmitData]=useState({fechaInicioReserva:'',fechaFinReserva:'',horaEstimadaDeLlegada:'',mensajeUsuario:'',vacunadoCovid:true,usuarioId:'',productoId:''})
   const [buttonValue, setButtonValue] = useState({
@@ -33,7 +37,6 @@ export const ReserveDetail = ({
   const { id } = useParams();
   useEffect(() => {
     if (setSubmitData) {
-      
       if (
         reservedDays.startDate.year !== "1969" &&
         reservedDays.startDate &&
@@ -68,7 +71,7 @@ export const ReserveDetail = ({
     } else {
       // console.log(JSON.stringify(submitData));
       // console.log(JSON.parse(localStorage.getItem('jwt')));
-      
+
       if (
         reservedDays.startDate.year !== "1969" &&
         reservedDays.startDate &&
@@ -88,12 +91,12 @@ export const ReserveDetail = ({
               //   0,
               //   5
               // )}`,
-              horaEstimadaDeLlegada:'13:00',
+              horaEstimadaDeLlegada: "13:00",
               mensajeUsuario: `${submitData.mensajeUsuario}`,
               vacunadoCovid: submitData.vacunadoCovid,
               usuario_id: JSON.parse(localStorage.getItem("userData")).id,
               producto_id: id,
-              precioTotal: "100"
+              precioTotal: "100",
             },
             headers: {
               "Content-Type": "application/json",
@@ -114,15 +117,17 @@ export const ReserveDetail = ({
               } else {
                 // localStorage.removeItem("lastProduct");
                 // localStorage.removeItem("dates");
-                 axios({
-                   method: "DELETE",
-                   url: `${urlAPI}reservas/eliminar/${res.data}`,
-                   headers: {
-                     "Content-Type": "application/json",
-                     Authorization:
-                       "Bearer " + JSON.parse(localStorage.getItem("jwt")),
-                   },
-                 }).then(res=>console.log(res)).catch(err=>console.log(err));
+                axios({
+                  method: "DELETE",
+                  url: `${urlAPI}reservas/eliminar/${res.data}`,
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization:
+                      "Bearer " + JSON.parse(localStorage.getItem("jwt")),
+                  },
+                })
+                  .then((res) => console.log(res))
+                  .catch((err) => console.log(err));
                 setButtonValue({ value: "Confirmar reserva", disabled: false });
                 setShowPayment(true);
               }
@@ -148,7 +153,7 @@ export const ReserveDetail = ({
         }
       } else {
         setWarnings((prevValue) => {
-          console.log('entro');
+          console.log("entro");
           if (!prevValue.range) {
             return { server: false, data: true, range: false };
           }
@@ -276,6 +281,19 @@ export const ReserveDetail = ({
             </div>
           </div>
           <hr />
+
+          <div className="desktopDetail-price">
+            {
+              price / product.precio ? (
+                <Paragraph>
+                  Precio por {price / product.precio} noches: ARS ${price}{" "}
+                  <br /> (ARS ${product.precio} / noche)
+                </Paragraph>
+              ) : (
+                <Paragraph>Precio por noche : $ {product.precio}</Paragraph>
+              )
+            }
+          </div>
           <div style={{ height: "27px" }}></div>
           <SpacerHorizontal height={"lg"} />
 

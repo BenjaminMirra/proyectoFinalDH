@@ -66,3 +66,12 @@ position: relative;
     width: 30vw;
     transform: translate(-50%, -50%);
 }
+.desktopDetail-price{
+    background-color: #DFE4EA;
+    height: 80px;
+    display: flex;
+    justify-content: center ;
+    align-items: center;
+    text-align:center;
+    border-radius:8px
+}

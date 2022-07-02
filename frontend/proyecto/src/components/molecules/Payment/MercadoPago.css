@@ -11,3 +11,9 @@
    justify-content: center;
    align-items: center;
 }
+
+@media (min-width:430px) {
+        .mp{
+        margin-top: 60px !important;
+    }
+}

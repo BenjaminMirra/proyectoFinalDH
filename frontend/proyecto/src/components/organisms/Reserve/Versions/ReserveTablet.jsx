@@ -11,8 +11,19 @@ import { TabletReserveDetail } from '../../../molecules/ReserveDetail/TabletRese
 import './ReserveTablet.css'
 import { SpacerHorizontal } from '../../../atoms/Spacer/SpacerHorizontal'
 
-export const ReserveTablet = ({productData,categoria,locationData,setFailReserve,reservedDays,setReservedDays,reservedDates,setSubmitData,submitData}) => {
-    
+export const ReserveTablet = ({
+  setShowPayment,
+  productData,
+  categoria,
+  locationData,
+  reservedDays,
+  setReservedDays,
+  setFailReserve,
+  reservedDates,
+  setSubmitData,
+  submitData,
+  price,
+}) => {
   return (
     <div className="wrapper">
       <Header />
@@ -44,9 +55,11 @@ export const ReserveTablet = ({productData,categoria,locationData,setFailReserve
             <SpacerHorizontal height={"2md"} />
             <div className="tablet-reserve-content-reserveDetail">
               <TabletReserveDetail
+                price={price}
+                setShowPayment={setShowPayment}
                 setSubmitData={setSubmitData}
-                setFailReserve={setFailReserve}
                 submitData={submitData}
+                setFailReserve={setFailReserve}
                 reservedDays={reservedDays}
                 location={locationData ? locationData : "cargando"}
                 category={categoria ? categoria : "cargando"}
@@ -69,4 +82,4 @@ export const ReserveTablet = ({productData,categoria,locationData,setFailReserve
       </div>
     </div>
   );
-}
+};
