@@ -14,6 +14,7 @@ import ReCAPTCHA from "react-google-recaptcha";
 export const LoginForm = ({ failReserve, setFailReserve }) => {
   useEffect(() => { }, []);
 
+  const noSoyRobot = document.getElementById("noSoyUnRobot");
 
   const [captchaValido, setCaptchaValido] = useState(null)
 
@@ -107,7 +108,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
               disabled: false,
               value: "Iniciar sesión",
             });
-            console.log("entro");
+            //console.log("entro");
             setLogError(true);
             setTimeout(() => setLogError(false), 5000);
           }
@@ -129,7 +130,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
               },
             }).then((data) => {
 
-              console.log(data);
+              //console.log(data);
               localStorage.setItem(
                 "userData",
                 JSON.stringify({
@@ -182,7 +183,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
         .then((response) => {
           // console.log(response.status);
           if (response.status == 401) {
-            console.log("entro");
+            //console.log("entro");
             setLogError(true);
             setTimeout(() => setLogError(false), 5000);
           }
@@ -203,7 +204,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
                 email: `${formValues.email}`,
               },
             }).then((data) => {
-              console.log(data);
+              //console.log(data);
               localStorage.setItem(
                 "userData",
                 JSON.stringify({
@@ -256,11 +257,11 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
     let result = true;
     
     if(!captchaValido){
-      console.log(captchaValido)
-      alert("Chee... sos un robot")
+      //console.log(captchaValido)
+      noSoyRobot.innerHTML = "Por favor, verifica que no eres un robot."
+      setTimeout(()=>  noSoyRobot.innerHTML = "",3500);
       result = false;
     }
-
 
     if (!checkLength(formValues[email])) {
       result = false;
@@ -393,9 +394,12 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
               </Paragraph>
             )}
           </div>
+          <div className="nosoyunRobot" id="noSoyUnRobot">
+
+          </div>
 
           <div className="boton-register">
-            {console.log(buttonValue)}
+            {/* {console.log(buttonValue)} */}
             <Button
               disabled={buttonValue.disabled}
               onClick={handleSubmit}
