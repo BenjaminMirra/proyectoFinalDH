@@ -152,6 +152,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
                 disabled: false,
                 value: "Iniciar sesión",
               });
+              captcha.current.reset()
               return (window.location.pathname = `/productos/${lastProduct}`);
             });
           }
