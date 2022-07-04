@@ -19,6 +19,8 @@ export const CBU = (props) => {
           )
         : props.handleFinish();
     };
+    const pesosFormat = Intl.NumberFormat("en-US");
+    
   return (
     <div className="cbu">
       <div className="method-title">
@@ -31,7 +33,7 @@ export const CBU = (props) => {
       <div className="cbu-content">
         <Paragraph variant={"secondary"} size="xmd">
           Para para realizar el pago escaneá el código QR y enviá{" "}
-          <strong>ARS ${props.price}</strong>
+          <strong>ARS ${pesosFormat.format(props.price) + ".00"}</strong>
         </Paragraph>
         <div className="qr">
           <Picture image={"qr_banco"} width="lg" height={"lg"}></Picture>

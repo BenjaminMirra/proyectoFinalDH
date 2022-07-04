@@ -39,7 +39,9 @@ export const Header = ({}) => {
     const resetUserInfo=()=>{
         localStorage.removeItem('userData')
         localStorage.removeItem('jwt')
-        return setUserInfo({})};
+         setUserInfo({})
+        return document.location.reload();
+        };
         
     
     

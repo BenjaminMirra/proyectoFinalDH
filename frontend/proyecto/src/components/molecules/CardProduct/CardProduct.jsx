@@ -136,6 +136,7 @@ export const CardProduct = ({
       setLiked(true);
     }
   }, [likedProducts, id]);
+  const pesosFormat = Intl.NumberFormat("en-US");
   return (
     <>
       <LazyLoadComponent effect="blur">
@@ -145,7 +146,7 @@ export const CardProduct = ({
               <div className="priceTab-container">
                 <Picture image={"price_tab"} width="sm" />
                 <div className="price-tab-text">
-                  <Paragraph  variant={"base"}>${price} <br /> </Paragraph>
+                  <Paragraph  variant={"base"}>${pesosFormat.format(price)} <br /> </Paragraph>
                   <span style={{color:'white',fontSize:'13px'}}>por noche</span>
                   
                 </div>

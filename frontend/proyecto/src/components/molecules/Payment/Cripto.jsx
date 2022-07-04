@@ -19,6 +19,8 @@ export const Cripto = (props) => {
           )
         : props.handleFinish();
     };
+    const pesosFormat = Intl.NumberFormat("en-US");
+    
   return (
     <div className="cbu">
       <div className="method-title">

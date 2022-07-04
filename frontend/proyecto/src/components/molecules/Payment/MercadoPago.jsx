@@ -20,6 +20,8 @@ export const MercadoPago = (props) => {
           )
         : props.handleFinish();
     };
+    const pesosFormat = Intl.NumberFormat("en-US");
+    
   return (
     <div className="cbu">
       <div className="method-title">
@@ -32,7 +34,7 @@ export const MercadoPago = (props) => {
       <div className="cbu-content">
         <Paragraph variant={"secondary"} size="xmd">
           Para realizar el pago ingresá en el siguiente link de mercado pago y
-          enviá <strong>ARS ${props.price}</strong>
+          enviá  <strong style={{width:'100%',textAlign:'center'}}>${pesosFormat.format(props.price) + ".00"}</strong>
         </Paragraph>
         <div className="mpLink">
           <Paragraph>

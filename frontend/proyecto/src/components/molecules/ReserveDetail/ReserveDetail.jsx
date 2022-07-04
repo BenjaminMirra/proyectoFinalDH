@@ -167,6 +167,7 @@ export const ReserveDetail = ({
       // navigate('/reserva-exitosa')
     }
   };
+   const pesosFormat = Intl.NumberFormat("en-US");
   return (
     <div className="reserveDetail">
       <SpacerHorizontal height={"md"} />
@@ -332,11 +333,15 @@ export const ReserveDetail = ({
           <div className="desktopDetail-price">
             {price / product.precio ? (
               <Paragraph>
-                Precio por {price / product.precio} noches: ARS ${price} <br />{" "}
-                (ARS ${product.precio} / noche)
+                Precio por {price / product.precio} noches: ARS $
+                {pesosFormat.format(price) + ".00"} <br /> (ARS $
+                {pesosFormat.format(product.precio) + ".00"} / noche)
               </Paragraph>
             ) : (
-              <Paragraph>Precio por noche : $ {product.precio}</Paragraph>
+              <Paragraph>
+                Precio por noche : ${" "}
+                {pesosFormat.format(product.precio) + ".00"}
+              </Paragraph>
             )}
           </div>
           <div style={{ height: "27px" }}></div>

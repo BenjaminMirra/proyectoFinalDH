@@ -56,6 +56,7 @@ export const Payment = ({ setShowPayment, submitData,price,placeName }) => {
     return navigate("/reserva-exitosa");
     } );
   };
+    const pesosFormat = Intl.NumberFormat("en-US");
 
 
   const handleCardDisplayed = (method) => {

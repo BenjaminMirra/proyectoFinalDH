@@ -23,7 +23,7 @@ export const Cash = (props) => {
               )
             : props.handleFinish();
     }
-    
+    const pesosFormat = Intl.NumberFormat("en-US");
   return (
     <div className="cash">
       <div className="method-title">
@@ -39,7 +39,7 @@ export const Cash = (props) => {
           vez llegue al alojamiento <span>{props.placeName}</span>. <br />
           <br />
           Recuerde que el precio total de su estadía es de:{" "}
-          <strong>ARS ${props.price}</strong>
+          <strong>ARS ${pesosFormat.format(props.price)+'.00'}</strong>
         </Paragraph>
       </div>
       <div className="cash-nav nav-cash">
