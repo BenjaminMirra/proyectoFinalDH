@@ -138,11 +138,12 @@ const IconsList = {
   wEmptyHeart: wEmptyHeart,
   fFavorite: fFavorite,
   eFavorite: eFavorite,
-  cash:cash,
-  cripto:cripto,
-  mercadopago:mercadopago,
+  cash: cash,
+  cripto: cripto,
+  mercadopago: mercadopago,
   emptyStarGrey: emptyStarGrey,
-  bank:bank,
+  bank: bank,
+ 
 };
 export const KeysIconsList = Object.keys(IconsList);
 const IconWidth = {

@@ -40,7 +40,24 @@
   height: 100%;
   position: relative;
 }
-
+.card-product-price{
+  position: absolute;
+  top: 20px;
+  z-index: 100;
+}
+.priceTab-container{
+  position: relative;
+}
+.price-tab-text{
+  position: absolute;
+  text-align: center;
+  height: 5px;
+  top: 6px;
+  left: 8px;
+}
+.price-tab-text p{
+  height: 15px;
+}
 .product-img {
   width: 100%;
   height: 100%;

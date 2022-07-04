@@ -110,6 +110,7 @@ export const Products = ({
                       ? "Departamentos"
                       : "Bed & Breakfast"
                   }
+                  price={product.precio}
                   id={product.id}
                   rating={product.puntaje}
                   services={product.caracteristicasDTOList}

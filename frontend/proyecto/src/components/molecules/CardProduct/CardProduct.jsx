@@ -11,6 +11,7 @@ import { urlAPI } from "../../../global";
 import {useNavigate} from "react-router-dom";
 import { LazyLoadImage,LazyLoadComponent } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import { Picture } from "../../atoms/Picture/Picture";
 
 export const CardProduct = ({
   url,
@@ -29,6 +30,7 @@ export const CardProduct = ({
   setLikedProducts,
   setMapFavoriteData,
   setShowSmallMap,
+  price,
 }) => {
   useEffect(() => {
     setLiked(false);
@@ -139,6 +141,16 @@ export const CardProduct = ({
       <LazyLoadComponent effect="blur">
         <div className="card-product">
           <div className="card-product-img">
+            <div className="card-product-price">
+              <div className="priceTab-container">
+                <Picture image={"price_tab"} width="sm" />
+                <div className="price-tab-text">
+                  <Paragraph  variant={"base"}>${price} <br /> </Paragraph>
+                  <span style={{color:'white',fontSize:'13px'}}>por noche</span>
+                  
+                </div>
+              </div>
+            </div>
             <Link to={`/productos/${id}`}>
               <LazyLoadImage
                 width={"100%"}
