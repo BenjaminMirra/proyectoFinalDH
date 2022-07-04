@@ -7,7 +7,7 @@ import { SpacerHorizontal } from '../../../atoms/Spacer/SpacerHorizontal'
 import { CalendarDrop } from '../../../molecules/DropCalendar/CalendarDrop'
 import { urlAPI } from '../../../../global.js';
 
-export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setLugarInput, startDate, endDate, setFilterProducts, setStartDate, setEndDate }) => {
+export const DesktopFilter = ({ setReRender,setFilterTitle, setCurrentPage, lugarInput, setLugarInput, startDate, endDate, setFilterProducts, setStartDate, setEndDate }) => {
 
   const scroll = () => {
     // window.scrollTo({ top: 480, behavior: 'smooth' });
@@ -37,7 +37,8 @@ export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setL
           })
         })
           .then((response) => {
-            setFilterProducts(response.data)
+            setReRender(prevValue=>prevValue+1);
+            setTimeout(() => setFilterProducts(response.data), 300);
           })
 
         setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina entre las fechas " + startDate + " y " + endDate + ":");
@@ -56,7 +57,8 @@ export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setL
           })
         })
           .then((response) => {
-            setFilterProducts(response.data)
+            setReRender((prevValue) => prevValue + 1);
+            setTimeout(() => setFilterProducts(response.data), 500);
           })
         setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina entre las fechas " + startDate + " y " + endDate + ":");
         scroll()
@@ -74,7 +76,8 @@ export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setL
           })
         })
           .then((response) => {
-            setFilterProducts(response.data)
+            setReRender((prevValue) => prevValue + 1);
+            setTimeout(() => setFilterProducts(response.data), 500);
           })
         setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina entre las fechas " + startDate + " y " + endDate + ":");
         scroll()
@@ -92,7 +95,8 @@ export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setL
           })
         })
           .then((response) => {
-            setFilterProducts(response.data)
+            setReRender((prevValue) => prevValue + 1);
+            setTimeout(() => setFilterProducts(response.data), 500);
           })
         setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina entre las fechas " + startDate + " y " + endDate + ":");
 
@@ -102,7 +106,7 @@ export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setL
         ciudadId = 1
         
         setFilterProducts([])
-        axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
+        axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data =>{setReRender(prevValue=>prevValue+1); return setTimeout(() => setFilterProducts(data.data), 400);})
         setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
         scroll()
       }
@@ -110,7 +114,7 @@ export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setL
         ciudadId = 2;
         
         setFilterProducts([])
-        axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
+        axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => {setReRender(prevValue=>prevValue+1);return setTimeout(() => setFilterProducts(data.data), 400);;})
         setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
         scroll()
       }
@@ -118,7 +122,10 @@ export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setL
         ciudadId = 3;
         
         setFilterProducts([])
-        axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
+        axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => {
+          setReRender((prevValue) => prevValue + 1);
+          return setTimeout(() => setFilterProducts(data.data), 500);;
+        })
         setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
         scroll()
 
@@ -127,7 +134,10 @@ export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setL
         ciudadId = 4;
         
         setFilterProducts([])
-        axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => setFilterProducts(data.data))
+        axios.get(`${urlAPI}productos/porCiudad/${ciudadId}`).then(data => {
+          setReRender((prevValue) => prevValue + 1);
+          return setTimeout(() => setFilterProducts(data.data), 500);;
+        })
         setFilterTitle("Disponibles en la ciudad de " + lugarInput + ", Argentina:")
         scroll()
 
@@ -142,14 +152,17 @@ export const DesktopFilter = ({ setFilterTitle, setCurrentPage, lugarInput, setL
           })
         })
           .then((response) => {
-            setFilterProducts(response.data)
+            setReRender(prevValue=>prevValue+1)
+            setTimeout(() => setFilterProducts(response.data), 500);
           })
         setFilterTitle("Disponibles entre " + startDate + " y " + endDate + ":")
         scroll()
 
       } else {
         axios.get(`${urlAPI}productos/todos`).then(data => {
-          setFilterProducts(data.data)
+          setReRender((prevValue) => prevValue + 1);
+          setTimeout(() => setFilterProducts(data.data),500);
+          
         })
         setFilterTitle("Recomendaciones")
         scroll()

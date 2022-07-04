@@ -3,7 +3,7 @@ import { DesktopFilter } from './Versions/DesktopFilter'
 import { TabletFilter } from './Versions/TabletFilter'
 import { MobileFilter } from './Versions/MobileFilter'
 
-export const Filter = ({setFilterTitle,setCurrentPage,setFilterProducts}) => {
+export const Filter = ({setFilterTitle,setCurrentPage,setFilterProducts,setReRender,reRender}) => {
     const [lugarInput,setLugarInput]=useState('')
     const [startDate,setStartDate] = useState('')
     const [endDate, setEndDate] =  useState('')
@@ -21,16 +21,53 @@ export const Filter = ({setFilterTitle,setCurrentPage,setFilterProducts}) => {
 
     useEffect(() => {
         if(windowWidth <= 768){
-            setFilterDisplayed(<MobileFilter setFilterTitle={setFilterTitle} setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput}  startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate}/>)
+            setFilterDisplayed(
+              <MobileFilter
+                setReRender={setReRender}
+                setFilterTitle={setFilterTitle}
+                setFilterProducts={setFilterProducts}
+                lugarInput={lugarInput}
+                setLugarInput={setLugarInput}
+                startDate={startDate}
+                setStartDate={setStartDate}
+                endDate={endDate}
+                setEndDate={setEndDate}
+              />
+            );
         }
         else if(windowWidth<1365){
-            setFilterDisplayed(<TabletFilter setFilterTitle={setFilterTitle} setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput}  startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />)
+            setFilterDisplayed(
+              <TabletFilter
+                setReRender={setReRender}
+                setFilterTitle={setFilterTitle}
+                setFilterProducts={setFilterProducts}
+                lugarInput={lugarInput}
+                setLugarInput={setLugarInput}
+                startDate={startDate}
+                setStartDate={setStartDate}
+                endDate={endDate}
+                setEndDate={setEndDate}
+              />
+            );
         }
         else if(windowWidth>=1366){
-            setFilterDisplayed(<DesktopFilter setFilterTitle={setFilterTitle} setCurrentPage={setCurrentPage}  setFilterProducts={setFilterProducts} lugarInput={lugarInput} setLugarInput={setLugarInput}  startDate={startDate} setStartDate={setStartDate} endDate={endDate} setEndDate={setEndDate} />)
+            setFilterDisplayed(
+              <DesktopFilter
+                setReRender={setReRender}
+                setFilterTitle={setFilterTitle}
+                setCurrentPage={setCurrentPage}
+                setFilterProducts={setFilterProducts}
+                lugarInput={lugarInput}
+                setLugarInput={setLugarInput}
+                startDate={startDate}
+                setStartDate={setStartDate}
+                endDate={endDate}
+                setEndDate={setEndDate}
+              />
+            );
         }
         
-    },[windowWidth,lugarInput,startDate,endDate, setEndDate, setStartDate,setFilterProducts,setCurrentPage]);
+    },[windowWidth,lugarInput,startDate,endDate, setEndDate, setStartDate,setFilterProducts,setCurrentPage,setReRender]);
 
 
 

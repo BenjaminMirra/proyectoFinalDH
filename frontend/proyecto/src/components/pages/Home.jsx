@@ -48,6 +48,8 @@ export const Home = () => {
             <></>
           )}
           <Filter
+            reRender={reRender}
+            setReRender={setReRender}
             setFilterTitle={setFilterTitle}
             setCurrentPage={setCurrentPage}
             setFilterProducts={setFilterProducts}
