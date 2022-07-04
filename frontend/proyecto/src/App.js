@@ -14,7 +14,6 @@ import { Error404 } from './components/pages/Error404';
 import { Administracion } from './components/pages/Administracion';
 import { MyReservePage } from './components/pages/MyReservePage';
 import {Payment} from './components/molecules/Payment/Payment'
-import { Captcha } from './components/molecules/ReCaptcha/ReCaptcha';
 function App() {
   const [failReserve,setFailReserve] = useState(false)
   return (
@@ -59,8 +58,7 @@ function App() {
           <Route path="/:id/misreservas" element={<MyReservePage />}></Route>
           <Route path="/administracion" element={<Administracion />}></Route>
           <Route path="/producto-exitoso" element={<SuccessAdd />}></Route>
-          <Route path="/reCaptcha" element={<Captcha />}></Route>
-          <Route path="*" element={<Error404 />}></Route>
+          <Route path="*" element={<Error404/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

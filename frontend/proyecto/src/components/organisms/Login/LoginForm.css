@@ -27,7 +27,7 @@
 }
 
 .login button {
-    margin-top: 45px;
+    margin-top: 25px;
     margin-bottom: 15px;
 }
 
@@ -97,6 +97,16 @@ form .login-input{
         width: 40%;
         
     }
+}
+
+.nosoyunRobot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: red;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0px;
 }
 
 .reCaptcha{
