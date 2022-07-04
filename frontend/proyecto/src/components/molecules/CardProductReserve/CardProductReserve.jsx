@@ -323,24 +323,24 @@ export const CardProductReserve = ({
               <>
                 <div className="leaveAnOpinion-container">
                   <div class="leaveAnOpinion">
-                    <Paragraph variant={"secondary"}>
-                      <strong>Gracias por valorar el alojamiento !</strong>
-                    </Paragraph>
+                    <Heading type="sm" title="h2">
+                      ¡Gracias por valorar el alojamiento!
+                    </Heading>
                   </div>
                 </div>
               </>
             ) : !opinion ? (
               <div className="precioReserve-container">
-                <Paragraph variant={"secondary"}>
-                  <strong>{`Precio total de la reserva: $${
+                <Heading type="sm" title="h2">
+                  {`Precio total de la reserva: $${
                     precio *
                     [
                       (new Date(endReserveDate) - new Date(startReserveDate)) /
                         (1000 * 3600 * 24) +
                         1,
                     ]
-                  }`}</strong>
-                </Paragraph>
+                  }`}
+                </Heading>
               </div>
             ) : !firstClick ? (
               <div className="leaveAnOpinion-container">
@@ -368,7 +368,7 @@ export const CardProductReserve = ({
                 </div>
               </div>
             )}
-            <div className="button-container-reserves" id="button-opinion">
+            <div className="cardProductReserve-button">
               <Link style={{ width: "100%" }} to={`/productos/${id}`}>
                 <Button
                   size="sm"

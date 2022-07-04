@@ -13,7 +13,7 @@ import {ProductsPagination} from './components/organisms/ProductsPagination/Prod
 import { Error404 } from './components/pages/Error404';
 import { Administracion } from './components/pages/Administracion';
 import { MyReservePage } from './components/pages/MyReservePage';
-import {Payment} from './components/molecules/Payment/Payment'
+
 function App() {
   const [failReserve,setFailReserve] = useState(false)
   return (

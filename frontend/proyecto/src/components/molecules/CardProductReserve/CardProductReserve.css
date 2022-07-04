@@ -9,6 +9,7 @@
     align-items: center;
     text-align: center;
     background-color: var(--color-base);
+   
 }
 
 .card-product-reserves-img {
@@ -26,8 +27,19 @@
     padding-left: 10px;
     width: 100%;
     height: 100%;
+    position: relative;
+    
 }
-
+.card-product-reserves-text .cardProductReserve-button {
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    
+}
+.card-product-reserves-text .cardProductReserve-button button{
+    width: 95%;
+}
 .card-product-reserves-text-primeraParte {
     display: flex;
     flex-direction: column;
@@ -137,17 +149,9 @@
     margin-top: 2px
 }
 
-.button-container-reserves {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-}
 
-.button-container-reserves button {
-    width: 96%;
-}
+
+
 
 .leaveAnOpinion-container {
     display: flex;
@@ -156,6 +160,7 @@
     align-items: center;
     text-align: center;
     width: 100%;
+    height: 53px;
     margin-bottom: 10px;
     margin-top: 10px;
     padding-top: 10px;
@@ -193,6 +198,7 @@
     align-items: center;
     text-align: center;
     width: 100%;
+    height: 53px;
     margin-bottom: 10px;
     margin-top: 10px;
     padding-top: 10px;
@@ -218,7 +224,7 @@
 @media (max-width: 767px) {
     .card-product-reserves {
         width: 450px;
-        height: auto;
+        height: 600px;
         flex-direction: column;
     }
 
@@ -232,7 +238,9 @@
 }
 
 @media (max-width: 465px) {
-
+    .leaveAnOpinion-container,.precioReserve-container{
+        margin-bottom: 40px;
+    }
     .card-product-reserves {
         width: 365px;
         height: auto;

@@ -6,7 +6,7 @@ import "./ProductsPagination.css";
 
 export const ProductsPagination = ({ currentPage, setCurrentPage,data,setMapHomeData ,setShowMap,filterTitle,reRender,setReRender }) => {
     console.log(reRender);
-    const [postsPerPage, setPostsPerPage] = useState(8);
+    const [postsPerPage, setPostsPerPage] = useState(10);
 
     // Get current posts
     const indexOfLastPost = currentPage * postsPerPage;
