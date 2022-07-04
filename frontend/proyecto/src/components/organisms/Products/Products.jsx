@@ -8,57 +8,55 @@ import axios from 'axios'
 import { MockUp } from "../../molecules/MockUpCard/MockUp";
 import { MockUpProduct } from "../../molecules/MockUpCard/MockUpProduct";
 import { urlAPI } from "../../../global";
-export const Products = ({ data,setMapHomeData ,setShowMap,filterTitle,reRender}) => {
-
-
-  
-  const [mockUp, setMockUp] = useState(true)
-  const [mockUpDinamic,setMockUpDinamic]=useState(true)
+export const Products = ({
+  setMapFavoriteData,
+  data,
+  setMapHomeData,
+  setShowMap,
+  filterTitle,
+  reRender,
+  setShowSmallMap,
+}) => {
+  const [mockUp, setMockUp] = useState(true);
+  const [mockUpDinamic, setMockUpDinamic] = useState(true);
   const [likedProducts, setLikedProducts] = useState([]);
   useEffect(() => {
-    
-    
     setTimeout(() => {
-      setMockUp(false)}, 2000)
-      if (data.length>0) {
-        setMockUpDinamic(false);
-      }
+      setMockUp(false);
+    }, 2000);
+    if (data.length > 0) {
+      setMockUpDinamic(false);
+    }
 
-      
+    setLikedProducts([]);
+    if (localStorage.getItem("userData")) {
+      const id = JSON.parse(localStorage.getItem("userData")).id;
+      axios.get(`${urlAPI}reacciones/porUsuario/${id}`).then((res) =>
+        res.data.forEach((element) => {
+          setLikedProducts((prevData) => {
+            if (prevData.includes(element.producto_id)) {
+              return prevData;
+            } else {
+              return [...prevData, element.producto_id];
+            }
+          });
+          setMockUpDinamic(false);
+        })
+      );
+    }
+    const filterTitle = document.getElementById("filterTitle");
+    // window.scrollTo({top:480,behavior:'smooth'});
+  }, [data]);
+  useEffect(() => {
+    setMockUp(true);
+    // window.scrollTo({ top: 480, behavior: "smooth" });
+    setTimeout(() => setMockUp(false), 1700);
+  }, [reRender]);
+  useEffect(() => {
+    if (!mockUpDinamic && !mockUp) {
+    }
+  }, [mockUpDinamic, mockUp]);
 
-      setLikedProducts([]);
-      if (localStorage.getItem("userData")) {
-        const id = JSON.parse(localStorage.getItem("userData")).id;
-        axios.get(`${urlAPI}reacciones/porUsuario/${id}`).then((res) =>
-          res.data.forEach((element) => {
-            setLikedProducts((prevData) => {
-              if (prevData.includes(element.producto_id)) {
-                return prevData;
-              } else {
-                
-                return [...prevData, element.producto_id];
-              }
-            });
-            setMockUpDinamic(false);
-          })
-        );
-      }
-      const filterTitle=document.getElementById('filterTitle')
-      // window.scrollTo({top:480,behavior:'smooth'});
-
-    }, [data]);
-    useEffect(() => {
-      setMockUp(true)
-      // window.scrollTo({ top: 480, behavior: "smooth" }); 
-        setTimeout(()=>setMockUp(false),1700)
-
-    }, [reRender]);
-    useEffect(() => {
-      if (!mockUpDinamic && !mockUp) {
-        
-      }
-    }, [mockUpDinamic, mockUp]);
-   
   return (
     <div className="products-container">
       <section className="products-content">
@@ -88,6 +86,8 @@ export const Products = ({ data,setMapHomeData ,setShowMap,filterTitle,reRender}
 
               return (
                 <CardProduct
+                  setShowSmallMap={setShowSmallMap}
+                  setMapFavoriteData={setMapFavoriteData}
                   setMapHomeData={setMapHomeData}
                   titulo={product.titulo}
                   url={product.imagenDTOList[0].url_img_producto}

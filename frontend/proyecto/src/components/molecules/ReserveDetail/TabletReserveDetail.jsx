@@ -97,7 +97,7 @@ export const TabletReserveDetail = ({
               vacunadoCovid: submitData.vacunadoCovid,
               usuario_id: JSON.parse(localStorage.getItem("userData")).id,
               producto_id: id,
-              precioTotal: "100",
+              precioTotal: price,
             },
             headers: {
               "Content-Type": "application/json",
@@ -329,11 +329,15 @@ export const TabletReserveDetail = ({
           <div className="desktopDetail-price">
             {price / product.precio ? (
               <Paragraph>
-                Precio por {price / product.precio} noches: ARS ${price} <br />{" "}
-                (ARS ${product.precio} / noche)
+                <strong>
+                  Precio por {price / product.precio} noches: ARS ${price}{" "}
+                  <br /> (ARS ${product.precio} / noche)
+                </strong>
               </Paragraph>
             ) : (
-              <Paragraph>Precio por noche : $ {product.precio}</Paragraph>
+              <Paragraph>
+                <strong>Precio por noche : $ {product.precio}</strong>{" "}
+              </Paragraph>
             )}
           </div>
           <div className="warning-tabletDetail">

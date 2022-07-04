@@ -31,7 +31,7 @@
 }
 
 
-@media (max-width: 1180px) {
+@media (max-width: 1330px) {
   
     .product-cards-container{
       grid-template-columns: 1fr; 

@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { urlAPI } from "../../global";
 import { Mapa } from "./Mapa";
+import { MapHome } from "../molecules/Map/MapHome/MapHome";
 import "./Favorite.css";
 import { Icon } from "../atoms/Icon/Icon";
 import { Loader } from "../molecules/Loader/Loader";
@@ -129,7 +130,8 @@ export const Favorite = () => {
       setTimeout(() => setLoader(false), 2500);
     }
   }, [favoriteLocations]);
-
+  const [mapFavoriteData, setMapFavoriteData] = useState({});
+  const [showSmallMap, setShowSmallMap] = useState(false);
   return (
     <>
       <div className="wrapper">
@@ -142,11 +144,21 @@ export const Favorite = () => {
               <div className="favorite-back">
                 <Icon onClick={handleBack} icon={"backBlack"} width="lg" />
               </div>
+              {showSmallMap ? (
+                <MapHome
+                  setShowMap={setShowSmallMap}
+                  lat={mapFavoriteData.lat}
+                  lng={mapFavoriteData.lng}
+                />
+              ) : (
+                <></>
+              )}
 
               {selectedProducts.length > 0 ? (
                 <>
                   {" "}
                   <Products
+                    setMapFavoriteData={setMapFavoriteData}
                     data={
                       selectedProducts && selectedProducts.length > 0
                         ? selectedProducts
@@ -169,24 +181,23 @@ export const Favorite = () => {
           </>
         )}
       </div>
-     
-        <>
-          {favoriteLocations.length > 0 && showMap && (
-            <div className="favorite-mapa">
-              <Mapa
-                randomProp={randomValue}
-                favoriteLocations={favoriteLocations}
-                favorite={true}
-              />
-            </div>
-          )}
-          {!favoriteLocations.length > 0 && (
-            <div className="favorite-footer">
-              <Footer />
-            </div>
-          )}
-        </>
-      
+
+      <>
+        {favoriteLocations.length > 0 && showMap && (
+          <div className="favorite-mapa">
+            <Mapa
+              randomProp={randomValue}
+              favoriteLocations={favoriteLocations}
+              favorite={true}
+            />
+          </div>
+        )}
+        {!favoriteLocations.length > 0 && (
+          <div className="favorite-footer">
+            <Footer />
+          </div>
+        )}
+      </>
     </>
   );
 };

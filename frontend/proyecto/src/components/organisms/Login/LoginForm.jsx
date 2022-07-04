@@ -151,7 +151,8 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
                 disabled: false,
                 value: "Iniciar sesión",
               });
-              return (window.location.pathname = `/productos/${lastProduct}`);
+               (window.location.pathname = `/productos/${lastProduct}`);
+               return localStorage.removeItem('lastProduct');
             });
           }
         });

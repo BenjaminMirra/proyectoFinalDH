@@ -26,32 +26,38 @@ export const CardProduct = ({
   lng,
   setShowMap,
   likedProducts,
-  setLikedProducts
+  setLikedProducts,
+  setMapFavoriteData,
+  setShowSmallMap,
 }) => {
   useEffect(() => {
-    setLiked(false)
+    setLiked(false);
   }, [likedProducts]);
-  const [serviceList,setServiceList]=useState([])
-    const locationPathname=useLocation().pathname
-    const navigate = useNavigate();
+  const [serviceList, setServiceList] = useState([]);
+  const locationPathname = useLocation().pathname;
+  const navigate = useNavigate();
 
-    useEffect(() => {
-      setLiked(false);
-        if (services) {
-            setServiceList([])
-            services.forEach(element => {
-                setServiceList((prevValue)=>{         
-                        
-                        return [...prevValue,{icon:element.nombre_icono.toLowerCase(),service:element.titulo}]
-                    })
-            });
-        }
-    }, [services]);
-    const [liked, setLiked] = useState(false);
+  useEffect(() => {
+    setLiked(false);
+    if (services) {
+      setServiceList([]);
+      services.forEach((element) => {
+        setServiceList((prevValue) => {
+          return [
+            ...prevValue,
+            {
+              icon: element.nombre_icono.toLowerCase(),
+              service: element.titulo,
+            },
+          ];
+        });
+      });
+    }
+  }, [services]);
+  const [liked, setLiked] = useState(false);
   const handleFavorite = (productId) => {
-    
-    if (!JSON.parse(localStorage.getItem('userData'))) {
-      navigate('/login')
+    if (!JSON.parse(localStorage.getItem("userData"))) {
+      navigate("/login");
     }
     if (!liked) {
       axios({
@@ -63,72 +69,71 @@ export const CardProduct = ({
           favorito: true,
         },
       })
-        .then((res) =>{
+        .then((res) => {
           //console.log('Se guardo el producto '+productId);
-          return  setLiked(true);} )
+          return setLiked(true);
+        })
         .catch((err) => console.log(err));
-    }
-    else{
+    } else {
       setLiked(false);
       const userId = JSON.parse(localStorage.getItem("userData")).id;
-        axios({
-          url: `${urlAPI}reacciones/eliminar/porProducto/${productId}/porUsuario/${userId}`,
-          method: "DELETE",
-          
-        })
-          .then((res) =>{
-            console.log('Se elimino el producto '+ productId);
-              if (localStorage.getItem("userData")) {
-                
-                const id = JSON.parse(localStorage.getItem("userData")).id;
-                axios.get(`${urlAPI}reacciones/porUsuario/${id}`).then((res) =>
-                  res.data.forEach((element) => {
-                    setLikedProducts((prevData) => {
-                      if (prevData.includes(element.producto_id)) {
-                        return prevData;
-                      } else {
-                        return [...prevData, element.producto_id];
-                      }
-                    });
-                    
-                  })
-                );
-              }
-            } )
-    }
-      
-  } 
-   
-  const [stars,setStars]=useState('')
-     useEffect(() => {
-
-        axios({
-          url:`${urlAPI}puntuaciones/porProducto/${id}`,
-          method:'GET',
-          headers:{'Content-Type':'application/json'}
-        }).then(data=>{
-          
-          let scores=[]
-          data.data.forEach(element => {
-            scores.push(element.puntuacion)
-          });
-          let avgScore=scores.reduce((a,b)=>a+b,0)/scores.length
-          // console.log(avgScore.toFixed(1));
-          setStars(avgScore.toFixed(1)*2)
-
-        })
-    }, []);
-    const handleHomeMap=(latitud,longitud)=>{  
-      setMapHomeData({lat:latitud,lng:longitud})
-      return setShowMap(true)
-    }
-    useEffect(() => {
-      setLiked(false);
-        if(likedProducts.includes(id)){
-          setLiked(true)
+      axios({
+        url: `${urlAPI}reacciones/eliminar/porProducto/${productId}/porUsuario/${userId}`,
+        method: "DELETE",
+      }).then((res) => {
+        console.log("Se elimino el producto " + productId);
+        if (localStorage.getItem("userData")) {
+          const id = JSON.parse(localStorage.getItem("userData")).id;
+          axios.get(`${urlAPI}reacciones/porUsuario/${id}`).then((res) =>
+            res.data.forEach((element) => {
+              setLikedProducts((prevData) => {
+                if (prevData.includes(element.producto_id)) {
+                  return prevData;
+                } else {
+                  return [...prevData, element.producto_id];
+                }
+              });
+            })
+          );
         }
-      
-    }, [likedProducts,id]);
+      });
+    }
+  };
+
+  const [stars, setStars] = useState("");
+  useEffect(() => {
+    axios({
+      url: `${urlAPI}puntuaciones/porProducto/${id}`,
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+    }).then((data) => {
+      let scores = [];
+      data.data.forEach((element) => {
+        scores.push(element.puntuacion);
+      });
+      let avgScore = scores.reduce((a, b) => a + b, 0) / scores.length;
+      // console.log(avgScore.toFixed(1));
+      setStars(avgScore.toFixed(1) * 2);
+    });
+  }, []);
+  const handleHomeMap = (latitud, longitud) => {
+    if (setMapHomeData) {
+      setMapHomeData({ lat: latitud, lng: longitud });
+      return setShowMap(true);
+    }
+    else{
+      setMapFavoriteData({ lat: latitud, lng: longitud });
+      return setShowSmallMap(true);
+    }
+    
+    
+  };
+  useEffect(() => {
+    setLiked(false);
+    if (likedProducts.includes(id)) {
+      setLiked(true);
+    }
+  }, [likedProducts, id]);
   return (
     <>
       <LazyLoadComponent effect="blur">

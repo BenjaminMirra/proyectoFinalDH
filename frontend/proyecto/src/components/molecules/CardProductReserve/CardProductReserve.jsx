@@ -303,7 +303,22 @@ export const CardProductReserve = ({
                 <h6>{endReserveDate}</h6>
               </div>
             </div>
-
+            {/* <div className="leaveAnOpinion-container">
+              <div class="leaveAnOpinion">
+                <Heading type="sm" title="h2">
+                  ¡Dejanos tu opinión!:
+                </Heading>
+                <div className="opinionsStars">
+                  <Stars
+                    scored={scored}
+                    setScored={setScored}
+                    userId={JSON.parse(localStorage.getItem("userData")).id}
+                    productId={id}
+                    setRating={setRating}
+                  />
+                </div>
+              </div>
+            </div> */}
             {alreadyScored ? (
               <>
                 <div className="leaveAnOpinion-container">

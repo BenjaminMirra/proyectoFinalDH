@@ -36,3 +36,9 @@ a {
     font-family:'Poppins', sans-serif;
     height: 100vh;
 }
+hr{
+  border: none !important;
+  height: 1px !important; 
+  background-color: var(--color-primary)!important;
+  color:var(--color-primary) !important ;
+}

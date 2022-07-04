@@ -97,7 +97,7 @@ export const MobileReserveDetail = ({
               vacunadoCovid: submitData.vacunadoCovid,
               usuario_id: JSON.parse(localStorage.getItem("userData")).id,
               producto_id: id,
-              precioTotal: "100",
+              precioTotal: price,
             },
             headers: {
               "Content-Type": "application/json",

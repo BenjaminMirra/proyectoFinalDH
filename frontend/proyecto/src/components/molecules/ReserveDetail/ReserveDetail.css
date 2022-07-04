@@ -75,3 +75,6 @@ position: relative;
     text-align:center;
     border-radius:8px
 }
+.reserveDetail hr{
+    color: gray !important;
+}

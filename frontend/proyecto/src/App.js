@@ -32,7 +32,15 @@ function App() {
               />
             }
           />
-          <Route path="/sign-up" element={<SignUp />} />
+          <Route
+            path="/sign-up"
+            element={
+              <SignUp
+                setFailReserve={setFailReserve}
+                failReserve={failReserve}
+              />
+            }
+          />
           <Route
             path="/productos/:id"
             element={<Product setFailReserve={setFailReserve} />}
@@ -44,12 +52,15 @@ function App() {
           <Route path="/mapa" element={<Mapa />}></Route>
           <Route path="/reserva-exitosa" element={<SuccessBooking />}></Route>
           <Route path="/favoritos" element={<Favorite />}></Route>
-          <Route path="/productsPagination" element={<ProductsPagination/>}></Route>
-          <Route path="/:id/misreservas" element={<MyReservePage/>}></Route>
-          <Route path="/administracion" element={<Administracion/>}></Route>
+          <Route
+            path="/productsPagination"
+            element={<ProductsPagination />}
+          ></Route>
+          <Route path="/:id/misreservas" element={<MyReservePage />}></Route>
+          <Route path="/administracion" element={<Administracion />}></Route>
           <Route path="/producto-exitoso" element={<SuccessAdd />}></Route>
           <Route path="/reCaptcha" element={<Captcha />}></Route>
-          <Route path="*" element={<Error404/>}></Route>
+          <Route path="*" element={<Error404 />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
