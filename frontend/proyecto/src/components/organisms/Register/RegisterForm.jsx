@@ -127,7 +127,7 @@ export const RegisterForm = ({failReserve, setFailReserve}) => {
           console.log(failReserve);
           const lastProduct=JSON.parse(localStorage.getItem('lastProduct'))
           
-             !failReserve? window.location.pathname = `/productos/${lastProduct}`: window.location.pathname = '/';
+             failReserve? window.location.pathname = `/productos/${lastProduct}`: window.location.pathname = '/';
            return localStorage.removeItem("lastProduct");
             
           

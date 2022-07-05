@@ -12,9 +12,9 @@ import "./Favorite.css";
 import { Icon } from "../atoms/Icon/Icon";
 import { Loader } from "../molecules/Loader/Loader";
 export const Favorite = () => {
-
-
-
+    const navigate = useNavigate();
+  
+ 
   const [favoriteProducts, setFavoriteProducts] = useState('');
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [favoriteLocations, setFavoriteLocations] = useState([]);
@@ -98,7 +98,7 @@ export const Favorite = () => {
     }
   }, [favoriteProducts]);
 
-  const navigate = useNavigate();
+
   const handleBack = () => {
     navigate(-1)
   }
