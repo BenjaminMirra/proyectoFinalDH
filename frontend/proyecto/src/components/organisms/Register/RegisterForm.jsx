@@ -126,9 +126,16 @@ export const RegisterForm = ({failReserve, setFailReserve}) => {
           setButtonValue({ disabled: false, value: "Crear Cuenta" });
           console.log(failReserve);
           const lastProduct=JSON.parse(localStorage.getItem('lastProduct'))
-          
-             failReserve? window.location.pathname = `/productos/${lastProduct}`: window.location.pathname = '/';
-           return localStorage.removeItem("lastProduct");
+            if (failReserve) {
+              window.location.pathname = `/productos/${lastProduct}`
+               return setFailReserve(false);
+            }
+            else{
+              
+               window.location.pathname = '/';
+              return setFailReserve(false);
+              }
+            
             
           
         })
