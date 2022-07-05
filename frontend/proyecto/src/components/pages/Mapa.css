@@ -27,8 +27,10 @@
     margin-top: auto;
     border-radius:8px ;
 }
-@media (max-width:1000px) {
-    
+@media (max-width:768px) {
+    .full-map-container{
+        max-width: 100%;
+    }
 }
 .favorite-map-container-desktop{
     width: 100%;

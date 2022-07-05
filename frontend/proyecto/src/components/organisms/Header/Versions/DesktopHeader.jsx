@@ -35,6 +35,7 @@ export const DesktopHeader = ({rol, firstname,lastname,handleUserInfo}) => {
             <>
               <div className="tablet-user-info">
                 <div className="header-links">
+                  
                   <Link to={`/${userId}/misreservas`}>
                     <Paragraph size={"xmd"} variant={"secondary"}>
                       Mis reservas

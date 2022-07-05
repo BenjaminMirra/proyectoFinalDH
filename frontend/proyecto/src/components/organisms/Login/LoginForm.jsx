@@ -88,78 +88,80 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
     e.preventDefault();
     
     if (failReserve && firstValidation("email", "password")) {
-      setButtonValue({ disabled: true, value: 'Iniciando Sesion...' })
-      var formdata = new FormData();
-      formdata.append("email", formValues.email);
-      formdata.append("password", formValues.password);
+       setButtonValue({ disabled: true, value: "Iniciando Sesion..." });
+       var formdata = new FormData();
+       formdata.append("email", formValues.email);
+       formdata.append("password", formValues.password);
 
-      var requestOptions = {
-        method: "POST",
-        body: formdata,
-        redirect: "follow",
-        headers: { "Access-Control-Allow-Origin": "*/*" },
-      };
+       //arreglar login, ya no es formdata es JSON.
+       var myHeaders = new Headers();
+       myHeaders.append("Content-Type", "application/json");
 
-      fetch(`${urlAPI}usuarios/login`, requestOptions)
-        .then((response) => {
-          // console.log(response.status);
-          if (response.status == 401) {
-            setButtonValue({
-              disabled: false,
-              value: "Iniciar sesión",
-            });
-            //console.log("entro");
-            setLogError(true);
-            setTimeout(() => setLogError(false), 5000);
-          }
-          return response.text();
-        })
-        .then((result) => {
-          // console.log(result.status);
-          if (JSON.parse(result).token_de_acceso) {
-            localStorage.setItem(
-              "jwt",
-              JSON.stringify(JSON.parse(result).token_de_acceso)
-            );
+       var requestOptions = {
+         method: "POST",
+         body: JSON.stringify({
+           email: `${formValues.email}`,
+           password: `${formValues.password}`,
+         }),
+         redirect: "follow",
+         headers: myHeaders,
+       };
+       setButtonValue({ disabled: true, value: "Iniciando sesión..." });
+       fetch(`${urlAPI}usuarios/login`, requestOptions)
+         .then((response) => {
+           // console.log(response.status);
+           if (response.status == 401) {
+             //console.log("entro");
+             setLogError(true);
+             setTimeout(() => setLogError(false), 5000);
+           }
+           return response.text();
+         })
+         .then((result) => {
+           // console.log(result.status);
+           if (JSON.parse(result).token_de_acceso) {
+             localStorage.setItem(
+               "jwt",
+               JSON.stringify(JSON.parse(result).token_de_acceso)
+             );
 
-            axios({
-              method: "POST",
-              url: `${urlAPI}usuarios/porEmail`,
-              data: {
-                email: `${formValues.email}`,
-              },
-            }).then((data) => {
+             axios({
+               method: "POST",
+               url: `${urlAPI}usuarios/porEmail`,
+               data: {
+                 email: `${formValues.email}`,
+               },
+             }).then((data) => {
+               //console.log(data);
+               localStorage.setItem(
+                 "userData",
+                 JSON.stringify({
+                   nombre: data.data.nombre,
+                   apellido: data.data.apellido,
+                   id: data.data.id,
+                   email: data.data.email,
+                   nombre_rol: data.data.nombre_rol,
+                 })
+               );
 
-              //console.log(data);
-              localStorage.setItem(
-                "userData",
-                JSON.stringify({
-                  nombre: data.data.nombre,
-                  apellido: data.data.apellido,
-                  id: data.data.id,
-                  email: data.data.email,
-                })
-              );
-              setFailReserve(false);
-              setButtonValue({
-                disabled: false,
-                value: "Iniciar sesión",
-              });
-              const lastProduct = JSON.parse(
-                localStorage.getItem("lastProduct")
-              );
-              setButtonValue({
-                disabled: false,
-                value: "Iniciar sesión",
-              });
-              console.log('entro');
-              // localStorage.removeItem("lastProduct");
-               return (window.location.pathname = `/productos/${lastProduct}`);;
-              
-              
-            });
-          }
-        });
+               const lastProduct = JSON.parse(
+                 localStorage.getItem("lastProduct")
+               );
+               setButtonValue({
+                 disabled: false,
+                 value: "Iniciar sesión",
+               });
+               setFailReserve(false)
+               return (window.location.pathname = `/productos/${lastProduct}`);
+             });
+           } else {
+             setButtonValue({
+               disabled: false,
+               value: "Iniciar sesión",
+             });
+           }
+         });
+      
     } else if (firstValidation("email", "password")) {
       setButtonValue({ disabled: true, value: "Iniciando Sesion..." });
       var formdata = new FormData();
@@ -260,12 +262,12 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
   function firstValidation(email, password) {
     let result = true;
     
-    if(!captchaValido){
-      //console.log(captchaValido)
-      noSoyRobot.innerHTML = "Por favor, verifica que no eres un robot."
-      setTimeout(()=>  noSoyRobot.innerHTML = "",3500);
-      result = false;
-    }
+    // if(!captchaValido){
+    //   //console.log(captchaValido)
+    //   noSoyRobot.innerHTML = "Por favor, verifica que no eres un robot."
+    //   setTimeout(()=>  noSoyRobot.innerHTML = "",3500);
+    //   result = false;
+    // }
 
     if (!checkLength(formValues[email])) {
       result = false;
@@ -414,13 +416,7 @@ export const LoginForm = ({ failReserve, setFailReserve }) => {
             ></Button>
           </div>
         </form>
-        <div className="reCaptcha">
-            <ReCAPTCHA
-                ref={captcha}
-                sitekey="6LeG4LggAAAAAIj07QYr4X8XsV4pM8n19ngidcDm"
-                onChange={onChange}
-            />
-        </div>
+        
         <p>
           ¿No tienes cuenta?
           <Link to={"/sign-up"}>Crear cuenta</Link>

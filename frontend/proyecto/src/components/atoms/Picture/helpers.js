@@ -5,6 +5,8 @@ import qr_banco from "../../utils/images/qr_banco.jpeg";
 import qr_mp from "../../utils/images/qr_mp.jpeg";
 import qr_cripto from "../../utils/images/qr_cripto.png";
 import price_tab from "../../utils/icons/price_tab.png";
+import favoritos from "../../utils/icons/favoritos.png";
+import reservas from "../../utils/icons/reservas.png";
 
 const ImagesList = {
   logo: logo,
@@ -14,6 +16,8 @@ const ImagesList = {
   qr_mp: qr_mp,
   qr_cripto: qr_cripto,
   price_tab: price_tab,
+  favoritos: favoritos,
+  reservas: reservas,
 };
 const ImageWidth = {
     xxs:'30px',

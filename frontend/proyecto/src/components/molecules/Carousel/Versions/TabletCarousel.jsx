@@ -18,22 +18,57 @@ import {
 import "react-lazy-load-image-component/src/effects/blur.css";
 import './TabletCarousel.css'
 export function TabletCarousel(props) {
+    const { id } = useParams();
   const Share=()=>{
-      return( <div className='mobile-share-icons'>
-        <FacebookShareButton style={{display:'block'}} url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search' quote='Mira este producto!!!' hashtag='#booking'>
-            <FacebookIcon  size={30} logoFillIcon='white' round={true} ></FacebookIcon>
-        </FacebookShareButton>
-        <WhatsappShareButton style={{display:'block'}} className='icono'  url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search' >
-            <WhatsappIcon   size={30} logoFillIcon='white' round={true}  >
-            </WhatsappIcon>
-        </WhatsappShareButton>
-        <TwitterShareButton style={{display:'block'}} className='icono' url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search'>
-            <TwitterIcon  size={30} logoFillIcon='white' round={true}></TwitterIcon>
-        </TwitterShareButton>
-        <LinkedinShareButton style={{display:'block'}} className='icono' url='https://www.digitalhouse.com/ar?utm_source=Google&utm_medium=paidsearch&utm_campaign=Lead&utm_term=Institucional&utm_content=institucional-institucional-curso-home-adresponsive-conversiones-kwcategory-institucional-exactas-none-all-otro-adtext-institucional-none-all-all-ar-search'>
-            <LinkedinIcon  size={30} logoFillIcon='white' round={true}></LinkedinIcon>
-        </LinkedinShareButton>
-    </div>)
+      return (
+        <div className="mobile-share-icons">
+          <FacebookShareButton
+            style={{ display: "block" }}
+            url={`https://www.digitalbooking.shop/productos/${id}`}
+            quote="Mira este producto!!!"
+            hashtag="#booking"
+          >
+            <FacebookIcon
+              size={30}
+              logoFillIcon="white"
+              round={true}
+            ></FacebookIcon>
+          </FacebookShareButton>
+          <WhatsappShareButton
+            style={{ display: "block" }}
+            className="icono"
+            url={`https://www.digitalbooking.shop/productos/${id}`}
+          >
+            <WhatsappIcon
+              size={30}
+              logoFillIcon="white"
+              round={true}
+            ></WhatsappIcon>
+          </WhatsappShareButton>
+          <TwitterShareButton
+            style={{ display: "block" }}
+            className="icono"
+            url={`https://www.digitalbooking.shop/productos/${id}`}
+          >
+            <TwitterIcon
+              size={30}
+              logoFillIcon="white"
+              round={true}
+            ></TwitterIcon>
+          </TwitterShareButton>
+          <LinkedinShareButton
+            style={{ display: "block" }}
+            className="icono"
+            url={`https://www.digitalbooking.shop/productos/${id}`}
+          >
+            <LinkedinIcon
+              size={30}
+              logoFillIcon="white"
+              round={true}
+            ></LinkedinIcon>
+          </LinkedinShareButton>
+        </div>
+      );
     }
   const images=props.images
   const imagesLocal=[product1,product2,product3,product4,product5]
@@ -48,7 +83,7 @@ export function TabletCarousel(props) {
     slideCount:true,
     
   };
-  const { id } = useParams();
+
   // const imagesLocal=[product1,product2,product3,product4,product5]
 
   useEffect(() => {
