@@ -5,6 +5,7 @@ import { Heading } from "../atoms/Heading/Heading";
 import { Products } from "../organisms/Products/Products";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import sinFavoritos from '../utils/images/sinFavoritos.jpeg'
 import { urlAPI } from "../../global";
 import { Mapa } from "./Mapa";
 import { MapHome } from "../molecules/Map/MapHome/MapHome";
@@ -12,13 +13,13 @@ import "./Favorite.css";
 import { Icon } from "../atoms/Icon/Icon";
 import { Loader } from "../molecules/Loader/Loader";
 export const Favorite = () => {
-    const navigate = useNavigate();
-  
- 
+  const navigate = useNavigate();
+
+
   const [favoriteProducts, setFavoriteProducts] = useState('');
   const [selectedProducts, setSelectedProducts] = useState([]);
   const [favoriteLocations, setFavoriteLocations] = useState([]);
-  const [loader,setLoader]=useState(true)
+  const [loader, setLoader] = useState(true)
   useEffect(() => {
     setFavoriteProducts('');
     const userId = JSON.parse(localStorage.getItem('userData')).id;
@@ -168,13 +169,19 @@ export const Favorite = () => {
                 </>
               ) : (
                 <>
-                  <div className="none-favorite">
-                    {" "}
-                    <Icon icon={"prohibido"} width="lg" />
-                    <Heading title={"h2"} variant="secondary">
-                      No tienes alojamientos guardados
-                    </Heading>{" "}
+                  <div className="favorite-none">
+                    <div className="none-favorite">
+                      <div className="imagen-favorito-vacio">
+                        <img src={sinFavoritos} alt="reservasVacias" />
+                      </div>
+                      <div className="texto-favorito-vacio">
+                        <Heading title={"h2"} variant="secondary">
+                          No tienes alojamientos guardados
+                        </Heading>
+                      </div>
+                    </div>
                   </div>
+
                 </>
               )}
             </div>
