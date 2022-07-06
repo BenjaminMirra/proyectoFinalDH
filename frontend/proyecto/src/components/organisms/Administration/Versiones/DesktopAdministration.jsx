@@ -80,6 +80,7 @@ export const DesktopAdministration = ({ atributosTodos, setAtributosTodos, polit
     const politicaSaludSeguridad = document.getElementById("saludSeguridad-info")
     const errorContainerSaludSeguridad = document.getElementById("errorContainerSaludSeguridad")
     const [buttonValue, setButtonValue] = useState({ disabled: false, value: 'Crear' })
+    const containerAddImagen = document.getElementById("desktopAdministracion-add-imagen")
 
 
 
@@ -177,6 +178,10 @@ export const DesktopAdministration = ({ atributosTodos, setAtributosTodos, polit
             El nombre y el ícono no pueden estar vacíos
             </p>`
         }
+    }
+
+    if(imagenesRender.length === 5){
+        containerAddImagen.classList.add("displayNone")
     }
 
     const addImage = () => {
@@ -346,7 +351,7 @@ export const DesktopAdministration = ({ atributosTodos, setAtributosTodos, polit
                     <div className="desktopAdministracion-add-descripcion">
                         <div className="desktopAdministracion-add-descripcion-info">
                             <Label required={true} label='Descripción (mínimo 200 caracteres)'></Label>
-                            <textarea onChange={handleChangeDescription} placeholder='El Hotel Hermitage está ubicado en Tandil, Buenos Aires, a 200 metros de la Plaza San Martín. Este hotel de 3 estrellas cuenta...' name="" id="descripcion-info" cols="30" rows="10" maxLength="500" />
+                            <textarea onChange={handleChangeDescription} placeholder='El Hotel Hermitage está ubicado en Tandil, Buenos Aires, a 200 metros de la Plaza San Martín. Este hotel de 3 estrellas cuenta...' name="" id="descripcion-info" cols="30" rows="10" maxLength="1000" />
                         </div>
                     </div>
                     <div className="desktopAdministracion-add-latitud-longitud">
@@ -535,7 +540,7 @@ export const DesktopAdministration = ({ atributosTodos, setAtributosTodos, polit
                                 </div>
                             )
                         })}
-                        <div className="desktopAdministracion-add-imagen">
+                        <div id="desktopAdministracion-add-imagen" className="desktopAdministracion-add-imagen">
                             <div className='desktopAdministracion-add-imagen-parte1'>
                                 <Input required={true} name="imagenURL" placeholder="Insertar https://">
                                 </Input>

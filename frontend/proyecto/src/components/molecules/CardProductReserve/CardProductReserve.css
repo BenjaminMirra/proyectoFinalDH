@@ -224,7 +224,7 @@
 @media (max-width: 767px) {
     .card-product-reserves {
         width: 450px;
-        height: 600px;
+        height: 650px;
         flex-direction: column;
     }
 

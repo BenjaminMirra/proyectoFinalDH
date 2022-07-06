@@ -15,7 +15,7 @@ export const MyReservePage = () => {
 
   return (
     <>
-      <div className="wrapper">
+      <div className="wrapper misReservas">
         <Header firstname={undefined} lastname={undefined} />
         <div className="reservePage">
           <MisReservas />

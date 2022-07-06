@@ -5,7 +5,11 @@
 }
 
 .desktopAdministration h4 {
-    margin-left: 3px;
+    margin-left: 3px; 
+}
+
+.displayNone{
+    display: none !important;
 }
 
 .desktopAdministracion-add {

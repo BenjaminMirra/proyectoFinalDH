@@ -152,10 +152,11 @@ export const MisReservas = () => {
             return (
 
                 setRender(
-                    <>
+                    <>  <div className='misReservas-container'>
                         <ProductsReserve
                             setRating={setRating} data={productsData} reserveDate={reserveDate} setReservasPorId={setReservasPorId}
                         ></ProductsReserve>
+                        </div>
                     </>
                 )
             )
