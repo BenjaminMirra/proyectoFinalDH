@@ -332,14 +332,14 @@ export const TabletReserveDetail = ({
               <Paragraph>
                 <strong>
                   Precio por {price / product.precio} noches: ARS $
-                  {pesosFormat(price)} <br /> (ARS ${pesosFormat(product.precio)}{" "}
+                  {pesosFormat(price)} <br /> (ARS ${pesosFormat.format(product.precio)}{" "}
                   / noche)
                 </strong>
               </Paragraph>
             ) : (
               <Paragraph>
                 <strong>
-                  Precio por noche : $ {pesosFormat(product.precio)}
+                  Precio por noche : $ {pesosFormat.format(product.precio)}
                 </strong>{" "}
               </Paragraph>
             )}
