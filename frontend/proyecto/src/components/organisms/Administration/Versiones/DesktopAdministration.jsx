@@ -23,9 +23,7 @@ export const DesktopAdministration = ({ atributosTodos, setAtributosTodos, polit
     //Guardo toda la info del form aquí
 
     const firstValidation = () => {
-
         if (dataForm.descripcion === " " || dataForm.latitud === " " || dataForm.longitud === " " || dataForm.nombre === " " || dataForm.ciudad === " " || dataForm.categoria === " " || dataForm.direccion === " " || dataForm.precio === " " || dataForm.tituloDescripcion === " ") {
-
             return false
         } else if (imagenesRender.length < 5) {
             return null
@@ -82,15 +80,13 @@ export const DesktopAdministration = ({ atributosTodos, setAtributosTodos, polit
     const [buttonValue, setButtonValue] = useState({ disabled: false, value: 'Crear' })
     const containerAddImagen = document.getElementById("desktopAdministracion-add-imagen")
 
-
-
     const postData = () => {
         setButtonValue({ value: "Creando reserva...", disabled: true })
         setDataForm((prevData) => ({ ...prevData, ciudad: selectPlaceInfo.value }))
         setDataForm((prevData) => ({ ...prevData, categoria: selectCategoryInfo.value }))
+        cityValidation()
+        categoryValidation()
         if (firstValidation()) {
-            cityValidation()
-            categoryValidation()
             const data = {
                 titulo: dataForm.nombre,
                 titulo_descripcion: dataForm.tituloDescripcion,
@@ -121,7 +117,7 @@ export const DesktopAdministration = ({ atributosTodos, setAtributosTodos, polit
                     setButtonValue({ value: "Crear", disabled: false })
                 })
                 setButtonValue({ value: "Creado", disabled: false })
-                return (window.location.pathname = `/producto-exitoso`);
+                //return (window.location.pathname = `/producto-exitoso`);
 
             } else if (data.descripcion.length < 200) {
                 errorContainer.innerHTML = ` <p>
@@ -129,7 +125,6 @@ export const DesktopAdministration = ({ atributosTodos, setAtributosTodos, polit
             </p>`
                 setButtonValue({ value: "Crear", disabled: false })
             }
-
         } else if (firstValidation() == null) {
             errorContainer.innerHTML = ` <p>
             Deben ser un total de 5 imágenes.
@@ -266,7 +261,6 @@ export const DesktopAdministration = ({ atributosTodos, setAtributosTodos, polit
     }
 
     const deleteAtribute = (nombre) => {
-        console.log("borrando atributo")
         setAtributosRender((prevValue) => (prevValue.filter(item => item.titulo !== nombre)))
         setAtributosTodos((prevValue) => (prevValue.filter(item => item.titulo !== nombre)))
     }

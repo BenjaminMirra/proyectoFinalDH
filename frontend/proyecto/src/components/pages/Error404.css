@@ -1,5 +1,12 @@
+.error404-container{
+    height: 100vh;
+    background-color:#EBEBEE;
+}
+
 .error404-container footer {
-    margin-top: 0px
+    margin-top: 0px;
+    position: sticky;
+    top: 100%;
 }
 
 .error404-primeraParte-mobile {

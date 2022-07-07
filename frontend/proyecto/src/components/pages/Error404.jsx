@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { Header } from '../organisms/Header/Header'
 import { Footer } from '../organisms/Footer/Footer'
 import './Error404.css'
-import Error404Imagen from '../utils/images/error404.jpg'
+import Error404Imagen from '../utils/images/tukimejorado.png'
 
 export const Error404 = () => {
     return (

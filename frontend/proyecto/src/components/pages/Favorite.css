@@ -17,21 +17,38 @@
     top: 140px;
     right: 1.5%;
     position: fixed;
-    
-    
+}
+
+.favorite-none{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 50px;
 }
 
 .none-favorite{
-   position: absolute;
-    width: 90% !important;
+    width:100%;
     max-width: 450px !important;
-    bottom: 40px;
-    left: 50%;
-    top: 30%;
-     transform: translate(-50%, -50%);
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    text-align: center;
+}
+
+.imagen-favorito-vacio{
+    width: 100%;
+}
+
+.texto-favorito-vacio{
+    width: 100%;
+}
+
+.none-favorite img{
+        width: 150px;
+        height: 150px;
+        margin-bottom: 15px;    
 }
 
 .none-favorite h2{
