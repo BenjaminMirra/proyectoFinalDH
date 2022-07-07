@@ -335,7 +335,7 @@ export const MobileReserveDetail = ({
               </Paragraph>
             ) : (
               <Paragraph>
-                Precio por noche : $ {pesosFormat(product.precio)}
+                Precio por noche : $ {pesosFormat.format(product.precio)}
               </Paragraph>
             )}
           </div>
