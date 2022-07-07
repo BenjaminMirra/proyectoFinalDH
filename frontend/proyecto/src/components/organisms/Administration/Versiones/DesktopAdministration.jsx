@@ -117,7 +117,7 @@ export const DesktopAdministration = ({ atributosTodos, setAtributosTodos, polit
                     setButtonValue({ value: "Crear", disabled: false })
                 })
                 setButtonValue({ value: "Creado", disabled: false })
-                //return (window.location.pathname = `/producto-exitoso`);
+                return (window.location.pathname = `/producto-exitoso`);
 
             } else if (data.descripcion.length < 200) {
                 errorContainer.innerHTML = ` <p>
