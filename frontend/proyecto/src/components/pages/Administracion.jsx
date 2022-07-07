@@ -1,10 +1,11 @@
-import React, {useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import './Administracion.css'
 import { Header } from '../organisms/Header/Header'
 import { Footer } from '../organisms/Footer/Footer'
 import { useLocation } from 'react-router-dom'
 import { Error404 } from './Error404'
 import { Administration } from '../organisms/Administration/Administration'
+import { Loader } from '../molecules/Loader/Loader'
 
 export const Administracion = () => {
 
@@ -13,6 +14,16 @@ export const Administracion = () => {
   const [userInfo, setUserInfo] = useState({ rol: UserDataLocalStorage !== null ? UserDataLocalStorage.rol : undefined })
 
   const location = useLocation()
+
+  const [loader, setLoader] = useState(true)
+
+  useEffect(() => {
+    if (userInfo.rol === "ROLE_ADMIN") {
+      setLoader(false);
+    } else {
+      setTimeout(() => setLoader(false), 1500);
+    }
+  }, [userInfo]);
 
   useEffect(() => {
     setUserDataLocalStorage(JSON.parse(localStorage.getItem('userData')));
@@ -30,14 +41,20 @@ export const Administracion = () => {
 
   return (
     <>
-      {userInfo && userInfo.rol === "ROLE_ADMIN" ?
-          (< div className="administrationPage">
-            <Header />
-            <Administration />
-            <Footer />
-          </div>)
-        : (<Error404 />)
-    }
+      {loader ? (<Loader />) : (
+        <div>
+          {userInfo.rol === "ROLE_ADMIN" ?
+            (< div className="administrationPage">
+              <Header />
+              <Administration />
+              <Footer />
+            </div>)
+            : (<Error404 />)
+          }
+        </div>
+      )}
+
+
     </>
   )
 }
